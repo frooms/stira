@@ -1,0 +1,37 @@
+    This zip folder contains c++ codes for performing ROF denoising using the "Split Bregman" algorithm, as introduced in the paper "The Split Bregman Algorithm for L1-Regularized problems" by Tom Goldstein and Stanley Osher.  
+    Please direct any questions to <TomGoldstein1@gmail.com>.
+
+INSTRUCTIONS:
+
+          HOW TO COMPILE THESE CODES:
+
+These codes have only been tested on an SUSE UNIX platform, using the g++ compiler.  However, these codes do not use any non-standard libraries or syntax, and should be fairly easy to build/use on other platforms.
+
+To compile, simply add the files "FlashRof.h" and "FlashRof.cpp" to your workspace, and call the g++ compiler.  I have found that optimal performance is attained using the following optimization flags, and I highly recommend that you use all of them:
+
+-O3 -fexpensive-optimizations -msse2 -mfpmath=sse -march=pentium
+
+
+      HOW TO USE THESE CODES:
+
+   An complete example of how these codes should be used is included in the files "Example.h," and "Example.cpp." 
+
+   Suppose we want to denoise an mxn image.  This is done with the command: 
+
+            FlashROF::rof_iso(u,f,x,y,bx,by,mu,lambda,nGS,nBreg,m,n);
+ 
+ where:
+ 
+   - u is an mxn array which holds the denoised image
+   - f is the mxn noisy image
+   - x is the (m-1)xn array which holds the x-derivative (I call this d_x in the paper)
+   - y is the mx(n-1) array which holds the y-derivative
+   - bx is the (m-1)xn array which holds the Bregman parameter associated with x
+   - by is the mx(n-1) array which holds the Bregman parameter associated with y 
+   - mu is the weighting parameter for the fidelity term (mu should be about 0.5 for images with pixels on the 0-255 scale)
+   - lambda is the Bregman weight (usually, one should choose lambda=2*mu)
+   - nGS is the number of Gauss-Seidel sweeps per iteration (I recommend choosing nGS=1) 
+   - nBreg is the total number of iterations of Split-Bregman to be performed (50 is sufficient for most applications)
+  
+
+

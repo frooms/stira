@@ -1,0 +1,122 @@
+
+/***********************************************************************************
+ *   Copyright (C) 2008-2011 by Filip Rooms                                        *
+ *                                                                                 *
+ *  Terms and conditions for using this software in any form are provided in the   *
+ *  file COPYING, which can be found in the root directory of this project.        *
+ *                                                                                 *
+ *   Contact data: filip.rooms@gmail.com                                           *
+ *                 http://www.filiprooms.be/                                       *
+ *                                                                                 *
+ ***********************************************************************************
+ *                                                                                 *
+ *                      Currently in SVN repository:                               *
+ *                                                                                 *
+ *               https://ir07svn.ugent.be/svn/frooms/stira/stira/                  *
+ *                                                                                 *
+ ***********************************************************************************/
+
+This software is designed to provide a simple, unified toolkit for image processing 
+research and software development. It is called STIRA (Simple Toolkit for Image 
+Restoration and Analysis) and was written by Filip Rooms, unless mentioned otherwise 
+(see below). 
+
+The goal was to provide code that is very readable; all methods and variables are 
+(or at least should be) documented using doxygen. Also, for almost all code, test 
+applications are added to test functionality (and quality) of the code. However, keep 
+in mind that this source code is experimental research code and that the author cannot 
+be held responsible for anything going wrong with anything made with this source code!!
+
+1) Files in project not originally from author:
+///////////////////////////////////////////////
+
+   RandomNumbers.h: Definition and Implementation of Random Number Distribution Class
+   //  in common/common/Random.h
+   //         Ref: Richard Saucier, "Computer Generation of Statistical 
+   //              Distributions," ARL-TR-2168, US Army Research Laboratory,
+   //              Aberdeen Proving Ground, MD, 21005-5068, March 2000.
+   //              http://ftp.arl.mil/random/
+   
+   KISS FFT: (kiss_fft.ccp/h, kiss_fftnd.ccp/h, _kiss_fft_guts.h) by Mark Borgerding 
+   //  in fouriertools/fouriertools/kiss_fftnd.h
+   //                               kiss_fft.c
+   //                               _kiss_fft_guts.h
+   //                               kiss_fft.h
+   //                               kiss_fftnd.c
+   //
+   //         A Fast Fourier Transform based up on the principle, "Keep It Simple, Stupid." 
+   //         Kiss FFT is a very small, reasonably efficient, mixed radix FFT library that 
+   //         can use either fixed or floating point data types.
+   //         http://sourceforge.net/projects/kissfft
+   
+   AVI IO: Boris Rogge, Dimitri Van de Ville, Vladimir Zlokolica, improved by Bart Goossens
+   //  in avi/avi/*
+   
+   Complex Wavelets: implementation by Bart Goossens, TELIN, UGent, Belgium
+   //  in complexwavelet/complexwavelet/*
+   //           http://telin.ugent.be/~bgoossen/
+   
+   Registration: Intramodal registration software by Philippe Thevenaz
+   //  in registration/registration/*
+   //           http://bigwww.epfl.ch/thevenaz/registration/
+   
+   Split-Bregman denoising by Tom Goldstein
+   //  in diffusion/bregman/*
+   //           http://www.stanford.edu/~tagoldst/code.html
+   
+   Voronoi by Stephan Fortune for original C code and Shane O'Sullivan for C++ wrapper and other adaptations
+   //  in image/tools/VoronoiDiagramGenerator.*
+   //           http://www.skynet.ie/~sos/mapviewer/voronoi.php
+   
+   Anisotropic Gaussian Filtering by Jan-Mark Geusebroek
+   //  in filter/filter/AnisotropicGaussian.* (wrapper)
+   //  in filter/filter/anigauss.*  (original source files)
+   //           http://staff.science.uva.nl/~mark/downloads.html#anigauss
+
+------------------------------------------------------------------------------------
+
+2) external dependencies
+////////////////////////
+
+* OpenCV Open Source Computer Vision 2.0.0 (to check version: see /usr/include/opencv/cvver.h)
+    - Availability: http://opencv.willowgarage.com/wiki/ or in a standard linux distro repository
+    - Used by subprojects "common" for polynomial fitting and experiments/testHorizontalFilter/RecursiveLeastSquares and other subprojects that depend on that
+
+* FFTW3 Fastest Fourier Transform in the West 
+    - Availability: http://www.fftw.org or in a standard linux distro repository
+    - Dependency can be removed, and code is then based on integrated KISS-FFT (see above)
+    - Used by subprojects "fouriertools", "filter" and all other subprojects that depend on that
+    
+* Imlib2 Image library, here used for reading image files
+    - Availability: http://docs.enlightenment.org/api/imlib2/html/ or in a standard linux distro repository
+    - Dependency can be removed, only used in image/tools/ImageIO in method static Image* ReadImlib( ... )
+      (and of course linked in ALL targets with a main function...). However, without this method, only binary 
+      pgm's and ppm's can be read and written
+
+------------------------------------------------------------------------------------
+
+3) internal dependencies
+////////////////////////
+
+common
+  |
+image color
+  |
+image datastructure
+  |
+image tools
+  |
+image geometrictransform
+  |
+  +------------------------------+---------------------------+---------------------+-----------------+
+  |                              |                           |                     |                 |
+fouriertools                  histogram                 complexwavelet         registration         avi
+  |                              \
+filter                            +-----------------------------------------------------------------------\
+  |                                                                                                        |
+  +------------------------------+---------------------------+---------------------+-----------------------+
+  |                              |                           |                     |                       |
+wavelet                       steerable                   diffusion             imageanalysis        contrastenhance
+                              pyramidapplications
+                              deconvolve
+                              degradationestimation
