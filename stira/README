@@ -49,13 +49,6 @@ be held responsible for anything going wrong with anything made with this source
    //         can use either fixed or floating point data types.
    //         http://sourceforge.net/projects/kissfft
    
-   AVI IO: Boris Rogge, Dimitri Van de Ville, Vladimir Zlokolica, improved by Bart Goossens
-   //  in avi/avi/*
-   
-   Complex Wavelets: implementation by Bart Goossens, TELIN, UGent, Belgium
-   //  in complexwavelet/complexwavelet/*
-   //           http://telin.ugent.be/~bgoossen/
-   
    Registration: Intramodal registration software by Philippe Thevenaz
    //  in registration/registration/*
    //           http://bigwww.epfl.ch/thevenaz/registration/
@@ -86,12 +79,6 @@ be held responsible for anything going wrong with anything made with this source
     - Availability: http://www.fftw.org or in a standard linux distro repository
     - Dependency can be removed, and code is then based on integrated KISS-FFT (see above)
     - Used by subprojects "fouriertools", "filter" and all other subprojects that depend on that
-    
-* Imlib2 Image library, here used for reading image files
-    - Availability: http://docs.enlightenment.org/api/imlib2/html/ or in a standard linux distro repository
-    - Dependency can be removed, only used in image/tools/ImageIO in method static Image* ReadImlib( ... )
-      (and of course linked in ALL targets with a main function...). However, without this method, only binary 
-      pgm's and ppm's can be read and written
 
 ------------------------------------------------------------------------------------
 
