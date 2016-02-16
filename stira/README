@@ -1,6 +1,6 @@
 
 /***********************************************************************************
- *   Copyright (C) 2008-2011 by Filip Rooms                                        *
+ *   Copyright (C) 2008-2015 by Filip Rooms                                        *
  *                                                                                 *
  *  Terms and conditions for using this software in any form are provided in the   *
  *  file COPYING, which can be found in the root directory of this project.        *
@@ -9,12 +9,6 @@
  *                 http://www.filiprooms.be/                                       *
  *                                                                                 *
  ***********************************************************************************
- *                                                                                 *
- *                      Currently in SVN repository:                               *
- *                                                                                 *
- *               https://ir07svn.ugent.be/svn/frooms/stira/stira/                  *
- *                                                                                 *
- ***********************************************************************************/
 
 This software is designed to provide a simple, unified toolkit for image processing 
 research and software development. It is called STIRA (Simple Toolkit for Image 
