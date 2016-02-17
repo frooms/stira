@@ -206,6 +206,18 @@ public:
      * \param yLocalCenter y coordinate of local patch under consideration
      * \param windowSize size of local patches to take */
    static double GetLocalDarkChannel( Image* pImage, int xLocalCenter, int yLocalCenter, int windowSize );
+
+   /** \brief creates an array of 32bit unsigned int values, where each int value combines the three color band values per pixel (each 8bit) in one 32bit value
+     *     [ 0 0 0 0 0 0 0 0 0 ] [ 1 1 1 1 1 1 1 1 ] [ 1 1 1 1 1 1 1 1 ] [ 1 1 1 1 1 1 1 1 ]
+     *            unused                value R            value G            value B
+     * \param pImage input image, assumes that values per band internally can be cast to unsigned char */
+   static unsigned int* CreateIntArrayFromColorImage( Image* pImage );
+
+   /** \brief creates an image from an array of 32bit integers by splitting again the integers in unsigned chars per band value
+     * \param pIntArray the input array of 32bit integers
+     * \param width     the width of the target image
+     * \param height    the height of the target image */
+   static Image* CreateColorImageFromIntArray( unsigned int* pIntArray, int width, int height );
 };
 
 }

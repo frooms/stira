@@ -16,14 +16,14 @@
 #include <vector>
 #include "Point.h"
 
-
 namespace stira {
 namespace common {
 
 enum FitType{ FIT_LINEAR, FIT_QUADRATIC, FIT_POLYNOMIAL, FIT_EXPONENTIAL, FIT_GAUSSIAN };
 
 /** \brief class to fit a parametric function to a set of data points
-  * For the moment, only linear, quadratic and exponential fit are available */
+  * For the moment, only linear, quadratic, exponential and polynomial fit are available
+  *   The polynomial fit uses OpenCV's matrix operations */
 class FitCurve
 {
 public:

@@ -27,7 +27,11 @@ using namespace std;
 using namespace stira::image;
 using namespace stira::common;
 
-//========================================================================================
+void TestVersionOpenCV()
+{
+   cout << "Open CV version " << CV_MAJOR_VERSION << "." << CV_MINOR_VERSION << endl << flush;
+}
+//-----------------------------------------------------------------
 
 bool GenerateSyntheticImagesTest()
 {

@@ -27,15 +27,9 @@ using namespace std;
 // 0. CONSTRUCTOR / DESTRUCTOR
 //////////////////////////////
 
-ImageTools::ImageTools()
-{
-}
+ImageTools::ImageTools() {}
 
-//===================================================================================================
-
-ImageTools::~ImageTools()
-{
-}
+ImageTools::~ImageTools() {}
 
 //===================================================================================================
 
@@ -60,7 +54,7 @@ Image* ImageTools::MirrorBorder( Image* pInImage, int borderWidth, int borderHei
    return pExpandedImage;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::CropBorder( Image* pInImage, int borderWidth, int borderHeight)
 {
@@ -101,7 +95,7 @@ Image* ImageTools::CropBorder( Image* pInImage, int borderWidth, int borderHeigh
    }
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::PaddBorder( Image* pInImage, int borderWidth, int borderHeight, double paddingValue )
 {
@@ -121,7 +115,7 @@ Image* ImageTools::PaddBorder( Image* pInImage, int borderWidth, int borderHeigh
    return pExpandedImage;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::ExtractSubImage( Image* pInImage, Point<int> topLeft, Point<int> bottomRight )
 {
@@ -154,6 +148,7 @@ Image* ImageTools::ExtractSubImage( Image* pInImage, Point<int> topLeft, Point<i
    }
    return pCroppedImage;
 }
+
 //===================================================================================================
 
 // 2. COMPARE IMAGES
@@ -209,7 +204,7 @@ Image* ImageTools::CreateImageSSD( Image* pImage1, Image* pImage2, bool printOut
    }
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 double ImageTools::ComputeMSE( Image* pImage1, Image* pImage2 )
 {
@@ -228,7 +223,7 @@ double ImageTools::ComputeMSE( Image* pImage1, Image* pImage2 )
    return (MSE / (double)(nrBands));
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 double ImageTools::ComputePSNR( Image* pImage1, Image* pImage2 )
 {
@@ -236,7 +231,7 @@ double ImageTools::ComputePSNR( Image* pImage1, Image* pImage2 )
    return ( 10.0 * log10( 255.0 * 255.0 / MSE ) );
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::CreateImageSSIM( Image* pImage1, Image* pImage2, int localImageWidth )
 {
@@ -290,7 +285,7 @@ Image* ImageTools::CreateImageSSIM( Image* pImage1, Image* pImage2, int localIma
    }
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 std::vector<double> ImageTools::GetColorMappingFactors( Image* pImage1, Image* pImage2 )
 {
@@ -315,7 +310,7 @@ std::vector<double> ImageTools::GetColorMappingFactors( Image* pImage1, Image* p
    return colorRatios;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 void ImageTools::CompareColorCurveInImages( Image* pImage1, Image* pImage2, ColorValue compareColor, int dyTollerance, double& averageDistance, double& nrPixelsOverTolerance )
 {
@@ -404,8 +399,7 @@ Image* ImageTools::CreateCheckeredImage( Image* pImage1, Image* pImage2, int blo
    return pChecker;
 }
 
-
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::CreateTransparantlyMixedImage( Image* pImage1, Image* pImage2, double thisWeight)
 {
@@ -452,7 +446,6 @@ Image* ImageTools::CreateTransparantlyMixedImage( Image* pImage1, Image* pImage2
 
 //===================================================================================================
 
-
 // 4. REMAP IMAGE INTENSITIES
 /////////////////////////////
 
@@ -482,7 +475,7 @@ Image* ImageTools::ApplyGamma( Image* pInImage, double gamma )
    return pGammaImage;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::CreateLinearRescaledImage( Image* pImage, bool bandsIndepentant )
 {
@@ -525,7 +518,7 @@ Image* ImageTools::CreateLinearRescaledImage( Image* pImage, bool bandsIndepenta
    return pScaledImage;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::ApplyJetColorMap( Image* pInImage )
 {
@@ -567,7 +560,7 @@ Image* ImageTools::ApplyJetColorMap( Image* pInImage )
    }
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::ConvertToGrayImage( Image* pInImage )
 {
@@ -608,7 +601,7 @@ Image* ImageTools::ConvertToGrayImage( Image* pInImage )
    }
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::ConvertToSepiaImage( Image* pInImage )
 {
@@ -645,7 +638,7 @@ Image* ImageTools::ConvertToSepiaImage( Image* pInImage )
    return pSepia;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::Negative( Image* pInImage )
 {
@@ -689,7 +682,7 @@ Image* ImageTools::Rotate90DegreesClockwise( Image* pInImage )
    return pOutImage;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::Rotate90DegreesCounterClockwise( Image* pInImage )
 {
@@ -706,7 +699,7 @@ Image* ImageTools::Rotate90DegreesCounterClockwise( Image* pInImage )
    return pOutImage;
 }
 
-//===================================================================================================
+//------------------------------------------------------------------
 
 Image* ImageTools::Rotate180Degrees( Image* pInImage )
 {
@@ -739,6 +732,39 @@ double ImageTools::GetLocalDarkChannel( Image* pInImage, int xLocalCenter, int y
       if (tmpMin < darkChannelValue) {darkChannelValue = tmpMin;}
    }
    return darkChannelValue;
+}
+
+unsigned int* ImageTools::CreateIntArrayFromColorImage( Image* pImage )
+{
+    int width  = pImage->GetWidth();
+    int height = pImage->GetHeight();
+    unsigned int* pIntArray = new unsigned int[ width * height ];
+
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            ColorValue cv = pImage->GetColor(x,y);
+            pIntArray[x + width*y] = MathUtils::CombineCharsInInt( (unsigned char)(0), (unsigned char)(cv.c[0]), (unsigned char)(cv.c[1]), (unsigned char)(cv.c[2]));
+        }
+    }
+    return pIntArray;
+}
+
+Image* ImageTools::CreateColorImageFromIntArray( unsigned int* pIntArray, int width, int height )
+{
+    Image *pImage = new Image(width, height, 3);
+
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            std::vector<unsigned char> colorVector = MathUtils::SplitIntInChars( pIntArray[x + width*y] );
+            ColorValue cv(colorVector[1], colorVector[2], colorVector[3]);
+            pImage->SetColor(x, y, cv);
+        }
+    }
+    return pImage;
 }
 
 //===================================================================================================

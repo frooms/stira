@@ -16,6 +16,7 @@
 #include <iostream>
 #include <cmath>
 #include <cassert>
+#include <bitset>
 
 using namespace std;
 
@@ -199,6 +200,44 @@ double MathUtils::ApplyModulo( double input, double modulo )
       input += modulo;
    }
    return input;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+void MathUtils::PrintBitsInInt(unsigned int i)
+{
+    std::cout << std::bitset<32>(i) << std::flush;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+void MathUtils::PrintBitsInChar(unsigned char c)
+{
+    for (int i = 0; i < 8; i++)
+    {
+       std::cout << !!((c << i) & 0x80) << std::flush;
+    }
+    //std::cout << std::bitset<8>(c) << std::endl << std::flush;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+unsigned int MathUtils::CombineCharsInInt(unsigned char i0, unsigned char i1, unsigned char i2, unsigned char i3)
+{
+    unsigned int combined = (unsigned int)((i0 << 24) | (i1 << 16) | (i2 << 8) | (i3 << 0));
+    return combined;
+}
+
+//----------------------------------------------------------------------------------------------------
+
+std::vector<unsigned char> MathUtils::SplitIntInChars( int value )
+{
+    vector<unsigned char> arrayOfByte(4);
+    for (int i = 0; i < 4; i++)
+    {
+       arrayOfByte[3 - i] = (value >> (i * 8));
+    }
+    return arrayOfByte;
 }
 
 //======================================================================================================

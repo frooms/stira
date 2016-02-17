@@ -18,19 +18,12 @@
 #include <iostream>
 #include <iomanip>
 #include <cassert>
-#include <opencv2/opencv.hpp>
 
 #define FIT_NOISE_MIN -1.0
 #define FIT_NOISE_MAX  1.0
 
 using namespace std;
 using namespace stira::common;
-
-void TestVersionOpenCV()
-{
-   cout << "Open CV version " << CV_MAJOR_VERSION << "." << CV_MINOR_VERSION << endl << flush;
-}
-//-----------------------------------------------------------------
 
 std::vector<double> MakeVector( double* pData, int nrElements )
 {
@@ -67,6 +60,33 @@ void TestArgument()
       assert( fabs( theta - MathUtils::ComputeArgument( x, y ) ) < 0.001 );
    }
    cout << "Argument test success!!" << endl << flush;
+}
+
+//-----------------------------------------------------------------
+
+void TestBitshiftCharInt()
+{
+    unsigned char c0 = 126;     std::cout << "Input value 0 = " << (int)(c0) << "\t";  MathUtils::PrintBitsInChar(c0);  std::cout << std::endl << std::flush;
+    unsigned char c1 =  55;     std::cout << "Input value 1 = " << (int)(c1) << "\t";  MathUtils::PrintBitsInChar(c1);  std::cout << std::endl << std::flush;
+    unsigned char c2 = 147;     std::cout << "Input value 2 = " << (int)(c2) << "\t";  MathUtils::PrintBitsInChar(c2);  std::cout << std::endl << std::flush;
+    unsigned char c3 =  37;     std::cout << "Input value 3 = " << (int)(c3) << "\t";  MathUtils::PrintBitsInChar(c3);  std::cout << std::endl << std::flush;
+
+    std::cout << "Concat chars : " << std::flush;
+    MathUtils::PrintBitsInChar(c0);
+    MathUtils::PrintBitsInChar(c1);
+    MathUtils::PrintBitsInChar(c2);
+    MathUtils::PrintBitsInChar(c3);  std::cout << std::endl << std::flush;
+
+    int intCombined = MathUtils::CombineCharsInInt(c0, c1, c2, c3);
+    std::cout << "Combin chars : " << std::flush;  MathUtils::PrintBitsInInt(intCombined);  std::cout << std::endl << std::flush;
+
+    std::cout << "Split into chars" << std::endl << std::flush;
+    vector<unsigned char> charVector = MathUtils::SplitIntInChars(intCombined);
+
+    assert( charVector[0] == c0 );      std::cout << "Split value 0 = " << (int)(charVector[0]) << "\t";  MathUtils::PrintBitsInChar(charVector[0]);  std::cout << std::endl << std::flush;
+    assert( charVector[1] == c1 );      std::cout << "Split value 1 = " << (int)(charVector[1]) << "\t";  MathUtils::PrintBitsInChar(charVector[1]);  std::cout << std::endl << std::flush;
+    assert( charVector[2] == c2 );      std::cout << "Split value 2 = " << (int)(charVector[2]) << "\t";  MathUtils::PrintBitsInChar(charVector[2]);  std::cout << std::endl << std::flush;
+    assert( charVector[3] == c3 );      std::cout << "Split value 3 = " << (int)(charVector[3]) << "\t";  MathUtils::PrintBitsInChar(charVector[3]);  std::cout << std::endl << std::flush;
 }
 
 //-----------------------------------------------------------------
@@ -414,5 +434,4 @@ int main()
    //TestCorrelation();
    //TestGaussianCurveFit();
    TestGaussianity();
-   TestVersionOpenCV();
 }

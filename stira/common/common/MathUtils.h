@@ -111,6 +111,29 @@ public:
      * \param modulo modulo*/
    static double ApplyModulo( double input, double modulo );
 
+   /** \brief prints to stdout the bits in a 32bit unsigned integer
+     * \param i input unigned integer */
+   static void PrintBitsInInt(unsigned int i);
+
+   /** \brief prints to stdout the bits in an unsigned char
+     * \param c input unigned char */
+   static void PrintBitsInChar(unsigned char c);
+
+   /** \brief combine 4 unsigned in one 32 bit unsigned integer
+     *   [ 1 1 1 1 1 1 1 1 ] [ 1 1 1 1 1 1 1 1 ] [ 1 1 1 1 1 1 1 1 ] [ 1 1 1 1 1 1 1 1 ]
+     *     unsigned char c0    unsigned char c1    unsigned char c2    unsigned char c3
+     *
+     * \param c0 first  input unsigned char, will be placed at the most significant bits of the integer
+     * \param c1 second input unsigned char, will be placed at the next 8 less significant bits of the integer
+     * \param c2 third  input unsigned char, will be placed at the next 8 less significant bits of the integer
+     * \param c3 fourth input unsigned char, will be placed at the least significant bits of the integer
+     */
+   static unsigned int CombineCharsInInt(unsigned char i0, unsigned char i1, unsigned char i2, unsigned char i3);
+
+   /** \brief splits a 32bit unsigned integer in a vector of 4 unsigned chars
+     * \param value input unsigned integer */
+   static std::vector<unsigned char> SplitIntInChars( int value );
+
    // 3. STUFF RELATED TO ANGLES
    /////////////////////////////
 
