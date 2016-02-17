@@ -60,28 +60,22 @@ void TestBlurEstimateHu( Image* pImage, double sigmaBlur )
 int main(int argc, char *argv[])
 {
    Image* pImage = 0;
-   double sigmaNoise, sigmaBlur;
+   double sigmaBlur;
 
    const char* inputname;
-   if (argc == 4)
+   if (argc == 3)
    {
       inputname =  argv[1];
-      sigmaNoise = atof( argv[2] );
-      sigmaBlur = atof( argv[3] );
+      sigmaBlur = atof( argv[2] );
    }
    else if (argc == 2)
    {
       inputname = argv[1];
-      sigmaNoise  = 10.0;
       sigmaBlur   = 2.0;
    }
    else
    {
-      //inputname = "../../testdata/nematodes2.pgm";
-      //inputname = "../../testdata/circles.pgm";
-      //inputname = "../../testdata/cameraman2.pgm";
       inputname = "../../testdata/lena512.pgm";
-      sigmaNoise    = 10.0;
       sigmaBlur   = 2.0;
    }
 
