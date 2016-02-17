@@ -332,11 +332,8 @@ int main(int argc, char *argv[])
       inputname = "../../testdata/lena512.pgm";
       sigmaSmooth    = 1.0;
    }
-   cout << "Running test with input image " << inputname
-                       << " sigmaSmooth = " << sigmaSmooth << endl << flush;
-
+   cout << "Running test with input image " << inputname << " sigmaSmooth = " << sigmaSmooth << endl << flush;
    pImage = ImageIO::Read( inputname );
-
 
    /////////////////////////////////////////////////////
    // CONTOUR TRACING

@@ -228,7 +228,7 @@ bool ImageIOTest()
 
 //========================================================================================
 
-bool ReadPgmFromZipFileTest()
+/*bool ReadPgmFromZipFileTest()
 {
    std::string zipName = std::string("/u/frooms/research/develop/stira-env/stira/testdata/testZipFile.zip");
 
@@ -241,7 +241,7 @@ bool ReadPgmFromZipFileTest()
    ImageIO::WritePGM( pGrid, std::string("ImageFromZip.pgm") );
    delete pGrid;
    return true;
-}
+}*/
 
 //========================================================================================
 
@@ -483,16 +483,16 @@ int main(int argc, char *argv[])
       allSuccess = false;
    }
 
-   cout << "ReadPgmFromZipFileTest:";
-   if ( ReadPgmFromZipFileTest() )
-   {
-      cout << " \t OK!" << endl << flush;
-   }
-   else
-   {
-      cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
-   }
+   //cout << "ReadPgmFromZipFileTest:";
+   //if ( ReadPgmFromZipFileTest() )
+   //{
+   //   cout << " \t OK!" << endl << flush;
+   //}
+   //else
+   //{
+   //   cout << " \t FAILED!" << endl << flush;
+   //   allSuccess = false;
+   //}
 
     // 2) Extract ROI test
    ///////////////////////
