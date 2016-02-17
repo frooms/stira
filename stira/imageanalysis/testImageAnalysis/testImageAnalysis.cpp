@@ -76,9 +76,8 @@ void TestWSMeyer( Image *pImage )
 
 void TestContourTrace( )
 {
-   //std::string filename = string("../../testdata/testLines.pgm");
+   std::string filename = string("../../testdata/testLines.ppm");
 
-   std::string filename = string("../../testdata/micro.png");
    Image *pImage = ImageIO::Read( filename );
 
    double alphaStraight = 0.975;
@@ -103,7 +102,7 @@ void TestContourTrace( )
 
 //-----------------------------------------------------------------------------------
 
-void TestBranches( )
+/*void TestBranches( )
 {
    std::string filename = string("../../testdata/CropOrig-2039.pgm");
    Image* pImage = ImageIO::Read( filename );
@@ -180,13 +179,13 @@ void TestBranches( )
    delete pPreProcessedGrid;
    delete pGridOutLeft;
    delete pImage;
-}
+}*/
 
 //-----------------------------------------------------------------------------------
 
 void TestThinning( )
 {
-   std::string filename = string("../../testdata/Skel.png");
+   std::string filename = string("../../testdata/thinningTestPattern.pgm");
    Image *pImage = ImageIO::Read( filename );
 
    int width  = pImage->GetBands()[0]->GetWidth();
@@ -217,7 +216,7 @@ void TestThinning( )
 
 //-----------------------------------------------------------------------------------
 
-void TestCompareCurves( )
+/*void TestCompareCurves( )
 {
    std::string filename1 = string("../../testdata/TraceTopCurve-TopCurve-0007.png");
    Image *pImage1 = ImageIO::Read( filename1 );
@@ -278,7 +277,7 @@ void TestFindMaximalIncludedRectangles( )
    ih2.Write( std::string("YarnNotOKCumulativehistogram.txt") );
 
    //system ("dir");
-}
+}*/
 
 //-----------------------------------------------------------------------------------
 
@@ -330,9 +329,6 @@ int main(int argc, char *argv[])
    }
    else
    {
-      //inputname = "../../testdata/nematodes2.pgm";
-      //inputname = "../../testdata/circles.pgm";
-      //inputname = "../../testdata/cameraman2.pgm";
       inputname = "../../testdata/lena512.pgm";
       sigmaSmooth    = 1.0;
    }
@@ -385,11 +381,11 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // CURVE COMPARISON
-   TestCompareCurves( );
+   //TestCompareCurves( );
 
    /////////////////////////////////////////////////////
    // FIND MAXIMAL INCLUDED RECTANGLES
-   TestFindMaximalIncludedRectangles( );
+   //TestFindMaximalIncludedRectangles( );
 
    /////////////////////////////////////////////////////
    // FLOODFILL
@@ -401,7 +397,7 @@ int main(int argc, char *argv[])
    // DETECT BRANCHES IN CONTOURS
 
    cout << "Branch Contour Test " << endl << flush;
-   TestBranches( );
+   //TestBranches( );
 
 
    delete pImage;
