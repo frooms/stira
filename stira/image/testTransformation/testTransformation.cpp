@@ -16,6 +16,7 @@
 #include "../geometrictransform/Translation.h"
 #include "../geometrictransform/RigidTransform.h"
 #include "../geometrictransform/AffineTransform.h"
+#include "../geometrictransform/FisheyeCorrector.h"
 #include "../tools/ImageIO.h"
 #include "../tools/BilinearInterpolator.h"
 
@@ -146,8 +147,25 @@ bool InterpolationTest( )
 
 //========================================================================================
 
+bool FisheyeTest( )
+{
+   Image* pInImage = ImageIO::Read( "../../testdata/Fisheye_photo.ppm" );
+   FisheyeCorrector fc;
+
+   Image* pImageCorrected = fc.ApplyCorrect( pInImage, 14, 3 );
+   assert( pImageCorrected != 0 );
+   assert ( ImageIO::Write( pImageCorrected, string("FisheyeTest.ppm") ) == true);
+   delete pImageCorrected;
+
+   return true;
+}
+
+//========================================================================================
+
 int main(int argc, char *argv[])
 {
+   int testsRun = 0;
+   int testsSuccess = 0;
    const char* fileName;
    if (argc == 2)
    {
@@ -157,40 +175,72 @@ int main(int argc, char *argv[])
    {
       fileName = "../../testdata/colorsquares.ppm";
    }
-   bool allSuccess = true;
+
    Image* pInImage = ImageIO::Read( fileName );
 
+   testsRun++;
    if ( AffineForwardInverseTest( ) != true)
    {
       cerr << "AffineForwardInverseTest went wrong..." << endl << flush;
-      allSuccess = false;
+   }
+   else
+   {
+       testsSuccess ++;
    }
 
    // 0) Generate synthetic test images test
    ///////////////////////////////
+   testsRun++;
    if ( TranslationTest( pInImage ) != true)
    {
       cerr << "TranslationTest on image went wrong..." << endl << flush;
-      allSuccess = false;
+   }
+   else
+   {
+       testsSuccess ++;
    }
 
+   testsRun++;
    if ( RigidTest( pInImage ) != true)
    {
       cerr << "RigidTest on image went wrong..." << endl << flush;
-      allSuccess = false;
+   }
+   else
+   {
+       testsSuccess ++;
    }
 
+   testsRun++;
    if ( AffineTest( pInImage ) != true)
    {
       cerr << "AffineTest on image went wrong..." << endl << flush;
-      allSuccess = false;
    }
+   else
+   {
+       testsSuccess ++;
+   }
+
+   testsRun++;
    if ( InterpolationTest( ) != true)
    {
       cerr << "InterpolationTest went wrong..." << endl << flush;
-      allSuccess = false;
+   }
+   else
+   {
+       testsSuccess ++;
    }
 
+   testsRun++;
+   if ( FisheyeTest( ) != true)
+   {
+      cerr << "InterpolationTest went wrong..." << endl << flush;
+   }
+   else
+   {
+       testsSuccess ++;
+   }
+
+   cout << "Tests run = " << testsRun << ", of which succeeded " << testsSuccess << endl << flush;
    delete pInImage;
    return EXIT_SUCCESS;
 }
