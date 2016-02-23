@@ -84,20 +84,21 @@ void WriteProfile(ProfileData* pInputData, std::string name )
 int main()
 {
    int nrGridPoints = 17;
-   ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-White/ModelValuesWhite2.txt") );
+   //ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-White/ModelValuesWhite2.txt") );
    //ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/spectra-aug2009/ModelBeforeBiasCorrection.txt") );
    //ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/spectra-aug2009/ModelAfterBiasCorrection.txt") );
    
    //WriteProfile( pInputData, std::string("Input table") );
    
-   ProfileCorrect PC( pInputData, nrGridPoints );
+   //ProfileCorrect PC( pInputData, nrGridPoints );
    
-   ProfileData* pProfileOut = PC.InterpolateSamplesToGrid( );
+   //ProfileData* pProfileOut = PC.InterpolateSamplesToGrid( );
    
-   WriteProfile( pProfileOut, std::string("Interpolated table") );
+   //WriteProfile( pProfileOut, std::string("Interpolated table") );
    
-   delete pInputData;
-   delete pProfileOut;
+   //delete pInputData;
+   //delete pProfileOut;
+   cout << "currently no valid test files avilable..." << endl << flush;
    return 0;
 }
 

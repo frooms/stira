@@ -1330,12 +1330,12 @@ int main(int argc, char *argv[])
    ConvertPrimariesTest( std::string("prims-0-30-70-100.txt"), std::string("NormalPrimariesLab-0-30-70-100.txt") );
    ConvertPrimariesTest( std::string("prims-0-50-90-100.txt"), std::string("NormalPrimariesLab-0-50-90-100.txt") );
 
-   std::string fileReference1 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/spectra-aug2009/White-cmyk-spectra.txt");
-   std::string fileReference2 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/spectra-aug2009/yellow-cmyk-spectra.txt");
-   std::string fileModel1 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-White/out_1.txt");
-   std::string fileModel2 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-yellow/out_1.txt");
-   std::string fileOut    = std::string("/v/frooms/research/projects/color/warhol-110509/cms/spectra-aug2009/Correction-Out.txt");
-   CorrectSpectralValues( fileReference1, fileModel1, fileModel2, fileReference2, fileOut );
+   //std::string fileReference1 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/spectra-aug2009/White-cmyk-spectra.txt");
+   //std::string fileReference2 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/spectra-aug2009/yellow-cmyk-spectra.txt");
+   //std::string fileModel1 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-White/out_1.txt");
+   //std::string fileModel2 = std::string("/v/frooms/research/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-yellow/out_1.txt");
+   //std::string fileOut    = std::string("/v/frooms/research/projects/color/warhol-110509/cms/spectra-aug2009/Correction-Out.txt");
+   //CorrectSpectralValues( fileReference1, fileModel1, fileModel2, fileReference2, fileOut );
 
   // FINISH ALL TESTS
   ////////////////////
