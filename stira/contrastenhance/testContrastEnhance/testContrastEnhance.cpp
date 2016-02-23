@@ -91,7 +91,7 @@ bool EqualizeTest(Image* pInImage)
 
 bool HistogramMapTest()
 {
-   std::string fileName1 = string("../../testdata/CropOrig-2035.pgm");
+   std::string fileName1 = string("../../testdata/testhaze.ppm");
 
    Image* pImage1 = ImageIO::Read( fileName1 );
    Image* pImage2 = ImageIO::Read( fileName1 );

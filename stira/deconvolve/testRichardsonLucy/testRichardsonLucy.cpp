@@ -169,7 +169,7 @@ int main(int argc, char *argv[])
    }
 
    cout << "Running test with input image " << inputname << " using " << nrIterations << " iterations." << endl << flush;
-   //TestRichardSonLucySimulated( inputname );
+   TestRichardSonLucySimulated( inputname );
    TestRichardSonLucyMotionBlur( inputname );
 
    return EXIT_SUCCESS;
