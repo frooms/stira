@@ -43,13 +43,6 @@ public:
    /** \brief gets the flow constant, that regulates the strength of the diffusion */
    double GetFlowFactor();
 
-   /** \brief sets the time step in the diffusion process
-     * \param dt the time step to set */
-   void SetDeltaT(double dt);
-
-   /** \brief gets the time step in the diffusion process */
-   double GetDeltaT();
-
    /** \brief sets the maximum number of iterations
      * \param maxnr the maximum number of iterations */
    void SetMaxNumberOfIterations( int maxnr);
@@ -68,7 +61,6 @@ private:
    
    image::Image* mpSourceImage;   ///< source data grid
    double mFlowFactor;               ///< diffusion flow factor
-   double mDeltaT;                     ///< the size of the time step per iteration
    int mMaxNumberOfIterations;    ///< the maximum number of iterations
 
 };

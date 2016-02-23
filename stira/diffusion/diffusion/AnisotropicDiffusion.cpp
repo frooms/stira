@@ -25,7 +25,7 @@ AnisotropicDiffusion::AnisotropicDiffusion(Image* pSourceImage)
    mpSourceImage = pSourceImage->Clone();
    std::string outName = pSourceImage->GetImageName() + std::string("-AnisotropicDiffusion");
    mpSourceImage->SetImageName(outName);
-   mDeltaT = 0.1;
+   mFlowFactor = 0.1;
    mMaxNumberOfIterations = 15;
 }
 
@@ -61,20 +61,6 @@ void AnisotropicDiffusion::SetFlowFactor(double fc)
 double AnisotropicDiffusion::GetFlowFactor()
 {
    return mFlowFactor;
-}
-
-//-----------------------------------------------------------
-
-void AnisotropicDiffusion::SetDeltaT(double dt)
-{
-   mDeltaT = dt;
-}
-
-//-----------------------------------------------------------
-
-double AnisotropicDiffusion::GetDeltaT()
-{
-   return mDeltaT;
 }
 
 //-----------------------------------------------------------
@@ -134,7 +120,7 @@ Image* AnisotropicDiffusion::Run()
 
                deltaI= (cxu*deltaIxu-cxl*deltaIxl)+(cyu*deltaIyu-cyl*deltaIyl);
 
-               ttmp = pPreviousIterationGrid->GetValue(x,y) + mDeltaT * deltaI;
+               ttmp = pPreviousIterationGrid->GetValue(x,y) + mFlowFactor * deltaI;
 
                mpSourceImage->GetBands()[bandNr]->SetValue(x,y,ttmp);
             } //for x
