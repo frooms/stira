@@ -288,9 +288,7 @@ int main()
 {
    Image* pImage = 0;
    //string fileNamePGM("../../testdata/lena256.pgm");
-   //string fileNamePGM("../../testdata/blackman.pgm");
-   string fileNamePGM("../../testdata/CropOrig-3143.png");
-   //string fileNamePGM("testplant.pgm");
+   string fileNamePGM("../../testdata/blackman.png");
 
    pImage = ImageIO::Read( fileNamePGM );
 
