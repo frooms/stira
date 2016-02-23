@@ -550,9 +550,7 @@ int main(int argc, char *argv[])
    string fileNamePGM;
    if (argc != 2)
    {
-      //fileNamePGM = string("/scratch/hdd/frooms/IntermediaryImages/t0708/CropOrig/CropOrig-1115.png");
-      fileNamePGM = string("/scratch/hdd/frooms/IntermediaryImages/t0701/CropOrig/CropOrig-0777.png");
-      //fileNamePGM = string("../../testdata/lena512.pgm");
+      fileNamePGM = string("../../testdata/lena512.pgm");
       //fileNamePGM = string("../../testdata/Rikki.pgm");
       //fileNamePGM = string("../../testdata/lena256-GaussianNoise.pgm");
       //fileNamePGM = string("../../testdata/bricks_zigzag_texture_6190218.PGM");
