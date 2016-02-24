@@ -133,6 +133,7 @@ int main(int argc, char *argv[])
       cerr << "IntHistogramTest went wrong..." << endl << flush;
       allSuccess = false;
    }
+
    if ( CondidtionalHistogramTest( pInImage) != true )
    {
       cerr << "CondidtionalHistogramTest went wrong..." << endl << flush;

@@ -1,6 +1,13 @@
-The MIT License (MIT)
 
-Copyright (c) 2015 frooms
+Copyright (c) 2011-16 Filip Rooms
+
+WARNING: this project also integrates code fragments and classes found on the web, 
+         for which the original author and comments are kept in this software 
+         repository. 
+
+         PLEASE BEWARE TO CHECK THE LICENSE FOR THAT CODE SEPARATELY!!!
+
+For all other code written by myself, The MIT License (MIT) is applied
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
