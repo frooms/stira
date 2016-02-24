@@ -46,6 +46,25 @@ void TestFileAccess()
 
 //-------------------------------------------------------------------
 
+void TestFileExists()
+{
+   cout << "+--------------+" << endl << flush;
+   cout << "|TestFileExists|" << endl << flush;
+   cout << "+--------------+" << endl << flush;
+
+   std::string fileExists = std::string("../../testdata/stitch.tif");
+
+   std::string fileDoesNotExist = std::string("../../testdata/imaginary.tif");
+
+   assert( FileAccess::CheckIfFileExists(fileExists) );
+
+   assert( !FileAccess::CheckIfFileExists(fileDoesNotExist) );
+
+   cout << " END TestFileExists..." << endl << flush;
+}
+
+//-------------------------------------------------------------------
+
 void TestZipFile()
 {
    //Open the ZIP archive
@@ -76,6 +95,7 @@ void TestZipFile()
 int main()
 {
    TestFileAccess();
+   TestFileExists();
    //TestZipFile();
    return 0;
 }
