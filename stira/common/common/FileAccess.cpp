@@ -59,6 +59,7 @@ FileAccess::~FileAccess( )
 {}
 
 //-------------------------------------------------------------
+
 // Code based on http://www.gnu.org/software/libc/manual/html_node/Simple-Directory-Lister.html#Simple-Directory-Lister
 std::vector< std::string > FileAccess::ListFilesInSubFoldersInFolder( std::string pathToAccess, std::string prefix, std::string extension, bool separatorIsUnderscore )
 {
@@ -260,7 +261,22 @@ std::string FileAccess::FindFileName( std::vector< std::string > fileList, int f
 
 //-------------------------------------------------------------
 
-bool FileAccess::CheckIfDirectoryExists( std::string dirName )
+bool FileAccess::CheckIfFileExists( const std::string& fileName)
+{
+    if (FILE *file = fopen( fileName.c_str(), "r"))
+    {
+        fclose(file);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+//-------------------------------------------------------------
+
+bool FileAccess::CheckIfDirectoryExists( const std::string dirName )
 {
    size_t size = dirName.size();
 

@@ -61,7 +61,9 @@ public:
 
    /** \brief checks if a given directory name exists
      * \param dirName the directory name to check if it exists */
-   static bool CheckIfDirectoryExists( std::string dirName );
+   static bool CheckIfDirectoryExists( const std::string dirName );
+
+   static bool CheckIfFileExists( const std::string& name);
 
    /** \brief creates a directory with given name
      * Reference: http://www.go4expert.com/forums/showthread.php?t=9031 (create a directory)

@@ -25,29 +25,6 @@ using namespace stira::common;
 
 //-------------------------------------------------------------------
 
-void TestFileFilter()
-{
-   cout << "+--------------+" << endl << flush;
-   cout << "|TestFileFilter|" << endl << flush;
-   cout << "+--------------+" << endl << flush;
-   TextFileUtils tfu;
-   std::string fileIn = std::string("/v/frooms/research/projects/color/warhol-last/matlab/SpectraleRegressie/references-all-sorted-bis.txt");
-
-   std::string fileOut = std::string("/v/frooms/research/projects/color/warhol-last/matlab/FilteredTest.txt");
-   int filterLength = 3;
-   int nrColumnsToFilter = 4;
-   int nrOtherColumns = 36;
-   int pFilterValues[ filterLength ];
-
-   pFilterValues[ 0 ] = 0;
-   pFilterValues[ 1 ] = 70;
-   pFilterValues[ 2 ] = 100;
-
-   TextFileUtils::FilterText( fileIn, fileOut, pFilterValues, filterLength, nrColumnsToFilter, nrOtherColumns );
-}
-
-//-------------------------------------------------------------------
-
 void TestFileAccess()
 {
    cout << "+--------------+" << endl << flush;
@@ -56,14 +33,14 @@ void TestFileAccess()
    std::string prefix;
    bool usePrefix = false;
 
-   std::vector< std::string > fileList = FileAccess::ListFilesOfType( std::string("/scratch/hdd/frooms/InputSeries/T0716/image/"), prefix, std::string(".pgm"), usePrefix );
+   std::vector< std::string > fileList = FileAccess::ListFilesOfType( std::string("../../testdata/"), prefix, std::string(".pgm"), usePrefix );
 
    cout << "Processing files " << fileList[0]  << " to " << fileList[ fileList.size() - 1 ] << endl;
 
    bool createSuccessfull = FileAccess::CreateNewDirectory( std::string( "/scratch/frooms/t01212/" ) );
    cout << "createSuccessfull returned " << createSuccessfull << endl;
 
-   std::vector< std::string > subDirs = FileAccess::ListFilesInSubFoldersInFolder( std::string("/scratch/hdd/frooms/InputSeries/U0129/"), std::string("BFP"), std::string(".pgm") );
+   std::vector< std::string > subDirs = FileAccess::ListFilesInSubFoldersInFolder( std::string("../../testdata/"), std::string("BFP"), std::string(".pgm") );
    cout << " END TestFileAccess..." << endl << flush;
 }
 
@@ -98,9 +75,8 @@ void TestZipFile()
 
 int main()
 {
-   TestFileFilter();
    TestFileAccess();
-   TestZipFile();
+   //TestZipFile();
    return 0;
 }
 
