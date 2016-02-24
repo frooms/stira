@@ -51,7 +51,7 @@ bool WaveletNoiseEstimationTest(Image* pImage)
    //#endif
    delete pImageNoise;
 
-   if ( fabs( sigmaNoise - sigmaEstimated ) < 0.8 )
+   if ( fabs( sigmaNoise - sigmaEstimated ) < 1.0 )
    {
       return true;
    }
@@ -63,7 +63,7 @@ bool WaveletNoiseEstimationTest(Image* pImage)
 
 //============================================================================
 
-bool CriticalWaveletTest( Image* pImage, double hardThreshold, int nrScales )
+bool CriticallySubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
 {
    CriticallySubsampledTransform wdr;
 
@@ -88,7 +88,7 @@ bool CriticalWaveletTest( Image* pImage, double hardThreshold, int nrScales )
    delete pOutGrid;
 
    #ifdef VISUALIZE_WAVELETS
-      cout << "CriticalWaveletTest: PSNR after reconstruction is " << psnr << endl << flush;
+      cout << "CriticallySubsampledWaveletTest: PSNR after reconstruction is " << psnr << endl << flush;
       ImageIO::WritePGM( pOutGrid, string("HaarDecomposeReconstruct.pgm"), ImageIO::NULL_OUT );
    #endif
 
@@ -237,8 +237,7 @@ int main(int argc, char *argv[])
    string fileNamePPM;
    if (argc < 2)
    {
-      //fileNamePPM = string("../../testdata/lena512.pgm");
-      fileNamePPM = string("../../testdata/blackman.pgm");
+      fileNamePPM = string("../../testdata/lena512.pgm");
       cout << "File name is " << fileNamePPM << endl << flush;
 
       //ArrayGrid<double>* pGrid = GridGenerator::GenerateZonePlate ( );
@@ -253,13 +252,13 @@ int main(int argc, char *argv[])
    double hardThreshold = 0.0;
    int nrScales = 6;
 
-   if (CriticalWaveletTest( pImage, hardThreshold, nrScales ) == true )
+   if (CriticallySubsampledWaveletTest( pImage, hardThreshold, nrScales ) == true )
    {
-      cout << "CriticalWavelet test success!!" << endl << flush;
+      cout << "CriticallySubsampledWavelet test success!!" << endl << flush;
    }
    else
    {
-      cout << "CriticalWavelet test FAILED!!" << endl << flush;
+      cout << "CriticallySubsampledWavelet test FAILED!!" << endl << flush;
    }
 
    if (WaveletNoiseEstimationTest( pImage ) == true )
