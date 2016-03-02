@@ -268,14 +268,6 @@ public:
 
    static double ComputeLocalVariance( ArrayGrid<double>* pGrid, common::RectangularROI<int> rroi, double thisMean);
 
-   static T ComputeLocalMeanColumn( ArrayGrid<T>* pGrid, int x, int& yTop, int& yBottom );
-
-   static T ComputeLocalMeanAlongLineUp( ArrayGrid<T>* pGrid, int x, int y, double angle, int& nrLinesUp );
-
-   static T ComputeLocalMeanAlongLineDown( ArrayGrid<T>* pGrid, int x, int y, double angle, int& nrLinesDown );
-
-   static double ComputeLocalVarianceColumn( ArrayGrid<double>* pGrid, int x, int& yTop, int& yBottom, double thisMean);
-
    /** \brief gets local mean of ABSOLUTE values in a local window defined by (xTopLeft, yTopLeft) as top left corner and (xBottomRight, yBottomRight) as bottom right corner (included!)
      *
      * does boundary checking: adjusts values of xTopLeft, xBottomRight, yTopLeft, yBottomRight to be clipped to fit inside the grid!!
@@ -286,16 +278,13 @@ public:
      * \param yBottomRight y coordinate of bottom right corner of local window */
    static T ComputeLocalAbsoluteMean( ArrayGrid<T>* pGrid, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight );
 
-   static double ComputeMeanTrapeziumRoi( ArrayGrid<double>* pGrid, int& xTopLeft, int& xTopRight, int& yTop, int& xBottomLeft, int& xBottomRight, int& yBottom );
-
-   static double ComputeVarianceTrapeziumRoi( ArrayGrid<double>* pGrid, int& xTopLeft, int& xTopRight, int& yTop, int& xBottomLeft, int& xBottomRight, int& yBottom);
-
    /** \brief computes the variance of the values a local window size defined by (xTopLeft, yTopLeft) as top left corner and
      *        (xBottomRight, yBottomRight) as bottom right corner (included!)
      *
      * does boundary checking: adjusts values of xTopLeft, xBottomRight, yTopLeft, yBottomRight to be clipped to fit inside the grid!!
      *
      * WARNING: mean value of local window must already be computed before executing this method
+     *
      * \param pGrid source grid
      * \param xTopLeft x coordinate of top left corner of local window
      * \param yTopLeft y coordinate of top left corner of local window
@@ -317,9 +306,12 @@ public:
    static double ComputeLocalVariance( ArrayGrid<double>* pGrid, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight );
 
    /** \brief computes the variance of values for a given real-valued grid given a certain central pixel location and a local window size
+     *
      * Local mean is computed within this method.
+     *
      * WARNING: does not perform boundary checking: moves from (x-(localWindowSize/2)) to (x+(localWindowSize/2))
      *            and from (y-(localWindowSize/2)) to (y+(localWindowSize/2)) without checking if values go out of range!!
+     *
      * \param pGrid1 first source grid
      * \param pGrid2 second source grid
      * \param x x coordinate of central pixel
@@ -1153,70 +1145,6 @@ T NumberGridTools<T>::ComputeLocalMean( ArrayGrid<T>* pGrid, int& xTopLeft, int&
 //----------------------------------------------------------------------------------
 
 template <class T>
-T NumberGridTools<T>::ComputeLocalMeanColumn( ArrayGrid<T>* pGrid, int x, int& yTop, int& yBottom )
-{
-   T tmpMean = 0.0;
-
-   yTop    = common::MathUtils::ClipValue( yTop,    0, pGrid->GetHeight() );
-   yBottom = common::MathUtils::ClipValue( yBottom, 0, pGrid->GetHeight() );
-
-   for (int yy = yTop; yy < yBottom; yy++)
-   {
-      tmpMean += pGrid->GetValue( x, yy );
-      //std::cout << "( " << x << ", " << yy << " ) has value " << pGrid->GetValue( x, yy ) << std::endl << std::flush;
-   }
-   //std::cout << "Mean = " << tmpMean / ( yBottom - yTop ) << std::endl;
-   return ( tmpMean / ( yBottom - yTop ) );
-}
-
-//----------------------------------------------------------------------------------
-
-template <class T>
-T NumberGridTools<T>::ComputeLocalMeanAlongLineUp( ArrayGrid<T>* pGrid, int x, int y, double angle, int& nrLinesUp )
-{
-   T tmpMean = 0.0;
-
-   int yTop = common::MathUtils::ClipValue( y-nrLinesUp,    0, pGrid->GetHeight() );
-
-   double coTanTheta = 1.0 / tan( angle );
-
-   double xx = x;
-
-   for (int yy = y; yy < yTop; yy--)
-   {
-      tmpMean += pGrid->GetValue( (int)(xx+0.5), yy );
-      std::cout << "Under angle, sampling point (" << (int)(xx+0.5) << ", " << yy << "), image has value " << pGrid->GetValue( (int)(xx+0.5), yy ) << std::endl;
-      xx += coTanTheta;
-   }
-
-   return ( tmpMean / (y-yTop) );
-}
-
-//----------------------------------------------------------------------------------
-
-template <class T>
-T NumberGridTools<T>::ComputeLocalMeanAlongLineDown( ArrayGrid<T>* pGrid, int x, int y, double angle, int& nrLinesDown )
-{
-   T tmpMean = 0.0;
-
-   int yBottom = common::MathUtils::ClipValue( y+nrLinesDown, 0, pGrid->GetHeight() );
-
-   double coTanTheta = 1.0 / tan( angle );
-
-   double xx = x;
-   for (int yy = y+1; yy < yBottom; yy++)
-   {
-      std::cout << "Under angle, sampling point (" << (int)(xx+0.5) << ", " << yy << "), image has value " << pGrid->GetValue( (int)(xx+0.5), yy ) << std::endl;
-      tmpMean += pGrid->GetValue( (int)(xx+0.5), yy );
-      xx -= coTanTheta;
-   }
-
-   return ( tmpMean / (yBottom-y) );
-}
-
-//----------------------------------------------------------------------------------
-
-template <class T>
 double NumberGridTools<T>::ComputeLocalMean( ArrayGrid<double>* pGrid, common::RectangularROI<int> rroi )
 {
    int xTopLeft = rroi.GetTopLeftCorner().GetX();
@@ -1285,22 +1213,6 @@ double NumberGridTools<T>::ComputeLocalVariance( ArrayGrid<double>* pGrid, int& 
 //----------------------------------------------------------------------------------
 
 template <class T>
-double NumberGridTools<T>::ComputeLocalVarianceColumn( ArrayGrid<double>* pGrid, int x, int& yTop, int& yBottom, double thisMean)
-{
-   // range of y values is already checked in ComputeLocalMeanColumn
-
-   double tmpVariance = 0.0;
-   for (int yy = yTop; yy <= yBottom; yy++)
-   {
-      double ttt = pGrid->GetValue( x, yy ) - thisMean;
-      tmpVariance += (ttt * ttt);
-   }
-   return ( tmpVariance / (double)( ( yBottom - yTop + 1 ) - 1 ) );
-}
-
-//----------------------------------------------------------------------------------
-
-template <class T>
 double NumberGridTools<T>::ComputeLocalVariance( ArrayGrid<double>* pGrid, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight )
 {
    xTopLeft     = common::MathUtils::ClipValue( xTopLeft,     0, pGrid->GetWidth()-1 );
@@ -1331,70 +1243,6 @@ double NumberGridTools<T>::ComputeLocalVariance( ArrayGrid<double>* pGrid, int& 
       }
    }
    return ( tmpVariance / (double)( myDenominator - 1 ) );
-}
-
-//----------------------------------------------------------------------------------
-
-template <class T>
-double NumberGridTools<T>::ComputeMeanTrapeziumRoi( ArrayGrid<double>* pGrid, int& xTopLeft, int& xTopRight, int& yTop, int& xBottomLeft, int& xBottomRight, int& yBottom )
-{
-   xTopLeft     = common::MathUtils::ClipValue( xTopLeft,     0, pGrid->GetWidth()-1 );
-   xTopRight    = common::MathUtils::ClipValue( xTopRight,    0, pGrid->GetWidth()-1 );
-   xBottomLeft  = common::MathUtils::ClipValue( xBottomLeft,  0, pGrid->GetWidth()-1 );
-   xBottomRight = common::MathUtils::ClipValue( xBottomRight, 0, pGrid->GetWidth()-1 );
-   yTop         = common::MathUtils::ClipValue( yTop,         0, pGrid->GetHeight()-1 );
-   yBottom      = common::MathUtils::ClipValue( yBottom,      0, pGrid->GetHeight()-1 );
-
-   double dxLeft  = (double)( xBottomLeft - xTopLeft     ) / (double)( yBottom - yTop );
-   double dxRight = (double)( xTopRight   - xBottomRight ) / (double)( yBottom - yTop );
-
-   double xLeftLimit  = xTopLeft;
-   double xRightLimit = xTopRight;
-   double tmpMean = 0.0;
-   int pixcounter = 0;
-   for (int yy = yTop; yy <= yBottom; yy++)
-   {
-      for (int xx = xLeftLimit; xx <= xRightLimit; xx++)
-      {
-         tmpMean += pGrid->GetValue( xx, yy );
-         pixcounter++;
-      }
-      xLeftLimit  += dxLeft;
-      xRightLimit -= dxRight;
-   }
-
-   return (double)(tmpMean) / (double)(pixcounter);
-}
-
-//----------------------------------------------------------------------------------
-
-template <class T>
-double NumberGridTools<T>::ComputeVarianceTrapeziumRoi( ArrayGrid<double>* pGrid, int& xTopLeft, int& xTopRight, int& yTop, int& xBottomLeft, int& xBottomRight, int& yBottom)
-{
-   double localMean = ComputeMeanTrapeziumRoi( pGrid, xTopLeft, xTopRight, yTop, xBottomLeft, xBottomRight, yBottom );
-
-   double dxLeft  = (double)( xBottomLeft - xTopLeft     ) / (double)( yBottom - yTop );
-   double dxRight = (double)( xTopRight   - xBottomRight ) / (double)( yBottom - yTop );
-
-   double xLeftLimit  = xTopLeft;
-   double xRightLimit = xTopRight;
-   double tmpVariance = 0.0;
-   int pixcounter = 0;
-   for (int yy = yTop; yy <= yBottom; yy++)
-   {
-      for (int xx = xLeftLimit; xx <= xRightLimit; xx++)
-      {
-         double ttt = pGrid->GetValue( xx, yy ) - localMean;
-         tmpVariance += (ttt * ttt);
-         pixcounter++;
-      }
-      xLeftLimit  += dxLeft;
-      xRightLimit -= dxRight;
-   }
-
-   tmpVariance /= (double)( pixcounter - 1 );
-
-   return tmpVariance;
 }
 
 //----------------------------------------------------------------------------------
