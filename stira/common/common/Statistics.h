@@ -39,51 +39,61 @@ template <class T>
 class Statistics
 {
 public:
-   /** \brief constructor */
-   Statistics();
+   // 1. AVERAGES
+   //////////////
 
    /** \brief Computes the average of the elements in the given array
-     * \param pData array of values
+     * \param pData pointer to array of values
      * \param nrElements number of elements in the array*/
-   static double GetAverage( T* pData, int nrElements /*, bool writeOut=false*/ );
+   static double GetAverage( T* pData, int nrElements );
+
+   /** \brief Computes the average of the elements in the given STL vector (Calls pointer-based method)
+     * \param vData STL vector of values */
+   static double GetAverage( std::vector<T> vData );
+
+   // 2. VARIANCES
+   ///////////////
 
    /** \brief Computes the variance of the elements in the given array
      * Computes implicitely the average of the elements to be able to compute the variance
-     * \param pData array of values
+     * \param pData pointer to array of values
      * \param nrElements number of elements in the array*/
    static double GetVariance( T* pData, int nrElements );
 
-   /** \brief Computes the variance of the elements in the given array
-     * Uses the average passed as argument to compute the variance
-     * \param pData array of values
-     * \param nrElements number of elements in the array
-     * \param average Uses this value as average to compute the variance*/
-   static double GetVariance( T* pData, int nrElements, double average );
-
-   /** \brief Computes the average of the elements in the given vector
-     * \param vData vector of values */
-   static double GetAverage( std::vector<T> vData );
-
-   /** \brief Computes the variance of the elements in the given vector
+   /** \brief Computes the variance of the elements in the given vector (Calls pointer-based method)
      * Computes implicitely the average of the elements to be able to compute the variance
      * \param vData vector of values */
    static double GetVariance( std::vector<T> vData );
 
-   /** \brief Computes the variance of the elements in the given vector
+   /** \brief Computes the variance of the elements in the given array
+     * Uses the average passed as argument to compute the variance
+     * \param pData pointer to array of values
+     * \param nrElements number of elements in the array
+     * \param average Uses this value as average to compute the variance*/
+   static double GetVariance( T* pData, int nrElements, double average );
+
+   /** \brief Computes the variance of the elements in the given vector (Calls pointer-based method)
      * Uses the average passed as argument to compute the variance
      * \param vData vector of values
      * \param average Uses this value as average to compute the variance*/
    static double GetVariance( std::vector<T> vData, double average );
+
+   // 3. CORRELATIONS
+   //////////////////
+
+   /** \brief Computes the correlation between the elements in two given vectors
+     * \param pData1 pointer to first array of values
+     * \param pData2 pointer to second array of values
+     * \param nrElements number of elements */
+   static double GetCorrelation( double* pData1, double* pData2, int nrElements );
 
    /** \brief Computes the correlation between the elements in two given vectors
      * \param vData1 vector 1 of values
      * \param vData2 vector 2 of values */
    static double GetCorrelation( std::vector<double> vData1,  std::vector<double> vData2 );
 
-   /** \brief Computes the correlation between the elements in two given vectors
-     * \param vData1 vector 1 of values
-     * \param vData2 vector 2 of values */
-   static double GetCorrelation( double* pData1, double* pData2, int nrElements );
+   // 4. OTHERS
+   ////////////
 
    static std::pair< double, double > ComputeFirstTwoCentralMoments( std::vector< Point<double> > inPoints );
 
@@ -91,19 +101,32 @@ public:
 
 //====================================================================================
 
+// 1. AVERAGES
+//////////////
+
 template <class T>
-double Statistics<T>::GetAverage( T* pData, int nrElements /*, bool writeOut*/ )
+double Statistics<T>::GetAverage( T* pData, int nrElements )
 {
    double average = 0.0;
    for (int i = 0; i < nrElements; i++)
    {
-      //if ( writeOut ) { cout << " ## Element " << i << " is " << pData[i] << endl << flush; }
       average += pData[i];
    }
    return average / nrElements;
 }
 
 //-----------------------------------------------------------------------------
+
+template <class T>
+double Statistics<T>::GetAverage( std::vector<T> vData )
+{
+   return GetAverage( &vData[0], vData.size() );
+}
+
+//-----------------------------------------------------------------------------
+
+// 2. VARIANCES
+///////////////
 
 template <class T>
 double Statistics<T>::GetVariance( T* pData, int nrElements, double average )
@@ -121,17 +144,17 @@ double Statistics<T>::GetVariance( T* pData, int nrElements, double average )
 //-----------------------------------------------------------------------------
 
 template <class T>
-double Statistics<T>::GetVariance( T* pData, int nrElements )
+double Statistics<T>::GetVariance( std::vector<T> vData, double average )
 {
-   return GetVariance( pData, nrElements, GetAverage( pData, nrElements ) );
+   return GetVariance( &vData[0], vData.size(), average );
 }
 
 //-----------------------------------------------------------------------------
 
 template <class T>
-double Statistics<T>::GetAverage( std::vector<T> vData )
+double Statistics<T>::GetVariance( T* pData, int nrElements )
 {
-   return GetAverage( &vData[0], vData.size() );
+   return GetVariance( pData, nrElements, GetAverage( pData, nrElements ) );
 }
 
 //-----------------------------------------------------------------------------
@@ -144,13 +167,8 @@ double Statistics<T>::GetVariance( std::vector<T> vData )
 
 //-----------------------------------------------------------------------------
 
-template <class T>
-double Statistics<T>::GetVariance( std::vector<T> vData, double average )
-{
-   return GetVariance( &vData[0], vData.size(), average );
-}
-
-//-----------------------------------------------------------------------------
+// 3. CORRELATIONS
+//////////////////
 
 template <class T>
 double Statistics<T>::GetCorrelation( double* pData1, double* pData2, int nrElements )
@@ -192,6 +210,9 @@ double Statistics<T>::GetCorrelation( std::vector<double> vData1,  std::vector<d
 }
 
 //----------------------------------------------------------------------------------------------------
+
+// 4. OTHERS
+////////////
 
 template <class T>
 std::pair< double, double > Statistics<T>::ComputeFirstTwoCentralMoments( std::vector< Point<double> > inPoints )
