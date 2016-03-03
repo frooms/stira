@@ -353,14 +353,14 @@ void TestLocalAutoCorrelation()
     cout << "Line: AC min = " << gridMin << ", max = " << gridMax << endl;
     delete pACGridLine;
 
-    // Corner
-    xCenter = 413;
-    yCenter = 114;
+    // Texture
+    xCenter = 265;
+    yCenter = 265;
 
     ArrayGrid<double>* pACGridTexture = NumberGridTools<double>::ComputeLocalAutoCorrelation(pImageIn->GetBands()[0], xCenter, yCenter, localHalfWidth );
-    ImageIO::WriteOpenCV( pACGridTexture, std::string("AutoCorrCornerGrid.pgm"), ImageIO::NORMAL_OUT );
+    ImageIO::WriteOpenCV( pACGridTexture, std::string("AutoCorrTextureGrid.pgm"), ImageIO::NORMAL_OUT );
     NumberGridTools<double>::GetMinMax( pACGridTexture, gridMin, gridMax, xMin, yMin, xMax, yMax );
-    cout << "Corner: AC min = " << gridMin << ", max = " << gridMax << endl;
+    cout << "Texture: AC min = " << gridMin << ", max = " << gridMax << endl;
     delete pACGridTexture;
 
     // Smooth
