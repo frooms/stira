@@ -169,7 +169,7 @@ double Statistics<T>::GetVariance( std::vector<T> vData )
 
 // 3. CORRELATIONS
 //////////////////
-
+//https://en.wikipedia.org/wiki/Correlation_and_dependence
 template <class T>
 double Statistics<T>::GetCorrelation( double* pData1, double* pData2, int nrElements )
 {

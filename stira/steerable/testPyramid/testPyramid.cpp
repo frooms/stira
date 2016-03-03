@@ -24,7 +24,7 @@
 #include "../freemanadelson/ComputeSteerableFilteredImages.h"
 #include "../orientationestimation/ComputeOrientation.h"
 
-// #define DIAGNOSE
+#define DIAGNOSE
 
 using namespace std;
 using namespace stira::common;
@@ -241,12 +241,10 @@ int main(int argc, char *argv[])
    else
    {
       inputname = "../../testdata/lena512.pgm";
-      //inputname = "../../testdata/weefshot.pgm";
-      //inputname = "../../testdata/satellite-dim.pgm";
       //inputname = "../../testdata/testhaze.ppm";
       //inputname = "../../testdata/arab.pgm";
       //inputname = "../../testdata/blackman.pgm";
-     inputname = "../../testdata/nematodes.pgm";
+      //inputname = "../../testdata/nematodes.pgm";
       nrScales = 4;
       nrOrientations = 6;
    }

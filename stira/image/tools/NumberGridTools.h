@@ -17,6 +17,7 @@
 #include <complex>
 #include "../../common/common/StiraMacros.h"
 #include "../../common/common/MathUtils.h"
+#include "../../common/common/Statistics.h"
 #include "../../common/common/Point.h"
 #include "../../common/common/RectangularROI.h"
 #include "../datastructures/ArrayGrid.h"
@@ -330,6 +331,8 @@ public:
 // 4. COMPARISON GRIDS / COEFFICIENTS  //
 //                                     //
 /////////////////////////////////////////
+
+   static ArrayGrid<double>* ComputeLocalAutoCorrelation( ArrayGrid<double>* pGridIn, int xCenter, int yCenter, int halfWindowSize );
 
    /** \brief computes grid with squared error values between two grids
      * \param pGrid1 First grid to compare
@@ -1336,6 +1339,37 @@ double NumberGridTools<T>::ComputeLocalKurtosis( ArrayGrid<double>* pGrid, int& 
 //                                     //
 /////////////////////////////////////////
 
+
+template <class T>
+ArrayGrid<double>* NumberGridTools<T>::ComputeLocalAutoCorrelation( ArrayGrid<double>* pGridIn, int xCenterRef, int yCenterRef, int halfWindowSize )
+{
+    double autoCorrelation;
+    double gridMean = NumberGridTools<double>::GetGridMean( pGridIn );
+    double gridVariance = NumberGridTools<double>::GetGridVariance( pGridIn, gridMean);
+    double normFactor = ( ( 2 * halfWindowSize + 1 ) * ( 2 * halfWindowSize + 1 ) * gridVariance );
+
+    ArrayGrid<double>* pGridOut = new ArrayGrid<double>( 2 * halfWindowSize + 1, 2 * halfWindowSize + 1 );
+
+    for (int yCenterMov = yCenterRef - halfWindowSize; yCenterMov <= yCenterRef + halfWindowSize; yCenterMov++ )
+    {
+        for (int xCenterMov = xCenterRef - halfWindowSize; xCenterMov <= xCenterRef + halfWindowSize; xCenterMov++ )
+        {
+            autoCorrelation = 0.0;
+            for (int y0 = yCenterMov - halfWindowSize; y0 <= yCenterMov + halfWindowSize; y0++ )
+            {
+                for (int x0 = xCenterMov - halfWindowSize; x0 <= xCenterMov + halfWindowSize; x0++ )
+                {
+                    autoCorrelation += ( pGridIn->GetValue(x0 + xCenterRef - xCenterMov, y0 + yCenterRef - yCenterMov ) - gridMean ) * ( pGridIn->GetValue( x0, y0 ) - gridMean );
+                }
+            }
+            autoCorrelation /= normFactor;
+            pGridOut->SetValue( xCenterMov - xCenterRef + halfWindowSize, yCenterMov - yCenterRef + halfWindowSize, autoCorrelation );
+        }
+    }
+    return pGridOut;
+}
+
+//----------------------------------------------------------------------------------
 template <class T>
 ArrayGrid<double>* NumberGridTools<T>::CreateSquaredErrorGrid( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, bool printOutput )
 {
