@@ -120,6 +120,25 @@ std::vector< Point<int> > DrawFigures::DrawRectangle(int topLeftX, int topLeftY,
 
 //----------------------------------------------------------------------------------------------------------
 
+// http://stackoverflow.com/questions/7946187/point-and-ellipse-rotated-position-test-algorithm
+bool DrawFigures::IsInsideEllipse( double xTest, double yTest, double xCenter, double yCenter, double majorAxis, double minorAxis, double angleRadians )
+{
+    double xm = ( ( xTest - xCenter ) * cos( angleRadians ) + ( yTest - yCenter ) * sin( angleRadians ) ) / majorAxis;
+    double ym = ( ( xTest - xCenter ) * sin( angleRadians ) - ( yTest - yCenter ) * cos( angleRadians ) ) / minorAxis;
+
+    double tmpValue = ( xm * xm ) + ( ym * ym );
+    if (tmpValue <= 1.0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+//----------------------------------------------------------------------------------------------------------
+
 std::vector< Point<int> > DrawFigures::DrawRectangle( RectangularROI<int> rroi )
 {
    return DrawRectangle( rroi.GetTopLeftCorner().GetX(),     rroi.GetTopLeftCorner().GetY(),
