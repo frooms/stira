@@ -58,6 +58,17 @@ public:
      * \param bottomRightY y coordinate of bottom right corner */
    static std::vector< Point<int> > DrawRectangle(int topLeftX, int topLeftY, int bottomRightX, int bottomRightY);
 
+   /** \brief Tests if a point is inside an ellipse
+     *
+     * \param xTest x coordinate of point to test
+     * \param yTest y coordinate of point to test
+     * \param xCenter x coordinate of ellipse center
+     * \param yCenter y coordinate of ellipse center
+     * \param majorAxis ellipse major axis
+     * \param minorAxis ellipse minor axis
+     * \param angleRadians rotation angle of the ellipse */
+   static bool IsInsideEllipse( double xTest, double yTest, double xCenter, double yCenter, double majorAxis, double minorAxis, double angleRadians );
+
    /** \brief Generates vector with points on rectangle to be drawn, edges parallel with the axes
      * Overloaded method with points as inputs instead of all coordinates separately
      * \param topLeftCorner top left corner of the rectangle
