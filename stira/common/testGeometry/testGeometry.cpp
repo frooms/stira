@@ -17,6 +17,7 @@
 #include "../common/Curve.h"
 #include <iostream>
 #include <cassert>
+#include <cstdlib>
 
 #define TOLERANCE 0.000001
 
@@ -91,15 +92,34 @@ void TestConnectCurves()
    Curve myCurve2( pointsOnLine2 );
    myCurve2.WritePointsToStdOut();
 
-   /*std::pair< Point<int>, Point<int> > pointcouple = myCurve1.GetClosestEndPoints( myCurve2 );
-   cout << "Closest points are " << pointcouple.first << " and " << pointcouple.second << endl << flush;
-
-   Curve connectedCurve = myCurve1.CreateMergedCurve( myCurve2 );
-   connectedCurve.WritePointsToStdOut();*/
-
    cout << "New merged curve " << endl << endl << flush;
    myCurve1.ConnectToCurve( myCurve2 );
    myCurve1.WritePointsToStdOut();
+}
+
+//-------------------------------------------------------
+
+void TestEllipse()
+{
+   /* initialize random seed: */
+   srand (time(NULL));
+
+
+   ofstream myfile;
+   myfile.open ("example.txt");
+
+
+   for (int i = 0; i < 500; i++)
+   {
+         double x = 512 * (double)(rand()) / ((double)RAND_MAX);
+         double y = 512 * (double)(rand()) / ((double)RAND_MAX);
+
+         if ( DrawFigures::IsInsideEllipse(x, y, 256, 256, 200, 100, M_PI / 4) )
+         {
+             myfile << x << ", " << y << endl;
+         }
+   }
+   myfile.close();
 }
 
 //-------------------------------------------------------
@@ -144,6 +164,7 @@ int main()
    TestPointOperators();
    TestLineSegment();
    TestConnectCurves();
+   TestEllipse();
    return 1;
 }
 
