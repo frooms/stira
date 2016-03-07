@@ -17,10 +17,13 @@ std::vector< RectangularROI<int> > FindMaximalIncludedRectangles::Run( ArrayGrid
    std::vector< RectangularROI<int> > foundIncludedRectangles;
    int gridWidth = pObjectGrid->GetWidth();
    int gridHeight = pObjectGrid->GetHeight();
-   int distanceToImageTop [ gridWidth ] [ gridHeight ];
+
+   int distanceToImageTopArray [ gridWidth ] [ gridHeight ];
+   int distanceToImageBottomArray [ gridWidth ][ gridHeight ];
+
    for ( int x = 0 ; x < gridWidth ; ++ x )
    {
-      distanceToImageTop [ x ][ 0 ] = pObjectGrid->GetValue( x, 0 ) ? 0 : -1;
+      distanceToImageTopArray [ x ][ 0 ] = pObjectGrid->GetValue( x, 0 ) ? 0 : -1;
    }
    for ( int y = 1 ; y < gridHeight ; ++ y )
    {
@@ -28,16 +31,15 @@ std::vector< RectangularROI<int> > FindMaximalIncludedRectangles::Run( ArrayGrid
       {
          if ( !pObjectGrid->GetValue( x, y ) )
          {
-            distanceToImageTop[ x ][ y ] = -1;
+            distanceToImageTopArray[ x ][ y ] = -1;
          }
-         else distanceToImageTop [ x ][ y ] = distanceToImageTop [ x ] [ y - 1 ] + 1;
+         else distanceToImageTopArray [ x ][ y ] = distanceToImageTopArray [ x ] [ y - 1 ] + 1;
       }
    }
 
-   int distanceToImageBottom [ gridWidth ][ gridHeight ];
    for ( int x = 0 ; x < gridWidth ; ++ x )
    {
-      distanceToImageBottom [ x ][ gridHeight - 1 ] = pObjectGrid->GetValue( x, gridHeight - 1 ) ? 0 : -1;
+      distanceToImageBottomArray [ x ][ gridHeight - 1 ] = pObjectGrid->GetValue( x, gridHeight - 1 ) ? 0 : -1;
    }
 
    for ( int y = gridHeight - 2 ; y >= 0 ; -- y )
@@ -46,40 +48,40 @@ std::vector< RectangularROI<int> > FindMaximalIncludedRectangles::Run( ArrayGrid
       {
          if ( ! pObjectGrid->GetValue( x, y ) )
          {
-            distanceToImageBottom [ x ][ y ] = -1;
+            distanceToImageBottomArray [ x ][ y ] = -1;
          }
          else
          {
-            distanceToImageBottom [ x ][ y ] = distanceToImageBottom [ x ][ y + 1 ] + 1;
+            distanceToImageBottomArray [ x ][ y ] = distanceToImageBottomArray [ x ][ y + 1 ] + 1;
          }
       }
    }
 
    for ( int x = gridWidth - 1 ; x >= 0 ; --x )
    {
-      int maxS = gridHeight ;
+      int maxDistanceToImageBottom = gridHeight ;
       for ( int y = gridHeight - 1 ; y >= 0 ; --y )
       {
-         ++ maxS ;
+         ++ maxDistanceToImageBottom ;
          if ( pObjectGrid->GetValue( x, y ) && ( x == 0 || ! pObjectGrid->GetValue( x - 1,  y ) ) )
          {
-            int N = distanceToImageTop [ x ][ y ];
-            int S = distanceToImageBottom [ x ][ y ];
+            int currentDistanceToImageTop = distanceToImageTopArray [ x ][ y ];
+            int currentDistanceToImageBottom = distanceToImageBottomArray [ x ][ y ];
             int rectangleWidth = 1 ;
             while ( ( x + rectangleWidth < gridWidth ) && ( pObjectGrid->GetValue( x + rectangleWidth, y ) ) )
             {
-               int nextN = distanceToImageTop [ x + rectangleWidth ][ y ];
-               int nextS = distanceToImageBottom [ x + rectangleWidth ][ y ];
-               if ( ( nextN < N ) | ( nextS < S ) )
+               int nextDistanceToImageTop = distanceToImageTopArray [ x + rectangleWidth ][ y ];
+               int nextDistanceToImageBottom = distanceToImageBottomArray [ x + rectangleWidth ][ y ];
+               if ( ( nextDistanceToImageTop < currentDistanceToImageTop ) || ( nextDistanceToImageBottom < currentDistanceToImageBottom ) )
                {
-                  if ( S < maxS ) foundIncludedRectangles.push_back( RectangularROI<int>( x , y - N , x+rectangleWidth , y+ S + 1 ) );
-                  if ( nextN < N ) N = nextN;
-                  if ( nextS < S ) S = nextS;
+                  if ( currentDistanceToImageBottom < maxDistanceToImageBottom ) foundIncludedRectangles.push_back( RectangularROI<int>( x , y - currentDistanceToImageTop , x+rectangleWidth , y+ currentDistanceToImageBottom + 1 ) );
+                  if ( nextDistanceToImageTop < currentDistanceToImageTop ) currentDistanceToImageTop = nextDistanceToImageTop;
+                  if ( nextDistanceToImageBottom < currentDistanceToImageBottom ) currentDistanceToImageBottom = nextDistanceToImageBottom;
                }
                ++ rectangleWidth ;
             }
-            if ( S < maxS ) foundIncludedRectangles.push_back( RectangularROI<int>( x , y - N , x + rectangleWidth , y + S + 1 ) );
-            maxS = 0 ;
+            if ( currentDistanceToImageBottom < maxDistanceToImageBottom ) foundIncludedRectangles.push_back( RectangularROI<int>( x , y - currentDistanceToImageTop , x + rectangleWidth , y + currentDistanceToImageBottom + 1 ) );
+            maxDistanceToImageBottom = 0 ;
          }
       }
    }
