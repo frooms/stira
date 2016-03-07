@@ -334,7 +334,7 @@ bool LocalStatisticsTest()
 
    return true;
 }
-
+// from http://docs.opencv.org/3.1.0/d1/dee/tutorial_introduction_to_pca.html
 void drawAxis(cv::Mat& img, cv::Point p, cv::Point q, cv::Scalar colour, const float scale = 0.2)
 {
     double angle;
@@ -355,33 +355,35 @@ void drawAxis(cv::Mat& img, cv::Point p, cv::Point q, cv::Scalar colour, const f
     line(img, p, q, colour, 1, CV_AA);
 }
 
+// from http://docs.opencv.org/3.1.0/d1/dee/tutorial_introduction_to_pca.html
 bool TestOrientationPCA()
 {
     vector< stira::common::Point<double> > pts;
     /* initialize random seed: */
     srand (time(NULL));
 
-    for (int i = 0; i < 500; i++)
+    int nrPointsCurrent = 0;
+    int nrPointsMax = 500;
+    //Construct a buffer used by the pca analysis
+    cv::Mat data_pts = cv::Mat(nrPointsMax, 2, CV_64FC1);
+
+    //image to visualize result
+    cv::Mat img(512, 512, CV_8UC3, cv::Scalar(0,0,0));
+
+    while (nrPointsCurrent < nrPointsMax)
     {
           double x = 512 * (double)(rand()) / ((double)RAND_MAX);
           double y = 512 * (double)(rand()) / ((double)RAND_MAX);
 
           if ( DrawFigures::IsInsideEllipse(x, y, 256, 256, 200, 50, M_PI / 4) )
-          {   stira::common::Point<double> pt(x, y);
-              pts.push_back( pt );
+          {
+              data_pts.at<double>(nrPointsCurrent, 0) = x;
+              data_pts.at<double>(nrPointsCurrent, 1) = y;
+              cv::circle(img, cv::Point( x, y), 3, cv::Scalar(255, 255, 255), 1);
+              nrPointsCurrent++;
           }
     }
 
-    cv::Mat img(512, 512, CV_8UC3);
-    //Construct a buffer used by the pca analysis
-    int sz = static_cast<int>(pts.size());
-    cv::Mat data_pts = cv::Mat(sz, 2, CV_64FC1);
-    for (int i = 0; i < data_pts.rows; ++i)
-    {
-        data_pts.at<double>(i, 0) = pts[i].GetX();
-        data_pts.at<double>(i, 1) = pts[i].GetY();
-        cv::circle(img, cv::Point( pts[i].GetX(), pts[i].GetY()), 3, cv::Scalar(255, 255, 255), 1);
-    }
     //Perform PCA analysis
     cv::PCA pca_analysis(data_pts, cv::Mat(), CV_PCA_DATA_AS_ROW);
     //Store the center of the object
