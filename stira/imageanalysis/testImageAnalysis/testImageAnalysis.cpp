@@ -228,22 +228,24 @@ void TestThinning( )
 
    CompareCurvesInImage CC( pImage1, pImage2, cvTest );
    CC.GetDifference();
-}
+}*/
 
 //-----------------------------------------------------------------------------------
 
 void TestFindMaximalIncludedRectangles( )
 {
-   std::string filename1 = string("../../testdata/YarnOK.png");
-   Image *pImage1 = ImageIO::Read( filename1 );
+   std::string filename1 = string("../../testdata/Spatial3.png");
+   Image *pImage = ImageIO::Read( filename1 );
 
-   ArrayGrid<bool>* pBoolGrid1 = NumberGridTools<double>::BinaryThreshold( pImage1->GetBands()[0], 127 );
+   double thresholdHigh = 200;
 
-   std::vector< common::RectangularROI<int> > listOfRectangles1 = FindMaximalIncludedRectangles::Run( pBoolGrid1 );
+   ArrayGrid<bool>* pBoolGridHigh = NumberGridTools<double>::BinaryThreshold( pImage->GetBands()[0], thresholdHigh );
+
+   std::vector< common::RectangularROI<int> > listOfRectangles1 = FindMaximalIncludedRectangles::Run( pBoolGridHigh );
    int listLength1 = listOfRectangles1.size();
-
-   cout << " In Yarn OK " << endl << flush;
-   cout << " ===========" << endl << flush;
+   delete pBoolGridHigh;
+   cout << " In Spatial3 threshold 200" << endl << flush;
+   cout << " =========================" << endl << flush;
    for (int i = 0; i < listLength1; i++)
    {
       cout << " Rectangle " << i << " from " << listOfRectangles1[i].GetTopLeftCorner()
@@ -252,20 +254,18 @@ void TestFindMaximalIncludedRectangles( )
            << ", so area "  << listOfRectangles1[i].GetWidth() *  listOfRectangles1[i].GetHeight() << endl;
    }
    IntHistogram ih1 = FindMaximalIncludedRectangles::CreateRectangleHistogram( listOfRectangles1 );
-   ih1.Write( std::string("YarnOKCumulativeHistogram.txt") );
+   ih1.Write( std::string("ThresholdHighCumulativeHistogram.txt") );
 
    //---------------------------------------------------------------------------------
 
-   std::string filename2 = string("../../testdata/YarnNotOK.png");
-   Image *pImage2 = ImageIO::Read( filename2 );
+   double thresholdLow = 100;
+   ArrayGrid<bool>* pBoolGridLow = NumberGridTools<double>::BinaryThreshold( pImage->GetBands()[0], thresholdLow );
 
-   ArrayGrid<bool>* pBoolGrid = NumberGridTools<double>::BinaryThreshold( pImage2->GetBands()[0], 127 );
-
-   std::vector< common::RectangularROI<int> > listOfRectangles2 = FindMaximalIncludedRectangles::Run( pBoolGrid );
+   std::vector< common::RectangularROI<int> > listOfRectangles2 = FindMaximalIncludedRectangles::Run( pBoolGridLow );
    int listLength2 = listOfRectangles2.size();
-
-   cout << " In Yarn not OK " << endl << flush;
-   cout << " ===============" << endl << flush;
+   delete pBoolGridLow;
+   cout << " In Spatial3 threshold 100" << endl << flush;
+   cout << " =========================" << endl << flush;
    for (int i = 0; i < listLength2; i++)
    {
       cout << " Rectangle " << i << " from " << listOfRectangles2[i].GetTopLeftCorner()
@@ -274,10 +274,8 @@ void TestFindMaximalIncludedRectangles( )
            << ", so area " << listOfRectangles2[i].GetWidth() *  listOfRectangles2[i].GetHeight() << endl;
    }
    IntHistogram ih2 = FindMaximalIncludedRectangles::CreateRectangleHistogram( listOfRectangles2 );
-   ih2.Write( std::string("YarnNotOKCumulativehistogram.txt") );
-
-   //system ("dir");
-}*/
+   ih2.Write( std::string("ThresholdHighCumulativeHistogram.txt") );
+}
 
 //-----------------------------------------------------------------------------------
 
@@ -377,25 +375,14 @@ int main(int argc, char *argv[])
    TestThinning( );
 
    /////////////////////////////////////////////////////
-   // CURVE COMPARISON
-   //TestCompareCurves( );
-
-   /////////////////////////////////////////////////////
    // FIND MAXIMAL INCLUDED RECTANGLES
-   //TestFindMaximalIncludedRectangles( );
+   TestFindMaximalIncludedRectangles( );
 
    /////////////////////////////////////////////////////
    // FLOODFILL
 
    cout << "Floodfill Test " << endl << flush;
    TestFloodFill();
-
-   /////////////////////////////////////////////////////
-   // DETECT BRANCHES IN CONTOURS
-
-   cout << "Branch Contour Test " << endl << flush;
-   //TestBranches( );
-
 
    delete pImage;
 }
