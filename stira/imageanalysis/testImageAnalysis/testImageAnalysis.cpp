@@ -102,87 +102,6 @@ void TestContourTrace( )
 
 //-----------------------------------------------------------------------------------
 
-/*void TestBranches( )
-{
-   std::string filename = string("../../testdata/CropOrig-2039.pgm");
-   Image* pImage = ImageIO::Read( filename );
-   ArrayGrid<double>* pGrid = pImage->GetBands()[0];
-   double alphaStraight = 0.975;
-   double alphaNotStraight = 0.5;
-
-   int ID = 0;
-
-   ImageIO::Write( pImage, std::string("TestBranch-Input.ppm"), ImageIO::NORMAL_OUT );
-
-   ContourTracing ctLeft( alphaStraight, alphaNotStraight, std::string("./") );
-   ArrayGrid<double>* pGridOutLeft = ctLeft.RunLeftRight( pGrid, ID );
-
-   ContourTracing ctRight( alphaStraight, alphaNotStraight, std::string("./") );
-   ArrayGrid<double>* pGridOutRight = ctRight.RunRightLeft( pGrid, ID );
-
-   pGridOutLeft->AddGrid( pGridOutRight );
-   delete pGridOutRight;
-
-   ImageIO::WritePGM( pGridOutLeft, std::string("TestBranch-ContourTracingRaw.pgm"), ImageIO::NORMAL_OUT );
-
-   double mmin, mmax;
-
-   NumberGridTools<double>::GetMinMax( pGridOutLeft, mmin, mmax );
-   cout << "Mmin = " << mmin << ", mmax = " << mmax << endl;
-
-   int lowerBound = mmax / 10;
-   int upperBound = mmax;
-   int targetValue = 125;
-
-   FloodFill ff;
-
-   ArrayGrid<int>* pPreProcessedGrid = ff.PrepareValues( pGridOutLeft, lowerBound, upperBound, targetValue );
-
-   ImageIO::WritePGM( pPreProcessedGrid, std::string("TestBranch-ContourTracingFilled.pgm"), ImageIO::NORMAL_OUT );
-
-   int width = pPreProcessedGrid->GetWidth();
-   int height = pPreProcessedGrid->GetHeight();
-   int x = 0;
-   int y = 0;
-   int nrFloodedPixels = 0;
-   while ( nrFloodedPixels < 800 )
-   {
-      while ( pPreProcessedGrid->GetValue( x, y ) != targetValue )
-      {
-         y++;
-      }
-      nrFloodedPixels = ff.Run( pPreProcessedGrid, x, y, targetValue, 255 );
-      y++;
-   }
-   Image* pImageOut = new Image( width, height, 3 );
-
-   ImageIO::WritePGM( pPreProcessedGrid, std::string("TestBranch-ContourTracingPreFilled.pgm"), ImageIO::NORMAL_OUT );
-
-   std::vector< common::Point<int> > myLine = ff.GetFloodedPixels();
-   int vLength = myLine.size();
-   ColorValue newColor(255,0,0);
-   DrawImageTools::DrawPoints( pImageOut, myLine, newColor);
-
-   ImageIO::Write(pImageOut, std::string("TestBranch-ContourTracingFound.pgm") );
-
-   std::vector< common::Point<int> > endPoints;
-   for (int i = 0; i < vLength; i++)
-   {
-      //cout << "Checking point " << myLine[i] << endl;
-      int xx = myLine[i].GetX();
-      if ( (xx == 0 ) || ( xx == width-1 ) )
-      {
-         endPoints.push_back( myLine[i] );
-         cout << "Found end point " << myLine[i] << endl;
-      }
-   }
-   delete pPreProcessedGrid;
-   delete pGridOutLeft;
-   delete pImage;
-}*/
-
-//-----------------------------------------------------------------------------------
-
 void TestThinning( )
 {
    std::string filename = string("../../testdata/thinningTestPattern.pgm");
@@ -213,22 +132,6 @@ void TestThinning( )
    delete pSkeletonGrid;
    delete pGridint;
 }
-
-//-----------------------------------------------------------------------------------
-
-/*void TestCompareCurves( )
-{
-   std::string filename1 = string("../../testdata/TraceTopCurve-TopCurve-0007.png");
-   Image *pImage1 = ImageIO::Read( filename1 );
-
-   std::string filename2 = string("../../testdata/TraceTopCurve-TopCurve-0009.png");
-   Image *pImage2 = ImageIO::Read( filename2 );
-
-   ColorValue cvTest = ColorValue( 0, 255, 0, TYPE_RGB );
-
-   CompareCurvesInImage CC( pImage1, pImage2, cvTest );
-   CC.GetDifference();
-}*/
 
 //-----------------------------------------------------------------------------------
 
