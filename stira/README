@@ -1,6 +1,6 @@
 
 /***********************************************************************************
- *   Copyright (C) 2008-2015 by Filip Rooms                                        *
+ *   Copyright (C) 2008-2016 by Filip Rooms                                        *
  *                                                                                 *
  *  Terms and conditions for using this software in any form are provided in the   *
  *  file COPYING, which can be found in the root directory of this project.        *
@@ -59,6 +59,10 @@ be held responsible for anything going wrong with anything made with this source
    //  in filter/filter/AnisotropicGaussian.* (wrapper)
    //  in filter/filter/anigauss.*  (original source files)
    //           http://staff.science.uva.nl/~mark/downloads.html#anigauss
+
+   SLIC Superpixels
+   //  in imageanalysis/imageanalysis/SLIC.*
+   //           http://ivrl.epfl.ch/research/superpixels
 
 ------------------------------------------------------------------------------------
 

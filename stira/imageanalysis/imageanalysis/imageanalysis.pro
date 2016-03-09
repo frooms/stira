@@ -10,7 +10,8 @@ SOURCES += CannyEdgeDetector.cpp \
     ContourTracing.cpp \
     CompareCurvesInImage.cpp \
     FunctionsOpenCV.cpp \
-    FindMaximalIncludedRectangles.cpp
+    FindMaximalIncludedRectangles.cpp \
+    SLIC.cpp
 HEADERS += CannyEdgeDetector.h \
     StegerLineDetector.h \
     Thinning.h \
@@ -22,4 +23,5 @@ HEADERS += CannyEdgeDetector.h \
     ContourTracing.h \
     CompareCurvesInImage.h \
     FunctionsOpenCV.h \
-    FindMaximalIncludedRectangles.h
+    FindMaximalIncludedRectangles.h \
+    SLIC.h
