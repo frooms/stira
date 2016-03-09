@@ -1150,10 +1150,10 @@ T NumberGridTools<T>::ComputeLocalMean( ArrayGrid<T>* pGrid, int& xTopLeft, int&
 template <class T>
 double NumberGridTools<T>::ComputeLocalMean( ArrayGrid<double>* pGrid, common::RectangularROI<int> rroi )
 {
-   int xTopLeft = rroi.GetTopLeftCorner().GetX();
-   int yTopLeft = rroi.GetTopLeftCorner().GetY();
-   int xBottomRight = rroi.GetBottomRightCorner().GetX();
-   int yBottomRight = rroi.GetBottomRightCorner().GetY();
+   int xTopLeft = rroi.GetTopLeftCorner().x();
+   int yTopLeft = rroi.GetTopLeftCorner().y();
+   int xBottomRight = rroi.GetBottomRightCorner().x();
+   int yBottomRight = rroi.GetBottomRightCorner().y();
    return ComputeLocalMean( pGrid, xTopLeft, yTopLeft, xBottomRight, yBottomRight );
 }
 
@@ -1162,10 +1162,10 @@ double NumberGridTools<T>::ComputeLocalMean( ArrayGrid<double>* pGrid, common::R
 template <class T>
 double NumberGridTools<T>::ComputeLocalVariance( ArrayGrid<double>* pGrid, common::RectangularROI<int> rroi, double localMean )
 {
-   int xTopLeft = rroi.GetTopLeftCorner().GetX();
-   int yTopLeft = rroi.GetTopLeftCorner().GetY();
-   int xBottomRight = rroi.GetBottomRightCorner().GetX();
-   int yBottomRight = rroi.GetBottomRightCorner().GetY();
+   int xTopLeft = rroi.GetTopLeftCorner().x();
+   int yTopLeft = rroi.GetTopLeftCorner().y();
+   int xBottomRight = rroi.GetBottomRightCorner().x();
+   int yBottomRight = rroi.GetBottomRightCorner().y();
    return ComputeLocalVariance( pGrid, xTopLeft, yTopLeft, xBottomRight, yBottomRight, localMean );
 }
 
@@ -2023,8 +2023,8 @@ ArrayGrid<double>* NumberGridTools<T>::LogPolarTransform( ArrayGrid<double>* pGr
          common::Point<double> pt;
          pt.SetRadiusAndTheta( radius, theta );
          pt.ToCartesian( );
-         double xx = pt.GetX() + width/2;
-         double yy = pt.GetY() + height/2;
+         double xx = pt.x + width/2;
+         double yy = pt.y + height/2;
          if ( (xx >= 0) && ( xx < width) && (yy >= 0) && (yy < height) )
          {
             pLogPolar->SetValue( ringNr, wedgeNr, nni.Run( pGrid, xx, yy ) );

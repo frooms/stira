@@ -225,7 +225,7 @@ double GNCDeconvolve::ComputeActivityIndicator( int x, int y )
 double GNCDeconvolve::GetPotential(int x, int y, common::Point<int> delta)
 {
    double activityIndicator = 0.125;//ComputeActivityIndicator( x+delta.GetX(), y+delta.GetY() );
-   double differenceValue   = mpLastEstimateCurrentBand->GetValue( x, y ) - mpLastEstimateCurrentBand->GetValue( x+delta.GetX(), y+delta.GetY() );
+   double differenceValue   = mpLastEstimateCurrentBand->GetValue( x, y ) - mpLastEstimateCurrentBand->GetValue( x+delta.x, y+delta.y );
    return  ( differenceValue * ComputeInteractionFunction( differenceValue ) * activityIndicator );
 }
 

@@ -132,8 +132,8 @@ Image* Image::ExtractROIAsNewImage( RectangularROI<int> rroi )
       {
          for (int x = 0; x < rroi.GetWidth(); x++)
          {
-            pSubImage->GetBands()[bandID]->SetValue( x, y, this->GetBands()[bandID]->GetValue( x + rroi.GetTopLeftCorner().GetX(),
-                                                                                               y + rroi.GetTopLeftCorner().GetY() ) );
+            pSubImage->GetBands()[bandID]->SetValue( x, y, this->GetBands()[bandID]->GetValue( x + rroi.GetTopLeftCorner().x,
+                                                                                               y + rroi.GetTopLeftCorner().y ) );
          }
       }
    }
@@ -789,14 +789,14 @@ void Image::SetColor(int x, int y, ColorValue cv)
 
 ColorValue Image::GetColor( Point<int> pt )
 {
-   return GetColor( pt.GetX(), pt.GetY() );
+   return GetColor( pt.x, pt.y );
 }
 
 //===================================================================================================
 
 void Image::SetColor( Point<int> pt, ColorValue cv)
 {
-   SetColor( pt.GetX(), pt.GetY(), cv);
+   SetColor( pt.x, pt.y, cv);
 }
 
 //===================================================================================================

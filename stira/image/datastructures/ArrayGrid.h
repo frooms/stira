@@ -477,11 +477,11 @@ inline void ArrayGrid<T>::SetValue(int x, int y, T myValue)
 template <class T>
 inline T ArrayGrid<T>::GetValue( common::Point<int> pt ) const
 {
-   assert( pt.GetX() >= 0);
-   assert( pt.GetX() < mWidth );
-   assert( pt.GetY() >= 0);
-   assert( pt.GetY() < mHeight );
-   return GetValue( pt.GetX(), pt.GetY() );
+   assert( pt.x >= 0);
+   assert( pt.x < mWidth );
+   assert( pt.y >= 0);
+   assert( pt.y < mHeight );
+   return GetValue( pt.x, pt.y );
 }
 
 //------------------------------------------------------------------------------------------
@@ -489,11 +489,11 @@ inline T ArrayGrid<T>::GetValue( common::Point<int> pt ) const
 template <class T>
 inline void ArrayGrid<T>::SetValue( common::Point<int> pt, T myValue)
 {
-   assert( pt.GetX() >= 0);
-   assert( pt.GetX() < mWidth );
-   assert( pt.GetY() >= 0);
-   assert( pt.GetY() < mHeight );
-   SetValue( pt.GetX(), pt.GetY(), myValue );
+   assert( pt.x >= 0);
+   assert( pt.x < mWidth );
+   assert( pt.y >= 0);
+   assert( pt.y < mHeight );
+   SetValue( pt.x, pt.y, myValue );
 }
 
 //------------------------------------------------------------------------------------------
@@ -506,11 +506,11 @@ inline void ArrayGrid<T>::SetValue( std::vector< common::Point<int> > ptVector, 
         ++it
       )
    {
-      if (    ( (*it).GetX() >= 0 ) && ( (*it).GetX() < this->GetWidth() )
-           && ( (*it).GetY() >= 0 ) && ( (*it).GetY() < this->GetHeight() )
+      if (    ( (*it).x >= 0 ) && ( (*it).x < this->GetWidth() )
+           && ( (*it).x >= 0 ) && ( (*it).y < this->GetHeight() )
          )
       {
-         this->SetValue( (*it).GetX(), (*it).GetY(), myValue );
+         this->SetValue( (*it).x, (*it).y, myValue );
       }
    }
 }

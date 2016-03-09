@@ -149,7 +149,7 @@ void LocalBinaryPattern::DrawDeltaPoints( ArrayGrid<double>* pOutGrid, int x, in
 {
    for (unsigned int i = 0; i < mvDeltaPoints.size(); i++)
    {
-      pOutGrid->SetValue( x+mvDeltaPoints[i].GetX(), y+mvDeltaPoints[i].GetY(), 128 );
+      pOutGrid->SetValue( x+mvDeltaPoints[i].x, y+mvDeltaPoints[i].y, 128 );
    }
 }
 
@@ -164,10 +164,10 @@ std::vector<bool> LocalBinaryPattern::RunVector( int x, int y )
    {
       double myValue = 0;
 #ifdef USE_BILINEAR_INTERPOLATION
-      myValue = mBilinearInterpolator.Run( mpGrid, x + mvDeltaPoints[i].GetX(), y + mvDeltaPoints[i].GetY() );
+      myValue = mBilinearInterpolator.Run( mpGrid, x + mvDeltaPoints[i].x, y + mvDeltaPoints[i].y );
 #else
-      myValue = mpGrid->GetValue( (int)((double)(x) + mvDeltaPoints[i].GetX() + 0.5),
-                                  (int)((double)(y) + mvDeltaPoints[i].GetY() +0.5 ) ) );
+      myValue = mpGrid->GetValue( (int)((double)(x) + mvDeltaPoints[i].x + 0.5),
+                                  (int)((double)(y) + mvDeltaPoints[i].y +0.5 ) ) );
 #endif
       bool boolValue;
       if ( (int)(myValue + 0.5) >= (int)(myCentralValue + 0.5) )
@@ -242,9 +242,9 @@ histogram::FloatHistogram* LocalBinaryPattern::RunHistogram( int ID )
       int myLength = mvPointsOfInterest.size();
       for (int i = 0; i < myLength; i++)
       {
-         int myValue = RunCode( mvPointsOfInterest[i].GetX(), mvPointsOfInterest[i].GetY() );
+         int myValue = RunCode( mvPointsOfInterest[i].x, mvPointsOfInterest[i].y );
 #ifdef WRITE_OUTPUTS
-         pLbpGrid->SetValue( mvPointsOfInterest[i].GetX(), mvPointsOfInterest[i].GetY(), myValue );
+         pLbpGrid->SetValue( mvPointsOfInterest[i].x, mvPointsOfInterest[i].y, myValue );
 #ifdef DRAW_DELTA_POINTS
          if (    ( i%15 == 0 )
               && ( ( mvPointsOfInterest[i].GetX() - mRadius) > 0 )

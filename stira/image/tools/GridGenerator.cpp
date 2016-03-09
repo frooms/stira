@@ -234,8 +234,8 @@ ArrayGrid<double>* GridGenerator::GenerateLine(int width, int height, double len
        ++it
       )
    {
-      double xx = static_cast<double>( (*it).GetX()) + (static_cast<double>(width) / 2.0);
-      double yy = static_cast<double>( (*it).GetY()) + (static_cast<double>(height) / 2.0);
+      double xx = static_cast<double>( (*it).x) + (static_cast<double>(width) / 2.0);
+      double yy = static_cast<double>( (*it).y) + (static_cast<double>(height) / 2.0);
       pPSFGrid->SetValue( xx, yy, psfValue );
    }
 
@@ -894,8 +894,8 @@ void GridGenerator::UpdateIsingState( ArrayGrid<int>* pGrid, double temperature,
    {
       int randomIndex = pRandom->uniformDiscrete( 0, vPointList.size() );
 
-      int x = vPointList[randomIndex].GetX();
-      int y = vPointList[randomIndex].GetY();
+      int x = vPointList[randomIndex].x;
+      int y = vPointList[randomIndex].y;
 
       int xLeft  = x - 1;     if (xLeft  < 0      ) {xLeft  = width-1;}
       int xRight = x + 1;     if (xRight > width-1) {xRight = 0;}

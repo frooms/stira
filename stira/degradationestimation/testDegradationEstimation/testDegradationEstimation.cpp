@@ -132,9 +132,9 @@ int main(int argc, char *argv[])
    
    pImage = ImageIO::Read( inputname );
    //TestNoiseEstimator( pImage, sigmaNoise );
-   //TestBlur( pImage, sigmaBlur );
+   TestBlur( pImage, sigmaBlur );
    
    TestKuwahara( pImage );
    //TestPureNoise( pImage, sigmaNoise );
-   //TestBlurNoise( pImage, sigmaBlur, sigmaNoise );
+   TestBlurNoise( pImage, sigmaBlur, sigmaNoise );
 }

@@ -119,20 +119,20 @@ Image* ImageTools::PaddBorder( Image* pInImage, int borderWidth, int borderHeigh
 
 Image* ImageTools::ExtractSubImage( Image* pInImage, Point<int> topLeft, Point<int> bottomRight )
 {
-   assert( topLeft.GetX() >= 0);
-   assert( topLeft.GetY() >= 0);
-   assert( topLeft.GetX() < pInImage->GetWidth() );
-   assert( topLeft.GetY() < pInImage->GetHeight() );
+   assert( topLeft.x >= 0);
+   assert( topLeft.y >= 0);
+   assert( topLeft.x < pInImage->GetWidth() );
+   assert( topLeft.y < pInImage->GetHeight() );
 
-   assert( bottomRight.GetX() >= 0);
-   assert( bottomRight.GetY() >= 0);
-   assert( bottomRight.GetX() < pInImage->GetWidth() );
-   assert( bottomRight.GetY() < pInImage->GetHeight() );
+   assert( bottomRight.x >= 0);
+   assert( bottomRight.y >= 0);
+   assert( bottomRight.x < pInImage->GetWidth() );
+   assert( bottomRight.y < pInImage->GetHeight() );
 
-   assert( topLeft.GetX() < bottomRight.GetX() );
-   assert( topLeft.GetY() < bottomRight.GetY() );
-   int width  = bottomRight.GetX() - topLeft.GetX() + 1;
-   int height = bottomRight.GetY() - topLeft.GetY() + 1;
+   assert( topLeft.x < bottomRight.x );
+   assert( topLeft.y < bottomRight.y );
+   int width  = bottomRight.x - topLeft.x + 1;
+   int height = bottomRight.y - topLeft.y + 1;
 
    Image* pCroppedImage = new Image( width, height, pInImage->GetNumberOfBands() );
 
@@ -142,7 +142,7 @@ Image* ImageTools::ExtractSubImage( Image* pInImage, Point<int> topLeft, Point<i
       {
          for (int x = 0; x < width; x++)
          {
-            pCroppedImage->GetBands()[bandIndex]->SetValue(x, y, pInImage->GetBands()[bandIndex]->GetValue(x + topLeft.GetX(), y + topLeft.GetY() ) );
+            pCroppedImage->GetBands()[bandIndex]->SetValue(x, y, pInImage->GetBands()[bandIndex]->GetValue(x + topLeft.x, y + topLeft.y ) );
          }
       }
    }

@@ -85,7 +85,15 @@ public:
      * \param fillSurface flag whether or not the rectangle should be filled; if false, only the circumference is drawn */
    static void DrawRectangle( Image* pImageInOut, common::RectangularROI<int> rroi, ColorValue newColorValue, bool fillSurface );
 
-   /** Draws a circle of given color in an image
+   /** Draws a filled disk of given color in an image
+     * \param pImageInOut image to draw on
+     * \param myCenterPoint central point of circle to draw
+     * \param radius radius of circle to draw
+     * \param newColor color of circle */
+   static void DrawDisk( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
+
+   static void Plot8CirclePoints( Image* pImage, int xCenter, int yCenter, int x, int y, ColorValue cv );
+   /** Draws a circle contour of given color in an image
      * \param pImageInOut image to draw on
      * \param myCenterPoint central point of circle to draw
      * \param radius radius of circle to draw
@@ -107,6 +115,8 @@ public:
      * \param stopPoint  stop point of line to draw
      * \param newColor color of square */
    static std::vector< common::Point<int> > DrawLine( Image* pImageInOut, common::Point<int> startPoint, common::Point<int> stopPoint, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
+
+   static void DrawArrow(Image* pImage, common::Point<int> p, common::Point<int> q, ColorValue cv, const float scale = 0.2);
 
    /** Draws a point of given color in an image
      * \param pImageInOut image to draw on

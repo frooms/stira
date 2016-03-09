@@ -147,8 +147,8 @@ image::ArrayGrid<bool>* StegerLineDetector::Run( image::ArrayGrid<double>* pGrid
          
          if (eigenValue > 0.0)
          {
-            double n1 = eigenVector1.GetX();
-            double n2 = eigenVector1.GetY();
+            double n1 = eigenVector1.x;
+            double n2 = eigenVector1.y;
             
             double a = pGxx->GetValue(x, y) * n1 * n1 + 2.0 * pGxy->GetValue(x, y) * n1 * n2 + pGyy->GetValue(x, y) * n2 * n2;
             double b = pGx->GetValue(x, y) * n1 + pGy->GetValue(x, y) * n2;
@@ -178,7 +178,7 @@ image::ArrayGrid<bool>* StegerLineDetector::Run( image::ArrayGrid<double>* pGrid
                }
             }
             
-            pOrientationGrid->SetOrientation( x, y, MathUtils::ComputeArgument( eigenVector1.GetX(),  eigenVector1.GetY() ) );
+            pOrientationGrid->SetOrientation( x, y, MathUtils::ComputeArgument( eigenVector1.x,  eigenVector1.y ) );
             pOrientationGrid->SetMagnitude( x, y, eigenValue1);
          }
       }

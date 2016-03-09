@@ -99,8 +99,8 @@ common::Point<double> FloodFill::GetCenterOfGravity()
         ++it
       )
    {
-      tmpX += (double)( (*it).GetX() );
-      tmpY += (double)( (*it).GetY() );
+      tmpX += (double)( (*it).x );
+      tmpY += (double)( (*it).y );
       nrElements++;
    }
    if (nrElements != 0)
@@ -127,8 +127,8 @@ common::RectangularROI<int> FloodFill::GetBoundingBox()
         ++it
       )
    {
-      double tmpX = (double)( (*it).GetX() );
-      double tmpY = (double)( (*it).GetY() );
+      double tmpX = (double)( (*it).x );
+      double tmpY = (double)( (*it).y );
       if ( tmpX < minX ) { minX = tmpX; }
       if ( tmpX > maxX ) { maxX = tmpX; }
       if ( tmpY < minY ) { minY = tmpY; }

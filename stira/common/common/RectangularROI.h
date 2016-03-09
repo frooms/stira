@@ -121,8 +121,8 @@ RectangularROI<T>::~RectangularROI()
 template <class T>
 void RectangularROI<T>::Initialize( Point<T> topLeftCorner, Point<T> bottomRightCorner )
 {
-   if (    ( topLeftCorner.GetX() <= bottomRightCorner.GetX() )
-        && ( topLeftCorner.GetY() <= bottomRightCorner.GetY() )
+   if (    ( topLeftCorner.x <= bottomRightCorner.x )
+        && ( topLeftCorner.y <= bottomRightCorner.y )
       )
    {
       mTopLeftCorner     = topLeftCorner;
@@ -136,9 +136,9 @@ void RectangularROI<T>::Initialize( Point<T> topLeftCorner, Point<T> bottomRight
                 << " is no valid top point compared with "   << bottomRightCorner
                 << ") !!!" << std::endl << std::flush;
    }
-   mWidth  = mBottomRightCorner.GetX() - mTopLeftCorner.GetX();
-   mHeight = mBottomRightCorner.GetY() - mTopLeftCorner.GetY();
-   mCenter.SetXAndY( topLeftCorner.GetX() + mWidth / 2, topLeftCorner.GetY() + mHeight / 2 );
+   mWidth  = mBottomRightCorner.x - mTopLeftCorner.x;
+   mHeight = mBottomRightCorner.y - mTopLeftCorner.y;
+   mCenter.SetXAndY( topLeftCorner.x + mWidth / 2, topLeftCorner.y + mHeight / 2 );
 }
 
 //----------------------------------------------------------
@@ -204,10 +204,10 @@ T RectangularROI<T>::GetDiagonalLength()
 template <class T>
 bool RectangularROI<T>::IsInROI( Point<T> candidatePoint )
 {
-   if (    ( candidatePoint.GetX() >= mTopLeftCorner.GetX() )
-        && ( candidatePoint.GetX() <= mBottomRightCorner.GetX() )
-        && ( candidatePoint.GetY() >= mTopLeftCorner.GetY() )
-        && ( candidatePoint.GetY() <= mBottomRightCorner.GetY() )
+   if (    ( candidatePoint.x >= mTopLeftCorner.x )
+        && ( candidatePoint.x <= mBottomRightCorner.x )
+        && ( candidatePoint.y >= mTopLeftCorner.y )
+        && ( candidatePoint.y <= mBottomRightCorner.y )
       )
    {
       return true;

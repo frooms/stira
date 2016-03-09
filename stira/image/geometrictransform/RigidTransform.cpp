@@ -114,7 +114,7 @@ ArrayGrid<double>* RigidTransform::RotateAroundCenter( ArrayGrid<double>* pGridI
       for (int x = 0; x < width; x++)
       {
          common::Point<double> myPoint = GetTransformedPoint( (double)x - w2, (double)y - h2 );
-         pGridOut->SetValue( x, y, mpInterpolator->Run( pGridIn, myPoint.GetX() + w2, myPoint.GetY() + h2 ) );
+         pGridOut->SetValue( x, y, mpInterpolator->Run( pGridIn, myPoint.x + w2, myPoint.y + h2 ) );
       }
    }
 

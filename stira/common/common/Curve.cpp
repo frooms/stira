@@ -20,14 +20,14 @@ namespace common {
 
 bool MyPointSortPredicateX(const Point<int>& d1, const Point<int>& d2)
 {
-  return d1.GetX() < d2.GetX();
+  return d1.x < d2.x;
 }
 
 //---------------------------------------------------------------------------
 
 bool MyPointSortPredicateY(const Point<int>& d1, const Point<int>& d2)
 {
-  return d1.GetY() < d2.GetY();
+  return d1.y < d2.y;
 }
 
 //===========================================================================
@@ -65,7 +65,7 @@ double Curve::GetAverageX() const
    double avgX = 0;
    for (unsigned int i = 0; i < mPointsOnCurve.size(); i++)
    {
-      avgX += mPointsOnCurve[i].GetX();
+      avgX += mPointsOnCurve[i].x;
    }
    return ( avgX / mPointsOnCurve.size() );
 }
@@ -77,7 +77,7 @@ double Curve::GetAverageY() const
    double avgY = 0;
    for (unsigned int i = 0; i < mPointsOnCurve.size(); i++)
    {
-      avgY += mPointsOnCurve[i].GetY();
+      avgY += mPointsOnCurve[i].y;
    }
    return ( avgY / mPointsOnCurve.size() );
 }
@@ -88,9 +88,9 @@ int Curve::GetCorrespondingY( int x ) const
 {
    for (unsigned int i = 0; i < mPointsOnCurve.size(); i++)
    {
-      if ( mPointsOnCurve[i].GetX() == x )
+      if ( mPointsOnCurve[i].x == x )
       {
-         return mPointsOnCurve[i].GetY();
+         return mPointsOnCurve[i].y;
       }
    }
    return -1;
@@ -106,13 +106,13 @@ std::vector< Point<int> > Curve::GetPointsMinimumX( int& xMin, bool usePoints )
       xMin = 100000000;
       for (unsigned int i = 0; i < myLength; i++)
       {
-         if ( mPointsOnCurve[i].GetX() < xMin ) { xMin = mPointsOnCurve[i].GetX(); }
+         if ( mPointsOnCurve[i].x < xMin ) { xMin = mPointsOnCurve[i].x; }
       }
    }
    std::vector< Point<int> > minimumXPoints;
    for (unsigned int i = 0; i < myLength; i++)
    {
-      if ( mPointsOnCurve[i].GetX() == xMin ) { minimumXPoints.push_back( mPointsOnCurve[i] ); }
+      if ( mPointsOnCurve[i].x == xMin ) { minimumXPoints.push_back( mPointsOnCurve[i] ); }
    }
 
    return minimumXPoints;
@@ -128,13 +128,13 @@ std::vector< Point<int> > Curve::GetPointsMaximumX( int& xMax, bool usePoints )
       xMax = -100000000;
       for (unsigned int i = 0; i < myLength; i++)
       {
-         if ( mPointsOnCurve[i].GetX() > xMax ) { xMax = mPointsOnCurve[i].GetX(); }
+         if ( mPointsOnCurve[i].x > xMax ) { xMax = mPointsOnCurve[i].x; }
       }
    }
    std::vector< Point<int> > maximumXPoints;
    for (unsigned int i = 0; i < myLength; i++)
    {
-      if ( mPointsOnCurve[i].GetX() == xMax ) { maximumXPoints.push_back( mPointsOnCurve[i] ); }
+      if ( mPointsOnCurve[i].x == xMax ) { maximumXPoints.push_back( mPointsOnCurve[i] ); }
    }
    return maximumXPoints;
 }
@@ -165,7 +165,7 @@ int Curve::GetY( int x ) const
    unsigned int myLength = mPointsOnCurve.size();
    for (unsigned int i = 0; i < myLength; i++)
    {
-      if (mPointsOnCurve[i].GetX() == x) {return mPointsOnCurve[i].GetY();}
+      if (mPointsOnCurve[i].x == x) {return mPointsOnCurve[i].y;}
    }
    return -1;
 }
@@ -410,8 +410,8 @@ Curve Curve::CreateMergedCurve( Curve otherCurve )
 
 bool Curve::AreNeighbors( Point<int> inPoint1, Point<int> inPoint2 )
 {
-   if (    ( abs( inPoint1.GetX() - inPoint2.GetX() ) <= 1 )
-        && ( abs( inPoint1.GetY() - inPoint2.GetY() ) <= 1 )
+   if (    ( abs( inPoint1.x - inPoint2.x ) <= 1 )
+        && ( abs( inPoint1.y - inPoint2.y ) <= 1 )
         && ( inPoint1 != inPoint2 )
       )
    {
@@ -446,31 +446,31 @@ void Curve::ConnectToCurve( Curve otherCurve )
 
    if ( ( distance1121 <= distance1122 ) && ( distance1121 <= distance1221 ) && ( distance1121 <= distance1222 ) )
    {
-      startX = thisEndPoint1.GetX();
-      startY = thisEndPoint1.GetY();
-      endX   = otherEndPoint1.GetX();
-      endY   = otherEndPoint1.GetY();
+      startX = thisEndPoint1.x;
+      startY = thisEndPoint1.y;
+      endX   = otherEndPoint1.x;
+      endY   = otherEndPoint1.y;
    }
    else if ( ( distance1122 <= distance1121 ) && ( distance1122 <= distance1221 ) && ( distance1122 <= distance1222 ) )
    {
-      startX = thisEndPoint1.GetX();
-      startY = thisEndPoint1.GetY();
-      endX   = otherEndPoint2.GetX();
-      endY   = otherEndPoint2.GetY();
+      startX = thisEndPoint1.x;
+      startY = thisEndPoint1.y;
+      endX   = otherEndPoint2.x;
+      endY   = otherEndPoint2.y;
    }
    else if ( ( distance1221 <= distance1122 ) && ( distance1221 <= distance1121 ) && ( distance1221 <= distance1222 ) )
    {
-      startX = thisEndPoint2.GetX();
-      startY = thisEndPoint2.GetY();
-      endX   = otherEndPoint1.GetX();
-      endY   = otherEndPoint1.GetY();
+      startX = thisEndPoint2.x;
+      startY = thisEndPoint2.y;
+      endX   = otherEndPoint1.x;
+      endY   = otherEndPoint1.y;
    }
    else // if ( ( distance1222 <= distance1122 ) && ( distance1222 <= distance1221 ) && ( distance1222 <= distance1121 ) )
    {
-      startX = thisEndPoint2.GetX();
-      startY = thisEndPoint2.GetY();
-      endX   = otherEndPoint2.GetX();
-      endY   = otherEndPoint2.GetY();
+      startX = thisEndPoint2.x;
+      startY = thisEndPoint2.y;
+      endX   = otherEndPoint2.x;
+      endY   = otherEndPoint2.y;
    }
 
    // draw a bresenham line to connect both curves
@@ -494,7 +494,7 @@ std::pair<double, double> Curve::ComputeVerticalDistanceToCurve( Curve otherCurv
 
    for (int i = 0; i < curveLength; i++)
    {
-      double tmpDistance = abs( this->GetPoints()[i].GetY() - otherCurve.GetPoints()[i].GetY() );
+      double tmpDistance = abs( this->GetPoints()[i].x - otherCurve.GetPoints()[i].y );
       if (tmpDistance > maxDistance)
       {
          maxDistance = tmpDistance;
@@ -519,7 +519,7 @@ void Curve::SmoothCurveY( int smoothHalfDistance )
    double* pPointsY = new double[length];
    for ( int i = 0; i < length; i++ )
    {
-      pPointsY[i] = this->mPointsOnCurve[i].GetY();
+      pPointsY[i] = this->mPointsOnCurve[i].y;
    }
 
    double myDenominator = 2.0 * (double)(smoothHalfDistance) + 1.0;
@@ -531,7 +531,7 @@ void Curve::SmoothCurveY( int smoothHalfDistance )
          tmpValue += pPointsY[i+k];
       }
       tmpValue /= myDenominator;
-      this->mPointsOnCurve[i].SetY( tmpValue );
+      this->mPointsOnCurve[i].y = tmpValue;
    }
    delete []pPointsY;
 }
@@ -553,7 +553,7 @@ bool Curve::WritePointsToText( std::string fileName )
    int length = this->mPointsOnCurve.size();
    for (int i = 0; i < length; i++)
    {
-      ofp << this->mPointsOnCurve[i].GetX() << "\t" << this->mPointsOnCurve[i].GetY() << endl;
+      ofp << this->mPointsOnCurve[i].x << "\t" << this->mPointsOnCurve[i].y << endl;
    }
 
    ofp.close();

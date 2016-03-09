@@ -245,7 +245,7 @@ void TestGaussianCurveFit()
       double value2 = rn.uniform( 0.0, 15 );
       if ( value1 > 0.7)
       {
-         gaussPoints[i].SetY( gaussPoints[i].GetY() + value2 );
+         gaussPoints[i].y = gaussPoints[i].y + value2;
       }
       cout << "Point generated in " << i << gaussPoints[i] << "\t noisy point " << i << gaussPoints[i] << endl;
    }

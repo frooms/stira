@@ -466,7 +466,7 @@ std::vector< Point<double> > MathUtils::GenerateGaussianPoints( std::vector< Poi
       for (int i = 0; i < size; i++)
       {
          double peakValue = Gaussian( 0, 0, sigma );
-         double x = inPoints[i].GetX();
+         double x = inPoints[i].x;
          Point<double> pt( x, amplitude * Gaussian( x, gaussCenterX, sigma ) / peakValue );
          gaussianPoints.push_back( pt );
       }
@@ -475,7 +475,7 @@ std::vector< Point<double> > MathUtils::GenerateGaussianPoints( std::vector< Poi
    {
       for (int i = 0; i < size; i++)
       {
-         double x = inPoints[i].GetX();
+         double x = inPoints[i].x;
          Point<double> pt( x, Gaussian( x, gaussCenterX, sigma ) );
          gaussianPoints.push_back( pt );
       }

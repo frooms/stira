@@ -44,7 +44,7 @@ std::vector< Point<int> > DrawImageTools::DrawLine( Image* pImageInOut, int xSta
        ++it
       )
    {
-      DrawPoint( pImageInOut, (*it).GetX(), (*it).GetY(), newColor );
+      DrawPoint( pImageInOut, (*it).x, (*it).y, newColor );
    }
    return pointVector;
 }
@@ -53,7 +53,29 @@ std::vector< Point<int> > DrawImageTools::DrawLine( Image* pImageInOut, int xSta
 
 std::vector< Point<int> > DrawImageTools::DrawLine( Image* pImageInOut, Point<int> startPoint, Point<int> stopPoint, ColorValue newColor)
 {
-   return DrawLine( pImageInOut, startPoint.GetX(), stopPoint.GetX(), startPoint.GetY(), stopPoint.GetY(), newColor );
+   return DrawLine( pImageInOut, startPoint.x, stopPoint.x, startPoint.y, stopPoint.y, newColor );
+}
+
+//--------------------------------------------------------------------------------------
+
+void  DrawImageTools::DrawArrow(Image* pImg, Point<int> p, Point<int> q, ColorValue colour, const float scale)
+{
+    double angle = atan2( (double) p.y - q.y, (double) p.x - q.x ); // angle in radians
+    double hypotenuse = sqrt( (double) (p.y - q.y) * (p.y - q.y) + (p.x - q.x) * (p.x - q.x));
+
+    // Here we lengthen the arrow by a factor of scale
+    q.x = (int) (p.x - scale * hypotenuse * cos(angle));
+    q.y = (int) (p.y - scale * hypotenuse * sin(angle));
+    DrawImageTools::DrawLine(pImg, p, q, colour);
+
+    // create the arrow hooks
+    p.x = (int) (q.x + 9 * cos(angle + M_PI / 4));
+    p.y = (int) (q.y + 9 * sin(angle + M_PI / 4));
+    DrawImageTools::DrawLine(pImg, p, q, colour);
+
+    p.x = (int) (q.x + 9 * cos(angle - M_PI / 4));
+    p.y = (int) (q.y + 9 * sin(angle - M_PI / 4));
+    DrawImageTools::DrawLine(pImg, p, q, colour);
 }
 
 //--------------------------------------------------------------------------------------
@@ -74,7 +96,7 @@ void DrawImageTools::DrawPoint( Image* pImageInOut, int x, int y, ColorValue new
 
 void DrawImageTools::DrawPoint( Image* pImageInOut, Point<int> myPoint, ColorValue newColor)
 {
-   DrawPoint( pImageInOut, myPoint.GetX(), myPoint.GetY(), newColor );
+   DrawPoint( pImageInOut, myPoint.x, myPoint.y, newColor );
 }
 
 //--------------------------------------------------------------------------------------
@@ -107,7 +129,7 @@ void DrawImageTools::DrawSquare( Image* pImageInOut, Point<int> myCenterPoint, i
    {
       for (int dx = -halfLength; dx <= halfLength; dx++)
       {
-         DrawPoint( pImageInOut, myCenterPoint.GetX() + dx, myCenterPoint.GetY() + dy, newColor );
+         DrawPoint( pImageInOut, myCenterPoint.x + dx, myCenterPoint.y + dy, newColor );
       }
    }
 }
@@ -118,9 +140,9 @@ void DrawImageTools::DrawRectangle( ArrayGrid<double>* pGridInOut, common::Point
 {
    if ( fillSurface )
    {
-      for (int yy = myTopLeftPoint.GetY(); yy <= myBottomRightPoint.GetY(); yy++)
+      for (int yy = myTopLeftPoint.y; yy <= myBottomRightPoint.y; yy++)
       {
-         for (int xx = myTopLeftPoint.GetX(); xx <= myBottomRightPoint.GetX(); xx++)
+         for (int xx = myTopLeftPoint.x; xx <= myBottomRightPoint.x; xx++)
          {
             if ( ( xx >= 0 ) && ( xx < pGridInOut->GetWidth() ) && ( yy >= 0 ) && ( yy < pGridInOut->GetHeight() ) )
             {
@@ -131,14 +153,14 @@ void DrawImageTools::DrawRectangle( ArrayGrid<double>* pGridInOut, common::Point
    }
    else
    {
-      for (int yy = myTopLeftPoint.GetY(); yy <= myBottomRightPoint.GetY(); yy++)
+      for (int yy = myTopLeftPoint.y; yy <= myBottomRightPoint.y; yy++)
       {
-         for (int xx = myTopLeftPoint.GetX(); xx <= myBottomRightPoint.GetX(); xx++)
+         for (int xx = myTopLeftPoint.x; xx <= myBottomRightPoint.x; xx++)
          {
-            if (    ( xx == myTopLeftPoint.GetX() )
-                 || ( xx == myBottomRightPoint.GetX() )
-                 || ( yy == myTopLeftPoint.GetY() )
-                 || ( yy == myBottomRightPoint.GetY() )
+            if (    ( xx == myTopLeftPoint.x )
+                 || ( xx == myBottomRightPoint.x )
+                 || ( yy == myTopLeftPoint.y )
+                 || ( yy == myBottomRightPoint.y )
                )
             {
                if ( xx >= 0 && xx < pGridInOut->GetWidth() && yy >= 0 && yy < pGridInOut->GetHeight() )
@@ -214,7 +236,7 @@ void DrawImageTools::DrawRectangle( Image* pImageInOut, common::RectangularROI<i
 
 //--------------------------------------------------------------------------------------
 
-void DrawImageTools::DrawCircle( Image* pImageInOut, Point<int> myCenterPoint, double radius, ColorValue newColor)
+void DrawImageTools::DrawDisk( Image* pImageInOut, Point<int> myCenterPoint, double radius, ColorValue newColor)
 {
    for (int dy = -radius; dy <= radius; dy++)
    {
@@ -223,10 +245,49 @@ void DrawImageTools::DrawCircle( Image* pImageInOut, Point<int> myCenterPoint, d
          double tmpRadius = sqrt( (double)(dx)*(double)(dx) + (double)(dy)*(double)(dy) );
          if (tmpRadius <= radius)
          {
-            DrawPoint( pImageInOut, myCenterPoint.GetX() + dx, myCenterPoint.GetY() + dy, newColor );
+            DrawPoint( pImageInOut, myCenterPoint.x + dx, myCenterPoint.y + dy, newColor );
          }
       }
    }
+}
+
+void DrawImageTools::Plot8CirclePoints( Image* pImage, int xCenter, int yCenter, int x, int y, ColorValue cv )
+{
+    pImage->SetColor( xCenter+x, yCenter+y, cv ); //point in octant 1
+    pImage->SetColor( xCenter-x, yCenter+y, cv ); //point in octant 4
+    pImage->SetColor( xCenter-x, yCenter-y, cv ); //point in octant 5
+    pImage->SetColor( xCenter+x, yCenter-y, cv ); //point in octant 8
+    pImage->SetColor( xCenter+y, yCenter+x, cv ); //point in octant 2
+    pImage->SetColor( xCenter-y, yCenter+x, cv ); //point in octant 3
+    pImage->SetColor( xCenter-y, yCenter-x, cv ); //point in octant 6
+    pImage->SetColor( xCenter+y, yCenter-x, cv ); //point in octant 7
+}
+
+void DrawImageTools::DrawCircle( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue cv )
+{
+    int x, y;
+    int xChange, yChange;
+    int radiusError;
+
+    x = radius;
+    y = 0;
+
+    xChange = 1 - 2 * radius;
+    yChange = 1;
+    radiusError = 0;
+    while ( x >= y )
+    {
+        Plot8CirclePoints( pImageInOut, myCenterPoint.x, myCenterPoint.y, x, y, cv );
+        y++;
+        radiusError += yChange;
+        yChange += 2;
+        if ( 2*radiusError + xChange > 0 )
+        {
+            x--;
+            radiusError += xChange;
+            xChange += 2;
+        }
+    }
 }
 
 //--------------------------------------------------------------------------------------

@@ -224,11 +224,11 @@ std::pair< double, double > Statistics<T>::ComputeFirstTwoCentralMoments( std::v
    double total = 0.0;
    for (int i = 0; i < length; i++)
    {
-      total += inPoints[i].GetY();
+      total += inPoints[i].y;
    }
    for (int i = 0; i < length; i++)
    {
-      inPoints[i].SetY( inPoints[i].GetY() / total );
+      inPoints[i].y = inPoints[i].y / total;
    }
 
    // estimate first moment, the expectance value
@@ -236,8 +236,8 @@ std::pair< double, double > Statistics<T>::ComputeFirstTwoCentralMoments( std::v
    double noemer = 0.0;
    for (int i = 0; i < length; i++)
    {
-      teller += inPoints[i].GetX() * inPoints[i].GetY();
-      noemer += inPoints[i].GetY();
+      teller += inPoints[i].y * inPoints[i].y;
+      noemer += inPoints[i].y;
    }
    double mu = teller / noemer;
 
@@ -245,8 +245,8 @@ std::pair< double, double > Statistics<T>::ComputeFirstTwoCentralMoments( std::v
    double sigma = 0.0;
    for (int i = 0; i < length; i++)
    {
-      double tmpValue = fabs( inPoints[i].GetX() - mu );
-      sigma += tmpValue * tmpValue * inPoints[i].GetY();
+      double tmpValue = fabs( inPoints[i].x - mu );
+      sigma += tmpValue * tmpValue * inPoints[i].y;
    }
    sigma = sqrt(sigma);
 

@@ -58,12 +58,12 @@ Image* FisheyeCorrector::ApplyCorrect( Image* pImageIn, double strength, double 
         {
             Point<double> sourcePoint = TransformPixel( x, y, halfWidth, halfHeight, correctionRadius, zoom );
 
-            if ( ( sourcePoint.GetX() > 0 ) && ( sourcePoint.GetY() > 0 ) && ( sourcePoint.GetX() < width ) && ( sourcePoint.GetY() < height ) )
+            if ( ( sourcePoint.x > 0 ) && ( sourcePoint.y > 0 ) && ( sourcePoint.x < width ) && ( sourcePoint.y < height ) )
             {
                 for (int bandID = 0; bandID < 3; bandID++)
                 {
                     ArrayGrid< double >* pGridIn = pImageIn->GetBands()[bandID];
-                    pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGridIn, sourcePoint.GetX(), sourcePoint.GetY() ) );
+                    pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGridIn, sourcePoint.x, sourcePoint.y ) );
                 }
             }
         }
@@ -89,9 +89,9 @@ ArrayGrid<double>* FisheyeCorrector::ApplyCorrect( ArrayGrid<double>* pGridIn, d
         for (int x = 0; x < width; x++)
         {
             Point<double> sourcePoint = TransformPixel( x, y, halfWidth, halfHeight, correctionRadius, zoom );
-            if ( ( sourcePoint.GetX() > 0 ) && ( sourcePoint.GetY() > 0 ) && ( sourcePoint.GetX() < width ) && ( sourcePoint.GetY() < height ) )
+            if ( ( sourcePoint.x > 0 ) && ( sourcePoint.y > 0 ) && ( sourcePoint.x < width ) && ( sourcePoint.y < height ) )
             {
-                pGridOut->SetValue(x, y, mpInterpolator->Run( pGridIn, sourcePoint.GetX(), sourcePoint.GetY() ));
+                pGridOut->SetValue(x, y, mpInterpolator->Run( pGridIn, sourcePoint.x, sourcePoint.y ));
             }
         }
     }

@@ -114,14 +114,14 @@ void Spatiogram::ComputeCovariance( int binNr )
       std::vector<double> yVector;
       for (int i = 0; i < vSize; i++)
       {
-         xVector.push_back(points[i].GetX());
-         yVector.push_back(points[i].GetY());
+         xVector.push_back(points[i].x);
+         yVector.push_back(points[i].y);
       }
 
       double meanX = Statistics<double>::GetAverage( xVector );
       double meanY = Statistics<double>::GetAverage( yVector );
-      averagePoint.SetX(meanX);
-      averagePoint.SetY(meanY);
+      averagePoint.x = meanX;
+      averagePoint.y = meanY;
       pCovarianceMatrix->SetValue( 0, 0, Statistics<double>::GetVariance( xVector, meanX ) );
       pCovarianceMatrix->SetValue( 1, 1, Statistics<double>::GetVariance( yVector, meanY ) );
 
@@ -137,8 +137,8 @@ void Spatiogram::ComputeCovariance( int binNr )
    }
    else
    {
-      averagePoint.SetX( 0 );
-      averagePoint.SetY( 0 );
+      averagePoint.x = 0;
+      averagePoint.y = 0;
       pCovarianceMatrix->SetValue( 0, 0, 0 );
       pCovarianceMatrix->SetValue( 1, 1, 0 );
 
@@ -194,8 +194,8 @@ void Spatiogram::Write( std::string fileName, int threshold )
       {
          ofp << setfill ('0') << std::setw( 3 ) << setprecision(4) << i << "\t"
              << setfill ('0') << std::setw( 3 ) << setprecision(4) << binValue << "\t"
-             << setfill ('0') << std::setw( 3 ) << setprecision(4) << mAveragPointVector[ i ].GetX() << "\t"
-             << setfill ('0') << std::setw( 3 ) << setprecision(4) << mAveragPointVector[ i ].GetY() << "\t\t\t"
+             << setfill ('0') << std::setw( 3 ) << setprecision(4) << mAveragPointVector[ i ].x << "\t"
+             << setfill ('0') << std::setw( 3 ) << setprecision(4) << mAveragPointVector[ i ].y << "\t\t\t"
 
 
              << setfill ('0') << std::setw( 3 ) << setprecision(4) << mCovarianceMatrixVector[ i ]->GetValue( 0, 0 ) << "\t"

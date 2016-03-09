@@ -1028,10 +1028,10 @@ Image* ImageIO::ReadImageOpenCV( std::string fname, bool useBGR, bool useROI, Re
       int topY = 0;
       if (useROI)
       {
-         topX = myImageROI.GetTopLeftCorner().GetX();
-         topY = myImageROI.GetTopLeftCorner().GetY();
-         bottomX = myImageROI.GetBottomRightCorner().GetX();
-         bottomY = myImageROI.GetBottomRightCorner().GetY();
+         topX = myImageROI.GetTopLeftCorner().x;
+         topY = myImageROI.GetTopLeftCorner().y;
+         bottomX = myImageROI.GetBottomRightCorner().x;
+         bottomY = myImageROI.GetBottomRightCorner().y;
       }
       else
       {
@@ -1119,10 +1119,10 @@ ArrayGrid<double>* ImageIO::ReadArrayOpenCVAsDouble( std::string fname, ArrayGri
       int topY = 0;
       if (useROI)
       {
-         topX = myImageROI.GetTopLeftCorner().GetX();
-         topY = myImageROI.GetTopLeftCorner().GetY();
-         bottomX = myImageROI.GetBottomRightCorner().GetX();
-         bottomY = myImageROI.GetBottomRightCorner().GetY();
+         topX = myImageROI.GetTopLeftCorner().x;
+         topY = myImageROI.GetTopLeftCorner().y;
+         bottomX = myImageROI.GetBottomRightCorner().x;
+         bottomY = myImageROI.GetBottomRightCorner().y;
       }
       else
       {
@@ -1193,10 +1193,10 @@ ArrayGrid<int>* ImageIO::ReadArrayOpenCVAsInt( std::string fname, bool useROI, R
       int topY = 0;
       if (useROI)
       {
-         topX = myImageROI.GetTopLeftCorner().GetX();
-         topY = myImageROI.GetTopLeftCorner().GetY();
-         bottomX = myImageROI.GetBottomRightCorner().GetX();
-         bottomY = myImageROI.GetBottomRightCorner().GetY();
+         topX = myImageROI.GetTopLeftCorner().x;
+         topY = myImageROI.GetTopLeftCorner().y;
+         bottomX = myImageROI.GetBottomRightCorner().x;
+         bottomY = myImageROI.GetBottomRightCorner().y;
       }
       else
       {

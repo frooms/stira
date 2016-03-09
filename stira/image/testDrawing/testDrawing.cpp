@@ -40,11 +40,11 @@ void TestDrawFigure()
    pGrid->SetValue( DrawFigures::DrawPolygon( vCorners ), 250 );
 
    Point<int> testPointOut( 60, 240 );
-   pGrid->SetValue( testPointOut.GetX(), testPointOut.GetY(), 250 );
-   pGrid->SetValue( testPointOut.GetX()-1, testPointOut.GetY(), 250 );
-   pGrid->SetValue( testPointOut.GetX()+1, testPointOut.GetY(), 250 );
-   pGrid->SetValue( testPointOut.GetX(), testPointOut.GetY()-1, 250 );
-   pGrid->SetValue( testPointOut.GetX(), testPointOut.GetY()+1, 250 );
+   pGrid->SetValue( testPointOut.x, testPointOut.y, 250 );
+   pGrid->SetValue( testPointOut.x-1, testPointOut.y, 250 );
+   pGrid->SetValue( testPointOut.x+1, testPointOut.y, 250 );
+   pGrid->SetValue( testPointOut.x, testPointOut.y-1, 250 );
+   pGrid->SetValue( testPointOut.x, testPointOut.y+1, 250 );
 
    ImageIO::WritePGM( pGrid, std::string("Polygon.pgm"), ImageIO::NULL_OUT );
 
@@ -52,11 +52,11 @@ void TestDrawFigure()
    cout << "Test point 1 in polygon = " << testRes1 << endl << flush;
 
    Point<int> testPointIn( 226, 126 );
-   pGrid->SetValue( testPointIn.GetX(), testPointIn.GetY(), 250 );
-   pGrid->SetValue( testPointIn.GetX()-1, testPointIn.GetY(), 250 );
-   pGrid->SetValue( testPointIn.GetX()+1, testPointIn.GetY(), 250 );
-   pGrid->SetValue( testPointIn.GetX(), testPointIn.GetY()-1, 250 );
-   pGrid->SetValue( testPointIn.GetX(), testPointIn.GetY()+1, 250 );
+   pGrid->SetValue( testPointIn.x, testPointIn.y, 250 );
+   pGrid->SetValue( testPointIn.x-1, testPointIn.y, 250 );
+   pGrid->SetValue( testPointIn.x+1, testPointIn.y, 250 );
+   pGrid->SetValue( testPointIn.x, testPointIn.y-1, 250 );
+   pGrid->SetValue( testPointIn.x, testPointIn.y+1, 250 );
 
    ImageIO::WritePGM( pGrid, std::string("Polygon.pgm"), ImageIO::NULL_OUT );
 

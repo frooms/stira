@@ -257,10 +257,10 @@ int Thinning<T>::SingleThinningSweep( image::ArrayGrid<T>* pGridThinning, common
    int height = pGridThinning->GetHeight();
    int width  = pGridThinning->GetWidth();
 
-   int minX = rroi.GetTopLeftCorner().GetX();
-   int minY = rroi.GetTopLeftCorner().GetY();
-   int maxX = rroi.GetBottomRightCorner().GetX();
-   int maxY = rroi.GetBottomRightCorner().GetY();
+   int minX = rroi.GetTopLeftCorner().x;
+   int minY = rroi.GetTopLeftCorner().y;
+   int maxX = rroi.GetBottomRightCorner().x;
+   int maxY = rroi.GetBottomRightCorner().y;
 
    common::MathUtils::ClipValue( minX, 1, width - 1 );
    common::MathUtils::ClipValue( maxX, 1, width - 1 );
@@ -508,10 +508,10 @@ int Thinning<T>::SinglePruningSweep( image::ArrayGrid<T>* pGridPruning, common::
    int height = pGridPruning->GetHeight();
    int width  = pGridPruning->GetWidth();
 
-   int minX = rroi.GetTopLeftCorner().GetX();
-   int minY = rroi.GetTopLeftCorner().GetY();
-   int maxX = rroi.GetBottomRightCorner().GetX();
-   int maxY = rroi.GetBottomRightCorner().GetY();
+   int minX = rroi.GetTopLeftCorner().x();
+   int minY = rroi.GetTopLeftCorner().y();
+   int maxX = rroi.GetBottomRightCorner().x();
+   int maxY = rroi.GetBottomRightCorner().y();
 
    common::MathUtils::ClipValue( minX, 1, width - 1 );
    common::MathUtils::ClipValue( maxX, 1, width - 1 );

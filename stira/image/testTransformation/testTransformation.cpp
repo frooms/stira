@@ -105,9 +105,9 @@ bool AffineForwardInverseTest( )
 
    Point<double> p1(3.5, 8.7);
 
-   Point<double> p1Forward = aftran.GetTransformedPoint( p1.GetX(), p1.GetY() );
+   Point<double> p1Forward = aftran.GetTransformedPoint( p1.x, p1.y );
 
-   Point<double> p1ForwardInverse = aftran.GetInverseTransformedPoint( p1Forward.GetX(), p1Forward.GetY() );
+   Point<double> p1ForwardInverse = aftran.GetInverseTransformedPoint( p1Forward.x, p1Forward.y );
 
    cout << "Original point " << p1 << ", after forward transform " << p1Forward << " and after forward+inverse transform  " << p1ForwardInverse << endl << flush;
 

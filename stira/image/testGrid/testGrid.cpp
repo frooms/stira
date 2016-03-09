@@ -15,9 +15,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <opencv2/opencv.hpp>
 #include "../../common/common/Point.h"
 #include "../../common/common/DrawFigures.h"
+#include "../../common/common/FitCurve.h"
 #include "../tools/GridExtender.h"
 #include "../tools/GridGenerator.h"
 #include "../tools/DrawImageTools.h"
@@ -334,26 +334,8 @@ bool LocalStatisticsTest()
 
    return true;
 }
-// from http://docs.opencv.org/3.1.0/d1/dee/tutorial_introduction_to_pca.html
-void drawAxis(cv::Mat& img, cv::Point p, cv::Point q, cv::Scalar colour, const float scale = 0.2)
-{
-    double angle;
-    double hypotenuse;
-    angle = atan2( (double) p.y - q.y, (double) p.x - q.x ); // angle in radians
-    hypotenuse = sqrt( (double) (p.y - q.y) * (p.y - q.y) + (p.x - q.x) * (p.x - q.x));
 
-    // Here we lengthen the arrow by a factor of scale
-    q.x = (int) (p.x - scale * hypotenuse * cos(angle));
-    q.y = (int) (p.y - scale * hypotenuse * sin(angle));
-    line(img, p, q, colour, 1, CV_AA);
-    // create the arrow hooks
-    p.x = (int) (q.x + 9 * cos(angle + CV_PI / 4));
-    p.y = (int) (q.y + 9 * sin(angle + CV_PI / 4));
-    line(img, p, q, colour, 1, CV_AA);
-    p.x = (int) (q.x + 9 * cos(angle - CV_PI / 4));
-    p.y = (int) (q.y + 9 * sin(angle - CV_PI / 4));
-    line(img, p, q, colour, 1, CV_AA);
-}
+//--------------------------------------------------------------------
 
 // from http://docs.opencv.org/3.1.0/d1/dee/tutorial_introduction_to_pca.html
 bool TestOrientationPCA()
@@ -364,11 +346,9 @@ bool TestOrientationPCA()
 
     int nrPointsCurrent = 0;
     int nrPointsMax = 500;
-    //Construct a buffer used by the pca analysis
-    cv::Mat data_pts = cv::Mat(nrPointsMax, 2, CV_64FC1);
 
     //image to visualize result
-    cv::Mat img(512, 512, CV_8UC3, cv::Scalar(0,0,0));
+    Image* pImageVisualizePCA = new Image(512, 512, 3);
 
     while (nrPointsCurrent < nrPointsMax)
     {
@@ -377,41 +357,31 @@ bool TestOrientationPCA()
 
           if ( DrawFigures::IsInsideEllipse(x, y, 256, 256, 200, 50, M_PI / 4) )
           {
-              data_pts.at<double>(nrPointsCurrent, 0) = x;
-              data_pts.at<double>(nrPointsCurrent, 1) = y;
-              cv::circle(img, cv::Point( x, y), 3, cv::Scalar(255, 255, 255), 1);
+              pts.push_back( Point<double>( x, y ) );
+              DrawImageTools::DrawCircle(pImageVisualizePCA, Point<int>(x,y), 1, ColorValue(255,255,255));
               nrPointsCurrent++;
           }
     }
 
-    //Perform PCA analysis
-    cv::PCA pca_analysis(data_pts, cv::Mat(), CV_PCA_DATA_AS_ROW);
-    //Store the center of the object
-    cv::Point cntr = cv::Point( static_cast<int>(pca_analysis.mean.at<double>(0, 0)),
-                                static_cast<int>(pca_analysis.mean.at<double>(0, 1)));
-    //Store the eigenvalues and eigenvectors
-    vector<cv::Point2d> eigen_vecs(2);
-    vector<double> eigen_val(2);
-    for (int i = 0; i < 2; ++i)
-    {
-        eigen_vecs[i] = cv::Point2d(pca_analysis.eigenvectors.at<double>(i, 0),
-                                    pca_analysis.eigenvectors.at<double>(i, 1));
-        eigen_val[i] = pca_analysis.eigenvalues.at<double>(0, i);
-    }
+    FitCurve fc( pts );
+    PcaResult pcaRes = fc.ComputePCA();
 
-    cout << "PCA center = ( " << cntr.x << ", " << cntr.y << endl;
-    cout << "       eigen vector 1 = (" << eigen_vecs[0].x  << ", " << eigen_vecs[0].y << ")  value = " << eigen_val[0] << endl;
-    cout << "       eigen vector 2 = (" << eigen_vecs[1].x  << ", " << eigen_vecs[1].y << ")  value = " << eigen_val[1] << endl;
+    cout << "PCA center = ( " << pcaRes.center.x << ", " << pcaRes.center.y << " )" << endl;
+    cout << "       eigen vector 1 = (" <<  pcaRes.vector[0].x  << ", " <<  pcaRes.vector[0].y << ")  value = " << pcaRes.eigenValue[0] << endl;
+    cout << "       eigen vector 2 = (" <<  pcaRes.vector[1].x  << ", " <<  pcaRes.vector[1].y << ")  value = " << pcaRes.eigenValue[1] << endl;
 
     // Draw the principal components
-    cv::circle(img, cntr, 3, cv::Scalar(255, 0, 255), 2);
-    cv::Point p1 = cntr + 0.02 * cv::Point(static_cast<int>(eigen_vecs[0].x * eigen_val[0]), static_cast<int>(eigen_vecs[0].y * eigen_val[0]));
-    cv::Point p2 = cntr - 0.02 * cv::Point(static_cast<int>(eigen_vecs[1].x * eigen_val[1]), static_cast<int>(eigen_vecs[1].y * eigen_val[1]));
-    drawAxis(img, cntr, p1, cv::Scalar(0, 255, 0), 1);
-    drawAxis(img, cntr, p2, cv::Scalar(255, 255, 0), 5);
-    double angle = atan2(eigen_vecs[0].y, eigen_vecs[0].x); // orientation in radians
+    DrawImageTools::DrawDisk(pImageVisualizePCA, Point<int>(pcaRes.center.x, pcaRes.center.y ), 3, ColorValue(255,0,255));
+
+    Point<int> pp1 = ( pcaRes.center + 0.02 * pcaRes.vector[0] * pcaRes.eigenValue[0] ).ToInt();
+    Point<int> pp2 = ( pcaRes.center - 0.02 * pcaRes.vector[1] * pcaRes.eigenValue[1] ).ToInt();
+
+    DrawImageTools::DrawArrow(pImageVisualizePCA, pcaRes.center.ToInt(), pp1, ColorValue(0, 255, 0), 1);
+    DrawImageTools::DrawArrow(pImageVisualizePCA, pcaRes.center.ToInt(), pp2, ColorValue(255, 0, 0), 5);
+
+    double angle = atan2( pcaRes.vector[0].y,  pcaRes.vector[0].x); // orientation in radians
     cout << "       angle = " << angle << endl;
-    cv::imwrite("PcaOut.png", img);
+    ImageIO::Write(pImageVisualizePCA, "VisualizePCA.png");
     return true;
 }
 

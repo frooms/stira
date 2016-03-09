@@ -199,8 +199,8 @@ bool HasEdgeNeighbor(ArrayGrid<edgeLabel>* pLabelGrid, Point<int> lastSeed, Orie
       {
          if ( !( (dx == 0) && (dy == 0) ) )
          {
-            int checkX = lastSeed.GetX() + dx;
-            int checkY = lastSeed.GetY() + dy;
+            int checkX = lastSeed.x + dx;
+            int checkY = lastSeed.y + dy;
             if (  (checkX >= 0) && (checkX < pOrientationGrid->GetWidth()) && (checkY >= 0) && (checkY < pOrientationGrid->GetHeight()) )
             {
                if ( (pLabelGrid->GetValue(checkX, checkY) == IS_EDGE) && (pOrientationGrid->GetMagnitude(checkX, checkY) > loThreshold))
@@ -230,8 +230,8 @@ Point<int> CannyEdgeDetector::GetStartSeed( OrientationGrid* pOrientationGrid, A
    Point<int> pos(-1, -1);
 
 
-   int y = lastSeed.GetY();
-   for (int x = lastSeed.GetX(); x < width; x++)
+   int y = lastSeed.y;
+   for (int x = lastSeed.x; x < width; x++)
    {
       #ifdef VERBOSE_OUT
       cout << "Checking candidate new seed (" << x << ", " << y << ")" << flush;
@@ -272,7 +272,7 @@ Point<int> CannyEdgeDetector::GetStartSeed( OrientationGrid* pOrientationGrid, A
       }
    }
 
-   for (int y = lastSeed.GetY()+1; y < height; y++)
+   for (int y = lastSeed.y+1; y < height; y++)
    {
       for (int x = 0; x < width; x++)
       {
@@ -332,8 +332,8 @@ Point<int> CannyEdgeDetector::GetNextNeighbor( OrientationGrid* pOrientationGrid
       {
          if ( !( (dx == 0) && (dy == 0) ) )
          {
-            int checkX = lastNeighbor.GetX() + dx;
-            int checkY = lastNeighbor.GetY() + dy;
+            int checkX = lastNeighbor.x + dx;
+            int checkY = lastNeighbor.y + dy;
             if (  (checkX >= 0) && (checkX < pOrientationGrid->GetWidth()) && (checkY >= 0) && (checkY < pOrientationGrid->GetHeight()) )
             {
                if (pLabelGrid->GetValue(checkX, checkY) == IS_CANDIDATE_EDGE)
@@ -418,14 +418,14 @@ ArrayGrid<bool>* CannyEdgeDetector::ApplyHysteresis( OrientationGrid* pOrientati
 
    Point<int> lastSeed(1, 1);
    Point<int> startSeed = GetStartSeed( pOrientationGrid, pLabelGrid, lastSeed, highThreshold, lowThreshold);
-   int seedX = startSeed.GetX();
-   int seedY = startSeed.GetY();
+   int seedX = startSeed.x;
+   int seedY = startSeed.y;
 
    while( (seedX != -1) && (seedY != -1) )
    {
       Point<int> nextSeed( seedX, seedY );
       Point<int> nextNeighbor = GetNextNeighbor( pOrientationGrid, pLabelGrid, nextSeed, lowThreshold);
-      while ( (nextNeighbor.GetX() != -1) && (nextNeighbor.GetY() != -1) )
+      while ( (nextNeighbor.x != -1) && (nextNeighbor.y != -1) )
       {
          nextNeighbor = GetNextNeighbor( pOrientationGrid, pLabelGrid, nextSeed, lowThreshold);
       }
@@ -433,8 +433,8 @@ ArrayGrid<bool>* CannyEdgeDetector::ApplyHysteresis( OrientationGrid* pOrientati
       lastSeed.SetXAndY( seedX, seedY );
 
       nextSeed = GetStartSeed( pOrientationGrid, pLabelGrid, lastSeed, highThreshold, lowThreshold);
-      seedX = nextSeed.GetX();
-      seedY = nextSeed.GetY();
+      seedX = nextSeed.x;
+      seedY = nextSeed.y;
    }
    ArrayGrid<bool>* pResult = CreateOutPut( pLabelGrid );
    delete pLabelGrid;

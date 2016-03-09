@@ -385,10 +385,10 @@ bool IntHistogram::BuildHistogram(image::ArrayGrid<double>* pGrid, int bandNr, i
    int xMin, xMax, yMin, yMax;
    if ( mUsesROI )
    {
-      xMin = MathUtils::ClipValue( mROI.GetTopLeftCorner().GetX(), 0, pGrid->GetWidth() );
-      yMin = MathUtils::ClipValue( mROI.GetTopLeftCorner().GetY(), 0, pGrid->GetHeight() );
-      xMax = MathUtils::ClipValue( mROI.GetBottomRightCorner().GetX(), 0, pGrid->GetWidth() );
-      yMax = MathUtils::ClipValue( mROI.GetBottomRightCorner().GetY(), 0, pGrid->GetHeight() );
+      xMin = MathUtils::ClipValue( mROI.GetTopLeftCorner().x, 0, pGrid->GetWidth() );
+      yMin = MathUtils::ClipValue( mROI.GetTopLeftCorner().y, 0, pGrid->GetHeight() );
+      xMax = MathUtils::ClipValue( mROI.GetBottomRightCorner().x, 0, pGrid->GetWidth() );
+      yMax = MathUtils::ClipValue( mROI.GetBottomRightCorner().y, 0, pGrid->GetHeight() );
    }
    else
    {

@@ -95,7 +95,7 @@ std::vector< Point<int> > DrawFigures::BresenhamDrawLine(int x0, int y0, int x1,
 
 std::vector< Point<int> > DrawFigures::BresenhamDrawLine( Point<int> startPoint, Point<int> endPoint )
 {
-   return BresenhamDrawLine( startPoint.GetX(), startPoint.GetY(), endPoint.GetX(), endPoint.GetY() );
+   return BresenhamDrawLine( startPoint.x, startPoint.y, endPoint.x, endPoint.y );
 }
 
 //----------------------------------------------------------------------------------------------------------
@@ -141,24 +141,24 @@ bool DrawFigures::IsInsideEllipse( double xTest, double yTest, double xCenter, d
 
 std::vector< Point<int> > DrawFigures::DrawRectangle( RectangularROI<int> rroi )
 {
-   return DrawRectangle( rroi.GetTopLeftCorner().GetX(),     rroi.GetTopLeftCorner().GetY(),
-                         rroi.GetBottomRightCorner().GetX(), rroi.GetBottomRightCorner().GetY() );
+   return DrawRectangle( rroi.GetTopLeftCorner().x,     rroi.GetTopLeftCorner().y,
+                         rroi.GetBottomRightCorner().x, rroi.GetBottomRightCorner().y );
 }
 
 //----------------------------------------------------------------------------------------------------------
 
 std::vector< Point<int> > DrawFigures::DrawRectangle( Point<int> topLeftCorner, Point<int> bottomRightCorner )
 {
-   return DrawRectangle( topLeftCorner.GetX(),     topLeftCorner.GetY(),
-                         bottomRightCorner.GetX(), bottomRightCorner.GetY() );
+   return DrawRectangle( topLeftCorner.x,     topLeftCorner.y,
+                         bottomRightCorner.x, bottomRightCorner.y );
 }
 
 //----------------------------------------------------------------------------------------------------------
 
 std::vector< Point<int> > DrawFigures::DrawCircle( Point<int> center, int radius )
 {
-   int x0 = center.GetX();
-   int y0 = center.GetY();
+   int x0 = center.x;
+   int y0 = center.y;
    std::vector< Point<int> > vPointsROI;
    int f = 1 - radius;
    int ddF_x = 1;
@@ -209,8 +209,8 @@ std::vector< Point<int> > DrawFigures::DrawPolygon( std::vector< Point<int> > vV
    {
       Point<int> startPoint = vVertices[i];
       Point<int> stopPoint = vVertices[i+1];
-      std::vector< Point<int> > vLinePoints = BresenhamDrawLine( startPoint.GetX(), startPoint.GetY(),
-                                                                 stopPoint.GetX(), stopPoint.GetY() );
+      std::vector< Point<int> > vLinePoints = BresenhamDrawLine( startPoint.x, startPoint.y,
+                                                                 stopPoint.x,   stopPoint.y );
       int nrPointsInLine = vLinePoints.size();
       for ( int j = 0; j < nrPointsInLine; j++)
       {
@@ -220,8 +220,8 @@ std::vector< Point<int> > DrawFigures::DrawPolygon( std::vector< Point<int> > vV
 
    Point<int> startPoint = vVertices[nrVertices-1];
    Point<int> stopPoint = vVertices[0];
-   std::vector< Point<int> > vLinePoints = BresenhamDrawLine( startPoint.GetX(), startPoint.GetY(),
-                                                              stopPoint.GetX(), stopPoint.GetY() );
+   std::vector< Point<int> > vLinePoints = BresenhamDrawLine( startPoint.x, startPoint.y,
+                                                              stopPoint.x,   stopPoint.y );
    int nrPointsInLine = vLinePoints.size();
    for ( int j = 0; j < nrPointsInLine; j++)
    {
@@ -239,11 +239,11 @@ bool DrawFigures::IsPointInPolygon( std::vector< Point<int> > vVertices, Point<i
    bool c = false;
    for (i = 0, j = nvert-1; i < nvert; j = i++)
    {
-      if (    ( ( vVertices[i].GetY() > testPoint.GetY() ) != ( vVertices[j].GetY() > testPoint.GetY() ) )
-           && (  testPoint.GetX() < (   ( vVertices[j].GetX() - vVertices[i].GetX() )
-                                      * ( testPoint.GetY()  - vVertices[i].GetY()  )
-                                      / ( vVertices[j].GetY()  - vVertices[i].GetY()  )
-                                      + vVertices[i].GetX()
+      if (    ( ( vVertices[i].y > testPoint.y ) != ( vVertices[j].y > testPoint.y ) )
+           && (  testPoint.x < (   ( vVertices[j].x - vVertices[i].x )
+                                      * ( testPoint.y  - vVertices[i].y  )
+                                      / ( vVertices[j].y  - vVertices[i].y  )
+                                      + vVertices[i].x
                                     )
               )
          )
@@ -265,10 +265,10 @@ double DrawFigures::GetPolygonArea( std::vector< Point<int> > vVertices )
 
    for(int i = 1; i+1<N; i++)
    {
-       double x1 = vVertices[i].GetX() - vVertices[0].GetX();
-       double y1 = vVertices[i].GetY() - vVertices[0].GetY();
-       double x2 = vVertices[i+1].GetX() - vVertices[0].GetX();
-       double y2 = vVertices[i+1].GetY() - vVertices[0].GetY();
+       double x1 = vVertices[i].x - vVertices[0].x;
+       double y1 = vVertices[i].y - vVertices[0].y;
+       double x2 = vVertices[i+1].x - vVertices[0].x;
+       double y2 = vVertices[i+1].y - vVertices[0].y;
        double cross = x1*y2 - x2*y1;
        area += cross;
    }

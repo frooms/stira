@@ -19,6 +19,13 @@
 namespace stira {
 namespace common {
 
+struct PcaResult
+{
+    Point<double> center;
+    std::vector<Point<double> > vector;
+    std::vector<double> eigenValue;
+};
+
 enum FitType{ FIT_LINEAR, FIT_QUADRATIC, FIT_POLYNOMIAL, FIT_EXPONENTIAL, FIT_GAUSSIAN };
 
 /** \brief class to fit a parametric function to a set of data points
@@ -78,6 +85,8 @@ public:
       * Reference: http://terpconnect.umd.edu/~toh/spectrum/CurveFitting.html
       * \return vector with in the following order ( peakHeight, peakPosition, sigma) */
     std::vector<double> GaussianFitLeastSquares( );
+
+    PcaResult ComputePCA( );
 
     /** \brief writes source data points and points from the fitted model to disk
       * \param fileName name of file to write to */

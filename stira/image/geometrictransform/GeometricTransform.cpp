@@ -65,7 +65,7 @@ Image* GeometricTransform::Apply( Image* pImageIn )
          for (int x = 0; x < width; x++)
          {
             common::Point<double> myPoint = GetInverseTransformedPoint( x, y );
-            pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGrid, myPoint.GetX(), myPoint.GetY() ) );
+            pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGrid, myPoint.x, myPoint.y ) );
          }
       }
    }
@@ -90,7 +90,7 @@ Image* GeometricTransform::ApplyInverse( Image* pImageIn )
          for (int x = 0; x < width; x++)
          {
             common::Point<double> myPoint = GetTransformedPoint( x, y );
-            pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGrid, myPoint.GetX(), myPoint.GetY() ) );
+            pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGrid, myPoint.x, myPoint.y ) );
          }
       }
    }

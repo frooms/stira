@@ -204,8 +204,8 @@ void TestFloodFill()
    cout << "Nr of connected pixels that were flooded: " << pixelsFlooded << endl << flush;
 
    Point<double> cg = ff.GetCenterOfGravity();
-   pGridInt->SetValue(cg.GetX(), cg.GetY(), 0);
-   cout << "Center of region that was flooded: ( " << cg.GetX() << ", " << cg.GetY() << " )." << endl << flush;
+   pGridInt->SetValue(cg.x, cg.y, 0);
+   cout << "Center of region that was flooded: ( " << cg.x << ", " << cg.y << " )." << endl << flush;
 
    ImageIO::WritePGM( pGridInt, std::string("FillTestOut.pgm") );
 

@@ -70,7 +70,7 @@ void FitCurve::SetPoints( std::vector< Point<int> > inputPoints )
    int nrPoints = inputPoints.size();
    for (int i = 0; i < nrPoints; i++)
    {
-      Point<double> myPoint( (double)(inputPoints[i].GetX()), (double)(inputPoints[i].GetY() ) );
+      Point<double> myPoint( (double)(inputPoints[i].x), (double)(inputPoints[i].y ) );
       mvDataPoints.push_back( myPoint );
    }
 }
@@ -92,8 +92,8 @@ vector<double> FitCurve::FitLinear( )
         ++it
       )
    {
-      meanX += (double)( (*it).GetX() );
-      meanY += (double)( (*it).GetY() );
+      meanX += (double)( (*it).x );
+      meanY += (double)( (*it).y );
       nrPoints++;
    }
    meanX /= nrPoints;
@@ -108,8 +108,8 @@ vector<double> FitCurve::FitLinear( )
         ++it
       )
    {
-      double tmpX = (double)( (*it).GetX() ) - meanX;
-      double tmpY = (double)( (*it).GetY() ) - meanY;
+      double tmpX = (double)( (*it).x ) - meanX;
+      double tmpY = (double)( (*it).y ) - meanY;
 
       Sxx += POWER2( tmpX );
       Syy += POWER2( tmpY );
@@ -148,8 +148,8 @@ vector<double> FitCurve::FitQuadratic( )
         ++it
       )
    {
-      double tmpX = (*it).GetX();
-      double tmpY = (*it).GetY();
+      double tmpX = (*it).x;
+      double tmpY = (*it).y;
       S40 += POWER4( tmpX );
       S30 += POWER3( tmpX );
       S20 += POWER2( tmpX );
@@ -202,8 +202,8 @@ vector<double> FitCurve::FitExponential( )
       )
    {
       {
-         double tmpX = (*it).GetX();
-         double tmpY = (*it).GetY();
+         double tmpX = (*it).x;
+         double tmpY = (*it).y;
          X2Y   += POWER2( tmpX ) * tmpY;
          XY    += tmpX * tmpY;
          Y     += tmpY;
@@ -238,7 +238,7 @@ void FitCurve::CreateModelPoints()
          double c = mvOutParameters[2];
          for (int i = 0; i < nrPoints; i++)
          {
-            double x = mvDataPoints[i].GetX();
+            double x = mvDataPoints[i].x;
             double y = a * x * x + b * x + c;
             mvModelPoints.push_back( Point<double>( x, y ) );
          }
@@ -251,7 +251,7 @@ void FitCurve::CreateModelPoints()
          double b = mvOutParameters[1];
          for (int i = 0; i < nrPoints; i++)
          {
-            double x = mvDataPoints[i].GetX();
+            double x = mvDataPoints[i].x;
             double y = a * exp( x * b);
             mvModelPoints.push_back( Point<double>( x, y ) );
          }
@@ -264,7 +264,7 @@ void FitCurve::CreateModelPoints()
          double b = mvOutParameters[1];
          for (int i = 0; i < nrPoints; i++)
          {
-            double x = mvDataPoints[i].GetX();
+            double x = mvDataPoints[i].x;
             double y = a * x + b;
             mvModelPoints.push_back( Point<double>( x, y ) );
          }
@@ -282,7 +282,7 @@ void FitCurve::CreateModelPoints()
       cout << "Fitting polynomial model evaluation" << endl;
       for (int i = 0; i < nrPoints; i++)
       {
-         double x = mvDataPoints[i].GetX();
+         double x = mvDataPoints[i].x;
          double y = 0.0;
          for (int j = 0; j <= mPolynomialDegree; j++ )
          {
@@ -322,7 +322,7 @@ void FitCurve::ComputeFittingErrors( )
    cout << "Computing " << nrPoints << " fitting errors " << endl;
    for (int i = 0; i < nrPoints; i++)
    {
-      mvFitAbsoluteErrors.push_back( fabs( mvDataPoints[i].GetY() - mvModelPoints[i].GetY() ) );
+      mvFitAbsoluteErrors.push_back( fabs( mvDataPoints[i].y - mvModelPoints[i].y ) );
    }
    //std::sort( mvFitAbsoluteErrors.begin(), mvFitAbsoluteErrors.end(), std::greater<double>() );
 
@@ -361,12 +361,12 @@ vector<double> FitCurve::PolynomialFit( int polynomialDegree )
 
    for (int i = 0; i < nrPoints; i++)
    {
-      double currentPointX = mvDataPoints[i].GetX();
+      double currentPointX = mvDataPoints[i].x;
       for (int j = 0; j < polynomialDegree+1; j++)
       {
          myX.at<double>( i, j ) = pow( currentPointX, (double)(j) );
       }
-      myY.at<double>(i,0) = mvDataPoints[i].GetY();
+      myY.at<double>(i,0) = mvDataPoints[i].y;
    }
    // http://en.wikipedia.org/wiki/Polynomial_regression
    myA = ( myX.t() * myX ).inv() * myX.t() * myY;
@@ -411,8 +411,8 @@ vector<double> FitCurve::GaussianFitLeastSquares( )
 
    for (int i = 0; i < nrPoints; i++)
    {
-      double currentPointX = mvDataPoints[i].GetX();
-      double currentPointY = mvDataPoints[i].GetY();
+      double currentPointX = mvDataPoints[i].x;
+      double currentPointY = mvDataPoints[i].y;
       if ( currentPointY > 0 )
       {
          mvTransformedDataPoints.push_back( Point<double>( currentPointX, log( currentPointY ) ) );
@@ -445,7 +445,7 @@ vector<double> FitCurve::GaussianFitLeastSquares( )
    else
    {
       peakHeight = 0.0;
-      peakPosition = mvDataPoints[nrPoints/2+1].GetX();
+      peakPosition = mvDataPoints[nrPoints/2+1].x;
       sigma = 0.0;
    }
 
@@ -456,6 +456,38 @@ vector<double> FitCurve::GaussianFitLeastSquares( )
    mFitType = FIT_GAUSSIAN;
    mIsFitReady = true;
    return mvOutParameters;
+}
+
+//---------------------------------------------------------------------------------
+
+PcaResult FitCurve::ComputePCA( )
+{
+    int sz = static_cast<int>( mvDataPoints.size());
+    //Construct a buffer used by the pca analysis
+    cv::Mat data_pts = cv::Mat( sz, 2, CV_64FC1);
+
+    for (int i = 0; i < sz; i++)
+    {
+       data_pts.at<double>(i, 0) = mvDataPoints[i].x;
+       data_pts.at<double>(i, 1) = mvDataPoints[i].y;
+    }
+
+    //Perform PCA analysis
+    cv::PCA pca_analysis(data_pts, cv::Mat(), CV_PCA_DATA_AS_ROW);
+
+    PcaResult pcaRes;
+    //Store the center of the object
+
+    pcaRes.center.x = pca_analysis.mean.at<double>(0, 0);
+    pcaRes.center.y = pca_analysis.mean.at<double>(0, 1);
+
+    for (int i = 0; i < 2; i++)
+    {
+        pcaRes.vector.push_back( Point<double>( pca_analysis.eigenvectors.at<double>(i, 0),
+                                                pca_analysis.eigenvectors.at<double>(i, 1) ) );
+        pcaRes.eigenValue.push_back( pca_analysis.eigenvalues.at<double>(0, i) );
+    }
+    return pcaRes;
 }
 
 //---------------------------------------------------------------------------------
@@ -481,7 +513,7 @@ bool FitCurve::WriteToDisk( std::string fileName )
    ofp << "x \t y_data \t y_fit " << endl;
    for(int i = 0; i < nrPoints; i++)
    {
-      ofp << mvDataPoints[i].GetX() << std::string("\t") << mvDataPoints[i].GetY() << std::string("\t") << mvModelPoints[i].GetY() << endl;
+      ofp << mvDataPoints[i].x << std::string("\t") << mvDataPoints[i].y << std::string("\t") << mvModelPoints[i].y << endl;
    }
 
    ofp.close();

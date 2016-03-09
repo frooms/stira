@@ -772,7 +772,7 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
                {
                   if(    ( mpRegionalMinimaGrid->GetValue( x+dx, y+dy ) >= LABEL_MINIMUM )
                       && ( mpRegionalMinimaGrid->GetValue( x+dx, y+dy ) != mpRegionalMinimaGrid->GetValue( inLabeledNeighbour ) )
-                      && ( ( inLabeledNeighbour.GetX() != x+dx) || ( inLabeledNeighbour.GetY() != y+dy))
+                      && ( ( inLabeledNeighbour.x != x+dx) || ( inLabeledNeighbour.y != y+dy))
                   )
                   {
                      mpRegionalMinimaGrid->SetValue( x, y, LABEL_RIDGE );
@@ -885,7 +885,7 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
       template <class T >
       PixelElement<T> WatershedMeyer< T >::CreatePixelElement( stira::common::Point<int> pt )
       {
-         return CreatePixelElement( pt.GetX(), pt.GetY() );
+         return CreatePixelElement( pt.x(), pt.y() );
       }
       
       //------------------------------------------------------------------------

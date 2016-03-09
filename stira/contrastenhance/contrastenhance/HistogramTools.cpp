@@ -84,10 +84,10 @@ void HistogramTools::RemapHistogramInROI( image::ArrayGrid<double>* pInGrid,
                                           IntHistogram* fhCumulativeInput,
                                           FloatHistogram* fhCumulativeReference )
 {
-   int xMin = MathUtils::ClipValue(rroi.GetTopLeftCorner().GetX(), 0, pInGrid->GetWidth() );
-   int yMin = MathUtils::ClipValue(rroi.GetTopLeftCorner().GetY(), 0, pInGrid->GetHeight() );
-   int xMax = MathUtils::ClipValue(rroi.GetBottomRightCorner().GetX(), 0, pInGrid->GetWidth() );
-   int yMax = MathUtils::ClipValue(rroi.GetBottomRightCorner().GetY(), 0, pInGrid->GetHeight() );
+   int xMin = MathUtils::ClipValue(rroi.GetTopLeftCorner().x, 0, pInGrid->GetWidth() );
+   int yMin = MathUtils::ClipValue(rroi.GetTopLeftCorner().y, 0, pInGrid->GetHeight() );
+   int xMax = MathUtils::ClipValue(rroi.GetBottomRightCorner().x, 0, pInGrid->GetWidth() );
+   int yMax = MathUtils::ClipValue(rroi.GetBottomRightCorner().y, 0, pInGrid->GetHeight() );
 
    for (int y = yMin; y < yMax; y++)
    {

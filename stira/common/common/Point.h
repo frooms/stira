@@ -30,6 +30,7 @@ struct IntensityPoint
 enum coordinateMode{ COORDINATES_CARTESIAN, COORDINATES_POLAR };
 enum pointType{ TYPE_START, TYPE_END, TYPE_DEFAULT };
 
+
 /** \brief A class to represent a 2D point. */
 template <class T>
 class Point{
@@ -40,16 +41,10 @@ public:
    Point();
 
    /** \brief Constructor.*/
-   Point(T x, T y, coordinateMode mode=COORDINATES_CARTESIAN, pointType myType=TYPE_DEFAULT);
+   Point(T xNew, T yNew, coordinateMode mode=COORDINATES_CARTESIAN, pointType myType=TYPE_DEFAULT);
 
    /** \brief destructor.*/
    ~Point();
-
-   /** \brief gets x coordinate of point*/
-   T GetX() const;
-
-   /** \brief gets y coordinate of point*/
-   T GetY() const;
 
    /** \brief gets radial coordinate of point, in case of polar coordinates*/
    T GetRadius() const;
@@ -66,17 +61,9 @@ public:
    coordinateMode GetMode() const;
 
    /** \brief sets new cartesian coordinates for point
-     * \param x new x coordinate to set
-     * \param y new y coordinate to set */
-   void SetXAndY(T x, T y);
-
-   /** \brief sets new first coordinate for point
-     * \param x new first coordinate to set */
-   void SetX( T x );
-
-   /** \brief sets new second coordinate for point
-     * \param y new second coordinate to set */
-   void SetY( T y );
+     * \param xNew new x coordinate to set
+     * \param yNew new y coordinate to set */
+   void SetXAndY(T xNew, T yNew);
 
    /** \brief sets new coordinates for point*/
    void SetRadiusAndTheta( T radius, T theta );
@@ -99,6 +86,9 @@ public:
 
    /** \brief mirrors current point towards Y axis */
    void MirrorYaxis( );
+
+   Point<double> ToDouble();
+   Point<int> ToInt();
 
    /** \brief overloaded operator to compare two Points
      * \param otherPoint other point to check equality */
@@ -131,11 +121,12 @@ public:
      * \param otherPoint other point to compute cross product norm with */
    T operator ^ ( Point<T> otherPoint );
 
+   T x;  ///< x coordinate of the point
+   T y; ///< y coordinate of the point
+
 private:
-   T mX;  ///< x coordinate of the point
-   T mY; ///< y coordinate of the point
-   coordinateMode mMode;  ///< keeps track if coordinate mode is cartesian or polar
-   pointType mPointType;  ///< keeps track in case point is in a curve if it is the start or stop point in a curve
+   coordinateMode mode;  ///< keeps track if coordinate mode is cartesian or polar
+   pointType type;  ///< keeps track in case point is in a curve if it is the start or stop point in a curve
 };
 
 template <class T>
@@ -146,7 +137,7 @@ std::ostream& operator << ( std::ostream& output, const Point<T>& p );
 template <class T>
 Point<T> Point<T>::operator - ( Point<T> otherPoint )
 {
-   return Point<T>( ( this->mX - otherPoint.mX ), ( this->mY - otherPoint.mY ) );
+   return Point<T>( ( this->x - otherPoint.x ), ( this->y - otherPoint.y ) );
 }
 
 //------------------------------------------------------------------
@@ -154,7 +145,7 @@ Point<T> Point<T>::operator - ( Point<T> otherPoint )
 template <class T>
 Point<T> Point<T>::operator + ( Point<T> otherPoint )
 {
-   return Point<T>( ( this->mX + otherPoint.mX ), ( this->mY + otherPoint.mY ) );
+   return Point<T>( ( this->x + otherPoint.x ), ( this->y + otherPoint.y ) );
 }
 
 //------------------------------------------------------------------
@@ -162,7 +153,19 @@ Point<T> Point<T>::operator + ( Point<T> otherPoint )
 template <class T>
 T Point<T>::operator * ( Point<T> otherPoint )
 {
-   return ( ( this->mX * otherPoint.mX ) + ( this->mY * otherPoint.mY ) );
+   return ( ( this->x * otherPoint.x ) + ( this->y * otherPoint.y ) );
+}
+
+template <class T>
+Point<T> operator* (double a, const Point<T>& pt)
+{
+    return ( Point<T>( pt.x * a, pt.y * a, pt.GetMode(), pt.GetType() ) );
+}
+
+template <class T>
+Point<T> operator* (const Point<T>& pt, double a)
+{
+    return ( Point<T>( pt.x * a, pt.y * a, pt.GetMode(), pt.GetType() ) );
 }
 
 //------------------------------------------------------------------
@@ -170,7 +173,7 @@ T Point<T>::operator * ( Point<T> otherPoint )
 template <class T>
 T Point<T>::operator ^ ( Point<T> otherPoint )
 {
-   return ( ( this->mX * otherPoint.mY ) - ( this->mY * otherPoint.mX ) );
+   return ( ( this->x * otherPoint.y ) - ( this->y * otherPoint.x ) );
 }
 
 //------------------------------------------------------------------
@@ -178,7 +181,7 @@ T Point<T>::operator ^ ( Point<T> otherPoint )
 template <class T>
 std::ostream& operator << ( std::ostream& output, const Point<T>& p )
 {
-   output << " ( " <<  p.GetX() << ", " << p.GetY() << " ) ";
+   output << " ( " <<  p.x << ", " << p.y << " ) ";
    return output;  // for multiple << operators.
 }
 
@@ -187,9 +190,9 @@ std::ostream& operator << ( std::ostream& output, const Point<T>& p )
 template <class T>
 bool Point<T>::operator== ( Point<T> otherPoint )
 {
-   if (    ( (double)(fabs( (double)(this->mX) - (double)(otherPoint.mX) )) < 0.0000001)
-        && ( (double)(fabs( (double)(this->mY) - (double)(otherPoint.mY) )) < 0.0000001)
-        && ( this->mMode == otherPoint.mMode )
+   if (    ( (double)(fabs( (double)(this->x) - (double)(otherPoint.x) )) < 0.0000001)
+        && ( (double)(fabs( (double)(this->y) - (double)(otherPoint.y) )) < 0.0000001)
+        && ( this->mode == otherPoint.mode )
       )
    {
       return true;
@@ -213,21 +216,21 @@ bool Point<T>::operator!= ( Point<T> otherPoint )
 template <class T>
 Point<T>::Point()
 {
-   mX = (T)(0);
-   mY = (T)(0);
-   mMode = COORDINATES_CARTESIAN;
-   mPointType = TYPE_DEFAULT;
+   x = (T)(0);
+   y = (T)(0);
+   mode = COORDINATES_CARTESIAN;
+   type = TYPE_DEFAULT;
 }
 
 //------------------------------------------------------------------
 
 template <class T>
-Point<T>::Point(T x, T y, coordinateMode mode, pointType myType )
+Point<T>::Point(T xNew, T yNew, coordinateMode mode, pointType myType )
 {
-   mX = x;
-   mY = y;
-   mMode = mode;
-   mPointType = myType;
+   x = xNew;
+   y = yNew;
+   mode = mode;
+   type = myType;
 }
 
 //------------------------------------------------------------------
@@ -237,20 +240,16 @@ Point<T>::~Point()
 {
 }
 
-//------------------------------------------------------------------
-
 template <class T>
-T Point<T>::GetX() const
+Point<double> Point<T>::ToDouble()
 {
-   return mX;
+    return Point<double>( static_cast<double>(this->x), static_cast<double>(this->y), this->GetMode(), this->GetType() );
 }
 
-//------------------------------------------------------------------
-
 template <class T>
-T Point<T>::GetY() const
+Point<int> Point<T>::ToInt()
 {
-   return mY;
+    return Point<int>( static_cast<int>(this->x + 0.5), static_cast<int>(this->y + 0.5), this->GetMode(), this->GetType() );
 }
 
 //------------------------------------------------------------------
@@ -258,7 +257,7 @@ T Point<T>::GetY() const
 template <class T>
 T Point<T>::GetRadius() const
 {
-   return mX;
+   return x;
 }
 
 //------------------------------------------------------------------
@@ -266,7 +265,7 @@ T Point<T>::GetRadius() const
 template <class T>
 T Point<T>::GetTheta() const
 {
-   return mY;
+   return y;
 }
 
 //------------------------------------------------------------------
@@ -274,7 +273,7 @@ T Point<T>::GetTheta() const
 template <class T>
 coordinateMode Point<T>::GetMode() const
 {
-   return mMode;
+   return mode;
 }
 
 //------------------------------------------------------------------
@@ -282,7 +281,7 @@ coordinateMode Point<T>::GetMode() const
 template <class T>
 pointType Point<T>::GetType() const
 {
-   return mPointType;
+   return type;
 }
 
 //------------------------------------------------------------------
@@ -290,35 +289,17 @@ pointType Point<T>::GetType() const
 template <class T>
 void Point<T>::SetType( pointType type )
 {
-   mPointType = type;
+   type = type;
 }
 
 //------------------------------------------------------------------
 
 template <class T>
-void Point<T>::SetXAndY(T x, T y)
+void Point<T>::SetXAndY(T xNew, T yNew)
 {
-   mX = x;
-   mY = y;
-   mMode = COORDINATES_CARTESIAN;
-}
-
-
-
-//------------------------------------------------------------------
-
-template <class T>
-void Point<T>::SetX( T x )
-{
-   mX = x;
-}
-
-//------------------------------------------------------------------
-
-template <class T>
-void Point<T>::SetY( T y )
-{
-   mY = y;
+   x = xNew;
+   y = yNew;
+   mode = COORDINATES_CARTESIAN;
 }
 
 //------------------------------------------------------------------
@@ -326,9 +307,9 @@ void Point<T>::SetY( T y )
 template <class T>
 void Point<T>::SetRadiusAndTheta( T radius, T theta )
 {
-   mX = radius;
-   mY = theta;
-   mMode = COORDINATES_POLAR;
+   x = radius;
+   y = theta;
+   mode = COORDINATES_POLAR;
 }
 
 //------------------------------------------------------------------
@@ -336,18 +317,18 @@ void Point<T>::SetRadiusAndTheta( T radius, T theta )
 template <class T>
 double Point<T>::GetDistance(Point other)
 {
-   if ( mMode == COORDINATES_CARTESIAN )
+   if ( mode == COORDINATES_CARTESIAN )
    {
-      double dx = (double)(mX) - (double)(other.GetX());
-      double dy = (double)(mY) - (double)(other.GetY());
+      double dx = (double)(x) - (double)(other.x);
+      double dy = (double)(y) - (double)(other.y);
       return (sqrt(dx*dx + dy*dy));
    }
    else // http://en.wikipedia.org/wiki/Radial_distance_(geometry)
    {
-      double r1     = (double)(mX);
-      double theta1 = (double)(mY);
-      double r2     = (double)(other.GetX());
-      double theta2 = (double)(other.GetY());
+      double r1     = (double)(x);
+      double theta1 = (double)(y);
+      double r2     = (double)(other.x);
+      double theta2 = (double)(other.y);
       double radialDistance = sqrt(   r1 * r1
                                     + r2 * r2
                                     - 2.0 * r1 * r2 * cos( theta1 - theta2 )
@@ -361,15 +342,15 @@ double Point<T>::GetDistance(Point other)
 template <class T>
 void Point<T>::ToPolar( T xCenter, T yCenter )
 {
-   if (mMode != COORDINATES_POLAR)
+   if (mode != COORDINATES_POLAR)
    {
-      T xx = ( mX - xCenter );
-      T yy = ( mY - yCenter );
+      T xx = ( x - xCenter );
+      T yy = ( y - yCenter );
       T radius = sqrt( xx * xx + yy * yy );
       T theta = atan2( yy, xx );
-      mX = radius;
-      mY = theta;
-      mMode = COORDINATES_POLAR;
+      x = radius;
+      y = theta;
+      mode = COORDINATES_POLAR;
    }
 }
 
@@ -378,13 +359,13 @@ void Point<T>::ToPolar( T xCenter, T yCenter )
 template <class T>
 void Point<T>::ToCartesian( )
 {
-   if (mMode != COORDINATES_CARTESIAN)
+   if (mode != COORDINATES_CARTESIAN)
    {
-      T x = mX * cos( mY );
-      T y = mX * sin( mY );
-      mX = x;
-      mY = y;
-      mMode = COORDINATES_CARTESIAN;
+      T x = x * cos( y );
+      T y = x * sin( y );
+      x = x;
+      y = y;
+      mode = COORDINATES_CARTESIAN;
    }
 }
 
@@ -393,20 +374,20 @@ void Point<T>::ToCartesian( )
 template <class T>
 void Point<T>::MirrorOrigin( )
 {
-   if (mMode == COORDINATES_CARTESIAN)
+   if (mode == COORDINATES_CARTESIAN)
    {
-      mX *= -1;
-      mY *= -1;
+      x *= -1;
+      y *= -1;
    }
    else // polar
    {
-      if (mY > 0)
+      if (y > 0)
       {
-         mY -= M_PI;
+         y -= M_PI;
       }
       else
       {
-         mY += M_PI;
+         y += M_PI;
       }
    }
 }
@@ -416,7 +397,7 @@ void Point<T>::MirrorOrigin( )
 template <class T>
 void Point<T>::MirrorXaxis( )
 {
-   mY *= -1;
+   y *= -1;
 }
 
 //------------------------------------------------------------------
@@ -424,7 +405,7 @@ void Point<T>::MirrorXaxis( )
 template <class T>
 void Point<T>::MirrorYaxis( )
 {
-   mX *= -1;
+   x *= -1;
 }
 
 //------------------------------------------------------------------
