@@ -17,6 +17,7 @@
 #include "../../image/tools/NumberGridTools.h"
 #include "../../image/tools/GridConverter.h"
 #include "../../image/tools/DrawImageTools.h"
+#include "../../image/tools/ImageTools.h"
 #include "../../histogram/histogram/IntHistogram.h"
 #include "../../histogram/histogram/FloatHistogram.h"
 #include "../../histogram/histogram/RunLengthHistogram.h"
@@ -29,6 +30,7 @@
 #include "../imageanalysis/HardLink.h"
 #include "../imageanalysis/ContourTracing.h"
 #include "../imageanalysis/Thinning.h"
+#include "../imageanalysis/SLIC.h"
 #include "../imageanalysis/FunctionsOpenCV.h"
 #include "../imageanalysis/CompareCurvesInImage.h"
 #include "../imageanalysis/FindMaximalIncludedRectangles.h"
@@ -70,6 +72,40 @@ void TestWSMeyer( Image *pImage )
    ImageIO::Write( pSegmented, std::string("WatershedMeyerRidgesImage.ppm") );
    delete pSegmented;
    delete pGridIn;
+}
+
+//-----------------------------------------------------------------------------------
+
+void TestSLIC( Image *pImage )
+{
+    unsigned int* img = 0; //Each 32 bit unsigned int encodes the combination of ARGB values for a single pixel.
+    int nrSiperPixels = 200;
+    double superPixelSize = 10.0;
+
+    int width = pImage->GetWidth();
+    int height = pImage->GetHeight();
+
+    img = ImageTools::CreateIntArrayFromColorImage( pImage );
+
+    int imgSize = width*height;
+    //---------------------------------------------------------
+    if(nrSiperPixels < 20 || nrSiperPixels > imgSize/4) nrSiperPixels = imgSize/200;//i.e the default size of the superpixel is 200 pixels
+    if(superPixelSize < 1.0 || superPixelSize > 80.0) superPixelSize = 20.0;
+    //---------------------------------------------------------
+    int* labels = new int[imgSize];
+    int numlabels(0);
+
+    SLIC slic;
+    //slic.DoSuperpixelSegmentation_ForGivenNumberOfSuperpixels( img, width, height, labels, numlabels, m_spcount, m_compactness);
+    slic.DoSuperpixelSegmentation_ForGivenSuperpixelSize(img, width, height, labels, numlabels, 100, superPixelSize);//demo
+    slic.DrawContoursAroundSegments(img, labels, width, height, 0);
+    if(labels) delete [] labels;
+
+    Image* pImageOut = ImageTools::CreateColorImageFromIntArray( img, width, height );
+    ImageIO::Write( pImageOut, "SlicTest.pgm");
+
+    if(img) delete [] img;
+    delete pImageOut;
 }
 
 //-----------------------------------------------------------------------------------
@@ -238,7 +274,6 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // CONTOUR TRACING
-
    TestContourTrace( );
 
    /////////////////////////////////////////////////////
@@ -249,6 +284,11 @@ int main(int argc, char *argv[])
    ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
    ImageIO::WritePGM( pEdgeGrid, string("CannyOut.pgm") );
    delete pEdgeGrid;
+
+
+   /////////////////////////////////////////////////////
+   // SLIC
+   TestSLIC( pImage );
 
    /////////////////////////////////////////////////////
    // WATERSHED
