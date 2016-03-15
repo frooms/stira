@@ -28,7 +28,7 @@ public:
    BilinearInterpolator();
 
    /** \brief destructor */
-   ~BilinearInterpolator();
+   virtual ~BilinearInterpolator();
 
    /** \brief Bilinear interpolation
      * \param pGrid grid in which to interpolate

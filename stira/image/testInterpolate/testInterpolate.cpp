@@ -25,7 +25,7 @@ ProfileData* ReadText( std::string inFileName )
    if ( !inReferenceStream1 )
    {
       cout << "Can't read from file " << inFileName << "." << endl;
-      return false;
+      return 0;
    }
    //else
    //{
@@ -83,7 +83,7 @@ void WriteProfile(ProfileData* pInputData, std::string name )
 
 int main()
 {
-   int nrGridPoints = 17;
+   //int nrGridPoints = 17;
    //ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/build/neuge/Debug/Neugebauer-White/ModelValuesWhite2.txt") );
    //ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/spectra-aug2009/ModelBeforeBiasCorrection.txt") );
    //ProfileData* pInputData = ReadText( std::string("/v/frooms/projects/color/warhol-110509/cms/spectra-aug2009/ModelAfterBiasCorrection.txt") );

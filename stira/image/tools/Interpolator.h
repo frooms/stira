@@ -30,7 +30,7 @@ public:
    Interpolator();
 
    /** \brief destructor */
-   ~Interpolator();
+  virtual ~Interpolator();
 
    /** \brief Runs interpolation
      * \param pGrid grid in which to interpolate
