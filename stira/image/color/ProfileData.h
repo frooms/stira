@@ -29,18 +29,18 @@ namespace image {
 
    /** \brief Representation of a single L*a*b* color */
    struct lab_t {
-      float l;    ///< L* component
-      float a;    ///< a* component
-      float b;    ///< b* component
+      double l;    ///< L* component
+      double a;    ///< a* component
+      double b;    ///< b* component
    };
    
    //-------------------------------------------------------------
    /** \brief Representation of a single CMYK color */
    struct cmyk_t {
-      float c;    ///< C component
-      float m;    ///< M component
-      float y;    ///< Y component
-      float k;    ///< K component
+      double c;    ///< C component
+      double m;    ///< M component
+      double y;    ///< Y component
+      double k;    ///< K component
    };
    
    //-------------------------------------------------------------
