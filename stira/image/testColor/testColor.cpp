@@ -1080,8 +1080,8 @@ bool DeltaE200Test2()
    ColorValue RGB1 = ColorValue( 0,   0,   0, TYPE_RGB );
    ColorValue RGB2 = ColorValue( 0, 255, 255, TYPE_RGB );
 
-   ColorValue XYZ1 = col.sRGBtoXYZ( RGB1 );
-   ColorValue XYZ2 = col.sRGBtoXYZ( RGB2 );
+   //ColorValue XYZ1 = col.sRGBtoXYZ( RGB1 );
+   //ColorValue XYZ2 = col.sRGBtoXYZ( RGB2 );
 
    ColorValue LAB1 = col.sRGBtoLab( RGB1 );
    ColorValue LAB2 = col.sRGBtoLab( RGB2 );
