@@ -60,16 +60,27 @@ public:
    /** \brief Gets the height of the grid */
    int GetHeight();
 
-   /** \brief Gets the height of the grid
+   /** \brief Sets the local angle at specified position of the grid
      * \param x the x coordinate
      * \param y the y coordinate
-     * \param myAngle the orientation to set for position (x,y) */
-   void SetOrientation(int x, int y, double myAngle);
+     * \param myAngle the angle to set for position (x,y) */
+   void SetAngle(int x, int y, double myAngle);
 
-   /** \brief Gets the height of the grid
+   /** \brief Gets the local angle at specified position of the grid
      * \param x the x coordinate
      * \param y the y coordinate */
-   double GetOrientation(int x, int y);
+   double GetAngle(int x, int y);
+
+   /** \brief Sets the local orientation (angle,magnitude) at specified position of the grid
+     * \param x the x coordinate
+     * \param y the y coordinate
+     * \param myLocalOrientation the local orientation to set for position (x,y) */
+   void SetOrientation(int x, int y, LocalOrientation* pLocalOrientation);
+
+   /** \brief Gets the local orientation (angle,magnitude) at specified position of the grid
+     * \param x the x coordinate
+     * \param y the y coordinate */
+   LocalOrientation* GetOrientation(int x, int y);
 
    /** \brief Sets the magnitude of the feature response at position (x, y)
      * \param x the x coordinate
@@ -119,7 +130,7 @@ private:
      * The result is converted to RGB and returned.
      * \param angle  angle to map to color triplet*/
    ColorValue ConvertAngleToHSVMap(double angle);
-   TransformColorSpace* mpColorTransformer;
+
    /** \brief converts currenty angle into an RGB triplet
      * This triplet makes simple RGB interpolation:
      *  - Between        0 and   pi / 3, R drops from 255 to 0, and B increases from 0 to 255
@@ -129,7 +140,8 @@ private:
      */
    ColorValue ConvertAngleToRGBMap(double angle);
 
-   ArrayGrid<LocalOrientation*>* mpOrientationGrid; ///< the arraygrid of local magnitudes and orientations
+   ArrayGrid< LocalOrientation* >* mpOrientationGrid; ///< the arraygrid of local magnitudes and orientations
+   TransformColorSpace* mpColorTransformer;
 };
 }
 }

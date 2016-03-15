@@ -146,7 +146,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOri
    {
       for (int x = 0; x < width; x++)
       {
-         double theta = pOrientationGrid->GetOrientation( x, y );
+         double theta = pOrientationGrid->GetAngle( x, y );
          double ka = cos( theta ) * cos( theta );
          double kb = -2.0 * cos( theta ) * sin( theta );
          double kc = sin( theta ) * sin( theta );
@@ -182,7 +182,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOri
    {
       for (int x = 0; x < width; x++)
       {
-         double theta = pOrientationGrid->GetOrientation( x, y );
+         double theta = pOrientationGrid->GetAngle( x, y );
 
          double ka = cos( theta ) * cos( theta ) * cos( theta );
          double kb = -3.0 * cos( theta ) * cos( theta ) * sin( theta );

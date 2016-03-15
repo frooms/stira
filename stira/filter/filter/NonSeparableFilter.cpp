@@ -166,7 +166,7 @@ image::OrientationGrid* NonSeparableFilter::DetermineLocalMagnitudeAndOrientatio
          double tmpOri = atan2( xResponse, yResponse );
          if (tmpOri < 0.0) {tmpOri += M_PI;}
          
-         pOrientationGrid->SetOrientation( x, y, tmpOri );
+         pOrientationGrid->SetAngle( x, y, tmpOri );
          pOrientationGrid->SetMagnitude( x, y, tmpMag );
       }
    }

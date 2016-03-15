@@ -178,7 +178,7 @@ image::ArrayGrid<bool>* StegerLineDetector::Run( image::ArrayGrid<double>* pGrid
                }
             }
             
-            pOrientationGrid->SetOrientation( x, y, MathUtils::ComputeArgument( eigenVector1.x,  eigenVector1.y ) );
+            pOrientationGrid->SetAngle( x, y, MathUtils::ComputeArgument( eigenVector1.x,  eigenVector1.y ) );
             pOrientationGrid->SetMagnitude( x, y, eigenValue1);
          }
       }

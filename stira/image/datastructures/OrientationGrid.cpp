@@ -63,7 +63,7 @@ OrientationGrid* OrientationGrid::Clone()
    {
       for (int x = 0; x < width; x++)
       {
-         pGrid->SetOrientation( x, y, this->GetOrientation( x, y ) );
+         pGrid->SetAngle( x, y, this->GetAngle( x, y ) );
          pGrid->SetMagnitude( x, y, this->GetMagnitude( x, y ) );
       }
    }
@@ -144,7 +144,7 @@ ArrayGrid<double>* OrientationGrid::ExtractOrientationGrid()
    {
       for (int x = 0; x < width; x++)
       {
-         pOrientationGrid->SetValue(x, y, GetOrientation(x, y) );
+         pOrientationGrid->SetValue(x, y, GetAngle(x, y) );
       }
    }
 
@@ -153,7 +153,7 @@ ArrayGrid<double>* OrientationGrid::ExtractOrientationGrid()
 
 //=================================================================================
 
-void OrientationGrid::SetOrientation(int x, int y, double myAngle)
+void OrientationGrid::SetAngle(int x, int y, double myAngle)
 {
    int height = mpOrientationGrid->GetHeight();
    int width  = mpOrientationGrid->GetWidth();
@@ -169,7 +169,7 @@ void OrientationGrid::SetOrientation(int x, int y, double myAngle)
 
 //=================================================================================
 
-double OrientationGrid::GetOrientation(int x, int y)
+double OrientationGrid::GetAngle(int x, int y)
 {
    int height = mpOrientationGrid->GetHeight();
    int width  = mpOrientationGrid->GetWidth();
@@ -182,6 +182,20 @@ double OrientationGrid::GetOrientation(int x, int y)
       cerr << "Invalid coordinate values to get orientation" << endl << flush;
       return -10000;
    }
+}
+
+//=================================================================================
+
+void OrientationGrid::SetOrientation(int x, int y, LocalOrientation* myLocalOrientation)
+{
+    mpOrientationGrid->SetValue(x,y, myLocalOrientation);
+}
+
+//=================================================================================
+
+LocalOrientation* OrientationGrid::GetOrientation(int x, int y)
+{
+    return mpOrientationGrid->GetValue(x,y);
 }
 
 //=================================================================================
@@ -343,11 +357,11 @@ Image* OrientationGrid::VisualizeOrientationImage( double threshold, ColorExport
             ColorValue rgbColor;
             if (myMode == EXPORT_RGB_MODE)
             {
-               rgbColor = ConvertAngleToRGBMap( GetOrientation(x, y) );
+               rgbColor = ConvertAngleToRGBMap( GetAngle(x, y) );
             }
             else
             {
-               rgbColor = ConvertAngleToHSVMap( GetOrientation(x, y) );
+               rgbColor = ConvertAngleToHSVMap( GetAngle(x, y) );
             }
             pOrientationImage->GetBands()[0]->SetValue(x, y, rgbColor.c[0] );
             pOrientationImage->GetBands()[1]->SetValue(x, y, rgbColor.c[1] );

@@ -122,7 +122,7 @@ ArrayGrid<bool>* CannyEdgeDetector::CreateNonMaximaSuppressedMap( OrientationGri
    {
       for (int x = 1; x < width-1; x++)
       {
-         int quantizedAngle = (int)( ( pOrientationGrid->GetOrientation(x, y)) / (M_PI / 4) );
+         int quantizedAngle = (int)( ( pOrientationGrid->GetAngle(x, y)) / (M_PI / 4) );
          if (quantizedAngle > 3) {quantizedAngle = 0;}
          pCandidateEdgeMap->SetValue(x, y, IsCandidateLocalMaximum( x, y, quantizedAngle, pOrientationGrid ) );
       }
@@ -458,16 +458,16 @@ void CannyEdgeDetector::QuantifyOrientations( OrientationGrid* pOrientationGrid 
    {
       for (int x = 0; x < pOrientationGrid->GetWidth(); x++)
       {
-         double thisAngle = pOrientationGrid->GetOrientation( x, y );
+         double thisAngle = pOrientationGrid->GetAngle( x, y );
 
          if ( ( (thisAngle < angle0225 ) && ( thisAngle > -angle0225 ) ) ||   ( thisAngle >  angle1575 ) || ( thisAngle < -angle1575 ) )
-            pOrientationGrid->SetOrientation( x, y, 0.0 );
+            pOrientationGrid->SetAngle( x, y, 0.0 );
          if ( ( (thisAngle > angle0225 ) && ( thisAngle <  angle0675 ) ) || ( ( thisAngle < -angle1125 ) && ( thisAngle > -angle1575) ) )
-            pOrientationGrid->SetOrientation( x, y, angle0450 );
+            pOrientationGrid->SetAngle( x, y, angle0450 );
          if ( ( (thisAngle > angle0675 ) && ( thisAngle <  angle1125 ) ) || ( ( thisAngle < -angle0675 ) && ( thisAngle > -angle1125) ) )
-            pOrientationGrid->SetOrientation( x, y, angle0900 );
+            pOrientationGrid->SetAngle( x, y, angle0900 );
          if ( ( (thisAngle > angle1125 ) && ( thisAngle <  angle1575 ) ) || ( ( thisAngle < -angle0225 ) && ( thisAngle > -angle0675) ) )
-            pOrientationGrid->SetOrientation( x, y, angle1350 );
+            pOrientationGrid->SetAngle( x, y, angle1350 );
 
       }
    }

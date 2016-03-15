@@ -115,7 +115,7 @@ OrientationGrid* ComputeOrientation::ComputeDominantOrientationInputFreemanAdels
              tmpAngle += halfPi;
          }
 
-         pOrientationGrid->SetOrientation(x, y, tmpAngle);
+         pOrientationGrid->SetAngle(x, y, tmpAngle);
          pOrientationGrid->SetMagnitude(x, y, tmpMagnitude);
       }
    }
@@ -193,7 +193,7 @@ OrientationGrid* ComputeOrientation::ComputeDominantOrientationInputComplexPyram
             tmpAngle     = MathUtils::ComputeArgument(C2, C3) * 0.5;
             tmpMagnitude = L2NORM( C2, C3 );
    
-            pOrientationGrid->SetOrientation(x, y, tmpAngle);
+            pOrientationGrid->SetAngle(x, y, tmpAngle);
             pOrientationGrid->SetMagnitude(x, y, tmpMagnitude);
          }
       }
