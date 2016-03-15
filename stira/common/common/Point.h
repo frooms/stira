@@ -287,9 +287,9 @@ pointType Point<T>::GetType() const
 //------------------------------------------------------------------
 
 template <class T>
-void Point<T>::SetType( pointType type )
+void Point<T>::SetType( pointType newType )
 {
-   type = type;
+   type = newType;
 }
 
 //------------------------------------------------------------------
@@ -361,10 +361,10 @@ void Point<T>::ToCartesian( )
 {
    if (mode != COORDINATES_CARTESIAN)
    {
-      T x = x * cos( y );
-      T y = x * sin( y );
-      x = x;
-      y = y;
+      T xCart = x * cos( y );
+      T yCart = x * sin( y );
+      x = xCart;
+      y = yCart;
       mode = COORDINATES_CARTESIAN;
    }
 }
