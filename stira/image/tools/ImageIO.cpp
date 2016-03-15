@@ -125,7 +125,6 @@ Image* ImageIO::ReadAsPXM( std::string fname )
 
 ArrayGrid<int>* ImageIO::ReadPGMasInt( std::string fname)
 {
-   int maxIntensity;
    unsigned char *charImage;
    char header [100], *ptr;
 
@@ -138,7 +137,7 @@ ArrayGrid<int>* ImageIO::ReadPGMasInt( std::string fname)
    if (!ifp)
    {
       cout << "Can't read image: " << fname << endl;
-      return false;
+      return 0;
    }
 
    // read header
@@ -171,7 +170,7 @@ ArrayGrid<int>* ImageIO::ReadPGMasInt( std::string fname)
    pGrid = new ArrayGrid<int>(width, height);
 
    ifp.getline(header,100,'\n');
-   maxIntensity = strtol(header, &ptr, 0);
+   //int maxIntensity = strtol(header, &ptr, 0);
 
    charImage = (unsigned char *) new unsigned char [width * height];
 
@@ -180,7 +179,7 @@ ArrayGrid<int>* ImageIO::ReadPGMasInt( std::string fname)
    if (ifp.fail())
    {
       cout << "Image " << fname << " has wrong size" << endl;
-      return false;
+      return 0;
    }
 
    ifp.close();
@@ -283,7 +282,7 @@ ArrayGrid<int>* ImageIO::ReadPGMfromZip( std::string zipArchiveName, std::string
 
 Image* ImageIO::ReadPGM( std::string fname)
 {
-   int maxIntensity;
+   //int maxIntensity;
    unsigned char *charImage;
    char header [100], *ptr;
 
@@ -296,7 +295,7 @@ Image* ImageIO::ReadPGM( std::string fname)
    if (!ifp)
    {
       cout << "Can't read image: " << fname << endl;
-      return false;
+      return 0;
    }
 
    // read header
@@ -329,7 +328,7 @@ Image* ImageIO::ReadPGM( std::string fname)
    pImage = new Image(width, height, 1);
 
    ifp.getline(header,100,'\n');
-   maxIntensity = strtol(header, &ptr, 0);
+   //maxIntensity = strtol(header, &ptr, 0);
 
    charImage = (unsigned char *) new unsigned char [width * height];
 
@@ -361,7 +360,6 @@ Image* ImageIO::ReadPGM( std::string fname)
 
 Image* ImageIO::ReadPPM( std::string fname)
 {
-   int maxIntensity;
    unsigned char *charImage;
    char header [100], *ptr;
 
@@ -374,7 +372,7 @@ Image* ImageIO::ReadPPM( std::string fname)
    if (!ifp)
    {
       cout << "Can't read image: " << fname << endl;
-      return false;
+      return 0;
    }
 
    // read header
@@ -410,7 +408,7 @@ Image* ImageIO::ReadPPM( std::string fname)
    pImage = new Image(width, height, 3);
 
    ifp.getline(header,100,'\n');
-   maxIntensity = strtol(header, &ptr, 0);
+   //int maxIntensity = strtol(header, &ptr, 0);
 
    charImage = (unsigned char *) new unsigned char [3 * width * height];
 
@@ -419,7 +417,7 @@ Image* ImageIO::ReadPPM( std::string fname)
    if (ifp.fail())
    {
       cout << "Image " << fname << " has wrong size" << endl;
-      return false;
+      return 0;
    }
 
    ifp.close();
