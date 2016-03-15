@@ -27,7 +27,7 @@ public:
    NearestNeighborInterpolator();
    
    /** \brief destructor */
-   ~NearestNeighborInterpolator();
+   virtual ~NearestNeighborInterpolator();
    
    /** \brief Runs interpolation
      * \param pGrid grid in which to interpolate
