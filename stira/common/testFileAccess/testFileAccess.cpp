@@ -18,7 +18,6 @@
 #include <cstdio>
 #include <cstdlib>
 #include <sstream>
-#include <strstream>
 
 using namespace std;
 using namespace stira::common;
