@@ -21,6 +21,8 @@ LIBS += ../imageanalysis/libimageanalysis.a \
   ../../common/common/libcommon.a \
   -lfftw3 \
   -lopencv_highgui \
+  -lopencv_objdetect \
+  -lopencv_imgproc \
   -lopencv_core \
   -luuid \
   -lzip

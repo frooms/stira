@@ -261,8 +261,9 @@ ArrayGrid<T>::ArrayGrid( int width, int height )
       mHeight = height;
       mWidth  = width;
 
-      mpArrayGrid = new T[ height * width ];
-      memset( mpArrayGrid, 0, height * width * sizeof(T));
+      unsigned long arraySize = (unsigned long)(width) * (unsigned long)(height);
+      mpArrayGrid = new T[ arraySize ];
+      memset( mpArrayGrid, 0, arraySize * sizeof(T));
 
       #ifdef DEBUG
          std::cout << "Constructor: New arraygrid pointer " << mpArrayGrid << std::endl << std::flush;

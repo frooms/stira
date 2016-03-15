@@ -93,6 +93,7 @@ public:
    static void DrawDisk( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
 
    static void Plot8CirclePoints( Image* pImage, int xCenter, int yCenter, int x, int y, ColorValue cv );
+
    /** Draws a circle contour of given color in an image
      * \param pImageInOut image to draw on
      * \param myCenterPoint central point of circle to draw
@@ -100,20 +101,20 @@ public:
      * \param newColor color of circle */
    static void DrawCircle( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
 
-   /** Draws a square of given color in an image
+   /** Draws a line of given color in an image
      * \param pImageInOut image to draw on
      * \param xStart x coordinate of start point on line to draw
      * \param xStop  x coordinate of stop point on line to draw
      * \param yStart y coordinate of start point on line to draw
      * \param yStop  y coordinate of stop point on line to draw
-     * \param newColor color of square */
+     * \param newColor color of line */
    static std::vector< common::Point<int> > DrawLine( Image* pImageInOut, int xStart, int xStop, int yStart, int yStop, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
 
-   /** Draws a square of given color in an image
+   /** Draws a line of given color in an image
      * \param pImageInOut image to draw on
      * \param startPoint start point of line to draw
      * \param stopPoint  stop point of line to draw
-     * \param newColor color of square */
+     * \param newColor color of line */
    static std::vector< common::Point<int> > DrawLine( Image* pImageInOut, common::Point<int> startPoint, common::Point<int> stopPoint, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
 
    static void DrawArrow(Image* pImage, common::Point<int> p, common::Point<int> q, ColorValue cv, const float scale = 0.2);

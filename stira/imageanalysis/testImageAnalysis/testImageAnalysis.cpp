@@ -31,6 +31,7 @@
 #include "../imageanalysis/ContourTracing.h"
 #include "../imageanalysis/Thinning.h"
 #include "../imageanalysis/SLIC.h"
+#include "../imageanalysis/hog.h"
 #include "../imageanalysis/FunctionsOpenCV.h"
 #include "../imageanalysis/CompareCurvesInImage.h"
 #include "../imageanalysis/FindMaximalIncludedRectangles.h"
@@ -72,6 +73,41 @@ void TestWSMeyer( Image *pImage )
    ImageIO::Write( pSegmented, std::string("WatershedMeyerRidgesImage.ppm") );
    delete pSegmented;
    delete pGridIn;
+}
+
+//-----------------------------------------------------------------------------------
+
+void TestHOG( Image *pImage )
+{
+    ofstream myfile;
+
+    std::vector<float> descriptorValues;
+
+
+    //myfile.open ("HogOpenCV.txt");   HOG::ComputeHogDescriptorOpenCV( std::string("../../testdata/Lenna.ppm"), descriptorValues);
+    myfile.open ("HogSelf.txt");     HOG::ComputeHogDescriptorTotal( pImage, descriptorValues );
+
+    for (int i = 0; i < descriptorValues.size(); i++)
+    {
+        myfile << descriptorValues[i] << std::endl;
+    }
+    myfile.close();
+
+    std::cout << "After computation of descriptor, " << descriptorValues.size() << std::endl;
+
+    int winWidth = 512;
+    int winHeight = 512;
+    int cellWidth = 8;
+    int cellHeight = 8;
+    double scaleFactor = 0.9;
+    double viz_factor = 2.0;
+    image::Image* pVisual = HOG::VisualizeHogDescriptor( pImage,
+                                                         descriptorValues,
+                                                         winWidth, winHeight,
+                                                         cellWidth, cellHeight,
+                                                         scaleFactor,
+                                                         viz_factor);
+    ImageIO::Write(pVisual, "HogOut.ppm");
 }
 
 //-----------------------------------------------------------------------------------
@@ -266,7 +302,9 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname = "../../testdata/lena512.pgm";
+      //inputname = "../../testdata/lena512.pgm";
+      inputname = "../../testdata/Lenna.ppm";
+      //inputname = "../../testdata/TestSparse2.ppm";
       sigmaSmooth    = 1.0;
    }
    cout << "Running test with input image " << inputname << " sigmaSmooth = " << sigmaSmooth << endl << flush;
@@ -285,10 +323,13 @@ int main(int argc, char *argv[])
    ImageIO::WritePGM( pEdgeGrid, string("CannyOut.pgm") );
    delete pEdgeGrid;
 
-
    /////////////////////////////////////////////////////
    // SLIC
    TestSLIC( pImage );
+
+   /////////////////////////////////////////////////////
+   // HOG: Histogram of Oriented Gradients
+   TestHOG( pImage );
 
    /////////////////////////////////////////////////////
    // WATERSHED
@@ -319,7 +360,7 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // FIND MAXIMAL INCLUDED RECTANGLES
-   TestFindMaximalIncludedRectangles( );
+   //TestFindMaximalIncludedRectangles( );
 
    /////////////////////////////////////////////////////
    // FLOODFILL
