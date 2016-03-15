@@ -53,7 +53,7 @@ private:
 
 public:
    /**  \brief destructor for histogram object */
-   ~FloatHistogram();
+   virtual ~FloatHistogram();
 
    /** \brief Normalizes each band in the current histogram to 1 */
    void Normalize( );

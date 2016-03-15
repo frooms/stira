@@ -87,7 +87,7 @@ public:
    IntHistogram( double binSize, int nrOfBands, int minValue, int maxValue, double lowerFraction=0.01, double upperFraction=0.99 );
 
    /** \brief destructor*/
-   ~IntHistogram();
+   virtual ~IntHistogram();
 
    /** \brief Copy constructor.
      * \param pHistogram histogram from which to initialize this new histogram */

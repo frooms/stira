@@ -116,7 +116,7 @@ protected:
 
    /** \brief destructor
      * only to be called from child classes */
-   ~HistogramMaster();
+   virtual ~HistogramMaster();
 
    /** \brief Initializes member variables and creates and initializes histogram data structure
      * Creation and initialization of the histogram data structure is done by calling CreateInitializedDataStructure,
