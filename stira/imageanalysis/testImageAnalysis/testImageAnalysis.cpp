@@ -87,7 +87,7 @@ void TestHOG( Image *pImage )
     //myfile.open ("HogOpenCV.txt");   HOG::ComputeHogDescriptorOpenCV( std::string("../../testdata/Lenna.ppm"), descriptorValues);
     myfile.open ("HogSelf.txt");     HOG::ComputeHogDescriptorTotal( pImage, descriptorValues );
 
-    for (int i = 0; i < descriptorValues.size(); i++)
+    for (unsigned int i = 0; i < descriptorValues.size(); i++)
     {
         myfile << descriptorValues[i] << std::endl;
     }
