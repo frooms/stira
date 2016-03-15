@@ -110,14 +110,14 @@ void HOG::NormalizeVector( std::vector<float>& inVector )
 {
     float myNorm = 0.0;
 
-    for (int i = 0; i < inVector.size(); i++)
+    for (unsigned int i = 0; i < inVector.size(); i++)
     {
         myNorm += ( inVector[i] * inVector[i] );
     }
 
     myNorm = sqrt(myNorm);
 
-    for (int i = 0; i < inVector.size(); i++)
+    for (unsigned int i = 0; i < inVector.size(); i++)
     {
         inVector[i] /= ( myNorm + 0.001 );
     }
