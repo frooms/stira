@@ -15,8 +15,7 @@ LIBS += ../orientationestimation/liborientationestimation.a \
   -lfftw3 \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 
 POST_TARGETDEPS += ../freemanadelson/libfreemanadelson.a \
   ../pyramid/libpyramid.a \

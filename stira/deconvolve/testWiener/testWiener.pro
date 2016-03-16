@@ -12,8 +12,7 @@ LIBS += ../deconvolve/libdeconvolve.a \
   -lfftw3 \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 
 POST_TARGETDEPS += ../deconvolve/libdeconvolve.a \
   ../../filter/filter/libfilter.a \

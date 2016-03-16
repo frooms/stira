@@ -22,6 +22,5 @@ LIBS += ../imageanalysis/libimageanalysis.a \
   -lfftw3 \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 

@@ -11,8 +11,7 @@ LIBS += ../wavelet/libwavelet.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 
 POST_TARGETDEPS += ../wavelet/libwavelet.a \
   ../../filter/filter/libfilter.a \

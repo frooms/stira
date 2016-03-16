@@ -11,8 +11,7 @@ LIBS += ../bregman/libbregman.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 
 POST_TARGETDEPS += ../bregman/libbregman.a \
   ../../image/tools/libtools.a \

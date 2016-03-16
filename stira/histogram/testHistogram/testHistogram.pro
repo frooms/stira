@@ -15,6 +15,5 @@ LIBS += ../histogram/libhistogram.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 
