@@ -19,17 +19,11 @@ class HOG
 public:
     HOG();
 
-    static void ComputeHogDescriptorOpenCV( std::string fileName, std::vector<float>& descriptorValues);
+    static void ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& descriptorValues, int step_x, int step_y );
 
-    static void ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& descriptorValues );
-
-    static image::Image* VisualizeHogDescriptorSelf( image::Image* pImage, std::vector<float>& descriptorValues,
+    static image::Image* VisualizeHogDescriptor( image::Image* pImage, std::vector<float>& descriptorValues,
                                                      int winWidth, int winHeight, int cellWidth, int cellHeight,
                                                      double scaleFactor, double viz_factor);
-
-    static image::Image* VisualizeHogDescriptorCV( image::Image* pImage, std::vector<float>& descriptorValues,
-                                                   int winWidth, int winHeight, int cellWidth, int cellHeight,
-                                                   double scaleFactor, double viz_factor);
 private:
 
     static std::vector<float> ComputeHogTotalDescriptorSingleCell( image::OrientationGrid* pOrientations, int nrBins, int step_x,  int step_y, int idCellX, int idCellY );

@@ -77,20 +77,18 @@ void TestWSMeyer( Image *pImage )
 
 //-----------------------------------------------------------------------------------
 
-void TestHOG( Image *pImage, std::string fileName )
+void TestHOG( Image *pImage )
 {
+    int cellWidth = 8;
+    int cellHeight = 8;
+    double viz_factor = 1;
+    double scaleFactor = 1.0;
+
     std::vector<float> descriptorValues;
     ofstream myfile;
+    myfile.open ("HogSelf.txt");
 
-    bool usesOpenCV = false;
-    if (usesOpenCV)
-    {
-        myfile.open ("HogOpenCV.txt");   HOG::ComputeHogDescriptorOpenCV( fileName, descriptorValues);
-    }
-    else
-    {
-        myfile.open ("HogSelf.txt");     HOG::ComputeHogDescriptorTotal( pImage, descriptorValues );
-    }
+    HOG::ComputeHogDescriptorTotal( pImage, descriptorValues, cellWidth, cellHeight );
 
     for (unsigned int i = 0; i < descriptorValues.size(); i++)
     {
@@ -100,26 +98,11 @@ void TestHOG( Image *pImage, std::string fileName )
 
     std::cout << "After computation of descriptor, " << descriptorValues.size() << std::endl;
 
-    image::Image* pVisual = 0;
-    int winWidth = 512;
-    int winHeight = 512;
-    int cellWidth = 8;
-    int cellHeight = 8;
-    double viz_factor = 3;
-    if (usesOpenCV)
-    {
-        double scaleFactor = 1.0;
-        pVisual = HOG::VisualizeHogDescriptorCV( pImage, descriptorValues,
-                                                 winWidth, winHeight, cellWidth, cellHeight,
-                                                 scaleFactor, viz_factor);
-    }
-    else
-    {
-        double scaleFactor = 1.0;
-        pVisual = HOG::VisualizeHogDescriptorSelf( pImage, descriptorValues,
-                                                   winWidth, winHeight, cellWidth, cellHeight,
-                                                   scaleFactor, viz_factor);
-    }
+    image::Image* pVisual = HOG::VisualizeHogDescriptor( pImage, descriptorValues,
+                                                         pImage->GetWidth(), pImage->GetHeight(),
+                                                         cellWidth, cellHeight,
+                                                         scaleFactor, viz_factor);
+
     ImageIO::Write(pVisual, "HogOut.ppm");
 }
 
@@ -342,7 +325,7 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // HOG: Histogram of Oriented Gradients
-   TestHOG( pImage, inputname );
+   TestHOG( pImage );
 
    /////////////////////////////////////////////////////
    // WATERSHED
