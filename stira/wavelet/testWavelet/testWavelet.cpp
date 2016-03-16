@@ -239,9 +239,6 @@ int main(int argc, char *argv[])
    {
       fileNamePPM = string("../../testdata/lena512.pgm");
       cout << "File name is " << fileNamePPM << endl << flush;
-
-      //ArrayGrid<double>* pGrid = GridGenerator::GenerateZonePlate ( );
-      //pImage = new Image( pGrid );
    }
    else
    {
