@@ -31,7 +31,7 @@
 #include "../imageanalysis/ContourTracing.h"
 #include "../imageanalysis/Thinning.h"
 #include "../imageanalysis/SLIC.h"
-#include "../imageanalysis/hog.h"
+#include "../imageanalysis/HOG.h"
 #include "../imageanalysis/FunctionsOpenCV.h"
 #include "../imageanalysis/CompareCurvesInImage.h"
 #include "../imageanalysis/FindMaximalIncludedRectangles.h"
@@ -79,16 +79,20 @@ void TestWSMeyer( Image *pImage )
 
 void TestHOG( Image *pImage )
 {
+    int nrBins = 9;
     int cellWidth = 8;
     int cellHeight = 8;
-    double viz_factor = 1;
+    double viz_factor = 3;
     double scaleFactor = 1.0;
 
-    std::vector<float> descriptorValues;
+    std::vector<double> descriptorValues;
     ofstream myfile;
     myfile.open ("HogSelf.txt");
 
-    HOG::ComputeHogDescriptorTotal( pImage, descriptorValues, cellWidth, cellHeight );
+    common::RectangularROI<int> myRoi;
+    HOG myHOG( pImage, myRoi, cellWidth, cellHeight, nrBins);
+
+    myHOG.ComputeHogDescriptor( descriptorValues );
 
     for (unsigned int i = 0; i < descriptorValues.size(); i++)
     {
@@ -98,10 +102,9 @@ void TestHOG( Image *pImage )
 
     std::cout << "After computation of descriptor, " << descriptorValues.size() << std::endl;
 
-    image::Image* pVisual = HOG::VisualizeHogDescriptor( pImage, descriptorValues,
-                                                         pImage->GetWidth(), pImage->GetHeight(),
-                                                         cellWidth, cellHeight,
-                                                         scaleFactor, viz_factor);
+    image::Image* pVisual = myHOG.VisualizeHogDescriptor( descriptorValues,
+                                                          pImage->GetWidth(), pImage->GetHeight(),
+                                                          scaleFactor, viz_factor);
 
     ImageIO::Write(pVisual, "HogOut.ppm");
 }
