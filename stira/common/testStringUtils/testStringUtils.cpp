@@ -173,16 +173,6 @@ void TestStringSplit()
 
 //-------------------------------------------------------------------
 
-void TestRandomString()
-{
-   int nrRandomStrings = 25;
-   int stringLength = 35;
-   for (int i=0; i < nrRandomStrings; i++)
-   {
-      cout << /*"RandomString " << i << " is " <<*/ StringUtils::GenerateRandomString( stringLength ) << endl;
-   }
-}
-
 int main()
 {
    TestConvertStringToNumber();
@@ -190,7 +180,6 @@ int main()
    TestStringAnalyse();
    TestStringUtils();
    TestStringSplit();
-   TestRandomString();
 
    return 0;
 }

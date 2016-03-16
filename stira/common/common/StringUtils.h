@@ -30,23 +30,41 @@ public:
    /** \brief Constructor.*/
    ~StringUtils();
 
+   /** \brief converts integer to std::string
+    *  \param i integer to convert to std::string */
    static std::string ConvertIntegerToString( int i );
 
-   static std::string ConvertFloatToString( float i );
+   /** \brief converts float to std::string
+    *  \param f float to convert to std::string */
+   static std::string ConvertFloatToString( float f );
 
-   static std::string ConvertDoubleToString( double i );
+   /** \brief converts double to std::string
+    *  \param d double to convert to std::string */
+   static std::string ConvertDoubleToString( double d );
 
-   static std::string ConvertBoolToString( bool i );
+   /** \brief converts boolean to std::string
+    *  \param b boolean to convert to std::string */
+   static std::string ConvertBoolToString( bool b );
 
+   /** \brief converts std::string to boolean
+    *  \param inputString std::string to convert to boolean */
    static bool ConvertStringToBoolean( std::string inputString );
 
+   /** \brief converts std::string to integer
+    *  \param inputString std::string to convert to integer */
    static int ConvertStringToInt( std::string inputString );
 
+   /** \brief converts std::string to float
+    *  \param inputString std::string to convert to float */
    static float ConvertStringToFloat( std::string inputString );
 
+   /** \brief converts std::string to double
+    *  \param inputString std::string to convert to double */
    static double ConvertStringToDouble( std::string inputString );
 
-
+   /** \brief extracts file name from a path string, thus removing all until the last slash
+    *  Inherently uses position of last slash, so works only for Unix path names
+    *  \param inputString input string from which to extract file name */
    static std::string ExtractFileName( std::string inputString );
 
    /** \brief extracts the root filename for a file, so removes path and extension
@@ -135,10 +153,6 @@ public:
 
    /** \brief creates a string based on current time to build experiment output folders or files using this string */
    static std::string GetCurrentTimeAsStringID();
-
-   static long int GetCurrentTimeAsInt();
-
-   static std::string GenerateRandomString( int stringLength );
 
 };
 

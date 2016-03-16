@@ -33,11 +33,15 @@ bool from_string(T& t,
   return !(iss >> f >> t).fail();
 }
 
+//-------------------------------------------------------------
+
 
 static const char alphanum[] =
     "0123456789"
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     "abcdefghijklmnopqrstuvwxyz";
+
+//-------------------------------------------------------------
 
 StringUtils::StringUtils()
 {
@@ -49,12 +53,16 @@ StringUtils::~StringUtils()
 {
 }
 
+//-------------------------------------------------------------
+
 std::string StringUtils::ConvertIntegerToString( int i )
 {
    std::stringstream out;
    out << i;
    return out.str();
 }
+
+//-------------------------------------------------------------
 
 std::string StringUtils::ConvertFloatToString( float i )
 {
@@ -63,6 +71,8 @@ std::string StringUtils::ConvertFloatToString( float i )
    return out.str();
 }
 
+//-------------------------------------------------------------
+
 std::string StringUtils::ConvertDoubleToString( double i )
 {
    std::stringstream out;
@@ -70,6 +80,7 @@ std::string StringUtils::ConvertDoubleToString( double i )
    return out.str();
 }
 
+//-------------------------------------------------------------
 
 std::string StringUtils::ConvertBoolToString( bool i )
 {
@@ -487,43 +498,6 @@ std::string StringUtils::GetCurrentTimeAsStringID()
 
    std::string timeOutString = ssTime.str();
    return timeOutString;
-}
-
-//-------------------------------------------------------------
-
-long int StringUtils::GetCurrentTimeAsInt()
-{
-   time_t rawtime;
-   struct tm* ptm;
-
-   time ( &rawtime );
-
-   ptm = localtime ( &rawtime );
-
-   stringstream ssTime;
-   ssTime << (2000 + ptm->tm_year - 100)
-          << std::setw(2) << setfill('0') << ptm->tm_mon + 1
-          << std::setw(2) << setfill('0') << ptm->tm_mday
-          << std::setw(2) << setfill('0') << ptm->tm_hour
-          << std::setw(2) << setfill('0') << ptm->tm_min;
-
-   long int myVal;
-   ssTime >> myVal;
-   return myVal;
-}
-
-//-------------------------------------------------------------
-
-std::string StringUtils::GenerateRandomString( int stringLength )
-{
-   stringstream ss;
-
-   for (int i = 0; i < stringLength; ++i)
-   {
-      ss << alphanum[rand() % (sizeof(alphanum) - 1)];
-   }
-   std::string randomString = ss.str();
-   return randomString;
 }
 
 //-------------------------------------------------------------
