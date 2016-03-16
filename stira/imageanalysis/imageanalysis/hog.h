@@ -7,7 +7,7 @@
 
 namespace stira {
 namespace imageanalysis {
-
+//http://users.utcluj.ro/~raluca/prs/prs_lab_05e.pdf
 
 //Image descriptor based on Histogram of Orientated Gradients for gray-level images. This code
 //was developed for the work: O. Ludwig, D. Delgado, V. Goncalves, and U. Nunes, 'Trainable
@@ -23,12 +23,13 @@ public:
 
     static void ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& descriptorValues );
 
-    static image::Image* VisualizeHogDescriptor( image::Image* pImage,
-                                           std::vector<float>& descriptorValues,
-                                           int winWidth, int winHeight,
-                                           int cellWidth, int cellHeight,
-                                           double scaleFactor,
-                                           double viz_factor);
+    static image::Image* VisualizeHogDescriptorSelf( image::Image* pImage, std::vector<float>& descriptorValues,
+                                                     int winWidth, int winHeight, int cellWidth, int cellHeight,
+                                                     double scaleFactor, double viz_factor);
+
+    static image::Image* VisualizeHogDescriptorCV( image::Image* pImage, std::vector<float>& descriptorValues,
+                                                   int winWidth, int winHeight, int cellWidth, int cellHeight,
+                                                   double scaleFactor, double viz_factor);
 private:
 
     static std::vector<float> ComputeHogTotalDescriptorSingleCell( image::OrientationGrid* pOrientations, int nrBins, int step_x,  int step_y, int idCellX, int idCellY );

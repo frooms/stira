@@ -77,15 +77,20 @@ void TestWSMeyer( Image *pImage )
 
 //-----------------------------------------------------------------------------------
 
-void TestHOG( Image *pImage )
+void TestHOG( Image *pImage, std::string fileName )
 {
+    std::vector<float> descriptorValues;
     ofstream myfile;
 
-    std::vector<float> descriptorValues;
-
-
-    //myfile.open ("HogOpenCV.txt");   HOG::ComputeHogDescriptorOpenCV( std::string("../../testdata/Lenna.ppm"), descriptorValues);
-    myfile.open ("HogSelf.txt");     HOG::ComputeHogDescriptorTotal( pImage, descriptorValues );
+    bool usesOpenCV = false;
+    if (usesOpenCV)
+    {
+        myfile.open ("HogOpenCV.txt");   HOG::ComputeHogDescriptorOpenCV( fileName, descriptorValues);
+    }
+    else
+    {
+        myfile.open ("HogSelf.txt");     HOG::ComputeHogDescriptorTotal( pImage, descriptorValues );
+    }
 
     for (unsigned int i = 0; i < descriptorValues.size(); i++)
     {
@@ -95,18 +100,26 @@ void TestHOG( Image *pImage )
 
     std::cout << "After computation of descriptor, " << descriptorValues.size() << std::endl;
 
+    image::Image* pVisual = 0;
     int winWidth = 512;
     int winHeight = 512;
     int cellWidth = 8;
     int cellHeight = 8;
-    double scaleFactor = 0.9;
-    double viz_factor = 2.0;
-    image::Image* pVisual = HOG::VisualizeHogDescriptor( pImage,
-                                                         descriptorValues,
-                                                         winWidth, winHeight,
-                                                         cellWidth, cellHeight,
-                                                         scaleFactor,
-                                                         viz_factor);
+    double viz_factor = 3;
+    if (usesOpenCV)
+    {
+        double scaleFactor = 1.0;
+        pVisual = HOG::VisualizeHogDescriptorCV( pImage, descriptorValues,
+                                                 winWidth, winHeight, cellWidth, cellHeight,
+                                                 scaleFactor, viz_factor);
+    }
+    else
+    {
+        double scaleFactor = 1.0;
+        pVisual = HOG::VisualizeHogDescriptorSelf( pImage, descriptorValues,
+                                                   winWidth, winHeight, cellWidth, cellHeight,
+                                                   scaleFactor, viz_factor);
+    }
     ImageIO::Write(pVisual, "HogOut.ppm");
 }
 
@@ -302,9 +315,9 @@ int main(int argc, char *argv[])
    }
    else
    {
-      //inputname = "../../testdata/lena512.pgm";
       inputname = "../../testdata/Lenna.ppm";
       //inputname = "../../testdata/TestSparse2.ppm";
+      //inputname = "../../testdata/ZonePlate.ppm";
       sigmaSmooth    = 1.0;
    }
    cout << "Running test with input image " << inputname << " sigmaSmooth = " << sigmaSmooth << endl << flush;
@@ -329,7 +342,7 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // HOG: Histogram of Oriented Gradients
-   TestHOG( pImage );
+   TestHOG( pImage, inputname );
 
    /////////////////////////////////////////////////////
    // WATERSHED
