@@ -435,7 +435,8 @@ bool ColorMapTest()
 int main(int argc, char *argv[])
 {
    const char* fileName;
-   bool allSuccess = true;
+   int nrTestsTotal = 0;
+   int nrTestsSucceeded = 0;
    if (argc == 2)
    {
       fileName = argv[1];
@@ -449,123 +450,135 @@ int main(int argc, char *argv[])
    // 0) Generate synthetic test images test
    /////////////////////////////////////////
    cout << "GenerateSyntheticImagesTest:";
+   nrTestsTotal ++;
    if ( GenerateSyntheticImagesTest() )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    // 1) Image input / output test
    ///////////////////////////////
    cout << "ImageIOTest:";
+   nrTestsTotal ++;
    if ( ImageIOTest() )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    cout << "ImageOpenCvTest:";
+   nrTestsTotal ++;
    if ( ImageOpenCvTest() )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    //cout << "ReadPgmFromZipFileTest:";
+   // nrTestsTotal ++;
    //if ( ReadPgmFromZipFileTest() )
    //{
+   //   nrTestsSucceeded ++;
    //   cout << " \t OK!" << endl << flush;
    //}
    //else
    //{
    //   cout << " \t FAILED!" << endl << flush;
-   //   allSuccess = false;
    //}
 
     // 2) Extract ROI test
    ///////////////////////
    cout << "ExtractROITest:";
+   nrTestsTotal ++;
    if ( ExtractROITest( pInImage ) )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    // 3) add / remove extra border test
    ////////////////////////////////////
    cout << "MirrorCropTest:";
+   nrTestsTotal ++;
    if ( MirrorCropTest( pInImage ) )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    // 4) add gaussian noise test
    /////////////////////////////
    cout << "AddGaussianNoiseTest:";
+   nrTestsTotal ++;
    if ( AddGaussianNoiseTest( pInImage ) )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    // 5) Map image to jet color map
    ////////////////////////////////
    cout << "ColorMapTest:";
+   nrTestsTotal ++;
    if ( ColorMapTest( ) )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
    // 6) Rotate image
    //////////////////
    cout << "RotateTest:";
+   nrTestsTotal ++;
    if ( RotateTest( pInImage ) )
    {
+      nrTestsSucceeded ++;
       cout << " \t OK!" << endl << flush;
    }
    else
    {
       cout << " \t FAILED!" << endl << flush;
-      allSuccess = false;
    }
 
+   //nrTestsTotal ++;
    SepiaToneTest( pInImage );
 
    // EXPERIMENTAL...
    //////////////////
 
+   //nrTestsTotal ++;
    GenerateFractalTest();
 
+   cout << " SUMMARY: " << nrTestsSucceeded << "/" << nrTestsTotal << " succeeded." << endl;
    delete pInImage;
    return EXIT_SUCCESS;
 }
