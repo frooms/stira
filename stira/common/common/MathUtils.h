@@ -329,6 +329,10 @@ public:
      * \return array of (2*maxDelay) cross-correlation values */
    static double* ComputeCrossCorrelation( double* x, double* y, int nrSamples, int maxDelay );
 
+   /** \brief normalizes all elements of the vector passed as argument, overwriting the original values
+     * \param inVector vector to normalize  */
+   static void NormalizeVector( std::vector<double>& inVector );
+
 };
 }
 }

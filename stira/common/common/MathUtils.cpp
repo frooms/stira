@@ -645,6 +645,25 @@ double* MathUtils::ComputeCrossCorrelation( double* x, double* y, int nrSamples,
    return pCrossCorrelation;
 }
 
+//--------------------------------------------------------------------------------------------------------------------------
+
+void MathUtils::NormalizeVector( std::vector<double>& inVector )
+{
+    float myNorm = 0.0;
+
+    for (unsigned int i = 0; i < inVector.size(); i++)
+    {
+        myNorm += ( inVector[i] * inVector[i] );
+    }
+
+    myNorm = sqrt(myNorm);
+
+    for (unsigned int i = 0; i < inVector.size(); i++)
+    {
+        inVector[i] /= ( myNorm + 0.001 );
+    }
+}
+
 //======================================================================================================
 
 }
