@@ -93,6 +93,13 @@ public:
      * \param y the y coordinate */
    double GetMagnitude(int x, int y);
 
+   /** \brief Gets a vector with the orientations within the specified ROI
+     * \param xMin minimum x coordinate of the ROI
+     * \param yMin minimum y coordinate of the ROI
+     * \param xMax maximum x coordinate of the ROI
+     * \param yMax maximum y coordinate of the ROI */
+   std::vector<image::LocalOrientation> GetOrientationVector( int xMin, int yMin, int xMax, int yMax);
+
    /** \brief Gets the minimum and maximum magnitude of the features in the grid
      * \param mmin (output) the minimum magnitude
      * \param mmax (output) the maximum magnitude */

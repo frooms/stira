@@ -129,6 +129,21 @@ bool OrientationGrid::GetMinMaxMagnitude( double& mmin, double& mmax )
    return true;
 }
 
+//--------------------------------------------------------------------------------------------------------------------------
+
+std::vector<image::LocalOrientation> OrientationGrid::GetOrientationVector( int xMin, int yMin, int xMax, int yMax )
+{
+    std::vector<image::LocalOrientation> vValues;
+    for ( int y = yMin; y <= yMax; y++ )
+    {
+        for (int x = xMin; x <= xMax; x++)
+        {
+           vValues.push_back( *(this->GetOrientation(x, y)) );
+        }
+    }
+    return vValues;
+}
+
 //=================================================================================
 
 ArrayGrid<double>* OrientationGrid::ExtractOrientationGrid()
