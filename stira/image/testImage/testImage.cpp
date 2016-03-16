@@ -487,18 +487,6 @@ int main(int argc, char *argv[])
       cout << " \t FAILED!" << endl << flush;
    }
 
-   //cout << "ReadPgmFromZipFileTest:";
-   // nrTestsTotal ++;
-   //if ( ReadPgmFromZipFileTest() )
-   //{
-   //   nrTestsSucceeded ++;
-   //   cout << " \t OK!" << endl << flush;
-   //}
-   //else
-   //{
-   //   cout << " \t FAILED!" << endl << flush;
-   //}
-
     // 2) Extract ROI test
    ///////////////////////
    cout << "ExtractROITest:";
