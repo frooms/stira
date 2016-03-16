@@ -67,10 +67,6 @@ public:
      * \param fname name of the file to read from */
    static ArrayGrid<int>* ReadPGMasInt( std::string fname);
 
-   /** \brief reads an image as a grid of integers
-     * \param fname name of the file to read from */
-   static ArrayGrid<int>* ReadPGMfromZip( std::string zipArchiveName, std::string imageNameInZip );
-
 private:
    /** \brief determines whether file is raw PPM or PGM and then reads image with appropriate method from file
      * \param fname name of the file to read from */

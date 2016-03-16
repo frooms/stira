@@ -15,18 +15,14 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <strstream>
+#include <sstream>
 
 #include <cstdlib>
-#include <zip.h>
 
 #include "../../common/common/StringUtils.h"
 #include "../../common/common/MathUtils.h"
 #include "NumberGridTools.h"
 #include "GridConverter.h"
-
-//#define DEBUG_OUT_BEFORE
-//#define DEBUG_OUT_AFTER
 
 using namespace std;
 namespace stira {
@@ -200,86 +196,6 @@ ArrayGrid<int>* ImageIO::ReadPGMasInt( std::string fname)
 
 //------------------------------------------------------------------------------------------
 
-ArrayGrid<int>* ImageIO::ReadPGMfromZip( std::string zipArchiveName, std::string imageNameInZip )
-{
-   //Open the ZIP archive
-   int err = 0;
-   zip *pZipFile = zip_open(zipArchiveName.c_str(), 0, &err);
-
-   //Search for the file of given name
-   const char *pNamePGM = imageNameInZip.c_str();
-   struct zip_stat stPGM;
-   zip_stat_init(&stPGM);
-   zip_stat(pZipFile, pNamePGM, 0, &stPGM);
-
-   //Alloc memory for its uncompressed contents
-   char *pContentsPGM = new char[stPGM.size];
-
-   //Read the compressed file
-   zip_file *fPGM = zip_fopen(pZipFile, "CropOrig-2033.pgm", 0);
-   zip_fread(fPGM, pContentsPGM, stPGM.size);
-
-   std::istrstream ifp(pContentsPGM, stPGM.size);
-   int maxIntensity;
-   unsigned char *charImage;
-   char header [100], *ptr;
-
-   ifp.getline(header,100,'\n');
-   if (    (header[0] != 80)     /* ASCII code for 'P' */
-        || (header[1] != 53)     /* ASCII code for '5' */
-      )
-   {
-      cout << "Image is not PGM" << endl;
-      exit(1);
-   }
-
-   ifp.getline(header,100,'\n');
-   while(header[0]=='#')
-   {
-      ifp.getline(header,100,'\n');
-   }
-
-   int width  = strtol(header,&ptr,0);
-   int height = atoi(ptr);
-   cout << "Width = " << width << " and height = " << height << endl;
-
-   ArrayGrid<int>* pGrid = new ArrayGrid<int>( width, height );
-
-
-   ifp.getline(header,100,'\n');
-   maxIntensity = strtol(header, &ptr, 0);
-   cout << "maxIntensity = " << maxIntensity << endl;
-
-   charImage = (unsigned char *) new unsigned char [width * height];
-
-   ifp.read( reinterpret_cast<char *>(charImage), (width * height)*sizeof(unsigned char));
-
-   if (ifp.fail())
-   {
-      cout << "Image has wrong size" << endl;
-      return 0;
-   }
-
-   // Convert the unsigned characters to integers
-   for(int y = 0; y<height; y++)
-   {
-      for(int x = 0; x<width; x++)
-      {
-         pGrid->SetValue(x, y, (int)(charImage[x + y * width]));
-      }
-   }
-
-   delete [] charImage;
-   zip_fclose(fPGM);
-
-   //And close the archive
-   zip_close(pZipFile);
-
-   return pGrid;
-}
-
-//------------------------------------------------------------------------------------------
-
 Image* ImageIO::ReadPGM( std::string fname)
 {
    //int maxIntensity;
@@ -308,8 +224,8 @@ Image* ImageIO::ReadPGM( std::string fname)
    // 0054 = 6    bin PPM
 
    ifp.getline(header,100,'\n');
-   if (    (header[0] != 80)     /* ASCII code for 'P' */
-        || (header[1] != 53)     /* ASCII code for '5' */
+   if (    (header[0] != 80)     // ASCII code for 'P'
+        || (header[1] != 53)     // ASCII code for '5'
       )
    {
       cout << "Image " << fname << " is not PGM" << endl;
@@ -328,7 +244,6 @@ Image* ImageIO::ReadPGM( std::string fname)
    pImage = new Image(width, height, 1);
 
    ifp.getline(header,100,'\n');
-   //maxIntensity = strtol(header, &ptr, 0);
 
    charImage = (unsigned char *) new unsigned char [width * height];
 
@@ -806,7 +721,7 @@ bool ImageIO::WritePPM(Image* pImage, std::string fname, outputType outtype)
 //------------------------------------------------------------------------------------------
 
 // 2.0 OTHER FORMATS THROUGH OpenCV
-//////////////////////////////////////------------------------------------------------------------------------------------------------------------
+/////////////////////////////////////
 
 double ImageIO::GetOpenCvGrayValue(IplImage* pIplImage, int x, int y )
 {

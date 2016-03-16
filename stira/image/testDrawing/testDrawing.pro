@@ -7,8 +7,7 @@ LIBS += ../tools/libtools.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
   -lopencv_core \
-  -luuid \
-  -lzip
+  -luuid
 
 POST_TARGETDEPS += ../tools/libtools.a \
   ../datastructures/libdatastructures.a \
