@@ -120,11 +120,18 @@ bool CriticallySubsampledTransform::Reconstruct( double threshold )
             int halfY = y/2;
 
             double x00 = pRecursiveInput->GetValue( halfX, halfY );
-            
+
             double x01 = mpPyramid->GetRecursiveScale( mCurrentScale )->GetOrientedBand( 0 )->GetValue( halfX, halfY );
             double x10 = mpPyramid->GetRecursiveScale( mCurrentScale )->GetOrientedBand( 1 )->GetValue( halfX, halfY );
             double x11 = mpPyramid->GetRecursiveScale( mCurrentScale )->GetOrientedBand( 2 )->GetValue( halfX, halfY );
             
+            if (threshold > 0.0)
+            {
+                if ( fabs(x01) < threshold ) { x01 = 0.0; }
+                if ( fabs(x10) < threshold ) { x10 = 0.0; }
+                if ( fabs(x11) < threshold ) { x11 = 0.0; }
+            }
+
             pLLGrid->SetValue( x  , y  , (x00 + x01 + x10 + x11) / 2.0 );
             pLLGrid->SetValue( x  , y+1, (x00 + x01 - x10 - x11) / 2.0 );
             pLLGrid->SetValue( x+1, y  , (x00 - x01 + x10 - x11) / 2.0 );
