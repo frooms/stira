@@ -1,4 +1,4 @@
-#include "hog.h"
+#include "HOG.h"
 #include <iostream>
 #include "../../image/tools/DrawImageTools.h"
 #include "../../image/tools/ImageIO.h"
@@ -7,23 +7,30 @@
 namespace stira {
 namespace imageanalysis {
 
-HOG::HOG() {}
+HOG::HOG( image::Image* pImage, common::RectangularROI<int> myRoi, int cellWidth, int cellHeight, int nrBins )
+{
+    mpImage = pImage;
+    mRoi = myRoi;
+    mCellWidth = cellWidth;
+    mCellHeight = cellHeight;
+    mNrBins = nrBins;
+}
 
 //--------------------------------------------------------------------------------------------------------------------------
 
-image::OrientationGrid* HOG::ComputeOrientations( image::Image* pImage )
+image::OrientationGrid* HOG::ComputeOrientations( )
 {
     stira::filter::SeparableFilter sf;
-    int width = pImage->GetWidth();
-    int height = pImage->GetHeight();
+    int width  = mpImage->GetWidth();
+    int height = mpImage->GetHeight();
 
     image::ArrayGrid<double>* pGradientX = new image::ArrayGrid<double>( width, height );
     image::ArrayGrid<double>* pGradientY = new image::ArrayGrid<double>( width, height );
 
     double pHX[ 3 ] = { -1.0, 0.0, 1.0 };
 
-    sf.SeparableFilter::RunRow(    pImage->GetBands()[0], pGradientX, pHX, 3 );
-    sf.SeparableFilter::RunColumn( pImage->GetBands()[0], pGradientY, pHX, 3 );
+    sf.SeparableFilter::RunRow(    mpImage->GetBands()[0], pGradientX, pHX, 3 );
+    sf.SeparableFilter::RunColumn( mpImage->GetBands()[0], pGradientY, pHX, 3 );
 
     image::OrientationGrid* pOrientationGrid = new image::OrientationGrid(width, height);
 
@@ -52,46 +59,12 @@ image::OrientationGrid* HOG::ComputeOrientations( image::Image* pImage )
 
 //--------------------------------------------------------------------------------------------------------------------------
 
-std::vector<image::LocalOrientation> HOG::GetOrientationVector(image::OrientationGrid* pGrid, int xMin, int yMin, int xMax, int yMax)
+std::vector<double> HOG::ComputeHogDescriptorSingleCell( image::OrientationGrid* pOrientations, int idCellX, int idCellY )
 {
-    std::vector<image::LocalOrientation> vValues;
-    for ( int y = yMin; y <= yMax; y++ )
-    {
-        for (int x = xMin; x <= xMax; x++)
-        {
-           vValues.push_back( *(pGrid->GetOrientation(x, y)) );
-        }
-    }
-    return vValues;
-}
-
-//--------------------------------------------------------------------------------------------------------------------------
-
-void HOG::NormalizeVector( std::vector<float>& inVector )
-{
-    float myNorm = 0.0;
-
-    for (unsigned int i = 0; i < inVector.size(); i++)
-    {
-        myNorm += ( inVector[i] * inVector[i] );
-    }
-
-    myNorm = sqrt(myNorm);
-
-    for (unsigned int i = 0; i < inVector.size(); i++)
-    {
-        inVector[i] /= ( myNorm + 0.001 );
-    }
-}
-
-//--------------------------------------------------------------------------------------------------------------------------
-
-std::vector<float> HOG::ComputeHogTotalDescriptorSingleCell( image::OrientationGrid* pOrientations, int nrBins,  int step_x,  int step_y, int idCellX, int idCellY )
-{
-    std::vector<float> H2 = std::vector<float>( nrBins, 0.0 );
-    std::vector<image::LocalOrientation> vOrientations = GetOrientationVector( pOrientations, idCellX * step_x, idCellY * step_y, (idCellX + 1) * step_x - 1, (idCellY + 1) * step_y - 1 );
+    std::vector<double> H2 = std::vector<double>( mNrBins, 0.0 );
+    std::vector<image::LocalOrientation> vOrientations = pOrientations->GetOrientationVector( idCellX * mCellWidth, idCellY * mCellHeight, (idCellX + 1) * mCellWidth - 1, (idCellY + 1) * mCellHeight - 1 );
     int K = vOrientations.size();
-    double angleStep = M_PI / nrBins;
+    double angleStep = M_PI / mNrBins;
 
     // assembling the histogram with 9 bins (range of 20 degrees per bin)
     int bin=0;
@@ -113,28 +86,22 @@ std::vector<float> HOG::ComputeHogTotalDescriptorSingleCell( image::OrientationG
 
 //--------------------------------------------------------------------------------------------------------------------------
 
-// Image descriptor based on Histogram of Orientated Gradients for gray-level images. This code
-// was developed for the work: O. Ludwig, D. Delgado, V. Goncalves, and U. Nunes, 'Trainable
-// Classifier-Fusion Schemes: An Application To Pedestrian Detection,' In: 12th International IEEE
-// Conference On Intelligent Transportation Systems, 2009, St. Louis, 2009. V. 1. P. 432-437. In
-// case of publication with this code, please cite the paper above.
-void HOG::ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& descriptorValues, int step_x, int step_y )
+void HOG::ComputeHogDescriptor( std::vector<double>& descriptorValues )
 {
-    int nrCellsX = pImage->GetWidth() / step_x;   //set here the number of HOG windows per bound box
-    int nrCellsY = pImage->GetHeight() / step_y;
-    int nrBins = 9;        //set here the number of histogram bins
+    int nrCellsX = mpImage->GetWidth()  / mCellWidth;   //set here the number of HOG windows per bound box
+    int nrCellsY = mpImage->GetHeight() / mCellHeight;
 
-    image::OrientationGrid* pOrientations = ComputeOrientations( pImage );
+    image::OrientationGrid* pOrientations = ComputeOrientations( );
 
     for (int idCellY = 0; idCellY < nrCellsY-1; idCellY++)
     {
         for (int idCellX = 0; idCellX < nrCellsX-1; idCellX++ )
         {
             // compute gradient histogram per cell in this block
-            std::vector<float> H2_cell0 = ComputeHogTotalDescriptorSingleCell( pOrientations, nrBins, step_x, step_y, idCellX,   idCellY );
-            std::vector<float> H2_cell1 = ComputeHogTotalDescriptorSingleCell( pOrientations, nrBins, step_x, step_y, idCellX,   idCellY+1 );
-            std::vector<float> H2_cell2 = ComputeHogTotalDescriptorSingleCell( pOrientations, nrBins, step_x, step_y, idCellX+1, idCellY );
-            std::vector<float> H2_cell3 = ComputeHogTotalDescriptorSingleCell( pOrientations, nrBins, step_x, step_y, idCellX+1, idCellY+1 );
+            std::vector<double> H2_cell0 = ComputeHogDescriptorSingleCell( pOrientations, idCellX,   idCellY );
+            std::vector<double> H2_cell1 = ComputeHogDescriptorSingleCell( pOrientations, idCellX,   idCellY+1 );
+            std::vector<double> H2_cell2 = ComputeHogDescriptorSingleCell( pOrientations, idCellX+1, idCellY );
+            std::vector<double> H2_cell3 = ComputeHogDescriptorSingleCell( pOrientations, idCellX+1, idCellY+1 );
 
             // concatenate cell gradient histograms into a block
             H2_cell0.insert( H2_cell0.end(), H2_cell1.begin(), H2_cell1.end() );
@@ -142,7 +109,7 @@ void HOG::ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& d
             H2_cell0.insert( H2_cell0.end(), H2_cell3.begin(), H2_cell3.end() );
 
             // normalize the concatenated vector
-            NormalizeVector( H2_cell0 );
+            common::MathUtils::NormalizeVector( H2_cell0 );
 
             descriptorValues.insert( descriptorValues.end(), H2_cell0.begin(), H2_cell0.end() );
         }
@@ -151,36 +118,32 @@ void HOG::ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& d
 }
 
 //--------------------------------------------------------------------------------------------------------------------------
-
-//http://www.juergenwiki.de/work/wiki/doku.php?id=public:hog_descriptor_computation_and_visualization
-image::Image* HOG::VisualizeHogDescriptor( image::Image* pImage,
-                                           std::vector<float>& descriptorValues,
+\
+image::Image* HOG::VisualizeHogDescriptor( std::vector<double>& descriptorValues,
                                            int winWidth, int winHeight,
-                                           int cellWidth, int cellHeight,
                                            double scaleFactor, double viz_factor )
 {
-     image::Image* pVisualImage = pImage->Clone();
-     int gradientBinSize = 9;
+     image::Image* pVisualImage = mpImage->Clone();
 
      // dividing 180° into 9 bins, how large (in rad) is one bin?
-     float radRangeForOneBin = M_PI / (float)gradientBinSize;
+     double radRangeForOneBin = M_PI / (double)(mNrBins);
 
      // prepare data structure: 9 orientation / gradient strenghts for each cell
-     int cells_in_x_dir = winWidth / cellWidth;
-     int cells_in_y_dir = winHeight / cellHeight;
+     int cells_in_x_dir = winWidth  / mCellWidth;
+     int cells_in_y_dir = winHeight / mCellHeight;
 
-     float*** gradientStrengths = new float**[cells_in_y_dir];
+     double*** gradientStrengths = new double**[cells_in_y_dir];
      int** cellUpdateCounter   = new int*[cells_in_y_dir];
      for (int y=0; y<cells_in_y_dir; y++)
      {
-         gradientStrengths[y] = new float*[cells_in_x_dir];
+         gradientStrengths[y] = new double*[cells_in_x_dir];
          cellUpdateCounter[y] = new int[cells_in_x_dir];
          for (int x=0; x<cells_in_x_dir; x++)
          {
-             gradientStrengths[y][x] = new float[gradientBinSize];
+             gradientStrengths[y][x] = new double[mNrBins];
              cellUpdateCounter[y][x] = 0;
 
-             for (int bin=0; bin<gradientBinSize; bin++)
+             for (int bin = 0; bin < mNrBins; bin++)
                  gradientStrengths[y][x][bin] = 0.0;
          }
      }
@@ -211,7 +174,7 @@ image::Image* HOG::VisualizeHogDescriptor( image::Image* pImage,
                      celly++;
                  }
 
-                 for (int bin=0; bin<gradientBinSize; bin++)
+                 for (int bin = 0; bin < mNrBins; bin++)
                  {
                      float gradientStrength = descriptorValues[ descriptorDataIdx ];
                      descriptorDataIdx++;
@@ -229,14 +192,14 @@ image::Image* HOG::VisualizeHogDescriptor( image::Image* pImage,
      } // for (all block y pos)
 
      // compute average gradient strengths
-     for (int celly=0; celly<cells_in_y_dir; celly++)
+     for (int celly = 0; celly < cells_in_y_dir; celly++)
      {
-         for (int cellx=0; cellx<cells_in_x_dir; cellx++)
+         for (int cellx = 0; cellx < cells_in_x_dir; cellx++)
          {
-             float NrUpdatesForThisCell = (float)cellUpdateCounter[celly][cellx];
+             double NrUpdatesForThisCell = (double)cellUpdateCounter[celly][cellx];
 
              // compute average gradient strenghts for each gradient bin direction
-             for (int bin=0; bin<gradientBinSize; bin++)
+             for (int bin = 0; bin < mNrBins; bin++)
              {
                  gradientStrengths[celly][cellx][bin] /= NrUpdatesForThisCell;
              }
@@ -249,24 +212,24 @@ image::Image* HOG::VisualizeHogDescriptor( image::Image* pImage,
          for (int cellx = 0; cellx < cells_in_x_dir; cellx++)
          {
              // draw cell rectangles
-             int drawX = cellx * cellWidth;
-             int drawY = celly * cellHeight;
+             int drawX = cellx * mCellWidth;
+             int drawY = celly * mCellHeight;
 
-             int mx = drawX + cellWidth/2;
-             int my = drawY + cellHeight/2;
+             int mx = drawX + mCellWidth  / 2;
+             int my = drawY + mCellHeight / 2;
 
              image::DrawImageTools::DrawRectangle( pVisualImage,
                                                    common::Point<int>( drawX * scaleFactor,
                                                                        drawY * scaleFactor),
-                                                   common::Point<int>( (drawX + cellWidth)  * scaleFactor,
-                                                                       (drawY + cellHeight) * scaleFactor),
+                                                   common::Point<int>( (drawX + mCellWidth)  * scaleFactor,
+                                                                       (drawY + mCellHeight) * scaleFactor),
                                                    image::ColorValue(100,100,100),
                                                    false);
 
              // draw in each cell all 9 gradient strengths
-             for (int bin=0; bin<gradientBinSize; bin++)
+             for (int bin = 0; bin < mNrBins; bin++)
              {
-                 float currentGradStrength = gradientStrengths[celly][cellx][bin];
+                 double currentGradStrength = gradientStrengths[celly][cellx][bin];
 
                  // no line to draw?
                  if (currentGradStrength < 0.01 )
@@ -275,19 +238,18 @@ image::Image* HOG::VisualizeHogDescriptor( image::Image* pImage,
                  }
                  else
                  {
-                     float currRad = bin * radRangeForOneBin + radRangeForOneBin/2;
+                     double currRad = bin * radRangeForOneBin + radRangeForOneBin/2;
 
-                     float dirVecX = cos( currRad );
-                     float dirVecY = -sin( currRad );
-                     float maxVecLen = cellWidth/2;
-                     float scale = viz_factor; // just a visual_imagealization scale,
-                                               // to see the lines better
+                     double dirVecX = cos( currRad );
+                     double dirVecY = -sin( currRad );
+                     double maxVecLen = mCellWidth / 2.0;
+                     double scale = viz_factor; // just a visualization scale, to see the lines better
 
                      // compute line coordinates
-                     float x1 = mx - dirVecX * currentGradStrength * maxVecLen * scale;
-                     float y1 = my - dirVecY * currentGradStrength * maxVecLen * scale;
-                     float x2 = mx + dirVecX * currentGradStrength * maxVecLen * scale;
-                     float y2 = my + dirVecY * currentGradStrength * maxVecLen * scale;
+                     double x1 = mx - dirVecX * currentGradStrength * maxVecLen * scale;
+                     double y1 = my - dirVecY * currentGradStrength * maxVecLen * scale;
+                     double x2 = mx + dirVecX * currentGradStrength * maxVecLen * scale;
+                     double y2 = my + dirVecY * currentGradStrength * maxVecLen * scale;
 
                      // draw gradient visual_imagealization
                      image::DrawImageTools::DrawLine( pVisualImage,
@@ -302,14 +264,14 @@ image::Image* HOG::VisualizeHogDescriptor( image::Image* pImage,
      } // for (celly)
 
      // don't forget to free memory allocated by helper data structures!
-     for (int y=0; y<cells_in_y_dir; y++)
+     for (int y = 0; y < cells_in_y_dir; y++)
      {
-       for (int x=0; x<cells_in_x_dir; x++)
-       {
-            delete[] gradientStrengths[y][x];
-       }
-       delete[] gradientStrengths[y];
-       delete[] cellUpdateCounter[y];
+        for (int x=0; x<cells_in_x_dir; x++)
+        {
+           delete[] gradientStrengths[y][x];
+        }
+        delete[] gradientStrengths[y];
+        delete[] cellUpdateCounter[y];
      }
      delete[] gradientStrengths;
      delete[] cellUpdateCounter;

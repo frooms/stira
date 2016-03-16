@@ -2,36 +2,66 @@
 #define STIRA_IMAGEANALYSIS_HOG_H
 
 #include <vector>
+#include "../../common/common/RectangularROI.h"
 #include "../../image/datastructures/Image.h"
 #include "../../image/datastructures/OrientationGrid.h"
 
 namespace stira {
 namespace imageanalysis {
-//http://users.utcluj.ro/~raluca/prs/prs_lab_05e.pdf
 
-//Image descriptor based on Histogram of Orientated Gradients for gray-level images. This code
-//was developed for the work: O. Ludwig, D. Delgado, V. Goncalves, and U. Nunes, 'Trainable
-//Classifier-Fusion Schemes: An Application To Pedestrian Detection,' In: 12th International IEEE
-//Conference On Intelligent Transportation Systems, 2009, St. Louis, 2009. V. 1. P. 432-437. In
-//case of publication with this code, please cite the paper above.
+/** \brief Class to compute Image descriptor based on Histogram of Orientated Gradients (HOG) for gray-level images
+  * References: - https://software.intel.com/en-us/node/529070
+  *             - http://stackoverflow.com/questions/32417531/hog-what-is-done-in-the-contrast-normalization-step
+  */
 class HOG
 {
 public:
-    HOG();
 
-    static void ComputeHogDescriptorTotal( image::Image* pImage, std::vector<float>& descriptorValues, int step_x, int step_y );
+    /** \brief constructor
+      * \param pImage input image
+      * \param myRoi Region of Interest to compute descriptor for (currently not used; HOG descriptor is computed for whole image)
+      * \param cellWidth width of single cell in HOG
+      * \param cellHeight height of single cell in HOG
+      * \param nrBins number of bins for orientation histogram in single cell ;*/
+    HOG( image::Image* pImage, common::RectangularROI<int> myRoi, int cellWidth, int cellHeight, int nrBins );
 
-    static image::Image* VisualizeHogDescriptor( image::Image* pImage, std::vector<float>& descriptorValues,
-                                                     int winWidth, int winHeight, int cellWidth, int cellHeight,
-                                                     double scaleFactor, double viz_factor);
+    /** \brief computes the HOG descriptor for the given ROI image
+      *
+      * \param descriptorValues output vector containing the output descriptor values
+      */
+    void ComputeHogDescriptor( std::vector<double>& descriptorValues );
+
+    /** \brief visualization of HOG descriptor method
+      *
+      * \param descriptorValues vector containing the descriptor values to be visualized
+      * \param winWidth width of window to be visualized
+      * \param winHeight height of window to be visualized
+      * \param scaleFactor factor to scale whole visualization grid
+      * \param viz_factor factor to stretch the line of the HOG per cell with for easier visualization
+      */
+    image::Image* VisualizeHogDescriptor(        std::vector<double>& descriptorValues,
+                                                 int winWidth, int winHeight,
+                                                 double scaleFactor, double viz_factor);
 private:
 
-    static std::vector<float> ComputeHogTotalDescriptorSingleCell( image::OrientationGrid* pOrientations, int nrBins, int step_x,  int step_y, int idCellX, int idCellY );
-    static void NormalizeVector( std::vector<float>& inVector );
-    static std::vector<image::LocalOrientation> GetOrientationVector( image::OrientationGrid* pGrid, int xMin, int yMin, int xMax, int yMax);
+    /** \brief computes the HOG descriptor for a single cell
+      *
+      * \param pOrientations grid containing gradient angles and magnitudes for whole image
+      * \param idCellX counter of current cell in x direction
+      * \param idCellY counter of current cell in y direction
+      */
+    std::vector<double> ComputeHogDescriptorSingleCell( image::OrientationGrid* pOrientations, int idCellX, int idCellY );
 
-    static image::OrientationGrid* ComputeOrientations( image::Image* pImage );
+    /** \brief computes angles and magnitudes of image gradients
+      * \return grid with gradient magnitude and angle for all image locations
+      */
+    image::OrientationGrid* ComputeOrientations( );
 
+    image::Image* mpImage;   ///< input image
+    common::RectangularROI<int> mRoi;   ///< rectangular ROI (currently unused; HOG descriptor is computed for whole image)
+    int mCellWidth;   ///< width of a singkle cell
+    int mCellHeight;   ///< height of a single cell
+    int mNrBins;   ///< number of bins to quantize the orientation histogram in
 };
 }
 }
