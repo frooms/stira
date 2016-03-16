@@ -68,7 +68,7 @@ double HistogramTools::MatchHistogramValue( double inValue,
 
    for (int i = 0; i < histogramSize; i++)
    {
-      double refValue = fhReferenceCumulativeHistogram->GetBinValue( 0, i );
+      //double refValue = fhReferenceCumulativeHistogram->GetBinValue( 0, i );
       if ( fhReferenceCumulativeHistogram->GetBinValue( 0, i ) >= (inCumulativeValue-0.5) )
       {
          return MathUtils::ClipValue(i, 0, 255);
