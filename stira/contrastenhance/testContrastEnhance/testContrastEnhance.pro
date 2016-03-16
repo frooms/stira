@@ -12,8 +12,7 @@ LIBS += ../contrastenhance/libcontrastenhance.a \
   ../../common/common/libcommon.a \
   -lfftw3 \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../contrastenhance/libcontrastenhance.a \
   ../../filter/filter/libfilter.a \

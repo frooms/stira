@@ -15,8 +15,7 @@ LIBS += ../../steerable/freemanadelson/libfreemanadelson.a \
   ../../common/common/libcommon.a \
   -lfftw3 \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../pyramidapplications/libpyramidapplications.a \
   ../../steerable/orientationestimation/liborientationestimation.a \

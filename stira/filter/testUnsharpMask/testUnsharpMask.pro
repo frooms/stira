@@ -11,8 +11,7 @@ LIBS += ../filter/libfilter.a \
   ../../common/common/libcommon.a \
   -lfftw3 \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../../common/common/libcommon.a \
   ../../image/tools/libtools.a \

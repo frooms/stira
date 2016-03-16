@@ -14,6 +14,5 @@ LIBS += ../diffusion/libdiffusion.a \
   ../../image/color/libcolor.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 

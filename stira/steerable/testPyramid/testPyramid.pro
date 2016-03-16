@@ -14,8 +14,7 @@ LIBS += ../orientationestimation/liborientationestimation.a \
   ../../common/common/libcommon.a \
   -lfftw3 \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../freemanadelson/libfreemanadelson.a \
   ../pyramid/libpyramid.a \

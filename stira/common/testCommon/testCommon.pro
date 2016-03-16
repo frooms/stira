@@ -4,8 +4,7 @@ SOURCES += \
 TEMPLATE = app
 
 LIBS += ../common/libcommon.a \
-    -lopencv_core \
-    -lzip
+    -lopencv_core
 
 POST_TARGETDEPS += ../common/libcommon.a
 

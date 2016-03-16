@@ -5,7 +5,6 @@ CONFIG -= qt
 SOURCES += \
     testStringUtils.cpp
 
-LIBS += ../common/libcommon.a \
-        -luuid
+LIBS += ../common/libcommon.a
 
 POST_TARGETDEPS += ../common/libcommon.a

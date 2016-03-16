@@ -140,10 +140,6 @@ public:
 
    static std::string GenerateRandomString( int stringLength );
 
-   static std::string GenerateUUIDString( );
-
-   static bool IsSameUUIDString( std::string stringUUID1, std::string stringUUID2 );
-
 };
 
 }

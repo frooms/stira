@@ -18,7 +18,6 @@
 #include <sstream>
 #include <ctime>
 #include <cctype>
-#include <uuid/uuid.h>
 
 using namespace std;
 
@@ -529,37 +528,6 @@ std::string StringUtils::GenerateRandomString( int stringLength )
 
 //-------------------------------------------------------------
 
-std::string StringUtils::GenerateUUIDString( )
-{
-   uuid_t outUUID;
-   uuid_generate( outUUID );
-   std::string stringUUID;
-   stringstream ss;
-   for (int i =0; i < 16; i++)
-   {
-      ss << outUUID[i];
-   }
-   stringUUID = ss.str();
-   return stringUUID;
-}
-
-//-------------------------------------------------------------
-
-bool StringUtils::IsSameUUIDString( std::string stringUUID1, std::string stringUUID2 )
-{
-   int compareID = stringUUID1.compare(stringUUID2);
-
-   if (compareID == 0)
-   {
-      return true;
-   }
-   else
-   {
-      return false;
-   }
-}
-
-//-------------------------------------------------------------
 
 }
 }

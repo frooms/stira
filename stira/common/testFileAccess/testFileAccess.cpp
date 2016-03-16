@@ -64,33 +64,6 @@ void TestFileExists()
 
 //-------------------------------------------------------------------
 
-void TestZipFile()
-{
-   //Open the ZIP archive
-   int err = 0;
-   zip *pZipFile = zip_open("/u/frooms/research/develop/stira-env/stira/testdata/testZipFile.zip", 0, &err);
-
-   //Search for the file of given name
-   const char *pNameText = "testTextFile-0010.txt";
-   struct zip_stat stText;
-   zip_stat_init(&stText);
-   zip_stat(pZipFile, pNameText, 0, &stText);
-
-   //Alloc memory for its uncompressed contents
-   char *pContentsText = new char[stText.size];
-
-   //Read the compressed file
-   zip_file *fText = zip_fopen(pZipFile, "testTextFile-0010.txt", 0);
-   zip_fread(fText, pContentsText, stText.size);
-   cout << pContentsText << endl;
-   zip_fclose(fText);
-
-   //And close the archive
-   zip_close(pZipFile);
-}
-
-//-------------------------------------------------------------------
-
 int main()
 {
    TestFileAccess();

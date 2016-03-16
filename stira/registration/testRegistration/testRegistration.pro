@@ -9,8 +9,7 @@ LIBS +=  ../registration/libregistration.a \
   ../../image/color/libcolor.a \
   ../../common/common/libcommon.a  \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../registration/libregistration.a \
   ../../image/tools/libtools.a \

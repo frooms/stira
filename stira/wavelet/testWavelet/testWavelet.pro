@@ -10,8 +10,7 @@ LIBS += ../wavelet/libwavelet.a \
   ../../image/color/libcolor.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../wavelet/libwavelet.a \
   ../../filter/filter/libfilter.a \

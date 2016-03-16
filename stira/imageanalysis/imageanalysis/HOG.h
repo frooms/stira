@@ -12,6 +12,7 @@ namespace imageanalysis {
 /** \brief Class to compute Image descriptor based on Histogram of Orientated Gradients (HOG) for gray-level images
   * References: - https://software.intel.com/en-us/node/529070
   *             - http://stackoverflow.com/questions/32417531/hog-what-is-done-in-the-contrast-normalization-step
+  * TODO: further imaplement rest of SIFT: http://www.vlfeat.org/api/sift.html
   */
 class HOG
 {

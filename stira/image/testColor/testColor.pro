@@ -12,6 +12,5 @@ LIBS += ../tools/libtools.a \
   ../color/libcolor.a \
   ../../common/common/libcommon.a \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 

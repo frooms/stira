@@ -15,8 +15,7 @@ LIBS += ../degradationestimation/libdegradationestimation.a \
   ../../common/common/libcommon.a \
   -lfftw3 \
   -lopencv_highgui \
-  -lopencv_core \
-  -luuid
+  -lopencv_core
 
 POST_TARGETDEPS += ../degradationestimation/libdegradationestimation.a \
   ../../pyramidapplications/pyramidapplications/libpyramidapplications.a \
