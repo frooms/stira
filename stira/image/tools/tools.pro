@@ -13,7 +13,8 @@ SOURCES += ArrayGridTools.cpp \
     PerlinNoise.cpp \
     PyramidTools.cpp \
     DrawImageTools.cpp \
-    GridConverter.cpp
+    GridConverter.cpp \
+    BicubicInterpolator.cpp
 HEADERS += ArrayGridTools.h \
     BilinearInterpolator.h \
     GenerateFractal.h \
@@ -27,4 +28,5 @@ HEADERS += ArrayGridTools.h \
     PerlinNoise.h \
     PyramidTools.h \
     DrawImageTools.h \
-    GridConverter.h
+    GridConverter.h \
+    BicubicInterpolator.h
