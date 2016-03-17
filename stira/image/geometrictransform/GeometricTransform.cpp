@@ -1,4 +1,5 @@
 #include "GeometricTransform.h"
+#include "../tools/BicubicInterpolator.h"
 #include "../tools/BilinearInterpolator.h"
 #include "../tools/NearestNeighborInterpolator.h"
 
@@ -27,12 +28,16 @@ void GeometricTransform::SetInterpolatorType( InterpolatorType type )
    delete mpInterpolator;
    switch (mInterpolatorType)
    {
-      case TYPE_NEAREST_NEIGHBOR:
+      case INTERPOLATE_NEAREST_NEIGHBOR:
       {
          mpInterpolator = new NearestNeighborInterpolator();
          break;
       }
-      case TYPE_BILINEAR:
+      case INTERPOLATE_BICUBIC:
+      {
+         mpInterpolator = new BicubicInterpolator();
+      }
+      case INTERPOLATE_BILINEAR:
       default:
       {
          mpInterpolator = new BilinearInterpolator();
