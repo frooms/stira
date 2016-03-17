@@ -11,6 +11,7 @@
  ***************************************************************************************/
 
 #include "../common/MathUtils.h"
+#include "../common/ClusteringLearning.h"
 #include "../common/QuantileNormalDistribution.h"
 #include "../common/Random.h"
 #include "../common/FitCurve.h"
@@ -419,6 +420,36 @@ void TestCorrelation()
    cout << "TestCorrelation = " << correlation << endl << flush;
 }
 
+void TestKMeans()
+{
+
+    std::vector< Point<double> > inputPoints;
+    std::vector< Point<double> > clusterCenters;
+
+    inputPoints.push_back( Point<double>(50.0, 50.0));
+    inputPoints.push_back( Point<double>(50.0, 71.0));
+    inputPoints.push_back( Point<double>(50.0, 89.0));
+
+    inputPoints.push_back( Point<double>(79.0, 124.0));
+    inputPoints.push_back( Point<double>(79.0, 145.0));
+    inputPoints.push_back( Point<double>(97.0, 156.0));
+    inputPoints.push_back( Point<double>(118.0, 156.0));
+    inputPoints.push_back( Point<double>(135.0, 144.0));
+    inputPoints.push_back( Point<double>(135.0, 123.0));
+
+    inputPoints.push_back( Point<double>(164.0, 50.0));
+    inputPoints.push_back( Point<double>(164.0, 67.0));
+    inputPoints.push_back( Point<double>(164.0, 85.0));
+
+
+    clusterCenters.push_back( Point<double>(79.0, 23.0));
+    clusterCenters.push_back( Point<double>(79.0, 105.0));
+    clusterCenters.push_back( Point<double>(159.0,105.0));
+    ClusteringLearning cl(inputPoints);
+
+    std::vector< pointCluster > resultsClusters = cl.ComputeKMeans( clusterCenters );
+}
+
 //------------------------------------------------------
 
 int main()
@@ -434,4 +465,5 @@ int main()
    //TestCorrelation();
    //TestGaussianCurveFit();
    TestGaussianity();
+   TestKMeans();
 }
