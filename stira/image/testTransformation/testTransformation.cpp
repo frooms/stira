@@ -46,6 +46,7 @@ bool TranslationTest( Image* pInImage )
 bool RigidTest( Image* pInImage )
 {
    RigidTransform rig;
+   rig.SetInterpolatorType(INTERPOLATE_BICUBIC);
    rig.SetTheta( 0.3 );
    rig.SetDeltaX( 5.1 );
    rig.SetDeltaY( 3.7 );
@@ -55,7 +56,7 @@ bool RigidTest( Image* pInImage )
    assert ( ImageIO::Write( pImageOut, string("RigidTest.ppm") ) == true);
    delete pImageOut;
 
-   Image* pImageRotated = rig.RotateAroundCenter( pInImage, 0.2 );
+   Image* pImageRotated = rig.RotateAroundCenter( pInImage, 0.1 );
    assert( pImageRotated != 0 );
    assert ( ImageIO::Write( pImageRotated, string("RotateTest.ppm") ) == true);
    delete pImageRotated;
@@ -75,16 +76,22 @@ bool AffineTest( Image* pInImage )
    aftran.SetDeltaX( 1.7 );
    aftran.SetDeltaY( 3.9 );
 
+   // default bilinear
    Image* pImageOut = aftran.Apply( pInImage );
    assert ( ImageIO::Write( pImageOut, string("AffineTestBilinear.ppm") ) == true);
    delete pImageOut;
 
-   aftran.SetInterpolatorType( TYPE_NEAREST_NEIGHBOR );
+   aftran.SetInterpolatorType( INTERPOLATE_NEAREST_NEIGHBOR );
    pImageOut = aftran.Apply( pInImage );
    assert ( ImageIO::Write( pImageOut, string("AffineTestNearestNeighbor.ppm") ) == true);
+   delete pImageOut;
+
+   aftran.SetInterpolatorType( INTERPOLATE_BICUBIC );
+   pImageOut = aftran.Apply( pInImage );
+   assert ( ImageIO::Write( pImageOut, string("AffineTestBicubic.ppm") ) == true);
 
    Image* pImageOut2 = aftran.ApplyInverse( pImageOut );
-   assert ( ImageIO::Write( pImageOut, string("AffineTestInverse.ppm") ) == true);
+   assert ( ImageIO::Write( pImageOut2, string("AffineTestInverse.ppm") ) == true);
    delete pImageOut;
    delete pImageOut2;
 

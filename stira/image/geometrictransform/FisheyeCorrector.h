@@ -16,6 +16,7 @@
 #include "../datastructures/Image.h"
 #include "../../common/common/Point.h"
 #include "../tools/BilinearInterpolator.h"
+#include "../tools/BicubicInterpolator.h"
 
 namespace stira {
 namespace image {
@@ -31,18 +32,21 @@ public:
    /** \brief destructor */
    ~FisheyeCorrector( );
 
-   /** \brief Generates new image by rotating pImageIn around its center over an angle theta
-     * \param pImageIn input image to rotate
-     * \param theta angle over which to rotate the image */
+   /** \brief Generates new image by computing inverse fisheye warp
+     * \param pImageIn input image to inverse warp
+     * \param strength of the warping
+     * \param zoom zoom to apply */
    Image* ApplyCorrect( Image* pImageIn, double strength, double zoom );
 
-   /** \brief Generates new grid by rotating pGridIn around its center over an angle theta
-     * \param pGridIn input grid to rotate
-     * \param theta angle over which to rotate the grid */
-   ArrayGrid<double>* ApplyCorrect( ArrayGrid<double>* pGridIn, double strength, double zoom );
+   /** \brief Inverse fisheye warps input grid
+     * \param pGridIn input grid to inverse warp
+     * \param pGridOut result grid in which result of inverse warp is written
+     * \param strength of the warping
+     * \param zoom zoom to apply */
+   void ApplyCorrect( ArrayGrid<double>* pGridIn, ArrayGrid<double>* pGridOut, double strength, double zoom );
 
 private:
-   BilinearInterpolator* mpInterpolator;
+   Interpolator* mpInterpolator;
    common::Point<double> TransformPixel(int x, int y, double halfWidth, double halfHeight, double correctionRadius, double zoom );
 };
 }

@@ -1,4 +1,5 @@
 #include "FisheyeCorrector.h"
+#include "../../common/common/MathUtils.h"
 
 namespace stira {
 namespace image {
@@ -6,11 +7,11 @@ namespace image {
 using namespace common;
 using namespace std;
 
-//===================================================================================================
 
 FisheyeCorrector::FisheyeCorrector()
 {
-    mpInterpolator = new BilinearInterpolator();
+    //mpInterpolator = new BilinearInterpolator();
+    mpInterpolator = new BicubicInterpolator();
 }
 
 FisheyeCorrector::~FisheyeCorrector( )
@@ -41,44 +42,20 @@ Point<double> FisheyeCorrector::TransformPixel(int x, int y, double halfWidth, d
 
 Image* FisheyeCorrector::ApplyCorrect( Image* pImageIn, double strength, double zoom )
 {
-    double width = (double)(pImageIn->GetWidth());
-    double height = (double)(pImageIn->GetHeight());
-    double halfWidth = width / 2.0;
-    double halfHeight = height / 2.0;
-
-    if (strength == 0.0) { strength = 0.00001;}
-
-    Image* pImageOut = new Image(width, height, 3);
-
-    double correctionRadius = sqrt( width * width + height * height ) / strength;
-
-    for (int y = 0; y < height; y++)
+    Image* pImageOut = new Image( pImageIn->GetWidth(),  pImageIn->GetHeight(), 3);
+    for (int bandID = 0; bandID < 3; bandID++)
     {
-        for (int x = 0; x < width; x++)
-        {
-            Point<double> sourcePoint = TransformPixel( x, y, halfWidth, halfHeight, correctionRadius, zoom );
-
-            if ( ( sourcePoint.x > 0 ) && ( sourcePoint.y > 0 ) && ( sourcePoint.x < width ) && ( sourcePoint.y < height ) )
-            {
-                for (int bandID = 0; bandID < 3; bandID++)
-                {
-                    ArrayGrid< double >* pGridIn = pImageIn->GetBands()[bandID];
-                    pImageOut->GetBands()[bandID]->SetValue( x, y, mpInterpolator->Run( pGridIn, sourcePoint.x, sourcePoint.y ) );
-                }
-            }
-        }
+        ApplyCorrect( pImageIn->GetBands()[bandID], pImageOut->GetBands()[bandID], strength, zoom );
     }
     return pImageOut;
 }
 
-ArrayGrid<double>* FisheyeCorrector::ApplyCorrect( ArrayGrid<double>* pGridIn, double strength, double zoom )
+void FisheyeCorrector::ApplyCorrect( ArrayGrid<double>* pGridIn, ArrayGrid<double>* pGridOut, double strength, double zoom )
 {
     double width = (double)(pGridIn->GetWidth());
     double height = (double)(pGridIn->GetHeight());
     double halfWidth = width / 2.0;
     double halfHeight = height / 2.0;
-
-    ArrayGrid<double>* pGridOut = new ArrayGrid<double>(width, height);
 
     if ( strength == 0.0) { strength = 0.00001;}
 
@@ -89,13 +66,13 @@ ArrayGrid<double>* FisheyeCorrector::ApplyCorrect( ArrayGrid<double>* pGridIn, d
         for (int x = 0; x < width; x++)
         {
             Point<double> sourcePoint = TransformPixel( x, y, halfWidth, halfHeight, correctionRadius, zoom );
-            if ( ( sourcePoint.x > 0 ) && ( sourcePoint.y > 0 ) && ( sourcePoint.x < width ) && ( sourcePoint.y < height ) )
+            if ( ( sourcePoint.x > 1 ) && ( sourcePoint.y > 1 ) && ( sourcePoint.x < width-1 ) && ( sourcePoint.y < height-1 ) )
             {
-                pGridOut->SetValue(x, y, mpInterpolator->Run( pGridIn, sourcePoint.x, sourcePoint.y ));
+                double interpolatedValue = MathUtils::ClipValue( mpInterpolator->Run( pGridIn, sourcePoint.x, sourcePoint.y ), 1.0, 254.0 );
+                pGridOut->SetValue(x, y, interpolatedValue );
             }
         }
     }
-    return pGridOut;
 }
 
 }
