@@ -460,38 +460,6 @@ vector<double> FitCurve::GaussianFitLeastSquares( )
 
 //---------------------------------------------------------------------------------
 
-PcaResult FitCurve::ComputePCA( )
-{
-    int sz = static_cast<int>( mvDataPoints.size());
-    //Construct a buffer used by the pca analysis
-    cv::Mat data_pts = cv::Mat( sz, 2, CV_64FC1);
-
-    for (int i = 0; i < sz; i++)
-    {
-       data_pts.at<double>(i, 0) = mvDataPoints[i].x;
-       data_pts.at<double>(i, 1) = mvDataPoints[i].y;
-    }
-
-    //Perform PCA analysis
-    cv::PCA pca_analysis(data_pts, cv::Mat(), CV_PCA_DATA_AS_ROW);
-
-    PcaResult pcaRes;
-    //Store the center of the object
-
-    pcaRes.center.x = pca_analysis.mean.at<double>(0, 0);
-    pcaRes.center.y = pca_analysis.mean.at<double>(0, 1);
-
-    for (int i = 0; i < 2; i++)
-    {
-        pcaRes.vector.push_back( Point<double>( pca_analysis.eigenvectors.at<double>(i, 0),
-                                                pca_analysis.eigenvectors.at<double>(i, 1) ) );
-        pcaRes.eigenValue.push_back( pca_analysis.eigenvalues.at<double>(0, i) );
-    }
-    return pcaRes;
-}
-
-//---------------------------------------------------------------------------------
-
 bool FitCurve::WriteToDisk( std::string fileName )
 {
    if (!mIsModelDataReady)
