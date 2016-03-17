@@ -19,7 +19,7 @@ namespace stira {
 namespace image {
 
 /** \brief identifier of interpolation type*/
-enum InterpolatorType {TYPE_NEAREST_NEIGHBOR, TYPE_BILINEAR};
+enum InterpolatorType { INTERPOLATE_NEAREST_NEIGHBOR, INTERPOLATE_BILINEAR, INTERPOLATE_BICUBIC };
 
 /** \brief A class for interpolation
   */
