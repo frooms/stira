@@ -16,6 +16,7 @@
 #include <cmath>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 namespace stira {
 namespace common {
@@ -89,6 +90,8 @@ public:
 
    Point<double> ToDouble();
    Point<int> ToInt();
+
+   static Point<double> GetCentroid( std::vector<Point<T> > vPoints );
 
    /** \brief overloaded operator to compare two Points
      * \param otherPoint other point to check equality */
@@ -225,12 +228,12 @@ Point<T>::Point()
 //------------------------------------------------------------------
 
 template <class T>
-Point<T>::Point(T xNew, T yNew, coordinateMode mode, pointType myType )
+Point<T>::Point(T xNew, T yNew, coordinateMode modeNew, pointType typeNew )
 {
    x = xNew;
    y = yNew;
-   mode = mode;
-   type = myType;
+   mode = modeNew;
+   type = typeNew;
 }
 
 //------------------------------------------------------------------
@@ -250,6 +253,21 @@ template <class T>
 Point<int> Point<T>::ToInt()
 {
     return Point<int>( static_cast<int>(this->x + 0.5), static_cast<int>(this->y + 0.5), this->GetMode(), this->GetType() );
+}
+
+template <class T>
+Point<double> Point<T>::GetCentroid( std::vector<Point<T> > vPoints )
+{
+    double xAvg = 0.0;
+    double yAvg = 0.0;
+
+    int nrPoints = vPoints.size();
+    for (int i = 0; i < nrPoints; i++)
+    {
+        xAvg += (double)vPoints[i].x;
+        yAvg += (double)vPoints[i].y;
+    }
+    return Point<double>( xAvg / nrPoints, yAvg / nrPoints, vPoints[0].GetMode(), vPoints[0].GetType());
 }
 
 //------------------------------------------------------------------
@@ -317,13 +335,7 @@ void Point<T>::SetRadiusAndTheta( T radius, T theta )
 template <class T>
 double Point<T>::GetDistance(Point other)
 {
-   if ( mode == COORDINATES_CARTESIAN )
-   {
-      double dx = (double)(x) - (double)(other.x);
-      double dy = (double)(y) - (double)(other.y);
-      return (sqrt(dx*dx + dy*dy));
-   }
-   else // http://en.wikipedia.org/wiki/Radial_distance_(geometry)
+   if ( mode == COORDINATES_POLAR ) // http://en.wikipedia.org/wiki/Radial_distance_(geometry)
    {
       double r1     = (double)(x);
       double theta1 = (double)(y);
@@ -334,6 +346,12 @@ double Point<T>::GetDistance(Point other)
                                     - 2.0 * r1 * r2 * cos( theta1 - theta2 )
                                   );
       return radialDistance;
+   }
+   else
+   {
+      double dx = (double)(x) - (double)(other.x);
+      double dy = (double)(y) - (double)(other.y);
+      return (sqrt(dx*dx + dy*dy));
    }
 }
 
