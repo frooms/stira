@@ -17,6 +17,7 @@
 #include <time.h>
 #include "../../common/common/Point.h"
 #include "../../common/common/DrawFigures.h"
+#include "../../common/common/ClusteringLearning.h"
 #include "../../common/common/FitCurve.h"
 #include "../tools/GridExtender.h"
 #include "../tools/GridGenerator.h"
@@ -363,8 +364,8 @@ bool TestOrientationPCA()
           }
     }
 
-    FitCurve fc( pts );
-    PcaResult pcaRes = fc.ComputePCA();
+    ClusteringLearning cl( pts );
+    PcaResult pcaRes = cl.ComputePCA();
 
     cout << "PCA center = ( " << pcaRes.center.x << ", " << pcaRes.center.y << " )" << endl;
     cout << "       eigen vector 1 = (" <<  pcaRes.vector[0].x  << ", " <<  pcaRes.vector[0].y << ")  value = " << pcaRes.eigenValue[0] << endl;
