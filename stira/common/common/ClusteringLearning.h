@@ -19,17 +19,19 @@
 namespace stira {
 namespace common {
 
+/** \brief struct to hold results of a PCA analysis of the passed points */
 struct PcaResult
 {
-    Point<double> center;
-    std::vector< Point<double> > vector;
-    std::vector<double> eigenValue;
+    Point<double> center;                  ///< center of the point cloud
+    std::vector< Point<double> > vector;   ///< vector of eigenvector; each point represents the vector wrt the center above
+    std::vector<double> eigenValue;        ///< vector of eigenvalues corresponding with the vectors above
 };
 
+/** \brief struct to hold results of a single point cluster */
 struct pointCluster
 {
-    Point<double> center;
-    std::vector<Point<double> > members;
+    Point<double> center;                  ///< center of this cluster
+    std::vector<Point<double> > members;   ///< vector of points in this cluster
 };
 
 /** \brief class for point cluster analysis
@@ -38,13 +40,18 @@ class ClusteringLearning
 {
 public:
     /** \brief constructor
-      * \param inputPoints the points to which the data model has to be fitted */
+      * \param inputPoints cloud of input points to be analysed */
     ClusteringLearning( std::vector< Point<double> > inputPoints );
 
-    // http://docs.opencv.org/3.1.0/d1/dee/tutorial_introduction_to_pca.html
+    /** \brief PCA analysis of this 2D point cloud (uses OpenCV)
+     * Ref: http://docs.opencv.org/3.1.0/d1/dee/tutorial_introduction_to_pca.html
+     *  \return a PcaResult struct */
     PcaResult ComputePCA( );
 
-    // https://en.wikipedia.org/wiki/K-means_clustering
+    /** \brief K-Means clustering of this 2D point cloud
+     * Ref: https://en.wikipedia.org/wiki/K-means_clustering
+     * \param clusterCenters vector of initial cluster centroids
+     * \return a vector of pointCluster structs, one per cluster */
     std::vector< pointCluster > ComputeKMeans( std::vector< Point<double> > clusterCenters );
 
 private:
