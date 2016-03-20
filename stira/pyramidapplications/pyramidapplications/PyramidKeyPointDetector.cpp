@@ -35,7 +35,7 @@ PyramidKeyPointDetector::~PyramidKeyPointDetector()
 
 //---------------------------------------------------------------
 
-bool PyramidKeyPointDetector::MergeOrientations1( int scale )
+bool PyramidKeyPointDetector::MergeOrientationsFauqueur( int scale )
 {
    ArrayGrid<double>* pEnergyMap = 0;
    ArrayGrid<double>* pUpscaledEnergyMap = 0;
@@ -95,7 +95,7 @@ bool PyramidKeyPointDetector::MergeOrientations1( int scale )
 
 //---------------------------------------------------------------
 
-bool PyramidKeyPointDetector::MergeOrientations2( int scale )
+bool PyramidKeyPointDetector::MergeOrientationsVariant( int scale )
 {
    ArrayGrid<double>* pEnergyMap = 0;
    ArrayGrid<double>* pUpscaledEnergyMap = 0;
@@ -218,7 +218,8 @@ void PyramidKeyPointDetector::Run()
 
    for (int scaleID = 0; scaleID < nrScales; scaleID++)
    {
-      MergeOrientations2( scaleID );
+      //MergeOrientationsVariant( scaleID );
+      MergeOrientationsFauqueur( scaleID );
 
       AccumulateScales( );
    }

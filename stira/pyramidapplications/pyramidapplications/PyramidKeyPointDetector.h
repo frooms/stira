@@ -48,15 +48,19 @@ public:
    
 private:
 
-   bool MergeOrientations1( int scale );
+   /** \brief variant method to merge the energy of orientations within a scale by E(S) = ρ1ρ2ρ3ρ4ρ5ρ6 multiplying all energy across orientations
+     * \param scale current scale of the pyramid */
+   bool MergeOrientationsVariant( int scale );
 
-   bool MergeOrientations2( int scale );
+   /** \brief method as in the paper by Fauqueur et al. E(S) = ρ1ρ3+ρ1ρ4+ρ1ρ5+ρ2ρ4+ρ2ρ5+ρ2ρ6+ρ3ρ5+ρ3ρ6+ρ4ρ6
+     * \param scale current scale of the pyramid */
+   bool MergeOrientationsFauqueur( int scale );
    
    void AccumulateScales( );
    
    image::ArrayGrid<bool>* FindLocalMaxima(image::ArrayGrid<double>* pGrid );
 
-   image::Pyramid< std::complex<double> >* mpPyramid;
+   image::Pyramid< std::complex<double> >* mpPyramid;   ///< pyramid decomposition of input image
    
    std::vector< image::ArrayGrid<double>* > mvAccumulatedMaps;
    
