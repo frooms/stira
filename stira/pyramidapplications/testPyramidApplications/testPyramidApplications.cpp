@@ -267,7 +267,9 @@ int main(int argc, char *argv[])
    else
    {
       //inputname = "../../testdata/testhaze.ppm";
-      inputname = "../../testdata/Lenna.ppm";
+      //inputname = "../../testdata/Lenna.ppm";
+      inputname = "../../testdata/testKeyPoints.ppm";
+      //inputname = "../../testdata/cameraman2.pgm";
    }
    cout << endl << endl << "# Running test with input image " << inputname << endl << flush;
    cout << "#\t nr scales = " << nrScales << " and nr of orientations = " << nrOrientations << endl << flush;
