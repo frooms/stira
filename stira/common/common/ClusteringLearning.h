@@ -19,6 +19,8 @@
 namespace stira {
 namespace common {
 
+//=======================================================================================
+
 /** \brief struct to hold results of a PCA analysis of the passed points */
 struct PcaResult
 {
@@ -27,6 +29,8 @@ struct PcaResult
     std::vector<double> eigenValue;        ///< vector of eigenvalues corresponding with the vectors above
 };
 
+//=======================================================================================
+
 /** \brief struct to hold results of a single point cluster */
 struct pointCluster
 {
@@ -34,7 +38,9 @@ struct pointCluster
     std::vector<Point<double> > members;   ///< vector of points in this cluster
 };
 
-/** \brief class for point cluster analysis
+//=======================================================================================
+
+/** \brief class for 2D point cloud analysis
   *   Uses OpenCV's functionalities */
 class ClusteringLearning
 {
