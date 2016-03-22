@@ -32,20 +32,12 @@ public:
    /** \brief destructor*/
    ~GridExtender();
    
-   /** \brief generates a new larger grid in which the input grid values are copied from the top left corner on
-     * For now, the other pixel positions just remain black
-     * \param pGrid the (smaller) input grid
-     * \param bottomWidth width of extra border at bottom
-     * \param rightWidth width of extra border at right
-     * \param type extension type (for now ignored, EXTEND_ZERO is in fact performed*/
-   static ArrayGrid<T>* ExtendBottomRight( ArrayGrid<T>* pGrid, int bottomWidth, int rightWidth, ExtensionType type=EXTEND_ZERO);
-   
    /** \brief generates a new larger grid from the input grid values with a predefined border around
      * the extra border mirrors the values inside the image:
      *   Old: ... 9 8 5 7 3 6 | becomes ... 9 8 5 7 3 6 | 6 3 7 ...
      * \param pGrid the (smaller) input grid
      * \param borderWidth width of extra border left and right
-     * \param borderWidth width of extra border top and bottom*/
+     * \param borderHeight height of extra border top and bottom*/
    static ArrayGrid<T>* MirrorBorder( ArrayGrid<T>* pGrid, int borderWidth, int borderHeight);
    
    /** \brief generates a new larger grid from the input grid values with a border of predefined values around it
@@ -53,14 +45,23 @@ public:
      *   Old: ... 9 8 5 7 3 6 | becomes ... 9 8 5 7 3 6 | myValue myValue myValue ...
      * \param pGrid the (smaller) input grid
      * \param borderWidth width of extra border left and right
-     * \param borderWidth width of extra border top and bottom
+     * \param borderHeight height of extra border top and bottom
      * \param myValue value used to fill the border*/
    static ArrayGrid<T>* PaddBorder( ArrayGrid<T>* pGrid, int borderWidth, int borderHeight, T myValue=0);
+
+   /** \brief generates a new larger grid from the input grid values with a border of predefined values around it
+     * the extra border mirrors the values inside the image:
+     *   Old: ... 9 8 5 7 3 6 | becomes ... 9 8 5 7 3 6 | myValue myValue myValue ...
+     * \param pGrid the (smaller) input grid
+     * \param borderWidth width of extra border left and right
+     * \param borderHeight height of extra border top and bottom
+     * \param myValue value used to fill the border*/
+   static ArrayGrid<T>* PaddBorder( ArrayGrid<T>* pGrid, int borderWidthLeft, int borderWidthRight, int borderHeightTop, int borderHeightBottom, T myValue=0);
    
    /** \brief generates a new smaller grid from the input grid values cropping a predefined border from it
      * \param pGrid the (larger) input grid
      * \param borderWidth width of border to crop from left and right
-     * \param borderWidth width of border to crop from top and bottom*/
+     * \param borderHeight height of border to crop from top and bottom*/
    static ArrayGrid<T>* CropBorder( ArrayGrid<T>* pGrid, int borderWidth, int borderHeight);
 };
 
@@ -155,6 +156,37 @@ ArrayGrid<T>* GridExtender<T>::PaddBorder( ArrayGrid<T>* pGrid, int borderWidth,
    else
    {
       std::cerr << "Tried to extend grid with illegal border sizes (" << borderWidth << ", " << borderHeight << ")" << std::endl << std::flush;
+      return 0;
+   }
+}
+
+//----------------------------------------------------------------------------------
+
+template <class T>
+ArrayGrid<T>* GridExtender<T>::PaddBorder( ArrayGrid<T>* pGrid, int borderWidthLeft, int borderWidthRight, int borderHeightTop, int borderHeightBottom, T myValue)
+{
+   int width = pGrid->GetWidth();
+   int height = pGrid->GetHeight();
+
+   int expandedWidth  = width  + borderWidthLeft + borderWidthRight;
+   int expandedHeight = height + borderHeightTop + borderHeightBottom;
+   bool needsInitialization = true;
+   if ((borderWidthLeft >= 0) && (borderWidthRight >= 0) && (borderHeightTop >= 0) && (borderHeightBottom >= 0))
+   {
+      ArrayGrid<T>* pExpandedGrid = new ArrayGrid<T>(expandedWidth, expandedHeight, needsInitialization, myValue );
+
+      for (int y = 0; y < height; y++)
+      {
+         for (int x = 0; x < width; x ++)
+         {
+            pExpandedGrid->SetValue( x + borderWidthLeft, y + borderHeightTop, pGrid->GetValue( x, y ) );
+         }
+      }
+      return pExpandedGrid;
+   }
+   else
+   {
+      std::cerr << "Tried to extend grid with illegal border sizes (" <<  borderWidthLeft << ", " << borderWidthRight << ", " << borderHeightTop << ", " << borderHeightBottom << ")" << std::endl << std::flush;
       return 0;
    }
 }
