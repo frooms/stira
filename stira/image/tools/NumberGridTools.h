@@ -453,43 +453,44 @@ public:
 /////////////////////////////
 
    /** \brief Gets value of first derivative in x-direction for given position
-     * Performs forward first derivative: computes I(x+1,y) -  I(x,y)
-     * Does NOT perfrom boundary checking; be sure you check ranges of x and y yourself
+     * Computes first derivative in x = I(x+1,y) -  I(x-1,y)
+     * Does NOT perform boundary checking; be sure you check ranges of x and y yourself
      * \param pGrid source grid
-     * \param x x coordinate of where to get value of first derivative in x
-     * \param y y coordinate of where to get value of first derivative in x*/
+     * \param x x coordinate of where to get value of first derivative
+     * \param y y coordinate of where to get value of first derivative */
    static T GetFirstDerivativeX( ArrayGrid<T>* pGrid, int x, int y);
 
    /** \brief Gets value of first derivative in x-direction for given position
-     * Performs forward first derivative: computes I(x,y+1) -  I(x,y)
-     * Does NOT perfrom boundary checking; be sure you check ranges of x and y yourself
+     * Computes first derivative in y = I(x,y+1) -  I(x,y-1)
+     * Does NOT perform boundary checking; be sure you check ranges of x and y yourself
      * \param pGrid source grid
-     * \param x x coordinate of where to get value of first derivative in y
-     * \param y y coordinate of where to get value of first derivative in y*/
+     * \param x x coordinate of where to get value of first derivative
+     * \param y y coordinate of where to get value of first derivative */
    static T GetFirstDerivativeY( ArrayGrid<T>* pGrid, int x, int y);
 
    /** \brief Gets value of second derivative in x-direction for given position
-     * Performs forward first derivative: computes - I(x-1,y) + 2 I(x,y) - I(x+1,y)
-     * Does NOT perfrom boundary checking; be sure you check ranges of x and y yourself
+     * Computes second derivative in x = - I(x-2,y) + 2 I(x,y) - I(x+2,y)
+     * Does NOT perform boundary checking; be sure you check ranges of x and y yourself
      * \param pGrid source grid
-     * \param x x coordinate of where to get value of second derivative in x
-     * \param y y coordinate of where to get value of second derivative in x*/
+     * \param x x coordinate of where to get value of second derivative
+     * \param y y coordinate of where to get value of second derivative */
    static T GetSecondDerivativeXX( ArrayGrid<T>* pGrid, int x, int y);
 
    /** \brief Gets value of mixed derivative in x and y for given position
-     * Performs forward first derivative: computes - I(x+1,y-1) + 2 I(x,y) - I(x,y+1)
-     * Does NOT perfrom boundary checking; be sure you check ranges of x and y yourself
+     * Computes mixed derivative in x and y =     ( I( x+1, y+1 ) - I( x-1, y+1 ) )
+     *                                          - ( I( x+1, y-1 ) - I( x-1, y-1 ) )
+     * Does NOT perform boundary checking; be sure you check ranges of x and y yourself
      * \param pGrid source grid
-     * \param x x coordinate of where to get value of second derivative in x
-     * \param y y coordinate of where to get value of second derivative in x*/
+     * \param x x coordinate of where to get value of mixed derivative
+     * \param y y coordinate of where to get value of mixed derivative */
    static T GetSecondDerivativeXY( ArrayGrid<T>* pGrid, int x, int y);
 
    /** \brief Gets value of second derivative in y-direction for given position
-     * Performs forward first derivative: computes - I(x,y-1) + 2 I(x,y) - I(x,y+1)
-     * Does NOT perfrom boundary checking; be sure you check ranges of x and y yourself
+     * Computes second derivative in y = - I(x,y-2) + 2 I(x,y) - I(x,y+2)
+     * Does NOT perform boundary checking; be sure you check ranges of x and y yourself
      * \param pGrid source grid
-     * \param x x coordinate of where to get value of second derivative in x
-     * \param y y coordinate of where to get value of second derivative in x*/
+     * \param x x coordinate of where to get value of second derivative
+     * \param y y coordinate of where to get value of second derivative */
    static T GetSecondDerivativeYY( ArrayGrid<T>* pGrid, int x, int y);
 
 //////////////////////////////////////////
@@ -1871,7 +1872,7 @@ void NumberGridTools<T>::NegateGridSelf( ArrayGrid< int >* pGrid, int maxValue )
 template <class T>
 inline T NumberGridTools<T>::GetFirstDerivativeX( ArrayGrid<T>* pGrid, int x, int y)
 {
-   return ( pGrid->GetValue(x+1, y) - pGrid->GetValue( x, y) );
+   return ( pGrid->GetValue(x+1, y) - pGrid->GetValue( x-1, y) );
 }
 
 //----------------------------------------------------------------------------------
@@ -1879,7 +1880,7 @@ inline T NumberGridTools<T>::GetFirstDerivativeX( ArrayGrid<T>* pGrid, int x, in
 template <class T>
 inline T NumberGridTools<T>::GetFirstDerivativeY( ArrayGrid<T>* pGrid, int x, int y)
 {
-   return (  pGrid->GetValue(x, y+1) - pGrid->GetValue( x, y) );
+   return (  pGrid->GetValue(x, y+1) - pGrid->GetValue( x, y-1 ) );
 }
 
 //----------------------------------------------------------------------------------
@@ -1887,9 +1888,9 @@ inline T NumberGridTools<T>::GetFirstDerivativeY( ArrayGrid<T>* pGrid, int x, in
 template <class T>
 inline T NumberGridTools<T>::GetSecondDerivativeXX( ArrayGrid<T>* pGrid, int x, int y)
 {
-   return (       - pGrid->GetValue( x-1, y )
+   return (       - pGrid->GetValue( x-2, y )
             + 2.0 * pGrid->GetValue( x  , y )
-                  - pGrid->GetValue( x+1, y )
+                  - pGrid->GetValue( x+2, y )
           );
 }
 
@@ -1898,8 +1899,8 @@ inline T NumberGridTools<T>::GetSecondDerivativeXX( ArrayGrid<T>* pGrid, int x, 
 template <class T>
 inline T NumberGridTools<T>::GetSecondDerivativeXY( ArrayGrid<T>* pGrid, int x, int y)
 {
-   return (  ( pGrid->GetValue( x+1, y+1 ) - pGrid->GetValue( x+1, y   ) ) // equivalent to GetFirstDerivativeY( x+1, y)
-           - ( pGrid->GetValue( x  , y+1 ) - pGrid->GetValue( x  , y   ) ) // equivalent to GetFirstDerivativeY( x,   y)
+   return (  ( pGrid->GetValue( x+1, y+1 ) - pGrid->GetValue( x-1, y+1   ) ) // equivalent to GetFirstDerivativeY( x, y+1)
+           - ( pGrid->GetValue( x+1, y-1 ) - pGrid->GetValue( x-1, y-1   ) ) // equivalent to GetFirstDerivativeY( x, y-1)
           );
 }
 
@@ -1908,9 +1909,9 @@ inline T NumberGridTools<T>::GetSecondDerivativeXY( ArrayGrid<T>* pGrid, int x, 
 template <class T>
 inline T NumberGridTools<T>::GetSecondDerivativeYY( ArrayGrid<T>* pGrid, int x, int y)
 {
-   return (       - pGrid->GetValue( x, y-1 )
+   return (       - pGrid->GetValue( x, y-2 )
             + 2.0 * pGrid->GetValue( x, y   )
-                  - pGrid->GetValue( x, y+1 )
+                  - pGrid->GetValue( x, y+2 )
           );
 }
 
