@@ -17,7 +17,8 @@ reg2.c \
 reg3.c \
 regFlt3d.c \
 RegistrationWrapper.cpp \
-svdcmp.c
+svdcmp.c \
+    RegistrationDemon.cpp
 HEADERS += BsplnTrf.h \
 BsplnWgt.h \
 convolve.h \
@@ -32,4 +33,5 @@ reg3.h \
 regFlt3d.h \
 register.h \
 RegistrationWrapper.h \
-svdcmp.h
+svdcmp.h \
+    RegistrationDemon.h
