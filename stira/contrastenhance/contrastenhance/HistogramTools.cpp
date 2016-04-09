@@ -180,6 +180,8 @@ bool HistogramTools::RobustLinearRescaleNoNew( image::Image* pSourceImage, doubl
    return true;
 }
 
+
+
 //----------------------------------------------------------------------------------------
 
 void HistogramTools::HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInGrid )
@@ -215,7 +217,7 @@ void HistogramTools::HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInG
       }
    }
 
-   NumberGridTools<double>::GetMinMax( pInGrid, dataMin, dataMax );
+   //NumberGridTools<double>::GetMinMax( pInGrid, dataMin, dataMax );
 
    delete pStdHistogram;
    delete pCumulHistogram;
