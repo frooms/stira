@@ -105,13 +105,23 @@ public:
    /** \brief copies all values for all grid positions from corresponding positions in otherGrid */
    void SetGridValues(const ArrayGrid<T>& otherGrid );
 
-   /** \brief Gets copy of the i'th row of the image
-     * \param i nr of row to get a copy of*/
-   T* GetRowCopy(int i);
+   /** \brief Gets copy of the y'th row of the image (uses pre-allocated buffer)
+     * \param y nr of row to get a copy of
+     * \param pRowBuffer externally allocated buffer to copy row values into*/
+   void GetRowCopy(int y, T* pRowBuffer);
 
-   /** \brief Gets copy of the i'th column of the image
-     * \param i nr of column to get a copy of*/
-   T* GetColumnCopy(int i);
+   /** \brief Gets copy of the y'th row of the image (allocates new memory)
+     * \param y nr of row to get a copy of*/
+   T* GetRowCopy(int y);
+
+   /** \brief Gets copy of the x'th column of the image (uses pre-allocated buffer)
+     * \param x nr of column to get a copy of
+     * \param pColumnBuffer externally allocated buffer to copy column values into*/
+   void GetColumnCopy(int x, T* columnBuffer);
+
+   /** \brief Gets copy of the x'th column of the image (allocates new memory)
+     * \param x nr of column to get a copy of*/
+   T* GetColumnCopy(int x);
 
    /** \brief Gets the grid value at position (x,y)
      * \param x the x coordinate
@@ -426,14 +436,33 @@ inline void ArrayGrid<T>::SetGridValues(const ArrayGrid<T>& otherGrid )
 //------------------------------------------------------------------------------------------
 
 template <class T>
+inline void ArrayGrid<T>::GetRowCopy(int y, T* pRowBuffer)
+{
+    for (int x = 0; x < mWidth; x++)
+    {
+       pRowBuffer[x] = mpArrayGrid[x + mWidth * y];
+    }
+}
+
+//------------------------------------------------------------------------------------------
+
+template <class T>
 inline T* ArrayGrid<T>::GetRowCopy(int y)
 {
    T* pRowCopy = new T[ mWidth ];
-   for (int x = 0; x < mWidth; x++)
-   {
-      pRowCopy[x] = mpArrayGrid[x + mWidth * y];
-   }
+   GetRowCopy( y, pRowCopy );
    return pRowCopy;
+}
+
+//------------------------------------------------------------------------------------------
+
+template <class T>
+inline void ArrayGrid<T>::GetColumnCopy(int x, T* pColumnBuffer)
+{
+    for (int y = 0; y < mHeight; y++)
+    {
+       pColumnBuffer[y] = mpArrayGrid[x + mWidth * y];
+    }
 }
 
 //------------------------------------------------------------------------------------------
@@ -442,10 +471,7 @@ template <class T>
 inline T* ArrayGrid<T>::GetColumnCopy(int x)
 {
    T* pColumnCopy = new T[ mHeight ];
-   for (int y = 0; y < mHeight; y++)
-   {
-      pColumnCopy[y] = mpArrayGrid[x + mWidth * y];
-   }
+   GetColumnCopy( x, pColumnCopy );
    return pColumnCopy;
 }
 
