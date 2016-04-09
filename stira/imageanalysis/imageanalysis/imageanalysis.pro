@@ -12,7 +12,8 @@ SOURCES += CannyEdgeDetector.cpp \
     FunctionsOpenCV.cpp \
     FindMaximalIncludedRectangles.cpp \
     SLIC.cpp \
-    HOG.cpp
+    HOG.cpp \
+    DistanceTransform.cpp
 HEADERS += CannyEdgeDetector.h \
     StegerLineDetector.h \
     Thinning.h \
@@ -26,4 +27,5 @@ HEADERS += CannyEdgeDetector.h \
     FunctionsOpenCV.h \
     FindMaximalIncludedRectangles.h \
     SLIC.h \
-    HOG.h
+    HOG.h \
+    DistanceTransform.h
