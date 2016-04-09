@@ -5,8 +5,10 @@ CONFIG += staticlib
 SOURCES += AdaptiveEnhanceLuong.cpp \
            Retinex.cpp \
            HazeRemover.cpp \
-           HistogramTools.cpp
+           HistogramTools.cpp \
+    AdaptiveHistogramEqualizer.cpp
 HEADERS += AdaptiveEnhanceLuong.h \
            Retinex.h \
            HazeRemover.h \
-           HistogramTools.h
+           HistogramTools.h \
+    AdaptiveHistogramEqualizer.h
