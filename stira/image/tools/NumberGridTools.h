@@ -267,6 +267,11 @@ public:
      * \param yBottomRight y coordinate of bottom right corner of local window */
    static double ComputeLocalMean( ArrayGrid<double>* pGrid, common::RectangularROI<int> rroi );
 
+   /** \brief gets local variance of values in a local window defined by a RectangularROI
+     *
+     * \param pGrid grid on which to compute
+     * \param rroi the rectangular ROI in which to compute the variance
+     * \param thisMean the already computed mean of the values in the ROI */
    static double ComputeLocalVariance( ArrayGrid<double>* pGrid, common::RectangularROI<int> rroi, double thisMean);
 
    /** \brief gets local mean of ABSOLUTE values in a local window defined by (xTopLeft, yTopLeft) as top left corner and (xBottomRight, yBottomRight) as bottom right corner (included!)
@@ -486,7 +491,7 @@ public:
    static T GetSecondDerivativeXY( ArrayGrid<T>* pGrid, int x, int y);
 
    /** \brief Gets value of second derivative in y-direction for given position
-     * Computes second derivative in y = - I(x,y-2) + 2 I(x,y) - I(x,y+2)
+     * Computes second derivative in y = - I(x,y-2) + 2 I(x,y) - I(x,y+2 )
      * Does NOT perform boundary checking; be sure you check ranges of x and y yourself
      * \param pGrid source grid
      * \param x x coordinate of where to get value of second derivative
