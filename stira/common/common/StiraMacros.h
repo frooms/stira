@@ -19,6 +19,8 @@
 
 #define STIRA_EPSILON  0.00000000000001
 
+#define STIRA_INFINITE  1e+35
+
 #define POWER2(x)     ( (x) * (x) )
 
 #define POWER3(x)     ( (x) * (x) * (x) )
