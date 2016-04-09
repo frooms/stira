@@ -18,6 +18,9 @@
 #include "../../image/tools/ImageIO.h"
 #include "../../image/tools/PyramidTools.h"
 
+#include "../../filter/filter/SeparableFilter.h"
+#include "../../filter/filter/GaussConvolve.h"
+
 #include "../pyramid/PyramidReal.h"
 #include "../pyramid/PyramidComplex.h"
 
@@ -30,6 +33,7 @@ using namespace std;
 using namespace stira::common;
 using namespace stira::image;
 using namespace stira::fouriertools;
+using namespace stira::filter;
 using namespace stira::steerable;
 
 //========================================================================================
@@ -41,6 +45,37 @@ bool SteerableFreemanAdelsonTest( Image* pImage )
    ComputeSteerableFilteredImages csf( pImage->GetBands()[0] );
    assert( csf.Run() == 1);
    return true;
+}
+//========================================================================================
+
+bool TestPyramidBurtAdelson( Image* pImage )
+{
+    ArrayGrid<double>* pGridIn = pImage->GetBands()[0];
+    SeparableFilter sf;
+
+    double pH[ 5 ] = { 0.0625, 0.25, 0.375, 0.25, 0.0625 };
+
+    ArrayGrid<double>* pLowpass = sf.SeparableFilter::RunRowColumn( pGridIn, pH, pH, 5, 5 );
+    ImageIO::WritePGM( pLowpass, "LaplaceLowpass.pgm", ImageIO::NULL_OUT );
+
+    pGridIn->SubtractGrid( pLowpass );
+    ImageIO::WritePGM( pGridIn, "LaplaceResidualTest.pgm", ImageIO::GRADIENT_OUT );
+
+
+
+    ArrayGrid<double>* pNextLevel = ArrayGridTools<double>::DownSampleGrid( pLowpass );
+           // void AddGrid( ArrayGrid<T>* otherGrid );
+
+    //ArrayGrid<double>* pUpscale = GaussConvolve::UpsampleGaussianInterpolated( pNextLevel, 2
+    ArrayGrid<double>* pUpscale = ArrayGridTools<double>::UpSampleGrid( pNextLevel, 512, 512 );
+    ArrayGrid<double>* pUpscale2 = sf.SeparableFilter::RunRowColumn( pUpscale, pH, pH, 5, 5 );
+    //pUpscale->MultiplyWith( 1.4 );
+
+    ImageIO::WritePGM( pUpscale2, "LaplaceUpscaleTest.pgm", ImageIO::NULL_OUT );
+
+    pUpscale2->AddGrid(pGridIn);
+    ImageIO::WritePGM( pUpscale2, "LaplaceReconstructTest.pgm", ImageIO::NULL_OUT );
+    return true;
 }
 
 //========================================================================================
@@ -285,6 +320,17 @@ int main(int argc, char *argv[])
    nrOrientations = 4;  // orientation computation only derived for 4 oriented bands per scale
    cout << "* Pyramid Orientation Estimation test:" << endl << flush;
    if ( PyramidOrientationTest( pImage, nrScales, nrOrientations) == true )
+   {
+      cout << "\t-> OK!!" << endl << flush;
+   }
+   else
+   {
+      cout << "\t-> FAILED!!" << endl << flush;
+   }
+
+
+   cout << "* Pyramid Burt Adelson test:" << endl << flush;
+   if (TestPyramidBurtAdelson( pImage) == true )
    {
       cout << "\t-> OK!!" << endl << flush;
    }
