@@ -23,6 +23,7 @@
 #include "../../histogram/histogram/RunLengthHistogram.h"
 #include "../../filter/filter/NonSeparableFilter.h"
 #include "../imageanalysis/CannyEdgeDetector.h"
+#include "../imageanalysis/DistanceTransform.h"
 #include "../imageanalysis/WatershedToboggan.h"
 #include "../imageanalysis/WatershedMeyer.h"
 #include "../imageanalysis/StegerLineDetector.h"
@@ -73,6 +74,18 @@ void TestWSMeyer( Image *pImage )
    ImageIO::Write( pSegmented, std::string("WatershedMeyerRidgesImage.ppm") );
    delete pSegmented;
    delete pGridIn;
+}
+
+//-----------------------------------------------------------------------------------
+
+void TestDistanceTransform()
+{
+    std::string filename = string("../../testdata/contours2.png");
+    Image *pImage = ImageIO::Read(filename);
+    DistanceTransform* pDT = new DistanceTransform();
+    ArrayGrid<double>* pResult = pDT->Run( pImage->GetBands()[0] );
+
+    ImageIO::WritePGM( pResult, "DistanceTransform.pgm", ImageIO::NORMAL_OUT );
 }
 
 //-----------------------------------------------------------------------------------
@@ -356,6 +369,8 @@ int main(int argc, char *argv[])
    /////////////////////////////////////////////////////
    // THINNING
    TestThinning( );
+
+   TestDistanceTransform( );
 
    /////////////////////////////////////////////////////
    // FIND MAXIMAL INCLUDED RECTANGLES
