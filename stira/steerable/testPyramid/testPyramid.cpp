@@ -23,6 +23,7 @@
 
 #include "../pyramid/PyramidReal.h"
 #include "../pyramid/PyramidComplex.h"
+#include "../pyramid/PyramidBurtAdelson.h"
 
 #include "../freemanadelson/ComputeSteerableFilteredImages.h"
 #include "../orientationestimation/ComputeOrientation.h"
@@ -46,39 +47,36 @@ bool SteerableFreemanAdelsonTest( Image* pImage )
    assert( csf.Run() == 1);
    return true;
 }
+
 //========================================================================================
 
 bool TestPyramidBurtAdelson( Image* pImage )
 {
-    ArrayGrid<double>* pGridIn = pImage->GetBands()[0];
-    SeparableFilter sf;
+   assert(pImage != 0);
 
-    double pH[ 5 ] = { 0.0625, 0.25, 0.375, 0.25, 0.0625 };
+   int nrScales = 4;
 
-    ArrayGrid<double>* pLowpass = sf.SeparableFilter::RunRowColumn( pGridIn, pH, pH, 5, 5 );
-    ImageIO::WritePGM( pLowpass, "LaplaceLowpass.pgm", ImageIO::NULL_OUT );
+   PyramidBurtAdelson pba;
 
-    pGridIn->SubtractGrid( pLowpass );
-    ImageIO::WritePGM( pGridIn, "LaplaceResidualTest.pgm", ImageIO::GRADIENT_OUT );
+   pba.Decompose( pImage, nrScales );
 
+   for (int i = 0; i < nrScales; i++)
+   {
+       ArrayGrid<double>* pTemp = pba.GetPyramid()->GetRecursiveScale( i )->GetOrientedBand(0);
+       stringstream ss;
+       ss << "PyrLevel" << i << ".pgm";
+       ImageIO::WritePGM( pTemp, ss.str(), ImageIO::GRADIENT_OUT );
+   }
+   ArrayGrid<double>* pRec = pba.Reconstruct();
+   ImageIO::WritePGM( pRec, "Reconstructed.pgm", ImageIO::NULL_OUT );
 
+   delete pRec;
 
-    ArrayGrid<double>* pNextLevel = ArrayGridTools<double>::DownSampleGrid( pLowpass );
-           // void AddGrid( ArrayGrid<T>* otherGrid );
-
-    //ArrayGrid<double>* pUpscale = GaussConvolve::UpsampleGaussianInterpolated( pNextLevel, 2
-    ArrayGrid<double>* pUpscale = ArrayGridTools<double>::UpSampleGrid( pNextLevel, 512, 512 );
-    ArrayGrid<double>* pUpscale2 = sf.SeparableFilter::RunRowColumn( pUpscale, pH, pH, 5, 5 );
-    //pUpscale->MultiplyWith( 1.4 );
-
-    ImageIO::WritePGM( pUpscale2, "LaplaceUpscaleTest.pgm", ImageIO::NULL_OUT );
-
-    pUpscale2->AddGrid(pGridIn);
-    ImageIO::WritePGM( pUpscale2, "LaplaceReconstructTest.pgm", ImageIO::NULL_OUT );
-    return true;
+   return true;
 }
 
 //========================================================================================
+
 
 bool PyramidRealDecomposeReconstructTest(Image* pImage, int nrScales, int nrOrientations)
 {
@@ -327,7 +325,6 @@ int main(int argc, char *argv[])
    {
       cout << "\t-> FAILED!!" << endl << flush;
    }
-
 
    cout << "* Pyramid Burt Adelson test:" << endl << flush;
    if (TestPyramidBurtAdelson( pImage) == true )

@@ -4,7 +4,9 @@ CONFIG += staticlib
 
 SOURCES += PyramidComplex.cpp \
 PyramidReal.cpp \
- PyramidMaster.cpp
+ PyramidMaster.cpp \
+    PyramidBurtAdelson.cpp
 HEADERS += PyramidComplex.h \
 PyramidReal.h \
- PyramidMaster.h
+ PyramidMaster.h \
+    PyramidBurtAdelson.h
