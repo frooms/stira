@@ -32,6 +32,8 @@ public:
      * \param pPyramid the pyramid to represent */
    static Image* VisualizeRealPyramid( Pyramid< double>* pPyramid );
 
+   static Image* VisualizeClassicWavelet( Pyramid< double >* pPyramid );
+
 private:
    /** \brief Determines the width for the single image in which to draw all bands of the pyramid
      * \param pPyramid the pyramid to represent */

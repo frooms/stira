@@ -100,9 +100,43 @@ Image* PyramidTools::VisualizeRealPyramid( Pyramid< double >* pPyramid )
       }
       yTop += (pPyramid->GetRecursiveScale(scaleNr)->GetOrientedBand(0)->GetHeight() + border);
    }
-   
    xTop = border;
    pImage->InsertSubGrid( pPyramid->GetLowpassResidual(), xTop, yTop );
+   return pImage;
+}
+
+//===================================================================================================
+
+Image* PyramidTools::VisualizeClassicWavelet( Pyramid< double >* pPyramid )
+{
+   int xTop, yTop;
+   int residualWidth  = pPyramid->GetRecursiveScale(0)->GetOrientedBand(0)->GetWidth();
+   int residualHeight = pPyramid->GetRecursiveScale(0)->GetOrientedBand(0)->GetHeight();
+   int border = 1;
+   int nrScales = pPyramid->GetNumberOfScales();
+   int totalWidth  = residualWidth  * 2 + (nrScales+2) * border;
+   int totalHeight = residualHeight * 2 + (nrScales+2) * border;
+   Image* pImage = new Image( totalWidth, totalHeight, 1 );
+
+   for (int s = 0; s < nrScales; s++)
+   {
+       xTop = residualWidth  + (nrScales - s) * border;
+       yTop = 0;
+       pImage->InsertSubGrid( pPyramid->GetRecursiveScale(s)->GetOrientedBand(0), xTop, yTop );
+
+       xTop = 0;
+       yTop = residualHeight + (nrScales - s) * border;
+       pImage->InsertSubGrid( pPyramid->GetRecursiveScale(s)->GetOrientedBand(1), xTop, yTop );
+
+       xTop = residualWidth  + (nrScales - s) * border;
+       yTop = residualHeight + (nrScales - s) * border;
+       pImage->InsertSubGrid( pPyramid->GetRecursiveScale(s)->GetOrientedBand(2), xTop, yTop );
+
+       residualWidth  /= 2;
+       residualHeight /= 2;
+   }
+
+   pImage->InsertSubGrid( pPyramid->GetLowpassResidual(), 0, 0 );
    return pImage;
 }
 
