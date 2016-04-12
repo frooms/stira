@@ -203,7 +203,7 @@ bool KuwaharaFilterTest(Image* pSourceImage)
 bool SeparableFilterTest(Image* pSourceImage)
 {
    int length = 3;
-   double coeff = 1.0 / 3.0;
+   double coeff = 1.0 / (double)(length);
    double pFilterX[ 3 ] = {coeff, coeff, coeff};
    double pFilterY[ 3 ] = {coeff, coeff, coeff};
 
@@ -223,11 +223,11 @@ bool SeparableFilterTest(Image* pSourceImage)
 
 bool SeparableFilterEvenTest(Image* pSourceImage)
 {
-   int lengthX = 2;
-   int lengthY = 1;
+   int lengthX = 3;
+   int lengthY = 3;
    double coeff = 1.0;
-   double pFilterX[ 2 ] = {coeff, -coeff};
-   double pFilterY[ 1 ] = {coeff};
+   double pFilterX[ 3 ] = {coeff, 0.0, -coeff};
+   double pFilterY[ 3 ] = {coeff / 3.0, coeff / 3.0, coeff / 3.0};
 
    stira::filter::SeparableFilter sf;
    image::ArrayGrid<double>* pOutGridX = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterX, pFilterY, lengthX, lengthY );
