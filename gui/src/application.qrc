@@ -1,0 +1,9 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+      <file>icons/zoom-in-48x48.png</file>
+      <file>icons/zoom-out-48x48.png</file>
+      <file>icons/bt-remove-48x48.png</file>
+      <file>icons/object-rotate-right.png</file>
+      <file>icons/object-rotate-left.png</file>
+</qresource>
+</RCC>
