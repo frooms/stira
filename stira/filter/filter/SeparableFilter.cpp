@@ -1,6 +1,6 @@
 
 /***********************************************************************************
- *   Copyright (C) 2008 by Filip Rooms                                             *
+ *   Copyright (C) 2016 by Filip Rooms                                             *
  *                                                                                 *
  *  Terms and conditions for using this software in any form are provided in the   *
  *  file COPYING, which can be found in the root directory of this project.        *
@@ -113,8 +113,6 @@ bool SeparableFilter::RunColumn( ArrayGrid<double>* pInputBand, ArrayGrid<double
 
 //------------------------------------------------------------------------------------------
 
-//------------------------------------------------------------------------------------------
-
 ArrayGrid<double>* SeparableFilter::RunRowColumn( ArrayGrid<double>* pInputBand, double *filtx, double *filty, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType )
 {
    ArrayGrid<double>* pFilteredBand = 0;
@@ -124,57 +122,11 @@ ArrayGrid<double>* SeparableFilter::RunRowColumn( ArrayGrid<double>* pInputBand,
    bool needInitialisation = true;
    double initialRealValue = 0.0;
    pFilteredBand = new ArrayGrid<double>( width, height, needInitialisation, initialRealValue );
+   // filter row by row with filtx
    RunRow( pInputBand, pFilteredBand, filtx, filterLengthX, myType );
 
-   /*// filter row by row with filtx
-   ///////////////////////////////
-   if (filterLengthX > 1)
-   {
-      double *pRowIn  = new double[ width ];
-      double *pRowOut = new double[ width ];
-      for (int y = 0; y < height; y++)
-      {
-         for (int x = 0; x < width; x++)
-         {
-            pRowIn[x] = pInputBand->GetValue(x, y);
-         }
-         BasicFilter1D (&(*pRowIn), &(*filtx), &(*pRowOut), width, filterLengthX, myType);
-         for (int x = 0; x < width; x++)
-         {
-            pFilteredBand->SetValue(x, y, pRowOut[x]);
-         }
-      }
-      delete []pRowIn;
-      delete []pRowOut;
-   }
-   else
-   {
-      pFilteredBand = pInputBand->Clone();
-   }*/
-
    // filter column by column with filty
-   /////////////////////////////////////
    RunColumn( pFilteredBand, pFilteredBand, filty, filterLengthY, myType );
-   /*if (filterLengthY > 1)
-   {
-      double *pColumnIn  = new double[ height ];
-      double *pColumnOut = new double[ height ];
-      for (int x = 0; x < width; x++)
-      {
-         // filter all columns
-         for (int y = 0; y < height; y++)
-         {
-            pColumnIn[y] = pFilteredBand->GetValue(x, y);
-         }
-         BasicFilter1D (&(*pColumnIn), &(*filty), &(*pColumnOut), pInputBand->GetHeight(), filterLengthY, myType);
-         for (int y = 0; y < height; y++)
-         {
-            pFilteredBand->SetValue(x, y, pColumnOut[y]);
-         }
-      }
-      delete []pColumnIn;
-      delete []pColumnOut;
-   }*/
 
    return pFilteredBand;
 }
@@ -190,90 +142,16 @@ ArrayGrid<double>* SeparableFilter::RunColumnRow( ArrayGrid<double>* pInputBand,
    bool needInitialisation = true;
    double initialRealValue = 0.0;
    pFilteredBand = new ArrayGrid<double>( width, height, needInitialisation, initialRealValue );
-   RunColumn( pInputBand, pFilteredBand, filty, filterLengthY, myType );
-
-   /*// filter row by row with filtx
-   ///////////////////////////////
-   if (filterLengthX > 1)
-   {
-      double *pRowIn  = new double[ width ];
-      double *pRowOut = new double[ width ];
-      for (int y = 0; y < height; y++)
-      {
-         for (int x = 0; x < width; x++)
-         {
-            pRowIn[x] = pInputBand->GetValue(x, y);
-         }
-         BasicFilter1D (&(*pRowIn), &(*filtx), &(*pRowOut), width, filterLengthX, myType);
-         for (int x = 0; x < width; x++)
-         {
-            pFilteredBand->SetValue(x, y, pRowOut[x]);
-         }
-      }
-      delete []pRowIn;
-      delete []pRowOut;
-   }
-   else
-   {
-      pFilteredBand = pInputBand->Clone();
-   }*/
 
    // filter column by column with filty
-   /////////////////////////////////////
-   RunRow( pFilteredBand, pFilteredBand, filtx, filterLengthX, myType );
-
-   /*// filter column by column with filty
-   /////////////////////////////////////
-   if (filterLengthY > 1)
-   {
-      double *pColumnIn  = new double[ height ];
-      double *pColumnOut = new double[ height ];
-      for (int x = 0; x < width; x++)
-      {
-         for (int y = 0; y < height; y++)
-         {
-            pColumnIn[y] = pFilteredBand->GetValue(x, y);
-         }
-         BasicFilter1D (&(*pColumnIn), &(*filty), &(*pColumnOut), pInputBand->GetHeight(), filterLengthY, myType);
-         for (int y = 0; y < height; y++)
-         {
-            pFilteredBand->SetValue(x, y, pColumnOut[y]);
-         }
-      }
-      delete []pColumnIn;
-      delete []pColumnOut;
-   }
-   else
-   {
-      pFilteredBand = pInputBand->Clone();
-   }
+   RunColumn( pInputBand, pFilteredBand, filty, filterLengthY, myType );
 
    // filter row by row with filtx
-   ///////////////////////////////
-   if (filterLengthX > 1)
-   {
-      double *pRowIn  = new double[ width ];
-      double *pRowOut = new double[ width ];
-      for (int y = 0; y < height; y++)
-      {
-         for (int x = 0; x < width; x++)
-         {
-            pRowIn[x] = pInputBand->GetValue(x, y);
-         }
-         BasicFilter1D (&(*pRowIn), &(*filtx), &(*pRowOut), width, filterLengthX, myType);
-         for (int x = 0; x < width; x++)
-         {
-            pFilteredBand->SetValue(x, y, pRowOut[x]);
-         }
-      }
-      delete []pRowIn;
-      delete []pRowOut;
-   }*/
+   RunRow( pFilteredBand, pFilteredBand, filtx, filterLengthX, myType );
 
-   // for demo purposes, write filtered image to file
-   //rescaleArrayAndWriteImageToPPM (outputImg, W, H, fileName, 0);
    return pFilteredBand;
 }
+//------------------------------------------------------------------------------------------
 
 image::Image* SeparableFilter::RunRowColumn( image::Image* pImageIn, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType )
 {
