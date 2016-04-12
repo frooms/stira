@@ -19,6 +19,7 @@
 #include "../../common/common/DrawFigures.h"
 #include "../../common/common/ClusteringLearning.h"
 #include "../../common/common/FitCurve.h"
+#include "../tools/ArrayGridTools.h"
 #include "../tools/GridExtender.h"
 #include "../tools/GridGenerator.h"
 #include "../tools/DrawImageTools.h"
@@ -50,7 +51,7 @@ bool TestGridData()
 
 bool TestGridExtender()
 {
-   Image* pImage = ImageIO::Read( std::string("../../testdata/lena256.pgm") );
+   Image* pImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/lena256.pgm") );
    int borderWidth = 15;
    int borderHeight = 25;
    double myValue = 0;
@@ -190,7 +191,7 @@ bool GridAverageTest()
 
 bool GridPolarTransformTest()
 {
-   Image* pImage = ImageIO::Read( std::string("../../testdata/mandril.pgm") );
+   Image* pImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/mandril.pgm") );
 
    ArrayGrid<double>* pGridPT = NumberGridTools<double>::LogPolarTransform( pImage->GetBands()[0] );
    ImageIO::WritePGM( pGridPT, string("GridLogPolarTransform.pgm"), ImageIO::NORMAL_OUT);
@@ -206,7 +207,7 @@ bool GridPolarTransformTest()
 
 bool ExtractSubgridTest()
 {
-   Image* pImage = ImageIO::Read( std::string("../../testdata/mandril.pgm") );
+   Image* pImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/mandril.pgm") );
    int xTop = 0;
    int yTop = 0;
    int xBottom = 128;
@@ -394,7 +395,7 @@ void TestLocalAutoCorrelation()
     int xMin, yMin, xMax, yMax;
     int xCenter, yCenter;
     int localHalfWidth = 7;
-    Image* pImageIn = ImageIO::ReadImageOpenCV("../../testdata/lena512.pgm");
+    Image* pImageIn = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/lena512.pgm");
 
     // Line
     xCenter = 428;
@@ -425,6 +426,21 @@ void TestLocalAutoCorrelation()
     NumberGridTools<double>::GetMinMax( pACGridSmooth, gridMin, gridMax, xMin, yMin, xMax, yMax );
     cout << "Smooth: AC min = " << gridMin << ", max = " << gridMax << endl;
     delete pACGridSmooth;
+}
+
+//--------------------------------------------------------------------
+
+bool TestCircularShiftGrid()
+{
+    Image* pImageIn = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/lena512.pgm");
+
+    ArrayGrid<double>* pGrid = pImageIn->GetBands()[0];
+
+    ArrayGrid<double>* pGridShift = ArrayGridTools<double>::CircularShiftGrid(pGrid, 120, 50);
+    ImageIO::WriteOpenCV( pGridShift, std::string("GridShift.pgm"), ImageIO::NORMAL_OUT );
+    delete pImageIn;
+    delete pGridShift;
+    return true;
 }
 
 //--------------------------------------------------------------------
@@ -475,6 +491,11 @@ int main( )
    if (TestOrientationPCA() != true )
    {
       cerr << "TestOrientationPCA failed" << endl << flush;
+   }
+
+   if (TestCircularShiftGrid() != true )
+   {
+      cerr << "TestShiftGrid failed" << endl << flush;
    }
    return 0;
 }
