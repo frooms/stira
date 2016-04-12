@@ -253,7 +253,8 @@ Cell::Cell(int i, int j, ArrayGrid<int>* pGridR ):Bpz(0),Apz(0)
       {
          prev=matrix[7];
       }
-      next=matrix[i];
+      // FRO: was next=matrix[i]; however, an array of 8 elements can only be addressed from 0 to 7, not 1 to 8
+      next=matrix[i-1];
       if (prev==false && next==true)
       {
          Apz++;
