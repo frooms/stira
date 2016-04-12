@@ -23,11 +23,6 @@ class ColorLookupTable
 {
 public:
    ColorLookupTable();
-   //double mLUT_R[4096][3];
-   //double mLUT_RM[4096][3];
-   //double mLUT_RMC[4096][3];
-   //double mLUT_RMC_new[4096][3];
-   //double mLUTSergio[4096][3];
    double mLUT_R_last[4096][3];
 };
 
