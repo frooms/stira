@@ -6,7 +6,6 @@ SOURCES += CannyEdgeDetector.cpp \
     WatershedMeyer.cpp \
     WatershedToboggan.cpp \
     FloodFill.cpp \
-    HardLink.cpp \
     ContourTracing.cpp \
     CompareCurvesInImage.cpp \
     FunctionsOpenCV.cpp \
@@ -21,7 +20,6 @@ HEADERS += CannyEdgeDetector.h \
     WatershedMeyer.h \
     WatershedToboggan.h \
     FloodFill.h \
-    HardLink.h \
     ContourTracing.h \
     CompareCurvesInImage.h \
     FunctionsOpenCV.h \

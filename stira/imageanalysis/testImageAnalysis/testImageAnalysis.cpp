@@ -28,7 +28,6 @@
 #include "../imageanalysis/WatershedMeyer.h"
 #include "../imageanalysis/StegerLineDetector.h"
 #include "../imageanalysis/FloodFill.h"
-#include "../imageanalysis/HardLink.h"
 #include "../imageanalysis/ContourTracing.h"
 #include "../imageanalysis/Thinning.h"
 #include "../imageanalysis/SLIC.h"
@@ -204,17 +203,8 @@ void TestThinning( )
    ArrayGrid<double>* pThinnedGrid = t.RunThinning( pImage->GetBands()[0], rroi, 255.0 );
    ImageIO::WritePGM( pThinnedGrid, std::string("ThinnedGrid.pgm"), ImageIO::NORMAL_OUT );
 
-   ArrayGrid<int>* pGridint = GridConverter::ConvertToInt(  pImage->GetBands()[0] );
-   NumberGridTools<int>::NegateGridSelf( pGridint, 255 );
-
-   HardLink h;
-   ArrayGrid<int>* pSkeletonGrid = h.MedialAxisTransform( pGridint );
-   ImageIO::WritePGM( pSkeletonGrid, std::string("SkeletonGrid.pgm"), ImageIO::NORMAL_OUT );
-
    delete pImage;
    delete pThinnedGrid;
-   delete pSkeletonGrid;
-   delete pGridint;
 }
 
 //-----------------------------------------------------------------------------------
