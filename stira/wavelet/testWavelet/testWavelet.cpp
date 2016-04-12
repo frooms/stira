@@ -237,7 +237,7 @@ int main(int argc, char *argv[])
    string fileNamePPM;
    if (argc < 2)
    {
-      fileNamePPM = string("../../testdata/lena512.pgm");
+      fileNamePPM = "../../../../stira/stira/testdata/lena512.pgm";
       cout << "File name is " << fileNamePPM << endl << flush;
    }
    else
