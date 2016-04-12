@@ -80,9 +80,21 @@ public:
      * \param xBottom x coordinate of bottom right point in master grid to stop extraction of subgrid (NOT included in subgrid!)
      * \param yBottom y coordinate of bottom right point in master grid to stop extraction of subgrid (NOT included in subgrid!)*/
    static void InsertSubGrid( ArrayGrid<T>* pMasterGrid, ArrayGrid<T>* pSubGrid, int xTop, int yTop, int xBottom, int yBottom );
+
+   /** \brief Creates copy of image which is circularly shifted */
+   static ArrayGrid<T>* CircularShiftGrid( ArrayGrid<T>* pGridIn, int deltaX, int deltaY );
 };
 
 //===========================================================================================
+
+/** \brief constructor */
+template <class T>
+inline ArrayGridTools<T>::ArrayGridTools() { }
+
+/** \brief destructor */
+template <class T>
+inline ArrayGridTools<T>::~ArrayGridTools() {}
+
 
 template <class T>
 inline ArrayGrid<T>* ArrayGridTools<T>::DownSampleGrid( ArrayGrid<T>* pGridIn )
@@ -225,6 +237,32 @@ inline void ArrayGridTools<T>::InsertSubGrid( ArrayGrid<T>* pMasterGrid, ArrayGr
          pMasterGrid->SetValue(x+xTop, y+yTop, pSubGrid->GetValue( x, y) );
       }
    }
+}
+
+
+//===================================================================================================
+
+template <class T>
+inline ArrayGrid<T>* ArrayGridTools<T>::CircularShiftGrid( ArrayGrid<T>* pGridIn, int deltaX, int deltaY )
+{
+    int width  = pGridIn->GetWidth();
+    int height = pGridIn->GetHeight();
+    ArrayGrid<T>* pGridOut = new ArrayGrid<T>( width, height );
+
+    for (int y = 0; y < height; y++)
+    {
+        for (int x = 0; x < width; x++)
+        {
+            int shiftX = x - deltaX;
+            if (shiftX >= width) {shiftX -= width;}
+            if (shiftX < 0) {shiftX += width;}
+            int shiftY = y - deltaY;
+            if (shiftY >= height) {shiftY -= height;}
+            if (shiftY < 0) {shiftY += height;}
+            pGridOut->SetValue(x, y, pGridIn->GetValue(shiftX, shiftY));
+        }
+    }
+    return pGridOut;
 }
 
 //===================================================================================================
