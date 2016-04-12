@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname = "../../testdata/lena512.pgm";
+      inputname = "../../../../stira/stira/testdata/lena512.pgm";
       sigmaBlur   = 2.0;
    }
 

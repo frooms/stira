@@ -50,8 +50,8 @@ int main( /*int argc, char *argv[]*/ )
 {
    Image* pImage = 0;
    
-   //string fileNamePPM("../../testdata/Lenna.ppm");
-   string fileNamePGM("../../testdata/lena256.pgm");
+   //string fileNamePPM("../../../../stira/stira/testdata/Lenna.ppm");
+   string fileNamePGM("../../../../stira/stira/testdata/lena256.pgm");
    
    pImage = ImageIO::Read( fileNamePGM );
    

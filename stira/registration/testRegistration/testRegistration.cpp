@@ -33,8 +33,8 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname1 = "../../testdata/lena-crop1.ppm";
-      inputname2 = "../../testdata/lena-crop2.ppm";
+      inputname1 = "../../../../stira/stira/testdata/lena-crop1.ppm";
+      inputname2 = "../../../../stira/stira/testdata/lena-crop2.ppm";
    }
    
    pImage1 = ImageIO::Read( inputname1 );

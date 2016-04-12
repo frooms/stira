@@ -26,9 +26,9 @@ using namespace stira::histogram;
 
 bool SpatiogramTest()
 {
-   ArrayGrid<double>* pGrid1 = ImageIO::ReadArrayOpenCVAsDouble( std::string( "../../testdata/Spatial1.png" ) );
-   ArrayGrid<double>* pGrid2 = ImageIO::ReadArrayOpenCVAsDouble( std::string( "../../testdata/Spatial2.png" ) );
-   ArrayGrid<double>* pGrid3 = ImageIO::ReadArrayOpenCVAsDouble( std::string( "../../testdata/Spatial3.png" ) );
+   ArrayGrid<double>* pGrid1 = ImageIO::ReadArrayOpenCVAsDouble( std::string( "../../../../stira/stira/testdata/Spatial1.png" ) );
+   ArrayGrid<double>* pGrid2 = ImageIO::ReadArrayOpenCVAsDouble( std::string( "../../../../stira/stira/testdata/Spatial2.png" ) );
+   ArrayGrid<double>* pGrid3 = ImageIO::ReadArrayOpenCVAsDouble( std::string( "../../../../stira/stira/testdata/Spatial3.png" ) );
 
    int binSize = 1;
    Spatiogram sp1( pGrid1, binSize );
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      fileName = "../../testdata/lena256.pgm";
+      fileName = "../../../../stira/stira/testdata/lena256.pgm";
    }
    bool allSuccess = true;
    Image* pInImage = ImageIO::Read( fileName );

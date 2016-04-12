@@ -273,11 +273,11 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname = "../../testdata/lena512.pgm";
-      //inputname = "../../testdata/testhaze.ppm";
-      //inputname = "../../testdata/arab.pgm";
-      //inputname = "../../testdata/blackman.pgm";
-      //inputname = "../../testdata/nematodes.pgm";
+      inputname = "../../../../stira/stira/testdata/lena512.pgm";
+      //inputname = "../../../../stira/stira/testdata/testhaze.ppm";
+      //inputname = "../../../../stira/stira/testdata/arab.pgm";
+      //inputname = "../../../../stira/stira/testdata/blackman.pgm";
+      //inputname = "../../../../stira/stira/testdata/nematodes.pgm";
       nrScales = 4;
       nrOrientations = 6;
    }

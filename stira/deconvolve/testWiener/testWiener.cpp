@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      pInImage = ImageIO::Read( "../../testdata/circles.pgm" );
+      pInImage = ImageIO::Read( "../../../../stira/stira/testdata/circles.pgm" );
    }
    
    double sigmaBlur = 1.5;

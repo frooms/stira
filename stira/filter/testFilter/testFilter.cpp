@@ -463,9 +463,9 @@ bool LocalBinaryPatternSymmetricTest( Image* pSourceImage )
 
 void TestCompareYarns()
 {
-   Image *pImage1 = ImageIO::Read( string("../../testdata/CropOrig-2037.pgm") );
-   Image *pImage2 = ImageIO::Read( string("../../testdata/CropOrig-2038.pgm") );
-   Image *pImage3 = ImageIO::Read( string("../../testdata/CropOrig-2039.pgm") );
+   Image *pImage1 = ImageIO::Read( string("../../../../stira/stira/testdata/CropOrig-2037.pgm") );
+   Image *pImage2 = ImageIO::Read( string("../../../../stira/stira/testdata/CropOrig-2038.pgm") );
+   Image *pImage3 = ImageIO::Read( string("../../../../stira/stira/testdata/CropOrig-2039.pgm") );
 
    int nrPoints = 8;
    double radius = 3.0;
@@ -550,10 +550,10 @@ int main(int argc, char *argv[])
    string fileNamePGM;
    if (argc != 2)
    {
-      fileNamePGM = string("../../testdata/lena512.pgm");
-      //fileNamePGM = string("../../testdata/Rikki.pgm");
-      //fileNamePGM = string("../../testdata/lena256-GaussianNoise.pgm");
-      //fileNamePGM = string("../../testdata/bricks_zigzag_texture_6190218.PGM");
+      fileNamePGM = string("../../../../stira/stira/testdata/lena512.pgm");
+      //fileNamePGM = string("../../../../stira/stira/testdata/Rikki.pgm");
+      //fileNamePGM = string("../../../../stira/stira/testdata/lena256-GaussianNoise.pgm");
+      //fileNamePGM = string("../../../../stira/stira/testdata/bricks_zigzag_texture_6190218.PGM");
    }
    else
    {

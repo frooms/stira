@@ -156,7 +156,7 @@ bool InterpolationTest( )
 
 bool FisheyeTest( )
 {
-   Image* pInImage = ImageIO::Read( "../../testdata/Fisheye_photo.ppm" );
+   Image* pInImage = ImageIO::Read( "../../../../stira/stira/testdata/Fisheye_photo.ppm" );
    FisheyeCorrector fc;
 
    Image* pImageCorrected = fc.ApplyCorrect( pInImage, 14, 3 );
@@ -180,7 +180,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      fileName = "../../testdata/colorsquares.ppm";
+      fileName = "../../../../stira/stira/testdata/colorsquares.ppm";
    }
 
    Image* pInImage = ImageIO::Read( fileName );

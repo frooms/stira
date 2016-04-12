@@ -261,7 +261,7 @@ bool ChromaticAdaptationTest2()
 
 bool ChromaticAdaptationTest3( )
 {
-   Image* pInImage = ImageIO::Read( std::string("../../testdata/chouffe.ppm") );
+   Image* pInImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/chouffe.ppm") );
 
    ChromaticAdaptationType adaptationType = CHROMATICADAPTATION_BRADFORD;
 
@@ -269,7 +269,7 @@ bool ChromaticAdaptationTest3( )
    ImageIO::Write( pInImage, std::string("ChromaticD93-D50.ppm") );
    delete pInImage;
 
-   pInImage = ImageIO::Read( std::string("../../testdata/chouffe.ppm") );
+   pInImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/chouffe.ppm") );
    pInImage->ChromaticAdapt( ColorConstants::sD50_XYZ, ColorConstants::sD75_XYZ, adaptationType );
    ImageIO::Write( pInImage, std::string("ChromaticD50-D93.ppm") );
 
@@ -281,10 +281,10 @@ bool ChromaticAdaptationTest3( )
 
 bool ColorBalanceTest()
 {
-   Image* pInImage = ImageIO::Read( std::string("../../testdata/Lenna.ppm") );
-   //Image* pInImage = ImageIO::Read( std::string("../../testdata/StanfordTowerOrigin.ppm") );
-   //Image* pInImage = ImageIO::Read( std::string("../../testdata/chouffe.ppm") );
-   //Image* pInImage = ImageIO::Read( std::string("../../testdata/HulstColorRaw.ppm") );
+   Image* pInImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/Lenna.ppm") );
+   //Image* pInImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/StanfordTowerOrigin.ppm") );
+   //Image* pInImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/chouffe.ppm") );
+   //Image* pInImage = ImageIO::Read( std::string("../../../../stira/stira/testdata/HulstColorRaw.ppm") );
 
    Image* pOutImage = ColorBalancer::RunGrayWorld( pInImage );
    ImageIO::Write( pOutImage, std::string("GrayWorldBalance.ppm") );
@@ -1117,7 +1117,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      fileName = "../../testdata/Peppers512rgb.ppm";
+      fileName = "../../../../stira/stira/testdata/Peppers512rgb.ppm";
    }
    bool allSuccess = true;
    Image* pInImage = ImageIO::Read( fileName );

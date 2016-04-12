@@ -287,8 +287,8 @@ bool SuppressOuterFrequenciesTest( ArrayGrid<double>* pSourceGrid)
 int main()
 {
    Image* pImage = 0;
-   //string fileNamePGM("../../testdata/lena256.pgm");
-   string fileNamePGM("../../testdata/blackman.png");
+   //string fileNamePGM("../../../../stira/stira/testdata/lena256.pgm");
+   string fileNamePGM("../../../../stira/stira/testdata/blackman.png");
 
    pImage = ImageIO::Read( fileNamePGM );
 

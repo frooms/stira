@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      fileName = "../../testdata/lena256.pgm";
+      fileName = "../../../../stira/stira/testdata/lena256.pgm";
    }
    Image* pInImage = ImageIO::Read( fileName );
    TestDrawFigure();

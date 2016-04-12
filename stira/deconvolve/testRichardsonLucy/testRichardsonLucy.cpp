@@ -165,7 +165,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname = "../../testdata/circles.pgm";
+      inputname = "../../../../stira/stira/testdata/circles.pgm";
    }
 
    cout << "Running test with input image " << inputname << " using " << nrIterations << " iterations." << endl << flush;

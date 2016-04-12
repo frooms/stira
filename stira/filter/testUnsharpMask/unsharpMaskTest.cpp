@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
    string fileNamePGM;
    if (argc != 2)
    {
-      fileNamePGM = string("../../testdata/lena256.pgm");
+      fileNamePGM = string("../../../../stira/stira/testdata/lena256.pgm");
    }
    else
    {

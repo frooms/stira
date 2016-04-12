@@ -145,7 +145,7 @@ bool ImageIOTest()
    //PGM test
    //////////
    Image* pImg = 0;
-   std::string pgmName = string("../../testdata/lena256.pgm");
+   std::string pgmName = string("../../../../stira/stira/testdata/lena256.pgm");
    pImg = ImageIO::Read( pgmName );
 
    if( pImg == 0 )                      { return false;}
@@ -160,7 +160,7 @@ bool ImageIOTest()
    //PPM test
    //////////
    pImg = 0;
-   std::string ppmName = string("../../testdata/Lenna.ppm");
+   std::string ppmName = string("../../../../stira/stira/testdata/Lenna.ppm");
    pImg = ImageIO::Read( ppmName );
 
    if( pImg == 0 )                        { return false;}
@@ -177,7 +177,7 @@ bool ImageIOTest()
    pImg = 0;
    int expectedWidth  = 956;
    int expectedHeight = 307;
-   std::string openCvName = string("../../testdata/stitch.tif");
+   std::string openCvName = string("../../../../stira/stira/testdata/stitch.tif");
    pImg = ImageIO::ReadImageOpenCV( openCvName );
 
    if( pImg == 0 )                       { return false;}
@@ -247,11 +247,11 @@ bool ImageIOTest()
 
 bool ImageOpenCvTest()
 {
-   Image *pImage1 = ImageIO::Read( string("../../testdata/buildings_small.jpg") );
+   Image *pImage1 = ImageIO::Read( string("../../../../stira/stira/testdata/buildings_small.jpg") );
    IplImage* pIplImage1 = ImageIO::ConvertImageToOpenCv( pImage1 );
    cvSaveImage( "StiraToOpenCvImage.jpg", pIplImage1 );
 
-   IplImage* pIplImage2 = cvLoadImage( "../../testdata/LindbloomColorChecker.jpg" );
+   IplImage* pIplImage2 = cvLoadImage( "../../../../stira/stira/testdata/LindbloomColorChecker.jpg" );
    Image* pImage2 = ImageIO::ConvertOpenCvToImage( pIplImage2 );
 
    ImageIO::Write( pImage2, string("OpenCvToStiraImage.ppm") );
@@ -443,7 +443,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      fileName = "../../testdata/lena256.pgm";
+      fileName = "../../../../stira/stira/testdata/lena256.pgm";
    }
    Image* pInImage = ImageIO::Read( fileName );
 

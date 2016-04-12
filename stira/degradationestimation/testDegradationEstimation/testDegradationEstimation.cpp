@@ -122,10 +122,10 @@ int main(int argc, char *argv[])
    }
    else
    {
-      //inputname = "../../testdata/nematodes2.pgm";
-      //inputname = "../../testdata/circles.pgm";
-      //inputname = "../../testdata/cameraman2.pgm";
-      inputname = "../../testdata/lena256.pgm";
+      //inputname = "../../../../stira/stira/testdata/nematodes2.pgm";
+      //inputname = "../../../../stira/stira/testdata/circles.pgm";
+      //inputname = "../../../../stira/stira/testdata/cameraman2.pgm";
+      inputname = "../../../../stira/stira/testdata/lena256.pgm";
       sigmaNoise    = 10.0;
       sigmaBlur   = 2.0;
    }

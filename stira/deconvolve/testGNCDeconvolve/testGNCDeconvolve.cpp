@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname = "../../testdata/circles.pgm";
+      inputname = "../../../../stira/stira/testdata/circles.pgm";
    }
    
    pInImage = ImageIO::Read( inputname );

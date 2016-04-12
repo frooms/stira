@@ -91,7 +91,7 @@ bool EqualizeTest(Image* pInImage)
 
 bool HistogramMapTest()
 {
-   std::string fileName1 = string("../../testdata/testhaze.ppm");
+   std::string fileName1 = string("../../../../stira/stira/testdata/testhaze.ppm");
 
    Image* pImage1 = ImageIO::Read( fileName1 );
    Image* pImage2 = ImageIO::Read( fileName1 );
@@ -152,12 +152,12 @@ int main(int argc, char *argv[])
    string fileNamePPM;
    if (argc < 2)
    {
-      //fileNamePPM = string("../../testdata/Lenna-degraded.ppm");
-      //fileNamePPM = string("../../testdata/circles-Gauss-GaussianNoise.ppm");
-      //fileNamePPM = string("../../testdata/Lenna.ppm");
-      fileNamePPM = string("../../testdata/testhaze.ppm");
-      //fileNamePPM = string("../../testdata/canon3.ppm");
-      //fileNamePPM = string("../../testdata/train.ppm");
+      //fileNamePPM = string("../../../../stira/stira/testdata/Lenna-degraded.ppm");
+      //fileNamePPM = string("../../../../stira/stira/testdata/circles-Gauss-GaussianNoise.ppm");
+      //fileNamePPM = string("../../../../stira/stira/testdata/Lenna.ppm");
+      fileNamePPM = string("../../../../stira/stira/testdata/testhaze.ppm");
+      //fileNamePPM = string("../../../../stira/stira/testdata/canon3.ppm");
+      //fileNamePPM = string("../../../../stira/stira/testdata/train.ppm");
 
    }
    else

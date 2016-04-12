@@ -14,8 +14,8 @@ int main(int argc, char** argv)
    string fileNamePGM;
    if (argc != 2)
    {
-      fileNamePGM = string("../../testdata/lena256-GaussianNoise.pgm");
-      //fileNamePGM = string("../../testdata/bricks_zigzag_texture_6190218.PGM");
+      fileNamePGM = string("../../../../stira/stira/testdata/lena256-GaussianNoise.pgm");
+      //fileNamePGM = string("../../../../stira/stira/testdata/bricks_zigzag_texture_6190218.PGM");
    }
    else
    {

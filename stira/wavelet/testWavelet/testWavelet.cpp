@@ -85,12 +85,12 @@ bool CriticallySubsampledWaveletTest( Image* pImage, double hardThreshold, int n
    wdr.Reconstruct( hardThreshold );
    image::ArrayGrid<double>* pOutGrid = wdr.GetCopyOfReconstructedGrid();
    double psnr = NumberGridTools<double>::ComputePSNR( pGridIn, pOutGrid );
-   delete pOutGrid;
 
    #ifdef VISUALIZE_WAVELETS
       cout << "CriticallySubsampledWaveletTest: PSNR after reconstruction is " << psnr << endl << flush;
       ImageIO::WritePGM( pOutGrid, string("HaarDecomposeReconstruct.pgm"), ImageIO::NULL_OUT );
    #endif
+   delete pOutGrid;
 
    if ( psnr > 150.0 )
    {
@@ -130,8 +130,12 @@ bool SubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
    #ifdef VISUALIZE_WAVELETS
       image::ArrayGrid<double>* pDecomposedGrid = st.GetCopyOfReconstructedGrid();
       ImageIO::WritePGM( pDecomposedGrid, std::string("SubsampledDecomposeBands-ClassicalView.pgm"), ImageIO::GRADIENT_OUT );
+
       Image* pRedundant = PyramidTools::VisualizeRealPyramid( st.GetPyramid() );
       ImageIO::Write( pRedundant, string("SubsampledDecomposeBands.pgm"), ImageIO::NULL_OUT );
+
+      Image* pClassic = PyramidTools::VisualizeClassicWavelet( st.GetPyramid() );
+      ImageIO::Write( pClassic, string("SubsampledDecomposeClassicView2.pgm"), ImageIO::NULL_OUT );
       delete pRedundant;
       delete pDecomposedGrid;
    #endif
@@ -247,7 +251,7 @@ int main(int argc, char *argv[])
    pImage = ImageIO::Read( fileNamePPM );
 
    double hardThreshold = 0.0;
-   int nrScales = 6;
+   int nrScales = 3;
 
    if (CriticallySubsampledWaveletTest( pImage, hardThreshold, nrScales ) == true )
    {
