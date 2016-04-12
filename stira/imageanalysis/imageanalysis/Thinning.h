@@ -22,16 +22,16 @@ namespace imageanalysis {
 
 /** \brief Morphological thinning: applies the following set of structure elements;
   * <PRE>
-  * [ 0 0 0 ]    [ 0   1 ]    [ 1 1 1 ]    [ 1   0 ]
-  * [   1   ]    [ 0 1 1 ]    [   1   ]    [ 1 1 0 ]
-  * [ 1 1 1 ]    [ 0   1 ]    [ 0 0 0 ]    [ 1   0 ]
-  *
-  * [   0 0 ]    [   1   ]    [   1   ]    [ 0 0   ]
-  * [ 1 1 0 ]    [ 1 1 0 ]    [ 0 1 1 ]    [ 0 1 1 ]
-  * [   1   ]    [   0 0 ]    [ 0 0   ]    [   1   ]
+  * [ 0 0 0 ]     [   0 0 ]
+  * [   1   ]     [ 1 1 0 ]
+  * [ 1 1 1 ]     [   1   ]
   * </PRE>
-  * if one of the structure elements fits, the central pixel is set to the value of
-  * the neighbouring 0. This process is repeated until nothing changes anymore
+  * http://homepages.inf.ed.ac.uk/rbf/HIPR2/thin.htm
+  * Structuring elements for skeletonization by morphological thinning.
+  * At each iteration, the image is first thinned by the left hand structuring element,
+  * and then by the right hand one, and then with the remaining six 90° rotations of the two elements.
+  * The process is repeated in cyclic fashion until none of the thinnings produces any further change.
+  * As usual, the origin of the structuring element is at the center.
   *
   * Pruning end branches: only if we assume structure goes from border to border in image;
   * otherwise all structure will be "eaten"
@@ -72,79 +72,103 @@ public:
 
 private:
    /** \brief swipes raster once and applies set of 8 strcuture elements each once per pixel
-     * \param pGridIn input grid
-     * \param value value that is considered "foreground"
+     * \param pGridIn  input grid
+     * \param pGridOut output grid
+     * \param rroi     rectangular roi in which to apply thinning
+     * \param value    value that is considered "foreground"
      * \return number of pixels that were thinned during this sweep*/
-   int SingleThinningSweep( image::ArrayGrid<T>* pGridIn, common::RectangularROI<int> rroi, T value );
+   int SingleThinningSweep( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, common::RectangularROI<int> rroi, T value );
 
 // we assume that the test if the central pixel equals value is done separately before the following
 // tests are performed
 
    /** \brief checks first structure elements for pixel position (x, y)
-     * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridIn  input grid
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
-     * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement1( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+     * \return nr of pixels that were removed */
+   int ThinElementEdge1( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks secondfirst structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement2( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+   int ThinElementEdge2( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks third structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement3( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+   int ThinElementEdge3( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks fourth structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement4( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+   int ThinElementEdge4( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks fifth structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement5( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+   int ThinElementCorner1( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks sixth structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement6( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+   int ThinElementCorner2( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks seventh structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement7( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
+   int ThinElementCorner3( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
    /** \brief checks eightth structure elements for pixel position (x, y)
      * \param pGridIn input grid
-     * \param x x coordinate of pixel to check
-     * \param y y coordinate of pixel to check
+     * \param pGridOut output grid
+     * \param minX minimum x coordinate of the rectangular ROI within which thinning is applied
+     * \param minY minimum y coordinate of the rectangular ROI within which thinning is applied
+     * \param maxX maximum x coordinate of the rectangular ROI within which thinning is applied
+     * \param maxY maximum y coordinate of the rectangular ROI within which thinning is applied
      * \param value value that is considered "foreground"
      * \return 1 if pixel was removed; 0 otherwise*/
-   int ThinElement8( image::ArrayGrid<T>* pGridIn, int x, int y, T value );
-
-
+   int ThinElementCorner4( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value );
 
 
    /** \brief swipes raster once and applies set of 8 strcuture elements each once per pixel
@@ -237,25 +261,29 @@ Thinning<T>::~Thinning()
 //----------------------------------------------------------------
 
 template <class T>
-      image::ArrayGrid<T>* Thinning<T>::RunThinning( image::ArrayGrid<T>* pGridIn, common::RectangularROI<int> rroi, T value )
+image::ArrayGrid<T>* Thinning<T>::RunThinning( image::ArrayGrid<T>* pGridInput, common::RectangularROI<int> rroi, T value )
 {
-   image::ArrayGrid<T>* pGridThinned = pGridIn->Clone();
-   int nrPixelsThinned = SingleThinningSweep( pGridThinned, rroi, value );
+   image::ArrayGrid<T>* pGridIn = pGridInput->Clone();
+   image::ArrayGrid<T>* pGridOut = pGridIn->Clone();
 
+   int nrPixelsThinned = SingleThinningSweep( pGridIn, pGridOut, rroi, value );
+
+   std::cout << "This run thinned away " << nrPixelsThinned << " pixels" << std::endl  << std::flush;
    while (nrPixelsThinned > 0)
    {
-      nrPixelsThinned = SingleThinningSweep( pGridThinned, rroi, value );
+      nrPixelsThinned = SingleThinningSweep( pGridIn, pGridOut, rroi, value );
+      std::cout << "This run thinned away " << nrPixelsThinned << " pixels" << std::endl  << std::flush;
    }
-   return pGridThinned;
+   return pGridIn;
 }
 
 //----------------------------------------------------------------
 
 template <class T>
-int Thinning<T>::SingleThinningSweep( image::ArrayGrid<T>* pGridThinning, common::RectangularROI<int> rroi, T value )
+int Thinning<T>::SingleThinningSweep( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, common::RectangularROI<int> rroi, T value )
 {
-   int height = pGridThinning->GetHeight();
-   int width  = pGridThinning->GetWidth();
+   int height = pGridIn->GetHeight();
+   int width  = pGridIn->GetWidth();
 
    int minX = rroi.GetTopLeftCorner().x;
    int minY = rroi.GetTopLeftCorner().y;
@@ -268,221 +296,286 @@ int Thinning<T>::SingleThinningSweep( image::ArrayGrid<T>* pGridThinning, common
    common::MathUtils::ClipValue( maxY, 1, height - 1 );
 
    int nrPixelsThinned = 0;
-   for (int y = minY; y < maxY; y++)
-   {
-      for (int x = minX; x < maxX; x++)
-      {
-         if (pGridThinning->GetValue( x, y) == value) // test for central pixel of structure element
-         {
-            nrPixelsThinned += ThinElement1( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement2( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement3( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement4( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement5( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement6( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement7( pGridThinning, x, y, value );
-            nrPixelsThinned += ThinElement8( pGridThinning, x, y, value );
-         }
-      }
-   }
+
+   nrPixelsThinned += ThinElementEdge1( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementCorner1( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementEdge2( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementCorner2( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementEdge3( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementCorner3( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementEdge4( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+   nrPixelsThinned += ThinElementCorner4( pGridIn, pGridOut, minX, minY, maxX, maxY, value );
+   pGridIn->SetGridValues( *pGridOut );
+
+
    return nrPixelsThinned;
 }
 
 //----------------------------------------------------------------
 
 
-//  0 0 0
-//    1
-//  1 1 1
+//  0   0   0           0   0   0
+//      |
+//      1       =>          0
+//
+//  1   1   1           1   1   1
 template <class T>
-int Thinning<T>::ThinElement1( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementEdge1( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x-1, y-1) != value)
-        && (pGridIn->GetValue( x  , y-1) != value)
-        && (pGridIn->GetValue( x+1, y-1) != value)
-        && (pGridIn->GetValue( x-1, y+1) == value)
-        && (pGridIn->GetValue( x  , y+1) == value)
-        && (pGridIn->GetValue( x+1, y+1) == value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x  , y-1) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x-1, y-1) != value)
+                && (pGridIn->GetValue( x  , y-1) != value)
+                && (pGridIn->GetValue( x+1, y-1) != value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x-1, y+1) == value)
+                && (pGridIn->GetValue( x  , y+1) == value)
+                && (pGridIn->GetValue( x+1, y+1) == value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x  , y-1) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-//  0   1
-//  0 1 1
-//  0   1
+//  1       0        1       0
+//
+//  1   1 - 0   =>   1   0   0
+//
+//  1       0        1       0
 template <class T>
-int Thinning<T>::ThinElement2( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementEdge2( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x-1, y-1) != value)
-        && (pGridIn->GetValue( x-1, y  ) != value)
-        && (pGridIn->GetValue( x-1, y+1) != value)
-        && (pGridIn->GetValue( x+1, y-1) == value)
-        && (pGridIn->GetValue( x+1, y  ) == value)
-        && (pGridIn->GetValue( x+1, y+1) == value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x-1, y ) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x-1, y-1) == value)
+                && (pGridIn->GetValue( x-1, y  ) == value)
+                && (pGridIn->GetValue( x-1, y+1) == value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x+1, y-1) != value)
+                && (pGridIn->GetValue( x+1, y  ) != value)
+                && (pGridIn->GetValue( x+1, y+1) != value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x+1, y ) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-//  1 1 1
-//    1
-//  0 0 0
+//  1   1   1           1   1   1
+//
+//      1         =>        0
+//      |
+//  0   0   0           0   0   0
 template <class T>
-int Thinning<T>::ThinElement3( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementEdge3( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x-1, y-1) == value)
-        && (pGridIn->GetValue( x  , y-1) == value)
-        && (pGridIn->GetValue( x+1, y-1) == value)
-        && (pGridIn->GetValue( x-1, y+1) != value)
-        && (pGridIn->GetValue( x  , y+1) != value)
-        && (pGridIn->GetValue( x+1, y+1) != value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x  , y+1) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x-1, y-1) == value)
+                && (pGridIn->GetValue( x  , y-1) == value)
+                && (pGridIn->GetValue( x+1, y-1) == value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x-1, y+1) != value)
+                && (pGridIn->GetValue( x  , y+1) != value)
+                && (pGridIn->GetValue( x+1, y+1) != value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x, y+1) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-//  1   0
-//  1 1 0
-//  1   0
+//  0       1         0       1
+//
+//  0 - 1   1    =>   0   0   1
+//
+//  0       1         0       1
 template <class T>
-int Thinning<T>::ThinElement4( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementEdge4( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x-1, y-1) == value)
-        && (pGridIn->GetValue( x-1, y  ) == value)
-        && (pGridIn->GetValue( x-1, y+1) == value)
-        && (pGridIn->GetValue( x+1, y-1) != value)
-        && (pGridIn->GetValue( x+1, y  ) != value)
-        && (pGridIn->GetValue( x+1, y+1) != value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x+1, y ) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x-1, y-1) != value)
+                && (pGridIn->GetValue( x-1, y  ) != value)
+                && (pGridIn->GetValue( x-1, y+1) != value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x+1, y-1) == value)
+                && (pGridIn->GetValue( x+1, y  ) == value)
+                && (pGridIn->GetValue( x+1, y+1) == value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x-1, y ) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-//    0 0
-//  1 1 0
-//    1
+//      0   0              0   0
+//        /
+//  1   1   0    =>    1   0   0
+//
+//      1                  1
 template <class T>
-int Thinning<T>::ThinElement5( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementCorner1( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x  , y-1) != value)
-        && (pGridIn->GetValue( x+1, y-1) != value)
-        && (pGridIn->GetValue( x+1, y  ) != value)
-        && (pGridIn->GetValue( x-1, y  ) == value)
-        && (pGridIn->GetValue( x  , y+1) == value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x+1, y-1 ) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x  , y-1) != value)
+                && (pGridIn->GetValue( x+1, y-1) != value)
+                && (pGridIn->GetValue( x-1, y  ) == value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x+1, y  ) != value)
+                && (pGridIn->GetValue( x  , y+1) == value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x+1, y-1 ) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-//    1
-//  1 1 0
-//    0 0
+//      1                   1
+//
+//  1   1   0    =>     1   0   0
+//        \
+//      0   0               0   0
 template <class T>
-int Thinning<T>::ThinElement6( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementCorner2( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x  , y-1) == value)
-        && (pGridIn->GetValue( x-1, y  ) == value)
-        && (pGridIn->GetValue( x+1, y  ) != value)
-        && (pGridIn->GetValue( x  , y+1) != value)
-        && (pGridIn->GetValue( x+1, y+1) != value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x+1, y+1 ) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x  , y-1) == value)
+                && (pGridIn->GetValue( x-1, y  ) == value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x+1, y  ) != value)
+                && (pGridIn->GetValue( x  , y+1) != value)
+                && (pGridIn->GetValue( x+1, y+1) != value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x+1, y+1 ) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-//    1
-//  0 1 1
-//  0 0
+//      1                  1
+//
+//  0   1   1     =>   0   0   1
+//    /
+//  0   0              0   0
 template <class T>
-int Thinning<T>::ThinElement7( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementCorner3( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x  , y-1) == value)
-        && (pGridIn->GetValue( x-1, y  ) == value)
-        && (pGridIn->GetValue( x+1, y  ) != value)
-        && (pGridIn->GetValue( x  , y+1) != value)
-        && (pGridIn->GetValue( x+1, y+1) != value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x+1, y+1 ) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x  , y-1) == value)
+                && (pGridIn->GetValue( x-1, y  ) != value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x+1, y  ) == value)
+                && (pGridIn->GetValue( x-1, y+1) != value)
+                && (pGridIn->GetValue( x  , y+1) != value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x-1, y+1 ) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
 
-// 0 0
-// 0 1 1
-//   1
+// 0   0               0   0
+//   \
+// 0   1   1     =>    0   0   1
+//
+//     1                   1
 template <class T>
-int Thinning<T>::ThinElement8( image::ArrayGrid<T>* pGridIn, int x, int y, T value )
+int Thinning<T>::ThinElementCorner4( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
-   if (    (pGridIn->GetValue( x  , y-1) == value)
-        && (pGridIn->GetValue( x-1, y  ) == value)
-        && (pGridIn->GetValue( x+1, y  ) != value)
-        && (pGridIn->GetValue( x  , y+1) != value)
-        && (pGridIn->GetValue( x+1, y+1) != value)
-      )
-   {
-      pGridIn->SetValue( x, y, pGridIn->GetValue( x+1, y+1 ) );
-      return 1;
-   }
-   else
-   {
-      return 0;
-   }
+    int nrThinned = 0;
+    for (int y = minY; y < maxY; y++)
+    {
+       for (int x = minX; x < maxX; x++)
+       {
+           if (    (pGridIn->GetValue( x-1, y-1) != value)
+                && (pGridIn->GetValue( x  , y-1) != value)
+                && (pGridIn->GetValue( x-1, y  ) != value)
+                && (pGridIn->GetValue( x  , y  ) == value)
+                && (pGridIn->GetValue( x+1, y  ) == value)
+                && (pGridIn->GetValue( x  , y+1) == value)
+              )
+           {
+              pGridOut->SetValue( x, y, pGridIn->GetValue( x-1, y-1 ) );
+              nrThinned++;
+           }
+       }
+    }
+    return nrThinned;
 }
 
 //----------------------------------------------------------------
