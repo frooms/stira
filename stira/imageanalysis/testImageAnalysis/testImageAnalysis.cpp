@@ -188,7 +188,7 @@ void TestContourTrace( )
 
 void TestThinning( )
 {
-   std::string filename = string("../../testdata/thinningTestPattern.pgm");
+   std::string filename = string("../../testdata/thinningTestPattern.png");
    Image *pImage = ImageIO::Read( filename );
 
    int width  = pImage->GetBands()[0]->GetWidth();
