@@ -13,6 +13,9 @@ PyramidBurtAdelson::PyramidBurtAdelson()
     mSeparableFilter = new filter::SeparableFilter();
 }
 
+//-------------------------------------------------------------------------------------------------------------------
+
+
 PyramidBurtAdelson::~PyramidBurtAdelson()
 {
     if ( mpPyramid != 0 )
@@ -21,6 +24,9 @@ PyramidBurtAdelson::~PyramidBurtAdelson()
     }
     delete mSeparableFilter;
 }
+
+//-------------------------------------------------------------------------------------------------------------------
+
 
 image::Pyramid<double>* PyramidBurtAdelson::GetPyramid()
 {
