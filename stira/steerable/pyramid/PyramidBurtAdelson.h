@@ -19,7 +19,7 @@
 
 namespace stira {
 namespace steerable {
-/** \brief class implementing the laplacian pyramid accoring to Burt and Adelson */
+/** \brief class implementing the Laplacian pyramid accoring to Burt and Adelson */
 class PyramidBurtAdelson
 {
 public:
