@@ -79,7 +79,7 @@ void TestWSMeyer( Image *pImage )
 
 void TestDistanceTransform()
 {
-    std::string filename = string("../../testdata/contours2.png");
+    std::string filename = string("../../../../stira/stira/testdata/contours2.png");
     Image *pImage = ImageIO::Read(filename);
     DistanceTransform* pDT = new DistanceTransform();
     ArrayGrid<double>* pResult = pDT->Run( pImage->GetBands()[0] );
@@ -159,7 +159,7 @@ void TestSLIC( Image *pImage )
 
 void TestContourTrace( )
 {
-   std::string filename = string("../../testdata/testLines.ppm");
+   std::string filename = string("../../../../stira/stira/testdata/testLines.ppm");
 
    Image *pImage = ImageIO::Read( filename );
 
@@ -187,7 +187,7 @@ void TestContourTrace( )
 
 void TestThinning( )
 {
-   std::string filename = string("../../testdata/thinningTestPattern.png");
+   std::string filename = string("../../../../stira/stira/testdata/thinningTestPattern.png");
    Image *pImage = ImageIO::Read( filename );
 
    int width  = pImage->GetBands()[0]->GetWidth();
@@ -211,7 +211,7 @@ void TestThinning( )
 
 void TestFindMaximalIncludedRectangles( )
 {
-   std::string filename1 = string("../../testdata/Spatial3.png");
+   std::string filename1 = string("../../../../stira/stira/testdata/Spatial3.png");
    Image *pImage = ImageIO::Read( filename1 );
 
    double thresholdHigh = 200;
@@ -258,7 +258,7 @@ void TestFindMaximalIncludedRectangles( )
 
 void TestFloodFill()
 {
-   std::string filename = string("../../testdata/binary.pgm");
+   std::string filename = string("../../../../stira/stira/testdata/binary.pgm");
    Image *pImage = ImageIO::Read( filename );
    int width  = pImage->GetWidth();
    int height = pImage->GetHeight();
@@ -304,9 +304,9 @@ int main(int argc, char *argv[])
    }
    else
    {
-      inputname = "../../testdata/Lenna.ppm";
-      //inputname = "../../testdata/TestSparse2.ppm";
-      //inputname = "../../testdata/ZonePlate.ppm";
+      inputname = "../../../../stira/stira/testdata/Lenna.ppm";
+      //inputname = "../../../../stira/stira/testdata/TestSparse2.ppm";
+      //inputname = "../../../../stira/stira/testdata/ZonePlate.ppm";
       sigmaSmooth    = 1.0;
    }
    cout << "Running test with input image " << inputname << " sigmaSmooth = " << sigmaSmooth << endl << flush;
