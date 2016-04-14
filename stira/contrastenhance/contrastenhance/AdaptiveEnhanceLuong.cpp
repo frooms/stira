@@ -40,7 +40,6 @@ AdaptiveEnhanceLuong::AdaptiveEnhanceLuong( int windowSize )
    mpVarianceGrid = 0;
    mpLastStepGrid = 0;
    mpNextStepGrid = 0;
-
 }
 
 //-------------------------------------------------------------------------
@@ -55,7 +54,6 @@ AdaptiveEnhanceLuong::~AdaptiveEnhanceLuong()
    {
       delete mpVarianceGrid;
    }
-
 }
 
 //-------------------------------------------------------------------------
