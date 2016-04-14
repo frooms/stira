@@ -182,7 +182,7 @@ void SLIC::DrawContoursAroundSegments(
 	int*&					labels,
 	const int&				width,
 	const int&				height,
-	const unsigned int&				color )
+    const unsigned int&				/*color*/ )
 {
 	const int dx8[8] = {-1, -1,  0,  1, 1, 1, 0, -1};
 	const int dy8[8] = { 0, -1, -1, -1, 0, 1, 1,  1};
@@ -443,7 +443,7 @@ void SLIC::GetKValues_LABXYZ(
 	vector<double>&				kseedsz,
         const int&				STEP)
 {
-    const bool hexgrid = false;
+    //const bool hexgrid = false;
 	int numseeds(0);
 	int n(0);
 
@@ -510,7 +510,7 @@ void SLIC::PerformSuperpixelSLIC(
 	vector<double>&				kseedsy,
         int*&					klabels,
         const int&				STEP,
-        const vector<double>&                   edgemag,
+        const vector<double>&                   /*edgemag*/,
 	const double&				M)
 {
 	int sz = m_width*m_height;

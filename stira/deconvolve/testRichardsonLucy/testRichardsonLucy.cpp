@@ -144,22 +144,8 @@ bool TestRichardSonLucyMotionBlur( std::string fileName )
 
 int main(int argc, char *argv[])
 {
-   int nrIterations = 15;
-   double lambda = 0.0006;
-
    const char* inputname;
-   if (argc == 4)
-   {
-      inputname = argv[1];
-      nrIterations = atoi( argv[2] );
-      lambda = atof ( argv[3] );
-   }
-   if (argc == 3)
-   {
-      inputname = argv[1];
-      nrIterations = atoi( argv[2] );
-   }
-   else if (argc == 2)
+   if (argc == 2)
    {
       inputname = argv[1];
    }
@@ -168,7 +154,7 @@ int main(int argc, char *argv[])
       inputname = "../../../../stira/stira/testdata/circles.pgm";
    }
 
-   cout << "Running test with input image " << inputname << " using " << nrIterations << " iterations." << endl << flush;
+   cout << "Running test with input image " << inputname << endl << flush;
    TestRichardSonLucySimulated( inputname );
    TestRichardSonLucyMotionBlur( inputname );
 

@@ -327,12 +327,12 @@ int Thinning<T>::SingleThinningSweep( image::ArrayGrid<T>* pGridIn, image::Array
 
 //----------------------------------------------------------------
 
-
-//  0   0   0           0   0   0
-//      |
-//      1       =>          0
-//
-//  1   1   1           1   1   1
+/*     0   0   0           0   0   0
+ *         |
+ *         1       =>          0
+ *
+ *     1   1   1           1   1   1
+ */
 template <class T>
 int Thinning<T>::ThinElementEdge1( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -360,11 +360,12 @@ int Thinning<T>::ThinElementEdge1( image::ArrayGrid<T>* pGridIn, image::ArrayGri
 
 //----------------------------------------------------------------
 
-//  1       0        1       0
-//
-//  1   1 - 0   =>   1   0   0
-//
-//  1       0        1       0
+/*     1       0        1       0
+ *
+ *     1   1 - 0   =>   1   0   0
+ *
+ *     1       0        1       0
+ */
 template <class T>
 int Thinning<T>::ThinElementEdge2( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -392,11 +393,12 @@ int Thinning<T>::ThinElementEdge2( image::ArrayGrid<T>* pGridIn, image::ArrayGri
 
 //----------------------------------------------------------------
 
-//  1   1   1           1   1   1
-//
-//      1         =>        0
-//      |
-//  0   0   0           0   0   0
+/*      1   1   1           1   1   1
+ *
+ *          1         =>        0
+ *          |
+ *      0   0   0           0   0   0
+ */
 template <class T>
 int Thinning<T>::ThinElementEdge3( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -424,11 +426,12 @@ int Thinning<T>::ThinElementEdge3( image::ArrayGrid<T>* pGridIn, image::ArrayGri
 
 //----------------------------------------------------------------
 
-//  0       1         0       1
-//
-//  0 - 1   1    =>   0   0   1
-//
-//  0       1         0       1
+/*     0       1         0       1
+ *
+ *     0 - 1   1    =>   0   0   1
+ *
+ *     0       1         0       1
+ */
 template <class T>
 int Thinning<T>::ThinElementEdge4( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -456,11 +459,12 @@ int Thinning<T>::ThinElementEdge4( image::ArrayGrid<T>* pGridIn, image::ArrayGri
 
 //----------------------------------------------------------------
 
-//      0   0              0   0
-//        /
-//  1   1   0    =>    1   0   0
-//
-//      1                  1
+/*           0   0              0   0
+ *             /
+ *       1   1   0    =>    1   0   0
+ *
+ *           1                  1
+ */
 template <class T>
 int Thinning<T>::ThinElementCorner1( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -487,11 +491,12 @@ int Thinning<T>::ThinElementCorner1( image::ArrayGrid<T>* pGridIn, image::ArrayG
 
 //----------------------------------------------------------------
 
-//      1                   1
-//
-//  1   1   0    =>     1   0   0
-//        \
-//      0   0               0   0
+/*         1                   1
+ *
+ *     1   1   0    =>     1   0   0
+ *           \
+ *         0   0               0   0
+ */
 template <class T>
 int Thinning<T>::ThinElementCorner2( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -518,11 +523,12 @@ int Thinning<T>::ThinElementCorner2( image::ArrayGrid<T>* pGridIn, image::ArrayG
 
 //----------------------------------------------------------------
 
-//      1                  1
-//
-//  0   1   1     =>   0   0   1
-//    /
-//  0   0              0   0
+/*         1                  1
+ *
+ *     0   1   1     =>   0   0   1
+ *       /
+ *     0   0              0   0
+ */
 template <class T>
 int Thinning<T>::ThinElementCorner3( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {
@@ -549,11 +555,12 @@ int Thinning<T>::ThinElementCorner3( image::ArrayGrid<T>* pGridIn, image::ArrayG
 
 //----------------------------------------------------------------
 
-// 0   0               0   0
-//   \
-// 0   1   1     =>    0   0   1
-//
-//     1                   1
+/*       0   0               0   0
+ *         \
+ *       0   1   1     =>    0   0   1
+ *
+ *           1                   1
+ */
 template <class T>
 int Thinning<T>::ThinElementCorner4( image::ArrayGrid<T>* pGridIn, image::ArrayGrid<T>* pGridOut, int minX, int minY, int maxX, int maxY, T value )
 {

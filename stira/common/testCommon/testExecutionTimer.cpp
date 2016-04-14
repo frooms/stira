@@ -25,18 +25,20 @@ using namespace stira::common;
 
 //-------------------------------------------------------------------
 
-void TestTimer()
+int TestTimer()
 {
+   int j = 0;
    ExecutionTimer et;
 
    et.StartTimer();
    for (int i = 0; i < 1000000000; i++)
    {
-      int j = i * i * i * i;  // just keep the timer busy
+      j = i * i * i * i;  // just keep the timer busy
    }
    et.StopTimer();
    et.PrintTimeAsUserAndSystemTimes();
    cout << "Elapsed time is " << et.GetElapsedRealTimeInSeconds() << " seconds " << endl << flush;
+   return j;
 }
 
 //-------------------------------------------------------------------

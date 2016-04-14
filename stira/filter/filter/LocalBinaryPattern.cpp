@@ -204,7 +204,7 @@ int LocalBinaryPattern::RunCode( int x, int y )
 
 //---------------------------------------------------------------------------------------------
 
-histogram::FloatHistogram* LocalBinaryPattern::RunHistogram( int ID )
+histogram::FloatHistogram* LocalBinaryPattern::RunHistogram( int /*ID*/ )
 {
    int nrBins = MathUtils::ComputeIntegerPower( 2, mNumberOfPoints );
    int height = mpGrid->GetHeight();
@@ -517,7 +517,7 @@ int LocalBinaryPattern::ComputePointGLTP( image::ArrayGrid<double>* pGridIn, int
    int b65 = SignComparison( p[5][4], ( p[4][3] + p[4][4] ) / 2, threshold, myType );
    int b66 = SignComparison( p[5][5],   p[4][4],                 threshold, myType );
 
-   int w1, w2, w3, w4, w5, w6, WB;
+   int w1, w2, w3, w4, w5, w6;//, WB;
 
    if (myType)
    {
@@ -527,7 +527,7 @@ int LocalBinaryPattern::ComputePointGLTP( image::ArrayGrid<double>* pGridIn, int
       w4 = 9;
       w5 = 3;
       w6 = 1;
-      WB = 728;
+      //WB = 728;
    }
    else
    {
@@ -537,7 +537,7 @@ int LocalBinaryPattern::ComputePointGLTP( image::ArrayGrid<double>* pGridIn, int
       w4 = 4;
       w5 = 2;
       w6 = 1;
-      WB = 63;
+      //WB = 63;
    }
 
    int Result[8];

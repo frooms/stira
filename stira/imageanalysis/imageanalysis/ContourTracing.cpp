@@ -15,8 +15,6 @@
 #include "../../image/tools/ImageIO.h"
 #include <iostream>
 
-// original code in /v/frooms~/research/philips-recursive/arcelor
-
 //#define CREATE_OUTPUTS
 
 using namespace std;
@@ -43,7 +41,7 @@ ContourTracing::~ContourTracing( )
 
 //-----------------------------------------------------------------------------
 
-ArrayGrid<double>* ContourTracing::RunLeftRight( ArrayGrid<double>* pGridIn, int ID )
+ArrayGrid<double>* ContourTracing::RunLeftRight( ArrayGrid<double>* pGridIn, int /*ID*/ )
 {
    ArrayGrid<double>* pGridOut = pGridIn->Clone();
 
@@ -75,7 +73,7 @@ ArrayGrid<double>* ContourTracing::RunLeftRight( ArrayGrid<double>* pGridIn, int
 
 //-----------------------------------------------------------------------------
 
-ArrayGrid<double>* ContourTracing::RunRightLeft( ArrayGrid<double>* pGridIn, int ID )
+ArrayGrid<double>* ContourTracing::RunRightLeft( ArrayGrid<double>* pGridIn, int /*ID*/ )
 {
    ArrayGrid<double>* pGridOut = pGridIn->Clone();
 
