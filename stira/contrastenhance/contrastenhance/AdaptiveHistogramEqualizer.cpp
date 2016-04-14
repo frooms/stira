@@ -30,6 +30,16 @@ AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( image::Image* pSourceIma
 
 //----------------------------------------------------------------------------------------------
 
+AdaptiveHistogramEqualizer::~AdaptiveHistogramEqualizer( )
+{
+   if ( mpHistogramPerBlock != 0 )
+   {
+       delete mpHistogramPerBlock;
+   }
+}
+
+//----------------------------------------------------------------------------------------------
+
 bool AdaptiveHistogramEqualizer::Initialize( int blockWidth, int blockHeight)
 {
     mDesiredMin = 0;
