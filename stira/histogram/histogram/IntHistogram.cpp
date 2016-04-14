@@ -400,7 +400,7 @@ bool IntHistogram::BuildHistogram(image::ArrayGrid<double>* pGrid, int bandNr, i
 
    if (pMaskGrid == 0)
    {
-      mNrOfCounts = width * height;
+      mNrOfCounts = 0;
       for (int y = yMin; y < yMax; y++)
       {
          for (int x = xMin; x < xMax; x++)
@@ -409,6 +409,7 @@ bool IntHistogram::BuildHistogram(image::ArrayGrid<double>* pGrid, int bandNr, i
             if ((binNr < mNrOfBins) && (binNr >= 0 ) )
             {
                mpHistogram[bandNr][binNr] ++;
+               mNrOfCounts++;
             }
             else
             {
