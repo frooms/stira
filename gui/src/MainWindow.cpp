@@ -187,27 +187,17 @@ void MainWindow::SlotSelectGeneratePerlin()
 
 //========================================================================================
 
-void MainWindow::SlotOpenVideo()
-{
-   QString fileName = QFileDialog::getOpenFileName( this, tr("Open File"),
-                                                    QDir::currentPath(),
-                                                    tr("Video (*.avi *.mpg *.wmv *.mov)"));
-   
-   //MovieViewer* pMovieViewer = new MovieViewer( fileName );
-   //pMovieViewer->show();
-}
-
-//========================================================================================
-
 void MainWindow::SlotAbout()
 {
-    QMessageBox::about( this, tr("About STIRA"), 
-                              tr(" This GUI gives a simple interface to the STIRA\n "
-                                 " (Simple Toolkit for Image Restoration and Analysis).\n\n"
-                                 " More info: http://www.filiprooms.be/stira-own-software\n\n"
-                                 " Contact: filip.rooms@gmail.com\n\n"
-                                 " Copyright Filip Rooms 2008-16")
-                      );
+    QMessageBox msgBox;
+    msgBox.setText("<h3>About STIRA</h3>");
+    msgBox.setInformativeText( "This GUI gives a simple interface to STIRA "
+                               " (<b>S</b>imple <b>T</b>oolkit for <b>I</b>mage <b>R</b>estoration and <b>A</b>nalysis). <br> "
+                               " <b>More info:<b> <a href=\"http://www.filiprooms.be/stira-own-software\">website</a> <br> "
+                               " <b>Contact:</b> filip.rooms@gmail.com <br> "
+                               " Copyright Filip Rooms 2008-16");
+    msgBox.setStandardButtons(QMessageBox::Close);
+    msgBox.exec();
 }
 
 //========================================================================================

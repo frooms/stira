@@ -1,14 +1,12 @@
 SOURCES += main.cpp \
- ImageDataList.cpp \
- ImageWindow.cpp \
- MainWindow.cpp \
- ProcessManager.cpp \
- MovieViewer.cpp
+           ImageDataList.cpp \
+           ImageWindow.cpp \
+           MainWindow.cpp \
+           ProcessManager.cpp
 HEADERS += ImageDataList.h \
- ImageWindow.h \
- MainWindow.h \
- ProcessManager.h \
- MovieViewer.h
+           ImageWindow.h \
+           MainWindow.h \
+           ProcessManager.h
 TEMPLATE = app
 CONFIG += warn_on \
           thread \
@@ -77,5 +75,3 @@ LIBS += ../dialogs/libdialogs.a \
   -luuid \
   -ldl \
   -lpthread
-
-

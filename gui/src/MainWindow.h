@@ -58,9 +58,6 @@ public slots:
    /** \brief slot to generate Perlin noise clouds */
    void SlotSelectGeneratePerlin();
    
-   /** \brief slot to generate new image */
-   void SlotOpenVideo();
-   
    void SlotAddSubWindow( QWidget* pWidget, QString windowname );
    
    void SlotRemoveSubWindow( QMdiSubWindow* pSubWindow );
