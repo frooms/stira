@@ -30,6 +30,8 @@ public:
     /** \brief constructor */
     AdaptiveHistogramEqualizer( image::Image* pSourceImage );
 
+    ~AdaptiveHistogramEqualizer( );
+
     bool Initialize( int blockWidth, int blockHeight);
 
     /** \brief overloaded Run method per image
@@ -38,9 +40,16 @@ public:
     image::Image* Run();
 
 private:
-
     void HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
+
+    void BuildNormHistogramSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
+
+    //double EqualizedValueAccordingToBlock( int xi, int yi, int binNr );
+
+    double ComputeEqualizedValue( image::ArrayGrid<double>* pInGrid, int x, int y );
+
     image::ArrayGrid<histogram::FloatHistogram*>* mpHistogramPerBlock;
+    image::ArrayGrid< std::pair<double, double> >* mpDataMinMaxPerBlock;
 
     image::Image* mpSourceImage;
     int mWidth;
@@ -50,6 +59,9 @@ private:
 
     int mNrBlocksX;
     int mNrBlocksY;
+
+    int mDesiredMax;
+    int mDesiredMin;\
 
 };
 

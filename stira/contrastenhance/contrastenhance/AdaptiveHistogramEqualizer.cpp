@@ -32,6 +32,8 @@ AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( image::Image* pSourceIma
 
 bool AdaptiveHistogramEqualizer::Initialize( int blockWidth, int blockHeight)
 {
+    mDesiredMin = 0;
+    mDesiredMax = 255;
     mBlockWidth = blockWidth;
     mBlockHeight = blockHeight;
 
@@ -39,6 +41,7 @@ bool AdaptiveHistogramEqualizer::Initialize( int blockWidth, int blockHeight)
     mNrBlocksY = mHeight / mBlockHeight;
 
     mpHistogramPerBlock = new ArrayGrid<histogram::FloatHistogram*>(mNrBlocksX, mNrBlocksY);
+    mpDataMinMaxPerBlock = new ArrayGrid< std::pair<double, double> >(mNrBlocksX, mNrBlocksY);
     return true;
 }
 
@@ -47,6 +50,7 @@ bool AdaptiveHistogramEqualizer::Initialize( int blockWidth, int blockHeight)
 image::Image* AdaptiveHistogramEqualizer::Run()
 {
     image::Image* pImageOut = mpSourceImage->Clone();
+
     for (int i = 0; i < mpSourceImage->GetNumberOfBands(); i++)
     {
         image::ArrayGrid<double>* pInGrid = pImageOut->GetBands()[i];
@@ -54,7 +58,16 @@ image::Image* AdaptiveHistogramEqualizer::Run()
         {
            for (int xi = 0; xi < mNrBlocksX; xi++)
            {
-                HistogramEqualizeSingleBlock( pInGrid, xi, yi );
+                //HistogramEqualizeSingleBlock( pInGrid, xi, yi );
+                BuildNormHistogramSingleBlock( pInGrid, xi, yi );
+           }
+        }
+
+        for (int y = 0; y < mHeight; y++)
+        {
+           for (int x = 0; x < mWidth; x++)
+           {
+                pInGrid->SetValue(x, y, ComputeEqualizedValue( pInGrid, x, y ) );
            }
         }
     }
@@ -63,20 +76,57 @@ image::Image* AdaptiveHistogramEqualizer::Run()
 
 //----------------------------------------------------------------------------------------------
 
+double AdaptiveHistogramEqualizer::ComputeEqualizedValue( image::ArrayGrid<double>* pInGrid, int x, int y )
+{
+    int xi = x / mBlockWidth;
+    int yi = y / mBlockHeight;
+    FloatHistogram* pNormCumulHistogram = mpHistogramPerBlock->GetValue( xi, yi );
+    int binNr = pInGrid->GetValue(x, y);
+
+    double myEqualizedValue = mDesiredMax * ( pNormCumulHistogram->GetBinValue( 0, binNr ) / ((double)(pNormCumulHistogram->GetNrOfBins())));
+
+    if (myEqualizedValue > static_cast<double>(mDesiredMax)) {myEqualizedValue = static_cast<double>(mDesiredMax);}
+    if (myEqualizedValue < static_cast<double>(mDesiredMin)) {myEqualizedValue = static_cast<double>(mDesiredMin);}
+
+    return myEqualizedValue;
+}
+
+//----------------------------------------------------------------------------------------------
+
+void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi )
+{
+    int xStart = xi * mBlockWidth;
+    int yStart = yi * mBlockHeight;
+    int xStop  = (xi+1) * mBlockWidth;
+    int yStop  = (yi+1) * mBlockHeight;
+
+    common::RectangularROI<int> rroi( xStart, yStart, xStop, yStop );
+
+    bool useDataMinMax = false;
+    IntHistogram* pStdHistogram       = new IntHistogram( pInGrid, useDataMinMax, rroi );
+    IntHistogram* pCumulHistogram     = new IntHistogram( pInGrid, useDataMinMax, rroi );
+    FloatHistogram *pNormCumulHistogram = new FloatHistogram( pStdHistogram->GetNrOfBins() );
+
+    pCumulHistogram->ConvertInCumulativeHistogram();
+
+    pNormCumulHistogram->InitializeWithNormalizedCumulativeHistogram( pStdHistogram, pCumulHistogram);
+    delete pStdHistogram;
+    delete pCumulHistogram;
+
+    mpHistogramPerBlock->SetValue( xi, yi, pNormCumulHistogram );
+}
+
+//----------------------------------------------------------------------------------------------
+
 void AdaptiveHistogramEqualizer::HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi )
 {
-   int xStart, yStart, xStop, yStop;
-   int desiredMax, desiredMin;
-   double dataMin, dataMax;
-
-   xStart = xi * mBlockWidth;
-   yStart = yi * mBlockHeight;
-   xStop  = (xi+1) * mBlockWidth;
-   yStop  = (yi+1) * mBlockHeight;
+   int xStart = xi * mBlockWidth;
+   int yStart = yi * mBlockHeight;
+   int xStop  = (xi+1) * mBlockWidth;
+   int yStop  = (yi+1) * mBlockHeight;
 
    common::RectangularROI<int> rroi( xStart, yStart, xStop, yStop );
 
-   NumberGridTools<double>::GetMinMax( pInGrid, dataMin, dataMax );
    bool useDataMinMax = false;
    IntHistogram* pStdHistogram       = new IntHistogram( pInGrid, useDataMinMax, rroi );
    IntHistogram* pCumulHistogram     = new IntHistogram( pInGrid, useDataMinMax, rroi );
@@ -88,14 +138,14 @@ void AdaptiveHistogramEqualizer::HistogramEqualizeSingleBlock( image::ArrayGrid<
    delete pStdHistogram;
    delete pCumulHistogram;
 
-   desiredMax = (int)(dataMax);
-   desiredMin = 0;
+   int desiredMax = 255;
+   int desiredMin = 0;
 
    for (int y = yStart; y < yStop; y++)
    {
       for (int x = xStart; x < xStop; x++)
       {
-         int binNr = pInGrid->GetValue(x, y) - dataMin;
+         int binNr = pInGrid->GetValue(x, y);
 
          double myEqualizedValue = desiredMax * ( pNormCumulHistogram->GetBinValue( 0, binNr ) / ((double)(pNormCumulHistogram->GetNrOfBins())));
 
