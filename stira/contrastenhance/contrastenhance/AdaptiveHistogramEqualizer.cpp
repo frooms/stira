@@ -7,19 +7,74 @@
 #include "../../histogram/histogram/FloatHistogram.h"
 #include "../../image/tools/NumberGridTools.h"
 
+using namespace stira::image;
+using namespace stira::histogram;
+
 namespace stira {
 namespace contrastenhance {
 
-AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer()
+AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( image::Image* pSourceImage )
 {
+    mpSourceImage = pSourceImage;
+
+    mWidth = pSourceImage->GetWidth();
+    mHeight = pSourceImage->GetHeight();
+    mBlockWidth = -1;
+    mBlockHeight = -1;
+
+    mNrBlocksX = -1;
+    mNrBlocksY = -1;
+
+    mpHistogramPerBlock = 0;
 }
 
-/*
-void AdaptiveHistogramEqualizer::HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi  )
+//----------------------------------------------------------------------------------------------
+
+bool AdaptiveHistogramEqualizer::Initialize( int blockWidth, int blockHeight)
 {
+    mBlockWidth = blockWidth;
+    mBlockHeight = blockHeight;
+
+    mNrBlocksX = mWidth / mBlockWidth;
+    mNrBlocksY = mHeight / mBlockHeight;
+
+    mpHistogramPerBlock = new ArrayGrid<histogram::FloatHistogram*>(mNrBlocksX, mNrBlocksY);
+    return true;
+}
+
+//----------------------------------------------------------------------------------------------
+
+image::Image* AdaptiveHistogramEqualizer::Run()
+{
+    image::Image* pImageOut = mpSourceImage->Clone();
+    for (int i = 0; i < mpSourceImage->GetNumberOfBands(); i++)
+    {
+        image::ArrayGrid<double>* pInGrid = pImageOut->GetBands()[i];
+        for (int yi = 0; yi < mNrBlocksY; yi++)
+        {
+           for (int xi = 0; xi < mNrBlocksX; xi++)
+           {
+                HistogramEqualizeSingleBlock( pInGrid, xi, yi );
+           }
+        }
+    }
+    return pImageOut;
+}
+
+//----------------------------------------------------------------------------------------------
+
+void AdaptiveHistogramEqualizer::HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi )
+{
+   int xStart, yStart, xStop, yStop;
    int desiredMax, desiredMin;
    double dataMin, dataMax;
-   common::RectangularROI<int> rroi();
+
+   xStart = xi * mBlockWidth;
+   yStart = yi * mBlockHeight;
+   xStop  = (xi+1) * mBlockWidth;
+   yStop  = (yi+1) * mBlockHeight;
+
+   common::RectangularROI<int> rroi( xStart, yStart, xStop, yStop );
 
    NumberGridTools<double>::GetMinMax( pInGrid, dataMin, dataMax );
    bool useDataMinMax = false;
@@ -36,9 +91,9 @@ void AdaptiveHistogramEqualizer::HistogramEqualizeSingleBlock( image::ArrayGrid<
    desiredMax = (int)(dataMax);
    desiredMin = 0;
 
-   for (int y = 0; y < pInGrid->GetHeight(); y++)
+   for (int y = yStart; y < yStop; y++)
    {
-      for (int x = 0; x < pInGrid->GetWidth(); x++)
+      for (int x = xStart; x < xStop; x++)
       {
          int binNr = pInGrid->GetValue(x, y) - dataMin;
 
@@ -53,7 +108,8 @@ void AdaptiveHistogramEqualizer::HistogramEqualizeSingleBlock( image::ArrayGrid<
 
    delete pNormCumulHistogram;
 }
-   */
+
+//----------------------------------------------------------------------------------------------
 
 }
 }

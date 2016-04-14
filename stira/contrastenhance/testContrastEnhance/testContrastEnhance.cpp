@@ -15,6 +15,7 @@
 #include "../../image/tools/ImageIO.h"
 #include "../../histogram/histogram/IntHistogram.h"
 #include "../contrastenhance/HistogramTools.h"
+#include "../contrastenhance/AdaptiveHistogramEqualizer.h"
 #include "../contrastenhance/Retinex.h"
 #include "../contrastenhance/AdaptiveEnhanceLuong.h"
 #include "../contrastenhance/HazeRemover.h"
@@ -85,6 +86,23 @@ bool EqualizeTest(Image* pInImage)
    }
 
    return true;
+}
+
+//============================================================================
+
+bool AdaptiveEqualizeTest(Image* pInImage)
+{
+    AdaptiveHistogramEqualizer ahe( pInImage );
+
+    int blockWidth = 64;
+    int blockHeight = 64;
+    ahe.Initialize( blockWidth, blockHeight);
+
+    Image* pOutImage = ahe.Run();
+    ImageIO::Write( pOutImage, string("BlockEqualizedPerBand.ppm"), ImageIO::NULL_OUT );
+    delete pOutImage;
+
+    return true;
 }
 
 //============================================================================
@@ -195,6 +213,16 @@ int main(int argc, char *argv[])
    else
    {
       cout << "HistogramEqualize test FAILED!!" << endl << flush;
+   }
+
+
+   if ( AdaptiveEqualizeTest( pImage ) == true )
+   {
+      cout << "AdaptiveEqualize test success!!" << endl << flush;
+   }
+   else
+   {
+      cout << "AdaptiveEqualize test FAILED!!" << endl << flush;
    }
 
    if ( AdaptiveLuongTest( pImage ) == true )

@@ -20,30 +20,36 @@
 namespace stira {
 namespace contrastenhance {
 
-/** \brief class with tools for image intensity remapping using histograms, like histogram matching and histogram equalization
+/** \brief class for adaptive histogram equalization like in https://en.wikipedia.org/wiki/Adaptive_histogram_equalization
+  *    Warning: this implementation is still in progress!!
   */
 
 class AdaptiveHistogramEqualizer
 {
 public:
-    AdaptiveHistogramEqualizer();
+    /** \brief constructor */
+    AdaptiveHistogramEqualizer( image::Image* pSourceImage );
 
-    void HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
-
+    bool Initialize( int blockWidth, int blockHeight);
 
     /** \brief overloaded Run method per image
       * \param pSourceImage the input image
       * \return a newly created image as result of contrast enhancement, becomes responsability of the caller*/
-    image::Image* Run( image::Image* pSourceImage );
-
-
-    /** \brief sets the size of the local window around a central pixel
-      * \param size size of the local window around a central pixel
-      * usually between 5 and 11 */
-    void SetBlockSize( int size );
+    image::Image* Run();
 
 private:
-    image::ArrayGrid<histogram::FloatHistogram*>* pHistogramPerBlock;
+
+    void HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
+    image::ArrayGrid<histogram::FloatHistogram*>* mpHistogramPerBlock;
+
+    image::Image* mpSourceImage;
+    int mWidth;
+    int mHeight;
+    int mBlockWidth;
+    int mBlockHeight;
+
+    int mNrBlocksX;
+    int mNrBlocksY;
 
 };
 
