@@ -75,7 +75,6 @@ LIBS += ../dialogs/libdialogs.a \
   -lfftw3 \
   -lm \
   -luuid \
-  -lzip \
   -ldl \
   -lpthread
 
