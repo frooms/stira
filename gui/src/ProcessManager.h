@@ -227,6 +227,12 @@ private:
          QAction* mpOrientationAnalysisAction;
       public slots:
          void SlotAnalyseOrientations();
+
+     // Histogram of Oriented Gradients
+     private:
+        QAction* mpHistogramOrientedGradientsAction;
+     public slots:
+        void SlotHistogramOrientedGradients();
 };
 
 #endif

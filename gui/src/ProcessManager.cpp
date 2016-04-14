@@ -31,15 +31,20 @@
 #include "../curveplotter/ShowHistogramDialog.h"
 #include "../curveplotter/ShowRadiallyAveragedFourierSpectrumDialog.h"
 
+#include "../../stira/common/common/Point.h"
+#include "../../stira/common/common/RectangularROI.h"
 #include "../../stira/image/datastructures/Image.h"
 #include "../../stira/image/tools/NumberGridTools.h"
 #include "../../stira/image/color/ColorBalancer.h"
 #include "../../stira/fouriertools/fouriertools/FFT.h"
 #include "../../stira/contrastenhance/contrastenhance/HistogramTools.h"
 #include "../../stira/steerable/freemanadelson/ComputeSteerableFilteredImages.h"
+#include "../../stira/imageanalysis/imageanalysis/HOG.h"
 
 using namespace std;
+using namespace stira::common;
 using namespace stira::image;
+using namespace stira::imageanalysis;
 using namespace stira::steerable;
 
 //==========================================================
@@ -112,6 +117,7 @@ void ProcessManager::CreateMenus( )
    mpSubMenuProperties->addAction ( mpWatershedAction );
    mpSubMenuProperties->addAction ( mpCannyAction );
    mpSubMenuProperties->addAction ( mpOrientationAnalysisAction );
+   mpSubMenuProperties->addAction ( mpHistogramOrientedGradientsAction );
    
    mvSubMenus.push_back( mpSubMenuProperties );
 }
@@ -234,6 +240,10 @@ void ProcessManager::CreateActions()
    mpOrientationAnalysisAction = new QAction ( tr ( "&Analyse Orientations" ), this );
    mpOrientationAnalysisAction->setEnabled ( true );
    connect ( mpOrientationAnalysisAction, SIGNAL ( triggered() ), this, SLOT ( SlotAnalyseOrientations() ) );
+
+   mpHistogramOrientedGradientsAction = new QAction ( tr ( "&Histogram of Oriented Gradients" ), this );
+   mpHistogramOrientedGradientsAction->setEnabled ( true );
+   connect ( mpHistogramOrientedGradientsAction, SIGNAL ( triggered() ), this, SLOT ( SlotHistogramOrientedGradients() ) );
 }
 
 //------------------------------------------------------------------
@@ -469,6 +479,30 @@ void ProcessManager::SlotAnalyseOrientations()
    ImageDataList::GetInstance()->AddImage( pGrid->VisualizeOrientationImage( 5 ) );  // ownership of this image is transfered through GetImage() to ImageDataList
    ImageDataList::GetInstance()->AddImage( pGrid->VisualizeMagnitudeImage( ) );  // ownership of this image is transfered through GetImage() to ImageDataList
    delete pGrid;
+}
+
+//------------------------------------------------------------------
+
+void ProcessManager::SlotHistogramOrientedGradients()
+{
+    int nrBins = 9;
+    int cellWidth = 8;
+    int cellHeight = 8;
+    double viz_factor = 3;
+    double scaleFactor = 1.0;
+
+    std::vector<double> descriptorValues;
+
+    RectangularROI<int> myRoi( 0, 0, mpImage->GetWidth() - 1, mpImage->GetHeight() - 1 );
+    HOG myHOG( mpImage, myRoi, cellWidth, cellHeight, nrBins);
+
+    myHOG.ComputeHogDescriptor( descriptorValues );
+
+    Image* pVisual = myHOG.VisualizeHogDescriptor( descriptorValues,
+                                                   mpImage->GetWidth(), mpImage->GetHeight(),
+                                                   scaleFactor, viz_factor);
+
+    ImageDataList::GetInstance()->AddImage( pVisual );  // ownership of this image is transfered through GetImage() to ImageDataList
 }
 
 //------------------------------------------------------------------
