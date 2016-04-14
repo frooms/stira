@@ -204,9 +204,9 @@ void MainWindow::SlotAbout()
     QMessageBox::about( this, tr("About STIRA"), 
                               tr(" This GUI gives a simple interface to the STIRA\n "
                                  " (Simple Toolkit for Image Restoration and Analysis).\n\n"
-                                 " More info: http://www.filiprooms.be/research/software/\n\n"
+                                 " More info: http://www.filiprooms.be/stira-own-software\n\n"
                                  " Contact: filip.rooms@gmail.com\n\n"
-                                 " Copyright Filip Rooms 2008-09")
+                                 " Copyright Filip Rooms 2008-16")
                       );
 }
 
