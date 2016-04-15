@@ -15,19 +15,21 @@ using namespace stira::histogram;
 namespace stira {
 namespace contrastenhance {
 
-AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( image::Image* pSourceImage )
+AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( image::Image* pSourceImage, int blockWidth, int blockHeight )
 {
     mpSourceImage = pSourceImage;
 
     mWidth = pSourceImage->GetWidth();
     mHeight = pSourceImage->GetHeight();
-    mBlockWidth = -1;
-    mBlockHeight = -1;
+    mDesiredMin = 0;
+    mDesiredMax = 255;
+    mBlockWidth = blockWidth;
+    mBlockHeight = blockHeight;
 
-    mNrBlocksX = -1;
-    mNrBlocksY = -1;
+    mNrBlocksX = mWidth / mBlockWidth;
+    mNrBlocksY = mHeight / mBlockHeight;
 
-    mpHistogramPerBlock = 0;
+    mpHistogramPerBlock = new ArrayGrid< histogram::FloatHistogram*>(mNrBlocksX, mNrBlocksY);
 }
 
 //----------------------------------------------------------------------------------------------
@@ -38,22 +40,6 @@ AdaptiveHistogramEqualizer::~AdaptiveHistogramEqualizer( )
    {
        delete mpHistogramPerBlock;
    }
-}
-
-//----------------------------------------------------------------------------------------------
-
-bool AdaptiveHistogramEqualizer::Initialize( int blockWidth, int blockHeight)
-{
-    mDesiredMin = 0;
-    mDesiredMax = 255;
-    mBlockWidth = blockWidth;
-    mBlockHeight = blockHeight;
-
-    mNrBlocksX = mWidth / mBlockWidth;
-    mNrBlocksY = mHeight / mBlockHeight;
-
-    mpHistogramPerBlock = new ArrayGrid< std::pair< common::Point<double>, histogram::FloatHistogram*> >(mNrBlocksX, mNrBlocksY);
-    return true;
 }
 
 //----------------------------------------------------------------------------------------------
@@ -88,7 +74,7 @@ image::Image* AdaptiveHistogramEqualizer::Run()
 
 double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int x, int y, int xi, int yi )
 {
-    FloatHistogram* pNormCumulHistogram = mpHistogramPerBlock->GetValue( xi, yi ).second;
+    FloatHistogram* pNormCumulHistogram = mpHistogramPerBlock->GetValue( xi, yi );
     int binNr = pInGrid->GetValue(x, y);
 
     double myEqualizedValue = mDesiredMax * ( pNormCumulHistogram->GetBinValue( 0, binNr ) / ((double)(pNormCumulHistogram->GetNrOfBins())));
@@ -116,10 +102,10 @@ double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<d
     double equalizeValue_21 = GetEqualizedValueSingleBlock( pInGrid, x, y, idx2, idy1 );
     double equalizeValue_22 = GetEqualizedValueSingleBlock( pInGrid, x, y, idx2, idy2 );
 
-    int x1 = idx1 * mBlockWidth  + mBlockWidth  / 2;
-    int y1 = idy1 * mBlockHeight + mBlockHeight / 2;
-    int x2 = idx2 * mBlockWidth  + mBlockWidth  / 2;
-    int y2 = idy2 * mBlockHeight + mBlockHeight / 2;
+    int x1 = idx1 * mBlockWidth;
+    int y1 = idy1 * mBlockHeight;
+    int x2 = idx2 * mBlockWidth;
+    int y2 = idy2 * mBlockHeight;
     double interpolatedValue = image::BilinearInterpolator::Run( x1, x2, y1, y2, equalizeValue_11, equalizeValue_12 , equalizeValue_21, equalizeValue_22, x, y );
 
     return interpolatedValue;
@@ -129,12 +115,7 @@ double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<d
 
 void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi )
 {
-    int xStart = xi     * mBlockWidth;
-    int yStart = yi     * mBlockHeight;
-    int xStop  = (xi+1) * mBlockWidth;
-    int yStop  = (yi+1) * mBlockHeight;
-
-    common::RectangularROI<int> rroi( xStart, yStart, xStop, yStop );
+    common::RectangularROI<int> rroi( xi * mBlockWidth, yi * mBlockHeight, (xi+1) * mBlockWidth, (yi+1) * mBlockHeight );
 
     bool useDataMinMax = false;
     IntHistogram* pStdHistogram       = new IntHistogram( pInGrid, useDataMinMax, rroi );
@@ -147,9 +128,7 @@ void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( image::ArrayGrid
     delete pStdHistogram;
     delete pCumulHistogram;
 
-    common::Point<double> blockCenter(xStart + mBlockWidth / 2, yStart + mBlockHeight / 2);
-
-    mpHistogramPerBlock->SetValue( xi, yi, std::pair< common::Point<double>, histogram::FloatHistogram*>( blockCenter, pNormCumulHistogram ) );
+    mpHistogramPerBlock->SetValue( xi, yi, pNormCumulHistogram );
 }
 
 //----------------------------------------------------------------------------------------------

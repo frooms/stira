@@ -92,11 +92,9 @@ bool EqualizeTest(Image* pInImage)
 
 bool AdaptiveEqualizeTest(Image* pInImage)
 {
-    AdaptiveHistogramEqualizer ahe( pInImage );
-
-    int blockWidth = 64;
-    int blockHeight = 64;
-    ahe.Initialize( blockWidth, blockHeight);
+    int blockWidth = 69;
+    int blockHeight = 69;
+    AdaptiveHistogramEqualizer ahe( pInImage, blockWidth, blockHeight);
 
     Image* pOutImage = ahe.Run();
     ImageIO::Write( pOutImage, string("BlockEqualizedPerBand.ppm"), ImageIO::NULL_OUT );
