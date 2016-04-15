@@ -38,6 +38,13 @@ AdaptiveHistogramEqualizer::~AdaptiveHistogramEqualizer( )
 {
    if ( mpHistogramPerBlock != 0 )
    {
+       for (int y = 0; y < mpHistogramPerBlock->GetHeight(); y++)
+       {
+           for (int x = 0; x < mpHistogramPerBlock->GetWidth(); x++)
+           {
+               delete mpHistogramPerBlock->GetValue(x,y);
+           }
+       }
        delete mpHistogramPerBlock;
    }
 }
