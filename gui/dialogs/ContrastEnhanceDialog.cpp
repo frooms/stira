@@ -51,15 +51,16 @@ ContrastEnhanceDialog::ContrastEnhanceDialog( Image* pImage ) : DialogMaster( pI
    mpWindowSizeGammaLayout->addWidget( mpWindowSizeGammaLineEdit );
    
    mpFractionGroupBox = new QGroupBox(tr("Contrast enhancement method"));
-   mpImageNegativeRadioButton            = new QRadioButton(tr("&Image Negative"));
-   mpGammaRescaleRadioButton             = new QRadioButton(tr("&Apply Gamma"));
-   mpLinearRescaleRadioButton            = new QRadioButton(tr("&Robust Linear Rescale"));
-   mpDarkChannelHazeRemovalRadioButton   = new QRadioButton(tr("&Dark Channel Prior based Haze Removal"));
-   mpRetinexRadioButton                  = new QRadioButton(tr("&Retinex (MSRCR)"));
-   mpHistogramEqualizeRGBRadioButton     = new QRadioButton(tr("&Histogram Equalization (CIE Lab)"));
-   mpHistogramEqualizePerBandRadioButton = new QRadioButton(tr("&Histogram Equalization (per band)"));
-   mpWaveletBasedRadioButton             = new QRadioButton(tr("&Murtagh Curvelet based"));
-   mpAdaptiveLuongBasedRadioButton       = new QRadioButton(tr("&Adaptive Luong"));
+   mpImageNegativeRadioButton              = new QRadioButton(tr("&Image Negative"));
+   mpGammaRescaleRadioButton               = new QRadioButton(tr("&Apply Gamma"));
+   mpLinearRescaleRadioButton              = new QRadioButton(tr("&Robust Linear Rescale"));
+   mpDarkChannelHazeRemovalRadioButton     = new QRadioButton(tr("&Dark Channel Prior based Haze Removal"));
+   mpRetinexRadioButton                    = new QRadioButton(tr("&Retinex (MSRCR)"));
+   mpHistogramEqualizeRGBRadioButton       = new QRadioButton(tr("&Histogram Equalization (CIE Lab)"));
+   mpHistogramEqualizePerBandRadioButton   = new QRadioButton(tr("&Histogram Equalization (per band)"));
+   mpAdaptiveHistogramEqualizerRadioButton = new QRadioButton(tr("&Adaptive Histogram Equalization"));
+   mpWaveletBasedRadioButton               = new QRadioButton(tr("&Murtagh Curvelet based"));
+   mpAdaptiveLuongBasedRadioButton         = new QRadioButton(tr("&Adaptive Luong"));
    mpRadioButtonLayout = new QVBoxLayout;
    mpLinearRescaleRadioButton->setChecked(true);
    SlotShowFraction();
@@ -70,6 +71,7 @@ ContrastEnhanceDialog::ContrastEnhanceDialog( Image* pImage ) : DialogMaster( pI
    mpRadioButtonLayout->addWidget( mpRetinexRadioButton );
    mpRadioButtonLayout->addWidget( mpHistogramEqualizeRGBRadioButton );
    mpRadioButtonLayout->addWidget( mpHistogramEqualizePerBandRadioButton );
+   mpRadioButtonLayout->addWidget( mpAdaptiveHistogramEqualizerRadioButton );
    mpRadioButtonLayout->addWidget( mpWaveletBasedRadioButton );
    mpRadioButtonLayout->addWidget( mpAdaptiveLuongBasedRadioButton );
    mpFractionGroupBox->setLayout( mpRadioButtonLayout );
@@ -252,6 +254,10 @@ StiraDefinitions::ContrastEnhanceType ContrastEnhanceDialog::GetEnhanceType()
    else if (mpHistogramEqualizeRGBRadioButton->isChecked ( ) )
    {
       return StiraDefinitions::CONTRAST_HISTOGRAM_EQUALIZE_RGB;
+   }
+   else if (mpAdaptiveHistogramEqualizerRadioButton->isChecked ( ) )
+   {
+      return StiraDefinitions::CONTRAST_HISTOGRAM_ADAPTIVE;
    }
    else if (mpAdaptiveLuongBasedRadioButton->isChecked ( ) )
    {

@@ -16,6 +16,7 @@
 #include "../../stira/contrastenhance/contrastenhance/Retinex.h"
 #include "../../stira/contrastenhance/contrastenhance/HistogramTools.h"
 #include "../../stira/contrastenhance/contrastenhance/AdaptiveEnhanceLuong.h"
+#include "../../stira/contrastenhance/contrastenhance/AdaptiveHistogramEqualizer.h"
 #include "../../stira/contrastenhance/contrastenhance/HazeRemover.h"
 #include "../../stira/pyramidapplications/pyramidapplications/PyramidContrastEnhancer.h"
 
@@ -193,6 +194,12 @@ void ContrastEnhanceProcess::run()
          pOutImage->SetImageName( outName );
             
          break;
+      }
+      case StiraDefinitions::CONTRAST_HISTOGRAM_ADAPTIVE:
+      {
+          AdaptiveHistogramEqualizer ahe(mpImage, 64, 64 );
+          pOutImage = ahe.Run();
+          break;
       }
       case StiraDefinitions::CONTRAST_HISTOGRAM_EQUALIZE_RGB:
       {

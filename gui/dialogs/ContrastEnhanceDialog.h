@@ -104,6 +104,7 @@ private:
    QRadioButton* mpLinearRescaleRadioButton;  ///< Robust Linear Intensity Rescaling (ignore a given fraction of outliers)
    QRadioButton* mpDarkChannelHazeRemovalRadioButton;  ///< Dark Channel Prior based Haze Removal
    QRadioButton* mpRetinexRadioButton;  ///< select Retinex contrast enhancement (MSRCR)
+   QRadioButton* mpAdaptiveHistogramEqualizerRadioButton;  ///< select contrast enhancement by adaptive histogram equalization
    QRadioButton* mpHistogramEqualizeRGBRadioButton;  ///< select contrast enhancement by histogram equalization
    QRadioButton* mpHistogramEqualizePerBandRadioButton;  ///< select contrast enhancement by histogram equalization
    QRadioButton* mpWaveletBasedRadioButton; ///< select wavelet-based contrast enhancement

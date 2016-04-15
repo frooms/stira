@@ -62,6 +62,7 @@ public:
                              CONTRAST_RETINEX, ///< multiscale retinex with color restoration accrding to Jobson, Rahman et al
                              CONTRAST_RETINEX_HSI, ///< experimental HSI space based multiscale retinex
                              CONTRAST_HISTOGRAM_EQUALIZE_RGB, ///< color histogram equalization (equalize L component in Lab space)
+                             CONTRAST_HISTOGRAM_ADAPTIVE, ///< locally adaptive histogram equalization
                              CONTRAST_HISTOGRAM_EQUALIZE_PERBAND, ///< histogram equalization, all bands independantly
                              CONTRAST_WAVELET, ///< contrast enhance with curvelet-based method of Starck et al (here with steerable pyr ipv curvelets)
                              CONTRAST_ADAPTIVE_LUONG ///< method from Hiep's PhD
