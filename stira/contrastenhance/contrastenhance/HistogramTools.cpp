@@ -188,12 +188,13 @@ void HistogramTools::HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInG
 {
    int desiredMax, desiredMin;
    double dataMin, dataMax;
+   int nrBands = 1;
 
    NumberGridTools<double>::GetMinMax( pInGrid, dataMin, dataMax );
    bool useDataMinMax = false;
    IntHistogram* pStdHistogram       = new IntHistogram( pInGrid, useDataMinMax );
    IntHistogram* pCumulHistogram     = new IntHistogram( pInGrid, useDataMinMax );
-   FloatHistogram *pNormCumulHistogram = new FloatHistogram( pStdHistogram->GetNrOfBins() );
+   FloatHistogram *pNormCumulHistogram = new FloatHistogram( pStdHistogram->GetNrOfBins(), nrBands );
 
    pCumulHistogram->ConvertInCumulativeHistogram();
 

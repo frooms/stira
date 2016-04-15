@@ -29,7 +29,7 @@ public:
    /** \brief constructor for histogram object
      * \param nrOfBins number of bins in the histogram
      * \param nrBands number of bands in the histogram (on per colour chanel) */
-   FloatHistogram( int nrOfBins, int nrBands=1 );
+   FloatHistogram( int nrOfBins, int nrBands );
 
    /** \brief constructor with initialization from IntHistogram
      * \param pIntHistogram histogram to initialize this histogram from

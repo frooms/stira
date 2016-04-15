@@ -606,7 +606,8 @@ int LocalBinaryPattern::ComputePointLBPSym( image::ArrayGrid<double>* pGridIn, i
 FloatHistogram LocalBinaryPattern::ComputePointLBPSymHistogram( image::ArrayGrid<double>* pGridIn, int frameNr, int topX, int topY, int bottomX, int bottomY, double threshold, bool myType )
 {
    int nrBins = 4096;
-   FloatHistogram flh( nrBins );
+   int nrBands = 1;
+   FloatHistogram flh( nrBins, nrBands );
    topX = MathUtils::ClipValue(topX, 0, pGridIn->GetWidth() );
    topY = MathUtils::ClipValue(topY, 0, pGridIn->GetHeight() );
    bottomX = MathUtils::ClipValue(bottomX, 0, pGridIn->GetWidth() );
