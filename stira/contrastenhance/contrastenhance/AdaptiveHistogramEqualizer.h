@@ -40,16 +40,14 @@ public:
     image::Image* Run();
 
 private:
-    void HistogramEqualizeSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
 
     void BuildNormHistogramSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
 
-    //double EqualizedValueAccordingToBlock( int xi, int yi, int binNr );
+    double GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int x, int y, int xi, int yi );
 
-    double ComputeEqualizedValue( image::ArrayGrid<double>* pInGrid, int x, int y );
+    double InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int x, int y );
 
-    image::ArrayGrid<histogram::FloatHistogram*>* mpHistogramPerBlock;
-    image::ArrayGrid< std::pair<double, double> >* mpDataMinMaxPerBlock;
+    image::ArrayGrid< std::pair< common::Point<double>, histogram::FloatHistogram*> >* mpHistogramPerBlock;
 
     image::Image* mpSourceImage;
     int mWidth;
