@@ -136,6 +136,9 @@ bool HistogramMapTest()
    IntHistogram ihTestAfter( pImage2->GetBands()[0], useDataMinMax, rroi2 );     ihTestAfter.ConvertInCumulativeHistogram();
    ihTestAfter.Write("RemapOrigAfterRemapCumul.txt");
 
+   delete pIH_Orig;
+   delete pIH_Ref;
+   delete pFH_Ref;
    delete pImage1;
    delete pImage2;
 
