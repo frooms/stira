@@ -44,13 +44,13 @@ public:
 private:
 
     /** \brief Builds normalized cumulative histogram for single block */
-    void BuildNormHistogramSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi );
+    void BuildNormHistogramSingleBlock( image::Image* pImageIn, int xi, int yi );
 
     /** \brief gets equalized image intensity according to single block */
-    double GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int x, int y, int xi, int yi );
+    double GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y, int xi, int yi );
 
     /** \brief gets equalized image intensity interpolated from four neighboring blocks */
-    double InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int x, int y );
+    double InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y );
 
     image::ArrayGrid< histogram::FloatHistogram*>* mpHistogramPerBlock;   ///< grid of histograms per block
 

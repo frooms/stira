@@ -38,14 +38,14 @@ AdaptiveHistogramEqualizer::~AdaptiveHistogramEqualizer( )
 {
    if ( mpHistogramPerBlock != 0 )
    {
-       for (int y = 0; y < mpHistogramPerBlock->GetHeight(); y++)
-       {
-           for (int x = 0; x < mpHistogramPerBlock->GetWidth(); x++)
-           {
-               delete mpHistogramPerBlock->GetValue(x,y);
-           }
-       }
-       delete mpHistogramPerBlock;
+      for (int yi = 0; yi < mNrBlocksY; yi++)
+      {
+         for (int xi = 0; xi < mNrBlocksX; xi++)
+         {
+            delete mpHistogramPerBlock->GetValue( xi, yi );
+         }
+      }
+      delete mpHistogramPerBlock;
    }
 }
 
@@ -55,22 +55,22 @@ image::Image* AdaptiveHistogramEqualizer::Run()
 {
     image::Image* pImageOut = mpSourceImage->Clone();
 
-    for (int i = 0; i < mpSourceImage->GetNumberOfBands(); i++)
+    for (int yi = 0; yi < mNrBlocksY; yi++)
     {
-        image::ArrayGrid<double>* pInGrid = pImageOut->GetBands()[i];
-        for (int yi = 0; yi < mNrBlocksY; yi++)
-        {
-           for (int xi = 0; xi < mNrBlocksX; xi++)
-           {
-                BuildNormHistogramSingleBlock( pInGrid, xi, yi );
-           }
-        }
+       for (int xi = 0; xi < mNrBlocksX; xi++)
+       {
+            BuildNormHistogramSingleBlock( pImageOut, xi, yi );
+       }
+    }
 
+    for (int bandNr = 0; bandNr < mpSourceImage->GetNumberOfBands(); bandNr++)
+    {
+        image::ArrayGrid<double>* pInGrid = pImageOut->GetBands()[bandNr];
         for (int y = 0; y < mHeight; y++)
         {
            for (int x = 0; x < mWidth; x++)
            {
-                pInGrid->SetValue(x, y, InterpolateEqualizedValue( pInGrid, x, y ) );
+                pInGrid->SetValue(x, y, InterpolateEqualizedValue( pInGrid, bandNr, x, y ) );
            }
         }
     }
@@ -79,12 +79,12 @@ image::Image* AdaptiveHistogramEqualizer::Run()
 
 //----------------------------------------------------------------------------------------------
 
-double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int x, int y, int xi, int yi )
+double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y, int xi, int yi )
 {
     FloatHistogram* pNormCumulHistogram = mpHistogramPerBlock->GetValue( xi, yi );
     int binNr = pInGrid->GetValue(x, y);
 
-    double myEqualizedValue = mDesiredMax * ( pNormCumulHistogram->GetBinValue( 0, binNr ) / ((double)(pNormCumulHistogram->GetNrOfBins())));
+    double myEqualizedValue = mDesiredMax * ( pNormCumulHistogram->GetBinValue( bandNr, binNr ) / ((double)(pNormCumulHistogram->GetNrOfBins())));
 
     if (myEqualizedValue > static_cast<double>(mDesiredMax)) {myEqualizedValue = static_cast<double>(mDesiredMax);}
     if (myEqualizedValue < static_cast<double>(mDesiredMin)) {myEqualizedValue = static_cast<double>(mDesiredMin);}
@@ -94,7 +94,7 @@ double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( image::ArrayGri
 
 //----------------------------------------------------------------------------------------------
 
-double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int x, int y )
+double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y )
 {
     double xi = (double)(x) / (double)(mBlockWidth);
     double yi = (double)(y) / (double)(mBlockHeight);
@@ -104,10 +104,10 @@ double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<d
     int idy1 = MathUtils::ClipValue( (int)(floor(yi)), 0, mpHistogramPerBlock->GetHeight() - 1);
     int idy2 = MathUtils::ClipValue( (int)( ceil(yi)), 0, mpHistogramPerBlock->GetHeight() - 1);
 
-    double equalizeValue_11 = GetEqualizedValueSingleBlock( pInGrid, x, y, idx1, idy1 );
-    double equalizeValue_12 = GetEqualizedValueSingleBlock( pInGrid, x, y, idx1, idy2 );
-    double equalizeValue_21 = GetEqualizedValueSingleBlock( pInGrid, x, y, idx2, idy1 );
-    double equalizeValue_22 = GetEqualizedValueSingleBlock( pInGrid, x, y, idx2, idy2 );
+    double equalizeValue_11 = GetEqualizedValueSingleBlock( pInGrid, bandNr, x, y, idx1, idy1 );
+    double equalizeValue_12 = GetEqualizedValueSingleBlock( pInGrid, bandNr, x, y, idx1, idy2 );
+    double equalizeValue_21 = GetEqualizedValueSingleBlock( pInGrid, bandNr, x, y, idx2, idy1 );
+    double equalizeValue_22 = GetEqualizedValueSingleBlock( pInGrid, bandNr, x, y, idx2, idy2 );
 
     int x1 = idx1 * mBlockWidth;
     int y1 = idy1 * mBlockHeight;
@@ -120,14 +120,14 @@ double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<d
 
 //----------------------------------------------------------------------------------------------
 
-void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( image::ArrayGrid<double>* pInGrid, int xi, int yi )
+void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( image::Image* pImageIn, int xi, int yi )
 {
     common::RectangularROI<int> rroi( xi * mBlockWidth, yi * mBlockHeight, (xi+1) * mBlockWidth, (yi+1) * mBlockHeight );
 
     bool useDataMinMax = false;
-    IntHistogram* pStdHistogram       = new IntHistogram( pInGrid, useDataMinMax, rroi );
-    IntHistogram* pCumulHistogram     = new IntHistogram( pInGrid, useDataMinMax, rroi );
-    FloatHistogram *pNormCumulHistogram = new FloatHistogram( pStdHistogram->GetNrOfBins() );
+    IntHistogram* pStdHistogram       = new IntHistogram( pImageIn, useDataMinMax, rroi );
+    IntHistogram* pCumulHistogram     = new IntHistogram( pImageIn, useDataMinMax, rroi );
+    FloatHistogram *pNormCumulHistogram = new FloatHistogram( pStdHistogram->GetNrOfBins(), pImageIn->GetNumberOfBands() );
 
     pCumulHistogram->ConvertInCumulativeHistogram();
 
