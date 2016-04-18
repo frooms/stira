@@ -228,23 +228,6 @@ bool ImageIOTest()
 
 //========================================================================================
 
-/*bool ReadPgmFromZipFileTest()
-{
-   std::string zipName = std::string("/u/frooms/research/develop/stira-env/stira/testdata/testZipFile.zip");
-
-   std::string imageInZipName = std::string("CropOrig-2033.pgm");
-
-   ArrayGrid<int>* pGrid = ImageIO::ReadPGMfromZip( zipName, imageInZipName );
-
-   cout << "Image from zip: width = " << pGrid->GetWidth() << " height = " << pGrid->GetHeight() << endl << flush;
-
-   ImageIO::WritePGM( pGrid, std::string("ImageFromZip.pgm") );
-   delete pGrid;
-   return true;
-}*/
-
-//========================================================================================
-
 bool ImageOpenCvTest()
 {
    Image *pImage1 = ImageIO::Read( string("../../../../stira/stira/testdata/buildings_small.jpg") );
@@ -377,40 +360,39 @@ bool SepiaToneTest(Image* pInImage)
 
 bool GenerateFractalTest()
 {
-   GenerateFractal gf;
-   double topX = 0.8;
-   double topY = 1.15;
-   double bottomX = -2.1;
-   double bottomY = -1.15;
-   double resolution = 500.0;
-
-   /*double topX = -1.749995;
-   double topY = 0.000000001;
-   double bottomX = -1.749995001;
-   double bottomY = -0.000000001;
-   double resolution = 500000000000.0;*/
-   /*double topX = -1.74;
-   double topY = 0.01;
-   double bottomX = -1.75;
-   double bottomY = -0.01;
-   double resolution = 50000.0;*/
-
+   double centerX, centerY, width;
    Image* pFractal = 0;
+   GenerateFractal gf;
 
-   pFractal = gf.CreateMandelbrot( topX, topY, bottomX, bottomY, resolution );
+   // full size
+   centerX = -0.5;
+   centerY = 0.0;
+   width = 4.0;
+
+   //centerX = -1.45;
+   //centerY = 0.0;
+   //width = 0.1;
+
+   pFractal = gf.CreateMandelbrot( centerX, centerY, width );
    ImageIO::Write( pFractal, string("FractalMandelbrotImage.ppm"), ImageIO::NULL_OUT );
    delete pFractal;
 
-   topX = 2.0;
-   topY = 1.0;
-   bottomX = -2.0;
-   bottomY = -1.0;
-   resolution = 500.0;
-   //double Cx = -0.79;
-   //double Cy = 0.15;
-   double Cx = -0.162;
-   double Cy = 1.04;
-   pFractal = gf.CreateJulia( topX, topY, bottomX, bottomY, resolution, Cx, Cy );
+   // full size
+   centerX = 0.0;
+   centerY = 0.0;
+   width = 4.0;
+
+   // full size
+   centerX = 0.0;
+   centerY = 0.0;
+   width = 0.4;
+
+   double Cx = -0.79;
+   double Cy = 0.15;
+
+   //double Cx = -0.162;
+   //double Cy = 1.04;
+   pFractal = gf.CreateJulia( centerX, centerY, width, Cx, Cy );
    ImageIO::Write( pFractal, string("FractalJuliaImage.ppm"), ImageIO::NULL_OUT );
    delete pFractal;
    return true;

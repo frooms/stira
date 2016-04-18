@@ -30,7 +30,29 @@ public:
    
    /** \brief destructor */
    ~GenerateFractal();
+
+   /** \brief Generates Mandelbrot set
+     * http://en.wikipedia.org/wiki/Mandelbrot_set
+     * \param centerX mathematical x coordinate of image center
+     * \param centerY mathematical y coordinate of image center
+     * \param width   mathematical image width */
+   Image* CreateMandelbrot( double centerX, double centerY, double width );
+
+   /** \brief Generates Julia set
+     * http://www.karlsims.com/julia.html
+     * \param centerX mathematical x coordinate of image center
+     * \param centerY mathematical y coordinate of image center
+     * \param width   mathematical image width */
+   Image* CreateJulia( double centerX, double centerY, double width, double Cx, double Cy );
+
+   /** \brief sets maximum number of iterations to test if a point can escape */
+   void SetMaxNumberOfIterations( int maxNr );
+   void SetEscapeRadius( double radius );
+
+   void SetRenderDimensions( int width, int height );
    
+private:
+
    /** \brief Generates Mandelbrot set
      * http://en.wikipedia.org/wiki/Mandelbrot_set
      * \param topX mathematical x coordinate of top right corner
@@ -38,7 +60,7 @@ public:
      * \param bottomX mathematical x coordinate of bottom left corner
      * \param bottomY mathematical y coordinate of bottom left corner
      * \param resolution number of pixels per mathematical distance unit */
-   Image* CreateMandelbrot( double topX, double topY, double bottomX, double bottomY, double resolution );
+   Image* CreateMandelbrot( double topX, double topY, double bottomX, double bottomY );
 
    /** \brief Generates Julia set
      * http://www.karlsims.com/julia.html
@@ -49,17 +71,13 @@ public:
      * \param resolution number of pixels per mathematical distance unit
      * \param Cx real part of complex constant in iteration formula
      * \param Cy imag part of complex constant in iteration formula*/
-   Image* CreateJulia( double topX, double topY, double bottomX, double bottomY, double resolution, double Cx, double Cy );
-   
-   void SetMaxNumberOfIterations( int maxNr );   ///< max. nr. of iterations to test if a point can escape
+   Image* CreateJulia( double topX, double topY, double bottomX, double bottomY, double Cx, double Cy );
 
-   void SetEscapeRadius( double radius );
-   
-private:
-
-   double EstimateExternalDistance( double lastZx, double lastZy,  double previousZx, double previousZy,  double previousdZx, double previousdZy);
+   bool TestIsInMandelbrotMainBody( double x, double y );
 
    int GiveLastIteration( double xx, double yy, double x0, double y0, double& lastModulus );
+
+   ColorValue InterpolateColorUltraFractal( double smoothColor );
    
    int mMaxNumberOfIterations;   ///< max. nr. of iterations to test if a point can escape
 
@@ -70,8 +88,15 @@ private:
    /** \brief assigns a color according to the number of iterations required to escape*/
    ColorValue AssignColor( int iterationNumber );
    ColorValue AssignColorContinuous( int iterationNumber, double& lastModulus );
+   ColorValue AssignColorUltraFractal( double smoothColor );
 
    TransformColorSpace* mpColorTransformer;  ///< color space transform object
+
+   int mPixelWidth;
+   int mPixelHeight;
+   double mWidthHeightRatio;
+   int mResolutionX;
+   int mResolutionY;
 };
 
 }
