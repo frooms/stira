@@ -401,17 +401,18 @@ bool GenerateFractalTest()
    ImageIO::Write( pFractal, string("FractalMandelbrotImage.ppm"), ImageIO::NULL_OUT );
    delete pFractal;
 
-   /*topX = 2.0;
+   topX = 2.0;
    topY = 1.0;
    bottomX = -2.0;
    bottomY = -1.0;
    resolution = 500.0;
-   double Cx = 0.36237;
-   double Cy = 0.32;
+   //double Cx = -0.79;
+   //double Cy = 0.15;
+   double Cx = -0.162;
+   double Cy = 1.04;
    pFractal = gf.CreateJulia( topX, topY, bottomX, bottomY, resolution, Cx, Cy );
    ImageIO::Write( pFractal, string("FractalJuliaImage.ppm"), ImageIO::NULL_OUT );
-   delete pFractal;*/
-
+   delete pFractal;
    return true;
 }
 

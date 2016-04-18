@@ -40,10 +40,8 @@ public:
      * \param resolution number of pixels per mathematical distance unit */
    Image* CreateMandelbrot( double topX, double topY, double bottomX, double bottomY, double resolution );
 
-   /** \brief Generates Mandelbrot set
-     * http://en.wikibooks.org/wiki/Fractals/Iterations_in_the_complex_plane/Julia_set
-     * http://eldar.mathstat.uoguelph.ca/dashlock/ftax/Julia.html
-     * \warning Not functional yet!!!
+   /** \brief Generates Julia set
+     * http://www.karlsims.com/julia.html
      * \param topX mathematical x coordinate of top right corner
      * \param topY mathematical y coordinate of top right corner
      * \param bottomX mathematical x coordinate of bottom left corner

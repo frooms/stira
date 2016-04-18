@@ -59,7 +59,7 @@ ColorValue GenerateFractal::AssignColor( int iterationNumber )
       double tmpValue = (double)((2 * iterationNumber) % 360);
       ColorValue hsvValue;
       hsvValue.c[0] = tmpValue;
-      hsvValue.c[1] = 1.0;
+      hsvValue.c[1] = 0.5;
       hsvValue.c[2] = 1.0;
       hsvValue.type = TYPE_HSV;
       return mpColorTransformer->HSVtoRGB( hsvValue );
@@ -78,11 +78,11 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
    else
    {
       double tmpValue = 10.0 * ( (double)(iterationNumber) + ( 2.0 * log( 2.0 ) - log(log(lastModulus)) / log ( 2.0 ) ) );
-      double remainder = common::MathUtils::ApplyModulo( tmpValue, 360.0 );
+      double remainder = common::MathUtils::ApplyModulo( tmpValue + 180.0, 360.0 );
       // pow(normalizedCount,4.0);
       ColorValue hsvValue;
       hsvValue.c[0] = remainder;
-      hsvValue.c[1] = 1.0;
+      hsvValue.c[1] = 0.5;
       hsvValue.c[2] = 1.0;
       hsvValue.type = TYPE_HSV;
       return mpColorTransformer->HSVtoRGB( hsvValue );
@@ -93,8 +93,8 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
 
 int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy, double& lastModulus )
 {
-   double xSquared = 0.0;
-   double ySquared = 0.0;
+   double xSquared = x * x;
+   double ySquared = y * y;
    
    int iterationNumber = 0;
    
@@ -149,6 +149,7 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
 
 //------------------------------------------------------------------------------
 
+
 double GenerateFractal::EstimateExternalDistance( double lastZx, double lastZy,  double previousZx, double previousZy,  double previousdZx, double previousdZy)
 {
    std::complex<double> Zprevious( previousZx, previousZy);
@@ -182,24 +183,7 @@ Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, d
          double lastModulus;
          int lastIterationNumber = GiveLastIteration( x0, y0, Cx, Cy, lastModulus );
          
-         pFractal->SetColor( x, y, AssignColor( lastIterationNumber ) );
-         
-         /*if (lastIterationNumber == mMaxNumberOfIterations) 
-         { 
-            pFractal->SetColor( x, y, AssignColor( iterationNumber ); //  interior of Julia set: color = black 
-         }
-         else // exterior of Filled-in Julia set 
-         {
-            double distance=give_distance(Z0,C,IterationMax)EstimateExternalDistance( x0, y0,  double previousZx, double previousZy,  double previousdZx, double previousdZy);
-            if (distance<distanceMax)
-            { 
-             //  Julia set : color = white
-            }
-            else
-            { //  exterior of Julia set : color = black 
-            }
-         }
-         pFractal->SetColor( x, y, AssignColor( iterationNumber ) );*/
+         pFractal->SetColor( x, y, AssignColorContinuous( lastIterationNumber, lastModulus ) );
       }
    }
    
