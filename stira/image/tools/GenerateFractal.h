@@ -73,6 +73,7 @@ private:
      * \param Cy imag part of complex constant in iteration formula*/
    Image* CreateJulia( double topX, double topY, double bottomX, double bottomY, double Cx, double Cy );
 
+   /** \brief Tests whether a point is inside the cardioid or in the period-2 bulb to reduce computations */
    bool TestIsInMandelbrotMainBody( double x, double y );
 
    int GiveLastIteration( double xx, double yy, double x0, double y0, double& lastModulus );
