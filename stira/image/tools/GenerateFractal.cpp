@@ -82,7 +82,7 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
       double tmpValue = iterationNumber + 1.0 - log(log(lastModulus)) / log ( mEscapeRadius );
       tmpValue = 0.95 + 5.0 * tmpValue;
 
-      double remainder = common::MathUtils::ApplyModulo( tmpValue, 180.0 ) + 180;
+      double remainder = common::MathUtils::ApplyModulo( tmpValue, 120.0 ) + 120;
 
       ColorValue hsvValue;
       hsvValue.c[0] = remainder;
