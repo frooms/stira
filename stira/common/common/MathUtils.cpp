@@ -204,6 +204,9 @@ double MathUtils::ApplyModulo( double input, double modulo )
 
 //----------------------------------------------------------------------------------------------------
 
+// 3. COMBINE / SPLIT BITS
+/////////////////////////////
+
 void MathUtils::PrintBitsInInt(unsigned int i)
 {
     std::cout << std::bitset<32>(i) << std::flush;
@@ -242,7 +245,7 @@ std::vector<unsigned char> MathUtils::SplitIntInChars( int value )
 
 //======================================================================================================
 
-// 3. STUFF RELATED TO ANGLES
+// 4. STUFF RELATED TO ANGLES
 /////////////////////////////
 
 double MathUtils::ComputeArgument(double x, double y)
@@ -273,7 +276,7 @@ double MathUtils::ToDegrees( double radians )
 
 //======================================================================================================
 
-// 4. SOLVE LINEAR / QUADRATIC EQUATIONS
+// 5. SOLVE LINEAR / QUADRATIC EQUATIONS
 ////////////////////////////////////////
 
 bool MathUtils::SolveLinearEquation (double a, double b, double& solution)
@@ -330,8 +333,15 @@ bool MathUtils::SolveQuadraticEquation( double a, double b, double c, double& ou
 
 //======================================================================================================
 
-// 5. COMPUTE MATHEMATICAL FUNCTION VALUE
+// 6. COMPUTE MATHEMATICAL FUNCTION VALUE
 /////////////////////////////////////////
+
+double MathUtils::LinearInterpolate( double x0, double y0, double x1, double y1, double x )
+{
+    return ( y0 + ( (x-x0) * (y1-y0) / (x1-x0) ) );
+}
+
+//----------------------------------------------------------------------------------------------------
 
 double MathUtils::ComputePSNR( double MSE, double peakValue )
 {
@@ -387,7 +397,7 @@ double MathUtils::Factorial(const double& inputNumber)
 
 //======================================================================================================
 
-// 6. COMPUTE VALUES OF GAUSSIAN FUNCTION / DERIVATIVES
+// 7. COMPUTE VALUES OF GAUSSIAN FUNCTION / DERIVATIVES
 ///////////////////////////////////////////////////////
 
 std::vector<double> MathUtils::GenerateGaussianSamples( double sigma )
@@ -594,7 +604,7 @@ double MathUtils::GaussianDxDy( double x, double y, double muX, double muY, doub
 
 //======================================================================================================
 
-// 7. COMPUTE STATISTICS
+// 8. COMPUTE STATISTICS
 ////////////////////////
 
 double* MathUtils::ComputeCrossCorrelation( double* x, double* y, int nrSamples, int maxDelay )
@@ -630,15 +640,13 @@ double* MathUtils::ComputeCrossCorrelation( double* x, double* y, int nrSamples,
       {
          int j = i + delay;
          if (j < 0 || j >= nrSamples)
+         {
             continue;
+         }
          else
+         {
             sxy += (x[i] - meanX) * (y[j] - meanY);
-         /* Or should it be (?)
-         if (j < 0 || j >= n)
-             sxy += (x[i] - mx) * (-my);
-          else
-             sxy += (x[i] - mx) * (y[j] - my);
-          */
+         }
       }
       pCrossCorrelation[delay + maxDelay] = sxy / denom;    // the correlation coefficient at "delay"
    }

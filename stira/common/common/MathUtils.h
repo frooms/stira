@@ -26,6 +26,7 @@ namespace common {
 /** \brief A class with some handy mathematical functions.
   * <OL><LI> SWITCH TWO VALUES
   *     <LI> ORDER / COMPARE STUFF / CLIP RANGE / CHECK IF IS RANGE
+  *     <LI> COMBINE / SPLIT BITS
   *     <LI> STUFF RELATED TO ANGLES
   *     <LI> SOLVE LINEAR / QUADRATIC EQUATIONS
   *     <LI> COMPUTE MATHEMATICAL FUNCTION VALUE
@@ -111,6 +112,9 @@ public:
      * \param modulo modulo*/
    static double ApplyModulo( double input, double modulo );
 
+   // 3. COMBINE / SPLIT BITS
+   /////////////////////////////
+
    /** \brief prints to stdout the bits in a 32bit unsigned integer
      * \param i input unigned integer */
    static void PrintBitsInInt(unsigned int i);
@@ -134,7 +138,7 @@ public:
      * \param value input unsigned integer */
    static std::vector<unsigned char> SplitIntInChars( int value );
 
-   // 3. STUFF RELATED TO ANGLES
+   // 4. STUFF RELATED TO ANGLES
    /////////////////////////////
 
    /** \brief computes the angle of the line from the origin to the point (x,y)
@@ -150,7 +154,7 @@ public:
      * \param radians value in radians to convert to degrees*/
    static double ToDegrees( double radians );
 
-   // 4. SOLVE LINEAR / QUADRATIC EQUATIONS
+   // 5. SOLVE LINEAR / QUADRATIC EQUATIONS
    ////////////////////////////////////////
 
    /** \brief solves a linear equation ax + b = 0
@@ -179,8 +183,12 @@ public:
    static bool SolveQuadraticEquation ( std::complex<double> a, std::complex<double> b, std::complex<double> c,
                                         std::complex<double>& outSolution1, std::complex<double>& outSolution2);
 
-   // 5. COMPUTE MATHEMATICAL FUNCTION VALUE
+   // 6. COMPUTE MATHEMATICAL FUNCTION VALUE
    /////////////////////////////////////////
+
+   /** \brief Computes y value according to linear interpolation */
+   static double LinearInterpolate( double x0, double y0, double x1, double y1, double x );
+
 
    /** \brief Computes PSNR (Peak Signal to Noise Ratio) given the MSE (Mean Square Error)
      * Ref: http://en.wikipedia.org/wiki/PSNR
@@ -217,7 +225,7 @@ public:
      * \param myExponent the exponent to be used*/
    static int ComputeIntegerPower(int myNumber, int myExponent);
 
-   // 6. COMPUTE VALUES OF GAUSSIAN FUNCTION / DERIVATIVES
+   // 7. COMPUTE VALUES OF GAUSSIAN FUNCTION / DERIVATIVES
    ///////////////////////////////////////////////////////
 
    /** \brief computes a set of points sampled regularly from the Gauss function (NOT random variables with Gaussian distribution!!)
@@ -316,7 +324,7 @@ public:
      * \param sigmaY sigmaY of the function (related to the width in the y-direction)*/
    static double GaussianDxDy( double x, double y, double muX, double muY, double sigmaX, double sigmaY );
 
-   // 7. COMPUTE STATISTICS
+   // 8. COMPUTE STATISTICS
    ////////////////////////
 
    /** \brief Computes cross-correlation between two signals x and y
