@@ -45,10 +45,17 @@ public:
      * \param width   mathematical image width */
    Image* CreateJulia( double centerX, double centerY, double width, double Cx, double Cy );
 
-   /** \brief sets maximum number of iterations to test if a point can escape */
+   /** \brief sets the maximum number of iterations to test if a point can escape
+     * \param maxNr the maximal number of iterations */
    void SetMaxNumberOfIterations( int maxNr );
+
+   /** \brief sets the escape radius if a point has escaped after a certain number of iterations
+     * \param radius the escape radius */
    void SetEscapeRadius( double radius );
 
+   /** \brief sets the render dimensions
+     * \param width the number of pixels in x direction of the final image
+     * \param height the number of pixels in y direction of the final image */
    void SetRenderDimensions( int width, int height );
    
 private:
@@ -82,22 +89,27 @@ private:
    
    int mMaxNumberOfIterations;   ///< max. nr. of iterations to test if a point can escape
 
-   double mEscapeRadius;
-   double mEscapeRadiusSquared;   ///< squared radius in complex plane outside which the point is considered
-                                  ///< to have "escaped" from the set after some nr of iterations
+   double mEscapeRadius;  ///< radius in complex plane outside which the point is considered
+                          ///< to have "escaped" from the set after some number of iterations
+   double mEscapeRadiusSquared;   ///< squared of the escape radius
    
    /** \brief assigns a color according to the number of iterations required to escape*/
    ColorValue AssignColor( int iterationNumber );
+
+   /** \brief assigns a color according to the number of iterations in a continuous way */
    ColorValue AssignColorContinuous( int iterationNumber, double& lastModulus );
+
+   /** \brief assigns a color according to the number of iterations according to the UlraFractal way
+     * \remark still uses linear interpolation instead of Monocubic interpolation for the time being */
    ColorValue AssignColorUltraFractal( double smoothColor );
 
    TransformColorSpace* mpColorTransformer;  ///< color space transform object
 
-   int mPixelWidth;
-   int mPixelHeight;
+   int mPixelWidth;     ///< the number of pixels in x direction of the final image
+   int mPixelHeight;     ///< the number of pixels in x direction of the final image
    double mWidthHeightRatio;
-   int mResolutionX;
-   int mResolutionY;
+   int mResolutionX;     ///< the number of pixels per mathematical unit in x direction
+   int mResolutionY;     ///< the number of pixels per mathematical unit in y direction
 };
 
 }
