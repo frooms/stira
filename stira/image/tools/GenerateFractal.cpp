@@ -20,7 +20,8 @@ namespace image {
 GenerateFractal::GenerateFractal()
 {
    mMaxNumberOfIterations = 1000;
-   mEscapeRadiusSquared = 4.0;
+   mEscapeRadius = 2.0;
+   mEscapeRadiusSquared = mEscapeRadius * mEscapeRadius;
    mpColorTransformer = new TransformColorSpace;
 }
 
@@ -40,9 +41,10 @@ void GenerateFractal::SetMaxNumberOfIterations( int maxNr )
 
 //------------------------------------------------------------------------------
 
-void GenerateFractal::SetEscapeRadiusSquared( double radiusSquared )
+void GenerateFractal::SetEscapeRadius( double radius )
 {
-   mEscapeRadiusSquared = radiusSquared;
+   mEscapeRadius = radius;
+   mEscapeRadiusSquared = radius * radius;
 }
 
 //------------------------------------------------------------------------------
@@ -59,7 +61,7 @@ ColorValue GenerateFractal::AssignColor( int iterationNumber )
       double tmpValue = (double)((2 * iterationNumber) % 360);
       ColorValue hsvValue;
       hsvValue.c[0] = tmpValue;
-      hsvValue.c[1] = 0.5;
+      hsvValue.c[1] = 1.0;
       hsvValue.c[2] = 1.0;
       hsvValue.type = TYPE_HSV;
       return mpColorTransformer->HSVtoRGB( hsvValue );
@@ -77,12 +79,14 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
    }
    else
    {
-      double tmpValue = 10.0 * ( (double)(iterationNumber) + ( 2.0 * log( 2.0 ) - log(log(lastModulus)) / log ( 2.0 ) ) );
-      double remainder = common::MathUtils::ApplyModulo( tmpValue + 180.0, 360.0 );
-      // pow(normalizedCount,4.0);
+      double tmpValue = iterationNumber + 1.0 - log(log(lastModulus)) / log ( mEscapeRadius );
+      tmpValue = 0.95 + 5.0 * tmpValue;
+
+      double remainder = common::MathUtils::ApplyModulo( tmpValue, 180.0 ) + 180;
+
       ColorValue hsvValue;
       hsvValue.c[0] = remainder;
-      hsvValue.c[1] = 0.5;
+      hsvValue.c[1] = 0.6;
       hsvValue.c[2] = 1.0;
       hsvValue.type = TYPE_HSV;
       return mpColorTransformer->HSVtoRGB( hsvValue );
@@ -110,6 +114,7 @@ int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy
       ySquared = y * y;
       iterationNumber++;
    }
+
    lastModulus = sqrt( xSquared + ySquared );
    return iterationNumber;
 }
@@ -172,7 +177,8 @@ Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, d
    std::cout << "Generating Julia of w = " << pixelWidth << " and h = " << pixelHeight << std::endl << std::flush;
    
    Image* pFractal = new Image( pixelWidth, pixelHeight, 3 );
-   
+
+
    for (int y = 0; y < pixelHeight; y++)
    {
       for (int x = 0; x < pixelWidth; x++)
@@ -183,7 +189,7 @@ Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, d
          double lastModulus;
          int lastIterationNumber = GiveLastIteration( x0, y0, Cx, Cy, lastModulus );
          
-         pFractal->SetColor( x, y, AssignColorContinuous( lastIterationNumber, lastModulus ) );
+         pFractal->SetColor( x, y,  AssignColorContinuous( lastIterationNumber, lastModulus ) );
       }
    }
    

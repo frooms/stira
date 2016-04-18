@@ -52,8 +52,8 @@ public:
    Image* CreateJulia( double topX, double topY, double bottomX, double bottomY, double resolution, double Cx, double Cy );
    
    void SetMaxNumberOfIterations( int maxNr );   ///< max. nr. of iterations to test if a point can escape
-   
-   void SetEscapeRadiusSquared( double radiusSquared );
+
+   void SetEscapeRadius( double radius );
    
 private:
 
@@ -62,14 +62,15 @@ private:
    int GiveLastIteration( double xx, double yy, double x0, double y0, double& lastModulus );
    
    int mMaxNumberOfIterations;   ///< max. nr. of iterations to test if a point can escape
-   double mEscapeRadiusSquared;   ///< sqaured radius in complex plane outside which the point is considered 
+
+   double mEscapeRadius;
+   double mEscapeRadiusSquared;   ///< squared radius in complex plane outside which the point is considered
                                   ///< to have "escaped" from the set after some nr of iterations
    
    /** \brief assigns a color according to the number of iterations required to escape*/
    ColorValue AssignColor( int iterationNumber );
    ColorValue AssignColorContinuous( int iterationNumber, double& lastModulus );
 
-   
    TransformColorSpace* mpColorTransformer;  ///< color space transform object
 };
 
