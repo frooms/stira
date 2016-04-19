@@ -87,27 +87,6 @@ public:
      * \param radius radius of circle to be drawn */
    static std::vector< Point<int> > DrawCircle( Point<int> center, int radius );
 
-   /** \brief Draws a polygon
-     *   We give a vector with sequentially the corner points.
-     *   These are then connected by lines with the BresenhamDrawLine method .
-     * \param vVertices vector containing the vertices (=corners) of the polgon */
-   static std::vector< Point<int> > DrawPolygon( std::vector< Point<int> > vVertices );
-
-   /** \brief Checks if a point is inside a polygon
-     * Source <A HREF="http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html">
-     *                 http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html</A>
-     *
-     * \param vVertices vector containing the vertices (=corners) of the polgon
-     * \param testPoint point to be tested if it is inside the polygon */
-   static bool IsPointInPolygon( std::vector< Point<int> > vVertices, Point<int> testPoint );
-
-   /** \brief Computes area of a polygon
-     * Source <A HREF="">
-     *                 http://www.topcoder.com/tc?d1=tutorials&d2=geometry1&module=Static</A>
-     *
-     * \param vVertices vector containing the vertices (=corners) of the polgon */
-   static double GetPolygonArea( std::vector< Point<int> > vVertices );
-
 };
 }
 }
