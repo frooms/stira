@@ -18,7 +18,8 @@ HEADERS += Definitions.h \
     FileAccess.h \
     FixedBuffer.h \
     QuantileNormalDistribution.h \
-    ClusteringLearning.h
+    ClusteringLearning.h \
+    Polygon.h
 SOURCES += Definitions.cpp \
     DrawFigures.cpp \
     ExecutionTimer.cpp \
@@ -36,4 +37,5 @@ SOURCES += Definitions.cpp \
     FileAccess.cpp \
     FixedBuffer.cpp \
     QuantileNormalDistribution.cpp \
-    ClusteringLearning.cpp
+    ClusteringLearning.cpp \
+    Polygon.cpp
