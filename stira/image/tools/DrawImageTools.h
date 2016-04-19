@@ -14,6 +14,7 @@
 #define STIRA_IMAGE_TOOLS_DRAWIMAGETOOLS_H
 
 #include "../../common/common/StiraMacros.h"
+#include "../../common/common/Polygon.h"
 #include "../../common/common/Point.h"
 #include "NumberGridTools.h"
 #include "../datastructures/Image.h"
@@ -39,6 +40,9 @@ public:
      * \param halfLength half of side of square to draw
      * \param newColor color of square */
    static void DrawSquare( Image* pImageInOut, common::Point<int> myCenterPoint, int halfLength, ColorValue newColor );
+
+   // Draw rectangle
+   //////////////////
 
    /** Draws a rectangle of given intensity on grid
      * \param pGridInOut grid to draw on
@@ -85,6 +89,9 @@ public:
      * \param fillSurface flag whether or not the rectangle should be filled; if false, only the circumference is drawn */
    static void DrawRectangle( Image* pImageInOut, common::RectangularROI<int> rroi, ColorValue newColorValue, bool fillSurface );
 
+   // Circle / disk
+   /////////////////
+
    /** Draws a filled disk of given color in an image
      * \param pImageInOut image to draw on
      * \param myCenterPoint central point of circle to draw
@@ -92,14 +99,49 @@ public:
      * \param newColor color of circle */
    static void DrawDisk( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
 
+   /** Draws a filled disk of given color in an ArrayGrid
+     * \param pGridInOut grid to draw on
+     * \param myCenterPoint central point of circle to draw
+     * \param radius radius of circle to draw
+     * \param newValue value of pixels inside the circle */
+   static void DrawDisk( ArrayGrid<double>* pGridInOut, common::Point<int> myCenterPoint, double radius, double newValue );
+
+   /** Helper function for the DrawCircle method
+     * if (a,b) is on the circle, then also (-a,b), (a,-b), (-a,-b), (b,a), (-b,a), (b,-a), (-b,-a) are on that circle
+     * Reference: http://www.tutorialspoint.com/computer_graphics/circle_generation_algorithm.htm
+     * \param pImageInOut image to draw on
+     * \param xCenter x coordinate of central point of circle to draw
+     * \param yCenter y coordinate of central point of circle to draw
+     * \param x x coordinate of point on circle
+     * \param y y coordinate of point on circle
+     * \param cv color to draw circle points in */
    static void Plot8CirclePoints( Image* pImage, int xCenter, int yCenter, int x, int y, ColorValue cv );
 
    /** Draws a circle contour of given color in an image
+     * Reference: http://www.tutorialspoint.com/computer_graphics/circle_generation_algorithm.htm
      * \param pImageInOut image to draw on
      * \param myCenterPoint central point of circle to draw
      * \param radius radius of circle to draw
      * \param newColor color of circle */
    static void DrawCircle( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
+
+   // Polygon
+   ////////////
+
+   /** Draws a polygon contour of given color in an image
+     * \param pImageInOut image to draw on
+     * \param myPolygon polygon object to draw
+     * \param newColor color of polygon */
+   static void DrawPolygon( Image* pImageInOut, common::Polygon myPolygon, ColorValue newColor );
+
+   /** Draws a polygon contour of given intensity on grid
+     * \param pGridInOut grid to draw on
+     * \param myPolygon polygon object to draw
+     * \param newValue value of polygon lines */
+   static void DrawPolygon( ArrayGrid<double>* pGridInOut, common::Polygon myPolygon, double newValue );
+
+   // Line
+   ////////
 
    /** Draws a line of given color in an image
      * \param pImageInOut image to draw on
@@ -117,20 +159,45 @@ public:
      * \param newColor color of line */
    static std::vector< common::Point<int> > DrawLine( Image* pImageInOut, common::Point<int> startPoint, common::Point<int> stopPoint, ColorValue newColor=ColorValue( 255, 0, 0, TYPE_RGB ));
 
+   /** Draws a line of given color in an image
+     * \param pImageInOut image to draw on
+     * \param startPoint start point of line to draw
+     * \param stopPoint  stop point of line to draw
+     * \param newColor color of line */
+   static std::vector< common::Point<int> > DrawLine( ArrayGrid<double>* pGridInOut, common::Point<int> startPoint, common::Point<int> stopPoint, double newValue );
+
+   // Arrow
+   /////////
    static void DrawArrow(Image* pImage, common::Point<int> p, common::Point<int> q, ColorValue cv, const float scale = 0.2);
+
+   // Point(s)
+   /////////////
 
    /** Draws a point of given color in an image
      * \param pImageInOut image to draw on
      * \param x x coordinate of point
      * \param y y coordinate of point
-     * \param newColor color of square */
+     * \param newColor color to draw point in */
    static void DrawPoint( Image* pImageInOut, int x, int y, ColorValue newColor);
 
    /** Draws a point of given color in an image
      * \param pImageInOut image to draw on
      * \param myPoint point to draw
-     * \param newColor color of square */
+     * \param newColor color to draw point in */
    static void DrawPoint( Image* pImageInOut, common::Point<int> myPoint, ColorValue newColor);
+
+   /** Draws a point of given color in an ArrayGrid
+     * \param pGridInOut grid to draw on
+     * \param myPoint point to draw
+     * \param newValue intensity to draw point in */
+   static void DrawPoint( ArrayGrid<double>* pGridInOut, common::Point<int> myPoint, double newValue );
+
+   /** Draws a point of given color in an ArrayGrid
+     * \param pGridInOut grid to draw on
+     * \param x x coordinate of point to draw
+     * \param y y coordinate of point to draw
+     * \param newValue intensity to draw point in */
+   static void DrawPoint( ArrayGrid<double>* pGridInOut, int x, int y, double newValue );
 
    /** Draws a vector of points of given color in an image
      * \param pGridInOut grid to draw on

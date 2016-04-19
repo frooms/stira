@@ -58,6 +58,22 @@ std::vector< Point<int> > DrawImageTools::DrawLine( Image* pImageInOut, Point<in
 
 //--------------------------------------------------------------------------------------
 
+std::vector< common::Point<int> > DrawImageTools::DrawLine( ArrayGrid<double>* pGridInOut, common::Point<int> startPoint, common::Point<int> stopPoint, double newValue )
+{
+    std::vector< Point<int> > pointVector = DrawFigures::BresenhamDrawLine( startPoint.x, startPoint.y, stopPoint.x, stopPoint.y );
+
+    for( std::vector< Point<int> >::iterator it = pointVector.begin();
+        it != pointVector.end();
+        ++it
+       )
+    {
+       DrawPoint( pGridInOut, (*it), newValue );
+    }
+    return pointVector;
+}
+
+//--------------------------------------------------------------------------------------
+
 void  DrawImageTools::DrawArrow(Image* pImg, Point<int> p, Point<int> q, ColorValue colour, const float scale)
 {
     double angle = atan2( (double) p.y - q.y, (double) p.x - q.x ); // angle in radians
@@ -97,6 +113,20 @@ void DrawImageTools::DrawPoint( Image* pImageInOut, int x, int y, ColorValue new
 void DrawImageTools::DrawPoint( Image* pImageInOut, Point<int> myPoint, ColorValue newColor)
 {
    DrawPoint( pImageInOut, myPoint.x, myPoint.y, newColor );
+}
+
+//--------------------------------------------------------------------------------------
+
+void DrawImageTools::DrawPoint( ArrayGrid<double>* pGridInOut, common::Point<int> myPoint, double newValue )
+{
+   pGridInOut->SetValue( myPoint, newValue );
+}
+
+//--------------------------------------------------------------------------------------
+
+void DrawImageTools::DrawPoint( ArrayGrid<double>* pGridInOut, int x, int y, double newValue )
+{
+   pGridInOut->SetValue( x, y, newValue );
 }
 
 //--------------------------------------------------------------------------------------
@@ -251,6 +281,25 @@ void DrawImageTools::DrawDisk( Image* pImageInOut, Point<int> myCenterPoint, dou
    }
 }
 
+//--------------------------------------------------------------------------------------
+
+void DrawImageTools::DrawDisk( ArrayGrid<double>* pGridInOut, Point<int> myCenterPoint, double radius, double newValue )
+{
+   for (int dy = -radius; dy <= radius; dy++)
+   {
+      for (int dx = -radius; dx <= radius; dx++)
+      {
+         double tmpRadius = sqrt( (double)(dx)*(double)(dx) + (double)(dy)*(double)(dy) );
+         if (tmpRadius <= radius)
+         {
+            DrawPoint( pGridInOut, myCenterPoint.x + dx, myCenterPoint.y + dy, newValue );
+         }
+      }
+   }
+}
+
+//--------------------------------------------------------------------------------------
+
 void DrawImageTools::Plot8CirclePoints( Image* pImage, int xCenter, int yCenter, int x, int y, ColorValue cv )
 {
     pImage->SetColor( xCenter+x, yCenter+y, cv ); //point in octant 1
@@ -262,6 +311,8 @@ void DrawImageTools::Plot8CirclePoints( Image* pImage, int xCenter, int yCenter,
     pImage->SetColor( xCenter-y, yCenter-x, cv ); //point in octant 6
     pImage->SetColor( xCenter+y, yCenter-x, cv ); //point in octant 7
 }
+
+//--------------------------------------------------------------------------------------
 
 void DrawImageTools::DrawCircle( Image* pImageInOut, common::Point<int> myCenterPoint, double radius, ColorValue cv )
 {
@@ -288,6 +339,38 @@ void DrawImageTools::DrawCircle( Image* pImageInOut, common::Point<int> myCenter
             xChange += 2;
         }
     }
+}
+
+//--------------------------------------------------------------------------------------
+
+void DrawImageTools::DrawPolygon( Image* pImageInOut, common::Polygon myPolygon, ColorValue newColor )
+{
+    int nrVertices = myPolygon.GetNumberOfVertices();
+
+    for (int i = 0; i < nrVertices-1; i++)
+    {
+        Point<double> pStart = myPolygon.GetVertex( i );
+        Point<double> pStop  = myPolygon.GetVertex( i+1 );
+        DrawLine( pImageInOut, pStart.x, pStop.x, pStart.y, pStop.y, newColor );
+    }
+    Point<double> pStart = myPolygon.GetVertex( nrVertices-1 );
+    Point<double> pStop  = myPolygon.GetVertex( 0 );
+    DrawLine( pImageInOut, pStart.x, pStop.x, pStart.y, pStop.y, newColor );
+}
+
+void DrawImageTools::DrawPolygon( ArrayGrid<double>* pGridInOut, common::Polygon myPolygon, double newValue )
+{
+    int nrVertices = myPolygon.GetNumberOfVertices();
+
+    for (int i = 0; i < nrVertices-1; i++)
+    {
+        Point<int> pStart = myPolygon.GetVertexInt( i );
+        Point<int> pStop  = myPolygon.GetVertexInt( i+1 );
+        DrawLine( pGridInOut, pStart, pStop, newValue );
+    }
+    Point<int> pStart = myPolygon.GetVertexInt( nrVertices-1 );
+    Point<int> pStop  = myPolygon.GetVertexInt( 0 );
+    DrawLine( pGridInOut, pStart, pStop, newValue );
 }
 
 //--------------------------------------------------------------------------------------
