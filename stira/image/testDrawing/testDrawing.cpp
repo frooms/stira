@@ -15,11 +15,13 @@
 #include <cstdlib>
 #include <cassert>
 #include "../../common/common/Point.h"
+#include "../../common/common/Polygon.h"
 #include "../../common/common/RectangularROI.h"
 #include "../../common/common/DrawFigures.h"
 #include "../tools/ImageIO.h"
 #include "../tools/NumberGridTools.h"
 #include "../tools/ImageTools.h"
+#include "../tools/DrawImageTools.h"
 
 using namespace std;
 using namespace stira::image;
@@ -29,40 +31,41 @@ void TestDrawFigure()
 {
    int width = 512;
    int height = 512;
-   ArrayGrid<int>* pGrid = new ArrayGrid<int>( width, height );
-   std::vector< Point<int> > vCorners;
-   Point<int> p1(129, 52);   vCorners.push_back( p1 );
-   Point<int> p2(234, 32);   vCorners.push_back( p2 );
-   Point<int> p3(356, 51);   vCorners.push_back( p3 );
-   Point<int> p4(267, 248);  vCorners.push_back( p4 );
-   Point<int> p5(100, 156);  vCorners.push_back( p5 );
 
-   pGrid->SetValue( DrawFigures::DrawPolygon( vCorners ), 250 );
+   Image* pImage = new Image( width, height, 3 );
+
+   Polygon myPolygon;
+   myPolygon.AddVertex( Point<double>(  70,  50 ) );
+   myPolygon.AddVertex( Point<double>( 240,  50 ) );
+   myPolygon.AddVertex( Point<double>( 240, 380 ) );
+   myPolygon.AddVertex( Point<double>(  70, 380 ) );
+
+   DrawImageTools::DrawPolygon( pImage, myPolygon, ColorValue(50,100,250,TYPE_RGB) );
 
    Point<int> testPointOut( 60, 240 );
-   pGrid->SetValue( testPointOut.x, testPointOut.y, 250 );
-   pGrid->SetValue( testPointOut.x-1, testPointOut.y, 250 );
-   pGrid->SetValue( testPointOut.x+1, testPointOut.y, 250 );
-   pGrid->SetValue( testPointOut.x, testPointOut.y-1, 250 );
-   pGrid->SetValue( testPointOut.x, testPointOut.y+1, 250 );
 
-   ImageIO::WritePGM( pGrid, std::string("Polygon.pgm"), ImageIO::NULL_OUT );
+   DrawImageTools::DrawDisk( pImage, testPointOut, 1, ColorValue(250,0,0,TYPE_RGB) );
 
-   bool testRes1 = DrawFigures::IsPointInPolygon( vCorners, testPointOut );
+   bool testRes1 = myPolygon.IsPointInPolygon( testPointOut );
    cout << "Test point 1 in polygon = " << testRes1 << endl << flush;
 
    Point<int> testPointIn( 226, 126 );
-   pGrid->SetValue( testPointIn.x, testPointIn.y, 250 );
-   pGrid->SetValue( testPointIn.x-1, testPointIn.y, 250 );
-   pGrid->SetValue( testPointIn.x+1, testPointIn.y, 250 );
-   pGrid->SetValue( testPointIn.x, testPointIn.y-1, 250 );
-   pGrid->SetValue( testPointIn.x, testPointIn.y+1, 250 );
+   DrawImageTools::DrawDisk( pImage, testPointIn, 1, ColorValue(0,250,0,TYPE_RGB) );
 
-   ImageIO::WritePGM( pGrid, std::string("Polygon.pgm"), ImageIO::NULL_OUT );
+   ImageIO::Write( pImage, std::string("Polygon1.ppm") );
 
-   bool testRes2 = DrawFigures::IsPointInPolygon( vCorners, testPointIn );
+   bool testRes2 = myPolygon.IsPointInPolygon( testPointIn );
    cout << "Test point 2 in polygon = " << testRes2 << endl << flush;
-   delete pGrid;
+
+   double area = myPolygon.GetPolygonArea();
+
+   assert( area == 170 * 330);
+   cout << "Polygon area = " << area << endl << flush;
+
+   myPolygon.ChangeVertex( 2, 330, 80 );
+   DrawImageTools::DrawPolygon( pImage, myPolygon, ColorValue(250,200,250,TYPE_RGB) );
+   ImageIO::Write( pImage, std::string("Polygon2.ppm") );
+   delete pImage;
 }
 
 //========================================================================================
