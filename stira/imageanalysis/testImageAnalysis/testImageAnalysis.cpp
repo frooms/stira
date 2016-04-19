@@ -79,12 +79,74 @@ void TestWSMeyer( Image *pImage )
 
 void TestDistanceTransform()
 {
+    Polygon myPolygon;
+
+    myPolygon.AddVertex( Point<double>( 105, 264 ) );
+    myPolygon.AddVertex( Point<double>(  80, 332 ) );
+    myPolygon.AddVertex( Point<double>(  78, 399 ) );
+    myPolygon.AddVertex( Point<double>( 112, 457 ) );
+    myPolygon.AddVertex( Point<double>( 178, 476 ) );
+    myPolygon.AddVertex( Point<double>( 232, 456 ) );
+    myPolygon.AddVertex( Point<double>( 259, 406 ) );
+    myPolygon.AddVertex( Point<double>( 264, 355 ) );
+    myPolygon.AddVertex( Point<double>( 260, 306 ) );
+    myPolygon.AddVertex( Point<double>( 246, 257 ) );
+    myPolygon.AddVertex( Point<double>( 217, 225 ) );
+    myPolygon.AddVertex( Point<double>( 151, 228 ) );
+
     std::string filename = string("../../../../stira/stira/testdata/contours2.png");
     Image *pImage = ImageIO::Read(filename);
     DistanceTransform* pDT = new DistanceTransform();
-    ArrayGrid<double>* pResult = pDT->Run( pImage->GetBands()[0] );
+    ArrayGrid<double>* pGridIn = pImage->GetBands()[0];
+    ArrayGrid<double>* pGridDT = pDT->Run( pGridIn );
 
-    ImageIO::WritePGM( pResult, "DistanceTransform.pgm", ImageIO::NORMAL_OUT );
+    Image* pImageOut = new Image( pGridIn->GetWidth(), pGridIn->GetHeight() );
+    pImageOut->AddBand( pGridIn->Clone() );
+    pImageOut->AddBand( pGridIn->Clone() );
+    pImageOut->AddBand( pGridIn->Clone() );
+
+    ImageIO::WritePGM( pGridDT, "DistanceTransform.pgm", ImageIO::NORMAL_OUT );
+
+    DrawImageTools::DrawPolygon(pImageOut, myPolygon, ColorValue(255,255,0,TYPE_RGB));
+
+    int nrVertices = myPolygon.GetNumberOfVertices();
+
+    double distanceCumulNew = 1999000000000000000000000000000000000000.0;
+    double distanceCumulOld = 2000000000000000000000000000000000000000.0;
+
+    while (distanceCumulNew < distanceCumulOld)
+    {
+        distanceCumulOld = distanceCumulNew;
+        distanceCumulNew = 0;
+        for (int i = 0; i < nrVertices; i++)
+        {
+            double distanceSmallest = pGridDT->GetValue( myPolygon.GetVertexInt(i) );
+            for (int dy = -1; dy <= 1; dy++)
+            {
+                for (int dx = -1; dx <= 1; dx++)
+                {
+                    if ( dx!=0 || dy!=0)
+                    {
+                        double testValue = pGridDT->GetValue( myPolygon.GetVertexInt(i).x + dx, myPolygon.GetVertexInt(i).y + dy );
+                        if ( testValue < distanceSmallest )
+                        {
+                             distanceSmallest = testValue;
+                             myPolygon.ChangeVertex( i, myPolygon.GetVertexInt(i).x + dx, myPolygon.GetVertexInt(i).y + dy );
+                        }
+                    }
+                }
+                distanceCumulNew += distanceSmallest;
+            }
+        }
+        cout << "distanceCumulNew is now " << distanceCumulNew << endl;
+    }
+    DrawImageTools::DrawPolygon(pImageOut, myPolygon, ColorValue(0,255,0,TYPE_RGB));
+
+    ImageIO::Write( pImageOut, "ActiveContour.ppm" );
+    delete pDT;
+    delete pGridDT;
+    delete pImage;
+    delete pImageOut;
 }
 
 //-----------------------------------------------------------------------------------
@@ -119,6 +181,7 @@ void TestHOG( Image *pImage )
                                                           scaleFactor, viz_factor);
 
     ImageIO::Write(pVisual, "HogOut.ppm");
+    delete pVisual;
 }
 
 //-----------------------------------------------------------------------------------

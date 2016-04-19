@@ -14,6 +14,7 @@
 #include "../common/RectangularROI.h"
 #include "../common/DrawFigures.h"
 #include "../common/LineSegment.h"
+#include "../common/Polygon.h"
 #include "../common/Curve.h"
 #include <iostream>
 #include <cassert>
@@ -101,13 +102,11 @@ void TestConnectCurves()
 
 void TestEllipse()
 {
-   /* initialize random seed: */
+   // initialize random seed:
    srand (time(NULL));
 
-
    ofstream myfile;
-   myfile.open ("example.txt");
-
+   myfile.open ("EllipsePoints.txt");
 
    for (int i = 0; i < 500; i++)
    {
