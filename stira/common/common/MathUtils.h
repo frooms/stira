@@ -189,7 +189,6 @@ public:
    /** \brief Computes y value according to linear interpolation */
    static double LinearInterpolate( double x0, double y0, double x1, double y1, double x );
 
-
    /** \brief Computes PSNR (Peak Signal to Noise Ratio) given the MSE (Mean Square Error)
      * Ref: http://en.wikipedia.org/wiki/PSNR
      * \param MSE the MSE (Mean Square Error)
