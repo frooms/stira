@@ -21,7 +21,7 @@ public:
     double pythag(const double a, const double b);
     void PrintSingularValues();
     void PrintMatrixU();
-    void PrintMatrixV();
+    void PrintMatrixVTranspose();
 
 private:
     int n, m, maxMN;

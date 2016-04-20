@@ -47,13 +47,13 @@ void SVD::PrintMatrixU()
     }
 }
 
-void SVD::PrintMatrixV()
+void SVD::PrintMatrixVTranspose()
 {
     for (int j = 0; j < n; j++)
     {
         for (int i = 0; i < n; i++)
         {
-            std::cout << v[j][i] << "\t";
+            std::cout << v[i][j] << "\t";
         }
         std::cout << std::endl;
     }

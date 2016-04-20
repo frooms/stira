@@ -41,22 +41,34 @@ std::vector<double> MakeVector( double* pData, int nrElements )
 
 void TestSVD()
 {
-   int m = 2, n = 3;
+   //int m = 2, n = 3;
+   //double** a = new double*[m];
+   //for(int i = 0; i < m; ++i)
+   //{
+   //    a[i] = new double[n];
+   //}
+
+   //a[0][0] =  3; a[0][1] = 1; a[0][2] = 1;
+   //a[1][0] = -1; a[1][1] = 3; a[1][2] = 1;
+
+   int m = 4, n = 5;
    double** a = new double*[m];
    for(int i = 0; i < m; ++i)
    {
        a[i] = new double[n];
    }
 
-   a[0][0] =  3; a[0][1] = 1; a[0][2] = 1;
-   a[1][0] = -1; a[1][1] = 3; a[1][2] = 1;
+   a[0][0] = 1; a[0][1] = 0; a[0][2] = 0; a[0][3] = 0; a[0][4] = 2;
+   a[1][0] = 0; a[1][1] = 0; a[1][2] = 3; a[1][3] = 0; a[1][4] = 0;
+   a[2][0] = 0; a[2][1] = 0; a[2][2] = 0; a[2][3] = 0; a[2][4] = 0;
+   a[3][0] = 0; a[3][1] = 2; a[3][2] = 0; a[3][3] = 0; a[3][4] = 0;
 
    SVD mySVD(a, m, n);
 
    mySVD.decompose();
-   mySVD.reorder();
+   //mySVD.reorder();
    mySVD.PrintMatrixU();
-   mySVD.PrintMatrixV();
+   mySVD.PrintMatrixVTranspose();
    mySVD.PrintSingularValues();
 
    cout << "SVD test success!!" << endl << flush;
