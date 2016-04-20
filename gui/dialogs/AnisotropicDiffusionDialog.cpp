@@ -19,8 +19,7 @@ using namespace stira::image;
 AnisotropicDiffusionDialog::AnisotropicDiffusionDialog( stira::image::Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   cout << "Applying Diffusion Dialog directly with Image*" << endl << flush;
-   mpTitelLabel->setText( QString("Anisotropic Diffusion Parameters") );
+   mpTitelLabel->setText( QString("<b>Anisotropic Diffusion Parameters</b>" ) );
    mpNrIterationsLabel = new QLabel( QString("Nr. iterations: "), this );
    mpNrIterationsLineEdit = new QLineEdit( QString("5"), this );
    mpNrIterationsLayout = new QHBoxLayout;
@@ -28,7 +27,7 @@ AnisotropicDiffusionDialog::AnisotropicDiffusionDialog( stira::image::Image* pIm
    mpNrIterationsLayout->addWidget( mpNrIterationsLineEdit );
    
    mpFlowParameterLabel = new QLabel( QString("Flow constant: "), this );
-   mpFlowParameterLineEdit = new QLineEdit( QString("3.0"), this );
+   mpFlowParameterLineEdit = new QLineEdit( QString("0.5"), this );
    mpFlowParameterLayout = new QHBoxLayout;
    mpFlowParameterLayout->addWidget( mpFlowParameterLabel );
    mpFlowParameterLayout->addWidget( mpFlowParameterLineEdit );
@@ -36,6 +35,7 @@ AnisotropicDiffusionDialog::AnisotropicDiffusionDialog( stira::image::Image* pIm
    mpDialogLayout->addWidget( mpTitelLabel );
    mpDialogLayout->addLayout( mpNrIterationsLayout );
    mpDialogLayout->addLayout( mpFlowParameterLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }
@@ -75,11 +75,21 @@ Process* AnisotropicDiffusionDialog::GetProcess()
 
 void AnisotropicDiffusionDialog::SlotRun()
 {
-   mpProcess = new AnisotropicDiffusionProcess( mpInputImage );
-   connect( mpProcess, SIGNAL( finished() ), this, SLOT( SlotProcessResult() ) );
-   mpProcess->SetFlowParameter( this->GetFlowParameter() );
-   mpProcess->SetNrOfIterations( this->GetNrOfIterations() );
-   mpProcess->start();
+   double flowFactor =  GetFlowParameter();
+
+   if (flowFactor <= 0.5)
+   {
+       mpProcess = new AnisotropicDiffusionProcess( mpInputImage );
+       connect( mpProcess, SIGNAL( finished() ), this, SLOT( SlotProcessResult() ) );
+       mpProcess->SetFlowParameter( this->GetFlowParameter() );
+       mpProcess->SetNrOfIterations( this->GetNrOfIterations() );
+       mpProcess->start();
+   }
+   else
+   {
+        mpMessageLabel->setText( QString("<b>ERROR: Flow constant must be &le; 0.5 !!</b>"));
+        this->EnableButtons();
+   }
 }
 
 //--------------------------------------------------------
