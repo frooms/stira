@@ -365,13 +365,13 @@ bool GenerateFractalTest()
    GenerateFractal gf;
 
    // full size
-   centerX = -0.5;
-   centerY = 0.0;
-   width = 4.0;
-
-   //centerX = -1.45;
+   //centerX = -0.5;
    //centerY = 0.0;
-   //width = 0.1;
+   //width = 4.0;
+
+   centerX = -1.45;
+   centerY = 0.0;
+   width = 0.000001;
 
    pFractal = gf.CreateMandelbrot( centerX, centerY, width );
    ImageIO::Write( pFractal, string("FractalMandelbrotImage.ppm"), ImageIO::NULL_OUT );

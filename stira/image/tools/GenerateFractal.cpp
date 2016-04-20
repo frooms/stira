@@ -232,13 +232,14 @@ bool GenerateFractal::TestIsInMandelbrotMainBody( double x, double y )
 
 Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double bottomX, double bottomY )
 {
-   double mathematicalWidth  = topX - bottomX;
-   double mathematicalHeight = topY - bottomY;
+   double mathematicalWidth  = bottomX - topX;
+   double mathematicalHeight = bottomY - topY;
 
    mResolutionX = mPixelWidth / mathematicalWidth;
    mResolutionY = mPixelHeight / mathematicalHeight;
    
    std::cout << "Generating Mandelbrot of w = " << mPixelWidth << " and h = " << mPixelHeight << std::endl << std::flush;
+   std::cout << "   \t mResolutionX = " << mResolutionX << " and mResolutionY = " << mResolutionY << std::endl << std::flush;
    
    Image* pFractal = new Image( mPixelWidth, mPixelHeight, 3 );
    
@@ -247,8 +248,8 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
       for (int x = 0; x < mPixelWidth; x++)
       {
          int lastIterationNumber;
-         double x0 = bottomX + (double)(x) / mResolutionX;
-         double y0 = topY    - (double)(y) / mResolutionY;
+         double x0 = topX + (double)(x) / mResolutionX;
+         double y0 = topY + (double)(y) / mResolutionY;
          
          double xx = 0.0;
          double yy = 0.0;
@@ -288,13 +289,14 @@ Image* GenerateFractal::CreateJulia( double centerX, double centerY, double widt
 
 Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, double bottomY, double Cx, double Cy )
 {
-   double mathematicalWidth  = topX - bottomX;
-   double mathematicalHeight = topY - bottomY;
+   double mathematicalWidth  = bottomX - topX;
+   double mathematicalHeight = bottomY - topY;
 
    mResolutionX = mPixelWidth / mathematicalWidth;
    mResolutionY = mPixelHeight / mathematicalHeight;
    
    std::cout << "Generating Julia of w = " << mPixelWidth << " and h = " << mPixelHeight << std::endl << std::flush;
+   std::cout << "   \t mResolutionX = " << mResolutionX << " and mResolutionY = " << mResolutionY << std::endl << std::flush;
    
    Image* pFractal = new Image( mPixelWidth, mPixelHeight, 3 );
 
@@ -302,8 +304,8 @@ Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, d
    {
       for (int x = 0; x < mPixelWidth; x++)
       {
-         double x0 = bottomX + (double)(x) / mResolutionX;
-         double y0 = topY    - (double)(y) / mResolutionY;
+         double x0 = topX + (double)(x) / mResolutionX;
+         double y0 = topY + (double)(y) / mResolutionY;
          
          double lastModulus;
          int lastIterationNumber = GiveLastIteration( x0, y0, Cx, Cy, lastModulus );
