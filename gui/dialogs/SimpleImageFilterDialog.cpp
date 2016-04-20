@@ -22,7 +22,7 @@ using namespace std;
 SimpleImageFilterDialog::SimpleImageFilterDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Simple Filter Parameters") );
+   mpTitelLabel->setText( QString("<b>Simple Filter Parameters</b>") );
    
    SetupFilterTypeButtons();
    SetupBorderExtensionTypeButtons();
@@ -34,6 +34,7 @@ SimpleImageFilterDialog::SimpleImageFilterDialog( Image* pImage ) : DialogMaster
    mpDialogLayout->addLayout( mpSigmaLayout );
    mpDialogLayout->addLayout( mpAngleLayout );
    mpDialogLayout->addWidget( mpExtendTypeGroupBox );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

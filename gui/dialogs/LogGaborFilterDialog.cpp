@@ -77,6 +77,7 @@ LogGaborFilterDialog::LogGaborFilterDialog( Image* pImage ) : DialogMaster( pIma
    
    mpDialogLayout->addLayout( mpParametersLayout );
    mpDialogLayout->addLayout( mpOutputsLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

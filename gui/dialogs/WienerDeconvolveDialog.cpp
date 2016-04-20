@@ -20,7 +20,7 @@ WienerDeconvolveDialog::WienerDeconvolveDialog( Image* pImage ) : DialogMaster( 
 {
    mpProcess = 0;
    
-   mpTitelLabel->setText( QString("Wiener Deconvolution Parameters") );
+   mpTitelLabel->setText( QString("<b>Wiener Deconvolution Parameters</b>") );
    
    mpNoiseLevelLabel = new QLabel( QString("Noise level (sigma): "), this );
    mpNoiseLevelLineEdit = new QLineEdit( QString("5.0"), this );
@@ -39,6 +39,7 @@ WienerDeconvolveDialog::WienerDeconvolveDialog( Image* pImage ) : DialogMaster( 
    mpDialogLayout->addWidget( mpTitelLabel );
    mpDialogLayout->addLayout( mpNoiseLevelLayout );
    mpDialogLayout->addLayout( mpBlurLevelLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

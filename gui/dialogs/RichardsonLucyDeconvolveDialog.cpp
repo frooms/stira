@@ -20,7 +20,7 @@ using namespace stira::image;
 RichardsonLucyDeconvolveDialog::RichardsonLucyDeconvolveDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Richardson-Lucy Deconvolve Dialog") );
+   mpTitelLabel->setText( QString("<b>Richardson-Lucy Deconvolve Dialog</b>") );
    
    SetupParameterLineEdits();
    ///////////////////////////////
@@ -93,6 +93,7 @@ RichardsonLucyDeconvolveDialog::RichardsonLucyDeconvolveDialog( Image* pImage ) 
    mpDialogLayout->addLayout( mpNrIterationsLayout );
    mpDialogLayout->addWidget( mpRegularizationTypeGroupBox );
    mpDialogLayout->addWidget( mpPSFTypeGroupBox );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

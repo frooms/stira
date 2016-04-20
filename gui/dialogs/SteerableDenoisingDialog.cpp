@@ -21,7 +21,7 @@ using namespace stira::image;
 SteerableDenoisingDialog::SteerableDenoisingDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Steerable Pyramid based bivariate denoising") );
+   mpTitelLabel->setText( QString("<b>Steerable Pyramid based bivariate denoising</b>") );
    mpNrScalesLabel = new QLabel( QString("Nr. scales: "), this );
    mpNrScalesLineEdit = new QLineEdit( QString("4"), this );
    mpNrScalesLayout = new QHBoxLayout;
@@ -44,6 +44,7 @@ SteerableDenoisingDialog::SteerableDenoisingDialog( Image* pImage ) : DialogMast
    mpDialogLayout->addLayout( mpNrScalesLayout );
    mpDialogLayout->addLayout( mpNrOrientationsLayout );
    mpDialogLayout->addLayout( mpNoiseLevelLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

@@ -19,8 +19,7 @@ using namespace stira::image;
 SplitBregmanDenoiseDialog::SplitBregmanDenoiseDialog( stira::image::Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   cout << "Applying Diffusion Dialog directly with Image*" << endl << flush;
-   mpTitelLabel->setText( QString("Split-Bregman TV Denoising Parameters") );
+   mpTitelLabel->setText( QString("<b>Split-Bregman TV Denoising Parameters</b>") );
    
    mpMuLabel = new QLabel( QString("Mu: "), this );
    mpMuLineEdit = new QLineEdit( QString("0.1"), this );
@@ -54,6 +53,7 @@ SplitBregmanDenoiseDialog::SplitBregmanDenoiseDialog( stira::image::Image* pImag
    mpDialogLayout->addLayout( mpLambdaLayout );
    mpDialogLayout->addLayout( mpNumberOfGaussSeidelIterationsLayout );
    mpDialogLayout->addLayout( mpNumberOfBregmanIterationsLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

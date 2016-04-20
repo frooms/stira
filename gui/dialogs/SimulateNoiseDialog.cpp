@@ -20,7 +20,7 @@ using namespace stira::image;
 SimulateNoiseDialog::SimulateNoiseDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Generate Synthetic Test Image") );
+   mpTitelLabel->setText( QString("<b>Generate Synthetic Test Image</b>") );
    
    mpNoiseLevelLabel = new QLabel( QString("Noise Level:"), this );
    mpNoiseLevelLineEdit = new QLineEdit( QString("10.0"), this );
@@ -51,6 +51,7 @@ SimulateNoiseDialog::SimulateNoiseDialog( Image* pImage ) : DialogMaster( pImage
    mpDialogLayout->addLayout( mpNoiseLevelLayout );
    mpDialogLayout->addWidget( mpNoiseTypeGroupBox );
    mpDialogLayout->addWidget( mpNoiseIsColoredCheckBox );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

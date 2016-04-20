@@ -19,7 +19,7 @@ using namespace stira::image;
 SplitColorChannelsDialog::SplitColorChannelsDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Split into color channels") );
+   mpTitelLabel->setText( QString("<b>Split into color channels</b>") );
    
    mpColorSpaceComboBox = new QComboBox;
    mpColorSpaceComboBox->addItem ( QString("RGB"));
@@ -53,6 +53,7 @@ SplitColorChannelsDialog::SplitColorChannelsDialog( Image* pImage ) : DialogMast
    mpDialogLayout->addWidget( mpTitelLabel );
    mpDialogLayout->addWidget( mpColorSpaceComboBox );
    mpDialogLayout->addWidget( mpIlluminantComboBox );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    connect( mpColorSpaceComboBox, SIGNAL( currentIndexChanged ( int ) ), this, SLOT( SlotShowHideIlluminant( int ) ) );
    SlotShowHideIlluminant( 0 );

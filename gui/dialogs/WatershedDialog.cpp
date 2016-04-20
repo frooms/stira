@@ -20,7 +20,7 @@ using namespace stira::image;
 WatershedDialog::WatershedDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Watershed Parameters") );
+   mpTitelLabel->setText( QString("<b>Watershed Parameters</b>") );
    
    mpUseGradientCheckBox = new QCheckBox( tr( "&Start from Gradient Image?" ) );
    mpUseGradientCheckBox->setChecked ( true );
@@ -41,6 +41,7 @@ WatershedDialog::WatershedDialog( Image* pImage ) : DialogMaster( pImage )
    mpDialogLayout->addWidget( mpUseGradientCheckBox );
    mpDialogLayout->addLayout( mpMaximalMinimumLevelLayout );
    mpDialogLayout->addLayout( mpEqualityPrecisionLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }
