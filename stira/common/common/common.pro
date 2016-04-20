@@ -20,7 +20,8 @@ HEADERS += Definitions.h \
     QuantileNormalDistribution.h \
     ClusteringLearning.h \
     Polygon.h \
-    SVD.h
+    SVD.h \
+    MonotonicCubicSplineInterpolator.h
 SOURCES += Definitions.cpp \
     DrawFigures.cpp \
     ExecutionTimer.cpp \
@@ -40,4 +41,5 @@ SOURCES += Definitions.cpp \
     QuantileNormalDistribution.cpp \
     ClusteringLearning.cpp \
     Polygon.cpp \
-    SVD.cpp
+    SVD.cpp \
+    MonotonicCubicSplineInterpolator.cpp
