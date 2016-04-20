@@ -49,8 +49,10 @@ public slots:
    /** \brief after running the operation, the result is put in a new viewer window and shown*/
    void SlotProcessResult();
    
-   /** \brief Duriong the run, the dialog buttons are disabled*/
+   /** \brief During process is running, the dialog buttons are disabled*/
    void SlotDisableButtons();
+
+   void EnableButtons();
    
 protected:
    /** \brief gets a pointer to the underlying process
@@ -59,11 +61,12 @@ protected:
    std::vector< stira::image::Image* > vpResults;
    ImageWindow* mpImWindow;  ///< image window with the input data for processing
    stira::image::Image* mpInputImage;
-   
+
    QLabel* mpTitelLabel;        ///< Title widget
    QVBoxLayout* mpDialogLayout; ///< General layout for the dialog
    QPushButton* mpRunButton;    ///< button to start the processing
    QPushButton* mpCancelButton; ///< button to cancel
+   QLabel*      mpMessageLabel; ///< Message widget for feedback to user
    QHBoxLayout* mpButtonLayout; ///< layout for run and cancel buttons
 };
 

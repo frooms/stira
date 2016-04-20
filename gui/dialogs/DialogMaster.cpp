@@ -20,18 +20,19 @@ using namespace std;
 
 DialogMaster::DialogMaster( Image* pImage ) : QDialog(0, Qt::WindowStaysOnTopHint)
 {
-   cout << "Applying Dialog Master directly with Image*" << endl << flush;
    mpInputImage = pImage;
    mpTitelLabel = new QLabel( QString(""), this );
    mpDialogLayout = new QVBoxLayout(this);
+
+   mpMessageLabel = new QLabel( QString(""), this );
    
    mpButtonLayout = new QHBoxLayout;
    mpRunButton = new QPushButton( QString("Run"), this );
    mpCancelButton = new QPushButton( QString("Cancel"), this );
    mpButtonLayout->addWidget( mpRunButton );
    mpButtonLayout->addWidget( mpCancelButton );
-   connect( mpRunButton,    SIGNAL( clicked() ), this, SLOT( SlotRun() ) );
    connect( mpRunButton,    SIGNAL( clicked() ), this, SLOT( SlotDisableButtons() ) );
+   connect( mpRunButton,    SIGNAL( clicked() ), this, SLOT( SlotRun() ) );
    connect( mpCancelButton, SIGNAL( clicked() ), this, SLOT( reject()  ) );
 }
 
@@ -39,11 +40,15 @@ DialogMaster::DialogMaster( Image* pImage ) : QDialog(0, Qt::WindowStaysOnTopHin
 
 void DialogMaster::SlotDisableButtons()
 {
-   QString titleValue = mpTitelLabel->text();
-   titleValue.append( QString(" <B>Processing...</B>") );
-   mpTitelLabel->setText(titleValue);
+   mpMessageLabel->setText( QString(" <B>Processing...</B>") );
    mpRunButton->setEnabled( false );
    mpCancelButton->setEnabled( false );
+}
+
+void DialogMaster::EnableButtons()
+{
+    mpRunButton->setEnabled( true );
+    mpCancelButton->setEnabled( true );
 }
 
 //--------------------------------------------------------
@@ -60,7 +65,6 @@ void DialogMaster::SlotProcessResult()
    // WARNING: CAN'T CREATE WIDGETS IN OTHER THREAD; REALLY MAKE SURE IT'S FINISHED FIRST
    if ( !( GetProcess()->isFinished() ) )
    {
-      //QThread::sleep ( 0.2 )
       QTime dieTime= QTime::currentTime().addSecs(1);
       while( QTime::currentTime() < dieTime )
       QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
@@ -75,8 +79,10 @@ void DialogMaster::SlotProcessResult()
       {
          ImageDataList::GetInstance()->AddImage( (*it) );
       }
+      mpMessageLabel->setText( QString(" <B>Ready!</B>") );
+      EnableButtons();
    }
-   this->accept();
+   //this->accept();
 }
 
 //--------------------------------------------------------
