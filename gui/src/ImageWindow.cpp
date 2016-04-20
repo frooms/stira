@@ -154,7 +154,7 @@ void ImageWindow::SetParent( QMdiSubWindow* pParentWindow )
 
 void ImageWindow::SetupWindow()
 {
-   mpImageLabel = new QLabel;
+   mpImageLabel = new ClickableLabel(this);//QLabel;
    mpImageLabel->setBackgroundRole ( QPalette::Base );
    mpImageLabel->setSizePolicy ( QSizePolicy::Ignored, QSizePolicy::Ignored );
    mpImageLabel->setScaledContents ( true );

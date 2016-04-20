@@ -2,11 +2,13 @@ SOURCES += main.cpp \
            ImageDataList.cpp \
            ImageWindow.cpp \
            MainWindow.cpp \
-           ProcessManager.cpp
+           ProcessManager.cpp \
+           ClickableLabel.cpp
 HEADERS += ImageDataList.h \
            ImageWindow.h \
            MainWindow.h \
-           ProcessManager.h
+           ProcessManager.h \
+           ClickableLabel.h
 TEMPLATE = app
 CONFIG += warn_on \
           thread \

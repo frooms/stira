@@ -31,6 +31,7 @@
 #include <QContextMenuEvent>
 #include <QFrame>
 
+#include "ClickableLabel.h"
 #include "../../stira/image/datastructures/Image.h"
 
 class ProcessManager;
@@ -138,7 +139,9 @@ private:
    void RescaleImage ( double factor );
    void AdjustScrollBar(QScrollBar *scrollBar, double factor);
 
-   QLabel* mpImageLabel;
+
+   ClickableLabel* mpImageLabel;
+   //QLabel* mpImageLabel;
    QImage* mpQImage;
    QMdiSubWindow* mpParentWindow;
    QScrollArea* mpScrollArea;
