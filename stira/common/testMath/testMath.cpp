@@ -16,6 +16,7 @@
 #include "../common/Random.h"
 #include "../common/FitCurve.h"
 #include "../common/Statistics.h"
+#include "../common/SVD.h"
 #include <iostream>
 #include <iomanip>
 #include <cassert>
@@ -34,6 +35,31 @@ std::vector<double> MakeVector( double* pData, int nrElements )
       vVector.push_back( pData[i] );
    }
    return vVector;
+}
+
+//-----------------------------------------------------------------
+
+void TestSVD()
+{
+   int m = 2, n = 3;
+   double** a = new double*[m];
+   for(int i = 0; i < m; ++i)
+   {
+       a[i] = new double[n];
+   }
+
+   a[0][0] =  3; a[0][1] = 1; a[0][2] = 1;
+   a[1][0] = -1; a[1][1] = 3; a[1][2] = 1;
+
+   SVD mySVD(a, m, n);
+
+   mySVD.decompose();
+   mySVD.reorder();
+   mySVD.PrintMatrixU();
+   mySVD.PrintMatrixV();
+   mySVD.PrintSingularValues();
+
+   cout << "SVD test success!!" << endl << flush;
 }
 
 //-----------------------------------------------------------------
@@ -464,6 +490,7 @@ int main()
    //TestStatisticsBis();
    //TestCorrelation();
    //TestGaussianCurveFit();
-   TestGaussianity();
-   TestKMeans();
+   //TestGaussianity();
+   //TestKMeans();
+   TestSVD();
 }
