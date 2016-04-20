@@ -25,7 +25,7 @@ AnisotropicDiffusion::AnisotropicDiffusion(Image* pSourceImage)
    mpSourceImage = pSourceImage->Clone();
    std::string outName = pSourceImage->GetImageName() + std::string("-AnisotropicDiffusion");
    mpSourceImage->SetImageName(outName);
-   mFlowFactor = 0.1;
+   mFlowFactor = 0.5;
    mMaxNumberOfIterations = 15;
 }
 
