@@ -19,7 +19,7 @@ using namespace std;
 GenerateImageDialog::GenerateImageDialog( ) : DialogMaster()
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Generate Synthetic Test Image") );
+   mpTitelLabel->setText( QString("<b>Generate Synthetic Test Image</b>") );
 
    mpImageWidthLabel = new QLabel( QString("width: "), this );
    mpImageWidthLineEdit = new QLineEdit( QString("256"), this );
@@ -90,6 +90,7 @@ GenerateImageDialog::GenerateImageDialog( ) : DialogMaster()
    mpDialogLayout->addLayout( mpImageSizeLayout );
    mpDialogLayout->addLayout( mpImageParametersLayout );
    mpDialogLayout->addWidget( mpImageTypeGroupBox );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    
    connect( mpEmptyImageRadioButton,           SIGNAL( clicked() ), this, SLOT( SlotHideAll() ) );

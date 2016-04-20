@@ -23,7 +23,7 @@ using namespace stira::imageanalysis;
 CannyDialog::CannyDialog( Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
-   mpTitelLabel->setText( QString("Canny Edge Detection Parameters") );
+   mpTitelLabel->setText( QString("<b>Canny Edge Detection Parameters</b>") );
    
    mpUpperThresholdLabel = new QLabel( QString("Hysteresis upper threshold: "), this );
    mpUpperThresholdLineEdit = new QLineEdit( QString("70"), this );;
@@ -47,6 +47,7 @@ CannyDialog::CannyDialog( Image* pImage ) : DialogMaster( pImage )
    mpDialogLayout->addLayout( mpUpperThresholdLayout );
    mpDialogLayout->addLayout( mpLowerThresholdLayout );
    mpDialogLayout->addLayout( mpSigmaSmoothingLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

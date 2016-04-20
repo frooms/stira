@@ -77,6 +77,7 @@ GNCDeconvolveDialog::GNCDeconvolveDialog( Image* pImage ) : DialogMaster( pImage
    mpDialogLayout->addWidget( mpTitelLabel );
    
    mpDialogLayout->addLayout( mpParametersLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    this->show();
 }

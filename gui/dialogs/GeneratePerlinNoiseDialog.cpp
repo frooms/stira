@@ -96,6 +96,7 @@ GeneratePerlinNoiseDialog::GeneratePerlinNoiseDialog( ) : DialogMaster()
    mpDialogLayout->addWidget( mpTitelLabel );
    mpDialogLayout->addLayout( mpParametersLayout );
    mpDialogLayout->addWidget( mpUseNormalizationCheckBox );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    
    this->show();

@@ -83,6 +83,7 @@ ContrastEnhanceDialog::ContrastEnhanceDialog( Image* pImage ) : DialogMaster( pI
    mpDialogLayout->addLayout( mpGammaLayout );
    mpDialogLayout->addLayout( mpAlphaFactorLayout );
    mpDialogLayout->addLayout( mpWindowSizeGammaLayout );
+   mpDialogLayout->addWidget( mpMessageLabel );
    mpDialogLayout->addLayout( mpButtonLayout );
    
    connect( mpImageNegativeRadioButton,            SIGNAL( clicked() ), this, SLOT( SlotHideEdits() ) );
