@@ -19,7 +19,8 @@ HEADERS += Definitions.h \
     FixedBuffer.h \
     QuantileNormalDistribution.h \
     ClusteringLearning.h \
-    Polygon.h
+    Polygon.h \
+    SVD.h
 SOURCES += Definitions.cpp \
     DrawFigures.cpp \
     ExecutionTimer.cpp \
@@ -38,4 +39,5 @@ SOURCES += Definitions.cpp \
     FixedBuffer.cpp \
     QuantileNormalDistribution.cpp \
     ClusteringLearning.cpp \
-    Polygon.cpp
+    Polygon.cpp \
+    SVD.cpp
