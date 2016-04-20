@@ -33,11 +33,12 @@ bool DiffusionTest(Image* pImage)
 {
    assert(pImage != 0);
 
-   AnisotropicDiffusion ad(pImage);
-   ad.SetMaxNumberOfIterations(4);
+   AnisotropicDiffusion ad( pImage );
+   ad.SetMaxNumberOfIterations( 100 );
+   ad.SetFlowFactor( 0.5 );
    Image* pDiffusedImage = 0;
    pDiffusedImage = ad.Run();
-   assert( pDiffusedImage != 0);
+   assert( pDiffusedImage != 0 );
 
    assert( ImageIO::Write(pDiffusedImage, string("diffusedImage.pgm"), ImageIO::NORMAL_OUT) == true);
    delete pDiffusedImage;
@@ -46,13 +47,10 @@ bool DiffusionTest(Image* pImage)
 
 //======================================================================================
 
-int main( /*int argc, char *argv[]*/ )
+int main( )
 {
    Image* pImage = 0;
-   
-   //string fileNamePPM("../../../../stira/stira/testdata/Lenna.ppm");
-   string fileNamePGM("../../../../stira/stira/testdata/lena256.pgm");
-   
+   string fileNamePGM("../../../../stira/stira/testdata/lena512.pgm");
    pImage = ImageIO::Read( fileNamePGM );
    
    if (DiffusionTest( pImage) == true )
