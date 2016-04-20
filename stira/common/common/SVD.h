@@ -7,6 +7,7 @@ class SVD
 {
 public:
     SVD(double** u, int m, int n);
+    ~SVD();
 
     //Given the matrix A stored in u[0..m-1][0..n-1], this routine computes its singular value
     //decomposition, A = U  W  Vt and stores the results in the matrices u and v, and the vector w

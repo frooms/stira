@@ -28,11 +28,29 @@ SVD::SVD(double** uu, int mm, int nn)
     m = mm;
     n = nn;
     eps = 0.00000000000000000001;
+
     v = new double*[n];
     for(int i = 0; i < n; ++i)
+    {
         v[i] = new double[n];
+    }
     if (m < n) {maxMN = n;} else {maxMN = m;}
     w = new double[maxMN];
+}
+
+SVD::~SVD()
+{
+    for(int i = 0; i < n; i++)
+    {
+        delete [] v[i];
+    }
+    delete []v;
+    for(int i = 0; i < m; i++)
+    {
+        delete [] u[i];
+    }
+    delete []u;
+    delete []w;
 }
 
 void SVD::PrintMatrixU()
