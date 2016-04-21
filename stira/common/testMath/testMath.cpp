@@ -16,6 +16,7 @@
 #include "../common/Random.h"
 #include "../common/FitCurve.h"
 #include "../common/Statistics.h"
+#include "../common/MonotonicCubicSplineInterpolator.h"
 #include "../common/SVD.h"
 #include <iostream>
 #include <iomanip>
@@ -70,6 +71,63 @@ void TestSVD()
    mySVD.PrintMatrixU();
    mySVD.PrintMatrixVTranspose();
    mySVD.PrintSingularValues();
+
+   cout << "SVD test success!!" << endl << flush;
+}
+
+//-----------------------------------------------------------------
+
+void TestMonotoneCubicInterpolation()
+{
+    ofstream fileOut;
+    fileOut.open(const_cast<char*>("MonotoneCubicInterpolation.txt"), ios::out);
+
+    std::vector< std::pair<double, double> > dataPoints;
+    dataPoints.push_back( std::pair<double, double>(  1.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  2.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  3.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  4.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  5.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  6.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  7.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  8.0, 10.0 ) );
+    dataPoints.push_back( std::pair<double, double>(  9.0, 10.5 ) );
+    dataPoints.push_back( std::pair<double, double>( 11.0, 15.0 ) );
+    dataPoints.push_back( std::pair<double, double>( 12.0, 50.0 ) );
+    dataPoints.push_back( std::pair<double, double>( 14.0, 60.0 ) );
+    dataPoints.push_back( std::pair<double, double>( 15.0, 95.0 ) );
+
+    int nrDataPoints = dataPoints.size();
+    MonotonicCubicSplineInterpolator MCSI(dataPoints);
+
+    MCSI.CreateInterpolant();
+
+    for (double i = 1.0; i < 15.0; i+=0.1)
+    {
+        double intpart;
+
+        if ( modf(i, &intpart) == 0.0 )
+        {
+            bool isDataPoint = false;
+            for (int k = 0; k < nrDataPoints; k++)
+            {
+                if ( fabs(dataPoints[k].first - i ) < 0.1 )
+                {
+                    fileOut << dataPoints[k].first << ";" << dataPoints[k].second << endl;
+                    isDataPoint = true;
+                }
+            }
+            if (!isDataPoint)
+            {
+                fileOut << i << ";" << MCSI.Interpolate(i) << endl;
+            }
+        }
+        else
+        {
+            fileOut << i << ";" << MCSI.Interpolate(i) << endl;
+        }
+    }
+    fileOut.close();
 
    cout << "SVD test success!!" << endl << flush;
 }
@@ -504,5 +562,6 @@ int main()
    //TestGaussianCurveFit();
    //TestGaussianity();
    //TestKMeans();
-   TestSVD();
+   //TestSVD();
+   TestMonotoneCubicInterpolation();
 }
