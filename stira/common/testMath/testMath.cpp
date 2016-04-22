@@ -42,16 +42,6 @@ std::vector<double> MakeVector( double* pData, int nrElements )
 
 void TestSVD()
 {
-   //int m = 2, n = 3;
-   //double** a = new double*[m];
-   //for(int i = 0; i < m; ++i)
-   //{
-   //    a[i] = new double[n];
-   //}
-
-   //a[0][0] =  3; a[0][1] = 1; a[0][2] = 1;
-   //a[1][0] = -1; a[1][1] = 3; a[1][2] = 1;
-
    int m = 4, n = 5;
    double** a = new double*[m];
    for(int i = 0; i < m; ++i)
@@ -97,39 +87,64 @@ void TestMonotoneCubicInterpolation()
     dataPoints.push_back( std::pair<double, double>( 14.0, 60.0 ) );
     dataPoints.push_back( std::pair<double, double>( 15.0, 95.0 ) );
 
-    int nrDataPoints = dataPoints.size();
     MonotonicCubicSplineInterpolator MCSI(dataPoints);
-
-    MCSI.CreateInterpolant();
 
     for (double i = 1.0; i < 15.0; i+=0.1)
     {
-        double intpart;
-
-        if ( modf(i, &intpart) == 0.0 )
-        {
-            bool isDataPoint = false;
-            for (int k = 0; k < nrDataPoints; k++)
-            {
-                if ( fabs(dataPoints[k].first - i ) < 0.1 )
-                {
-                    fileOut << dataPoints[k].first << ";" << dataPoints[k].second << endl;
-                    isDataPoint = true;
-                }
-            }
-            if (!isDataPoint)
-            {
-                fileOut << i << ";" << MCSI.Interpolate(i) << endl;
-            }
-        }
-        else
-        {
-            fileOut << i << ";" << MCSI.Interpolate(i) << endl;
-        }
+        fileOut << i << ";" << MCSI.Interpolate(i) << endl;
     }
     fileOut.close();
 
-   cout << "SVD test success!!" << endl << flush;
+    cout << "Monotone Cubic Interpolation test success!!" << endl << flush;
+}
+
+//-----------------------------------------------------------------
+
+// http://stackoverflow.com/questions/16500656/which-color-gradient-is-used-to-color-mandelbrot-in-wikipedia
+void InterpolateColorUltraFractalMonotoneCubic( )
+{
+   ofstream fileOut;
+   fileOut.open(const_cast<char*>("MonotoneCubicInterpolationUltraFractal.txt"), ios::out);
+
+   std::vector< std::pair<double, double> > dataRed;
+   dataRed.push_back( std::pair<double, double>(  -0.1425,   0.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.0000,   0.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.1600,  32.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.4200, 237.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.6425, 255.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.8575,   0.0 ) );
+   dataRed.push_back( std::pair<double, double>(   1.0000,   0.0 ) );
+   MonotonicCubicSplineInterpolator intRed( dataRed );
+
+   std::vector< std::pair<double, double> > dataGreen;
+   dataGreen.push_back( std::pair<double, double>(  -0.1425,   2.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.0000,   7.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.1600, 107.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.4200, 255.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.6425, 170.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.8575,   2.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   1.0000,   7.0 ) );
+   MonotonicCubicSplineInterpolator intGreen( dataGreen );
+
+   std::vector< std::pair<double, double> > dataBlue;
+   dataBlue.push_back( std::pair<double, double>(  -0.1425,   0.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.0000, 100.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.1600, 203.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.4200, 255.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.6425,   0.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.8575,   0.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   1.0000, 100.0 ) );
+   MonotonicCubicSplineInterpolator intBlue( dataBlue );
+
+   for( double d = 0.0; d <= 1.0; d+= 0.02)
+   {
+       double r =   intRed.Interpolate(d);
+       double g = intGreen.Interpolate(d);
+       double b =  intBlue.Interpolate(d);
+
+       fileOut << d << "\t" << r << "\t" << g << "\t" << b << endl;
+   }
+    fileOut.close();
 }
 
 //-----------------------------------------------------------------
@@ -550,18 +565,19 @@ void TestKMeans()
 
 int main()
 {
-   //TestArgument();
-   //TestApplyModulo();
-   //TestLineCurveFit();
-   //TestQuadraticCurveFit();
-   //TestCubicCurveFit();
-   //TestExponentialCurveFit();
-   //TestStatistics();
-   //TestStatisticsBis();
-   //TestCorrelation();
-   //TestGaussianCurveFit();
-   //TestGaussianity();
-   //TestKMeans();
-   //TestSVD();
+   TestArgument();
+   TestApplyModulo();
+   TestLineCurveFit();
+   TestQuadraticCurveFit();
+   TestCubicCurveFit();
+   TestExponentialCurveFit();
+   TestStatistics();
+   TestStatisticsBis();
+   TestCorrelation();
+   TestGaussianCurveFit();
+   TestGaussianity();
+   TestKMeans();
+   TestSVD();
    TestMonotoneCubicInterpolation();
+   InterpolateColorUltraFractalMonotoneCubic( );
 }
