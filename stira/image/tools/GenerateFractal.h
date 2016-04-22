@@ -87,12 +87,6 @@ private:
    int GiveLastIteration( double xx, double yy, double x0, double y0, double& lastModulus );
 
    ColorValue InterpolateColorUltraFractal( double smoothColor );
-   
-   int mMaxNumberOfIterations;   ///< max. nr. of iterations to test if a point can escape
-
-   double mEscapeRadius;  ///< radius in complex plane outside which the point is considered
-                          ///< to have "escaped" from the set after some number of iterations
-   double mEscapeRadiusSquared;   ///< squared of the escape radius
 
    /** \brief assigns a color according to the number of iterations in a continuous way */
    ColorValue AssignColorContinuous( int iterationNumber, double& lastModulus );
@@ -101,13 +95,19 @@ private:
      * \remark still uses linear interpolation instead of Monocubic interpolation for the time being */
    ColorValue AssignColorUltraFractal( double smoothColor, double& lastModulus );
 
-   TransformColorSpace* mpColorTransformer;  ///< color space transform object
+   int mMaxNumberOfIterations;   ///< max. nr. of iterations to test if a point can escape
+
+   double mEscapeRadius;  ///< radius in complex plane outside which the point is considered
+                          ///< to have "escaped" from the set after some number of iterations
+   double mEscapeRadiusSquared;   ///< squared of the escape radius
 
    int mPixelWidth;     ///< the number of pixels in x direction of the final image
    int mPixelHeight;     ///< the number of pixels in x direction of the final image
    double mWidthHeightRatio;
    int mResolutionX;     ///< the number of pixels per mathematical unit in x direction
    int mResolutionY;     ///< the number of pixels per mathematical unit in y direction
+
+   TransformColorSpace* mpColorTransformer;  ///< color space transform object
 
    common::MonotonicCubicSplineInterpolator* mpInterpolateRed;
    common::MonotonicCubicSplineInterpolator* mpInterpolateGreen;

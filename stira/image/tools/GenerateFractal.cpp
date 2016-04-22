@@ -153,25 +153,26 @@ ColorValue GenerateFractal::InterpolateColorUltraFractal( double smoothColor )
 
 int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy, double& lastModulus )
 {
+   int iterationNumber = 0;
+
    double xSquared = x * x;
    double ySquared = y * y;
-   
-   int iterationNumber = 0;
-   
+
    while ( ( (xSquared + ySquared) <= mEscapeRadiusSquared ) && ( iterationNumber < mMaxNumberOfIterations ) )
    {
       double xTmp = xSquared - ySquared + Cx;
       double yTmp = 2.0 * x * y + Cy;
-   
+
       x = xTmp;
       y = yTmp;
-   
+
       xSquared = x * x;
       ySquared = y * y;
       iterationNumber++;
    }
 
    lastModulus = sqrt( xSquared + ySquared );
+
    return iterationNumber;
 }
 
@@ -242,7 +243,7 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
          {
              lastIterationNumber = GiveLastIteration( xx, yy, x0, y0, lastModulus );
          }
-         
+
          //pFractal->SetColor( x, y, AssignColorContinuous( lastIterationNumber, lastModulus ) );
          pFractal->SetColor( x, y, AssignColorUltraFractal( lastIterationNumber, lastModulus ) );
       }
