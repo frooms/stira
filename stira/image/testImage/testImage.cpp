@@ -369,9 +369,9 @@ bool GenerateFractalTest()
    //centerY = 0.0;
    //width = 4.0;
 
-   centerX = -1.45;
-   centerY = 0.0;
-   width = 0.000001;
+   centerX = -0.8;
+   centerY = -0.1;
+   width = 0.3;
 
    pFractal = gf.CreateMandelbrot( centerX, centerY, width );
    ImageIO::Write( pFractal, string("FractalMandelbrotImage.ppm"), ImageIO::NULL_OUT );
