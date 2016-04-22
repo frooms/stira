@@ -3,6 +3,9 @@
 #include <cmath>
 #include <fstream>
 
+namespace stira {
+namespace common {
+
 MonotonicCubicSplineInterpolator::MonotonicCubicSplineInterpolator( std::vector< std::pair<double, double> > dataPoints )
 {
     mNumberOfPoints = dataPoints.size();
@@ -15,27 +18,38 @@ MonotonicCubicSplineInterpolator::MonotonicCubicSplineInterpolator( std::vector<
 
         mData.push_back( myDataRow );
     }
+    CreateInterpolant();
 }
+
+//----------------------------------------------------------------------------------
 
 double MonotonicCubicSplineInterpolator::Hermite00(double t)
 {
     return (2.0 * t*t*t -3.0*t*t + 1.0);
 }
 
+//----------------------------------------------------------------------------------
+
 double MonotonicCubicSplineInterpolator::Hermite10(double t)
 {
     return ( t*t*t -2.0*t*t + t );
 }
+
+//----------------------------------------------------------------------------------
 
 double MonotonicCubicSplineInterpolator::Hermite01(double t)
 {
     return (-2.0 * t*t*t + 3.0*t*t );
 }
 
+//----------------------------------------------------------------------------------
+
 double MonotonicCubicSplineInterpolator::Hermite11(double t)
 {
     return ( t*t*t - t*t );
 }
+
+//----------------------------------------------------------------------------------
 
 void MonotonicCubicSplineInterpolator::CreateInterpolant()
 {
@@ -88,15 +102,9 @@ void MonotonicCubicSplineInterpolator::CreateInterpolant()
             mData[i+1].m = tau * mData[i].beta  * mData[i].delta;
         }
     }
-    std::ofstream fileOut;
-    fileOut.open(const_cast<char*>("InterpolationConstruct.txt"), std::ios::out);
-    for (int i = 0; i < mNumberOfPoints-1; i++)
-    {
-        fileOut << mData[i].x << "\t" << mData[i].y << "\t" << mData[i].delta << "\t" << mData[i].m << "\t" << mData[i].alpha << "\t" << mData[i].beta << std::endl;
-    }
-
-    fileOut.close();
 }
+
+//----------------------------------------------------------------------------------
 
 double MonotonicCubicSplineInterpolator::Interpolate(double x)
 {
@@ -104,7 +112,7 @@ double MonotonicCubicSplineInterpolator::Interpolate(double x)
     double yLower, yUpper;
     double mLower, mUpper;
 
-    for (int i = 1; i < mNumberOfPoints-1; i++)
+    for (int i = 0; i < mNumberOfPoints-1; i++)
     {
         if (mData[i].x <= x && mData[i+1].x >= x)
         {
@@ -125,4 +133,9 @@ double MonotonicCubicSplineInterpolator::Interpolate(double x)
                            +     yUpper * Hermite01(t)
                            + h * mUpper * Hermite11(t);
     return interpolatedY;
+}
+
+//----------------------------------------------------------------------------------
+
+}
 }
