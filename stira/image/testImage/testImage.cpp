@@ -365,33 +365,36 @@ bool GenerateFractalTest()
    GenerateFractal gf;
 
    // full size
-   //centerX = -0.5;
-   //centerY = 0.0;
-   //width = 4.0;
+   centerX = -0.5;
+   centerY = 0.0;
+   width = 3.0;
 
-   centerX = -0.8;
-   centerY = -0.1;
-   width = 0.3;
+   //centerX = -0.8;
+   //centerY = -0.1;
+   //width = 0.3;
 
    pFractal = gf.CreateMandelbrot( centerX, centerY, width );
    ImageIO::Write( pFractal, string("FractalMandelbrotImage.ppm"), ImageIO::NULL_OUT );
    delete pFractal;
 
    // full size
-   centerX = 0.0;
-   centerY = 0.0;
-   width = 4.0;
+   //centerX = 0.0;
+   //centerY = 0.0;
+   //width = 4.0;
 
    // full size
    centerX = 0.0;
    centerY = 0.0;
-   width = 0.4;
+   width = 2.0;
 
-   double Cx = -0.79;
-   double Cy = 0.15;
+   //double Cx = -0.79;
+   //double Cy = 0.15;
 
    //double Cx = -0.162;
    //double Cy = 1.04;
+
+   double Cx = 0.28;
+   double Cy = 0.008;
    pFractal = gf.CreateJulia( centerX, centerY, width, Cx, Cy );
    ImageIO::Write( pFractal, string("FractalJuliaImage.ppm"), ImageIO::NULL_OUT );
    delete pFractal;
