@@ -16,6 +16,7 @@
 #include <complex>
 #include "../datastructures/Image.h"
 #include "../color/TransformColorSpace.h"
+#include "../../common/common/MonotonicCubicSplineInterpolator.h"
 
 namespace stira {
 namespace image {
@@ -92,16 +93,13 @@ private:
    double mEscapeRadius;  ///< radius in complex plane outside which the point is considered
                           ///< to have "escaped" from the set after some number of iterations
    double mEscapeRadiusSquared;   ///< squared of the escape radius
-   
-   /** \brief assigns a color according to the number of iterations required to escape*/
-   ColorValue AssignColor( int iterationNumber );
 
    /** \brief assigns a color according to the number of iterations in a continuous way */
    ColorValue AssignColorContinuous( int iterationNumber, double& lastModulus );
 
    /** \brief assigns a color according to the number of iterations according to the UlraFractal way
      * \remark still uses linear interpolation instead of Monocubic interpolation for the time being */
-   ColorValue AssignColorUltraFractal( double smoothColor );
+   ColorValue AssignColorUltraFractal( double smoothColor, double& lastModulus );
 
    TransformColorSpace* mpColorTransformer;  ///< color space transform object
 
@@ -110,6 +108,10 @@ private:
    double mWidthHeightRatio;
    int mResolutionX;     ///< the number of pixels per mathematical unit in x direction
    int mResolutionY;     ///< the number of pixels per mathematical unit in y direction
+
+   common::MonotonicCubicSplineInterpolator* mpInterpolateRed;
+   common::MonotonicCubicSplineInterpolator* mpInterpolateGreen;
+   common::MonotonicCubicSplineInterpolator* mpInterpolateBlue;
 };
 
 }

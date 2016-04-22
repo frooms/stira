@@ -26,6 +26,38 @@ GenerateFractal::GenerateFractal()
    mPixelWidth  = 2000;
    mPixelHeight = 1500;
    mWidthHeightRatio = (double)(mPixelHeight) / (double)(mPixelWidth);
+
+   // create color interpolants
+
+   std::vector< std::pair<double, double> > dataRed;
+   dataRed.push_back( std::pair<double, double>(  -0.1425,   0.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.0000,   0.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.1600,  32.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.4200, 237.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.6425, 255.0 ) );
+   dataRed.push_back( std::pair<double, double>(   0.8575,   0.0 ) );
+   dataRed.push_back( std::pair<double, double>(   1.0000,   0.0 ) );
+   mpInterpolateRed = new common::MonotonicCubicSplineInterpolator( dataRed );
+
+   std::vector< std::pair<double, double> > dataGreen;
+   dataGreen.push_back( std::pair<double, double>(  -0.1425,   2.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.0000,   7.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.1600, 107.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.4200, 255.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.6425, 170.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   0.8575,   2.0 ) );
+   dataGreen.push_back( std::pair<double, double>(   1.0000,   7.0 ) );
+   mpInterpolateGreen = new common::MonotonicCubicSplineInterpolator( dataGreen );
+
+   std::vector< std::pair<double, double> > dataBlue;
+   dataBlue.push_back( std::pair<double, double>(  -0.1425,   0.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.0000, 100.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.1600, 203.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.4200, 255.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.6425,   0.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   0.8575,   0.0 ) );
+   dataBlue.push_back( std::pair<double, double>(   1.0000, 100.0 ) );
+   mpInterpolateBlue = new common::MonotonicCubicSplineInterpolator( dataBlue );
 }
 
 //------------------------------------------------------------------------------
@@ -42,6 +74,9 @@ void GenerateFractal::SetRenderDimensions( int width, int height )
 GenerateFractal::~GenerateFractal()
 {
    delete mpColorTransformer;
+   delete mpInterpolateRed;
+   delete mpInterpolateGreen;
+   delete mpInterpolateBlue;
 }
 
 //------------------------------------------------------------------------------
@@ -57,27 +92,6 @@ void GenerateFractal::SetEscapeRadius( double radius )
 {
    mEscapeRadius = radius;
    mEscapeRadiusSquared = radius * radius;
-}
-
-//------------------------------------------------------------------------------
-
-ColorValue GenerateFractal::AssignColor( int iterationNumber )
-{
-   if (iterationNumber == mMaxNumberOfIterations)
-   {
-      ColorValue cv = ColorValue( 0.0, 0.0, 0.0, TYPE_RGB );
-      return cv;
-   }
-   else
-   {
-      double tmpValue = (double)((2 * iterationNumber) % 360);
-      ColorValue hsvValue;
-      hsvValue.c[0] = tmpValue;
-      hsvValue.c[1] = 1.0;
-      hsvValue.c[2] = 1.0;
-      hsvValue.type = TYPE_HSV;
-      return mpColorTransformer->HSVtoRGB( hsvValue );
-   }
 }
 
 //------------------------------------------------------------------------------
@@ -107,7 +121,7 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
 
 //------------------------------------------------------------------------------
 
-ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber )
+ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber, double& lastModulus )
 {
    if (iterationNumber == mMaxNumberOfIterations)
    {
@@ -116,7 +130,9 @@ ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber )
    }
    else
    {
-      double tmpValue = common::MathUtils::ApplyModulo( 5.0 * (double)(iterationNumber) / (double)(mMaxNumberOfIterations), 1.0);
+       double factor = 10.0;
+      double tmpValue = iterationNumber + 1.0 - log(log(lastModulus)) / log ( mEscapeRadius );
+      tmpValue = common::MathUtils::ApplyModulo(  (factor * tmpValue / mMaxNumberOfIterations), 1.0 );
       return InterpolateColorUltraFractal( tmpValue );
    }
 }
@@ -126,46 +142,9 @@ ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber )
 ColorValue GenerateFractal::InterpolateColorUltraFractal( double smoothColor )
 {
    ColorValue interPolated;
-   double r, g, b;
-   double pos0 = 0.0;     ColorValue cv0(0,   7,   100);
-   double pos1 = 0.16;    ColorValue cv1(32,  107, 203);
-   double pos2 = 0.42;    ColorValue cv2(237, 255, 255);
-   double pos3 = 0.6425;  ColorValue cv3(255, 170, 0);
-   double pos4 = 0.8575;  ColorValue cv4(0,   2,   0);
-
-
-   if (smoothColor < pos1)
-   {
-       r = common::MathUtils::LinearInterpolate( pos0, cv0.c[0], pos1, cv1.c[0], smoothColor );
-       g = common::MathUtils::LinearInterpolate( pos0, cv0.c[1], pos1, cv1.c[1], smoothColor );
-       b = common::MathUtils::LinearInterpolate( pos0, cv0.c[2], pos1, cv1.c[2], smoothColor );
-   }
-   else if (smoothColor < pos2)
-   {
-       r = common::MathUtils::LinearInterpolate( pos1, cv1.c[0], pos2, cv2.c[0], smoothColor );
-       g = common::MathUtils::LinearInterpolate( pos1, cv1.c[1], pos2, cv2.c[1], smoothColor );
-       b = common::MathUtils::LinearInterpolate( pos1, cv1.c[2], pos2, cv2.c[2], smoothColor );
-   }
-   else if (smoothColor < pos3)
-   {
-       r = common::MathUtils::LinearInterpolate( pos2, cv2.c[0], pos3, cv3.c[0], smoothColor );
-       g = common::MathUtils::LinearInterpolate( pos2, cv2.c[1], pos3, cv3.c[1], smoothColor );
-       b = common::MathUtils::LinearInterpolate( pos2, cv2.c[2], pos3, cv3.c[2], smoothColor );
-   }
-   else if (smoothColor < pos4)
-   {
-       r = common::MathUtils::LinearInterpolate( pos3, cv3.c[0], pos4, cv4.c[0], smoothColor );
-       g = common::MathUtils::LinearInterpolate( pos3, cv3.c[1], pos4, cv4.c[1], smoothColor );
-       b = common::MathUtils::LinearInterpolate( pos3, cv3.c[2], pos4, cv4.c[2], smoothColor );
-   }
-   else
-   {
-       r = common::MathUtils::LinearInterpolate( pos4, cv4.c[0], pos0, cv0.c[0], smoothColor );
-       g = common::MathUtils::LinearInterpolate( pos4, cv4.c[1], pos0, cv0.c[1], smoothColor );
-       b = common::MathUtils::LinearInterpolate( pos4, cv4.c[2], pos0, cv0.c[2], smoothColor );
-   }
-
-   interPolated.SetColorValue( r, g, b, TYPE_RGB );
+   interPolated.SetColorValue( mpInterpolateRed->Interpolate( smoothColor),
+                               mpInterpolateGreen->Interpolate( smoothColor),
+                               mpInterpolateBlue->Interpolate( smoothColor), TYPE_RGB );
 
    return interPolated;
 }
@@ -265,7 +244,7 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
          }
          
          //pFractal->SetColor( x, y, AssignColorContinuous( lastIterationNumber, lastModulus ) );
-         pFractal->SetColor( x, y, AssignColorUltraFractal( lastIterationNumber ) );
+         pFractal->SetColor( x, y, AssignColorUltraFractal( lastIterationNumber, lastModulus ) );
       }
    }
    
@@ -311,7 +290,7 @@ Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, d
          int lastIterationNumber = GiveLastIteration( x0, y0, Cx, Cy, lastModulus );
 
          //pFractal->SetColor( x, y, AssignColorContinuous( lastIterationNumber, lastModulus ) );
-         pFractal->SetColor( x, y, AssignColorUltraFractal( lastIterationNumber ) );
+         pFractal->SetColor( x, y, AssignColorUltraFractal( lastIterationNumber, lastModulus ) );
       }
    }
    
