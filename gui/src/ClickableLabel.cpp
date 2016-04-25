@@ -4,14 +4,13 @@
 
 ClickableLabel::ClickableLabel( QWidget * parent ) :QLabel(parent)
 {
-    connect( this, SIGNAL( clicked() ), this, SLOT( slotClicked() ) );
 }
 
 //---------------------------------------------------------------------------
 
-void ClickableLabel::slotClicked()
+stira::common::Point<int> ClickableLabel::GetPointClicked()
 {
-    std::cout << "slot Clicked" << std::endl << std:: flush;
+    return stira::common::Point<int>( mClickX, mClickY );
 }
 
 //---------------------------------------------------------------------------
@@ -20,17 +19,20 @@ void ClickableLabel::mousePressEvent ( QMouseEvent * event )
 {
     Qt::MouseButton myButton = event->button();
 
+    mClickX = event->pos().x();
+    mClickY = event->pos().y();
+
     if (myButton == Qt::LeftButton)
     {
-        std::cout << "Left mouse button click at ( " << event->pos().x() << ", " << event->pos().y() << ")" << std::endl << std:: flush;
+        emit leftButtonClicked();
+        std::cout << "Left mouse button click at ( " << mClickX << ", " << mClickY << ")" << std::endl << std:: flush;
     }
 
     if (myButton == Qt::RightButton)
     {
-        std::cout << "Right mouse button click at ( " << event->pos().x() << ", " << event->pos().y() << ")" << std::endl << std:: flush;
+        emit rightButtonClicked();
+        std::cout << "Right mouse button click at ( " << mClickX << ", " << mClickY << ")" << std::endl << std:: flush;
     }
-
-    emit clicked();
 }
 
 //---------------------------------------------------------------------------
@@ -39,5 +41,14 @@ void ClickableLabel::wheelEvent(QWheelEvent* event)
 {
     //Most mouse types work in steps of 15 degrees, in which case the delta value is a multiple of 120; i.e., 120 units * 1/8 = 15 degrees.
 
-    std::cout << "mouse wheel event: delta = " << event->delta() << std::endl << std:: flush;
+    int delta = event->delta();
+    std::cout << "mouse wheel event: delta = " << delta << std::endl << std:: flush;
+    if (delta > 0)
+    {
+        emit wheelUpEvent();
+    }
+    else
+    {
+        emit wheelDownEvent();
+    }
 }

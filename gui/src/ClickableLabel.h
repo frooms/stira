@@ -3,6 +3,7 @@
 
 #include <QLabel>
 #include <QMouseEvent>
+#include "../../stira/common/common/Point.h"
 
 class ClickableLabel : public QLabel
 {
@@ -11,16 +12,23 @@ public:
     ClickableLabel( QWidget * parent = 0 );
     ~ClickableLabel(){}
 
+    /** \brief Gets the point in the image where the user clicked */
+    stira::common::Point<int> GetPointClicked();
+
 signals:
-    void clicked();
+    void leftButtonClicked();
+    void rightButtonClicked();
+    void wheelUpEvent();
+    void wheelDownEvent();
 
 public slots:
-    void slotClicked();
 
 protected:
     void mousePressEvent ( QMouseEvent * event ) ;
     void wheelEvent(QWheelEvent* event);
 
+    int mClickX;
+    int mClickY;
 };
 
 #endif // CLICKABLELABEL_H
