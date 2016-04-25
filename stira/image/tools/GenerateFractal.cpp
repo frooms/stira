@@ -23,9 +23,9 @@ GenerateFractal::GenerateFractal()
    mEscapeRadius = 2.0;
    mEscapeRadiusSquared = mEscapeRadius * mEscapeRadius;
    mpColorTransformer = new TransformColorSpace;
-   mPixelWidth  = 800;
-   mPixelHeight = 800;
-   mWidthHeightRatio = (double)(mPixelHeight) / (double)(mPixelWidth);
+   mPixelWidth  = 800.0;
+   mPixelHeight = 800.0;
+   mWidthHeightRatio = mPixelHeight / mPixelWidth;
 
    // create color interpolants
 
@@ -66,7 +66,7 @@ void GenerateFractal::SetRenderDimensions( int width, int height )
 {
     mPixelWidth  = width;
     mPixelHeight = height;
-    mWidthHeightRatio = (double)(mPixelHeight) / (double)(mPixelWidth);
+    mWidthHeightRatio = mPixelHeight / mPixelWidth;
 }
 
 //------------------------------------------------------------------------------
@@ -96,30 +96,40 @@ void GenerateFractal::SetEscapeRadius( double radius )
 
 //------------------------------------------------------------------------------
 
-int GenerateFractal::GetResolutionX()
+double GenerateFractal::GetResolutionX()
 {
     return mResolutionX;
 }
 
-int GenerateFractal::GetResolutionY()
+//------------------------------------------------------------------------------
+
+double GenerateFractal::GetResolutionY()
 {
     return mResolutionY;
 }
 
-int GenerateFractal::GetPixelWidth()
+//------------------------------------------------------------------------------
+
+double GenerateFractal::GetPixelWidth()
 {
     return mPixelWidth;
 }
 
-int GenerateFractal::GetPixelHeight()
+//------------------------------------------------------------------------------
+
+double GenerateFractal::GetPixelHeight()
 {
     return mPixelHeight;
 }
+
+//------------------------------------------------------------------------------
 
 common::Point<double> GenerateFractal::GetMathCenterPoint()
 {
     return common::Point<double>( mMathCenterX, mMathCenterY );
 }
+
+//------------------------------------------------------------------------------
 
 double GenerateFractal::GetMathWidth()
 {
@@ -153,6 +163,7 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
 
 //------------------------------------------------------------------------------
 
+// http://stackoverflow.com/questions/16500656/which-color-gradient-is-used-to-color-mandelbrot-in-wikipedia
 ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber, double& lastModulus )
 {
    if (iterationNumber == mMaxNumberOfIterations)
@@ -162,16 +173,20 @@ ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber, dou
    }
    else
    {
-      double factor = 6.0;
-      double tmpValue = iterationNumber + 1.0 - log(log(lastModulus)) / log ( mEscapeRadius );
-      tmpValue = common::MathUtils::ApplyModulo(  (factor * tmpValue / mMaxNumberOfIterations), 1.0 );
-      //double tmpValue = (double)(iterationNumber) / (double)( mMaxNumberOfIterations );
+      double log_zn = log( lastModulus ) / 2.0;
+      double nu = log( log_zn / log(2.0) ) / log(2.0);
+      // Rearranging the potential function.
+      // Dividing log_zn by log(2) instead of log(N = 1<<8)
+      // because we want the entire palette to range from the
+      // center to radius 2, NOT our bailout radius.
+      iterationNumber = iterationNumber + 1.0 - nu;
+      double ampFactor = 10.0;
+      double tmpValue = common::MathUtils::ApplyModulo(  ( ampFactor * iterationNumber / mMaxNumberOfIterations), 1.0 );
       return InterpolateColorUltraFractal( tmpValue );
    }
 }
 
 //------------------------------------------------------------------------------
-// http://stackoverflow.com/questions/16500656/which-color-gradient-is-used-to-color-mandelbrot-in-wikipedia
 ColorValue GenerateFractal::InterpolateColorUltraFractal( double smoothColor )
 {
    ColorValue interPolated;
@@ -204,7 +219,7 @@ int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy
       iterationNumber++;
    }
 
-   lastModulus = sqrt( xSquared + ySquared );
+   lastModulus = xSquared + ySquared;
 
    return iterationNumber;
 }
@@ -257,7 +272,7 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
    std::cout << "Generating Mandelbrot of w = " << mPixelWidth << " and h = " << mPixelHeight << std::endl << std::flush;
    std::cout << "   \t mResolutionX = " << mResolutionX << " and mResolutionY = " << mResolutionY << std::endl << std::flush;
    
-   Image* pFractal = new Image( mPixelWidth, mPixelHeight, 3 );
+   Image* pFractal = new Image( (int)(mPixelWidth), (int)(mPixelHeight), 3 );
    
    for (int y = 0; y < mPixelHeight; y++)
    {
@@ -317,7 +332,7 @@ Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, d
    std::cout << "Generating Julia of w = " << mPixelWidth << " and h = " << mPixelHeight << std::endl << std::flush;
    std::cout << "   \t mResolutionX = " << mResolutionX << " and mResolutionY = " << mResolutionY << std::endl << std::flush;
    
-   Image* pFractal = new Image( mPixelWidth, mPixelHeight, 3 );
+   Image* pFractal = new Image( (int)(mPixelWidth), (int)(mPixelHeight), 3 );
 
    for (int y = 0; y < mPixelHeight; y++)
    {

@@ -102,8 +102,8 @@ void InteractiveImageWindow::SetupImage( )
 void InteractiveImageWindow::CreateZoomFractal( double factor )
 {
     Point<double> mathCenter = mpFractalGenerator->GetMathCenterPoint();
-    int resolutionX = mpFractalGenerator->GetResolutionX();
-    int resolutionY = mpFractalGenerator->GetResolutionY();
+    double resolutionX = mpFractalGenerator->GetResolutionX();
+    double resolutionY = mpFractalGenerator->GetResolutionY();
     cout << "resolutionX = " << resolutionX << endl;
 
     Point<int> clickPoint = mpImageLabel->GetPointClicked();

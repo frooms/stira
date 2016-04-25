@@ -59,12 +59,23 @@ public:
      * \param height the number of pixels in y direction of the final image */
    void SetRenderDimensions( int width, int height );
 
-   int GetResolutionX();
-   int GetResolutionY();
+   /** \brief Gets the number of pixels per mathematical unit length in the x direction */
+   double GetResolutionX();
+
+   /** \brief Gets the number of pixels per mathematical unit length in the y direction */
+   double GetResolutionY();
+
+   /** \brief Gets the mathematical center of the generated fractal */
    common::Point<double> GetMathCenterPoint();
+
+   /** \brief Gets the mathematical width of the generated image */
    double GetMathWidth();
-   int GetPixelWidth();     ///< the number of pixels in x direction of the final image
-   int GetPixelHeight();     ///< the number of pixels in x direction of the final image
+
+   /** \brief Gets the number of pixels in x direction of the final image */
+   double GetPixelWidth();
+
+   /** \brief gets the number of pixels in x direction of the final image */
+   double GetPixelHeight();
    
 private:
 
@@ -108,15 +119,15 @@ private:
                           ///< to have "escaped" from the set after some number of iterations
    double mEscapeRadiusSquared;   ///< squared of the escape radius
 
-   int mPixelWidth;     ///< the number of pixels in x direction of the final image
-   int mPixelHeight;     ///< the number of pixels in x direction of the final image
+   double mPixelWidth;     ///< the number of pixels in x direction of the final image
+   double mPixelHeight;     ///< the number of pixels in x direction of the final image
    double mWidthHeightRatio;
-   int mResolutionX;     ///< the number of pixels per mathematical unit in x direction
-   int mResolutionY;     ///< the number of pixels per mathematical unit in y direction
+   double mResolutionX;     ///< the number of pixels per mathematical unit in x direction
+   double mResolutionY;     ///< the number of pixels per mathematical unit in y direction
 
-   double mMathCenterX;
-   double mMathCenterY;
-   double mMathWidth;
+   double mMathCenterX;  ///< x coordinate of the mathematical center of the generated fractal image
+   double mMathCenterY;  ///< y coordinate of the mathematical center of the generated fractal image
+   double mMathWidth;  ///< the mathematical width of the generated fractal image
 
    TransformColorSpace* mpColorTransformer;  ///< color space transform object
 
