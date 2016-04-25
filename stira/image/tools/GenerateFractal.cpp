@@ -23,8 +23,8 @@ GenerateFractal::GenerateFractal()
    mEscapeRadius = 2.0;
    mEscapeRadiusSquared = mEscapeRadius * mEscapeRadius;
    mpColorTransformer = new TransformColorSpace;
-   mPixelWidth  = 2000;
-   mPixelHeight = 1500;
+   mPixelWidth  = 800;
+   mPixelHeight = 800;
    mWidthHeightRatio = (double)(mPixelHeight) / (double)(mPixelWidth);
 
    // create color interpolants
@@ -96,6 +96,38 @@ void GenerateFractal::SetEscapeRadius( double radius )
 
 //------------------------------------------------------------------------------
 
+int GenerateFractal::GetResolutionX()
+{
+    return mResolutionX;
+}
+
+int GenerateFractal::GetResolutionY()
+{
+    return mResolutionY;
+}
+
+int GenerateFractal::GetPixelWidth()
+{
+    return mPixelWidth;
+}
+
+int GenerateFractal::GetPixelHeight()
+{
+    return mPixelHeight;
+}
+
+common::Point<double> GenerateFractal::GetMathCenterPoint()
+{
+    return common::Point<double>( mMathCenterX, mMathCenterY );
+}
+
+double GenerateFractal::GetMathWidth()
+{
+    return mMathWidth;
+}
+
+//------------------------------------------------------------------------------
+
 ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& lastModulus )
 {
    if (iterationNumber == mMaxNumberOfIterations)
@@ -130,9 +162,10 @@ ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber, dou
    }
    else
    {
-       double factor = 10.0;
+      double factor = 6.0;
       double tmpValue = iterationNumber + 1.0 - log(log(lastModulus)) / log ( mEscapeRadius );
       tmpValue = common::MathUtils::ApplyModulo(  (factor * tmpValue / mMaxNumberOfIterations), 1.0 );
+      //double tmpValue = (double)(iterationNumber) / (double)( mMaxNumberOfIterations );
       return InterpolateColorUltraFractal( tmpValue );
    }
 }
@@ -180,6 +213,9 @@ int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy
 
 Image* GenerateFractal::CreateMandelbrot( double centerX, double centerY, double width )
 {
+   mMathCenterX = centerX;
+   mMathCenterY = centerY;
+   mMathWidth = width;
    double height = width * (double)(mPixelHeight) / (double)(mPixelWidth);
    double topX    = centerX - width / 2.0;
    double bottomX = centerX + width / 2.0;
@@ -256,6 +292,9 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
 
 Image* GenerateFractal::CreateJulia( double centerX, double centerY, double width, double Cx, double Cy )
 {
+   mMathCenterX = centerX;
+   mMathCenterY = centerY;
+   mMathWidth = width;
    double height = width * (double)(mPixelHeight) / (double)(mPixelWidth);
    double topX    = centerX - width / 2.0;
    double bottomX = centerX + width / 2.0;

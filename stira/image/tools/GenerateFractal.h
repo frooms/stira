@@ -58,6 +58,13 @@ public:
      * \param width the number of pixels in x direction of the final image
      * \param height the number of pixels in y direction of the final image */
    void SetRenderDimensions( int width, int height );
+
+   int GetResolutionX();
+   int GetResolutionY();
+   common::Point<double> GetMathCenterPoint();
+   double GetMathWidth();
+   int GetPixelWidth();     ///< the number of pixels in x direction of the final image
+   int GetPixelHeight();     ///< the number of pixels in x direction of the final image
    
 private:
 
@@ -106,6 +113,10 @@ private:
    double mWidthHeightRatio;
    int mResolutionX;     ///< the number of pixels per mathematical unit in x direction
    int mResolutionY;     ///< the number of pixels per mathematical unit in y direction
+
+   double mMathCenterX;
+   double mMathCenterY;
+   double mMathWidth;
 
    TransformColorSpace* mpColorTransformer;  ///< color space transform object
 
