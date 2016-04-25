@@ -3,12 +3,14 @@ SOURCES += main.cpp \
            ImageWindow.cpp \
            MainWindow.cpp \
            ProcessManager.cpp \
-           ClickableLabel.cpp
+           ClickableLabel.cpp \
+           InteractiveImageWindow.cpp
 HEADERS += ImageDataList.h \
            ImageWindow.h \
            MainWindow.h \
            ProcessManager.h \
-           ClickableLabel.h
+           ClickableLabel.h \
+           InteractiveImageWindow.h
 TEMPLATE = app
 CONFIG += warn_on \
           thread \
