@@ -23,6 +23,7 @@
 
 #include "ImageWindow.h"
 #include "ImageDataList.h"
+#include "InteractiveImageWindow.h"
 
 class QTextEdit;
 class GenerateImageDialog;
@@ -55,6 +56,8 @@ public slots:
    /** \brief slot to generate new image */
    void SlotSelectGenerateImage();
 
+   void SlotSelectGenerateFractal();
+
    /** \brief slot to generate Perlin noise clouds */
    void SlotSelectGeneratePerlin();
    
@@ -78,6 +81,7 @@ private:
    QMenu* mpMainMenu;
    QMenu* mpHelpMenu;
    QSettings* mpSettings;
+   InteractiveImageWindow* mpInteractiveImageWindow;
 };
 
 #endif

@@ -11,10 +11,10 @@
  ***********************************************************************************/
 
 #include "MainWindow.h"
-//#include "MovieViewer.h"
 #include "../dialogs/GenerateImageDialog.h"
 #include "../dialogs/GeneratePerlinNoiseDialog.h"
 #include "../../stira/image/datastructures/Image.h"
+#include "../../stira/image/tools/GenerateFractal.h"
 
 #include <iostream>
 
@@ -60,8 +60,8 @@ MainWindow::MainWindow() : QMainWindow( )
    
    QAction* pAboutAction = new QAction(tr("&About"),this);
    QAction* pOpenImageAction = new QAction(tr("&Open Image"),this);
-   //QAction* pOpenVideoAction = new QAction(tr("&Open Video"),this);
    QAction* pGenerateImageAction = new QAction(tr("&Generate Image"),this);
+   QAction* pGenerateFractalAction = new QAction(tr("&Generate Fractal"),this);
    QAction* pGeneratePerlinAction = new QAction(tr("&Generate Perlin Clouds"),this);
    QAction* pTileSubWindowAction = new QAction(tr("&Tile Subwindows"),this);
    QAction* pCascadeSubWindowAction = new QAction(tr("&Cascade Subwindows"),this);
@@ -70,8 +70,8 @@ MainWindow::MainWindow() : QMainWindow( )
    // Connect
    connect( pAboutAction,            SIGNAL( triggered() ), this, SLOT( SlotAbout()));
    connect( pOpenImageAction,        SIGNAL( triggered() ), ImageDataList::GetInstance(), SLOT( SlotReadImageFromFile( )));
-   //connect( pOpenVideoAction,        SIGNAL( triggered() ), this, SLOT( SlotOpenVideo( )));
    connect( pGenerateImageAction,    SIGNAL( triggered() ), this, SLOT( SlotSelectGenerateImage()));
+   connect( pGenerateFractalAction,  SIGNAL( triggered() ), this, SLOT( SlotSelectGenerateFractal()));
    connect( pGeneratePerlinAction,   SIGNAL( triggered() ), this, SLOT( SlotSelectGeneratePerlin()));
    connect( pTileSubWindowAction,    SIGNAL( triggered() ), mpMdiArea, SLOT( tileSubWindows() ));
    connect( pCascadeSubWindowAction, SIGNAL( triggered() ), mpMdiArea, SLOT( cascadeSubWindows () ));
@@ -81,8 +81,8 @@ MainWindow::MainWindow() : QMainWindow( )
    mpMainMenu = new QMenu(tr("&Start"));
    mpMainMenu->addAction( pOpenImageAction );
    mpMainMenu->addAction( pGenerateImageAction );
+   mpMainMenu->addAction( pGenerateFractalAction );
    mpMainMenu->addAction( pGeneratePerlinAction );
-   //mpMainMenu->addAction( pOpenVideoAction );
    mpMainMenu->addAction( pTileSubWindowAction );
    mpMainMenu->addAction( pCascadeSubWindowAction );
    mpMainMenu->addAction( pCloseAllAction );
@@ -175,6 +175,33 @@ void MainWindow::SlotSelectGenerateImage()
 {
    mpGenerateImageDialog = new GenerateImageDialog( );
    mpGenerateImageDialog->show();
+}
+
+//========================================================================================
+
+void MainWindow::SlotSelectGenerateFractal()
+{
+    double centerX, centerY, width;
+    centerX = -0.5;
+    centerY = 0.0;
+    width = 3.0;
+
+    mpInteractiveImageWindow = new InteractiveImageWindow( centerX, centerY, width );
+    //pInteractiveImageWindow->SetParent( this );
+
+    QMdiSubWindow* pSubWindow = mpMdiArea->addSubWindow( mpInteractiveImageWindow );
+    pSubWindow->setAttribute ( Qt::WA_DeleteOnClose, true );
+    pSubWindow->setWindowTitle( "Mandelbrot fractal explorer" );
+    pSubWindow->show();
+
+    if (mpInteractiveImageWindow != 0)
+    {
+       mpInteractiveImageWindow->SetParent( pSubWindow );
+       //connect( pSubWindow, SIGNAL( aboutToActivate () ), mpInteractiveImageWindow, SLOT( SlotSetMainMenu() ) );
+       //mpInteractiveImageWindow->SlotSetMainMenu();
+    }
+
+    //mpInteractiveImageWindow->show();
 }
 
 //========================================================================================
