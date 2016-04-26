@@ -19,7 +19,7 @@ namespace image {
 
 GenerateFractal::GenerateFractal()
 {
-   mMaxNumberOfIterations = 1000;
+   mMaxNumberOfIterations = 2000;
    mEscapeRadius = 2.0;
    mEscapeRadiusSquared = mEscapeRadius * mEscapeRadius;
    mpColorTransformer = new TransformColorSpace;
@@ -149,7 +149,7 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
    {
       double tmpValue = iterationNumber + 1.0 - log(log(lastModulus)) / log ( mEscapeRadius );
       tmpValue = 0.95 + 5.0 * tmpValue;
-      double remainder = common::MathUtils::ApplyModulo( tmpValue, 120.0 ) + 180;
+      double remainder = common::MathUtils::ApplyModulo( tmpValue, 280.0 ) + 180;
 
       ColorValue hsvValue;
       hsvValue.c[0] = remainder;

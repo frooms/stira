@@ -178,8 +178,8 @@ void InteractiveImageWindow::SetupWindow()
 
    setWindowTitle ( tr ( "Image Viewer" ) );
 
-   connect( mpImageLabel, SIGNAL( wheelUpEvent() ), this, SLOT( SlotZoomIn() ));
-   connect( mpImageLabel, SIGNAL( wheelDownEvent() ), this, SLOT( SlotZoomOut() ));
+   connect( mpImageLabel, SIGNAL( leftButtonClicked() ), this, SLOT( SlotZoomIn() ));
+   connect( mpImageLabel, SIGNAL( rightButtonClicked() ), this, SLOT( SlotZoomOut() ));
 
    mpSlider = new QSlider( Qt::Horizontal, this );
    mpSlider->hide();
@@ -248,14 +248,14 @@ void InteractiveImageWindow::SlotNormalSize()
 
 void InteractiveImageWindow::SlotZoomIn()
 {
-    CreateZoomFractal( 2.0 );
+    CreateZoomFractal( 1.5 );
 }
 
 //------------------------------------------------------------------
 
 void InteractiveImageWindow::SlotZoomOut()
 {
-    CreateZoomFractal( 0.5 );
+    CreateZoomFractal( 2.0 / 3.0 );
 }
 
 //------------------------------------------------------------------
