@@ -19,8 +19,6 @@ CONFIG += warn_on \
 TARGET = ../bin/friepgui
 RESOURCES = application.qrc
 
-INCLUDEPATH += /usr/include/ffmpeg/
-
 POST_TARGETDEPS += ../curveplotter/libcurveplotter.a \
   ../processes/libprocesses.a \
   ../dialogs/libdialogs.a \
