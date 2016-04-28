@@ -654,8 +654,7 @@ ColorValue TransformColorSpace::RGBtoHSI(ColorValue rgbValue)
    denominator = (R + G + B);
    if (denominator < sDifferenceThreshold) {denominator = sDifferenceThreshold;}
    S = 1.0 - 3.0 * numerator / denominator;
-   
-   hsiValue.type = TYPE_HSI;
+
    I = (R + G + B) / 3.0;
    
    hsiValue.c[0] = H;
@@ -663,6 +662,123 @@ ColorValue TransformColorSpace::RGBtoHSI(ColorValue rgbValue)
    hsiValue.c[2] = I;
    hsiValue.type = TYPE_HSI;
    return hsiValue;
+}
+
+//----------------------------------------------------------
+
+ColorValue TransformColorSpace::RGBtoHSL( ColorValue rgbValue )
+{
+    ColorValue hslValue;
+
+    double R = rgbValue.c[0] / mMaxColorValue;
+    double G = rgbValue.c[1] / mMaxColorValue;
+    double B = rgbValue.c[2] / mMaxColorValue;
+
+    double H, S, L;
+
+    double cMin = rgbValue.GetMin( ) / mMaxColorValue;
+    double cMax = rgbValue.GetMax( ) / mMaxColorValue;
+
+    double delta = cMax - cMin;
+    L = (cMax + cMin) / 2.0;
+
+    if (delta == 0.0)
+    {
+        H = 0.0;
+    }
+    else if (cMax == R)
+    {
+        double tmpValue = (G-B) / delta;
+        if (G<B)
+        {
+            H = 60.0 * (tmpValue + 6.0);
+        }
+        else
+        {
+            H = 60.0 * ( tmpValue);
+        }
+    }
+    else if (cMax == G)
+    {
+        H = 60.0 * ((B-R) / delta + 2.0);
+    }
+    else
+    {
+        H = 60.0 * ((R-G) / delta + 4.0);
+    }
+
+    if (delta == 0.0)
+    {
+        S = 0.0;
+    }
+    else
+    {
+        S = delta / ( 1.0 - abs(2.0 * L - 1.0));
+    }
+
+    hslValue.c[0] = H;
+    hslValue.c[1] = S;
+    hslValue.c[2] = L;
+    hslValue.type = TYPE_HSL;
+    return hslValue;
+}
+
+//----------------------------------------------------------
+
+ColorValue TransformColorSpace::HSLtoRGB( ColorValue hslValue )
+{
+    ColorValue rgbValue;
+    double H = hslValue.c[0];
+    double S = hslValue.c[1];
+    double L = hslValue.c[2];
+    double C = (1.0 - abs(2.0*L - 1.0)) * S;
+    double tmpFmod = fmod((H/60.0),2.0);
+    double X = C * ( 1.0 - abs(tmpFmod - 1.0));
+    double m = L - C/2.0;
+
+    double rt,gt, bt;
+    if (H >= 0.0 && H < 60.0)
+    {
+        rt = C;
+        gt = X;
+        bt = 0.0;
+    }
+    else if  (H >= 60.0 && H < 120.0)
+    {
+        rt = X;
+        gt = C;
+        bt = 0.0;
+
+    }
+    else if  (H >= 120.0 && H < 180.0)
+    {
+        rt = 0.0;
+        gt = C;
+        bt = X;
+    }
+    else if  (H >= 180.0 && H < 240.0)
+    {
+        rt = 0.0;
+        gt = X;
+        bt = C;
+    }
+    else if  (H >= 240.0 && H < 300.0)
+    {
+        rt = X;
+        gt = 0.0;
+        bt = C;
+    }
+    else
+    {
+        rt = C;
+        gt = 0.0;
+        bt = X;
+
+    }
+    rgbValue.c[0] = (rt+m) * 255;
+    rgbValue.c[1] = (gt+m) * 255;
+    rgbValue.c[2] = (bt+m) * 255;
+    return rgbValue;
 }
 
 //----------------------------------------------------------

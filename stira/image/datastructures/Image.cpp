@@ -922,6 +922,64 @@ bool Image::RGBToHSI()
 
 //===================================================================================================
 
+bool Image::HSLToRGB()
+{
+   TransformColorSpace tcsp;
+   int nrBands = this->GetNumberOfBands();
+   if (nrBands == 3)
+   {
+      int width = this->GetWidth();
+      int height = this->GetHeight();
+
+      for (int y = 0; y < height; y++)
+      {
+         for (int x = 0; x < width; x++)
+         {
+            ColorValue hslValue = this->GetColor( x, y);
+            ColorValue rgbValue = tcsp.HSLtoRGB( hslValue );
+            this->SetColor( x, y, rgbValue );
+         }
+      }
+      return true;
+   }
+   else
+   {
+      cerr << "Impossible to convert image with " << nrBands << " band(s) from HSL to RGB." << endl << flush;
+      return false;
+   }
+}
+
+//===================================================================================================
+
+bool Image::RGBToHSL()
+{
+   TransformColorSpace tcsp;
+   int nrBands = this->GetNumberOfBands();
+   if (nrBands == 3)
+   {
+      int width = this->GetWidth();
+      int height = this->GetHeight();
+
+      for (int y = 0; y < height; y++)
+      {
+         for (int x = 0; x < width; x++)
+         {
+            ColorValue rgbValue = this->GetColor( x, y);
+            ColorValue hslValue = tcsp.RGBtoHSL( rgbValue );
+            this->SetColor( x, y, hslValue );
+         }
+      }
+      return true;
+   }
+   else
+   {
+      cerr << "Impossible to convert image with " << nrBands << " band(s) from RGB to HSL." << endl << flush;
+      return false;
+   }
+}
+
+//===================================================================================================
+
 bool Image::sRGBToXYZ( ColorValue referenceIlluminant )
 {
    TransformColorSpace tcsp;

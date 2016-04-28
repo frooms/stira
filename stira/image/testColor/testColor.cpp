@@ -29,7 +29,7 @@
 
 #define COLOR_TOLERANCE_THRESHOLD 0.0005
 
-//#define FULL_DIAGNOSE_TEST
+#define FULL_DIAGNOSE_TEST
 
 using namespace std;
 using namespace stira::image;
@@ -520,10 +520,41 @@ bool RGB2YUV2RGBTest(Image* pInImage )
    cout << "\t psnr = " << psnr << endl << flush;
 
    #ifdef FULL_DIAGNOSE_TEST
-   Image* pDiff = ImageTools::CompareImagesSSD( pInImage, pOut );
+   Image* pDiff = ImageTools::CreateImageSSD( pInImage, pOut );
 
    ImageIO::Write( pDiff, string("Diff-RGB-YUV-RGB.ppm"), ImageIO::NORMAL_OUT );
    ImageIO::Write( pOut, string("RGB-YUV-RGBImage.ppm"), ImageIO::NULL_OUT );
+   delete pDiff;
+   #endif
+   delete pOut;
+   return true;
+}
+
+//========================================================================================
+
+bool RGB2HSL2RGBTest(Image* pInImage )
+{
+   TransformColorSpace ts;
+   cout << " RGB -> HSL -> RGB test" << endl << flush;
+   Image* pOut = pInImage->Clone();
+
+   pOut->RGBToHSL();
+   #ifdef FULL_DIAGNOSE_TEST
+   ImageIO::Write( pOut, string("HSLImage.ppm"), ImageIO::NORMAL_OUT );
+   pOut->Diagnose();
+   #endif
+
+   pOut->HSLToRGB();
+
+   double psnr = ImageTools::ComputePSNR( pInImage, pOut );
+
+   cout << "\t psnr = " << psnr << endl << flush;
+
+   #ifdef FULL_DIAGNOSE_TEST
+   Image* pDiff = ImageTools::CreateImageSSD( pInImage, pOut );
+
+   ImageIO::Write( pDiff, string("Diff-RGB-HSL-RGB.ppm"), ImageIO::NORMAL_OUT );
+   ImageIO::Write( pOut, string("RGB-HSL-RGBImage.ppm"), ImageIO::NULL_OUT );
    delete pDiff;
    #endif
    delete pOut;
@@ -1025,7 +1056,7 @@ bool CorrectSpectralValues( std::string fileReference1, std::string fileModel1, 
 // available at http://www.digitalcolour.org/toolbox.htm, used for reference results (REF)
 // WARNING!!! - Lindbloom uses standard D65 with sRGB;
 //            - digitalcolour reference values default uses D50.
-bool DeltaE200Test1()
+bool DeltaE2000Test1()
 {
    double epsilon = 0.05;
    ColorValue RGB1 = ColorValue( 0, 100, 255, TYPE_RGB );
@@ -1070,7 +1101,7 @@ bool DeltaE200Test1()
 // Compare with results from Colour Engineering Toolbox (free Matlab toolbox)
 // available at http://www.digitalcolour.org/toolbox.htm, used for reference results (REF)
 // WARNING!!! Lindbloom uses standard D65 with sRGB; digitalcolour reference values default uses D50.
-bool DeltaE200Test2()
+bool DeltaE2000Test2()
 {
    double epsilon = 0.05;
 
@@ -1138,6 +1169,16 @@ int main(int argc, char *argv[])
       cout << "RGB 2 HSV 2 RGB -> OK!" << endl << flush;
    }
 
+   if (RGB2HSL2RGBTest( pInImage) != true)
+   {
+      cerr << "RGB 2 HSL 2 RGB went wrong..." << endl << flush;
+      allSuccess = false;
+   }
+   else
+   {
+      cout << "RGB 2 HSL 2 RGB -> OK!" << endl << flush;
+   }
+
    if (RGB2HSI2RGBTest( pInImage ) != true)
    {
       cerr << "RGB 2 HSI 2 RGB went wrong..." << endl << flush;
@@ -1188,7 +1229,7 @@ int main(int argc, char *argv[])
       cout << "AdobeRGB 2 XYZ 2 AdobeRGB -> OK!" << endl << flush;
    }
 
-   if (DeltaE200Test1() != true)
+   if (DeltaE2000Test1() != true)
    {
       cerr << "Delta E test 1 went wrong..." << endl << flush;
       allSuccess = false;
@@ -1198,7 +1239,7 @@ int main(int argc, char *argv[])
       cout << "Delta E test 1 -> OK!" << endl << flush;
    }
 
-   if (DeltaE200Test2() != true)
+   if (DeltaE2000Test2() != true)
    {
       cerr << "Delta E test 2 went wrong..." << endl << flush;
       allSuccess = false;

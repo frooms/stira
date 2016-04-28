@@ -232,6 +232,16 @@ public:
      * \warning these color spaces are not device independant*/
    bool RGBToHSI();
 
+   /** \brief Converts image from HSL color representation to RGB
+     * \warning: assumes 3 color bands; make sure first you have (at least) three color bands!!
+     * \warning these color spaces are not device independant*/
+   bool HSLToRGB();
+
+   /** \brief Converts image from RGB color representation to HSL
+     * \warning: assumes 3 color bands; make sure first you have (at least) three color bands!!
+     * \warning these color spaces are not device independant*/
+   bool RGBToHSL();
+
    /** \brief Converts image from sRGB color representation to XYZ
      * \param referenceIlluminant reference illuminant (or white point)
      * \warning: assumes 3 color bands; make sure first you have (at least) three color bands!!*/

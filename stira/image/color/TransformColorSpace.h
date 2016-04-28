@@ -216,6 +216,16 @@ public:
      * \param hsiValue incoming HSI color*/
    ColorValue HSItoRGB( ColorValue hsiValue );
 
+   /** \brief converts incoming RGB color to HSL
+     * http://www.rapidtables.com/convert/color/rgb-to-hsl.htm
+     * HSL = Hue, Saturation and Lightness  H=[0..360]  S=[0..1]  L=[0..1]
+     * \param rgbValue incoming RGB color*/
+   ColorValue RGBtoHSL( ColorValue rgbValue );
+
+   /** \brief converts incoming HSL color to RGB
+     * \param hslValue incoming HSL color*/
+   ColorValue HSLtoRGB( ColorValue hslValue );
+
    /** \brief Computes for an RGB triplet the corresponding gray value
      * \param rgbValue the input RGB triplet*/
    static double RGBToGray( ColorValue rgbValue );

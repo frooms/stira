@@ -25,7 +25,7 @@ namespace image {
 /////////////////////////
 
 /** \brief identifier of color space representation*/
-enum ColorType { TYPE_RGB, TYPE_XYZ, TYPE_CMY, TYPE_YUV, TYPE_HSV, TYPE_LAB, TYPE_LUV, TYPE_HSI, TYPE_UNKNOWN };
+enum ColorType { TYPE_RGB, TYPE_XYZ, TYPE_CMY, TYPE_YUV, TYPE_HSV, TYPE_LAB, TYPE_LUV, TYPE_HSI, TYPE_HSL, TYPE_UNKNOWN };
 
 /** \brief struct that represents the color value triplet and an identifier*/
 class ColorValue
