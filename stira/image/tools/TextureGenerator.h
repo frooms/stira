@@ -34,6 +34,8 @@ public:
    ~TextureGenerator();
 
    Image* GenerateClouds();
+   Image* GenerateMarble();
+   Image* GenerateWood();
 
 private:
    void GenerateNoise();
@@ -46,7 +48,6 @@ private:
    int mHeight;
    TextureType mTextureType;
    ArrayGrid<double>* mpNoise;
-   Image* mpTextureOut;
    TransformColorSpace* mTransformColorSpace;
 };
 

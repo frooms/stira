@@ -413,6 +413,14 @@ bool GenerateTextureTest()
    Image* pClouds = TG.GenerateClouds();
    ImageIO::Write( pClouds, string("TextureClouds.ppm"), ImageIO::NULL_OUT );
    delete pClouds;
+
+   Image* pMarble = TG.GenerateMarble();
+   ImageIO::Write( pMarble, string("TextureMarble.ppm"), ImageIO::NULL_OUT );
+   delete pMarble;
+
+   Image* pWood = TG.GenerateWood();
+   ImageIO::Write( pWood, string("TextureWood.ppm"), ImageIO::NULL_OUT );
+   delete pWood;
    return true;
 }
 

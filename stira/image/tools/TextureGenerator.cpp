@@ -34,7 +34,6 @@ TextureGenerator::TextureGenerator( int width, int height, TextureType myTexture
    mHeight = height;
    mTextureType = myTextureType;
    mpNoise = new ArrayGrid<double>(width, height);
-   mpTextureOut = new Image(width, height, 3);
    mTransformColorSpace = new TransformColorSpace();
 }
 
@@ -95,6 +94,7 @@ double TextureGenerator::Turbulence(double x, double y, double size)
 
 Image* TextureGenerator::GenerateClouds()
 {
+   Image* pTextureOut = new Image( mWidth, mHeight, 3);
    GenerateNoise();
    for(int y = 0; y < mHeight; y++)
    {
@@ -104,10 +104,56 @@ Image* TextureGenerator::GenerateClouds()
 
          ColorValue colorHSL = ColorValue(240, 1.0, L, TYPE_HSL );
          ColorValue colorRGB = mTransformColorSpace->HSLtoRGB( colorHSL );
-         mpTextureOut->SetColor(x, y, colorRGB);
+         pTextureOut->SetColor(x, y, colorRGB);
       }
    }
-   return mpTextureOut;
+   return pTextureOut;
+}
+
+Image* TextureGenerator::GenerateMarble()
+{
+    Image* pTextureOut = new Image( mWidth, mHeight, 3);
+    GenerateNoise();
+
+    //xPeriod and yPeriod together define the angle of the lines
+    //xPeriod and yPeriod both 0 ==> it becomes a normal clouds or turbulence pattern
+    double xPeriod = 5.0; //defines repetition of marble lines in x direction
+    double yPeriod = 10.0; //defines repetition of marble lines in y direction
+    //turbPower = 0 ==> it becomes a normal sine pattern
+    double turbPower = 5.0; //makes twists
+    double turbSize = 32.0; //initial size of the turbulence
+
+    for(int y = 0; y < mHeight; y++)
+    for(int x = 0; x < mWidth; x++)
+    {
+      double xyValue = x * xPeriod / mWidth + y * yPeriod / mHeight + turbPower * Turbulence(x, y, turbSize) / 256.0;
+      double sineValue = 256 * fabs(sin(xyValue * 3.14159));
+      ColorValue cv = ColorValue( sineValue, sineValue, sineValue );
+      pTextureOut->SetColor(x, y, cv );
+    }
+    return pTextureOut;
+}
+
+Image* TextureGenerator::GenerateWood()
+{
+   Image* pTextureOut = new Image( mWidth, mHeight, 3);
+   GenerateNoise();
+
+   double xyPeriod = 12.0; //number of rings
+   double turbPower = 0.1; //makes twists
+   double turbSize = 32.0; //initial size of the turbulence
+
+   for(int y = 0; y < mHeight; y++)
+   for(int x = 0; x < mWidth; x++)
+   {
+      double xValue = (x - mWidth / 2) / double(mWidth);
+      double yValue = (y - mHeight / 2) / double(mHeight);
+      double distValue = sqrt(xValue * xValue + yValue * yValue) + turbPower * Turbulence(x, y, turbSize) / 256.0;
+      double sineValue = 128.0 * fabs(sin(2 * xyPeriod * distValue * 3.14159));
+      ColorValue cv = ColorValue( 80 + sineValue, 30 + sineValue, 30 );
+      pTextureOut->SetColor(x, y, cv );
+   }
+   return pTextureOut;
 }
 
 }
