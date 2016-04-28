@@ -179,8 +179,9 @@ void ImageWindow::SetupWindow()
    connect( mpZoomOutButton, SIGNAL( clicked() ), this, SLOT( SlotZoomOut() ));
    connect( mpZoom100PercentButton, SIGNAL( clicked() ), this, SLOT( SlotNormalSize() ));
    connect( mpFitToWindowButton, SIGNAL( clicked() ), this, SLOT( SlotClickFitToWindow() ));
-   connect( mpRotateRightButton, SIGNAL( clicked() ), this, SLOT( SlotRotatePlus90Degrees() ));;
-   connect( mpRotateLeftButton, SIGNAL( clicked() ), this, SLOT( SlotRotateMinus90Degrees() ));;
+   connect( mpRotateRightButton, SIGNAL( clicked() ), this, SLOT( SlotRotatePlus90Degrees() ));
+   connect( mpRotateLeftButton, SIGNAL( clicked() ), this, SLOT( SlotRotateMinus90Degrees() ));
+   //connect( mpImageLabel, SIGNAL( wheelUpEvent() ), wheelmpScrollArea->verticalScrollBar() http://www.techtomar.com/)
    
    mpSlider = new QSlider( Qt::Horizontal, this );
    mpRemove2ndImageButton->hide();
