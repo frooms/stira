@@ -102,8 +102,8 @@ Image* TextureGenerator::GenerateClouds()
       {
          double L = (192.0 + (Turbulence(x, y, 64.0)) / 4.0 ) / 255.0;
 
-         ColorValue colorHSV = ColorValue(240, 1.0, L, TYPE_HSV );
-         ColorValue colorRGB = mTransformColorSpace->HSVtoRGB( colorHSV );
+         ColorValue colorHSL = ColorValue(240, 1.0, L, TYPE_HSL );
+         ColorValue colorRGB = mTransformColorSpace->HSLtoRGB( colorHSL );
          mpTextureOut->SetColor(x, y, colorRGB);
       }
    }
