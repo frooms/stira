@@ -11,15 +11,15 @@
  ***********************************************************************************/
 
 #include "../../common/common/MathUtils.h"
-#include "GenerateFractal.h"
+#include "FractalGenerator.h"
 #include <complex>
 
 namespace stira {
 namespace image {
 
-GenerateFractal::GenerateFractal()
+FractalGenerator::FractalGenerator()
 {
-   mMaxNumberOfIterations = 2000;
+   mMaxNumberOfIterations = 1000;
    mEscapeRadius = 2.0;
    mEscapeRadiusSquared = mEscapeRadius * mEscapeRadius;
    mpColorTransformer = new TransformColorSpace;
@@ -62,7 +62,7 @@ GenerateFractal::GenerateFractal()
 
 //------------------------------------------------------------------------------
 
-void GenerateFractal::SetRenderDimensions( int width, int height )
+void FractalGenerator::SetRenderDimensions( int width, int height )
 {
     mPixelWidth  = width;
     mPixelHeight = height;
@@ -71,7 +71,7 @@ void GenerateFractal::SetRenderDimensions( int width, int height )
 
 //------------------------------------------------------------------------------
 
-GenerateFractal::~GenerateFractal()
+FractalGenerator::~FractalGenerator()
 {
    delete mpColorTransformer;
    delete mpInterpolateRed;
@@ -81,14 +81,14 @@ GenerateFractal::~GenerateFractal()
 
 //------------------------------------------------------------------------------
 
-void GenerateFractal::SetMaxNumberOfIterations( int maxNr )
+void FractalGenerator::SetMaxNumberOfIterations( int maxNr )
 {
    mMaxNumberOfIterations = maxNr;
 }
 
 //------------------------------------------------------------------------------
 
-void GenerateFractal::SetEscapeRadius( double radius )
+void FractalGenerator::SetEscapeRadius( double radius )
 {
    mEscapeRadius = radius;
    mEscapeRadiusSquared = radius * radius;
@@ -96,49 +96,49 @@ void GenerateFractal::SetEscapeRadius( double radius )
 
 //------------------------------------------------------------------------------
 
-double GenerateFractal::GetResolutionX()
+double FractalGenerator::GetResolutionX()
 {
     return mResolutionX;
 }
 
 //------------------------------------------------------------------------------
 
-double GenerateFractal::GetResolutionY()
+double FractalGenerator::GetResolutionY()
 {
     return mResolutionY;
 }
 
 //------------------------------------------------------------------------------
 
-double GenerateFractal::GetPixelWidth()
+double FractalGenerator::GetPixelWidth()
 {
     return mPixelWidth;
 }
 
 //------------------------------------------------------------------------------
 
-double GenerateFractal::GetPixelHeight()
+double FractalGenerator::GetPixelHeight()
 {
     return mPixelHeight;
 }
 
 //------------------------------------------------------------------------------
 
-common::Point<double> GenerateFractal::GetMathCenterPoint()
+common::Point<double> FractalGenerator::GetMathCenterPoint()
 {
     return common::Point<double>( mMathCenterX, mMathCenterY );
 }
 
 //------------------------------------------------------------------------------
 
-double GenerateFractal::GetMathWidth()
+double FractalGenerator::GetMathWidth()
 {
     return mMathWidth;
 }
 
 //------------------------------------------------------------------------------
 
-ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& lastModulus )
+ColorValue FractalGenerator::AssignColorContinuous( int iterationNumber, double& lastModulus )
 {
    if (iterationNumber == mMaxNumberOfIterations)
    {
@@ -164,7 +164,7 @@ ColorValue GenerateFractal::AssignColorContinuous( int iterationNumber, double& 
 //------------------------------------------------------------------------------
 
 // http://stackoverflow.com/questions/16500656/which-color-gradient-is-used-to-color-mandelbrot-in-wikipedia
-ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber, double& lastModulus )
+ColorValue FractalGenerator::AssignColorUltraFractal( double iterationNumber, double& lastModulus )
 {
    if (iterationNumber == mMaxNumberOfIterations)
    {
@@ -187,7 +187,7 @@ ColorValue GenerateFractal::AssignColorUltraFractal( double iterationNumber, dou
 }
 
 //------------------------------------------------------------------------------
-ColorValue GenerateFractal::InterpolateColorUltraFractal( double smoothColor )
+ColorValue FractalGenerator::InterpolateColorUltraFractal( double smoothColor )
 {
    ColorValue interPolated;
    interPolated.SetColorValue( mpInterpolateRed->Interpolate( smoothColor),
@@ -199,7 +199,7 @@ ColorValue GenerateFractal::InterpolateColorUltraFractal( double smoothColor )
 
 //------------------------------------------------------------------------------
 
-int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy, double& lastModulus )
+int FractalGenerator::GiveLastIteration( double x, double y, double Cx, double Cy, double& lastModulus )
 {
    int iterationNumber = 0;
 
@@ -226,7 +226,7 @@ int GenerateFractal::GiveLastIteration( double x, double y, double Cx, double Cy
 
 //------------------------------------------------------------------------------
 
-Image* GenerateFractal::CreateMandelbrot( double centerX, double centerY, double width )
+Image* FractalGenerator::CreateMandelbrot( double centerX, double centerY, double width )
 {
    mMathCenterX = centerX;
    mMathCenterY = centerY;
@@ -242,7 +242,7 @@ Image* GenerateFractal::CreateMandelbrot( double centerX, double centerY, double
 
 //------------------------------------------------------------------------------
 
-bool GenerateFractal::TestIsInMandelbrotMainBody( double x, double y )
+bool FractalGenerator::TestIsInMandelbrotMainBody( double x, double y )
 {
     double p = sqrt( (x - 0.25) * (x - 0.25) + y * y);
     if ( x < ( p - 2*p*p + 0.25))
@@ -261,16 +261,19 @@ bool GenerateFractal::TestIsInMandelbrotMainBody( double x, double y )
 
 //------------------------------------------------------------------------------
 
-Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double bottomX, double bottomY )
+Image* FractalGenerator::CreateMandelbrot( double topX, double topY, double bottomX, double bottomY )
 {
    double mathematicalWidth  = bottomX - topX;
    double mathematicalHeight = bottomY - topY;
 
    mResolutionX = mPixelWidth / mathematicalWidth;
    mResolutionY = mPixelHeight / mathematicalHeight;
+
+   mMaxNumberOfIterations += (50*log10(mResolutionX));
    
    std::cout << "Generating Mandelbrot of w = " << mPixelWidth << " and h = " << mPixelHeight << std::endl << std::flush;
    std::cout << "   \t mResolutionX = " << mResolutionX << " and mResolutionY = " << mResolutionY << std::endl << std::flush;
+   std::cout << "   \t mMaxNumberOfIterations = " << mMaxNumberOfIterations << std::endl << std::flush;
    
    Image* pFractal = new Image( (int)(mPixelWidth), (int)(mPixelHeight), 3 );
    
@@ -305,7 +308,7 @@ Image* GenerateFractal::CreateMandelbrot( double topX, double topY, double botto
 
 //------------------------------------------------------------------------------
 
-Image* GenerateFractal::CreateJulia( double centerX, double centerY, double width, double Cx, double Cy )
+Image* FractalGenerator::CreateJulia( double centerX, double centerY, double width, double Cx, double Cy )
 {
    mMathCenterX = centerX;
    mMathCenterY = centerY;
@@ -321,7 +324,7 @@ Image* GenerateFractal::CreateJulia( double centerX, double centerY, double widt
 
 //------------------------------------------------------------------------------
 
-Image* GenerateFractal::CreateJulia( double topX, double topY, double bottomX, double bottomY, double Cx, double Cy )
+Image* FractalGenerator::CreateJulia( double topX, double topY, double bottomX, double bottomY, double Cx, double Cy )
 {
    double mathematicalWidth  = bottomX - topX;
    double mathematicalHeight = bottomY - topY;

@@ -20,7 +20,8 @@
 #include "../color/TransformColorSpace.h"
 #include "../tools/NumberGridTools.h"
 #include "../tools/ImageTools.h"
-#include "../tools/GenerateFractal.h"
+#include "../tools/FractalGenerator.h"
+#include "../tools/TextureGenerator.h"
 #include "../tools/PerlinNoise.h"
 
 using namespace std;
@@ -362,7 +363,7 @@ bool GenerateFractalTest()
 {
    double centerX, centerY, width;
    Image* pFractal = 0;
-   GenerateFractal gf;
+   FractalGenerator gf;
 
    // full size
    centerX = -0.5;
@@ -398,6 +399,20 @@ bool GenerateFractalTest()
    pFractal = gf.CreateJulia( centerX, centerY, width, Cx, Cy );
    ImageIO::Write( pFractal, string("FractalJuliaImage.ppm"), ImageIO::NULL_OUT );
    delete pFractal;
+   return true;
+}
+//========================================================================================
+
+bool GenerateTextureTest()
+{
+   int width = 512;
+   int height = 512;
+   TextureGenerator::TextureType myTextureType = TextureGenerator::TEXTURE_PERLIN;
+
+   TextureGenerator TG( width, height, myTextureType );
+   Image* pClouds = TG.GenerateClouds();
+   ImageIO::Write( pClouds, string("TextureClouds.ppm"), ImageIO::NULL_OUT );
+   delete pClouds;
    return true;
 }
 
@@ -546,11 +561,35 @@ int main(int argc, char *argv[])
    //nrTestsTotal ++;
    SepiaToneTest( pInImage );
 
-   // EXPERIMENTAL...
-   //////////////////
 
-   //nrTestsTotal ++;
-   GenerateFractalTest();
+
+   // 7) Generate Fractal
+   //////////////////////
+   cout << "GenerateFractalTest:";
+   nrTestsTotal ++;
+   if ( GenerateFractalTest() )
+   {
+      nrTestsSucceeded ++;
+      cout << " \t OK!" << endl << flush;
+   }
+   else
+   {
+      cout << " \t FAILED!" << endl << flush;
+   }
+
+   // 8) Rotate image
+   ///////////////////
+   cout << "GenerateTextureTest:";
+   nrTestsTotal ++;
+   if ( GenerateTextureTest() )
+   {
+      nrTestsSucceeded ++;
+      cout << " \t OK!" << endl << flush;
+   }
+   else
+   {
+      cout << " \t FAILED!" << endl << flush;
+   }
 
    cout << " SUMMARY: " << nrTestsSucceeded << "/" << nrTestsTotal << " succeeded." << endl;
    delete pInImage;

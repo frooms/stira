@@ -23,6 +23,8 @@ namespace image {
 /** \brief class to generate clouds of Perlin noise
   *  code slightly adapted from code of Isaac McGarvey: 
   *            http://infohost.nmt.edu/~imcgarve/perlin_noise/
+  *
+  *  to check for other textures: http://lodev.org/cgtutor/randomnoise.html
   */
 class PerlinNoise
 {

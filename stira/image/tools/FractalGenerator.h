@@ -23,14 +23,14 @@ namespace image {
 
 /** \brief class to generate fractals
   * For now, only the Mandelbrot set is implemented */
-class GenerateFractal
+class FractalGenerator
 {
 public:
    /** \brief constructor */
-   GenerateFractal();
+   FractalGenerator();
    
    /** \brief destructor */
-   ~GenerateFractal();
+   ~FractalGenerator();
 
    /** \brief Generates Mandelbrot set
      * http://en.wikipedia.org/wiki/Mandelbrot_set
