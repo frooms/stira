@@ -414,11 +414,18 @@ bool GenerateTextureTest()
    ImageIO::Write( pClouds, string("TextureClouds.ppm"), ImageIO::NULL_OUT );
    delete pClouds;
 
-   Image* pMarble = TG.GenerateMarble();
+   double xPeriod = 5.0; //defines repetition of marble lines in x direction
+   double yPeriod = 10.0; //defines repetition of marble lines in y direction
+   double turbPower = 5.0; //makes twists
+   double turbSize = 32.0; //initial size of the turbulence
+   Image* pMarble = TG.GenerateMarble( xPeriod, yPeriod, turbPower, turbSize );
    ImageIO::Write( pMarble, string("TextureMarble.ppm"), ImageIO::NULL_OUT );
    delete pMarble;
 
-   Image* pWood = TG.GenerateWood();
+   double xyPeriod2 = 12.0; //number of rings
+   double turbPower2 = 0.1; //makes twists
+   double turbSize2 = 32.0; //initial size of the turbulence */
+   Image* pWood = TG.GenerateWood( xyPeriod2, turbPower2, turbSize2 );
    ImageIO::Write( pWood, string("TextureWood.ppm"), ImageIO::NULL_OUT );
    delete pWood;
    return true;
