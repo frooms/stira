@@ -2,7 +2,6 @@ TEMPLATE = lib
 CONFIG += staticlib
 SOURCES += ArrayGridTools.cpp \
     BilinearInterpolator.cpp \
-    GenerateFractal.cpp \
     GridExtender.cpp \
     GridGenerator.cpp \
     ImageIO.cpp \
@@ -14,10 +13,11 @@ SOURCES += ArrayGridTools.cpp \
     PyramidTools.cpp \
     DrawImageTools.cpp \
     GridConverter.cpp \
-    BicubicInterpolator.cpp
+    BicubicInterpolator.cpp \
+    TextureGenerator.cpp \
+    FractalGenerator.cpp
 HEADERS += ArrayGridTools.h \
     BilinearInterpolator.h \
-    GenerateFractal.h \
     GridExtender.h \
     GridGenerator.h \
     ImageIO.h \
@@ -29,4 +29,6 @@ HEADERS += ArrayGridTools.h \
     PyramidTools.h \
     DrawImageTools.h \
     GridConverter.h \
-    BicubicInterpolator.h
+    BicubicInterpolator.h \
+    TextureGenerator.h \
+    FractalGenerator.h
