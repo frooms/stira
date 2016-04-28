@@ -34,8 +34,19 @@ public:
    ~TextureGenerator();
 
    Image* GenerateClouds();
-   Image* GenerateMarble();
-   Image* GenerateWood();
+
+   /** \brief Generates marble like texture
+     * \param xPeriod defines repetition of marble lines in x direction
+     * \param yPeriod defines repetition of marble lines in y direction
+     * \param turbPower makes twists
+     * \param turbSize initial size of the turbulence */
+   Image* GenerateMarble( double xPeriod, double yPeriod, double turbPower, double turbSize );
+
+   /** Generate wood-like texture
+    *  \param xyPeriod number of rings
+    *  \param turbPower makes twists
+    *  \param turbSize initial size of the turbulence */
+   Image* GenerateWood( double xyPeriod, double turbPower, double turbSize );
 
 private:
    void GenerateNoise();
