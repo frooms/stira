@@ -34,7 +34,7 @@
 
 #include "ClickableLabel.h"
 #include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/tools/GenerateFractal.h"
+#include "../../stira/image/tools/FractalGenerator.h"
 
 class ProcessManager;
 
@@ -106,7 +106,7 @@ private:
    bool mIsFirstRendering;  ///< keeps track if this is the first time that the image is rendered in the window
 
    stira::image::Image* mpImage;  ///< the underlying image data of image window
-   stira::image::GenerateFractal* mpFractalGenerator;  ///< the underlying image data of image window
+   stira::image::FractalGenerator* mpFractalGenerator;  ///< the underlying image data of image window
 };
 
 

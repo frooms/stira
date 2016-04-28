@@ -14,7 +14,7 @@
 #include "../dialogs/GenerateImageDialog.h"
 #include "../dialogs/GeneratePerlinNoiseDialog.h"
 #include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/tools/GenerateFractal.h"
+#include "../../stira/image/tools/FractalGenerator.h"
 
 #include <iostream>
 

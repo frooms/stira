@@ -46,18 +46,24 @@
 #include "../../stira/common/common/MathUtils.h"
 #include "../../stira/common/common/StringUtils.h"
 #include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/image/tools/GridExtender.h"
+#include "../../stira/filter/filter/GaussConvolve.h"
 
 using namespace std;
 using namespace stira::image;
 using namespace stira::common;
+using namespace stira::filter;
 
 //------------------------------------------------------------------
 
 InteractiveImageWindow::InteractiveImageWindow (  double centerX, double centerY, double width )
 {
    InitializePointers( );
-   mpFractalGenerator = new GenerateFractal();
-   mpImage = mpFractalGenerator->CreateMandelbrot( centerX, centerY, width );
+   mpFractalGenerator = new FractalGenerator();
+   Image* pImageIn = mpFractalGenerator->CreateMandelbrot( centerX, centerY, width );
+   mpImage = GaussConvolve::DerivativeConvolveSeparable( pImageIn, 0.65, GaussConvolve::DERIVATIVE_NONE, GridExtender<double>::EXTEND_MIRROR );
+   delete pImageIn;
+
    if ( mpImage != 0)
    {
       SetupWindow();
@@ -119,7 +125,10 @@ void InteractiveImageWindow::CreateZoomFractal( double factor )
     // full size
     double width = mpFractalGenerator->GetMathWidth() / factor;
 
-    Image* pFractal = mpFractalGenerator->CreateMandelbrot( mathClickX, mathClickY, width );
+    Image* pImageIn = mpFractalGenerator->CreateMandelbrot( mathClickX, mathClickY, width );
+    Image* pFractal = GaussConvolve::DerivativeConvolveSeparable( pImageIn, 0.65, GaussConvolve::DERIVATIVE_NONE, GridExtender<double>::EXTEND_MIRROR );
+    delete pImageIn;
+
     this->ReplaceImage(  pFractal );
 }
 
