@@ -57,7 +57,7 @@ bool GenerateSyntheticImagesTest()
    ImageIO::WritePGM(pZone, string("ZonePlate.pgm"), ImageIO::NULL_OUT );
    delete pZone;
 
-   ArrayGrid<double>* pSheppLogan = GridGenerator::GenerateSheppLogan ( );
+   ArrayGrid<double>* pSheppLogan = GridGenerator::GenerateSheppLogan ( 20.0 );
    ImageIO::WritePGM(pSheppLogan, string("SheppLogan.pgm"), ImageIO::NORMAL_OUT );
    delete pSheppLogan;
 
