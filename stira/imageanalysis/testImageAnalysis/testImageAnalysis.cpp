@@ -24,6 +24,7 @@
 #include "../../filter/filter/NonSeparableFilter.h"
 #include "../imageanalysis/CannyEdgeDetector.h"
 #include "../imageanalysis/DistanceTransform.h"
+#include "../imageanalysis/HoughTransform.h"
 #include "../imageanalysis/WatershedToboggan.h"
 #include "../imageanalysis/WatershedMeyer.h"
 #include "../imageanalysis/StegerLineDetector.h"
@@ -151,7 +152,31 @@ void TestDistanceTransform()
 
 //-----------------------------------------------------------------------------------
 
-void TestHOG( Image *pImage )
+void TestHoughTransform( )
+{
+    string inputname = "../../../../stira/stira/testdata/apartment.jpg";
+
+    Image* pImage = ImageIO::Read(inputname);
+    double sigmaSmooth =  2.0;
+    double loThreshold = 30.0;
+    double hiThreshold = 80.0;
+    ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
+    ImageIO::WritePGM( pEdgeGrid, string("CannyOut.pgm") );
+
+    HoughTransform* pHT = new HoughTransform();
+
+    int threshold = 255;
+    pHT->BuildAccumulator(pEdgeGrid);
+    pHT->VisualizeAcculumulator("Accumulator.pgm");
+    std::vector< LineSegment<int> > lines = pHT->GetLines( threshold );
+
+    //DrawImageTools::DrawLine()
+    delete pEdgeGrid;
+}
+
+//-----------------------------------------------------------------------------------
+
+void TestHistogramOrientedGradients( Image *pImage )
 {
     int nrBins = 9;
     int cellWidth = 8;
@@ -388,13 +413,16 @@ int main(int argc, char *argv[])
    ImageIO::WritePGM( pEdgeGrid, string("CannyOut.pgm") );
    delete pEdgeGrid;
 
+
+   TestHoughTransform( );
+
    /////////////////////////////////////////////////////
    // SLIC
    TestSLIC( pImage );
 
    /////////////////////////////////////////////////////
    // HOG: Histogram of Oriented Gradients
-   TestHOG( pImage );
+   TestHistogramOrientedGradients( pImage );
 
    /////////////////////////////////////////////////////
    // WATERSHED
