@@ -10,13 +10,12 @@
  *                                                                                 *
  ***********************************************************************************/
 
+#include "HoughTransform.h"
+
 #include <iostream>
 #include <vector>
-#include "../../common/common/LineSegment.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/datastructures/Image.h"
 #include "../../image/tools/ImageIO.h"
-#include "HoughTransform.h"
 
 namespace stira {
 namespace imageanalysis {
@@ -25,12 +24,20 @@ using namespace std;
 using namespace common;
 using namespace image;
 
-
 HoughTransform::HoughTransform()
 {
 }
 
-int HoughTransform::BuildAccumulator( ArrayGrid<bool>* pEdgeGrid )
+//--------------------------------------------------------------------------------
+
+HoughTransform::~HoughTransform()
+{
+    delete mpAccu;
+}
+
+//--------------------------------------------------------------------------------
+
+int HoughTransform::BuildAccumulatorLines( ArrayGrid<bool>* pEdgeGrid )
 {
    mImageWidth  = pEdgeGrid->GetWidth();
    mImageHeight = pEdgeGrid->GetHeight();
@@ -62,13 +69,52 @@ int HoughTransform::BuildAccumulator( ArrayGrid<bool>* pEdgeGrid )
    return 0;
 }
 
+//--------------------------------------------------------------------------------
+
+int HoughTransform::BuildAccumulatorCircles( OrientationGrid* pOrientGrid )
+{
+   mImageWidth  = pOrientGrid->GetWidth();
+   mImageHeight = pOrientGrid->GetHeight();
+   //Create the accu
+   /*double hough_h = ((sqrt(2.0) * (double)( mImageHeight > mImageWidth ? mImageHeight : mImageWidth ) ) / 2.0);
+   mAccuHeight = hough_h * 2.0; // -r -> +r
+   mAccuWidth  = 180;
+
+   mpAccu = new ArrayGrid<int>( mAccuWidth, mAccuHeight );
+
+   double center_x = mImageWidth  / 2.0;
+   double center_y = mImageHeight / 2.0;
+
+   for( int y = 0; y < mImageHeight; y++ )
+   {
+      for( int x = 0; x < mImageWidth; x++ )
+      {
+         if( pEdgeGrid->GetValue( x, y) )
+         {
+            for( int t = 0; t < 180; t++ )
+            {
+               double r =   ((double)x - center_x) * cos( MathUtils::ToRadians( (double)t ) )
+                          + ((double)y - center_y) * sin( MathUtils::ToRadians( (double)t ) );
+               mpAccu->AddOne( t, round(r + hough_h) );
+            }
+         }
+      }
+   }*/
+   return 0;
+}
+
+//--------------------------------------------------------------------------------
+
 void HoughTransform::VisualizeAcculumulator( std::string fileName )
 {
     ImageIO::WritePGM(mpAccu, fileName, ImageIO::NORMAL_OUT);
 }
 
-std::vector< common::LineSegment<int> > HoughTransform::GetLines( int threshold)
+//--------------------------------------------------------------------------------
+
+std::vector< common::LineSegment<int> > HoughTransform::GetLines(  ArrayGrid<bool>* pEdgeGrid, int threshold)
 {
+   BuildAccumulatorLines( pEdgeGrid );
    std::vector< LineSegment<int> > lines;
 
    if( mpAccu == 0)
@@ -128,6 +174,17 @@ std::vector< common::LineSegment<int> > HoughTransform::GetLines( int threshold)
    std::cout << "lines: " << lines.size() << " " << threshold << std::endl;
    return lines;
 }
+
+//--------------------------------------------------------------------------------
+
+std::vector< std::pair< common::Point<int>, double > > HoughTransform::GetCirclesRadius( image::OrientationGrid* pOrientGrid, int radius, int threshold )
+{
+    BuildAccumulatorCircles( pOrientGrid );
+    std::vector< std::pair< common::Point<int>, double > > circles;
+    return circles;
+}
+
+//--------------------------------------------------------------------------------
 
 }}
 

@@ -163,12 +163,10 @@ void TestHoughTransform( )
     ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
     ImageIO::WritePGM( pEdgeGrid, string("CannyHough.pgm") );
 
-    HoughTransform* pHT = new HoughTransform();
-
     int threshold = 150;
-    pHT->BuildAccumulator(pEdgeGrid);
+    HoughTransform* pHT = new HoughTransform();
+    std::vector< LineSegment<int> > lines = pHT->GetLines( pEdgeGrid, threshold );
     pHT->VisualizeAcculumulator("Accumulator.pgm");
-    std::vector< LineSegment<int> > lines = pHT->GetLines( threshold );
 
     int nrLines = lines.size();
     for (int i = 0; i < nrLines; i++)
@@ -177,6 +175,7 @@ void TestHoughTransform( )
     }
     ImageIO::Write( pImage, string("HoughLinesOut.ppm") );
     delete pEdgeGrid;
+    delete pHT;
 }
 
 //-----------------------------------------------------------------------------------

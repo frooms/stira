@@ -16,9 +16,10 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include "../../common/common/Point.h"
+
 #include "../../common/common/LineSegment.h"
 #include "../../image/datastructures/Image.h"
+#include "../../image/datastructures/OrientationGrid.h"
 
 namespace stira {
 namespace imageanalysis {
@@ -29,12 +30,20 @@ class HoughTransform
 {
 public:
     HoughTransform();
-    int BuildAccumulator( image::ArrayGrid<bool>* pEdges );
-    std::vector< common::LineSegment<int> > GetLines( int threshold );
+    ~HoughTransform();
+
+    //http://www.keymolen.com/2013/05/hough-transformation-c-implementation.html
+    std::vector< common::LineSegment<int> >                GetLines(   image::ArrayGrid<bool>* pEdges,      int threshold );
+
+    //https://github.com/marcbowes/Hough-Circle-Detector/blob/master/src/hcd.cpp
+    std::vector< std::pair< common::Point<int>, double > > GetCirclesRadius( image::OrientationGrid* pOrientGrid, int radius, int threshold );
 
     void VisualizeAcculumulator( std::string fileName );
 
 private:
+    int BuildAccumulatorLines( image::ArrayGrid<bool>* pEdges );
+    int BuildAccumulatorCircles( image::OrientationGrid* pOrientGrid );
+
     image::ArrayGrid<int>* mpAccu;
     int mImageWidth;
     int mImageHeight;
