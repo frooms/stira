@@ -131,17 +131,20 @@ bool TestDecomposeLU()
 
    Matrix<double> dDL = a.Doolittle( 3 );
    dDL.Print(std::string("dDoolittle"));
+   std::cout << "Determinant Doolittle = " << Matrix<double>::Determinant( dDL) << std::endl;
 
    std::pair< Matrix<double>, Matrix<double> > luDL = Matrix<double>::SplitDoolittle( dDL );
 
    luDL.first.Print("lDoolittle");
    luDL.second.Print("uDoolittle");
 
+
    Matrix<double> aBackDL = luDL.first * luDL.second;
    aBackDL.Print("aBackDoolittle");
 
    Matrix<double> dCr = a.Crout( 3 );
    dCr.Print(std::string("dCrout"));
+   std::cout << "Determinant Crout = " << Matrix<double>::Determinant( dCr ) << std::endl;
 
    std::pair< Matrix<double>, Matrix<double> > luCr = Matrix<double>::SplitCrout( dCr );
 
@@ -180,9 +183,13 @@ bool TestSolveSystem()
    Vector<double> xDL = a.SolveDoolittle(2, luDL, b);
    xDL.Print(std::string("xDoolittle"));
 
+   std::cout << "Determinant Doolittle = " << Matrix<double>::Determinant( luDL) << std::endl;
+
    Matrix<double> luCr = a.Crout( 2 );
    Vector<double> xCr = a.SolveCrout( 2, luCr, b );
    xCr.Print(std::string("xCrout"));
+
+   std::cout << "Determinant Crout = " << Matrix<double>::Determinant( luCr ) << std::endl;
 
    return result;
 }

@@ -38,6 +38,9 @@ class Proxy
         T* _array;
 };
 
+//============================================================
+//============================================================
+
 
 /** \brief A class to represent a matrix class. */
 template <typename T>
@@ -64,6 +67,8 @@ public:
     Matrix<T> Doolittle( unsigned int d );
     Vector<T> SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b );
     static std::pair< Matrix<T>, Matrix<T> > SplitDoolittle( Matrix<T>& LU );
+
+    static T Determinant( Matrix<T>& LU );
 
     Matrix<T> Crout( unsigned int d );
     Vector<T> SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b );
@@ -210,6 +215,20 @@ std::pair< Matrix<T>, Matrix<T> > Matrix<T>::SplitDoolittle( Matrix<T>& LU )
 //------------------------------------------------------------------
 
 template <typename T>
+T Matrix<T>::Determinant( Matrix<T>& LU )
+{
+    unsigned int n = LU.GetNrRows();
+    T determinantValue = 1;
+    for (int i = 0; i < n; i++)
+    {
+        determinantValue *= LU[i][i];
+    }
+    return determinantValue;
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
 Vector<T> Matrix<T>::SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b )
 {
    Vector<T>* x = new Vector<T>( d );
@@ -307,19 +326,19 @@ Vector<T> Matrix<T>::SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b )
 {
    Vector<T>* x = new Vector<T>( d );
    double y[d];
-   for( int i = 0; i < d; ++i )
+   for( unsigned int i = 0; i < d; ++i )
    {
       double sum = 0.0;
-      for( int k = 0; k < i; ++k )
+      for( unsigned int k = 0; k < i; ++k )
       {
           sum += LU[i][k] * y[k];
       }
       y[i] = ( b[i] - sum ) / LU[i][i];
    }
-   for( int i = d - 1; i >= 0; --i )
+   for( int i = d - 1; i >= 0; i-- )
    {
       double sum = 0.0;
-      for( int k = i + 1; k < d; ++k )
+      for( unsigned int k = i + 1; k < d; k++ )
       {
           sum += LU[i][k] * (*x)[k];
       }
