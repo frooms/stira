@@ -41,27 +41,38 @@ class Proxy
 //============================================================
 //============================================================
 
-
-/** \brief A class to represent a matrix class. */
+/** \brief A class to represent a matrix class */
 template <typename T>
 class Matrix
 {
 public:
+
+    /** \brief constructor
+      * \param nrRows number of rows in matrix
+      * \param nrColumns number of columns in matrix */
     Matrix( unsigned int nrRows, unsigned int nrColumns );
 
-    unsigned int GetNrRows() { return mNrRows; }
-
-    unsigned int GetNrColumns() { return mNrColumns; }
-
-    Proxy<T> operator[](unsigned int index) {
-        return Proxy<T>(mppMatrix[index]);
-    }
-
-    Matrix<T> operator * ( Matrix<T>& otherMatrix );
-
+    /** \brief destructor */
     ~Matrix();
 
+    /** \brief gets number of rows in this matrix */
+    unsigned int GetNrRows() { return mNrRows; }
+
+    /** \brief gets number of columns in this matrix */
+    unsigned int GetNrColumns() { return mNrColumns; }
+
+    /** \brief proxy operator to allow double indexing matrix [i][j] of matrices */
+    Proxy<T> operator[](unsigned int index) { return Proxy<T>(mppMatrix[index]); }
+
+    /** \brief overloaded multiplication operator to be able to multiply matrices
+        TODO add checks if matrices have right number of rows and columns to be able to be multiplied */
+    Matrix<T> operator * ( Matrix<T>& otherMatrix );
+
+    /** \brief print current matrix using tag "name" to standard output */
     void Print( std::string name );
+
+    // LU Decomposition routines
+    //////////////////////////////
 
     // http://www.sci.utah.edu/~wallstedt/LU.htm
     Matrix<T> Doolittle( unsigned int d );
@@ -79,7 +90,6 @@ private:
     T** mppMatrix;
     unsigned int mNrRows;
     unsigned int mNrColumns;
-
 };
 
 //============================================================
@@ -219,7 +229,7 @@ T Matrix<T>::Determinant( Matrix<T>& LU )
 {
     unsigned int n = LU.GetNrRows();
     T determinantValue = 1;
-    for (int i = 0; i < n; i++)
+    for ( unsigned int i = 0; i < n; i++)
     {
         determinantValue *= LU[i][i];
     }
@@ -365,7 +375,6 @@ void Matrix<T>::Print( std::string name )
 }
 
 //------------------------------------------------------------------
-
 
 }
 }
