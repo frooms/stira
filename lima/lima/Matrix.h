@@ -23,44 +23,35 @@
 namespace stira {
 namespace lima {
 
+/** \brief A class to help indexing a matrix with two indices. */
+template <typename T>
+class Proxy
+{
+    public:
+        Proxy(T* _array) : _array(_array) { }
+
+        T& operator[](unsigned int index)
+        {
+            return _array[index];
+        }
+    private:
+        T* _array;
+};
+
+
 /** \brief A class to represent a matrix class. */
 template <typename T>
 class Matrix
 {
 public:
-    Matrix( unsigned int nrRows, unsigned int nrColumns )
-    {
-        mNrRows = nrRows;
-        mNrColumns = nrColumns;
-        mppMatrix = new T*[mNrRows];
-        for( unsigned int i = 0; i < mNrRows; i++)
-        {
-           mppMatrix[i] = new T[mNrColumns];
-           for (unsigned int j = 0; j < mNrColumns; j++)
-           {
-               mppMatrix[i][j] = 0;
-           }
-        }
-    }
+    Matrix( unsigned int nrRows, unsigned int nrColumns );
 
     unsigned int GetNrRows() { return mNrRows; }
+
     unsigned int GetNrColumns() { return mNrColumns; }
 
-    class Proxy
-    {
-        public:
-            Proxy(T* _array) : _array(_array) { }
-
-            T& operator[](unsigned int index)
-            {
-                return _array[index];
-            }
-        private:
-            T* _array;
-    };
-
-    Proxy operator[](unsigned int index) {
-        return Proxy(mppMatrix[index]);
+    Proxy<T> operator[](unsigned int index) {
+        return Proxy<T>(mppMatrix[index]);
     }
 
     Matrix<T> operator * ( Matrix<T>& otherMatrix );
@@ -72,7 +63,11 @@ public:
     // http://www.sci.utah.edu/~wallstedt/LU.htm
     Matrix<T> Doolittle( unsigned int d );
     Vector<T> SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b );
-    std::pair< Matrix<T>, Matrix<T> > SplitDoolittle( Matrix<T>& LU );
+    static std::pair< Matrix<T>, Matrix<T> > SplitDoolittle( Matrix<T>& LU );
+
+    Matrix<T> Crout( unsigned int d );
+    Vector<T> SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b );
+    static std::pair< Matrix<T>, Matrix<T> > SplitCrout( Matrix<T>& LU );
 
     std::string name;
 private:
@@ -85,9 +80,27 @@ private:
 //============================================================
 
 template <typename T>
+Matrix<T>::Matrix( unsigned int nrRows, unsigned int nrColumns )
+{
+    mNrRows = nrRows;
+    mNrColumns = nrColumns;
+    mppMatrix = new T*[mNrRows];
+    for( unsigned int i = 0; i < mNrRows; i++)
+    {
+       mppMatrix[i] = new T[mNrColumns];
+       for (unsigned int j = 0; j < mNrColumns; j++)
+       {
+           mppMatrix[i][j] = 0;
+       }
+    }
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
 Matrix<T>::~Matrix( )
 {
-    std::cout << "Deleting matrix" << name << std::endl;
+    //std::cout << "Deleting matrix" << name << std::endl;
     for (unsigned int j = 0; j < mNrRows; j++)
     {
         delete []mppMatrix[j];
@@ -165,11 +178,11 @@ Matrix<T> Matrix<T>::Doolittle( unsigned int d )
 template <typename T>
 std::pair< Matrix<T>, Matrix<T> > Matrix<T>::SplitDoolittle( Matrix<T>& LU )
 {
-    unsigned int n = mNrRows;
-    Matrix<T>* L = new Matrix<T>( mNrRows, mNrColumns );
-    Matrix<T>* U = new Matrix<T>( mNrRows, mNrColumns );
-    L->name = std::string("splitL");
-    U->name = std::string("splitU");
+    unsigned int n = LU.GetNrRows();
+    Matrix<T>* L = new Matrix<T>( LU.GetNrRows(), LU.GetNrColumns() );
+    Matrix<T>* U = new Matrix<T>( LU.GetNrRows(), LU.GetNrColumns() );
+    L->name = std::string("splitDoolittleL");
+    U->name = std::string("splitDoolittleU");
 
     // ROWS
     for( unsigned int row = 0; row < n; ++row )
@@ -210,7 +223,7 @@ Vector<T> Matrix<T>::SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b
       }
       y[i] = ( b[i] - sum ); // not dividing by diagonals
    }
-   for(int i=d-1;i>=0;--i)
+   for( int i = d - 1; i >= 0; --i )
    {
       double sum=0.;
       for( unsigned int k = i + 1; k < d; ++k )
@@ -218,6 +231,99 @@ Vector<T> Matrix<T>::SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b
           sum += LU[i][k] * (*x)[k];
       }
       (*x)[i] = ( y[i] - sum ) / LU[i][i];
+   }
+   return (*x);
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
+Matrix<T> Matrix<T>::Crout( unsigned int d )
+{
+   Matrix<T>* pDest = new Matrix<T>( mNrRows, mNrColumns );
+   pDest->name = std::string("croutDest");
+   for( unsigned int k = 0; k < d; ++k )
+   {
+      for( unsigned int i = k; i < d; ++i )
+      {
+         double sum = 0.0;
+         for( unsigned int p = 0; p < k; ++p )
+         {
+             sum += (*pDest)[i][p] * (*pDest)[p][k];
+         }
+         (*pDest)[i][k] = (*this)[i][k] - sum; // not dividing by diagonals
+      }
+      for( unsigned int j = k + 1; j < d; ++j )
+      {
+         double sum = 0.;
+         for( unsigned int p = 0; p < k; ++p )
+         {
+             sum += (*pDest)[k][p] * (*pDest)[p][j];
+         }
+         (*pDest)[k][j] = ( (*this)[k][j] - sum) / (*pDest)[k][k];
+      }
+   }
+   return *pDest;
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
+std::pair< Matrix<T>, Matrix<T> > Matrix<T>::SplitCrout( Matrix<T>& LU )
+{
+    unsigned int n = LU.GetNrRows();
+    Matrix<T>* L = new Matrix<T>( LU.GetNrRows(), LU.GetNrColumns() );
+    Matrix<T>* U = new Matrix<T>( LU.GetNrRows(), LU.GetNrColumns() );
+    L->name = std::string("splitCroutL");
+    U->name = std::string("splitCroutU");
+
+    // ROWS
+    for( unsigned int row = 0; row < n; ++row )
+    {
+       // COLUMNS
+       for( unsigned int col = 0; col < n; ++col )
+       {
+          if (col <= row)
+          {
+              (*L)[row][col] = LU[row][col];
+          }
+          if (col == row)
+          {
+              (*U)[row][col] = 1;
+          }
+          if (col > row)
+          {
+              (*U)[row][col] = LU[row][col];
+          }
+       }
+    }
+    return std::pair< Matrix<T>, Matrix<T> >( (*L), (*U) );
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
+Vector<T> Matrix<T>::SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b )
+{
+   Vector<T>* x = new Vector<T>( d );
+   double y[d];
+   for( int i = 0; i < d; ++i )
+   {
+      double sum = 0.0;
+      for( int k = 0; k < i; ++k )
+      {
+          sum += LU[i][k] * y[k];
+      }
+      y[i] = ( b[i] - sum ) / LU[i][i];
+   }
+   for( int i = d - 1; i >= 0; --i )
+   {
+      double sum = 0.0;
+      for( int k = i + 1; k < d; ++k )
+      {
+          sum += LU[i][k] * (*x)[k];
+      }
+      (*x)[i] = ( y[i] - sum ); // not dividing by diagonals
    }
    return (*x);
 }

@@ -110,7 +110,7 @@ bool TestMatrixMultiplication()
 
 //-------------------------------------------------------------------
 
-bool TestDoolittle()
+bool TestDecomposeLU()
 {
    bool result = true;
 
@@ -129,16 +129,27 @@ bool TestDoolittle()
    a[2][2] = 13;
    a.Print(std::string("a"));
 
-   Matrix<double> d = a.Doolittle( 3 );
-   d.Print(std::string("d"));
+   Matrix<double> dDL = a.Doolittle( 3 );
+   dDL.Print(std::string("dDoolittle"));
 
-   std::pair< Matrix<double>, Matrix<double> > lu = d.SplitDoolittle( d );
+   std::pair< Matrix<double>, Matrix<double> > luDL = Matrix<double>::SplitDoolittle( dDL );
 
-   lu.first.Print("l");
-   lu.second.Print("u");
+   luDL.first.Print("lDoolittle");
+   luDL.second.Print("uDoolittle");
 
-   Matrix<double> aBack = lu.first * lu.second;
-   aBack.Print("aBack");
+   Matrix<double> aBackDL = luDL.first * luDL.second;
+   aBackDL.Print("aBackDoolittle");
+
+   Matrix<double> dCr = a.Crout( 3 );
+   dCr.Print(std::string("dCrout"));
+
+   std::pair< Matrix<double>, Matrix<double> > luCr = Matrix<double>::SplitCrout( dCr );
+
+   luCr.first.Print("lCrout");
+   luCr.second.Print("uCrout");
+
+   Matrix<double> aBackCr = luCr.first * luCr.second;
+   aBackCr.Print("aBackCrout");
 
    return result;
 }
@@ -165,9 +176,13 @@ bool TestSolveSystem()
    b[1] = 24;
    b.Print(std::string("b"));
 
-   Matrix<double> dl = a.Doolittle( 2 );
-   Vector<double> x = a.SolveDoolittle(2, dl, b);
-   x.Print(std::string("x"));
+   Matrix<double> luDL = a.Doolittle( 2 );
+   Vector<double> xDL = a.SolveDoolittle(2, luDL, b);
+   xDL.Print(std::string("xDoolittle"));
+
+   Matrix<double> luCr = a.Crout( 2 );
+   Vector<double> xCr = a.SolveCrout( 2, luCr, b );
+   xCr.Print(std::string("xCrout"));
 
    return result;
 }
@@ -178,6 +193,7 @@ int main()
 {
    TestVector();
    TestMatrixMultiplication();
-   TestDoolittle();
+
+   TestDecomposeLU();
    TestSolveSystem();
 }
