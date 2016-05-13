@@ -310,48 +310,6 @@ std::vector<double> ImageTools::GetColorMappingFactors( Image* pImage1, Image* p
    return colorRatios;
 }
 
-//------------------------------------------------------------------
-
-void ImageTools::CompareColorCurveInImages( Image* pImage1, Image* pImage2, ColorValue compareColor, int dyTollerance, double& averageDistance, double& nrPixelsOverTolerance )
-{
-   assert ( pImage1 != 0 );
-   assert ( pImage2 != 0 );
-   assert ( pImage1->GetWidth() == pImage2->GetWidth() );
-   assert ( pImage1->GetHeight() == pImage2->GetHeight() );
-   assert ( pImage1->GetNumberOfBands() == 3 );
-   assert ( pImage1->GetNumberOfBands() == pImage2->GetNumberOfBands() );
-
-   int width  = pImage1->GetWidth();
-   int height = pImage1->GetHeight();
-   nrPixelsOverTolerance = 0;
-   averageDistance = 0;
-   for ( int x = 0; x < width; x++ )
-   {
-      int localY1 = 0;
-      int localY2 = 0;
-      for ( int y = 0; y < height; y++ )
-      {
-         if ( pImage1->GetColor(x, y) == compareColor )
-         {
-            localY1 = y;
-            break;
-         }
-      }
-      for (int y = 0; y < height; y++ )
-      {
-         if ( pImage2->GetColor(x, y) == compareColor )
-         {
-            localY2 = y;
-            break;
-         }
-      }
-      int deltaY = abs( localY1 - localY2 );
-      if ( deltaY > dyTollerance) {nrPixelsOverTolerance++;}
-      averageDistance += deltaY;
-   }
-   averageDistance /= (double)(width);
-}
-
 //===================================================================================================
 
 // 3. MIX TWO IMAGES

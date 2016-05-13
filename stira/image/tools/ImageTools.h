@@ -112,15 +112,6 @@ public:
      * \return image with visualization of Structural SIMilarity measure */
    static Image* CreateImageSSIM( Image* pImage1, Image* pImage2, int localWindowSize = 9 );
 
-   /** \brief compares a more or less horizontal curve of the same color in two input images
-     * \param pImage1 first image
-     * \param pImage2 second image
-     * \param compareColor the color to be compared
-     * \param dyTollerance tolerance in y direction for the curves in the images
-     * \param averageDistance output parameter: average vertical distance of the two curves
-     * \param nrPixelsOverTolerance the number of pixels om the curve with a distance bigger than the tolerance */
-   static void CompareColorCurveInImages( Image* pImage1, Image* pImage2, ColorValue compareColor, int dyTollerance, double& averageDistance, double& nrPixelsOverTolerance );
-
    /** \brief help function to adjust global color perception of one image compared to another
      * \param pImage1 reference image
      * \param pImage2 image to compare with reference image
