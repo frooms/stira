@@ -13,8 +13,9 @@ that case, the references are mentioned in the doxygen comments for those method
 
 This is a list of external source code integrated in stira:
 <UL>
-<LI>common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/\
-<LI>fouriertools/fouriertools/KissFFT* -> FFT by Mark Borgerding, http://sourceforge.net/projects/kissfft/
+<LI>common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/
+<LI>common/common/SVD -> code from Numerical Recipes, from https://www.ling.ohio-state.edu/~kbaker/pubs/Singular_Value_Decomposition_Tutorial.pdf
+<LI>fouriertools/fouriertools/KissFFT -> FFT by Mark Borgerding, http://sourceforge.net/projects/kissfft/
 <LI>registration -> unimodal image registration by Philippe Thevenaz, http://bigwww.epfl.ch/thevenaz/registration/
 <LI>diffusion/bregman/FlashROF.h  by Tom Goldstein, http://www.math.ucla.edu/~tagoldst/code.html
 <LI>image/tools/VoronoiDiagramGenerator -> by Steven Fortune, http://www.skynet.ie/~sos/mapviewer/voronoi.php
