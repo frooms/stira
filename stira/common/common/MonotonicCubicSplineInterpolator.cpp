@@ -1,7 +1,7 @@
 #include "MonotonicCubicSplineInterpolator.h"
 #include <vector>
 #include <cmath>
-#include <fstream>
+#include <iostream>
 
 namespace stira {
 namespace common {
@@ -108,9 +108,10 @@ void MonotonicCubicSplineInterpolator::CreateInterpolant()
 
 double MonotonicCubicSplineInterpolator::Interpolate(double x)
 {
-    double xLower, xUpper;
-    double yLower, yUpper;
-    double mLower, mUpper;
+    bool inRange = false;
+    double xLower = -1.0, xUpper = -1.0;
+    double yLower = -1.0, yUpper = -1.0;
+    double mLower = -1.0, mUpper = -1.0;
 
     for (int i = 0; i < mNumberOfPoints-1; i++)
     {
@@ -122,17 +123,28 @@ double MonotonicCubicSplineInterpolator::Interpolate(double x)
             yUpper = mData[i+1].y;
             mLower = mData[i].m;
             mUpper = mData[i+1].m;
+            inRange = true;
+            break;
         }
     }
 
-    double h = xUpper - xLower;
-    double t = (x - xLower) / h;
+    if (inRange)
+    {
+        double h = xUpper - xLower;
+        double t = (x - xLower) / h;
 
-    double interpolatedY =       yLower * Hermite00(t)
-                           + h * mLower * Hermite10(t)
-                           +     yUpper * Hermite01(t)
-                           + h * mUpper * Hermite11(t);
-    return interpolatedY;
+        double interpolatedY =       yLower * Hermite00(t)
+                               + h * mLower * Hermite10(t)
+                               +     yUpper * Hermite01(t)
+                               + h * mUpper * Hermite11(t);
+        return interpolatedY;
+    }
+    else
+    {
+        std::cerr << "ERROR: Interpolated value x is not in data range!" << std::endl << std::flush;
+
+        throw -1;
+    }
 }
 
 //----------------------------------------------------------------------------------
