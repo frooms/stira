@@ -12,16 +12,15 @@ All code was written by myself unless stated otherwise. Some methods or algorith
 that case, the references are mentioned in the doxygen comments for those methods.
 
 This is a list of external source code integrated in stira:
-<UL><LI>common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/\
+<UL>
+<LI>common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/\
 <LI>fouriertools/fouriertools/KissFFT* -> FFT by Mark Borgerding, http://sourceforge.net/projects/kissfft/
-<LI>avi -> raw AVI read/write by Boris Rogge (UGent ELIS), Dimitri Van de Ville (UGent ELIS), Vladimir Zlokolica (UGent TELIN), improved by Bart Goossens (UGent TELIN)
-<LI>complexwavelet -> complex wavelets by Bart Goossens, TELIN, UGent
 <LI>registration -> unimodal image registration by Philippe Thevenaz, http://bigwww.epfl.ch/thevenaz/registration/
 <LI>diffusion/bregman/FlashROF.h  by Tom Goldstein, http://www.math.ucla.edu/~tagoldst/code.html
 <LI>image/tools/VoronoiDiagramGenerator -> by Steven Fortune, http://www.skynet.ie/~sos/mapviewer/voronoi.php
+<LI>imageanalysis/imageanalysis/SLIC -> by Radhakrishna Achanta, http://ivrl.epfl.ch/research/superpixels
 <LI>filter/filter/anigauss -> by Jan-Mark Geusebroek, http://staff.science.uva.nl/~mark/downloads.html
-<LI>experiments/yarnprocessing/sqlite3 -> for simple database test http://www.sqlite.org/
 </UL>
-\author Filip Rooms (filip.rooms@gmail.com or frooms@telin.ugent.be) (<A HREF="http://www.filiprooms.be" TARGET="_top">www.filiprooms.be</A>)\n
-Copyright (C) 2008-2010\n
+\author Filip Rooms (filip.rooms@gmail.com) (<A HREF="http://www.filiprooms.be" TARGET="_top">www.filiprooms.be</A>)\n
+Copyright (C) 2008-2016\n
 */
