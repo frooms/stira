@@ -108,7 +108,7 @@ void GenerateImageProcess::run()
    int height = this->GetHeight();
    double frequency = this->GetFrequency();
    double maxSigma = this->GetMaxSigma();
-   ArrayGrid<double>* pGrid;
+   ArrayGrid<double>* pGrid = 0;
    
    std::string imageName;
    Image* pOutImage = 0;
