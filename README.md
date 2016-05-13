@@ -16,8 +16,10 @@ Dependencies
 STIRA
  * OpenCV Open Source Computer Vision 2.0.0 (to check version: see /usr/include/opencv/cvver.h)
     - Availability: http://opencv.willowgarage.com/wiki/ or in a standard linux distro repository
-    - Used by subprojects "common" for polynomial fitting and experiments/testHorizontalFilter/RecursiveLeastSquares 
-      and other subprojects that depend on that
+    - Used by 
+       - common/FitCurve for polynomial fitting
+       - common/ClusteringLearning for PCA
+       - image/ImageIO for reading and writing different image file formats
 
  * FFTW3 Fastest Fourier Transform in the West 
     - Availability: http://www.fftw.org or in a standard linux distro repository
