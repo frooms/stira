@@ -5,7 +5,7 @@ using Qt for the project files and QtCreator as IDE. The files are written to be
 
 It consists of two parts, reflected by two subdirs in the repository:
 - stira: the toolkit itself that consists of the data structures, algorithms and command line test programs. 
-         This part uses Qt only for the the project organizationd and the build system
+         This part uses Qt only for the project organization and the build system
 - gui:   a GUI that brings some of teh functionalities of stira in a GUI. Here Qt libraries and classes are 
          actually used 
   
@@ -27,6 +27,6 @@ STIRA
     - Used by subprojects "fouriertools", "filter" and all other subprojects that depend on that
 
 GUI
- * on Qt of course
+ * on Qt of course (uses version 4.X)
  * also on QWT: Qt Widgets for Technical Applications
     - http://qwt.sourceforge.net/
