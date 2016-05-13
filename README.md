@@ -26,8 +26,6 @@ STIRA
     - Dependency can be removed, and code is then based on integrated KISS-FFT (see above)
     - Used by subprojects "fouriertools", "filter" and all other subprojects that depend on that
 
- * also install libuuid-dev
-
 GUI
  * on Qt of course
  * also on QWT: Qt Widgets for Technical Applications
