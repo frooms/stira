@@ -20,7 +20,7 @@ namespace stira {
 namespace histogram {
 
 /** \brief Class for floating point valued histograms
-  * E.g. needed to represent an normailzed histogram when performing histogram equalization
+  * E.g. needed to represent an normalized histogram when performing histogram equalization
   * WARNING: currently only works for default case when bin size is 1*/
 class FloatHistogram: public HistogramMaster<double>
 {
