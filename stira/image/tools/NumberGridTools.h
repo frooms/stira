@@ -20,6 +20,7 @@
 #include "../../common/common/Statistics.h"
 #include "../../common/common/Point.h"
 #include "../../common/common/RectangularROI.h"
+#include "../../histogram/histogram/JointHistogram.h"
 #include "../datastructures/ArrayGrid.h"
 #include "../tools/NearestNeighborInterpolator.h"
 #include "ArrayGridTools.h"
@@ -338,6 +339,13 @@ public:
 /////////////////////////////////////////
 
    static ArrayGrid<double>* ComputeLocalAutoCorrelation( ArrayGrid<double>* pGridIn, int xCenter, int yCenter, int halfWindowSize );
+
+   static double ComputeLocalCrossCorrelation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                               ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
+
+   // https://www.researchgate.net/post/How_to_calculate_Mutual_Information_between_two_images_by_histogramming_their_joint_intensities
+   static double ComputeLocalMutualInformation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
    /** \brief computes grid with squared error values between two grids
      * \param pGrid1 First grid to compare
@@ -1376,6 +1384,64 @@ ArrayGrid<double>* NumberGridTools<T>::ComputeLocalAutoCorrelation( ArrayGrid<do
 }
 
 //----------------------------------------------------------------------------------
+
+template <class T>
+double NumberGridTools<T>::ComputeLocalCrossCorrelation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                                         ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 )
+{
+    assert( xBottom1 > xTop1 );  assert( xBottom2 > xTop2 );   int width  = xBottom1 - xTop1; assert( (xBottom2 - xTop2 ) == width );
+    assert( yBottom1 > yTop1 );  assert( yBottom2 > yTop2 );   int height = yBottom1 - yTop1; assert( (yBottom2 - yTop2 ) == height );
+
+    double mean1 = ComputeLocalMean( pGrid1, xTop1, yTop1, xBottom1, yBottom1 );
+    double mean2 = ComputeLocalMean( pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+    double sigma1 = sqrt( ComputeLocalVariance( pGrid1, xTop1, yTop1, xBottom1, yBottom1, mean1) );
+    double sigma2 = sqrt( ComputeLocalVariance( pGrid2, xTop2, yTop2, xBottom2, yBottom2, mean2) );
+
+    double crossCorrelation = 0;
+
+    for (int dy = 0; dy <= height; dy++ )
+    {
+        for (int dx = 0; dx <= width; dx++ )
+        {
+            crossCorrelation += ( pGrid1->GetValue( xTop1 + dx, yTop1 + dy ) - mean1 ) * ( pGrid2->GetValue( xTop2 + dx, yTop2 + dy ) - mean2 );
+        }
+    }
+    crossCorrelation /= ( width * height * sigma1 * sigma2 );
+
+    return crossCorrelation;
+}
+
+//----------------------------------------------------------------------------------
+
+template <class T>
+double NumberGridTools<T>::ComputeLocalMutualInformation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                                          ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 )
+{
+    assert( xBottom1 > xTop1 );  assert( xBottom2 > xTop2 );   int width  = xBottom1 - xTop1; assert( (xBottom2 - xTop2 ) == width );
+    assert( yBottom1 > yTop1 );  assert( yBottom2 > yTop2 );   int height = yBottom1 - yTop1; assert( (yBottom2 - yTop2 ) == height );
+
+    histogram::JointHistogram jh( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                  pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+
+    histogram::FloatHistogram pdf1 = jh.GetMarginalPDF1();
+    histogram::FloatHistogram pdf2 = jh.GetMarginalPDF2();
+
+    double mutualInformation = 0;
+
+    for (int y = 0; y < jh.GetNrOfVerticalBins(); y++)
+    {
+        for (int x = 0; x < jh.GetNrOfHorizontalBins(); x++)
+        {
+            double JPDF = jh.GetBinValue(0, x, y);
+            mutualInformation += ( JPDF * log2( JPDF / ( pdf1.GetBinValue(0, x) * pdf2.GetBinValue(0, y ) ) ) );
+        }
+    }
+
+    return mutualInformation;
+}
+
+//----------------------------------------------------------------------------------
+
 template <class T>
 ArrayGrid<double>* NumberGridTools<T>::CreateSquaredErrorGrid( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, bool printOutput )
 {
