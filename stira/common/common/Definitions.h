@@ -23,7 +23,9 @@
 namespace stira {
 namespace common {
 
-enum NumberMode {MODE_REAL, MODE_IMAG, MODE_COMPLEX, MODE_MEAN, UNKNOWN};
+enum NumberMode {MODE_REAL, MODE_IMAG, MODE_COMPLEX, MODE_MEAN, MODE_UNKNOWN};
+
+enum MatchCriterion {MATCH_SSD, MATCH_NCC, MATCH_MI, MATCH_UNKNOWN};
 
 enum DirectionMode { APPLY_FORWARD, APPLY_BACKWARD };
 /** \brief A class to hold spectral bands of an image  */
