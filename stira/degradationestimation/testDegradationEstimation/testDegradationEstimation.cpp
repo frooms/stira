@@ -60,7 +60,7 @@ void TestDeNoise( Image* pImage, double sigmaNoise )
    cout << "Estimated noise level = " << noiseLevel << endl << flush;
    
    Image* pImage3 = PyramidDenoise( pImage2, 3, 8, 3.0 );
-   CompareSmoothSharpDijk cssd( pImage2, pImage3 );
+   CompareSmoothSharpDijk cssd( pImage2, pImage3, std::string("denoise") );
    cssd.Run();
    delete pImage2;
    delete pImage3;
@@ -72,7 +72,7 @@ void TestKuwahara( Image* pImage )
 {
    Image* pImage2 = KuwaharaFilter::Run( pImage );
 
-   CompareSmoothSharpDijk cssd( pImage, pImage2 );
+   CompareSmoothSharpDijk cssd( pImage, pImage2, std::string("kuwahara") );
    cssd.Run();
    delete pImage2;
 }
@@ -82,7 +82,7 @@ void TestKuwahara( Image* pImage )
 void TestBlur( Image* pImage, double sigmaBlur )
 {
    Image* pImage2 = GaussConvolve::ConvolveSeparable( pImage, sigmaBlur );
-   CompareSmoothSharpDijk cssd( pImage, pImage2 );
+   CompareSmoothSharpDijk cssd( pImage, pImage2, std::string("blur") );
    cssd.Run();
    delete pImage2;
 }
@@ -94,7 +94,7 @@ void TestBlurNoise( Image* pImage, double sigmaBlur, double sigmaNoise )
    Image* pImage2 = GaussConvolve::ConvolveSeparable( pImage, sigmaBlur );
    Image* pImage3 = pImage2->Clone();
    pImage3->AddGaussianNoise( sigmaNoise );
-   CompareSmoothSharpDijk cssd( pImage2, pImage3 );
+   CompareSmoothSharpDijk cssd( pImage2, pImage3, std::string("blurnoise") );
    cssd.Run();
    delete pImage2;
    delete pImage3;
