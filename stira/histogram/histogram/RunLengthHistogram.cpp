@@ -50,7 +50,7 @@ RunLengthHistogram::RunLengthHistogram( int maxWidth, int maxLengthHistogram )
 
 RunLengthHistogram::RunLengthHistogram( const RunLengthHistogram& runLengthHistogram )
 {
-   /*mMaxWidth = */runLengthHistogram.GetMaxWidth();
+   /*mMaxWidth = */runLengthHistogram.GetMaxValue();
    /*mMaxLengthHistogram = */runLengthHistogram.GetMaxLengthInHistogram();
    /*mvvWidthLengthHistogram = */runLengthHistogram.GetWidthLengthHistogram();
    /*mvvHistogram2D = */runLengthHistogram.GetHistogram2D();
@@ -67,7 +67,7 @@ RunLengthHistogram* RunLengthHistogram::Clone( )
 
 //-------------------------------------------------------------------------------
 
-int RunLengthHistogram::GetMaxWidth() const
+int RunLengthHistogram::GetMaxValue() const
 {
    return mMaxWidth;
 }
@@ -220,7 +220,7 @@ std::vector< CurveSegment > RunLengthHistogram::GetSegmentsWithGivenWidthOfGiven
 
 //-------------------------------------------------------------------------------
 
-std::vector< CurveSegment > RunLengthHistogram::GetLongestSegmentsWithGivenWidth( int width, int nrSegments )
+std::vector< CurveSegment > RunLengthHistogram::GetLongestSegmentsWithGivenWidth( int width, unsigned int nrSegments )
 {
    std::vector< CurveSegment > allSegments = GetSegmentsWithWidth( width );
 
@@ -228,12 +228,13 @@ std::vector< CurveSegment > RunLengthHistogram::GetLongestSegmentsWithGivenWidth
    std::vector< CurveSegment > selectedSegments;
    if ( nrSegments > allSegments.size() ) {nrSegments = allSegments.size();}
 
-   for ( int i = 0; i < nrSegments; i++ )
+   for ( unsigned int i = 0; i < nrSegments; i++ )
    {
       selectedSegments.push_back( allSegments[i] );
    }
    return selectedSegments;
 }
+
 //-------------------------------------------------------------------------------
 
 int RunLengthHistogram::CountSegmentsWithGivenWidthOfGivenLength( int width, int length )

@@ -31,14 +31,14 @@ struct CurveSegment
    int length;
 };
 
-/** \brief histogram to keep track which widths are found over which yarn lengths
+/** \brief histogram to keep track which values are found over which run lengths
   * Reference: http://www.nlpr.ia.ac.cn/2008papers/gjhy/gh87.pdf
   *            http://www.roborealm.com/help/ShapeHistogram.php */
 class RunLengthHistogram
 {
 public:
    /** \brief constructor
-     * \param maxWidth maximal possible yarn width, even in case of severe yarn defect
+     * \param maxValue maximal possible value in histogram
      * \param maxLength maximal possible segment length */
    RunLengthHistogram( int maxWidth, int maxLengthHistogram );
 
@@ -48,7 +48,7 @@ public:
    /** \brief Copy constructor. */
    RunLengthHistogram* Clone( );
 
-   int GetMaxWidth() const;
+   int GetMaxValue() const;
    int GetMaxLengthInHistogram() const;
    std::vector< std::vector< CurveSegment > > GetWidthLengthHistogram() const;
    std::vector< std::vector<double> > GetHistogram2D() const;
@@ -72,7 +72,7 @@ public:
 
    /** \brief Gets a number of the longest segments with specified width
      * \param width specified width to find longest segments */
-   std::vector< CurveSegment > GetLongestSegmentsWithGivenWidth( int width, int nrSegments );
+   std::vector< CurveSegment > GetLongestSegmentsWithGivenWidth( int width, unsigned int nrSegments );
 
    /** \brief Counts all segments with a specified width of a given length
      * \param width specified width to find all segments of */
