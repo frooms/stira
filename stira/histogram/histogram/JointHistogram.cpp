@@ -10,7 +10,7 @@
  *                                                                                 *
  ***********************************************************************************/
 #include <string>
-#include "ConditionalHistogram.h"
+#include "JointHistogram.h"
 #include "../../image/tools/ImageIO.h"
 #include "../../image/tools/NumberGridTools.h"
 
@@ -21,7 +21,7 @@ namespace histogram {
 
 using namespace image;
 
-ConditionalHistogram::ConditionalHistogram( double horizontalBinSize, double verticalBinSize, double horizontalMin, double horizontalMax, double verticalMin, double verticalMax, int nrBands )
+JointHistogram::JointHistogram( double horizontalBinSize, double verticalBinSize, double horizontalMin, double horizontalMax, double verticalMin, double verticalMax, int nrBands )
 {
    mNrBands = nrBands;
    mHorizontalBinSize = horizontalBinSize;
@@ -45,56 +45,125 @@ ConditionalHistogram::ConditionalHistogram( double horizontalBinSize, double ver
 
 //----------------------------------------------------------------
 
-ConditionalHistogram::ConditionalHistogram( Image* pImage1, Image* pImage2, bool useAbsoluteValues )
+JointHistogram::JointHistogram( Image* pImage1, Image* pImage2, bool useAbsoluteValues )
 {
    assert( pImage1->GetWidth() == pImage2->GetWidth() );
    assert( pImage1->GetHeight() == pImage2->GetHeight() );
    assert( pImage1->GetNumberOfBands() == pImage2->GetNumberOfBands() );
    mNrBands = pImage1->GetNumberOfBands();
 
-   mHorizontalMin = 0.0;
-   mHorizontalMax = pImage1->GetAbsMax( );
-   mVerticalMin = 0.0;
-   mVerticalMax = pImage2->GetAbsMax( );
+   mRoiTopX1 = 0;
+   mRoiTopY1 = 0;
+   mRoiTopX2 = 0;
+   mRoiTopY2 = 0;
+   mRoiBottomX1 = pImage1->GetWidth()-1;
+   mRoiBottomY1 = pImage1->GetHeight()-1;
+   mRoiBottomX2 = pImage1->GetWidth()-1;
+   mRoiBottomY2 = pImage1->GetHeight()-1;
+
+   if (useAbsoluteValues)
+   {
+       mHorizontalMin = 0.0;
+       mHorizontalMax = pImage1->GetAbsMax( );
+       mVerticalMin = 0.0;
+       mVerticalMax = pImage2->GetAbsMax( );
+   }
+   else
+   {
+       pImage1->GetMinMax( mHorizontalMin, mHorizontalMax );
+       pImage2->GetMinMax( mVerticalMin,   mVerticalMax   );
+   }
 
    for (int bandNr = 0; bandNr < mNrBands; bandNr++ )
    {
-      BuildConditionalHistogram( pImage1->GetBands()[bandNr], pImage2->GetBands()[bandNr], useAbsoluteValues );
+      BuildJointHistogram( pImage1->GetBands()[bandNr], pImage2->GetBands()[bandNr], useAbsoluteValues );
    }
-
-   VisualizeAsImage(std::string("MyConditionalHistogram.ppm"));
 }
 
 //----------------------------------------------------------------
 
-ConditionalHistogram::ConditionalHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool useAbsoluteValues )
+JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                image::ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2,
+                                bool useAbsoluteValues )
+{
+    mRoiTopX1 = xTop1;
+    mRoiTopY1 = yTop1;
+    mRoiTopX2 = xTop2;
+    mRoiTopY2 = yTop2;
+    mRoiBottomX1 = xBottom1;
+    mRoiBottomY1 = yBottom1;
+    mRoiBottomX2 = xBottom2;
+    mRoiBottomY2 = yBottom2;
+
+    assert( pGrid1->GetWidth()  == pGrid2->GetWidth() );
+    assert( pGrid1->GetHeight() == pGrid2->GetHeight() );
+
+    if (useAbsoluteValues)
+    {
+        mHorizontalMin = 0.0;
+        mHorizontalMax = NumberGridTools<double>::GetAbsMax( pGrid1 );
+        mVerticalMin   = 0.0;
+        mVerticalMax   = NumberGridTools<double>::GetAbsMax( pGrid2 );
+    }
+    else
+    {
+        NumberGridTools<double>::GetMinMax( pGrid1, mHorizontalMin, mHorizontalMax );
+        NumberGridTools<double>::GetMinMax( pGrid2, mVerticalMin,   mVerticalMax   );
+    }
+
+    BuildJointHistogram( pGrid1, pGrid2, useAbsoluteValues );
+
+    VisualizeAsImage(std::string("MyConditionalHistogram.pgm"));
+}
+
+//----------------------------------------------------------------
+
+JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool useAbsoluteValues )
 {
    assert( pGrid1->GetWidth()  == pGrid2->GetWidth() );
    assert( pGrid1->GetHeight() == pGrid2->GetHeight() );
 
-   mHorizontalMin = 0.0;
-   mHorizontalMax = NumberGridTools<double>::GetAbsMax( pGrid1 );
-   mVerticalMin   = 0.0;
-   mVerticalMax   = NumberGridTools<double>::GetAbsMax( pGrid2 );
+   mRoiTopX1 = 0;
+   mRoiTopY1 = 0;
+   mRoiTopX2 = 0;
+   mRoiTopY2 = 0;
+   mRoiBottomX1 = pGrid1->GetWidth()-1;
+   mRoiBottomY1 = pGrid1->GetHeight()-1;
+   mRoiBottomX2 = pGrid1->GetWidth()-1;
+   mRoiBottomY2 = pGrid1->GetHeight()-1;
 
-   BuildConditionalHistogram( pGrid1, pGrid2, useAbsoluteValues );
+   if (useAbsoluteValues)
+   {
+       mHorizontalMin = 0.0;
+       mHorizontalMax = NumberGridTools<double>::GetAbsMax( pGrid1 );
+       mVerticalMin   = 0.0;
+       mVerticalMax   = NumberGridTools<double>::GetAbsMax( pGrid2 );
+   }
+   else
+   {
+       NumberGridTools<double>::GetMinMax( pGrid1, mHorizontalMin, mHorizontalMax );
+       NumberGridTools<double>::GetMinMax( pGrid2, mVerticalMin,   mVerticalMax   );
+   }
+
+   BuildJointHistogram( pGrid1, pGrid2, useAbsoluteValues );
 
    VisualizeAsImage(std::string("MyConditionalHistogram.pgm"));
 }
 
 //----------------------------------------------------------------
 
-ConditionalHistogram::~ConditionalHistogram()
+JointHistogram::~JointHistogram()
 {
    for (int i = 0; i < mNrBands; i++)
    {
       delete mvpData[i];
+      delete mvpDataNormalized[i];
    }
 }
 
 //----------------------------------------------------------------
 
-bool ConditionalHistogram::Write( std::string fileName )
+bool JointHistogram::Write( std::string fileName )
 {
    if (mNrBands > 0)
    {
@@ -128,37 +197,54 @@ bool ConditionalHistogram::Write( std::string fileName )
 
 //----------------------------------------------------------------
 
-void ConditionalHistogram::BuildConditionalHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool absoluteValue )
+void JointHistogram::BuildJointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool absoluteValue )
 {
-   assert( pGrid1->GetWidth()  == pGrid2->GetWidth() );
-   assert( pGrid1->GetHeight() == pGrid2->GetHeight() );
+   int roiWidth  = mRoiBottomX1 - mRoiTopX1;      assert( ( mRoiBottomX2 - mRoiTopX2 ) == roiWidth );
+   int roiHeight = mRoiBottomY1 - mRoiTopY1;      assert( ( mRoiBottomY2 - mRoiTopY2 ) == roiHeight );
+
    bool needInitialisation = true;
    int initialIntValue = 0;
    ArrayGrid<int>* pHistogramGrid = new ArrayGrid<int>( (int)(mHorizontalMax+1), (int)(mVerticalMax+1), needInitialisation, initialIntValue );
    mvpData.push_back( pHistogramGrid );
 
-   int width = pGrid1->GetWidth();
-   int height = pGrid1->GetHeight();
+   ArrayGrid<double>* pNormalizedGrid = new ArrayGrid<double>( (int)(mHorizontalMax+1), (int)(mVerticalMax+1), needInitialisation, initialIntValue );
+   mvpDataNormalized.push_back( pNormalizedGrid );
 
    if (absoluteValue)
    {
-      for (int y = 0; y < height; y++)
+      for (int dy = 0; dy < roiHeight; dy++)
       {
-         for (int x = 0; x < width; x++)
+         for (int dx = 0; dx < roiWidth; dx++)
          {
-            AddOne( pHistogramGrid, (int)( fabs( pGrid1->GetValue(x, y) ) ),
-                                    (int)( fabs( pGrid2->GetValue(x, y) ) ) );
+            AddOne( pHistogramGrid, (int)( fabs( pGrid1->GetValue( mRoiTopX1 + dx, mRoiTopY1 + dy ) ) ),
+                                    (int)( fabs( pGrid2->GetValue( mRoiTopX2 + dx, mRoiTopY2 + dy ) ) ) );
+         }
+      }
+      for (int y = 0; y < pHistogramGrid->GetHeight(); y++)
+      {
+         for (int x = 0; x < pHistogramGrid->GetWidth(); x++)
+         {
+            // each pixel in the roi increases the value of a certain bin by one, so sum over the histogram is nr of pixels
+            pNormalizedGrid->SetValue( x, y, pHistogramGrid->GetValue( x, y ) / ( roiWidth * roiHeight ) );
          }
       }
    }
    else
    {
-      for (int y = 0; y < height; y++)
+      for (int dy = 0; dy < roiHeight; dy++)
       {
-         for (int x = 0; x < width; x++)
+         for (int dx = 0; dx < roiWidth; dx++)
          {
-            AddOne( pHistogramGrid, (int)( pGrid1->GetValue(x, y) - mHorizontalMin ),
-                                    (int)( pGrid2->GetValue(x, y) - mVerticalMin ) );
+            AddOne( pHistogramGrid, (int)( pGrid1->GetValue( mRoiTopX1 + dx, mRoiTopY1 + dy ) - mHorizontalMin ),
+                                    (int)( pGrid2->GetValue( mRoiTopX2 + dx, mRoiTopY2 + dy ) - mVerticalMin ) );
+         }
+      }
+      for (int y = 0; y < pHistogramGrid->GetHeight(); y++)
+      {
+         for (int x = 0; x < pHistogramGrid->GetWidth(); x++)
+         {
+            // each pixel in the roi increases the value of a certain bin by one, so sum over the histogram is nr of pixels
+            pNormalizedGrid->SetValue( x, y, pHistogramGrid->GetValue( x, y ) / ( roiWidth * roiHeight ) );
          }
       }
    }
@@ -166,7 +252,7 @@ void ConditionalHistogram::BuildConditionalHistogram( image::ArrayGrid<double>* 
 
 //----------------------------------------------------------------
 
-void ConditionalHistogram::AddOne( ArrayGrid<int>* pGrid, int x, int y)
+void JointHistogram::AddOne( ArrayGrid<int>* pGrid, int x, int y)
 {
    assert( x >= 0);
    assert( x < pGrid->GetWidth());
@@ -178,7 +264,7 @@ void ConditionalHistogram::AddOne( ArrayGrid<int>* pGrid, int x, int y)
 
 //----------------------------------------------------------------
 
-int ConditionalHistogram::GetValue(int band, int x, int y)
+int JointHistogram::GetValue(int band, int x, int y)
 {
    assert(band < (int)(mvpData.size()) );
    assert( x >= 0);
@@ -191,21 +277,78 @@ int ConditionalHistogram::GetValue(int band, int x, int y)
 
 //----------------------------------------------------------------
 
-int ConditionalHistogram::GetNrOfHorizontalBins()
+int JointHistogram::GetNrOfHorizontalBins()
 {
    return mvpData[0]->GetWidth();
 }
 
 //----------------------------------------------------------------
 
-int ConditionalHistogram::GetNrOfVerticalBins()
+int JointHistogram::GetNrOfVerticalBins()
 {
    return mvpData[0]->GetHeight();
 }
 
 //----------------------------------------------------------------
 
-void ConditionalHistogram::VisualizeAsImage(std::string imageName)
+int JointHistogram::GetBinValue( int bandNr, int binX, int binY )
+{
+    return mvpData[bandNr]->GetValue( binX, binY );
+}
+
+//----------------------------------------------------------------
+
+double JointHistogram::GetNormalizedBinValue( int bandNr, int binX, int binY )
+{
+    return mvpDataNormalized[bandNr]->GetValue( binX, binY );
+}
+
+//----------------------------------------------------------------
+
+FloatHistogram JointHistogram::GetMarginalPDF1()
+{
+   FloatHistogram fh( mHorizontalMax, mvpDataNormalized.size() );
+
+   for (int bandNr = 0; bandNr < mvpDataNormalized.size(); bandNr++ )
+   {
+      for (int x = 0; x < mvpDataNormalized[0]->GetWidth(); x++)
+      {
+         int tmpValue = 0;
+         for (int y = 0; y < mvpDataNormalized[0]->GetHeight(); y++)
+         {
+            tmpValue += mvpDataNormalized[bandNr]->GetValue( x, y );
+         }
+         fh.SetBinValue( bandNr, x, tmpValue );
+      }
+   }
+
+   return fh;
+}
+
+//----------------------------------------------------------------
+
+FloatHistogram JointHistogram::GetMarginalPDF2()
+{
+   FloatHistogram fh( mVerticalMax, mvpDataNormalized.size() );
+
+   for (int bandNr = 0; bandNr < mvpDataNormalized.size(); bandNr++ )
+   {
+      for (int y = 0; y < mvpDataNormalized[0]->GetHeight(); y++)
+      {
+         int tmpValue = 0;
+         for (int x = 0; x < mvpDataNormalized[0]->GetWidth(); x++)
+         {
+            tmpValue += mvpDataNormalized[bandNr]->GetValue( x, y );
+         }
+         fh.SetBinValue( bandNr, y, tmpValue );
+      }
+   }
+   return fh;
+}
+
+//----------------------------------------------------------------
+
+void JointHistogram::VisualizeAsImage(std::string imageName)
 {
    if (mvpData.size() == 1)
    {

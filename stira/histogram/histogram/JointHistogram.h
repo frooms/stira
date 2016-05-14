@@ -10,17 +10,17 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_HISTOGRAM_CONDITIONALHISTOGRAM_H
-#define STIRA_HISTOGRAM_CONDITIONALHISTOGRAM_H
-
+#ifndef STIRA_HISTOGRAM_JOINTHISTOGRAM_H
+#define STIRA_HISTOGRAM_JOINTHISTOGRAM_H
+#include "FloatHistogram.h"
 #include "../../image/datastructures/Image.h"
 
 namespace stira {
 namespace histogram {
 
-/** \brief simple histogram class
+/** \brief conditional or joint histogram class
   * WARNING: currently only works for default case when bin size is 1*/
-class ConditionalHistogram
+class JointHistogram
 {
 public:
    /** \brief constructor
@@ -31,26 +31,35 @@ public:
      * \param verticalMin minimum value on the vertical axis
      * \param verticalMax minimum value on the vertical axis 
      * All histogram values are initialized to 0 */
-   ConditionalHistogram( double horizontalBinSize, double verticalBinSize, 
-                         double horizontalMin, double horizontalMax, 
-                         double verticalMin, double verticalMax, int nrBands=1 );
+   JointHistogram( double horizontalBinSize, double verticalBinSize,
+                   double horizontalMin, double horizontalMax,
+                   double verticalMin, double verticalMax, int nrBands=1 );
 
    /** \brief constructor
      * Initializes and builds conditional histogram based on the two input images
      * \param pImage1 first input image
      * \param pImage2 second  input image
      * \param useAbsoluteValues flag to use absolute values instead of normal values*/
-   ConditionalHistogram( image::Image* pImage1, image::Image* pImage2, bool useAbsoluteValues=false );
-   
+   JointHistogram( image::Image* pImage1, image::Image* pImage2, bool useAbsoluteValues=false );
+
    /** \brief constructor
      * Initializes and builds conditional histogram based on the two input grids
      * \param pGrid1 first input grid
      * \param pGrid2 second  input grid
      * \param useAbsoluteValues flag to use absolute values instead of normal values*/
-   ConditionalHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool useAbsoluteValues=false );
+   JointHistogram( image::ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                   image::ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2,
+                   bool useAbsoluteValues=false );
+
+   /** \brief constructor
+     * Initializes and builds conditional histogram based on the two input grids
+     * \param pGrid1 first input grid
+     * \param pGrid2 second  input grid
+     * \param useAbsoluteValues flag to use absolute values instead of normal values*/
+   JointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool useAbsoluteValues=false );
    
    /** \brief destructor*/
-   ~ConditionalHistogram();
+   ~JointHistogram();
    
    /** \brief writes current histogram to text file*/
    bool Write( std::string fileName);
@@ -60,6 +69,12 @@ public:
    
    /** \brief Gets nr of bins on the vertical axis in the histogram*/
    int GetNrOfVerticalBins();
+
+   int GetBinValue( int bandNr, int binX, int binY );
+   double GetNormalizedBinValue( int bandNr, int binX, int binY );
+
+   FloatHistogram GetMarginalPDF1();
+   FloatHistogram GetMarginalPDF2();
    
    /** \brief visualizes the current conditional histogram as an image
      * \param imageName name for the exported image as disk file */
@@ -83,9 +98,20 @@ private:
      * \param pGrid1 first grid as input
      * \param pGrid2 second grid as input
      * \param absoluteValue flag whether to use the input values as they are or their absolute values*/
-   void BuildConditionalHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool absoluteValue=false );
+   void BuildJointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool absoluteValue=false );
    
    std::vector< image::ArrayGrid<int>* > mvpData;  ///< the actual histogram data
+   std::vector< image::ArrayGrid<double>* > mvpDataNormalized;  ///< the actual histogram data
+
+   int mRoiTopX1;
+   int mRoiTopY1;
+   int mRoiTopX2;
+   int mRoiTopY2;
+   int mRoiBottomX1;
+   int mRoiBottomY1;
+   int mRoiBottomX2;
+   int mRoiBottomY2;
+
    int mNrBands;  ///< nr of bands used
    int mHorizontalBinSize; ///< size of a bin on the horizontal axis
    int mVerticalBinSize;   ///< size of a bin on the vertical axis
