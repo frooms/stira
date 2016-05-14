@@ -17,7 +17,7 @@
 #include "../../image/tools/ImageIO.h"
 #include "../histogram/IntHistogram.h"
 #include "../histogram/FloatHistogram.h"
-#include "../histogram/ConditionalHistogram.h"
+#include "../histogram/JointHistogram.h"
 #include "../histogram/Spatiogram.h"
 
 using namespace std;
@@ -74,7 +74,7 @@ bool HistogramTest(Image* pInImage)
 bool CondidtionalHistogramTest(Image* pInImage)
 {
    Image* pGammaImage = ImageTools::ApplyGamma( pInImage, 0.5 );
-   ConditionalHistogram ch( pInImage, pGammaImage );
+   JointHistogram ch( pInImage, pGammaImage );
 
    ch.VisualizeAsImage( std::string("ConditionalHistogramGamma.ppm") );
    delete pGammaImage;
