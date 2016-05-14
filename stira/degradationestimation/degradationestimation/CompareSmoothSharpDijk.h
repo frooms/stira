@@ -32,7 +32,7 @@ in: B.K. Ersboll, P. Johansen (eds.), SCIA'99, Proc. 11th Scandinavian Conferenc
 class CompareSmoothSharpDijk
 {
 public:
-   CompareSmoothSharpDijk(image::Image* pImage1, image::Image* pImage2);
+   CompareSmoothSharpDijk(image::Image* pImage1, image::Image* pImage2, std::string name );
    ~CompareSmoothSharpDijk();
    bool Run();
 private:
@@ -41,6 +41,7 @@ private:
    
    int mWidth;
    int mHeight;
+   std::string mName;
 };
 
 }

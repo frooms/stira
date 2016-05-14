@@ -16,7 +16,7 @@
 #include "../../image/datastructures/OrientationGrid.h"
 #include "../../image/tools/NumberGridTools.h"
 #include "../../image/datastructures/Image.h"
-#include "../../histogram/histogram/ConditionalHistogram.h"
+#include "../../histogram/histogram/JointHistogram.h"
 
 namespace stira {
 namespace degradationestimation {
@@ -26,19 +26,19 @@ using namespace image;
 using namespace histogram;
 using namespace filter;
 
-CompareSmoothSharpDijk::CompareSmoothSharpDijk(image::Image* pImage1, image::Image* pImage2)
+CompareSmoothSharpDijk::CompareSmoothSharpDijk(image::Image* pImage1, image::Image* pImage2, string name)
 {
    assert (pImage1 != 0);
    assert (pImage2 != 0);
    
    assert (pImage1->GetWidth() == pImage2->GetWidth() );
    assert (pImage1->GetHeight() == pImage2->GetHeight() );
-   
+   mName = name;
    mpImage1 = pImage1;
    mpImage2 = pImage2;
    
    mWidth = mpImage1->GetWidth();
-   mHeight = pImage1->GetHeight();
+   mHeight = mpImage1->GetHeight();
 }
 
 //----------------------------------------------------------------
@@ -59,9 +59,9 @@ bool CompareSmoothSharpDijk::Run()
    
    Image* pMagnitudeImage1 = new Image( pMagnitudeGrid1 );
    Image* pMagnitudeImage2 = new Image( pMagnitudeGrid2 );
-   ConditionalHistogram ch( pMagnitudeImage1, pMagnitudeImage2, true );
+   JointHistogram ch( pMagnitudeImage1, pMagnitudeImage2, true );
    
-   ch.VisualizeAsImage(std::string("ConditionalHistogram.pgm"));
+   ch.VisualizeAsImage(std::string("ConditionalHistogram_" + mName + ".pgm"));
    return true;
 }
 
