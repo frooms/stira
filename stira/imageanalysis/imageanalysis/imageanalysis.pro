@@ -13,7 +13,8 @@ SOURCES += CannyEdgeDetector.cpp \
     SLIC.cpp \
     HOG.cpp \
     DistanceTransform.cpp \
-    HoughTransform.cpp
+    HoughTransform.cpp \
+    StereoMatchDepth.cpp
 HEADERS += CannyEdgeDetector.h \
     StegerLineDetector.h \
     Thinning.h \
@@ -28,4 +29,5 @@ HEADERS += CannyEdgeDetector.h \
     SLIC.h \
     HOG.h \
     DistanceTransform.h \
-    HoughTransform.h
+    HoughTransform.h \
+    StereoMatchDepth.h
