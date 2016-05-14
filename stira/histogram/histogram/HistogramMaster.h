@@ -78,6 +78,13 @@ public:
    /** \brief Gets the maximum of the data range */
    T GetDataMaximum() const;
 
+   /** \brief sets nr of counts in given bin nr for a given band nr
+     * if the macro USE_SAFE is defined, we use the version with boundary checking, else we use the fast
+     * (unsafe) call to get the data from the array
+     * \param bandNr for multidimensional histograms, e.g. one histogram per color band in an image
+     * \param binNr the bin number to write a value in */
+   void SetBinValue( int bandNr, int binNr, T value );
+
 protected:
 
    /** \brief adds one count in given bin nr for a given band nr
@@ -132,13 +139,6 @@ protected:
    void CreateInitializedDataStructure( );
 
    /** \brief sets nr of counts in given bin nr for a given band nr
-     * if the macro USE_SAFE is defined, we use the version with boundary checking, else we use the fast
-     * (unsafe) call to get the data from the array
-     * \param bandNr for multidimensional histograms, e.g. one histogram per color band in an image
-     * \param binNr the bin number to write a value in */
-   void SetBinValue( int bandNr, int binNr, T value );
-
-   /** \brief sets nr of counts in given bin nr for a given band nr
      * Specific safe call for above with extra boundary checking
      * \param bandNr for multidimensional histograms, e.g. one histogram per color band in an image
      * \param binNr the bin number to write a value in */
@@ -190,10 +190,6 @@ HistogramMaster<T>::HistogramMaster( const HistogramMaster<T>& pHistogram )
       {
          mpHistogram[bandNr][binNr] = pHistogram.GetBinValue( bandNr, binNr );
       }
-   }
-   if (1==1)
-   {
-
    }
 }
 
