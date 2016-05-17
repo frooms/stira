@@ -28,6 +28,7 @@
 #include "../imageanalysis/WatershedToboggan.h"
 #include "../imageanalysis/WatershedMeyer.h"
 #include "../imageanalysis/StegerLineDetector.h"
+#include "../imageanalysis/StereoMatchDepth.h"
 #include "../imageanalysis/FloodFill.h"
 #include "../imageanalysis/ContourTracing.h"
 #include "../imageanalysis/Thinning.h"
@@ -176,6 +177,25 @@ void TestHoughTransform( )
     ImageIO::Write( pImage, string("HoughLinesOut.ppm") );
     delete pEdgeGrid;
     delete pHT;
+}
+
+//-----------------------------------------------------------------------------------
+
+void TestStereoMatch( )
+{
+    int windowHalfWidth = 2;
+    string inputname0 = "../../../../stira/stira/testdata/im0.png";
+    Image* pImage0 = ImageIO::Read( inputname0 );
+
+    string inputname1 = "../../../../stira/stira/testdata/im1.png";
+    Image* pImage1 = ImageIO::Read( inputname1 );
+
+    ArrayGrid<double>* pDisparityGrid = StereoMatchDepth::MatchStereo( pImage0->GetBands()[0], pImage1->GetBands()[0], windowHalfWidth, common::MATCH_SSD );
+    ImageIO::WritePGM( pDisparityGrid, string("DisparityGrid.pgm") );
+
+    delete pImage0;
+    delete pImage1;
+    delete pDisparityGrid;
 }
 
 //-----------------------------------------------------------------------------------
@@ -417,7 +437,7 @@ int main(int argc, char *argv[])
    ImageIO::WritePGM( pEdgeGrid, string("CannyOut.pgm") );
    delete pEdgeGrid;
 
-
+   TestStereoMatch( );
    TestHoughTransform( );
 
    /////////////////////////////////////////////////////

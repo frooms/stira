@@ -337,8 +337,11 @@ public:
 // 4. COMPARISON GRIDS / COEFFICIENTS  //
 //                                     //
 /////////////////////////////////////////
-
    static ArrayGrid<double>* ComputeLocalAutoCorrelation( ArrayGrid<double>* pGridIn, int xCenter, int yCenter, int halfWindowSize );
+
+   static double ComputeLocalSquaredDifference( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
+
 
    static double ComputeLocalCrossCorrelation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
@@ -1381,6 +1384,32 @@ ArrayGrid<double>* NumberGridTools<T>::ComputeLocalAutoCorrelation( ArrayGrid<do
         }
     }
     return pGridOut;
+}
+
+
+//----------------------------------------------------------------------------------
+
+template <class T>
+double NumberGridTools<T>::ComputeLocalSquaredDifference( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                                          ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 )
+{
+    assert( xBottom1 > xTop1 );  assert( xBottom2 > xTop2 );   int width  = xBottom1 - xTop1; assert( (xBottom2 - xTop2 ) == width );
+    assert( yBottom1 > yTop1 );  assert( yBottom2 > yTop2 );   int height = yBottom1 - yTop1; assert( (yBottom2 - yTop2 ) == height );
+
+    double meanSquaredDifference = 0;
+
+    for (int dy = 0; dy <= height; dy++ )
+    {
+        for (int dx = 0; dx <= width; dx++ )
+        {
+            double difference = ( pGrid1->GetValue( xTop1 + dx, yTop1 + dy ) - pGrid2->GetValue( xTop2 + dx, yTop2 + dy ) );
+            meanSquaredDifference += ( difference * difference );
+        }
+    }
+    meanSquaredDifference /= ( width * height );
+
+    return meanSquaredDifference;
+
 }
 
 //----------------------------------------------------------------------------------
