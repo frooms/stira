@@ -107,8 +107,8 @@ image::ArrayGrid<double>* StereoMatchDepth::MatchStereoSSD( image::ArrayGrid<dou
                     xBottom2 = x - dx + windowHalfWidth;
                     yBottom2 = yBottom1;
 
-                    double currentSSD = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
-                                                                                                pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+                    currentSSD = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                                                                         pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
                     if ( currentSSD < bestLocalSSD - 5 )
                     {
                         bestLocalSSD = currentSSD;
@@ -154,21 +154,54 @@ image::ArrayGrid<double>* StereoMatchDepth::MatchStereoNCC( image::ArrayGrid<dou
             int yTop1 = y - windowHalfWidth;
             int xBottom1 = x + windowHalfWidth;
             int yBottom1 = y + windowHalfWidth;
-            for ( int xx = windowHalfWidth; xx < width - windowHalfWidth; xx++ )
+
+            for ( int dx = 1; dx < maxDisparity; dx++ )
             {
-                int xTop2 = xx - windowHalfWidth;
-                int yTop2 = yTop1;
-                int xBottom2 = xx + windowHalfWidth;
-                int yBottom2 = yBottom1;
-                double currentNCC = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
-                                                                                           pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
-                if ( currentNCC > bestLocalNCC )
+                int xTop2, yTop2, xBottom2, yBottom2;
+                double currentNCC;
+                xBottom2 = x + dx + windowHalfWidth;
+                if (xBottom2 < width)
                 {
-                    bestLocalNCC = currentNCC;
-                    bestX = xx;
+                    xTop2 = x + dx - windowHalfWidth;
+                    yTop2 = yTop1;
+                    yBottom2 = yBottom1;
+
+                    currentNCC = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                                                                        pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+                    if ( currentNCC > bestLocalNCC + 0.05 )
+                    {
+                        bestLocalNCC = currentNCC;
+                        bestX = x + dx;
+                    }
+                }
+                xTop2 = x - dx - windowHalfWidth;
+
+                if (xTop2 > 0)
+                {
+                    yTop2 = yTop1;
+                    xBottom2 = x - dx + windowHalfWidth;
+                    yBottom2 = yBottom1;
+
+                    currentNCC = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                                                                        pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+
+                    if ( currentNCC > bestLocalNCC + 0.05 )
+                    {
+                        bestLocalNCC = currentNCC;
+                        bestX = x + dx;
+                    }
                 }
             }
-            pGridResult->SetValue( x, y, abs(x-bestX));
+
+            double disparity = abs(x-bestX);
+            if (disparity < maxDisparity)
+            {
+                pGridResult->SetValue( x, y, disparity);
+            }
+            else
+            {
+                pGridResult->SetValue( x, y, 0 );
+            }
         }
     }
     return pGridResult;
@@ -197,21 +230,53 @@ image::ArrayGrid<double>* StereoMatchDepth::MatchStereoMI( image::ArrayGrid<doub
             int yTop1 = y - windowHalfWidth;
             int xBottom1 = x + windowHalfWidth;
             int yBottom1 = y + windowHalfWidth;
-            for ( int xx = windowHalfWidth; xx < width - windowHalfWidth; xx++ )
+
+            for ( int dx = 1; dx < maxDisparity; dx++ )
             {
-                int xTop2 = xx - windowHalfWidth;
-                int yTop2 = yTop1;
-                int xBottom2 = xx + windowHalfWidth;
-                int yBottom2 = yBottom1;
-                double currentMI = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
-                                                                                           pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
-                if ( currentMI > bestLocalMI )
+                int xTop2, yTop2, xBottom2, yBottom2;
+                double currentMI;
+                xBottom2 = x + dx + windowHalfWidth;
+                if (xBottom2 < width)
                 {
-                    bestLocalMI = currentMI;
-                    bestX = xx;
+                    xTop2 = x + dx - windowHalfWidth;
+                    yTop2 = yTop1;
+                    yBottom2 = yBottom1;
+
+                    currentMI = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                                                                         pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+                    if ( currentMI > bestLocalMI + 100 )
+                    {
+                        bestLocalMI = currentMI;
+                        bestX = x + dx;
+                    }
+                }
+                xTop2 = x - dx - windowHalfWidth;
+
+                if (xTop2 > 0)
+                {
+                    yTop2 = yTop1;
+                    xBottom2 = x - dx + windowHalfWidth;
+                    yBottom2 = yBottom1;
+
+                    currentMI = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                                                                        pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+                    if ( currentMI > bestLocalMI + 100 )
+                    {
+                        bestLocalMI = currentMI;
+                        bestX = x + dx;
+                    }
                 }
             }
-            pGridResult->SetValue( x, y, abs(x-bestX));
+
+            double disparity = abs(x-bestX);
+            if (disparity < maxDisparity)
+            {
+                pGridResult->SetValue( x, y, disparity);
+            }
+            else
+            {
+                pGridResult->SetValue( x, y, 0 );
+            }
         }
     }
     return pGridResult;
