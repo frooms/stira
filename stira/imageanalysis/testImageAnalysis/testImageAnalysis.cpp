@@ -183,6 +183,7 @@ void TestHoughTransform( )
 
 void TestStereoMatch( )
 {
+    int maxDisparity = 200;
     int windowHalfWidth = 2;
     string inputname0 = "../../../../stira/stira/testdata/im0.png";
     Image* pImage0 = ImageIO::Read( inputname0 );
@@ -190,7 +191,7 @@ void TestStereoMatch( )
     string inputname1 = "../../../../stira/stira/testdata/im1.png";
     Image* pImage1 = ImageIO::Read( inputname1 );
 
-    ArrayGrid<double>* pDisparityGrid = StereoMatchDepth::MatchStereo( pImage0->GetBands()[0], pImage1->GetBands()[0], windowHalfWidth, common::MATCH_SSD );
+    ArrayGrid<double>* pDisparityGrid = StereoMatchDepth::MatchStereo( pImage0->GetBands()[0], pImage1->GetBands()[0], windowHalfWidth, common::MATCH_SSD, maxDisparity );
     ImageIO::WritePGM( pDisparityGrid, string("DisparityGrid.pgm") );
 
     delete pImage0;
@@ -437,11 +438,17 @@ int main(int argc, char *argv[])
    ImageIO::WritePGM( pEdgeGrid, string("CannyOut.pgm") );
    delete pEdgeGrid;
 
+
+   /////////////////////////////////////////////////////
+   // STEREO MATCHING
    TestStereoMatch( );
+
+   /////////////////////////////////////////////////////
+   // HOUGH TRANSFORM
    TestHoughTransform( );
 
    /////////////////////////////////////////////////////
-   // SLIC
+   // SLIC: superpixels segmentation
    TestSLIC( pImage );
 
    /////////////////////////////////////////////////////
@@ -475,6 +482,8 @@ int main(int argc, char *argv[])
    // THINNING
    TestThinning( );
 
+   /////////////////////////////////////////////////////
+   // DISTANCE TRANSFORM
    TestDistanceTransform( );
 
    /////////////////////////////////////////////////////
