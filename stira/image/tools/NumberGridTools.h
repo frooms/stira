@@ -346,7 +346,7 @@ public:
    static double ComputeLocalCrossCorrelation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
-   // http://www.mathworks.com/matlabcentral/fileexchange/36538-very-fast-mutual-information-betweentwo-images
+   // http://www.mathworks.com/matlabcentral/fileexchange/36538-very-fast-mutual-information-betweentwo-imagespos
    static double ComputeLocalMutualInformation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                 ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
