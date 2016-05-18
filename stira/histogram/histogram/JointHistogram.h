@@ -73,12 +73,13 @@ public:
    int GetBinValue( int bandNr, int binX, int binY );
    double GetNormalizedBinValue( int bandNr, int binX, int binY );
 
-   FloatHistogram GetMarginalPDF1();
-   FloatHistogram GetMarginalPDF2();
+   FloatHistogram* GetMarginalPDF1();
+   FloatHistogram* GetMarginalPDF2();
    
    /** \brief visualizes the current conditional histogram as an image
      * \param imageName name for the exported image as disk file */
    void VisualizeAsImage( std::string imageName );
+   void ExportText(std::string fileName);
 
 private:
 

@@ -1449,22 +1449,27 @@ double NumberGridTools<T>::ComputeLocalMutualInformation( ArrayGrid<double>* pGr
     assert( xBottom1 > xTop1 );  assert( xBottom2 > xTop2 );   int width  = xBottom1 - xTop1; assert( (xBottom2 - xTop2 ) == width );
     assert( yBottom1 > yTop1 );  assert( yBottom2 > yTop2 );   int height = yBottom1 - yTop1; assert( (yBottom2 - yTop2 ) == height );
 
-    histogram::JointHistogram jh( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
-                                  pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
-
-    histogram::FloatHistogram pdf1 = jh.GetMarginalPDF1();
-    histogram::FloatHistogram pdf2 = jh.GetMarginalPDF2();
+    histogram::JointHistogram* pJH = new histogram::JointHistogram( pGrid1, xTop1, yTop1, xBottom1, yBottom1,
+                                                                    pGrid2, xTop2, yTop2, xBottom2, yBottom2 );
+    histogram::FloatHistogram* pdf1 = pJH->GetMarginalPDF1();
+    histogram::FloatHistogram* pdf2 = pJH->GetMarginalPDF2();
 
     double mutualInformation = 0;
 
-    for (int y = 0; y < jh.GetNrOfVerticalBins(); y++)
+    for (int y = 0; y < pJH->GetNrOfVerticalBins(); y++)
     {
-        for (int x = 0; x < jh.GetNrOfHorizontalBins(); x++)
+        for (int x = 0; x < pJH->GetNrOfHorizontalBins(); x++)
         {
-            double JPDF = jh.GetBinValue(0, x, y);
-            mutualInformation += ( JPDF * log2( JPDF / ( pdf1.GetBinValue(0, x) * pdf2.GetBinValue(0, y ) ) ) );
+            double JPDF = pJH->GetBinValue(0, x, y);
+            if (JPDF > 0)
+            {
+                mutualInformation += ( JPDF * log2( JPDF / ( pdf1->GetBinValue(0, x) * pdf2->GetBinValue(0, y ) ) ) );
+            }
         }
     }
+    delete pJH;
+    delete pdf1;
+    delete pdf2;
 
     return mutualInformation;
 }

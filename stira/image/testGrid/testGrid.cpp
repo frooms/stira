@@ -445,6 +445,70 @@ bool TestCircularShiftGrid()
 
 //--------------------------------------------------------------------
 
+bool TestDistanceCriteria()
+{
+    Image* pImage1 = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/test1.png");
+    Image* pImage2 = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/test1.pgm");
+    Image* pImage3 = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/test1stretch.pgm");
+    Image* pImage4 = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/test2.png");
+
+    ArrayGrid<double>* pGrid1 = pImage1->GetBands()[0];
+    ArrayGrid<double>* pGrid2 = pImage2->GetBands()[0];
+    ArrayGrid<double>* pGrid3 = pImage3->GetBands()[0];
+    ArrayGrid<double>* pGrid4 = pImage4->GetBands()[0];
+
+    double ssd12 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, 0, 0, 511, 511, pGrid2, 0, 0, 511, 511 );
+    double ssd13 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
+    double ssd14 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+    double ssd23 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid2, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
+    double ssd24 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid2, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+    double ssd34 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid3, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+
+    std::cout << "ssd12 = " << ssd12 <<std:: endl;
+    std::cout << "ssd13 = " << ssd13 <<std:: endl;
+    std::cout << "ssd14 = " << ssd14 <<std:: endl;
+    std::cout << "ssd23 = " << ssd23 <<std:: endl;
+    std::cout << "ssd24 = " << ssd24 <<std:: endl;
+    std::cout << "ssd34 = " << ssd34 <<std:: endl;
+
+
+    double ncc12 = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid1, 0, 0, 511, 511, pGrid2, 0, 0, 511, 511 );
+    double ncc13 = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid1, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
+    double ncc14 = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid1, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+    double ncc23 = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid2, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
+    double ncc24 = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid2, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+    double ncc34 = NumberGridTools<double>::ComputeLocalCrossCorrelation( pGrid3, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+
+    std::cout << "ncc12 = " << ncc12 <<std:: endl;
+    std::cout << "ncc13 = " << ncc13 <<std:: endl;
+    std::cout << "ncc14 = " << ncc14 <<std:: endl;
+    std::cout << "ncc23 = " << ncc23 <<std:: endl;
+    std::cout << "ncc24 = " << ncc24 <<std:: endl;
+    std::cout << "ncc34 = " << ncc34 <<std:: endl;
+
+    double mi12 = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid1, 0, 0, 511, 511, pGrid2, 0, 0, 511, 511 );
+    double mi13 = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid1, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
+    double mi14 = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid1, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+    double mi23 = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid2, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
+    double mi24 = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid2, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+    double mi34 = NumberGridTools<double>::ComputeLocalMutualInformation( pGrid3, 0, 0, 511, 511, pGrid4, 0, 0, 511, 511 );
+
+    std::cout << "mi12 = " << mi12 <<std:: endl;
+    std::cout << "mi13 = " << mi13 <<std:: endl;
+    std::cout << "mi14 = " << mi14 <<std:: endl;
+    std::cout << "mi23 = " << mi23 <<std:: endl;
+    std::cout << "mi24 = " << mi24 <<std:: endl;
+    std::cout << "mi34 = " << mi34 <<std:: endl;
+
+    delete pImage1;
+    delete pImage2;
+    delete pImage3;
+    delete pImage4;
+    return true;
+}
+
+//--------------------------------------------------------------------
+
 int main( )
 {
    TestLocalAutoCorrelation();
@@ -471,6 +535,10 @@ int main( )
    if( TestGridExtender() != true )
    {
       cerr << "TestGridExtender failed" << endl << flush;
+   }
+   if ( TestDistanceCriteria() != true )
+   {
+      cerr << "TestDistanceCriteria failed" << endl << flush;
    }
 
    if( LocalStatisticsTest() != true )

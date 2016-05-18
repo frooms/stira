@@ -205,11 +205,8 @@ void JointHistogram::BuildJointHistogram( image::ArrayGrid<double>* pGrid1, imag
    bool needInitialisation = true;
    int initialIntValue = 0;
    ArrayGrid<int>* pHistogramGrid = new ArrayGrid<int>( (int)(mHorizontalMax+1), (int)(mVerticalMax+1), needInitialisation, initialIntValue );
-   mvpData.push_back( pHistogramGrid );
 
    ArrayGrid<double>* pNormalizedGrid = new ArrayGrid<double>( (int)(mHorizontalMax+1), (int)(mVerticalMax+1), needInitialisation, initialIntValue );
-   mvpDataNormalized.push_back( pNormalizedGrid );
-
    if (absoluteValue)
    {
       for (int dy = 0; dy < roiHeight; dy++)
@@ -225,7 +222,8 @@ void JointHistogram::BuildJointHistogram( image::ArrayGrid<double>* pGrid1, imag
          for (int x = 0; x < pHistogramGrid->GetWidth(); x++)
          {
             // each pixel in the roi increases the value of a certain bin by one, so sum over the histogram is nr of pixels
-            pNormalizedGrid->SetValue( x, y, pHistogramGrid->GetValue( x, y ) / ( roiWidth * roiHeight ) );
+            double tmpValue = (double)(pHistogramGrid->GetValue( x, y )) / (double)( roiWidth * roiHeight );
+            pNormalizedGrid->SetValue( x, y, tmpValue );
          }
       }
    }
@@ -237,6 +235,8 @@ void JointHistogram::BuildJointHistogram( image::ArrayGrid<double>* pGrid1, imag
          {
             AddOne( pHistogramGrid, (int)( pGrid1->GetValue( mRoiTopX1 + dx, mRoiTopY1 + dy ) - mHorizontalMin ),
                                     (int)( pGrid2->GetValue( mRoiTopX2 + dx, mRoiTopY2 + dy ) - mVerticalMin ) );
+
+            //std::cout << "Grid value = " << (int)( pGrid1->GetValue( mRoiTopX1 + dx, mRoiTopY1 + dy ) - mHorizontalMin ) << " vs " << (int)( pGrid2->GetValue( mRoiTopX2 + dx, mRoiTopY2 + dy ) - mVerticalMin ) << std:: endl;
          }
       }
       for (int y = 0; y < pHistogramGrid->GetHeight(); y++)
@@ -244,10 +244,14 @@ void JointHistogram::BuildJointHistogram( image::ArrayGrid<double>* pGrid1, imag
          for (int x = 0; x < pHistogramGrid->GetWidth(); x++)
          {
             // each pixel in the roi increases the value of a certain bin by one, so sum over the histogram is nr of pixels
-            pNormalizedGrid->SetValue( x, y, pHistogramGrid->GetValue( x, y ) / ( roiWidth * roiHeight ) );
+            double tmpValue = (double)(pHistogramGrid->GetValue( x, y )) / (double)( roiWidth * roiHeight );
+            pNormalizedGrid->SetValue( x, y, tmpValue );
          }
       }
    }
+   mvpData.push_back( pHistogramGrid );
+   mvpDataNormalized.push_back( pNormalizedGrid );
+
 }
 
 //----------------------------------------------------------------
@@ -305,45 +309,47 @@ double JointHistogram::GetNormalizedBinValue( int bandNr, int binX, int binY )
 
 //----------------------------------------------------------------
 
-FloatHistogram JointHistogram::GetMarginalPDF1()
+FloatHistogram* JointHistogram::GetMarginalPDF1()
 {
-   FloatHistogram fh( mHorizontalMax, mvpDataNormalized.size() );
+   int nrBands = mvpDataNormalized.size();
+   FloatHistogram* pFH = new FloatHistogram( mHorizontalMax+1, nrBands );
 
    for (int bandNr = 0; bandNr < mvpDataNormalized.size(); bandNr++ )
    {
       for (int x = 0; x < mvpDataNormalized[0]->GetWidth(); x++)
       {
-         int tmpValue = 0;
+         float tmpValue = 0;
          for (int y = 0; y < mvpDataNormalized[0]->GetHeight(); y++)
          {
             tmpValue += mvpDataNormalized[bandNr]->GetValue( x, y );
          }
-         fh.SetBinValue( bandNr, x, tmpValue );
+         pFH->SetBinValue( bandNr, x, tmpValue );
       }
    }
 
-   return fh;
+   return pFH;
 }
 
 //----------------------------------------------------------------
 
-FloatHistogram JointHistogram::GetMarginalPDF2()
+FloatHistogram* JointHistogram::GetMarginalPDF2()
 {
-   FloatHistogram fh( mVerticalMax, mvpDataNormalized.size() );
+   int nrBands = mvpDataNormalized.size();
+   FloatHistogram* pFH = new FloatHistogram( mVerticalMax+1, nrBands );
 
    for (int bandNr = 0; bandNr < mvpDataNormalized.size(); bandNr++ )
    {
       for (int y = 0; y < mvpDataNormalized[0]->GetHeight(); y++)
       {
-         int tmpValue = 0;
+         float tmpValue = 0;
          for (int x = 0; x < mvpDataNormalized[0]->GetWidth(); x++)
          {
             tmpValue += mvpDataNormalized[bandNr]->GetValue( x, y );
          }
-         fh.SetBinValue( bandNr, y, tmpValue );
+         pFH->SetBinValue( bandNr, y, tmpValue );
       }
    }
-   return fh;
+   return pFH;
 }
 
 //----------------------------------------------------------------
@@ -371,6 +377,29 @@ void JointHistogram::VisualizeAsImage(std::string imageName)
       delete pImageOut;
    }
 }
+
+//----------------------------------------------------------------
+
+void JointHistogram::ExportText(std::string fileName)
+{
+   ofstream ofp;
+
+   int width  = mvpData[0]->GetWidth();
+   int height = mvpData[0]->GetHeight();
+
+   ofp.open(const_cast<char*>(fileName.c_str()), ios::out);
+
+   for ( int y = 0; y < height; y++)
+   {
+       for (int x = 0; x < width; x++)
+       {
+           ofp << "\t" <<mvpData[0]->GetValue(x, y);
+       }
+       ofp << "\n";
+   }
+   ofp.close();
+}
+
 
 //----------------------------------------------------------------
 
