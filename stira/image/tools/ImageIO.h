@@ -191,11 +191,10 @@ public:
 
    /** \brief reads an image from a disk file using OpenCVuseBGR
      * \param fname the name of the file to read from
-     * \param useBGR are color channels in order BGR instead of RGB
      * \param useROI flag whether to read the whole image or an ROI of the image
      * \param myImageROI if useROI is true, only image data within this ROI will read from the image
      * \return image object containing the data */
-   static Image* ReadImageOpenCV( std::string fname, bool useBGR=false, bool useROI=false, common::RectangularROI<int> myImageROI = common::RectangularROI<int>( 0, 0, 0, 0) );
+   static Image* ReadImageOpenCV( std::string fname, bool useROI=false, common::RectangularROI<int> myImageROI = common::RectangularROI<int>( 0, 0, 0, 0) );
 
    /** \brief reads a single band of an image from a disk file using OpenCV
      * \param fname the name of the file to read from

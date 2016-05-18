@@ -920,7 +920,7 @@ IplImage* ImageIO::ConvertImageToOpenCv( Image* pImage )
 
 //------------------------------------------------------------------------------------------------------------
 
-Image* ImageIO::ReadImageOpenCV( std::string fname, bool useBGR, bool useROI, RectangularROI<int> myImageROI )
+Image* ImageIO::ReadImageOpenCV( std::string fname, bool useROI, RectangularROI<int> myImageROI )
 {
    // flag: >0 the loaded image is forced to be a 3-channel color image
    //       =0 the loaded image is forced to be a 1 channel grayscale image
@@ -955,6 +955,7 @@ Image* ImageIO::ReadImageOpenCV( std::string fname, bool useBGR, bool useROI, Re
       }
 
       int nrBands = channels;
+      if ( nrBands > 3) { nrBands = 3; }
       assert ( topX < bottomX );
       assert ( topY < bottomY );
 
@@ -971,7 +972,7 @@ Image* ImageIO::ReadImageOpenCV( std::string fname, bool useBGR, bool useROI, Re
 
       Image* pImage = new Image( subWidth, subHeight, nrBands );
 
-      if (useBGR)
+      if (pImg->channelSeq[0] == 'B')  // first channel B, so BGR
       {
          for (int y = topY; y < bottomY; y++)
          {
