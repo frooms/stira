@@ -27,15 +27,18 @@ public:
     StereoMatchDepth();
 
     static image::ArrayGrid<double>* MatchStereo(image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2,
-                                          int windowHalfWidth, common::MatchCriterion myMatchCriterion );
+                                          int windowHalfWidth, common::MatchCriterion myMatchCriterion, int maxDisparity );
 
 private:
 
-    static  image::ArrayGrid<double>* MatchStereoSSD( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, int windowHalfWidth );
+    static  image::ArrayGrid<double>* MatchStereoSSD( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, int windowHalfWidth,
+                                                      int maxDisparity );
 
-     static image::ArrayGrid<double>* MatchStereoNCC( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, int windowHalfWidth );
+     static image::ArrayGrid<double>* MatchStereoNCC( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, int windowHalfWidth,
+                                                      int maxDisparity );
 
-     static image::ArrayGrid<double>* MatchStereoMI( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, int windowHalfWidth );
+     static image::ArrayGrid<double>* MatchStereoMI( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, int windowHalfWidth,
+                                                     int maxDisparity );
 };
 
 }
