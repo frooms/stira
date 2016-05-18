@@ -346,7 +346,7 @@ public:
    static double ComputeLocalCrossCorrelation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
-   // https://www.researchgate.net/post/How_to_calculate_Mutual_Information_between_two_images_by_histogramming_their_joint_intensities
+   // http://www.mathworks.com/matlabcentral/fileexchange/36538-very-fast-mutual-information-betweentwo-images
    static double ComputeLocalMutualInformation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                 ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
@@ -1456,17 +1456,48 @@ double NumberGridTools<T>::ComputeLocalMutualInformation( ArrayGrid<double>* pGr
 
     double mutualInformation = 0;
 
+    //Hx = - sum(x_marg.*log2(x_marg + (x_marg == 0))); % Entropy of X
+    int nrBins1 = pdf1->GetNrOfBins();
+    double entropy1 = 0;
+    for (int i = 0; i < nrBins1; i++)
+    {
+        double binValue = pdf1->GetBinValue(0,i);
+        if (binValue != 0)
+        {
+            entropy1 -= ( binValue * log2( binValue ) );
+        }
+    }
+
+    //Hy = - sum(y_marg.*log2(y_marg + (y_marg == 0))); % Entropy of Y
+    int nrBins2 = pdf2->GetNrOfBins();
+    double entropy2 = 0;
+    for (int i = 0; i < nrBins2; i++)
+    {
+        double binValue = pdf2->GetBinValue(0,i);
+        if (binValue != 0)
+        {
+            entropy2 -= ( binValue * log2( binValue ) );
+        }
+    }
+
+    //arg_xy2 = hn.*(log2(hn+(hn==0)));
+    //h_xy = sum(-arg_xy2(:)); % joint entropy
+    double jointEntropy = 0;
     for (int y = 0; y < pJH->GetNrOfVerticalBins(); y++)
     {
         for (int x = 0; x < pJH->GetNrOfHorizontalBins(); x++)
         {
-            double JPDF = pJH->GetBinValue(0, x, y);
-            if (JPDF > 0)
+            double binValue = pJH->GetBinValue(0, x, y);
+            if (binValue != 0)
             {
-                mutualInformation += ( JPDF * log2( JPDF / ( pdf1->GetBinValue(0, x) * pdf2->GetBinValue(0, y ) ) ) );
+                jointEntropy -= ( binValue * log2( binValue ) );
             }
         }
     }
+
+    //M = Hx + Hy - h_xy; % mutual information
+    mutualInformation = entropy1 + entropy2 - jointEntropy;
+
     delete pJH;
     delete pdf1;
     delete pdf2;
