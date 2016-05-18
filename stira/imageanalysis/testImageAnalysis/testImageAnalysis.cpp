@@ -236,36 +236,47 @@ void TestHistogramOrientedGradients( Image *pImage )
 
 //-----------------------------------------------------------------------------------
 
-void TestSLIC( Image *pImage )
+void TestSLIC( )
 {
+    bool useSuperPixelSize = true;
+    string inputname = "../../../../stira/stira/testdata/im0.png";
+    Image* pImage = ImageIO::Read( inputname );
+
     unsigned int* img = 0; //Each 32 bit unsigned int encodes the combination of ARGB values for a single pixel.
-    int nrSiperPixels = 200;
-    double superPixelSize = 10.0;
 
     int width = pImage->GetWidth();
     int height = pImage->GetHeight();
 
     img = ImageTools::CreateIntArrayFromColorImage( pImage );
-
     int imgSize = width*height;
-    //---------------------------------------------------------
-    if(nrSiperPixels < 20 || nrSiperPixels > imgSize/4) nrSiperPixels = imgSize/200;//i.e the default size of the superpixel is 200 pixels
-    if(superPixelSize < 1.0 || superPixelSize > 80.0) superPixelSize = 20.0;
-    //---------------------------------------------------------
+
     int* labels = new int[imgSize];
     int numlabels(0);
 
     SLIC slic;
-    //slic.DoSuperpixelSegmentation_ForGivenNumberOfSuperpixels( img, width, height, labels, numlabels, m_spcount, m_compactness);
-    slic.DoSuperpixelSegmentation_ForGivenSuperpixelSize(img, width, height, labels, numlabels, 100, superPixelSize);//demo
+    if (useSuperPixelSize)
+    {
+        double superPixelSize = 900.0;
+        //if(superPixelSize < 1.0 || superPixelSize > 80.0) superPixelSize = 20.0;
+        slic.DoSuperpixelSegmentation_ForGivenSuperpixelSize(img, width, height, labels, numlabels, superPixelSize, 1 );//demo
+    }
+    else
+    {
+        int nrSiperPixels = 500;
+        if(nrSiperPixels < 20 || nrSiperPixels > imgSize/4) nrSiperPixels = imgSize/200;//i.e the default size of the superpixel is 200 pixels
+        slic.DoSuperpixelSegmentation_ForGivenNumberOfSuperpixels( img, width, height, labels, numlabels, nrSiperPixels, 1 );
+    }
     slic.DrawContoursAroundSegments(img, labels, width, height, 0);
+
     if(labels) delete [] labels;
 
     Image* pImageOut = ImageTools::CreateColorImageFromIntArray( img, width, height );
-    ImageIO::Write( pImageOut, "SlicTest.pgm");
+    ImageIO::Write( pImageOut, "SlicTest.ppm");
 
     if(img) delete [] img;
     delete pImageOut;
+
+    delete pImage;
 }
 
 //-----------------------------------------------------------------------------------
@@ -441,7 +452,7 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // STEREO MATCHING
-   TestStereoMatch( );
+   //TestStereoMatch( );
 
    /////////////////////////////////////////////////////
    // HOUGH TRANSFORM
@@ -449,7 +460,7 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // SLIC: superpixels segmentation
-   TestSLIC( pImage );
+   TestSLIC( );
 
    /////////////////////////////////////////////////////
    // HOG: Histogram of Oriented Gradients
