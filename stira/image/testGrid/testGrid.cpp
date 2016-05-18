@@ -452,10 +452,10 @@ bool TestDistanceCriteria()
     Image* pImage3 = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/test1stretch.pgm");
     Image* pImage4 = ImageIO::ReadImageOpenCV("../../../../stira/stira/testdata/test2.png");
 
-    ArrayGrid<double>* pGrid1 = pImage1->GetBands()[0];
-    ArrayGrid<double>* pGrid2 = pImage2->GetBands()[0];
-    ArrayGrid<double>* pGrid3 = pImage3->GetBands()[0];
-    ArrayGrid<double>* pGrid4 = pImage4->GetBands()[0];
+    ArrayGrid<double>* pGrid1 = pImage1->GetBands()[0];   // reference image
+    ArrayGrid<double>* pGrid2 = pImage2->GetBands()[0];   // reference image, intensities scaled linearly, should match well in NCC
+    ArrayGrid<double>* pGrid3 = pImage3->GetBands()[0];   // shape in reference image stretched, should be bad match
+    ArrayGrid<double>* pGrid4 = pImage4->GetBands()[0];   // reference image in which areas are colored differently, should still match well with MI
 
     double ssd12 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, 0, 0, 511, 511, pGrid2, 0, 0, 511, 511 );
     double ssd13 = NumberGridTools<double>::ComputeLocalSquaredDifference( pGrid1, 0, 0, 511, 511, pGrid3, 0, 0, 511, 511 );
