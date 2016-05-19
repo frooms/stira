@@ -312,41 +312,93 @@ public:
      * \param yBottomRight y coordinate of bottom right corner of local window */
    static double ComputeLocalVariance( ArrayGrid<double>* pGrid, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight );
 
-   /** \brief computes the variance of values for a given real-valued grid given a certain central pixel location and a local window size
-     *
-     * Local mean is computed within this method.
-     *
-     * WARNING: does not perform boundary checking: moves from (x-(localWindowSize/2)) to (x+(localWindowSize/2))
-     *            and from (y-(localWindowSize/2)) to (y+(localWindowSize/2)) without checking if values go out of range!!
+   /** \brief computes the covariance between values in local windows of two given real-valued grids
      *
      * \param pGrid1 first source grid
      * \param pGrid2 second source grid
-     * \param x x coordinate of central pixel
-     * \param y y coordinate of central pixel
-     * \param localWindowWidth width of local window
-     * \param localWindowHeight height of local window
+     * \param xTopLeft x coordinate of left top corner of local window
+     * \param yTopLeft y coordinate of left top corner of local window
+     * \param xBottomRight x coordinate of bottom right corner of local window
+     * \param yBottomRight y coordinate of bottom right corner of local window
      * \param mean1 mean value of pGrid1,
      * \param mean2 mean value of pGrid2 */
    static double ComputeLocalCovariance( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight, double mean1, double mean2 );
 
+   /** \brief computes the kurtosis of values in local window of given real-valued grid
+     *
+     * \param pGrid source grid
+     * \param xTopLeft x coordinate of left top corner of local window
+     * \param yTopLeft y coordinate of left top corner of local window
+     * \param xBottomRight x coordinate of bottom right corner of local window
+     * \param yBottomRight y coordinate of bottom right corner of local window
+     * \param localMean pre-computed mean value of values in local window of pGrid
+     * \param localVariance pre-computed variance of values in local window of pGrid */
    static double ComputeLocalKurtosis( ArrayGrid<double>* pGrid, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight, double localMean, double localVariance );
 
+   /** \brief computes the kurtosis of values in local window of given real-valued grid
+     *
+     * \param pGrid source grid
+     * \param xTopLeft x coordinate of left top corner of local window
+     * \param yTopLeft y coordinate of left top corner of local window
+     * \param xBottomRight x coordinate of bottom right corner of local window
+     * \param yBottomRight y coordinate of bottom right corner of local window */
    static double ComputeLocalKurtosis( ArrayGrid<double>* pGrid, int& xTopLeft, int& yTopLeft, int& xBottomRight, int& yBottomRight );
+
 /////////////////////////////////////////
 //                                     //
 // 4. COMPARISON GRIDS / COEFFICIENTS  //
 //                                     //
 /////////////////////////////////////////
+
+   /** \brief Computes local AutoCorrelation in a pixel neighborhood
+     * \param pGridIn input grid
+     * \param xCenter x coordinate of center of neighborhood
+     * \param yCenter y coordinate of center of neighborhood
+     * \param halfWindowSize half of size of window (for 5x5 window, halfWindowSize is 2)
+     * \return small grid with local autocorrelation */
    static ArrayGrid<double>* ComputeLocalAutoCorrelation( ArrayGrid<double>* pGridIn, int xCenter, int yCenter, int halfWindowSize );
 
+   /** \brief computes sum of square differences between two ROIs in two different grids
+     * \param pGrid1 first input grid
+     * \param xTop1  x coordinate of left top corner of ROI in first grid
+     * \param yTop1  x coordinate of left top corner of ROI in first grid
+     * \param xBottom1  x coordinate of right bottom corner of ROI in first grid
+     * \param yBottom1  y coordinate of right bottom corner of ROI in first grid
+     * \param pGrid2 second input grid
+     * \param xTop1  x coordinate of left top corner of ROI in first grid
+     * \param xTop2  x coordinate of left top corner of ROI in second grid
+     * \param yTop2  y coordinate of left top corner of ROI in second grid
+     * \param xBottom2  x coordinate of right bottom corner of ROI in second grid
+     * \param yBottom2  y coordinate of right bottom corner of ROI in second grid */
    static double ComputeLocalSquaredDifference( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                 ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
-
+   /** \brief computes local normalized cross-correlation between two ROIs in two different grids
+     * \param pGrid1 first input grid
+     * \param xTop1  x coordinate of left top corner of ROI in first grid
+     * \param yTop1  x coordinate of left top corner of ROI in first grid
+     * \param xBottom1  x coordinate of right bottom corner of ROI in first grid
+     * \param yBottom1  y coordinate of right bottom corner of ROI in first grid
+     * \param pGrid2 second input grid
+     * \param xTop2  x coordinate of left top corner of ROI in second grid
+     * \param yTop2  y coordinate of left top corner of ROI in second grid
+     * \param xBottom2  x coordinate of right bottom corner of ROI in second grid
+     * \param yBottom2  y coordinate of right bottom corner of ROI in second grid */
    static double ComputeLocalCrossCorrelation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
-   // http://www.mathworks.com/matlabcentral/fileexchange/36538-very-fast-mutual-information-betweentwo-imagespos
+   /** \brief computes mutual information between two ROIs in two different grids
+     * Reference: http://www.mathworks.com/matlabcentral/fileexchange/36538-very-fast-mutual-information-betweentwo-images
+     * \param pGrid1 first input grid
+     * \param xTop1  x coordinate of left top corner of ROI in first grid
+     * \param yTop1  x coordinate of left top corner of ROI in first grid
+     * \param xBottom1  x coordinate of right bottom corner of ROI in first grid
+     * \param yBottom1  y coordinate of right bottom corner of ROI in first grid
+     * \param pGrid2 second input grid
+     * \param xTop2  x coordinate of left top corner of ROI in second grid
+     * \param yTop2  y coordinate of left top corner of ROI in second grid
+     * \param xBottom2  x coordinate of right bottom corner of ROI in second grid
+     * \param yBottom2  y coordinate of right bottom corner of ROI in second grid */
    static double ComputeLocalMutualInformation( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                 ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
@@ -1356,7 +1408,6 @@ double NumberGridTools<T>::ComputeLocalKurtosis( ArrayGrid<double>* pGrid, int& 
 //                                     //
 /////////////////////////////////////////
 
-
 template <class T>
 ArrayGrid<double>* NumberGridTools<T>::ComputeLocalAutoCorrelation( ArrayGrid<double>* pGridIn, int xCenterRef, int yCenterRef, int halfWindowSize )
 {
@@ -1385,7 +1436,6 @@ ArrayGrid<double>* NumberGridTools<T>::ComputeLocalAutoCorrelation( ArrayGrid<do
     }
     return pGridOut;
 }
-
 
 //----------------------------------------------------------------------------------
 
