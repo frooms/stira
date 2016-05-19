@@ -11,18 +11,3 @@
  ***********************************************************************************/
 
 #include "Definitions.h"
-
-using namespace std;
-
-namespace stira {
-
-namespace common{
-
-Definitions::Definitions()
-{}
-
-Definitions::~Definitions()
-{}
-
-}
-}

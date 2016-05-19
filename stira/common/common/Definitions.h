@@ -28,17 +28,11 @@ enum NumberMode {MODE_REAL, MODE_IMAG, MODE_COMPLEX, MODE_MEAN, MODE_UNKNOWN};
 enum MatchCriterion {MATCH_SSD, MATCH_NCC, MATCH_MI, MATCH_UNKNOWN};
 
 enum DirectionMode { APPLY_FORWARD, APPLY_BACKWARD };
-/** \brief A class to hold spectral bands of an image  */
-class Definitions{
-public:
 
-   /** \brief Constructor.*/
-   Definitions();
+enum NoiseType { NOISETYPE_GAUSSIAN, NOISETYPE_POISSON, NOISETYPE_SALTANDPEPPER };
 
-   /** \brief Destructor. */
-   ~Definitions();
+enum BlurType { BLURTYPE_GAUSSIAN, BLURTYPE_AIRY, BLURTYPE_BOX, BLURTYPE_DISC, BLURTYPE_LINE };
 
-};
 }
 }
 #endif
