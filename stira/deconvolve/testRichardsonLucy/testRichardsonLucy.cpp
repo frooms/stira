@@ -20,6 +20,7 @@
 #include "../../deconvolve/deconvolve/SimulateDegradation.h"
 
 using namespace std;
+using namespace stira::common;
 using namespace stira::image;
 using namespace stira::filter;
 using namespace stira::deconvolve;
