@@ -51,15 +51,15 @@ using namespace stira::image;
   *    http://www.mathworks.com/access/helpdesk/help/toolbox/images/watershed.html
   *    Meyer, Fernand, "Topographic distance and watershed lines," Signal Processing , Vol. 38, July 1994, pp. 113-125
   * Alternative watershed algorithms with source code can be found on
-  *    http://www.esiee.fr/~info/tw/*/
+  *    http://www.esiee.fr/~info/tw/ */
 template < class T >
 class WatershedMeyer
 {
-///////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////
 //                                                   //
 //  0. Constructor  /  Destructor  /  Initializers   //
 //                                                   //
-///////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////
 
 public:
    /** \brief Default constructor*/
@@ -75,11 +75,11 @@ private:
    /** \brief Initialization of the class*/
    void InitializeClassParameters();
 
-////////////////////////////////
+// //////////////////////////////
 //                            //
 //  1. Getters and setters    //
 //                            //
-////////////////////////////////
+// //////////////////////////////
 
 public:
    /** \brief Gets upper limit for pixel to be considered a minimum and thus serve as starting seed for flooding*/
@@ -103,11 +103,11 @@ private:
    double mMaxMinima; ///< upper limit for pixel to be considered a minimum
    double mPrecision; ///< precision in pixel value comparison
 
-////////////////////////////////
+// //////////////////////////////
 //                            //
 //  2. Run method             //
 //                            //
-////////////////////////////////
+// //////////////////////////////
 
 public:
    
@@ -122,11 +122,11 @@ private:
                                       ///<    can be mpSourceImage if mFlagWorkOnGradientImage is false; 
                                       ///<    is a temporarly created gradient image otherwise
 
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 //                                            //
 //  3. After Run, get Watersheds and Labels   //
 //                                            //
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 public:
    /** \brief Get the number of detected watershed pixels*/
    int GetNumberOfWatershedPixels();
@@ -152,18 +152,16 @@ private:
 
    int mNumberOfLabels;  ///< Number of labels
 
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 //                                            //
 //  4. Internal kitchen: helper methods       //
 //                                            //
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 
 private:
    //  4.1 Highest level helper methods
-   ////////////////////////////////////
    
     //  4.1.1 LocalMinimaDetection and subroutines
-    //--------------------------------------------
       /** \brief checks if pixel at given coordinates is a local intensity minimum
         * \param x x coordinate of point to check
         * \param y y coordinate of point to check*/
@@ -182,7 +180,6 @@ private:
       void LocalMinimaDetection();
    
     //  4.1.2 Flooding and subroutines
-    //--------------------------------
    
       /** \brief Main routine for flooding */
       void Flooding();
@@ -199,7 +196,6 @@ private:
       void UpdateLabel( int x, int y, int inLabelOfNeighbour );
 public:
    //  4.2 Lower level helper methods
-   ////////////////////////////////////
 
       
       /** \brief Checks if intensity at pe1 is not a local miminum
@@ -242,7 +238,6 @@ public:
       bool IsValidNeighbour(int x, int y, int dx, int dy);
 private:
    //  4.3 Lower level internal data structures
-   ////////////////////////////////////////////
 
       ArrayGrid<int>* mpRegionalMinimaGrid; ///< regional minima image 
                                              ///< During flooding, it becomes labeled image with LABEL_RIDGE labels
@@ -254,7 +249,7 @@ private:
 };
 
 // END PROTOTYPES
-//////////////////
+// ////////////////
 
 //==============================================================================================================
 //==============================================================================================================
@@ -263,11 +258,11 @@ private:
 //////////////////////////
 // BEGIN IMPLEMENTATIONS
 
-///////////////////////////////////////////////////////
+/// ////////////////////////////////////////////////////
 //                                                   //
 //  0. Constructor  /  Destructor  /  Initializers   //
 //                                                   //
-///////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////
 
 template <class T >
 WatershedMeyer< T >::WatershedMeyer( )
@@ -370,11 +365,11 @@ ArrayGrid< T > * WatershedMeyer< T >::CreateGradientAsInput( ArrayGrid< T > *pIn
 }
 // =================================================================
 
-////////////////////////////////
+// //////////////////////////////
 //                            //
 //  1. Getters and setters    //
 //                            //
-////////////////////////////////
+// //////////////////////////////
 
 template <class T >
 double WatershedMeyer< T >::GetMaxMinimaLevel()
@@ -408,11 +403,11 @@ void WatershedMeyer< T >::SetEqualityPrecision(double precision)
 
 // =================================================================
 
-////////////////////////////////
+// //////////////////////////////
 //                            //
 //  2. Run method             //
 //                            //
-////////////////////////////////
+// //////////////////////////////
 
 template <class T >
 inline bool WatershedMeyer< T >::Run( ArrayGrid< T > *pInputImage, bool usegradientImage, std::string sourceDataName )
@@ -448,11 +443,11 @@ inline bool WatershedMeyer< T >::Run( ArrayGrid< T > *pInputImage, bool usegradi
 
 // =================================================================
 
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 //                                            //
 //  3. After Run, get Watersheds and Labels   //
 //                                            //
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 
 template <class T >
 int WatershedMeyer< T >::GetNumberOfWatershedPixels()
@@ -479,7 +474,7 @@ ArrayGrid<bool>* WatershedMeyer< T >::GetWatershedGrid( )
       pWatershedGrid->SetValue( (*it), true);
    }
    return pWatershedGrid;
-};
+}
 
 //------------------------------------------------------------------------
 
@@ -565,17 +560,15 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
 
 // =================================================================
 
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 //                                            //
 //  4. Internal kitchen: helper methods       //
 //                                            //
-////////////////////////////////////////////////
+// //////////////////////////////////////////////
 
    //  4.1 Highest level helper methods
-   ////////////////////////////////////
    
     //  4.1.1 LocalMinimaDetection and subroutines
-    //--------------------------------------------
     
       template <class T >
       void WatershedMeyer< T >::HandleFifoElementNeighbours( PixelElement<T> peNeighbour, PixelElement<T> peCenter)
@@ -676,13 +669,11 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
       inline void WatershedMeyer< T >::LocalMinimaDetection()
       {
          // 1) Initialize local minima detection
-         ///////////////////////////////////////
          
          mpRegionalMinimaGrid = new ArrayGrid<int>( mpDataInputImage->GetWidth(), mpDataInputImage->GetHeight());
          mpRegionalMinimaGrid->SetGridValues( LABEL_UNPROCESSED );
       
          // 2) Identify non-minima: check if a neighbour pixel has smaller intensity
-         ///////////////////////////////////////////////////////////////////////////
          
          mpFifo = new queue< PixelElement<int> >();
          
@@ -705,7 +696,6 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
          mNumberOfLabels = LABEL_MINIMUM;
       
          // 3) process elements in fifo queue and their neighbours
-         /////////////////////////////////////////////////////////
          
          for (int y = 0; y < height; y++)
          {
@@ -736,7 +726,6 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
     //=========================================================================
    
     //  4.1.2 Flooding and subroutines
-    //--------------------------------
 
       template <class T >
       bool WatershedMeyer< T >::CheckForAlreadyLabeledNeighbours( int x, int y, Point<int>& outLabeledNeighbour, int& outLabel )
@@ -868,7 +857,6 @@ Image* WatershedMeyer< T >::CreateLabelsIntensitiesImage()
    //=====================================================================================
 
    //  4.2 Lower level helper methods
-   ////////////////////////////////////
 
       template <class T >
       PixelElement<T> WatershedMeyer< T >::CreatePixelElement(int x, int y )

@@ -13,10 +13,10 @@
 #ifndef STIRA_WAVELET_WAVELETTAPS_H
 #define STIRA_WAVELET_WAVELETTAPS_H
 
-/** \brief filter taps for some orthogonal wavelet types */
 namespace stira {
 namespace wavelet {
 
+/** \brief filter taps for some orthogonal wavelet types */
 /** \brief enum describing which type of wavelet to use */
 enum WaveletType { DAUBECHIES_1, DAUBECHIES_2, DAUBECHIES_4, DAUBECHIES_8, 
                    SYMLET_1,     SYMLET_2,     SYMLET_4,     SYMLET_8, 

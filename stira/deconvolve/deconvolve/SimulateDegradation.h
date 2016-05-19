@@ -10,6 +10,7 @@
  *                                                                                 *
  ***********************************************************************************/
 #include <vector>
+#include "../../common/common/Definitions.h"
 #include "../../image/datastructures/Image.h"
 
 #ifndef STIRA_DECONVOLVE_SIMULATEDEGRADATION_H
@@ -18,23 +19,22 @@
 namespace stira{
 namespace deconvolve{
 
-enum NoiseType { NOISETYPE_GAUSSIAN, NOISETYPE_POISSON, NOISETYPE_SALTANDPEPPER };
-
-enum BlurType { BLURTYPE_GAUSSIAN, BLURTYPE_AIRY, BLURTYPE_BOX, BLURTYPE_DISC, BLURTYPE_LINE };
-
-
+/** \brief class to simulate image degradation, by blurring and applying noise */
 class SimulateDegradation
 {
 public:
+   /** \brief constructor */
    SimulateDegradation();
+
+   /** \brief destructor */
    ~SimulateDegradation();
 
-   static image::ArrayGrid<double>* GeneratePSF( int width, int height, BlurType myBlurType, std::vector<double> vBlurParameters );
-   static bool SimulateNoise( image::ArrayGrid<double>* pGridIn, NoiseType myNoiseType, double noiseLevel );
+   static image::ArrayGrid<double>* GeneratePSF( int width, int height, common::BlurType myBlurType, std::vector<double> vBlurParameters );
+   static bool SimulateNoise( image::ArrayGrid<double>* pGridIn, common::NoiseType myNoiseType, double noiseLevel );
 
 
-   static image::ArrayGrid<double>* Run( image::ArrayGrid<double>* pGridIn, NoiseType myNoiseType, double noiseLevel, BlurType myBlurType, std::vector<double> vBlurParameters );
-   static image::Image* Run( image::Image* pImageIn, NoiseType myNoiseType, double noiseLevel, BlurType myBlurType, std::vector<double> vBlurParameters );
+   static image::ArrayGrid<double>* Run( image::ArrayGrid<double>* pGridIn, common::NoiseType myNoiseType, double noiseLevel, common::BlurType myBlurType, std::vector<double> vBlurParameters );
+   static image::Image*             Run( image::Image* pImageIn,            common::NoiseType myNoiseType, double noiseLevel, common::BlurType myBlurType, std::vector<double> vBlurParameters );
 };
 
 }

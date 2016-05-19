@@ -21,7 +21,8 @@
 namespace stira {
 namespace image {
 
-// http://www.tannerhelland.com/4743/simple-algorithm-correcting-lens-distortion/
+/** \brief simple class to correct Fisheye distortion
+  *  Reference: http://www.tannerhelland.com/4743/simple-algorithm-correcting-lens-distortion/ */
 class FisheyeCorrector
 {
 public:
@@ -46,7 +47,15 @@ public:
    void ApplyCorrect( ArrayGrid<double>* pGridIn, ArrayGrid<double>* pGridOut, double strength, double zoom );
 
 private:
-   Interpolator* mpInterpolator;
+   Interpolator* mpInterpolator;  ///< image intensity interpolator object
+
+   /** \brief transform the pixel coordinate from distorted to corrected position
+     * \brief x x coordinate in distorted grid for which to compute corrected position
+     * \brief y y coordinate in distorted grid for which to compute corrected position, double
+     * \brief halfWidth
+     * \brief halfHeight
+     * \brief correctionRadius
+     * \brief zoom */
    common::Point<double> TransformPixel(int x, int y, double halfWidth, double halfHeight, double correctionRadius, double zoom );
 };
 }

@@ -34,9 +34,11 @@ namespace common {
 #define LOW  0.02425
 #define HIGH 0.97575
 
+/** \brief class to check if a histogram follows a normal distribution */
 class QuantileNormalDistribution
 {
 public:
+   /** \brief constructor */
    QuantileNormalDistribution();
 
    /** \brief returns for a probability p of a density function the corresponding quantile
@@ -53,14 +55,10 @@ public:
 
 private:
 
-   /* Coefficients in rational approximations. */
-   static const double a[];
-
-   static const double b[];
-
-   static const double c[];
-
-   static const double d[];
+   static const double a[];  ///< Coefficients in rational approximations.
+   static const double b[];  ///< Coefficients in rational approximations.
+   static const double c[];  ///< Coefficients in rational approximations.
+   static const double d[];  ///< Coefficients in rational approximations.
 };
 
 }
