@@ -22,7 +22,7 @@ in mind that this source code is experimental research code and that the author 
 be held responsible for anything going wrong with anything made with this source code!!
 
 1) Files in project not originally from author:
-///////////////////////////////////////////////
+//=============================================
 
    RandomNumbers.h: Definition and Implementation of Random Number Distribution Class
    //  in common/common/Random.h
@@ -30,6 +30,10 @@ be held responsible for anything going wrong with anything made with this source
    //              Distributions," ARL-TR-2168, US Army Research Laboratory,
    //              Aberdeen Proving Ground, MD, 21005-5068, March 2000.
    //              http://ftp.arl.mil/random/
+
+   QuantileNormalDistribution: checks if the quantiles of a histogram are following a normal distribution
+   //  in common/common/QuantileNormalDistribution
+   //         Ref: http://home.online.no/~pjacklam/notes/invnorm/impl/sprouse/ltqnorm.c
    
    KISS FFT: (kiss_fft.ccp/h, kiss_fftnd.ccp/h, _kiss_fft_guts.h) by Mark Borgerding 
    //  in fouriertools/fouriertools/kiss_fftnd.h
@@ -44,15 +48,15 @@ be held responsible for anything going wrong with anything made with this source
    //         http://sourceforge.net/projects/kissfft
    
    Registration: Intramodal registration software by Philippe Thevenaz
-   //  in registration/registration/*
+   //  in registration/registration
    //           http://bigwww.epfl.ch/thevenaz/registration/
    
    Split-Bregman denoising by Tom Goldstein
-   //  in diffusion/bregman/*
+   //  in diffusion/bregman
    //           http://www.stanford.edu/~tagoldst/code.html
    
    Voronoi by Stephan Fortune for original C code and Shane O'Sullivan for C++ wrapper and other adaptations
-   //  in image/tools/VoronoiDiagramGenerator.*
+   //  in image/tools/VoronoiDiagramGenerator
    //           http://www.skynet.ie/~sos/mapviewer/voronoi.php
    
    Anisotropic Gaussian Filtering by Jan-Mark Geusebroek
@@ -61,13 +65,13 @@ be held responsible for anything going wrong with anything made with this source
    //           http://staff.science.uva.nl/~mark/downloads.html#anigauss
 
    SLIC Superpixels
-   //  in imageanalysis/imageanalysis/SLIC.*
+   //  in imageanalysis/imageanalysis/SLIC
    //           http://ivrl.epfl.ch/research/superpixels
 
 ------------------------------------------------------------------------------------
 
 2) external dependencies
-////////////////////////
+//======================
 
 * OpenCV Open Source Computer Vision 2.0.0 (to check version: see /usr/include/opencv/cvver.h)
     - Availability: http://opencv.willowgarage.com/wiki/ or in a standard linux distro repository
@@ -81,7 +85,7 @@ be held responsible for anything going wrong with anything made with this source
 ------------------------------------------------------------------------------------
 
 3) internal dependencies
-////////////////////////
+//======================
 
 common
   |
