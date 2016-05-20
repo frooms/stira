@@ -1,0 +1,28 @@
+/*!
+ *  \mainpage STIRA (old name FRIEP) Simple Toolkit for Image Restoration and Analysis
+ *  \brief STIRA (old name FRIEP) stands for Simple Toolkit for Image Restoration and Analysis.
+ *  This toolkit aims to provide a clearly written, well-documented, independent C++ toolkit for image restoration 
+ *  and analysis. With "simple", "clear" and "well-written", we aim to make the threshold to use the code as low as possible by 
+ *  limiting number of lines per method, choosing well-readable names for variables, methods and classes and avoiding code 
+ *  duplication through inheritance and usage of templates. All functions are provided with doxygen documentation with 
+ *  some explanation of the method and all of its parameters. Independent refers to the fact that the toolkit is self-contained, 
+ *  so not depending on external libraries. The only exceptions are FFTW3 (http://www.fftw.org/) and OpenCV 2.0 (http://opencv.willowgarage.com/documentation/).
+ *  
+ *  All code was written by myself unless stated otherwise. Some methods or algorithms were based on code or pseudocode published online. In
+ *  that case, the references are mentioned in the doxygen comments for those methods.
+ *  
+ *  This is a list of external source code integrated in STIRA:
+ *  <UL>
+ *  <LI>common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/
+ *  <LI>common/common/SVD -> code from Numerical Recipes, from https://www.ling.ohio-state.edu/~kbaker/pubs/Singular_Value_Decomposition_Tutorial.pdf
+ *  <LI>common/common/QuantileNormalDistribution -> checks if the quantiles of a histogram are following a normal distribution, from http://home.online.no/~pjacklam/notes/invnorm/impl/sprouse/ltqnorm.c
+ *  <LI>fouriertools/fouriertools/KissFFT -> FFT by Mark Borgerding, http://sourceforge.net/projects/kissfft/
+ *  <LI>registration -> unimodal image registration by Philippe Thevenaz, http://bigwww.epfl.ch/thevenaz/registration/
+ *  <LI>diffusion/bregman/FlashROF.h  by Tom Goldstein, http://www.math.ucla.edu/~tagoldst/code.html
+ *  <LI>image/tools/VoronoiDiagramGenerator -> by Steven Fortune, http://www.skynet.ie/~sos/mapviewer/voronoi.php
+ *  <LI>imageanalysis/imageanalysis/SLIC -> by Radhakrishna Achanta, http://ivrl.epfl.ch/research/superpixels
+ *  <LI>filter/filter/anigauss -> by Jan-Mark Geusebroek, http://staff.science.uva.nl/~mark/downloads.html
+ *  </UL>
+ *  \author Filip Rooms (filip.rooms@gmail.com) (<A HREF="http://www.filiprooms.be" TARGET="_top">www.filiprooms.be</A>)\n
+ *  Copyright (C) 2008-2016\n
+*/
