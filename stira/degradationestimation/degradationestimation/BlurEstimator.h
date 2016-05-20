@@ -20,7 +20,7 @@
 namespace stira {
 namespace degradationestimation {
 
-/** \brief A class to estimate blur (for now, only first method is implemented)
+/** \brief A class to estimate blur by searching a range of blur values and selecting the one with the best gradient kurtosis
   * References: - "Blur Identification based on Kurtosis Minimization". D. Li, R. Mersereau and S. Simsk in IEEE ICIP2005.
   *             - "Parametric PSF estimation via sparseness maximization in the wavelet domain", F. Rooms, W. Philips and J. Portilla, 
   *                SPIE "Wavelet Applications in Industrial Processing II" 2004, Philadelphia, pp. 26--33

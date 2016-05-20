@@ -20,28 +20,35 @@
 namespace stira {
 namespace degradationestimation {
 
-/*Title: A new measure for the effect of sharpening and smoothing filters on images
-Authors: J. Dijk, D. de Ridder, P.W. Verbeek, J. Walraven, I.T. Young, and L.J. van Vliet
-
-in: B.K. Ersboll, P. Johansen (eds.), SCIA'99, Proc. 11th Scandinavian Conference on Image Analysis 
-    (Kangerlussuaq, Greenland, June 7-11), 
-    Pattern Recognition Society of Denmark, Lyngby, 1999, 213-220. 
-    */
-// WORK IN PROGRESS
-
+/** \brief class to compare effects of sharpening and filtering using joint histograms of gradients
+  *  Reference: "A new measure for the effect of sharpening and smoothing filters on images",
+  *             J. Dijk, D. de Ridder, P.W. Verbeek, J. Walraven, I.T. Young, and L.J. van Vliet
+  *              in: B.K. Ersboll, P. Johansen (eds.), SCIA'99, Proc. 11th Scandinavian Conference on Image Analysis
+  *                  (Kangerlussuaq, Greenland, June 7-11),
+  *                  Pattern Recognition Society of Denmark, Lyngby, 1999, 213-220.
+  * WORK IN PROGRESS */
 class CompareSmoothSharpDijk
 {
 public:
-   CompareSmoothSharpDijk(image::Image* pImage1, image::Image* pImage2, std::string name );
+   /** \brief constructor
+     * \param pImage1 first image to compare
+     * \param pImage2 second image to compare
+     * \param name identifier for identifier of comparison */
+   CompareSmoothSharpDijk( image::Image* pImage1, image::Image* pImage2, std::string name );
+
+   /** \brief destructor */
    ~CompareSmoothSharpDijk();
+
+   /** \brief run method */
    bool Run();
+
 private:
-   image::Image* mpImage1;
-   image::Image* mpImage2;
+   image::Image* mpImage1;     ///< pointer to first image to compare
+   image::Image* mpImage2;     ///< pointer to second image to compare
    
-   int mWidth;
-   int mHeight;
-   std::string mName;
+   int mWidth;          ///< width of images to compare
+   int mHeight;         ///< width of images to compare
+   std::string mName;   ///< name identifier for identifier of comparison
 };
 
 }

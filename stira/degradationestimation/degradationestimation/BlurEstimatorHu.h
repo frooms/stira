@@ -20,7 +20,7 @@
 namespace stira {
 namespace degradationestimation {
 
-/** \brief A class to estimate blur (for now, only first method is implemented)
+/** \brief A class to estimate blur using method of Hu and de Haan
   * References: - "Low Cost Robust Blur estimator". H. Hu and G. De Haan in IEEE ICIP 2006,
   *               Oct. 8-11, 2006, Atlanta (GA), pp. 617-620.
   *             - "Adaptive Image Restoration Based on Local Robust Blur Estimation", H. Hu and G. de Haan,

@@ -20,10 +20,11 @@
 
 // defines DBL_EPSILON: difference between 1 and  least value > 1 representable in "double"
 
+/** \brief several useful enum definitions */
 namespace stira {
 namespace common {
 
-enum NumberMode {MODE_REAL, MODE_IMAG, MODE_COMPLEX, MODE_MEAN, MODE_UNKNOWN};
+enum NumberMode {MODE_REAL, MODE_IMAG, MODE_COMPLEX, MODE_MEAN, MODE_UNKNOWN};   ///<
 
 enum MatchCriterion {MATCH_SSD, MATCH_NCC, MATCH_MI, MATCH_UNKNOWN};
 
