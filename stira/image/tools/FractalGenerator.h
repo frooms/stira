@@ -22,7 +22,7 @@ namespace stira {
 namespace image {
 
 /** \brief class to generate fractals
-  * For now, only the Mandelbrot set is implemented */
+  * It can generate the Mandelbrot set and associated Julia sets */
 class FractalGenerator
 {
 public:

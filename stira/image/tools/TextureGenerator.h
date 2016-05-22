@@ -19,7 +19,7 @@
 namespace stira {
 namespace image {
 
-/** \brief class to generate clouds of Perlin noise
+/** \brief class to generate different kinds of textures
   *  code slightly adapted from  http://lodev.org/cgtutor/randomnoise.html
   */
 class TextureGenerator

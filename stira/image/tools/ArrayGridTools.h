@@ -17,8 +17,8 @@
 
 namespace stira {
 namespace image {
-/**  \brief A class with operations to perform on a regular grid 
-  */
+
+/**  \brief A class with operations to perform on a regular grid */
 template <class T> 
 class ArrayGridTools{
 public:
