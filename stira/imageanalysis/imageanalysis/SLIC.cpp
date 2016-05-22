@@ -12,6 +12,8 @@
 #include "SLIC.h"
 
 
+namespace stira {
+namespace imageanalysis {
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -1276,3 +1278,5 @@ void SLIC::DoSupervoxelSegmentation(
 	EnforceSupervoxelLabelConnectivity(klabels, width, height, depth, numlabels, STEP);
 }
 
+}
+}

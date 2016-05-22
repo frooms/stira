@@ -20,6 +20,9 @@
 using namespace std;
 
 
+namespace stira {
+namespace imageanalysis {
+
 class SLIC  
 {
 public:
@@ -230,5 +233,8 @@ private:
 	double**								m_avecvec;
 	double**								m_bvecvec;
 };
+
+}
+}
 
 #endif // !defined(_SLIC_H_INCLUDED_)
