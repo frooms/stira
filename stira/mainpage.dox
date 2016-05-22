@@ -13,15 +13,16 @@
  *  
  *  This is a list of external source code integrated in STIRA:
  *  <UL>
- *  <LI>common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/
- *  <LI>common/common/SVD -> code from Numerical Recipes, from https://www.ling.ohio-state.edu/~kbaker/pubs/Singular_Value_Decomposition_Tutorial.pdf
- *  <LI>common/common/QuantileNormalDistribution -> checks if the quantiles of a histogram are following a normal distribution, from http://home.online.no/~pjacklam/notes/invnorm/impl/sprouse/ltqnorm.c
- *  <LI>fouriertools/fouriertools/KissFFT -> FFT by Mark Borgerding, http://sourceforge.net/projects/kissfft/
- *  <LI>registration -> unimodal image registration by Philippe Thevenaz, http://bigwww.epfl.ch/thevenaz/registration/
- *  <LI>diffusion/bregman/FlashROF.h  by Tom Goldstein, http://www.math.ucla.edu/~tagoldst/code.html
- *  <LI>image/tools/VoronoiDiagramGenerator -> by Steven Fortune, http://www.skynet.ie/~sos/mapviewer/voronoi.php
- *  <LI>imageanalysis/imageanalysis/SLIC -> by Radhakrishna Achanta, http://ivrl.epfl.ch/research/superpixels
- *  <LI>filter/filter/anigauss -> by Jan-Mark Geusebroek, http://staff.science.uva.nl/~mark/downloads.html
+ *     <LI> common/common/Random.h -> Random number generation by Richard Saucier, http://ftp.arl.mil/random/
+ *     <LI> common/common/SVD -> code from Numerical Recipes, from https://www.ling.ohio-state.edu/~kbaker/pubs/Singular_Value_Decomposition_Tutorial.pdf
+ *     <LI> common/common/QuantileNormalDistribution -> checks if the quantiles of a histogram are following a normal distribution, from http://home.online.no/~pjacklam/notes/invnorm/impl/sprouse/ltqnorm.c
+ *     <LI> fouriertools/fouriertools/KissFFT -> FFT by Mark Borgerding, http://sourceforge.net/projects/kissfft/
+ *     <LI> registration -> unimodal image registration by Philippe Thevenaz, http://bigwww.epfl.ch/thevenaz/registration/
+ *     <LI> diffusion/bregman/FlashROF.h  by Tom Goldstein, http://www.math.ucla.edu/~tagoldst/code.html
+ *     <LI> image/tools/VoronoiDiagramGenerator -> by Steven Fortune, http://www.skynet.ie/~sos/mapviewer/voronoi.php
+ *     <LI> imageanalysis/imageanalysis/DistanceTransform -> by P. Felzenszwalb, http://cs.brown.edu/~pff/dt/
+ *     <LI> imageanalysis/imageanalysis/SLIC -> by Radhakrishna Achanta, http://ivrl.epfl.ch/research/superpixels
+ *     <LI> filter/filter/anigauss -> by Jan-Mark Geusebroek, http://staff.science.uva.nl/~mark/downloads.html
  *  </UL>
  *  \author Filip Rooms (filip.rooms@gmail.com) (<A HREF="http://www.filiprooms.be" TARGET="_top">www.filiprooms.be</A>)\n
  *  Copyright (C) 2008-2016\n
