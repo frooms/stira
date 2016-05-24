@@ -100,7 +100,7 @@ public:
     Vector<T> SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b );
     static std::pair< Matrix<T>, Matrix<T> > SplitCrout( Matrix<T>& LU );
 
-
+    // QR decomposition, from Numerical Recipes
     void DecomposeQR( int n, Matrix<T>& qt, Matrix<T>& r, bool& sing );
 
     std::string name;

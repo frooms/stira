@@ -195,7 +195,7 @@ bool TestSolveSystem()
 }
 
 //-------------------------------------------------------------------
-
+// example from https://en.wikipedia.org/wiki/QR_decomposition
 bool TestDecomposeQR()
 {
    bool result = true;
