@@ -129,7 +129,7 @@ bool TestDecomposeLU()
    a[2][2] = 13;
    a.Print(std::string("a"));
 
-   Matrix<double> dDL = a.Doolittle( 3 );
+   Matrix<double> dDL = a.LU_Doolittle( 3 );
    dDL.Print(std::string("dDoolittle"));
    std::cout << "Determinant Doolittle = " << Matrix<double>::Determinant( dDL) << std::endl;
 
@@ -142,7 +142,7 @@ bool TestDecomposeLU()
    Matrix<double> aBackDL = luDL.first * luDL.second;
    aBackDL.Print("aBackDoolittle");
 
-   Matrix<double> dCr = a.Crout( 3 );
+   Matrix<double> dCr = a.LU_Crout( 3 );
    dCr.Print(std::string("dCrout"));
    std::cout << "Determinant Crout = " << Matrix<double>::Determinant( dCr ) << std::endl;
 
@@ -179,17 +179,51 @@ bool TestSolveSystem()
    b[1] = 24;
    b.Print(std::string("b"));
 
-   Matrix<double> luDL = a.Doolittle( 2 );
+   Matrix<double> luDL = a.LU_Doolittle( 2 );
    Vector<double> xDL = a.SolveDoolittle(2, luDL, b);
    xDL.Print(std::string("xDoolittle"));
 
    std::cout << "Determinant Doolittle = " << Matrix<double>::Determinant( luDL) << std::endl;
 
-   Matrix<double> luCr = a.Crout( 2 );
+   Matrix<double> luCr = a.LU_Crout( 2 );
    Vector<double> xCr = a.SolveCrout( 2, luCr, b );
    xCr.Print(std::string("xCrout"));
 
    std::cout << "Determinant Crout = " << Matrix<double>::Determinant( luCr ) << std::endl;
+
+   return result;
+}
+
+//-------------------------------------------------------------------
+
+bool TestDecomposeQR()
+{
+   bool result = true;
+   bool sing = false;
+
+   unsigned int aRows = 3;
+   unsigned int aCols = 3;
+   Matrix<double>  a( aRows, aCols );
+   Matrix<double> qt( aRows, aCols );
+
+   a[0][0] = 12;
+   a[0][1] = -51;
+   a[0][2] = 4;
+   a[1][0] = 6;
+   a[1][1] = 167;
+   a[1][2] = -68;
+   a[2][0] = -4;
+   a[2][1] = 24;
+   a[2][2] = -41;
+
+   Matrix<double>  r( a );
+
+   a.Print(std::string("a"));
+
+   a.DecomposeQR( aRows, qt, r, sing );
+
+   qt.Print("Q transpose");
+   r.Print("R");
 
    return result;
 }
@@ -203,4 +237,5 @@ int main()
 
    TestDecomposeLU();
    TestSolveSystem();
+   TestDecomposeQR();
 }

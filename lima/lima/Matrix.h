@@ -13,6 +13,18 @@
 #ifndef STIRA_LIMA_MATRIX_H
 #define STIRA_LIMA_MATRIX_H
 
+template<class T>
+inline T SQR(const T a) {return a*a;}
+
+template<class T>
+inline const T &MAX(const T &a, const T &b)
+        {return b > a ? (b) : (a);}
+
+template<class T>
+inline T SIGN(const T &a, const T &b)
+    {return b >= 0 ? (a >= 0 ? a : -a) : (a >= 0 ? -a : a);}
+
+
 #include <cmath>
 #include <iostream>
 #include <fstream>
@@ -37,7 +49,6 @@ class Proxy
     private:
         T* _array;
 };
-
 //============================================================
 //============================================================
 
@@ -52,14 +63,18 @@ public:
       * \param nrColumns number of columns in matrix */
     Matrix( unsigned int nrRows, unsigned int nrColumns );
 
+    Matrix(const Matrix & otherMatrix);
+
     /** \brief destructor */
     ~Matrix();
 
     /** \brief gets number of rows in this matrix */
-    unsigned int GetNrRows() { return mNrRows; }
+    unsigned int GetNrRows() const { return mNrRows; }
 
     /** \brief gets number of columns in this matrix */
-    unsigned int GetNrColumns() { return mNrColumns; }
+    unsigned int GetNrColumns() const { return mNrColumns; }
+
+    T GetValue(int i, int j) const { return mppMatrix[i][j]; }
 
     /** \brief proxy operator to allow double indexing matrix [i][j] of matrices */
     Proxy<T> operator[](unsigned int index) { return Proxy<T>(mppMatrix[index]); }
@@ -75,15 +90,18 @@ public:
     //////////////////////////////
 
     // http://www.sci.utah.edu/~wallstedt/LU.htm
-    Matrix<T> Doolittle( unsigned int d );
+    Matrix<T> LU_Doolittle( unsigned int d );
     Vector<T> SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b );
     static std::pair< Matrix<T>, Matrix<T> > SplitDoolittle( Matrix<T>& LU );
 
     static T Determinant( Matrix<T>& LU );
 
-    Matrix<T> Crout( unsigned int d );
+    Matrix<T> LU_Crout( unsigned int d );
     Vector<T> SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b );
     static std::pair< Matrix<T>, Matrix<T> > SplitCrout( Matrix<T>& LU );
+
+
+    void DecomposeQR( int n, Matrix<T>& qt, Matrix<T>& r, bool& sing );
 
     std::string name;
 private:
@@ -108,6 +126,26 @@ Matrix<T>::Matrix( unsigned int nrRows, unsigned int nrColumns )
            mppMatrix[i][j] = 0;
        }
     }
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
+Matrix<T>::Matrix( const Matrix & otherMatrix )
+{
+    mNrRows = otherMatrix.GetNrRows();
+    mNrColumns = otherMatrix.GetNrColumns();
+    mppMatrix = new T*[mNrRows];
+
+    for( unsigned int i = 0; i < mNrRows; i++)
+    {
+       mppMatrix[i] = new T[mNrColumns];
+       for (unsigned int j = 0; j < mNrColumns; j++)
+       {
+           mppMatrix[i][j] = otherMatrix.GetValue( i, j );
+       }
+    }
+
 }
 
 //------------------------------------------------------------------
@@ -158,7 +196,7 @@ Matrix<T> Matrix<T>::operator * ( Matrix<T>& otherMatrix )
 //------------------------------------------------------------------
 
 template <typename T>
-Matrix<T> Matrix<T>::Doolittle( unsigned int d )
+Matrix<T> Matrix<T>::LU_Doolittle( unsigned int d )
 {
     unsigned int n = mNrRows;
     Matrix<T>* pDest = new Matrix<T>( mNrRows, mNrColumns );
@@ -267,7 +305,7 @@ Vector<T> Matrix<T>::SolveDoolittle( unsigned int d, Matrix<T>& LU, Vector<T>& b
 //------------------------------------------------------------------
 
 template <typename T>
-Matrix<T> Matrix<T>::Crout( unsigned int d )
+Matrix<T> Matrix<T>::LU_Crout( unsigned int d )
 {
    Matrix<T>* pDest = new Matrix<T>( mNrRows, mNrColumns );
    pDest->name = std::string("croutDest");
@@ -355,6 +393,94 @@ Vector<T> Matrix<T>::SolveCrout( unsigned int d, Matrix<T>& LU, Vector<T>& b )
       (*x)[i] = ( y[i] - sum ); // not dividing by diagonals
    }
    return (*x);
+}
+
+//------------------------------------------------------------------
+
+template <typename T>
+void Matrix<T>::DecomposeQR( int n, Matrix<T>& qt, Matrix<T>& r, bool& sing )
+{
+    int i, j, k;
+    Vector<T> c(n), d(n);
+    double scale, sigma, sum, tau;
+
+    for ( k = 0; k < n-1; k++ )
+    {
+        scale = 0.0;
+        for ( i = k; i < n; i++ )
+        {
+            scale = MAX( scale, fabs( r[i][k] ) );
+        }
+
+        if (scale == 0.0)
+        {
+            sing = true;
+            c[k] = d[k] = 0.0;
+        }
+        else
+        {
+            for ( i = k; i < n; i++ )
+            {
+                r[i][k] /= scale;
+            }
+            for ( sum = 0.0, i = k; i < n; i++ )
+            {
+                sum += SQR( r[i][k] );
+            }
+            sigma = SIGN( sqrt(sum), r[k][k] );
+            r[k][k] += sigma;
+            c[k] = sigma * r[k][k];
+            d[k] = - scale * sigma;
+            for ( j = k + 1; j < n; j++ )
+            {
+                for ( sum = 0.0, i = k; i < n; i++ )
+                {
+                    sum += r[i][k]*r[i][j];
+                }
+                tau = sum / c[k];
+                for ( i = k; i < n; i++ )
+                {
+                    r[ i ][ j ] -= tau * r[ i ][ k ];
+                }
+            }
+        }
+    }
+    d[ n - 1 ] = r[ n - 1 ][ n - 1 ];
+    if ( d[ n - 1 ] == 0.0 )
+        sing = true;
+    for ( i = 0; i < n; i++ )
+    {
+        for (int j = 0; j < n; j++ )
+            qt[i][j] = 0.0;
+        qt[i][i] = 1.0;
+    }
+    for ( k = 0; k < n - 1 ; k++ )
+    {
+        if ( c[k] != 0.0 )
+        {
+            for ( j = 0; j < n; j++ )
+            {
+                sum = 0.0;
+                for ( i = k; i < n; i++ )
+                {
+                    sum += r[i][k] * qt[i][j];
+                }
+                sum /= c[k];
+                for (int i = k; i < n; i++ )
+                {
+                    qt[i][j] -= sum * r[i][k];
+                }
+            }
+        }
+    }
+    for ( i = 0; i < n; i++ )
+    {
+        r[i][i]=d[i];
+        for ( j = 0; j < i; j++ )
+        {
+            r[i][j] = 0.0;
+        }
+    }
 }
 
 //------------------------------------------------------------------
