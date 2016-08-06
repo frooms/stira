@@ -16,7 +16,7 @@
 #include <qwt/qwt_plot.h>
 #include <qwt/qwt_plot_curve.h>
 
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 #include <QDialog>
 #include <QBrush>

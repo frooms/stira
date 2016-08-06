@@ -14,7 +14,7 @@
 #define STIRA_IMAGEANALYSIS_STEGERLINEDETECTOR_H
 
 #include <iostream>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../common/common/Point.h"
 
 namespace stira {

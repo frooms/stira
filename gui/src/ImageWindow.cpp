@@ -44,7 +44,7 @@
 #include "ImageDataList.h"
 #include "../../stira/common/common/MathUtils.h"
 #include "../../stira/common/common/StringUtils.h"
-#include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
 
 using namespace std;
 using namespace stira::image;

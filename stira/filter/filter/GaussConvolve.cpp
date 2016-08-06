@@ -15,10 +15,10 @@
 #include "GaussConvolve.h"
 #include "../../common/common/MathUtils.h"
 #include "../../fouriertools/fouriertools/FFT.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/ImageTools.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/GridExtender.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageTools.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagedata/simpletools/GridExtender.h"
 
 //#define KERNEL_VISUALIZE
 

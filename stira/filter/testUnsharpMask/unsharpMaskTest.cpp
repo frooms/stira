@@ -13,9 +13,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <cassert>
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
 
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../filter/GaussConvolve.h"

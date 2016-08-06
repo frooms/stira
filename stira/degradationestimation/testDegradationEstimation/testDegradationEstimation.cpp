@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#include "../../image/tools/ImageIO.h"
 #include <iostream>
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../wavelet/wavelet/NoiseEstimator.h"
 #include "../degradationestimation/CompareSmoothSharpDijk.h"
 #include "../../steerable/pyramid/PyramidReal.h"

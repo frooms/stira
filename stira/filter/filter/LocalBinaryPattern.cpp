@@ -11,8 +11,8 @@
  ***********************************************************************************/
 
 #include "LocalBinaryPattern.h"
-#include "../../image/tools/ImageTools.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageTools.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../histogram/histogram/FloatHistogram.h"
 
 #include "../../common/common/MathUtils.h"

@@ -18,7 +18,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <vector>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

@@ -11,8 +11,8 @@
  ***********************************************************************************/
 
 #include "KuwaharaFilter.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/ImageTools.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
+#include "../../imagetools/tools/ImageTools.h"
 
 namespace stira{
 namespace filter{
@@ -80,29 +80,29 @@ image::Image* KuwaharaFilter::Run( image::Image* pImageIn, int windowSize )
             int y0 = y - distance;
             int x0TopLeft     = x0 - subwindowHalfSize;   int y0TopLeft     = y0 - subwindowHalfSize;
             int x0BottomRight = x0 + subwindowHalfSize;   int y0BottomRight = y0 + subwindowHalfSize;
-            mean[0]     = NumberGridTools<double>::ComputeLocalMean(     pInGrid, x0TopLeft, y0TopLeft, x0BottomRight, y0BottomRight );
-            variance[0] = NumberGridTools<double>::ComputeLocalVariance( pInGrid, x0TopLeft, y0TopLeft, x0BottomRight, y0BottomRight, mean[0] );
+            mean[0]     = GridStatistics<double>::ComputeLocalMean(     pInGrid, x0TopLeft, y0TopLeft, x0BottomRight, y0BottomRight );
+            variance[0] = GridStatistics<double>::ComputeLocalVariance( pInGrid, x0TopLeft, y0TopLeft, x0BottomRight, y0BottomRight, mean[0] );
 
             int x1 = x + distance;
             int y1 = y - distance;
             int x1TopLeft     = x1 - subwindowHalfSize;   int y1TopLeft     = y1 - subwindowHalfSize;
             int x1BottomRight = x1 + subwindowHalfSize;   int y1BottomRight = y1 + subwindowHalfSize;
-            mean[1]     = NumberGridTools<double>::ComputeLocalMean(     pInGrid, x1TopLeft, y1TopLeft, x1BottomRight, y1BottomRight );
-            variance[1] = NumberGridTools<double>::ComputeLocalVariance( pInGrid, x1TopLeft, y1TopLeft, x1BottomRight, y1BottomRight, mean[1] );
+            mean[1]     = GridStatistics<double>::ComputeLocalMean(     pInGrid, x1TopLeft, y1TopLeft, x1BottomRight, y1BottomRight );
+            variance[1] = GridStatistics<double>::ComputeLocalVariance( pInGrid, x1TopLeft, y1TopLeft, x1BottomRight, y1BottomRight, mean[1] );
 
             int x2 = x - distance;
             int y2 = y + distance;
             int x2TopLeft     = x2 - subwindowHalfSize;   int y2TopLeft     = y2 - subwindowHalfSize;
             int x2BottomRight = x2 + subwindowHalfSize;   int y2BottomRight = y2 + subwindowHalfSize;
-            mean[2]     = NumberGridTools<double>::ComputeLocalMean(     pInGrid, x2TopLeft, y2TopLeft, x2BottomRight, y2BottomRight );
-            variance[2] = NumberGridTools<double>::ComputeLocalVariance( pInGrid, x2TopLeft, y2TopLeft, x2BottomRight, y2BottomRight, mean[2] );
+            mean[2]     = GridStatistics<double>::ComputeLocalMean(     pInGrid, x2TopLeft, y2TopLeft, x2BottomRight, y2BottomRight );
+            variance[2] = GridStatistics<double>::ComputeLocalVariance( pInGrid, x2TopLeft, y2TopLeft, x2BottomRight, y2BottomRight, mean[2] );
 
             int x3 = x + distance;
             int y3 = y + distance;
             int x3TopLeft     = x3 - subwindowHalfSize;   int y3TopLeft     = y3 - subwindowHalfSize;
             int x3BottomRight = x3 + subwindowHalfSize;   int y3BottomRight = y3 + subwindowHalfSize;
-            mean[3]     = NumberGridTools<double>::ComputeLocalMean(     pInGrid, x3TopLeft, y3TopLeft, x3BottomRight, y3BottomRight );
-            variance[3] = NumberGridTools<double>::ComputeLocalVariance( pInGrid, x3TopLeft, y3TopLeft, x3BottomRight, y3BottomRight, mean[3] );
+            mean[3]     = GridStatistics<double>::ComputeLocalMean(     pInGrid, x3TopLeft, y3TopLeft, x3BottomRight, y3BottomRight );
+            variance[3] = GridStatistics<double>::ComputeLocalVariance( pInGrid, x3TopLeft, y3TopLeft, x3BottomRight, y3BottomRight, mean[3] );
 
             int smallestIndex = GetSmallestIndex( variance, 4 );
 

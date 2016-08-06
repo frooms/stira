@@ -12,8 +12,8 @@
 
 #include "StegerLineDetector.h"
 #include "../../filter/filter/GaussConvolve.h"
-#include "../../image/datastructures/OrientationGrid.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/datastructures/OrientationGrid.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../common/common/MathUtils.h"
 #include <string>
 
@@ -183,8 +183,8 @@ image::ArrayGrid<bool>* StegerLineDetector::Run( image::ArrayGrid<double>* pGrid
          }
       }
    }
-   pOrientationGrid->ExportMagnitudeImage( string("StegerMagnitude.pgm") );
-   pOrientationGrid->ExportOrientationImage( string("StegerOrientation.pgm"), -100000.0 );
+   //pOrientationGrid->ExportMagnitudeImage( string("StegerMagnitude.pgm") );
+   //pOrientationGrid->ExportOrientationImage( string("StegerOrientation.pgm"), -100000.0 );
    
    delete pGx;
    delete pGy;

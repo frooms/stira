@@ -11,8 +11,8 @@
  ***********************************************************************************/
 
 #include "GeneratePerlinNoiseProcess.h"
-#include "../../stira/image/tools/NumberGridTools.h"
-#include "../../stira/image/tools/PerlinNoise.h"
+#include "../../stira/imagetools/tools/NumberGridTools.h"
+#include "../../stira/imagetools/imagegenerator/PerlinNoise.h"
 #include "../../stira/filter/filter/GaussConvolve.h"
 
 using namespace std;

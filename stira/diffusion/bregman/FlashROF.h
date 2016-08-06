@@ -27,7 +27,7 @@
 
 typedef double num;
 enum neighbortype{ROF_ISOTROPIC, ROF_ANISOTROPIC};
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 

@@ -11,7 +11,7 @@
  ***********************************************************************************/
 
 #include "StereoMatchDepth.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagetools/tools/NumberGridTools.h"
 #include <string>
 
 namespace stira {

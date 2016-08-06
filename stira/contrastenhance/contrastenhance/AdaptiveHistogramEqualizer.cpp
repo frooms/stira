@@ -5,8 +5,8 @@
 #include "../../filter/filter/GaussConvolve.h"
 #include "../../histogram/histogram/IntHistogram.h"
 #include "../../histogram/histogram/FloatHistogram.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/BilinearInterpolator.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagetools/interpolation/BilinearInterpolator.h"
 
 using namespace stira::common;
 using namespace stira::image;

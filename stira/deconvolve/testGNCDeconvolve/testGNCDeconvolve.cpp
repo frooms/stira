@@ -13,8 +13,8 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
 #include "../../filter/filter/GaussConvolve.h"
 #include "../../deconvolve/deconvolve/GNCDeconvolve.h"
 

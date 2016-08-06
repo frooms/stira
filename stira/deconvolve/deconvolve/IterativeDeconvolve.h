@@ -13,7 +13,7 @@
 #ifndef STIRA_DECONVOLVE_ITERATIVEDECONVOLVE_H
 #define STIRA_DECONVOLVE_ITERATIVEDECONVOLVE_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../fouriertools/fouriertools/FFTBand.h"
 #include "DeconvolveMaster.h"
 

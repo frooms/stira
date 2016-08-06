@@ -15,7 +15,7 @@
 
 #include <string>
 #include <vector>
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 #include "../../common/common/Point.h"
 
 

@@ -11,7 +11,7 @@
  ***********************************************************************************/
 
 #include "SeparableFilter.h"
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
 namespace filter {

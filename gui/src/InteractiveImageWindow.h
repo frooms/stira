@@ -33,8 +33,8 @@
 #include <QFrame>
 
 #include "ClickableLabel.h"
-#include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/tools/FractalGenerator.h"
+#include "../../stira/imagedata/datastructures/Image.h"
+#include "../../stira/imagetools/imagegenerator/FractalGenerator.h"
 
 class ProcessManager;
 

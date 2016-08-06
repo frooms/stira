@@ -14,7 +14,7 @@
 
 #include "PyramidDenoiser.h"
 
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
 
 namespace stira {
 namespace pyramidapplications {
@@ -73,8 +73,8 @@ double PyramidDenoiser::EstimateSigmaSignal( ArrayGrid<double>* pBand, int xCent
       int yTopleft = yCenter - windowHalfSize;
       int xBottomRight = xCenter + windowHalfSize;
       int yBottomRight = yCenter + windowHalfSize;
-      double tmpMean       = NumberGridTools< double >::ComputeLocalMean(     pBand, xTopleft, yTopleft, xBottomRight, yBottomRight );
-      double localVariance = NumberGridTools< double >::ComputeLocalVariance( pBand, xTopleft, yTopleft, xBottomRight, yBottomRight, tmpMean );
+      double tmpMean       = GridStatistics< double >::ComputeLocalMean(     pBand, xTopleft, yTopleft, xBottomRight, yBottomRight );
+      double localVariance = GridStatistics< double >::ComputeLocalVariance( pBand, xTopleft, yTopleft, xBottomRight, yBottomRight, tmpMean );
       double signalVariance = localVariance - ( sigmaNoise * sigmaNoise );
       if (signalVariance > 0.0)
       {
@@ -297,8 +297,8 @@ void PyramidDenoiser::DenoiseLevelBivariate(int level)
          ArrayGrid<double>* pBandCurrent = pBandSetCurrent->GetOrientedBand( orientationIndex);
          ArrayGrid<double>* pBandParent = pBandSetParent->GetOrientedBand( orientationIndex);
 
-         double meanVal     = NumberGridTools<double>::GetGridMean( pBandCurrent );
-         double varianceVal = NumberGridTools<double>::GetGridVariance( pBandCurrent, meanVal );
+         double meanVal     = GridStatistics<double>::GetGridMean( pBandCurrent );
+         double varianceVal = GridStatistics<double>::GetGridVariance( pBandCurrent, meanVal );
 
          #ifdef DEBUG
          cout << "Denoising level " << level << " and orientationIndex " << orientationIndex

@@ -13,7 +13,7 @@
 #ifndef STIRA_FILTER_ADAPTIVEBILINEARFILTER_H
 #define STIRA_FILTER_ADAPTIVEBILINEARFILTER_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

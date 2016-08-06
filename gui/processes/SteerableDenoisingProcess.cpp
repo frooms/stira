@@ -11,7 +11,7 @@
  ***********************************************************************************/
 
 #include "SteerableDenoisingProcess.h"
-#include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
 #include "../../stira/steerable/pyramid/PyramidReal.h"
 #include "../../stira/pyramidapplications/pyramidapplications/PyramidDenoiser.h"
 

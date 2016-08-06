@@ -13,7 +13,7 @@
 #include <iostream>
 #include "CannyEdgeDetector.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../histogram/histogram/IntHistogram.h"
 #include "../../filter/filter/NonSeparableFilter.h"
 #include "../../fouriertools/fouriertools/FFT.h"

@@ -15,8 +15,8 @@
 #include "../../filter/filter/GaussConvolve.h"
 #include "../../histogram/histogram/IntHistogram.h"
 #include "../../histogram/histogram/FloatHistogram.h"
-#include "../../image/tools/NumberGridTools.h"
-
+#include "../../imagedata/simpletools/ImageStatistics.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
 #define DEBUG
 
 namespace stira {
@@ -131,7 +131,7 @@ bool HistogramTools::RobustLinearRescaleNoNew( image::Image* pSourceImage, doubl
    {
       for (int bandNr = 0; bandNr < pSourceImage->GetNumberOfBands(); bandNr++ )
       {
-         pSourceImage->GetMinMax(imageMin, imageMax, bandMin, bandMax );
+         ImageStatistics::GetMinMax( pSourceImage, imageMin, imageMax, bandMin, bandMax );
 
          int width  = pSourceImage->GetWidth();
          int height = pSourceImage->GetHeight();
@@ -149,7 +149,7 @@ bool HistogramTools::RobustLinearRescaleNoNew( image::Image* pSourceImage, doubl
    {
       bool useDataMinMax = true;
       IntHistogram stdHistogram( pSourceImage, useDataMinMax, lowerFraction, upperFraction );
-      pSourceImage->GetMinMax(imageMin, imageMax, bandMin, bandMax );
+      ImageStatistics::GetMinMax( pSourceImage, imageMin, imageMax, bandMin, bandMax );
 
       double robustMax = stdHistogram.GetUpperBound( bandMax );
       double robustMin = stdHistogram.GetLowerBound( bandMin );
@@ -167,7 +167,7 @@ bool HistogramTools::RobustLinearRescaleNoNew( image::Image* pSourceImage, doubl
             }
          }
          double clippedMin, clippedMax;
-         NumberGridTools<double>::GetMinMax( pGrid, clippedMin, clippedMax );
+         GridStatistics<double>::GetMinMax( pGrid, clippedMin, clippedMax );
          for (int y = 0; y < height; y++)
          {
             for (int x = 0; x < width; x++)
@@ -190,7 +190,7 @@ void HistogramTools::HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInG
    double dataMin, dataMax;
    int nrBands = 1;
 
-   NumberGridTools<double>::GetMinMax( pInGrid, dataMin, dataMax );
+   GridStatistics<double>::GetMinMax( pInGrid, dataMin, dataMax );
    bool useDataMinMax = false;
    IntHistogram* pStdHistogram       = new IntHistogram( pInGrid, useDataMinMax );
    IntHistogram* pCumulHistogram     = new IntHistogram( pInGrid, useDataMinMax );
@@ -264,10 +264,10 @@ Image* HistogramTools::HistogramEqualizeHSI( image::Image* pSourceImage )
 
       ArrayGrid<double>* pValueGrid = pResultImage->GetBands()[2];  // pValueGrid refers directly to the I values
 
-      NumberGridTools<double>::RescaleGrid( pValueGrid, dataMin, dataMax );
+      GridStatistics<double>::RescaleGrid( pValueGrid, dataMin, dataMax );
       HistogramEqualizeSingleBand( pValueGrid );
 
-      NumberGridTools<double>::RescaleGrid( pValueGrid, 0.0, 1.0 );
+      GridStatistics<double>::RescaleGrid( pValueGrid, 0.0, 1.0 );
       pResultImage->HSIToRGB();
 
       std::string outName = pSourceImage->GetImageName() + std::string("-EqualizeHSI");
@@ -305,11 +305,11 @@ Image* HistogramTools::ColorHistogramEqualize( image::Image* pSourceImage )
       pResultImage->sRGBToLab();
 
       ArrayGrid<double>* pValueGrid = pResultImage->GetBands()[0];  // pValueGrid refers directly to the L values
-      NumberGridTools<double>::RescaleGrid( pValueGrid, dataMin, dataMax );
+      GridStatistics<double>::RescaleGrid( pValueGrid, dataMin, dataMax );
 
       HistogramEqualizeSingleBand( pValueGrid );
 
-      NumberGridTools<double>::RescaleGrid( pResultImage->GetBands()[0], 0.0, 99.0 );
+      GridStatistics<double>::RescaleGrid( pResultImage->GetBands()[0], 0.0, 99.0 );
 
       pResultImage->LabTosRGB();
       pResultImage->ClipImageValues( 0.0, 255.0 );

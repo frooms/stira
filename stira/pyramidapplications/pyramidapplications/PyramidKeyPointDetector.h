@@ -15,7 +15,7 @@
 
 #include <complex>
 
-#include "../../image/datastructures/Pyramid.h"
+#include "../../imagedata/datastructures/Pyramid.h"
 
 namespace stira {
 namespace pyramidapplications {

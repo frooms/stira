@@ -12,7 +12,9 @@
 
 #include "IntHistogram.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
+#include "../../imagedata/simpletools/ImageStatistics.h"
+
 
 //#define DEBUG
 
@@ -34,7 +36,7 @@ IntHistogram::IntHistogram( image::Image* pImage, bool useDataMinMax, double low
 
    if (useDataMinMax)
    {
-      pImage->GetMinMax( mmin, mmax );
+      ImageStatistics::GetMinMax( pImage, mmin, mmax );
    }
    else
    {
@@ -66,7 +68,7 @@ IntHistogram::IntHistogram( image::Image* pImage, bool useDataMinMax, common::Re
 
    if (useDataMinMax)
    {
-      pImage->GetMinMax( mmin, mmax );
+      ImageStatistics::GetMinMax( pImage, mmin, mmax );
    }
    else
    {
@@ -98,7 +100,7 @@ IntHistogram::IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax,
 
    if (useDataMinMax)
    {
-      NumberGridTools<double>::GetMinMax( pGrid, mmin, mmax );
+      GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
    }
    else
    {
@@ -132,7 +134,7 @@ IntHistogram::IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax,
 
    if (useDataMinMax)
    {
-      NumberGridTools<double>::GetMinMax( pGrid, mmin, mmax );
+      GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
    }
    else
    {

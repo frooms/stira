@@ -13,7 +13,7 @@
 #ifndef STIRA_FILTER_GAUSSCONVOLVE_H
 #define STIRA_FILTER_GAUSSCONVOLVE_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 #include "SeparableFilter.h"
 

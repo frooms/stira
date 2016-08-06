@@ -18,7 +18,7 @@
 #include "kiss_fft.h"
 #include "kiss_fftnd.h"
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../common/common/Definitions.h"
 
 #include "FFTBand.h"

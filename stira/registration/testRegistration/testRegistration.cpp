@@ -11,7 +11,7 @@
  ***********************************************************************************/
 
 #include "../registration/RegistrationWrapper.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include <string>
 
 using namespace std;

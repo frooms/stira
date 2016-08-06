@@ -32,7 +32,7 @@
 #include <QFrame>
 
 #include "ClickableLabel.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 class ProcessManager;
 

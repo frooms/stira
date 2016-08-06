@@ -15,7 +15,7 @@
 #include "FFTBand.h"
 #include "KISSFFTCalculator.h"
 #include "FFTWCalculator.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 // to use FFTW (www.fftw.org), uncomment the following line
 #define USE_FFTW

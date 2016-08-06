@@ -11,7 +11,7 @@
  ***********************************************************************************/
 
 #include "GNCDeconvolve.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagetools/tools/NumberGridTools.h"
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../../fouriertools/fouriertools/FFTBand.h"
 #include "../../wavelet/wavelet/NoiseEstimator.h"

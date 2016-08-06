@@ -15,7 +15,7 @@
 
 
 #include "../../common/common/Point.h"
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 #include "IntHistogram.h"
 
 namespace stira {

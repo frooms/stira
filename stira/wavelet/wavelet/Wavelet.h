@@ -18,9 +18,9 @@
 #include <cstdlib>
 #include <cmath>
 
-#include "../../image/datastructures/ArrayGrid.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/datastructures/Pyramid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagedata/datastructures/Pyramid.h"
 #include "../../filter/filter/SeparableFilter.h"
 #include "WaveletTapGenerator.h"
 

@@ -11,7 +11,8 @@
  ***********************************************************************************/
 
 #include "SimpleImageFilterProcess.h"
-#include "../../stira/image/tools/GridGenerator.h"
+#include "../../stira/imagedata/simpletools/ImageStatistics.h"
+#include "../../stira/imagetools/imagegenerator/GridGenerator.h"
 #include "../../stira/fouriertools/fouriertools/FFT.h"
 #include "../../stira/filter/filter/SeparableFilter.h"
 #include "../../stira/filter/filter/NonSeparableFilter.h"
@@ -161,7 +162,7 @@ void SimpleImageFilterProcess::run()
       case StiraDefinitions::FILTER_LAPLACIANOFGAUSSIAN:
       {
          pOutImage = LaplacianOfGaussianFilter::Run( mpImage );
-         pOutImage->Rescale(0.0, 255.0);
+         ImageStatistics::Rescale( pOutImage, 0.0, 255.0);
          break;
       }
       case StiraDefinitions::FILTER_KUWAHARA:

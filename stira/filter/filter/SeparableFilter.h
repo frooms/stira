@@ -17,8 +17,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/GridExtender.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagedata/simpletools/GridExtender.h"
 
 namespace stira {
 namespace filter {

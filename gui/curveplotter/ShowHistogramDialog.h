@@ -14,7 +14,7 @@
 #define STIRAGUI_CURVEPLOTTER__SHOWHISTOGRAMDIALOG_H
 
 #include "CurvePlotDialog.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 /** \brief Parent class for dialog to plot curve with image data in 
   * Warning: we set the extreme values (0 and the max value) to 0 in order to suppress the outliers*/

@@ -13,11 +13,11 @@
 #include "FFT.h"
 #include "FFTBand.h"
 #include "TransferFunctionGenerator.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/GridExtender.h"
-#include "../../image/tools/ImageTools.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageTools.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
+#include "../../imagedata/simpletools/GridExtender.h"
 #include "../../common/common/MathUtils.h"
 
 #include <iostream>
@@ -213,7 +213,7 @@ image::ArrayGrid<double>* FFT::ComputeLogPowerSpectrum( image::ArrayGrid<double>
    }
    
    double mmin, mmax;
-   NumberGridTools<double>::GetMinMax( pSpectrumGrid, mmin, mmax );
+   GridStatistics<double>::GetMinMax( pSpectrumGrid, mmin, mmax );
 
    for (int y = 0; y < height; y++)
    {

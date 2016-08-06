@@ -13,7 +13,7 @@
 #ifndef STIRA_CONTRASTENHANCE_ADAPTIVECONTRASTENHANCELUONG_H
 #define STIRA_CONTRASTENHANCE_ADAPTIVECONTRASTENHANCELUONG_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace contrastenhance {

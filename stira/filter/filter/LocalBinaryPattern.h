@@ -18,11 +18,11 @@
 
 #include "../../common/common/StiraMacros.h"
 #include "../../common/common/Point.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../histogram/histogram/FloatHistogram.h"
 
 #ifdef USE_BILINEAR_INTERPOLATION
-   #include "../../image/tools/BilinearInterpolator.h"
+   #include "../../imagetools/interpolation/BilinearInterpolator.h"
 #endif
 namespace stira{
 namespace filter{

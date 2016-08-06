@@ -24,8 +24,8 @@
 #include <QRadioButton>
 #include <QComboBox>
 
-#include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/color/ColorValue.h"
+#include "../../stira/imagedata/datastructures/Image.h"
+#include "../../stira/imagedata/color/ColorValue.h"
 #include "DialogMaster.h"
 
 class SplitColorChannelsProcess;  ///< forward declaration of corresponding process; see subproject "processes"

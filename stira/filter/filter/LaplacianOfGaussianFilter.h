@@ -13,7 +13,7 @@
 #ifndef STIRA_FILTER__LAPLACIANOFGAUSSIANFILTER_H
 #define STIRA_FILTER__LAPLACIANOFGAUSSIANFILTER_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

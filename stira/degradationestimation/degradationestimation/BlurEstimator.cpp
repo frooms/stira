@@ -15,9 +15,9 @@
 
 #include "BlurEstimator.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../deconvolve/deconvolve/WienerDeconvolve.h"
 
 using namespace std;
@@ -119,9 +119,9 @@ double BlurEstimator::Run( image::ArrayGrid<double>* pGrid )
       
       ImageIO::WritePGM( pTmpResult, fileName );
       
-      double myMean     = NumberGridTools<double>::GetGridMean( pTmpResult );
-      double myVariance = NumberGridTools<double>::GetGridVariance( pTmpResult, myMean );
-      double myKurtosis = NumberGridTools<double>::GetGridKurtosis( pTmpResult, myMean, myVariance );
+      double myMean     = GridStatistics<double>::GetGridMean( pTmpResult );
+      double myVariance = GridStatistics<double>::GetGridVariance( pTmpResult, myMean );
+      double myKurtosis = GridStatistics<double>::GetGridKurtosis( pTmpResult, myMean, myVariance );
       
       if (myKurtosis < tmpKurtosis)
       {

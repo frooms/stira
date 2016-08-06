@@ -20,7 +20,7 @@
 #ifndef STIRA_IMAGEANALYSIS_CONTOURTRACING_H
 #define STIRA_IMAGEANALYSIS_CONTOURTRACING_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include <string>
 namespace stira {
 namespace imageanalysis {

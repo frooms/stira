@@ -14,9 +14,9 @@
 
 #include "testFouriertools.h"
 #include "../fouriertools/TransferFunctionGenerator.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
 
 using namespace std;
 using namespace stira;
@@ -228,7 +228,7 @@ bool FFTNoiseSpectrumTest( int width, int height, double sigma )
    ArrayGrid<double>* pGridNoise = GridGenerator::GenerateEmptyPlusGaussianNoise( width, height, 0.0, sigma);
    ArrayGrid<double>* pSpectrum = FFT::ComputePowerSpectrum( pGridNoise );
 
-   double average  = NumberGridTools<double>::GetGridMean( pSpectrum );
+   double average  = GridStatistics<double>::GetGridMean( pSpectrum );
 
    double fourierNoiseLevel = (width * height * sigma * sigma);
 

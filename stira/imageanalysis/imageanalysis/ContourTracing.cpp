@@ -12,7 +12,7 @@
 
 #include "ContourTracing.h"
 #include "../../common/common/StringUtils.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include <iostream>
 
 //#define CREATE_OUTPUTS

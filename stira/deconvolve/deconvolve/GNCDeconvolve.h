@@ -15,7 +15,7 @@
 
 #include "../../common/common/Point.h"
 
-#include "../../image/datastructures/Pyramid.h"
+#include "../../imagedata/datastructures/Pyramid.h"
 #include "IterativeDeconvolve.h"
 #include "../../steerable/pyramid/PyramidReal.h"
 

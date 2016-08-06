@@ -12,7 +12,7 @@
 #ifndef STIRA_FILTER_DIFFERENCEOFGAUSSIANS_H
 #define STIRA_FILTER_DIFFERENCEOFGAUSSIANS_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

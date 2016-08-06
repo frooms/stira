@@ -14,7 +14,7 @@
 #define STIRAGUI_PROCESSES_SPLITCOLORCHANNELSPROCESS_H
 
 #include "Process.h"
-#include "../../stira/image/color/ColorValue.h"
+#include "../../stira/imagedata/color/ColorValue.h"
 
 class SplitColorChannelsProcess : public Process
 {

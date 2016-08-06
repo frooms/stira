@@ -18,9 +18,9 @@
 #include <cassert>
 
 #include "../../common/common/Point.h"
-#include "../../image/datastructures/OrientationGrid.h"
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/datastructures/OrientationGrid.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagetools/tools/NumberGridTools.h"
 #include "../../filter/filter/NonSeparableFilter.h"
 #include "Watershed.h"
 

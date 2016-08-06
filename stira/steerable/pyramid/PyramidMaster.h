@@ -21,9 +21,9 @@
 
 #include "../../common/common/Definitions.h"
 
-#include "../../image/datastructures/ArrayGrid.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/datastructures/Pyramid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/Pyramid.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../fouriertools/fouriertools/TransferFunctionGenerator.h"
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../../fouriertools/fouriertools/FFTBand.h"

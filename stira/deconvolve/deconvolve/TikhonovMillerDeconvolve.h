@@ -13,7 +13,7 @@
 #ifndef STIRA_DECONVOLVE_TIKHONOVMILLERDECONVOLVE_H
 #define STIRA_DECONVOLVE_TIKHONOVMILLERDECONVOLVE_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "IterativeDeconvolve.h"
 
 namespace stira{

@@ -15,8 +15,8 @@
 #include <string>
 #include <iostream>
 #include "../../common/common/Point.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/datastructures/OrientationGrid.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagedata/datastructures/OrientationGrid.h"
 #include "../../filter/filter/NonSeparableFilter.h"
 
 #include "Thinning.h"

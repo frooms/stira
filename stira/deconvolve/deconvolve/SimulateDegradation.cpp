@@ -12,7 +12,7 @@
 
 #include "SimulateDegradation.h"
 
-#include "../../image/tools/GridGenerator.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
 #include "../../fouriertools/fouriertools/FFT.h"
 
 #include "../../common/common/MathUtils.h"

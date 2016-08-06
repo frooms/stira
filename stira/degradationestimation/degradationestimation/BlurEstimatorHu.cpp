@@ -13,8 +13,8 @@
 #include <iostream>
 #include "BlurEstimatorHu.h"
 #include "../../filter/filter/GaussConvolve.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/NumberGridTools.h"
 
 //#define CREATE_INTERMEDIATE_IMAGES
 

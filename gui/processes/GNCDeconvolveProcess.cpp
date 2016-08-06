@@ -14,7 +14,7 @@
 
 #include "../../stira/deconvolve/deconvolve/GNCDeconvolve.h"
 #include "../../stira/fouriertools/fouriertools/FFT.h"
-#include "../../stira/image/tools/GridGenerator.h"
+#include "../../stira/imagetools/imagegenerator/GridGenerator.h"
 
 using namespace stira::image;
 using namespace stira::fouriertools;

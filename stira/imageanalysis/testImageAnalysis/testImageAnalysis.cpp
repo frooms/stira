@@ -13,11 +13,11 @@
 #include <iostream>
 
 #include "../../common/common/StringUtils.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/GridConverter.h"
-#include "../../image/tools/DrawImageTools.h"
-#include "../../image/tools/ImageTools.h"
+#include "../../imagedata/simpletools/GridConverter.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagetools/tools/DrawImageTools.h"
+#include "../../imagetools/tools/ImageTools.h"
 #include "../../histogram/histogram/IntHistogram.h"
 #include "../../histogram/histogram/FloatHistogram.h"
 #include "../../histogram/histogram/RunLengthHistogram.h"
@@ -452,7 +452,7 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // STEREO MATCHING
-   //TestStereoMatch( );
+   TestStereoMatch( );
 
    /////////////////////////////////////////////////////
    // HOUGH TRANSFORM

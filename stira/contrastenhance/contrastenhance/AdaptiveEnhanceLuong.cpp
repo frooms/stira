@@ -12,9 +12,9 @@
 
 #include "AdaptiveEnhanceLuong.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/GridExtender.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/simpletools/GridExtender.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../histogram/histogram/IntHistogram.h"
 
 #define REGULARIZED
@@ -82,14 +82,14 @@ void AdaptiveEnhanceLuong::GetBlockStatistics( )
          int yTopLeft = y - mHalfBlockSize;
          int xBottomRight = x + mHalfBlockSize;
          int yBottomRight = y + mHalfBlockSize;
-             mpMeanGrid->SetValue( x, y, NumberGridTools<double>::ComputeLocalMean(     mpLastStepGrid, xTopLeft, yTopLeft, xBottomRight, yBottomRight ) );
-         mpVarianceGrid->SetValue( x, y, NumberGridTools<double>::ComputeLocalVariance( mpLastStepGrid, xTopLeft, yTopLeft, xBottomRight, yBottomRight, mpMeanGrid->GetValue( x, y ) ) );
+             mpMeanGrid->SetValue( x, y, GridStatistics<double>::ComputeLocalMean(     mpLastStepGrid, xTopLeft, yTopLeft, xBottomRight, yBottomRight ) );
+         mpVarianceGrid->SetValue( x, y, GridStatistics<double>::ComputeLocalVariance( mpLastStepGrid, xTopLeft, yTopLeft, xBottomRight, yBottomRight, mpMeanGrid->GetValue( x, y ) ) );
       }
    }
    double minVariance, maxVariance;
 
    ArrayGrid<double>* pCroppedVarianceGrid = GridExtender<double>::CropBorder( mpVarianceGrid, mWindowSize, mWindowSize );
-   NumberGridTools<double>::GetMinMax( pCroppedVarianceGrid, minVariance, maxVariance );
+   GridStatistics<double>::GetMinMax( pCroppedVarianceGrid, minVariance, maxVariance );
 
    bool useDataMinMax = true;
    int binsize = (int)(( maxVariance - minVariance ) / 500.0);
@@ -111,8 +111,8 @@ void AdaptiveEnhanceLuong::RemapGridIntensities( )
       for (int x = mHalfBlockSize; x < mWidth - mHalfBlockSize; x ++ )
       {
          double inValue = mpLastStepGrid->GetValue(x, y) / 255.0;
-         double localMinimum = NumberGridTools<double>::GetLocalMinimum( mpLastStepGrid, x, y, mWindowSize, mWindowSize ) / 255.0;
-         double localMaximum = NumberGridTools<double>::GetLocalMaximum( mpLastStepGrid, x, y, mWindowSize, mWindowSize ) / 255.0;
+         double localMinimum = GridStatistics<double>::GetLocalMinimum( mpLastStepGrid, x, y, mWindowSize, mWindowSize ) / 255.0;
+         double localMaximum = GridStatistics<double>::GetLocalMaximum( mpLastStepGrid, x, y, mWindowSize, mWindowSize ) / 255.0;
          double outValue = 0.0;
 
          double alpha = mTmpAlphaFactor * ( localMaximum - localMinimum );

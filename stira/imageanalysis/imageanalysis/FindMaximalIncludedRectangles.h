@@ -4,7 +4,7 @@
 #include <vector>
 #include "../../common/common/RectangularROI.h"
 #include "../../histogram/histogram/IntHistogram.h"
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 
 enum rectangleMeasure{ MEASURE_WIDTH, MEASURE_HEIGHT, MEASURE_AREA, MEASURE_DIAGONALLENGTH };
 

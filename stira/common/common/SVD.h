@@ -18,7 +18,7 @@ public:
     //maximize the number of positive elements.
     void reorder();
 
-    //Computes .a 2 C b 2 / 1=2 without destructive underflow or overflow.
+    // compute (a2 + b2)^1/2 without destructive underflow or overflowr
     double pythag(const double a, const double b);
     void PrintSingularValues();
     void PrintMatrixU();

@@ -1,9 +1,10 @@
 #include "LogGabor.h"
 #include "../../common/common/StiraMacros.h"
+#include "../../imagedata/simpletools/ImageStatistics.h"
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../../fouriertools/fouriertools/TransferFunctionGenerator.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 namespace stira{
 namespace filter{
@@ -108,7 +109,7 @@ Image* LogGabor::GetRealResponse( bool rescaleVisualize )
    Image* pImgScale = mpImageReal->Clone();
    if ( rescaleVisualize )
    {
-      pImgScale->Rescale( 0.0, 255.0 );
+      ImageStatistics::Rescale( pImgScale, 0.0, 255.0 );
    }
    return pImgScale;
 }
@@ -120,7 +121,7 @@ Image* LogGabor::GetImagResponse( bool rescaleVisualize )
    Image* pImgScale = mpImageImag->Clone();
    if ( rescaleVisualize )
    {
-      pImgScale->Rescale( 0.0, 255.0 );
+       ImageStatistics::Rescale( pImgScale, 0.0, 255.0 );
    }
    return pImgScale;
 }
@@ -132,7 +133,7 @@ Image* LogGabor::GetTransferFunction( bool rescaleVisualize )
    Image* pImgScale = mpImageTransfer->Clone();
    if ( rescaleVisualize )
    {
-      pImgScale->Rescale( 0.0, 255.0 );
+       ImageStatistics::Rescale( pImgScale, 0.0, 255.0 );
    }
    std::string outName = mpImage->GetImageName() + std::string("-LogGabor-Transfer");
    pImgScale->SetImageName( outName );
@@ -164,7 +165,7 @@ Image* LogGabor::GetMagnitude( bool rescaleVisualize )
 
    if ( rescaleVisualize )
    {
-      pImgMagnitude->Rescale( 0.0, 255.0 );
+       ImageStatistics::Rescale( pImgMagnitude, 0.0, 255.0 );
    }
    std::string outName = mpImage->GetImageName() + std::string("-LogGabor-Magnitude");
    pImgMagnitude->SetImageName( outName );

@@ -16,10 +16,10 @@
 #include <stdint.h>
 #include <iostream>
 #include <cmath>
-#include "../../image/color/ColorValue.h"
-#include "../../image/datastructures/Image.h"
-#include "../../image/datastructures/PyramidLevel.h"
-#include "../../image/datastructures/OrientationGrid.h"
+#include "../../imagedata/color/ColorValue.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagedata/datastructures/PyramidLevel.h"
+#include "../../imagedata/datastructures/OrientationGrid.h"
 
 namespace stira {
 namespace steerable {

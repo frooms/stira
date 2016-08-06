@@ -12,8 +12,8 @@
 
 #include <iostream>
 #include <algorithm>
+#include "../../common/common/MathUtils.h"
 #include "RunLengthHistogram.h"
-#include "../../image/tools/NumberGridTools.h"
 
 using namespace image;
 

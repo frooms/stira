@@ -23,7 +23,7 @@
 #include <QPushButton>
 #include <QRadioButton>
 
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 #include "DialogMaster.h"
 
 class GNCDeconvolveProcess;  ///< forward declaration of corresponding process; see subproject "processes"

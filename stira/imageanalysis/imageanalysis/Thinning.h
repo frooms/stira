@@ -15,7 +15,7 @@
 
 #include "../../common/common/RectangularROI.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace imageanalysis {

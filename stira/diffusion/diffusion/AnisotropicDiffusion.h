@@ -16,7 +16,7 @@
 #include <stdint.h>
 #include <iostream>
 #include <cmath>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace diffusion {

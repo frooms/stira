@@ -3,8 +3,8 @@
 
 #include <vector>
 #include "../../common/common/RectangularROI.h"
-#include "../../image/datastructures/Image.h"
-#include "../../image/datastructures/OrientationGrid.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagedata/datastructures/OrientationGrid.h"
 
 namespace stira {
 namespace imageanalysis {

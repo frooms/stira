@@ -20,7 +20,7 @@
 #include <queue>
 
 #include "../../common/common/Point.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "Watershed.h"
 namespace stira {
 namespace imageanalysis {

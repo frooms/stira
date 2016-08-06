@@ -21,7 +21,7 @@
 #include <QContextMenuEvent>
 #include <QSettings>
 
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 #include "ImageWindow.h"
 

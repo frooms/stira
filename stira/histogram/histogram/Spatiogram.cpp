@@ -10,7 +10,7 @@
  *                                                                                 *
  ***********************************************************************************/
 #include "../../common/common/Statistics.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
 #include "Spatiogram.h"
 #include <iostream>
 #include <iomanip>
@@ -27,7 +27,7 @@ using namespace common;
 Spatiogram::Spatiogram( image::ArrayGrid<double>* pGrid, int binSize, image::ArrayGrid<bool>* pMaskGrid)
 {
    double mMin, mMax;
-   NumberGridTools<double>::GetMinMax( pGrid, mMin, mMax );
+   GridStatistics<double>::GetMinMax( pGrid, mMin, mMax );
    mpHistogram = new IntHistogram( binSize, 1, mMin, mMax, 0, 1 );
    int nrBins = mpHistogram->GetNrOfBins();
    for (int i = 0; i < nrBins; i++)

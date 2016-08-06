@@ -15,12 +15,12 @@
 #include <cstdlib>
 #include <cassert>
 #include "../../common/common/StringUtils.h"
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/ImageTools.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/GridExtender.h"
-#include "../../image/geometrictransform/RigidTransform.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagedata/simpletools/GridExtender.h"
+#include "../../imagetools/tools/ImageTools.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagetools/geometrictransform/RigidTransform.h"
 
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../filter/GaussConvolve.h"

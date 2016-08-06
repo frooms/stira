@@ -13,7 +13,7 @@
 #ifndef STIRA_DECONVOLVE_DECONVOLVEMASTER_H
 #define STIRA_DECONVOLVE_DECONVOLVEMASTER_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace deconvolve{

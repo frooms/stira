@@ -12,8 +12,8 @@
 
 #ifndef STIRA_STEERABLE_PYRAMID_PYRAMIDBURTADELSON_H
 #define STIRA_STEERABLE_PYRAMID_PYRAMIDBURTADELSON_H
-#include "../../image/datastructures/Image.h"
-#include "../../image/datastructures/Pyramid.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagedata/datastructures/Pyramid.h"
 #include "../../filter/filter/SeparableFilter.h"
 
 

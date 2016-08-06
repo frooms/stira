@@ -11,7 +11,8 @@
  ***********************************************************************************/
 
 #include "PyramidReal.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/ArrayGridTools.h"
 
 //#define DIAGNOSE_RECONSTRUCTION
 
@@ -236,7 +237,7 @@ bool PyramidReal::Diagnose()
          ss << "BP-" <<  nrLevels << "-" << orientationNr;
          std::string fileName = ss.str();
          ArrayGrid<double>* pGrid = mpPyramid->GetRecursiveScale( levelNr )->GetOrientedBand( orientationNr );
-         NumberGridTools<double>::DiagnoseReal( pGrid, fileName );
+         GridStatistics<double>::DiagnoseReal( pGrid, fileName );
       }
    }
    if ( mpPyramid->HasResidualScale() )
@@ -248,13 +249,13 @@ bool PyramidReal::Diagnose()
          ss << "BP-Residual-" << orientationNr;
          std::string fileName = ss.str();
          ArrayGrid<double>* pGrid = mpPyramid->GetResidualScale( )->GetOrientedBand( orientationNr );
-         NumberGridTools<double>::DiagnoseReal( pGrid, fileName );
+         GridStatistics<double>::DiagnoseReal( pGrid, fileName );
       }
    }
    if ( mpPyramid->GetLowpassResidual( ) != 0)
    {
       ArrayGrid<double>* pGrid = mpPyramid->GetLowpassResidual( );
-      NumberGridTools<double>::DiagnoseReal( pGrid, std::string("Lowpassresidual" ) );
+      GridStatistics<double>::DiagnoseReal( pGrid, std::string("Lowpassresidual" ) );
    }
    return true;
 }

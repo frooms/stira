@@ -13,7 +13,7 @@
 #ifndef STIRA_FILTER__KUWAHARAFILTER_H
 #define STIRA_FILTER__KUWAHARAFILTER_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

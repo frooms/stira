@@ -1,7 +1,7 @@
 #include "PyramidBurtAdelson.h"
 
-#include "../../image/tools/ArrayGridTools.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/simpletools/ArrayGridTools.h"
+#include "../../imagetools/tools/ImageIO.h"
 namespace stira {
 namespace steerable {
 

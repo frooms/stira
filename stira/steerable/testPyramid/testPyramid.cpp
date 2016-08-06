@@ -15,8 +15,9 @@
 
 #include "../../common/common/ExecutionTimer.h"
 
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/PyramidTools.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagetools/tools/PyramidTools.h"
 
 #include "../../filter/filter/SeparableFilter.h"
 #include "../../filter/filter/GaussConvolve.h"
@@ -95,7 +96,7 @@ bool PyramidRealDecomposeReconstructTest(Image* pImage, int nrScales, int nrOrie
       ImageIO::Write( pVisualizePyramid, std::string("VisualizePyramid.pgm"), ImageIO::NULL_OUT );
       delete pVisualizePyramid;
 
-      pPyramid->ExportBandsToPGM();
+      //pPyramid->ExportBandsToPGM();
       np.Diagnose();
    #else
      cout << "\t Uncomment \"#define DIAGNOSE\" for diagnostics of subbands..." << endl << flush;
@@ -134,7 +135,7 @@ bool PyramidComplexDecomposeReconstructTest(Image* pImage, int nrScales, int nrO
 
    #ifdef DIAGNOSE
      Pyramid< std::complex<double> >* pPyramid = np.GetPyramid();
-     pPyramid->ExportBandsToPGM();
+     //pPyramid->ExportBandsToPGM();
      np.Diagnose();
    #else
      cout << "\t Uncomment \"#define DIAGNOSE\" for diagnostics of subbands..." << endl << flush;
@@ -167,7 +168,7 @@ bool PyramidThresholdTest(Image* pImage, int nrScales, int nrOrientations)
 
    Pyramid<double>* pPyramid = np.GetPyramid();
    #ifdef DIAGNOSE
-     pPyramid->ExportBandsToPGM();
+     //pPyramid->ExportBandsToPGM();
    #else
      cout << "\t Uncomment \"#define DIAGNOSE\" for diagnostics of subbands..." << endl << flush;
    #endif
@@ -218,7 +219,7 @@ bool PyramidOrientationTest(Image* pImage, int nrScales, int nrOrientations)
    np.Decompose();
 
    #ifdef DIAGNOSE
-     np.GetPyramid()->ExportBandsToPGM();
+     //np.GetPyramid()->ExportBandsToPGM();
    #else
      cout << "\t Uncomment \"#define DIAGNOSE\" for diagnostics of subbands..." << endl << flush;
    #endif
@@ -231,8 +232,8 @@ bool PyramidOrientationTest(Image* pImage, int nrScales, int nrOrientations)
       ssMag << "Pyr-Magnitude-" << scaleNr << ".ppm";
       OrientationGrid* pOrientationGridRec = ComputeOrientation::ComputeDominantOrientationInputComplexPyramidLevel( np.GetPyramid()->GetRecursiveScale( scaleNr ) );
 
-      pOrientationGridRec->ExportMagnitudeImage( ssMag.str() );
-      pOrientationGridRec->ExportOrientationImage( ssOri.str(), 2.0);
+      //pOrientationGridRec->ExportMagnitudeImage( ssMag.str() );
+      //pOrientationGridRec->ExportOrientationImage( ssOri.str(), 2.0);
 
       delete pOrientationGridRec;
    }
@@ -242,8 +243,8 @@ bool PyramidOrientationTest(Image* pImage, int nrScales, int nrOrientations)
    ssMag << "Pyr-Magnitude-res.ppm";
    OrientationGrid* pOrientationGridResid = ComputeOrientation::ComputeDominantOrientationInputComplexPyramidLevel( np.GetPyramid()->GetResidualScale() );
 
-   pOrientationGridResid->ExportMagnitudeImage( ssMag.str() );
-   pOrientationGridResid->ExportOrientationImage( ssOri.str(), 0.1);
+   //pOrientationGridResid->ExportMagnitudeImage( ssMag.str() );
+   //pOrientationGridResid->ExportOrientationImage( ssOri.str(), 0.1);
 
    delete pOrientationGridResid;
 

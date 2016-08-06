@@ -10,11 +10,11 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/PyramidTools.h"
-#include "../../image/tools/GridGenerator.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/PyramidTools.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
 #include "../../common/common/ExecutionTimer.h"
 #include "../wavelet/WaveletTapGenerator.h"
 #include "../wavelet/CriticallySubsampledTransform.h"
@@ -23,7 +23,7 @@
 #include "../wavelet/NonSubsampledTransform.h"
 
 #define VISUALIZE_WAVELETS
-//#define TIME_PERFORMANCE
+#define TIME_PERFORMANCE
 
 using namespace stira;
 using namespace stira::common;
@@ -73,7 +73,7 @@ bool CriticallySubsampledWaveletTest( Image* pImage, double hardThreshold, int n
 
    #ifdef VISUALIZE_WAVELETS
       // visualize bands as separate PGM files
-      wdr.GetPyramid()->ExportBandsToPGM();
+      //wdr.GetPyramid()->ExportBandsToPGM();
 
       // visualize all bands together in single image
       Image* pCritical = PyramidTools::VisualizeRealPyramid( wdr.GetPyramid() );
@@ -111,7 +111,7 @@ bool CriticallySubsampledWaveletTest( Image* pImage, double hardThreshold, int n
 
 bool SubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
 {
-   WaveletType myWaveletTapType = DAUBECHIES_2;
+   WaveletType myWaveletTapType = DAUBECHIES_8;
    SubsampledTransform st( myWaveletTapType );
    int width  = pImage->GetWidth();
    int height = pImage->GetHeight();
@@ -160,6 +160,7 @@ bool SubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
    delete pSourceGrid;
    if ( psnr > 150.0 )
    {
+      cout << "High quality reconstruction (PSNR=" << psnr << ")" << endl << flush;
       return true;
    }
    else if (hardThreshold > 0.0)
@@ -192,7 +193,7 @@ bool RedundantWaveletTest( Image* pImage, double hardThreshold, int nrScales )
 
    #ifdef VISUALIZE_WAVELETS
       // visualize bands as separate PGM files
-      wdr.GetPyramid()->ExportBandsToPGM();
+      //wdr.GetPyramid()->ExportBandsToPGM();
 
       // visualize all bands together in single image
       Image* pRedundant = PyramidTools::VisualizeRealPyramid( wdr.GetPyramid() );
@@ -219,6 +220,7 @@ bool RedundantWaveletTest( Image* pImage, double hardThreshold, int nrScales )
 
    if ( psnr > 150.0 )
    {
+      cout << "High quality reconstruction (PSNR=" << psnr << ")" << endl << flush;
       return true;
    }
    else if (hardThreshold > 0.0)

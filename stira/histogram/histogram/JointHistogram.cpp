@@ -11,8 +11,10 @@
  ***********************************************************************************/
 #include <string>
 #include "JointHistogram.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/GridConverter.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
+#include "../../imagedata/simpletools/ImageStatistics.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 using namespace std;
 
@@ -64,14 +66,14 @@ JointHistogram::JointHistogram( Image* pImage1, Image* pImage2, bool useAbsolute
    if (useAbsoluteValues)
    {
        mHorizontalMin = 0.0;
-       mHorizontalMax = pImage1->GetAbsMax( );
+       mHorizontalMax = ImageStatistics::GetAbsMax( pImage1 );
        mVerticalMin = 0.0;
-       mVerticalMax = pImage2->GetAbsMax( );
+       mVerticalMax = ImageStatistics::GetAbsMax( pImage2 );
    }
    else
    {
-       pImage1->GetMinMax( mHorizontalMin, mHorizontalMax );
-       pImage2->GetMinMax( mVerticalMin,   mVerticalMax   );
+       ImageStatistics::GetMinMax( pImage1, mHorizontalMin, mHorizontalMax );
+       ImageStatistics::GetMinMax( pImage2, mVerticalMin,   mVerticalMax   );
    }
 
    for (int bandNr = 0; bandNr < mNrBands; bandNr++ )
@@ -101,14 +103,14 @@ JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, int xTop1, int
     if (useAbsoluteValues)
     {
         mHorizontalMin = 0.0;
-        mHorizontalMax = NumberGridTools<double>::GetAbsMax( pGrid1 );
+        mHorizontalMax = GridStatistics<double>::GetAbsMax( pGrid1 );
         mVerticalMin   = 0.0;
-        mVerticalMax   = NumberGridTools<double>::GetAbsMax( pGrid2 );
+        mVerticalMax   = GridStatistics<double>::GetAbsMax( pGrid2 );
     }
     else
     {
-        NumberGridTools<double>::GetMinMax( pGrid1, mHorizontalMin, mHorizontalMax );
-        NumberGridTools<double>::GetMinMax( pGrid2, mVerticalMin,   mVerticalMax   );
+        GridStatistics<double>::GetMinMax( pGrid1, mHorizontalMin, mHorizontalMax );
+        GridStatistics<double>::GetMinMax( pGrid2, mVerticalMin,   mVerticalMax   );
     }
 
     BuildJointHistogram( pGrid1, pGrid2, useAbsoluteValues );
@@ -135,14 +137,14 @@ JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGr
    if (useAbsoluteValues)
    {
        mHorizontalMin = 0.0;
-       mHorizontalMax = NumberGridTools<double>::GetAbsMax( pGrid1 );
+       mHorizontalMax = GridStatistics<double>::GetAbsMax( pGrid1 );
        mVerticalMin   = 0.0;
-       mVerticalMax   = NumberGridTools<double>::GetAbsMax( pGrid2 );
+       mVerticalMax   = GridStatistics<double>::GetAbsMax( pGrid2 );
    }
    else
    {
-       NumberGridTools<double>::GetMinMax( pGrid1, mHorizontalMin, mHorizontalMax );
-       NumberGridTools<double>::GetMinMax( pGrid2, mVerticalMin,   mVerticalMax   );
+       GridStatistics<double>::GetMinMax( pGrid1, mHorizontalMin, mHorizontalMax );
+       GridStatistics<double>::GetMinMax( pGrid2, mVerticalMin,   mVerticalMax   );
    }
 
    BuildJointHistogram( pGrid1, pGrid2, useAbsoluteValues );
@@ -359,7 +361,7 @@ void JointHistogram::VisualizeAsImage(std::string imageName)
    if (mvpData.size() == 1)
    {
       ArrayGrid<int>* pOutGrid = mvpData[0]->Clone();
-      NumberGridTools<int>::RescaleGrid(pOutGrid, 0, 255 );
+      GridStatistics<int>::RescaleGrid(pOutGrid, 0, 255 );
       ImageIO::WritePGM( pOutGrid, imageName );
       delete pOutGrid;
    }
@@ -369,8 +371,8 @@ void JointHistogram::VisualizeAsImage(std::string imageName)
       Image* pImageOut = new Image( mvpData[0]->GetWidth(), mvpData[0]->GetHeight() );
       for (int i = 0; i < 3; i++)
       {
-         ArrayGrid<double>* pOutGrid = NumberGridTools<int>::CreateDoubleGrid( mvpData[i] );
-         NumberGridTools<double>::RescaleGrid( pOutGrid, 0.0, 255.0 );
+         ArrayGrid<double>* pOutGrid = GridConverter::ConvertToDouble( mvpData[i] );
+         GridStatistics<double>::RescaleGrid( pOutGrid, 0.0, 255.0 );
          pImageOut->AddBand( pOutGrid );
       }
       ImageIO::Write( pImageOut, imageName );

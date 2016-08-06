@@ -12,7 +12,7 @@
 
 #include "NonLocalMeansFilter.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/ImageTools.h"
+#include "../../imagetools/tools/ImageTools.h"
 
 namespace stira{
 namespace filter{

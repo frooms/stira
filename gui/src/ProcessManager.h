@@ -35,7 +35,7 @@ class SplitColorChannelsDialog;
 class ShowHistogramDialog;
 class ShowRadiallyAveragedFourierSpectrumDialog;
 
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 #include "../processes/Process.h"
 
 /** \brief Manager to create and launch image processing processes

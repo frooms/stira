@@ -11,7 +11,7 @@
  ***********************************************************************************/
 #include <vector>
 #include "../../common/common/Definitions.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 #ifndef STIRA_DECONVOLVE_SIMULATEDEGRADATION_H
 #define STIRA_DECONVOLVE_SIMULATEDEGRADATION_H

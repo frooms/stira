@@ -12,8 +12,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/BilinearInterpolator.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagetools/interpolation/BilinearInterpolator.h"
 
 namespace stira{
 namespace filter{

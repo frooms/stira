@@ -1,7 +1,7 @@
 #include "HOG.h"
 #include <iostream>
-#include "../../image/tools/DrawImageTools.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/DrawImageTools.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../filter/filter/SeparableFilter.h"
 
 namespace stira {

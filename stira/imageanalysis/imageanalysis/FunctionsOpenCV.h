@@ -6,7 +6,7 @@
 
 #include <cmath>
 #include <iostream>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 using namespace std;
 

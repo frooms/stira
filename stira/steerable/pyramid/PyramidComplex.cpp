@@ -10,7 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/ArrayGridTools.h"
+#include "../../imagetools/tools/NumberGridTools.h"
 #include "PyramidComplex.h"
 
 namespace stira {
@@ -84,7 +85,7 @@ bool PyramidComplex::Decompose()
          mpPyramid->GetRecursiveScale( mCurrentScale )->AddOrientedBand( pResultingGrid );
       }
       ArrayGrid<double>* pNextL = ExtractL( );
-      ArrayGrid<double>* pNextLbis = NumberGridTools<double>::DownSampleGrid( pNextL ); delete pNextL;
+      ArrayGrid<double>* pNextLbis = ArrayGridTools<double>::DownSampleGrid( pNextL ); delete pNextL;
       mpPyramid->SetLowpassResidual( pNextLbis );
       delete mpTmpHighpassGrid;
    }
@@ -166,7 +167,7 @@ bool PyramidComplex::Reconstruct()
       
       mpTmpHighpassGrid = TransferFunctionGenerator::GenerateHighPassTransferFunction( subbandWidth, subbandHeight, subbandWidth / 8, subbandWidth / 4);
 
-      ArrayGrid<double>* pNextL = NumberGridTools<double>::UpSampleGrid( mpPyramid->GetLowpassResidual(), subbandWidth, subbandHeight );
+      ArrayGrid<double>* pNextL = ArrayGridTools<double>::UpSampleGrid( mpPyramid->GetLowpassResidual(), subbandWidth, subbandHeight );
       vReconstructedSubbandsFFT.push_back( ReconstructL( pNextL ) );
       delete pNextL;
       
@@ -240,7 +241,7 @@ bool PyramidComplex::Diagnose()
          ss << "BP-" <<  nrLevels << "-" << orientationNr;
          std::string fileName = ss.str();
          ArrayGrid<double>* pGrid = NumberGridTools<double>::CreateDoubleGridFromComplexGrid( mpPyramid->GetRecursiveScale( levelNr )->GetOrientedBand( orientationNr ) );
-         NumberGridTools<double>::DiagnoseReal( pGrid, fileName );
+         GridStatistics<double>::DiagnoseReal( pGrid, fileName );
          delete pGrid;
       }
    }
@@ -253,14 +254,14 @@ bool PyramidComplex::Diagnose()
          ss << "BP-Residual-" << orientationNr;
          std::string fileName = ss.str();
          ArrayGrid<double>* pGrid = NumberGridTools<double>::CreateDoubleGridFromComplexGrid( mpPyramid->GetResidualScale( )->GetOrientedBand( orientationNr ) );
-         NumberGridTools<double>::DiagnoseReal( pGrid, fileName );
+         GridStatistics<double>::DiagnoseReal( pGrid, fileName );
          delete pGrid;
       }
    }
    if ( mpPyramid->GetLowpassResidual( ) != 0)
    {
       ArrayGrid<double>* pGrid = mpPyramid->GetLowpassResidual( );
-      NumberGridTools<double>::DiagnoseReal( pGrid, std::string("Lowpassresidual" ) );
+      GridStatistics<double>::DiagnoseReal( pGrid, std::string("Lowpassresidual" ) );
    }
    return true;
 }

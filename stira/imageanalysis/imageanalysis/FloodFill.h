@@ -3,7 +3,7 @@
 
 #include "../../common/common/Point.h"
 #include "../../common/common/RectangularROI.h"
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 #include <vector>
 
 namespace stira {

@@ -15,7 +15,7 @@
 #include <iostream>
 #include <vector>
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 namespace stira {
 namespace imageanalysis {

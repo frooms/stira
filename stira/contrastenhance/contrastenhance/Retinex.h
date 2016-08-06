@@ -14,7 +14,7 @@
 #define STIRA_CONTRASTENHANCE_RETINEX_H
 
 #include "../../common/common/Random.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace contrastenhance {

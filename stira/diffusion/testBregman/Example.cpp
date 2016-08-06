@@ -2,8 +2,8 @@
 #include <time.h>
 #include "../bregman/FlashROF.h"
 #include "Example.h"
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 using namespace std;
 using namespace stira;

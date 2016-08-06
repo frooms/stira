@@ -11,7 +11,7 @@
  ***********************************************************************************/
 
 #include "NonSeparableFilter.h"
-#include "../../image/tools/GridExtender.h"
+#include "../../imagedata/simpletools/GridExtender.h"
 
 #include <iostream>
 

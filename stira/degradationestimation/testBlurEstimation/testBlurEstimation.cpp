@@ -12,8 +12,8 @@
 
 #include <iostream>
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
 #include "../../wavelet/wavelet/NoiseEstimator.h"
 #include "../../filter/filter/GaussConvolve.h"
 #include "../degradationestimation/BlurEstimator.h"

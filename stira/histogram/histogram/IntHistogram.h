@@ -14,7 +14,7 @@
 #define STIRA_HISTOGRAM_INTHISTOGRAM_H
 
 #include "HistogramMaster.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../common/common/RectangularROI.h"
 
 namespace stira {

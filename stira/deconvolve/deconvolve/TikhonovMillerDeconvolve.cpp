@@ -232,12 +232,13 @@ void TikhonovMillerDeconvolve::ICTM_filter( int nr_iter, ArrayGrid<double> *pDat
 
    //double gamma = NumberGridTools<std::complex<double> >::GetSquaredNorm( Rnext );
 
-  /*for (i = 0; i < nr_pix; i++) {
-    A[i].re = (H[i].re * H[i].re + H[i].im * H[i].im + lambda * (C[i].re * C[i].re + C[i].im * C[i].im ) );
-    A[i].im = 0;
-    B[i].re = (H[i].re*G[i].re + H[i].im*G[i].im)/nr_pix;
-    B[i].im = (H[i].re*G[i].im - H[i].im*G[i].re)/nr_pix;
-  }
+   /*for (i = 0; i < nr_pix; i++)
+   {
+      A[i].re = (H[i].re * H[i].re + H[i].im * H[i].im + lambda * (C[i].re * C[i].re + C[i].im * C[i].im ) );
+      A[i].im = 0;
+      B[i].re = (H[i].re*G[i].re + H[i].im*G[i].im)/nr_pix;
+      B[i].im = (H[i].re*G[i].im - H[i].im*G[i].re)/nr_pix;
+   }
   //IFT van b
   fftwnd_one(p3, &B[0], NULL);
   //juistzetten van de kwadranten

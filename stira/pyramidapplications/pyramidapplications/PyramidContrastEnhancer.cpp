@@ -14,7 +14,7 @@
 #include "../../steerable/pyramid/PyramidReal.h"
 
 #include "PyramidContrastEnhancer.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagedata/simpletools/GridStatistics.h"
 
 namespace stira {
 namespace pyramidapplications {
@@ -245,7 +245,7 @@ bool PyramidContrastEnhancer::ContrastEnhanceSingleBand( image::ArrayGrid<double
    int width  = pBand->GetWidth();
    int height = pBand->GetHeight();
    
-   double bandMax = image::NumberGridTools<double>::GetAbsMax( pBand );
+   double bandMax = image::GridStatistics<double>::GetAbsMax( pBand );
    
    mUpperLimitAmplification = bandMax * mUpperLimitAmplificationFactor;
    
@@ -351,9 +351,9 @@ bool PyramidContrastEnhancer::ContrastEnhanceSingleBand3Colors( image::ArrayGrid
    }
    else
    {
-      double bandMax1 = image::NumberGridTools<double>::GetAbsMax( pBandColor1 );
-      double bandMax2 = image::NumberGridTools<double>::GetAbsMax( pBandColor2 );
-      double bandMax3 = image::NumberGridTools<double>::GetAbsMax( pBandColor3 );
+      double bandMax1 = image::GridStatistics<double>::GetAbsMax( pBandColor1 );
+      double bandMax2 = image::GridStatistics<double>::GetAbsMax( pBandColor2 );
+      double bandMax3 = image::GridStatistics<double>::GetAbsMax( pBandColor3 );
    
       mUpperLimitAmplification = ( bandMax1 + bandMax2 + bandMax3) * mUpperLimitAmplificationFactor / 3.0;
       

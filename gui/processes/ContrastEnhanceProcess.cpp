@@ -11,7 +11,8 @@
  ***********************************************************************************/
 
 #include "ContrastEnhanceProcess.h"
-#include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/imagedata/simpletools/ImageStatistics.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
 #include "../../stira/diffusion/diffusion/AnisotropicDiffusion.h"
 #include "../../stira/contrastenhance/contrastenhance/Retinex.h"
 #include "../../stira/contrastenhance/contrastenhance/HistogramTools.h"
@@ -155,7 +156,7 @@ void ContrastEnhanceProcess::run()
       case StiraDefinitions::CONTRAST_RETINEX:
       {
          pOutImage = stira::contrastenhance::Retinex::RunMSRCR ( mpImage, mLowerFraction, mUpperFraction, true );
-         pOutImage->Rescale();
+         ImageStatistics::Rescale(pOutImage, 0.0, 255.0);
          break;
       }
       case StiraDefinitions::CONTRAST_ADAPTIVE_LUONG:

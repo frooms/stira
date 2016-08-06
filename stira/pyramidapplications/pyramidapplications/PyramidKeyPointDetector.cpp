@@ -11,6 +11,7 @@
  ***********************************************************************************/
 
 #include "../../common/common/MathUtils.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "PyramidKeyPointDetector.h"
 #include "../../filter/filter/GaussConvolve.h"
 

@@ -24,8 +24,8 @@
 #ifndef STIRA_REGISTRATION_REGISTRATIONWRAPPER_H
 #define STIRA_REGISTRATION_REGISTRATIONWRAPPER_H
 
-#include "../../image/datastructures/ArrayGrid.h"
-#include "../../image/geometrictransform/AffineTransform.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
+#include "../../imagetools/geometrictransform/AffineTransform.h"
 #include "register.h"
 
 namespace stira {

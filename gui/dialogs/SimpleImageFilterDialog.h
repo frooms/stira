@@ -26,7 +26,7 @@
 #include "../src/ImageWindow.h"
 #include "DialogMaster.h"
 
-#include "../../stira/image/tools/GridExtender.h"
+#include "../../stira/imagedata/simpletools/GridExtender.h"
 
 class SimpleImageFilterProcess;  ///< forward declaration of corresponding process; see subproject "processes"
 

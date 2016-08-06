@@ -13,7 +13,7 @@
 #include "../../common/common/MathUtils.h"
 #include "../../common/common/StiraMacros.h"
 #include "ComputeOrientation.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include <cmath>
 
 namespace stira {
@@ -119,8 +119,8 @@ OrientationGrid* ComputeOrientation::ComputeDominantOrientationInputFreemanAdels
          pOrientationGrid->SetMagnitude(x, y, tmpMagnitude);
       }
    }
-   pOrientationGrid->ExportMagnitudeImage( string("EdgeMagnitude.ppm") );
-   pOrientationGrid->ExportOrientationImage( string("EdgeDirection.ppm"), 50.0);
+   //pOrientationGrid->ExportMagnitudeImage( string("EdgeMagnitude.ppm") );
+   //pOrientationGrid->ExportOrientationImage( string("EdgeDirection.ppm"), 50.0);
    return pOrientationGrid;
 }
 

@@ -24,7 +24,7 @@
 
 #include "../src/ImageWindow.h"
 #include "../processes/Process.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 
 /** \brief master for process parameter dialogs

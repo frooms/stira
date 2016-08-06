@@ -13,7 +13,7 @@
 #include "ComputeSteerableFilteredImages.h"
 #include "../orientationestimation/ComputeOrientation.h"
 #include "../../filter/filter/SeparableFilter.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include <cassert>
 
 //#define DEBUG

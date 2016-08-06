@@ -12,7 +12,7 @@
 
 #include "CannyDialog.h"
 #include "../../stira/imageanalysis/imageanalysis/CannyEdgeDetector.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 #include "../src/MainWindow.h"
 #include "../processes/CannyProcess.h"

@@ -14,7 +14,7 @@
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../../common/common/MathUtils.h"
 #include "../../common/common/StiraMacros.h"
-#include "../../image/tools/NumberGridTools.h"
+#include "../../imagetools/tools/NumberGridTools.h"
 
 #define RL_THRESHOLD 0.00000001
 

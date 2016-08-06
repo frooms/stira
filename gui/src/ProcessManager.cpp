@@ -14,7 +14,7 @@
 #include "ProcessManager.h"
 #include "MainWindow.h"
 
-#include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
 #include "../dialogs/SimulateNoiseDialog.h"
 #include "../dialogs/SimpleImageFilterDialog.h"
 #include "../dialogs/LogGaborFilterDialog.h"
@@ -33,9 +33,10 @@
 
 #include "../../stira/common/common/Point.h"
 #include "../../stira/common/common/RectangularROI.h"
-#include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/tools/NumberGridTools.h"
-#include "../../stira/image/color/ColorBalancer.h"
+#include "../../stira/imagedata/simpletools/GridStatistics.h"
+#include "../../stira/imagedata/datastructures/Image.h"
+#include "../../stira/imagetools/tools/NumberGridTools.h"
+#include "../../stira/imagetools/colortools/ColorBalancer.h"
 #include "../../stira/fouriertools/fouriertools/FFT.h"
 #include "../../stira/contrastenhance/contrastenhance/HistogramTools.h"
 #include "../../stira/steerable/freemanadelson/ComputeSteerableFilteredImages.h"
@@ -408,9 +409,9 @@ void ProcessManager::SlotImageProperties()
    {
       double mmin, mmax;
       ArrayGrid<double>* pGrid = mpImage->GetBands()[i];
-      NumberGridTools<double>::GetMinMax( pGrid, mmin, mmax);
-      double mean = NumberGridTools<double>::GetGridMean( pGrid );
-      double var  = NumberGridTools<double>::GetGridVariance( pGrid, mean);
+      GridStatistics<double>::GetMinMax( pGrid, mmin, mmax);
+      double mean = GridStatistics<double>::GetGridMean( pGrid );
+      double var  = GridStatistics<double>::GetGridVariance( pGrid, mean);
 
       QLabel* pMinMaxLabel = new QLabel( QString("\t Band nr.: %1 \t min = %2 \t max = %3 \t mean = %4 \t variance = %5" ).arg( i ).arg( mmin ).arg( mmax ).arg( mean ).arg( var ), 0 );
       pLayout->addWidget( pMinMaxLabel );

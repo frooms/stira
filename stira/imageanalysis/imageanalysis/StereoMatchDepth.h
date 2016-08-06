@@ -16,7 +16,7 @@
 #include <iostream>
 #include "../../common/common/Definitions.h"
 #include "../../common/common/Point.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace imageanalysis {

@@ -13,7 +13,7 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../fouriertools/FFT.h"
 namespace stira {
 

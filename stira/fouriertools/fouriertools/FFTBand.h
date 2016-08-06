@@ -15,7 +15,7 @@
 
 #include <complex>
 
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
 namespace fouriertools {

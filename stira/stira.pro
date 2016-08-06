@@ -1,6 +1,7 @@
 SUBDIRS += common \
-           image \
+           imagedata \
            histogram \
+           imagetools \
            diffusion \
            fouriertools \
            filter \

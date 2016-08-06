@@ -17,7 +17,7 @@
 
 #include "../src/ImageWindow.h"
 #include "../definitions/StiraDefinitions.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 /** \brief Parent class for all processes*/
 class Process : public QThread

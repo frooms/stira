@@ -13,8 +13,8 @@
 #include "MainWindow.h"
 #include "../dialogs/GenerateImageDialog.h"
 #include "../dialogs/GeneratePerlinNoiseDialog.h"
-#include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/tools/FractalGenerator.h"
+#include "../../stira/imagedata/datastructures/Image.h"
+#include "../../stira/imagetools/imagegenerator/FractalGenerator.h"
 
 #include <iostream>
 

@@ -13,8 +13,8 @@
 #include <algorithm>
 #include "NoiseEstimator.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/PyramidTools.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagetools/tools/PyramidTools.h"
 #include "../wavelet/CriticallySubsampledTransform.h"
 
 namespace stira {

@@ -11,10 +11,11 @@
  ***********************************************************************************/
 
 #include "GenerateImageProcess.h"
-#include "../../stira/image/tools/GridGenerator.h"
-#include "../../stira/image/tools/NumberGridTools.h"
+#include "../../stira/imagetools/imagegenerator/GridGenerator.h"
+#include "../../stira/imagedata/simpletools/GridConverter.h"
+#include "../../stira/imagedata/simpletools/GridStatistics.h"
 #include "../../stira/filter/filter/GaussConvolve.h"
-#include "../../stira/image/color/GretagMacbethColorChecker.h"
+#include "../../stira/imagetools/imagegenerator/GretagMacbethColorChecker.h"
 
 using namespace std;
 using namespace stira::image;
@@ -185,7 +186,7 @@ void GenerateImageProcess::run()
          double mmin, mmax;
          pGrid = stira::image::GridGenerator::GenerateSheppLogan( 15.0 );
          
-         stira::image::NumberGridTools<double>::GetMinMax( pGrid, mmin, mmax );
+         stira::image::GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
          double factor = 255.0 / mmax;
          pGrid->MultiplyWith( factor );
          imageName = std::string("SheppLogan");
@@ -201,8 +202,8 @@ void GenerateImageProcess::run()
       {
          double mmin, mmax;
          ArrayGrid<int>* pGridTmp = stira::image::GridGenerator::GenerateIsingTexture( );
-         pGrid = stira::image::NumberGridTools<int>::CreateDoubleGrid( pGridTmp );
-         stira::image::NumberGridTools<double>::GetMinMax( pGrid, mmin, mmax );
+         pGrid = stira::image::GridConverter::ConvertToDouble( pGridTmp );
+         stira::image::GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
          double factor = 255.0 / mmax;
          pGrid->MultiplyWith( factor );
          imageName = std::string("IsingTexture");

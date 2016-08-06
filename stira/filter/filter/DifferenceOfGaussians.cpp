@@ -13,9 +13,9 @@
 #include "GaussConvolve.h"
 #include "../../common/common/MathUtils.h"
 #include "../../fouriertools/fouriertools/FFT.h"
-#include "../../image/tools/GridExtender.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/simpletools/GridExtender.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 //#define VISUALIZE_FILTERKERNEL
 

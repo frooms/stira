@@ -13,8 +13,8 @@
 #include "Retinex.h"
 #include "../../filter/filter/GaussConvolve.h"
 #include "../../histogram/histogram/IntHistogram.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagetools/tools/ImageIO.h"
 
 namespace stira {
 namespace contrastenhance {

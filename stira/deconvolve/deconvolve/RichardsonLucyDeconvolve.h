@@ -13,7 +13,7 @@
 #ifndef STIRA_DECONVOLVE_RICHARDSONLUCYDECONVOLVE_H
 #define STIRA_DECONVOLVE_RICHARDSONLUCYDECONVOLVE_H
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../fouriertools/fouriertools/FFTBand.h"
 #include "IterativeDeconvolve.h"
 

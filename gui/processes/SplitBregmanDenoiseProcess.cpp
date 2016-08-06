@@ -12,7 +12,7 @@
 
 #include "SplitBregmanDenoiseProcess.h"
 #include "../dialogs/SplitBregmanDenoiseDialog.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 #include "../../stira/diffusion/bregman/FlashROF.h"
 
 using namespace stira;

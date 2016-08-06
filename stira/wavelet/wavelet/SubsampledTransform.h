@@ -1,5 +1,5 @@
 
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "Wavelet.h"
 
 namespace stira {

@@ -13,10 +13,10 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "../../image/tools/ImageIO.h"
-#include "../../image/tools/GridGenerator.h"
-#include "../../image/tools/ImageTools.h"
-#include "../../image/datastructures/CWTPyramid.h"
+#include "../../imagetools/tools/ImageIO.h"
+#include "../../imagedata/datastructures/CWTPyramid.h"
+#include "../../imagetools/imagegenerator/GridGenerator.h"
+#include "../../imagetools/tools/ImageTools.h"
 #include "../../steerable/pyramid/PyramidReal.h"
 #include "../../steerable/pyramid/PyramidComplex.h"
 
@@ -224,8 +224,8 @@ bool PyramidOrientationTest(Image* pImage, int nrScales, int nrOrientations)
       ssMag << "Pyr-Magnitude-" << scaleNr << ".ppm";
       OrientationGrid* pOrientationGridRec = ComputeOrientation::ComputeDominantOrientationInputComplexPyramidLevel( np.GetPyramid()->GetRecursiveScale( scaleNr ) );
 
-      pOrientationGridRec->ExportMagnitudeImage( ssMag.str() );
-      pOrientationGridRec->ExportOrientationImage( ssOri.str(), 2.0);
+      //pOrientationGridRec->ExportMagnitudeImage( ssMag.str() );
+      //pOrientationGridRec->ExportOrientationImage( ssOri.str(), 2.0);
 
       delete pOrientationGridRec;
    }
@@ -235,8 +235,8 @@ bool PyramidOrientationTest(Image* pImage, int nrScales, int nrOrientations)
    ssMag << "Pyr-Magnitude-res.ppm";
    OrientationGrid* pOrientationGridResid = ComputeOrientation::ComputeDominantOrientationInputComplexPyramidLevel( np.GetPyramid()->GetResidualScale() );
 
-   pOrientationGridResid->ExportMagnitudeImage( ssMag.str() );
-   pOrientationGridResid->ExportOrientationImage( ssOri.str(), 2.0);
+   //pOrientationGridResid->ExportMagnitudeImage( ssMag.str() );
+   //pOrientationGridResid->ExportOrientationImage( ssOri.str(), 2.0);
 
    delete pOrientationGridResid;
 

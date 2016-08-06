@@ -13,9 +13,9 @@
 #include <cassert>
 #include "CompareSmoothSharpDijk.h"
 #include "../../filter/filter/NonSeparableFilter.h"
-#include "../../image/datastructures/OrientationGrid.h"
-#include "../../image/tools/NumberGridTools.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/OrientationGrid.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../histogram/histogram/JointHistogram.h"
 
 namespace stira {

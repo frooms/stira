@@ -13,7 +13,9 @@
 #include <sstream>
 #include "SplitColorChannelsProcess.h"
 #include "../src/ImageDataList.h"
-#include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
+#include "../../stira/imagedata/simpletools/GridStatistics.h"
+
 
 using namespace stira::image;
 
@@ -136,7 +138,7 @@ void SplitColorChannelsProcess::run()
    
    for ( int bandNr = 0; bandNr < nrbands; bandNr++ )
    {
-      NumberGridTools<double>::RescaleGrid( pOutImage->GetBands()[bandNr], 0.0, 255.0 );
+      GridStatistics<double>::RescaleGrid( pOutImage->GetBands()[bandNr], 0.0, 255.0 );
       Image* pChannelImage = new Image( pOutImage->GetBands()[bandNr] );
       std::string outName = mpImage->GetImageName() +std::string("-") + std::string( bandID[bandNr] );
       pChannelImage->SetImageName( outName );

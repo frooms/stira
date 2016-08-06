@@ -14,7 +14,7 @@
 #define STIRAGUI_CURVEPLOTTER_SHOWRADIALLYAVERAGEDFOURIERSPECTRUMDIALOG_H
 
 #include "CurvePlotDialog.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 
 /** \brief dialog to plot the radially averaged Fourier spectrum of an image
   * Plots separately for all color bands */

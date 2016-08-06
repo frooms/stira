@@ -16,7 +16,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

@@ -14,7 +14,7 @@
 #define STIRA_IMAGEANALYSIS_DISTANCETRANSFORM_H
 
 #include <iostream>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace imageanalysis {

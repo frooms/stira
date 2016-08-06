@@ -5,16 +5,18 @@ HEADERS += Example.h
 TEMPLATE = app
 
 LIBS += ../bregman/libbregman.a \
-  ../../image/tools/libtools.a \
-  ../../image/datastructures/libdatastructures.a \
-  ../../image/color/libcolor.a \
-  ../../common/common/libcommon.a \
-  -lopencv_highgui \
-  -lopencv_core
+        ../../imagetools/tools/libtools.a \
+        ../../imagedata/simpletools/libsimpletools.a \
+        ../../imagedata/datastructures/libdatastructures.a \
+        ../../imagedata/color/libcolor.a \
+        ../../common/common/libcommon.a \
+        -lopencv_highgui \
+        -lopencv_core
 
 POST_TARGETDEPS += ../bregman/libbregman.a \
-  ../../image/tools/libtools.a \
-  ../../image/datastructures/libdatastructures.a \
-  ../../image/color/libcolor.a \
-  ../../common/common/libcommon.a
+                   ../../imagetools/tools/libtools.a \
+                   ../../imagedata/simpletools/libsimpletools.a \
+                   ../../imagedata/datastructures/libdatastructures.a \
+                   ../../imagedata/color/libcolor.a \
+                   ../../common/common/libcommon.a
 

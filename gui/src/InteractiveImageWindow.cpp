@@ -45,8 +45,8 @@
 #include "ImageDataList.h"
 #include "../../stira/common/common/MathUtils.h"
 #include "../../stira/common/common/StringUtils.h"
-#include "../../stira/image/tools/ImageTools.h"
-#include "../../stira/image/tools/GridExtender.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
+#include "../../stira/imagedata/simpletools/GridExtender.h"
 #include "../../stira/filter/filter/GaussConvolve.h"
 
 using namespace std;

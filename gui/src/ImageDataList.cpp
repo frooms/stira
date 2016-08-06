@@ -14,10 +14,10 @@
 #include "ImageDataList.h"
 #include "MainWindow.h"
 #include "../processes/RegisterImagesProcess.h"
-#include "../../stira/image/datastructures/Image.h"
-#include "../../stira/image/tools/NumberGridTools.h"
+#include "../../stira/imagedata/simpletools/ImageStatistics.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 #include "../../stira/common/common/StringUtils.h"
-#include "../../stira/image/tools/ImageTools.h"
+#include "../../stira/imagetools/tools/ImageTools.h"
 using namespace std;
 using namespace stira::image;
 using namespace stira::common;
@@ -187,7 +187,7 @@ void ImageDataList::SlotCompareImagesPearson(  )
       
       ArrayGrid<double>* pPearson = NumberGridTools<double>::ComputePearsonCorrelation( pImage1->GetBands()[0], pImage2->GetBands()[0] );
       Image* pCompareImage = new Image( pPearson );
-      pCompareImage->Rescale();
+      ImageStatistics::Rescale( pCompareImage, 0.0, 255.0 );
       
       std::string outName = std::string("Pearson-") + pImage1->GetImageName() + std::string("-") + pImage2->GetImageName();
       pCompareImage->SetImageName(outName);

@@ -3153,6 +3153,27 @@
   <compound kind="class">
     <name>stira::degradationestimation::CompareSmoothSharpDijk</name>
     <filename>classstira_1_1degradationestimation_1_1CompareSmoothSharpDijk.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>CompareSmoothSharpDijk</name>
+      <anchorfile>classstira_1_1degradationestimation_1_1CompareSmoothSharpDijk.html</anchorfile>
+      <anchor>a62d43013444a0d1e6f64fcd0f399541d</anchor>
+      <arglist>(image::Image *pImage1, image::Image *pImage2, std::string name)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~CompareSmoothSharpDijk</name>
+      <anchorfile>classstira_1_1degradationestimation_1_1CompareSmoothSharpDijk.html</anchorfile>
+      <anchor>aeb907b51818f72735562582bd7b04afa</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>Run</name>
+      <anchorfile>classstira_1_1degradationestimation_1_1CompareSmoothSharpDijk.html</anchorfile>
+      <anchor>a68cb9153a6cc87f11fd35eed446c6fbc</anchor>
+      <arglist>()</arglist>
+    </member>
   </compound>
   <compound kind="class">
     <name>stira::steerable::ComputeOrientation</name>
@@ -3824,24 +3845,6 @@
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
       <anchor>af458b824cfcc3b0aa8abf3c699dafde9</anchor>
       <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>stira::common::Definitions</name>
-    <filename>classstira_1_1common_1_1Definitions.html</filename>
-    <member kind="function">
-      <type></type>
-      <name>Definitions</name>
-      <anchorfile>classstira_1_1common_1_1Definitions.html</anchorfile>
-      <anchor>a1bfdf1f85d051a3cb3377eb3d1582a17</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>~Definitions</name>
-      <anchorfile>classstira_1_1common_1_1Definitions.html</anchorfile>
-      <anchor>a09a6560111c89ada6f2ec9fed9312a45</anchor>
-      <arglist>()</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -12790,6 +12793,13 @@
   <compound kind="class">
     <name>stira::common::QuantileNormalDistribution</name>
     <filename>classstira_1_1common_1_1QuantileNormalDistribution.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>QuantileNormalDistribution</name>
+      <anchorfile>classstira_1_1common_1_1QuantileNormalDistribution.html</anchorfile>
+      <anchor>ae35f73e3cf94476be73b12f41f3d1624</anchor>
+      <arglist>()</arglist>
+    </member>
     <member kind="function" static="yes">
       <type>static double</type>
       <name>Run</name>
@@ -13322,50 +13332,64 @@
   <compound kind="class">
     <name>stira::deconvolve::SimulateDegradation</name>
     <filename>classstira_1_1deconvolve_1_1SimulateDegradation.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>SimulateDegradation</name>
+      <anchorfile>classstira_1_1deconvolve_1_1SimulateDegradation.html</anchorfile>
+      <anchor>a114117116fb3568d512957a46b69f757</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~SimulateDegradation</name>
+      <anchorfile>classstira_1_1deconvolve_1_1SimulateDegradation.html</anchorfile>
+      <anchor>a1d815b406d9f118f00cb0776f8f23c9b</anchor>
+      <arglist>()</arglist>
+    </member>
   </compound>
   <compound kind="class">
-    <name>SLIC</name>
-    <filename>classSLIC.html</filename>
+    <name>stira::imageanalysis::SLIC</name>
+    <filename>classstira_1_1imageanalysis_1_1SLIC.html</filename>
     <member kind="function">
       <type>void</type>
       <name>DoSuperpixelSegmentation_ForGivenSuperpixelSize</name>
-      <anchorfile>classSLIC.html</anchorfile>
-      <anchor>ad25113d4a0ca48f94330e5746d06f91b</anchor>
+      <anchorfile>classstira_1_1imageanalysis_1_1SLIC.html</anchorfile>
+      <anchor>a4eb74fd10242246cf189fa4add599c54</anchor>
       <arglist>(const unsigned int *ubuff, const int width, const int height, int *&amp;klabels, int &amp;numlabels, const int &amp;superpixelsize, const double &amp;compactness)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DoSuperpixelSegmentation_ForGivenNumberOfSuperpixels</name>
-      <anchorfile>classSLIC.html</anchorfile>
-      <anchor>a4668c9b02d4681899c904d02134e9b27</anchor>
+      <anchorfile>classstira_1_1imageanalysis_1_1SLIC.html</anchorfile>
+      <anchor>a2f30c6ebc4752906083ecd8b030fd049</anchor>
       <arglist>(const unsigned int *ubuff, const int width, const int height, int *&amp;klabels, int &amp;numlabels, const int &amp;K, const double &amp;compactness)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DoSupervoxelSegmentation</name>
-      <anchorfile>classSLIC.html</anchorfile>
-      <anchor>a1fe79da6a77c2791f0540001e4da74d7</anchor>
+      <anchorfile>classstira_1_1imageanalysis_1_1SLIC.html</anchorfile>
+      <anchor>a9cfd63d101e45c12e3324a0ce60dd639</anchor>
       <arglist>(unsigned int **&amp;ubuffvec, const int &amp;width, const int &amp;height, const int &amp;depth, int **&amp;klabels, int &amp;numlabels, const int &amp;supervoxelsize, const double &amp;compactness)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SaveSuperpixelLabels</name>
-      <anchorfile>classSLIC.html</anchorfile>
-      <anchor>a3e957df9e71ccc5f7ad43372a54e8720</anchor>
+      <anchorfile>classstira_1_1imageanalysis_1_1SLIC.html</anchorfile>
+      <anchor>a9de56bcd1d4a78ebaefe84f44290e5ef</anchor>
       <arglist>(const int *&amp;labels, const int &amp;width, const int &amp;height, const string &amp;filename, const string &amp;path)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SaveSupervoxelLabels</name>
-      <anchorfile>classSLIC.html</anchorfile>
-      <anchor>ae1935655f1506ebfd3df44b90e6c8b03</anchor>
+      <anchorfile>classstira_1_1imageanalysis_1_1SLIC.html</anchorfile>
+      <anchor>a9686a16058f162b34f1336564ea15b56</anchor>
       <arglist>(const int **&amp;labels, const int &amp;width, const int &amp;height, const int &amp;depth, const string &amp;filename, const string &amp;path)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DrawContoursAroundSegments</name>
-      <anchorfile>classSLIC.html</anchorfile>
-      <anchor>a171322e1eeebfcbc114c250dad663b0b</anchor>
+      <anchorfile>classstira_1_1imageanalysis_1_1SLIC.html</anchorfile>
+      <anchor>a05959a482d07269f8470d0d1cc55d974</anchor>
       <arglist>(unsigned int *&amp;segmentedImage, int *&amp;labels, const int &amp;width, const int &amp;height, const unsigned int &amp;color)</arglist>
     </member>
   </compound>
@@ -14277,10 +14301,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>TransformCoordinates</name>
-    <filename>classTransformCoordinates.html</filename>
-  </compound>
-  <compound kind="class">
     <name>stira::image::Translation</name>
     <filename>classstira_1_1image_1_1Translation.html</filename>
     <base>stira::image::GeometricTransform</base>
@@ -14397,6 +14417,137 @@
       <anchorfile>classstira_1_1deconvolve_1_1VanCittertLandweberDeconvolve.html</anchorfile>
       <anchor>addce021420dcfe82961039abb10848ad</anchor>
       <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>stira::imageanalysis::WatershedMeyer</name>
+    <filename>classstira_1_1imageanalysis_1_1WatershedMeyer.html</filename>
+    <templarg></templarg>
+    <member kind="function">
+      <type></type>
+      <name>WatershedMeyer</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>aa0ed8ce0f8005ae9eadfadbb4522c9f2</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~WatershedMeyer</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a6be4f6f03760360e27cf4d6207fd0382</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>GetMaxMinimaLevel</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a49c3e97234cb7a35c14c66e22d717c5f</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>SetMaxMinimaLevel</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a2243f83a2e5f0a66199aec37a7fa5141</anchor>
+      <arglist>(double maxLevel)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>GetEqualityPrecision</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a652c9c984e06a664b70c83edf27a70b8</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>SetEqualityPrecision</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a7b8c339fd8f7c207739574e501564ba3</anchor>
+      <arglist>(double precision)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>Run</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>ab1bf89f20c6e6876c681eab759858b2a</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *iInputImage, bool usegradientImage, std::string sourceDataName=std::string(&quot;&quot;))</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>GetNumberOfWatershedPixels</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>ac65e6bd7b6615b5b54344f1274a856c9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ArrayGrid&lt; bool &gt; *</type>
+      <name>GetWatershedGrid</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>ab92fe72aeb1278137352a0821614d938</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>GetNumberOfLabels</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>ae59760ea43789fc7db793dc793829198</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ArrayGrid&lt; int &gt; *</type>
+      <name>GetLabelImage</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>ad84be0fa38f32c24b114e184a6947730</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>Image *</type>
+      <name>CreateLabelsRidgeImage</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a0947ec35751ea470848dbe9f46e6148d</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>Image *</type>
+      <name>CreateLabelsIntensitiesImage</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a0222921e0e11b4ba92cb75457deae0dd</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>IsElementNoMinima</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>ab20ac0cec79b44ff5cc0701067ffef77</anchor>
+      <arglist>(PixelElement&lt; T &gt; pe1, PixelElement&lt; T &gt; pe2)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>IsElementSame</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a05a405390ed317f354e2999a07599d2e</anchor>
+      <arglist>(PixelElement&lt; T &gt; pe1, PixelElement&lt; T &gt; pe2)</arglist>
+    </member>
+    <member kind="function">
+      <type>PixelElement&lt; T &gt;</type>
+      <name>CreatePixelElement</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a0801346ebca8819013d6a020d04608b3</anchor>
+      <arglist>(int x, int y)</arglist>
+    </member>
+    <member kind="function">
+      <type>PixelElement&lt; T &gt;</type>
+      <name>CreatePixelElement</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a17f3c4ffea6fb7aec992435fb2654e54</anchor>
+      <arglist>(stira::common::Point&lt; int &gt; pt)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>IsValidNeighbour</name>
+      <anchorfile>classstira_1_1imageanalysis_1_1WatershedMeyer.html</anchorfile>
+      <anchor>a70d3965453f29664a7169469af8fd1a1</anchor>
+      <arglist>(int x, int y, int dx, int dy)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -14655,5 +14806,10 @@
     <name>stira</name>
     <filename>namespacestira.html</filename>
     <class kind="class">stira::FlashROF</class>
+  </compound>
+  <compound kind="page">
+    <name>index</name>
+    <title>STIRA (old name FRIEP) Simple Toolkit for Image Restoration and Analysis</title>
+    <filename>index</filename>
   </compound>
 </tagfile>

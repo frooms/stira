@@ -12,8 +12,8 @@
 
 #include "AdaptiveBilateralFilter.h"
 #include "LaplacianOfGaussianFilter.h"
-#include "../../image/tools/ImageTools.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagetools/tools/ImageTools.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira{
 namespace filter{

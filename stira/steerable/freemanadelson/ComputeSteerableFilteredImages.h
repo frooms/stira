@@ -16,7 +16,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <string.h>
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../orientationestimation/ComputeOrientation.h"
 #include "BasicFilterKernels.h"
 

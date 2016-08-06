@@ -12,7 +12,6 @@
 
 #include "TransferFunctionGenerator.h"
 #include "../../common/common/MathUtils.h"
-#include "../../image/tools/NumberGridTools.h"
 
 namespace stira {
 namespace fouriertools {

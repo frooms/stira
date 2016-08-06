@@ -12,7 +12,7 @@
 
 #include "AnisotropicDiffusionProcess.h"
 #include "../dialogs/AnisotropicDiffusionDialog.h"
-#include "../../stira/image/datastructures/Image.h"
+#include "../../stira/imagedata/datastructures/Image.h"
 #include "../../stira/diffusion/diffusion/AnisotropicDiffusion.h"
 
 using namespace stira::diffusion;

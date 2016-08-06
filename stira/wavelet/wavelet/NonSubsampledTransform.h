@@ -13,7 +13,7 @@
 #ifndef STIRA_WAVELET_NONSUBSAMPLEDTRANSFORM_H
 #define STIRA_WAVELET_NONSUBSAMPLEDTRANSFORM_H
 
-#include "../../image/datastructures/ArrayGrid.h"
+#include "../../imagedata/datastructures/ArrayGrid.h"
 #include "Wavelet.h"
 #include "WaveletTapGenerator.h"
 

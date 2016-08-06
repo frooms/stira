@@ -16,7 +16,7 @@ CONFIG += warn_on \
           thread \
           qt \
           build_all
-TARGET = ../bin/friepgui
+TARGET = ../bin/stiragui
 RESOURCES = application.qrc
 
 POST_TARGETDEPS += ../curveplotter/libcurveplotter.a \
@@ -42,11 +42,15 @@ LIBS += ../dialogs/libdialogs.a \
   -L../../stira/histogram/histogram \
   -L../../stira/diffusion/bregman \
   -L../../stira/diffusion/diffusion \
-  -L../../stira/image/geometrictransform \
-  -L../../stira/image/tools \
-  -L../../stira/image/datastructures \
-  -L../../stira/image/color \
-  -L../../stira/image \
+  -L../../stira/imagetools/geometrictransform \
+  -L../../stira/imagetools/imagegenerator \
+  -L../../stira/imagetools/tools \
+  -L../../stira/imagetools/interpolation \
+  -L../../stira/imagetools/colortools \
+  -L../../stira/imagedata/simpletools \
+  -L../../stira/imagedata/datastructures \
+  -L../../stira/imagedata/color \
+  -L../../stira/imagedata \
   -L../../stira/common/common \
   -L../../stira/ \
   -lregistration \
@@ -64,7 +68,11 @@ LIBS += ../dialogs/libdialogs.a \
   -lbregman \
   -ldiffusion \
   -lgeometrictransform \
+  -limagegenerator \
+  -linterpolation \
   -ltools \
+  -lcolortools \
+  -lsimpletools \
   -ldatastructures \
   -lcolor \
   -lcommon \

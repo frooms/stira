@@ -14,7 +14,7 @@
 #define STIRA_CONTRASTENHANCE_HISTOGRAMEQUALIZE_H
 
 #include "../../common/common/RectangularROI.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 #include "../../histogram/histogram/FloatHistogram.h"
 
 namespace stira {

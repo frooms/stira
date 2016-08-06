@@ -1,4 +1,3 @@
 TEMPLATE = subdirs
 
-SUBDIRS += histogram \
-testHistogram
+SUBDIRS += histogram

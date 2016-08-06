@@ -13,7 +13,7 @@
 #include "WienerDeconvolve.h"
 
 #include "../../common/common/StiraMacros.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../fouriertools/fouriertools/FFTBand.h"
 #include "../../fouriertools/fouriertools/FFT.h"
 #include "../../filter/filter/GaussConvolve.h"

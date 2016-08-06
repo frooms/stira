@@ -18,8 +18,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <cassert>
-#include "../../image/datastructures/Image.h"
-#include "../../image/tools/ImageIO.h"
+#include "../../imagedata/datastructures/Image.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../diffusion/diffusion/AnisotropicDiffusion.h"
 
 using namespace std;

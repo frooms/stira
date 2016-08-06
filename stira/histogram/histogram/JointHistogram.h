@@ -13,7 +13,7 @@
 #ifndef STIRA_HISTOGRAM_JOINTHISTOGRAM_H
 #define STIRA_HISTOGRAM_JOINTHISTOGRAM_H
 #include "FloatHistogram.h"
-#include "../../image/datastructures/Image.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace histogram {

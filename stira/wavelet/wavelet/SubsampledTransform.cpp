@@ -3,7 +3,9 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
-#include "../../image/tools/PyramidTools.h"
+#include "../../imagedata/simpletools/ArrayGridTools.h"
+#include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagetools/tools/PyramidTools.h"
 
 //#define VIEW_FILTER_TAPS
 namespace stira {
