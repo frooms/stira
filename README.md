@@ -54,3 +54,10 @@ GUI
  * on Qt of course (uses version 4.X)
  * also on QWT: Qt Widgets for Technical Applications
     - http://qwt.sourceforge.net/
+
+4. Acknowledgements
+===================
+All support and feedback from my former colleagues of Ghent University, dept. TELIN, research group IPI, especially 
+prof. Wilfried Philips
+
+For feedback on build attempt, my Bricsys colleague Tijs Vermeulen.

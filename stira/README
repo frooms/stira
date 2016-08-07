@@ -89,23 +89,26 @@ be held responsible for anything going wrong with anything made with this source
 
 common
   |
-image color
+imagedata (color, datastructures, simpletools)
   |
-image datastructure
+histogram
   |
-image tools
+imagetools (colortools, geometrictransform, imagegenerator, interpolation, tools)
   |
-image geometrictransform
+  +------------------------------+---------------------------+
+  |                              |                           |    
+fouriertools                registration                 diffusion
   |
-  +------------------------------+---------------------------+---------------------+-----------------+
-  |                              |                           |                     |                 |
-fouriertools                  histogram                 complexwavelet         registration         avi
-  |                              \
-filter                            +-----------------------------------------------------------------------\
-  |                                                                                                        |
-  +------------------------------+---------------------------+---------------------+-----------------------+
-  |                              |                           |                     |                       |
-wavelet                       steerable                   diffusion             imageanalysis        contrastenhance
-                              pyramidapplications
-                              deconvolve
-                              degradationestimation
+filter
+  |
+  +------------------------------+---------------------------+---------------------+
+  |                              |                           |                     |
+wavelet                       steerable                 imageanalysis        contrastenhance
+  |                         pyramidapplications
+  |                              |
+  \                              |
+   +-----------------------------+
+                                 |
+                            deconvolve
+                                 |
+                       degradationestimation
