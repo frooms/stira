@@ -4,7 +4,6 @@ TEMPLATE = app
 
 LIBS += ../../steerable/freemanadelson/libfreemanadelson.a \
         ../pyramidapplications/libpyramidapplications.a \
-        ../../wavelet/wavelet/libwavelet.a \
         ../../steerable/orientationestimation/liborientationestimation.a \
         ../../steerable/pyramid/libpyramid.a \
         ../../filter/filter/libfilter.a \
@@ -23,7 +22,6 @@ POST_TARGETDEPS += ../pyramidapplications/libpyramidapplications.a \
                    ../../steerable/orientationestimation/liborientationestimation.a \
                    ../../steerable/pyramid/libpyramid.a \
                    ../../steerable/freemanadelson/libfreemanadelson.a \
-                   ../../wavelet/wavelet/libwavelet.a \
                    ../../filter/filter/libfilter.a \
                    ../../fouriertools/fouriertools/libfouriertools.a \
                    ../../imagetools/tools/libtools.a \
