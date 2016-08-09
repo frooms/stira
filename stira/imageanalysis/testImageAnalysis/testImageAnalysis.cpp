@@ -153,7 +153,7 @@ void TestDistanceTransform()
 
 //-----------------------------------------------------------------------------------
 
-void TestHoughTransform( )
+void TestHoughTransformLines( )
 {
     string inputname = "../../../../stira/stira/testdata/apartment.jpg";
 
@@ -162,12 +162,12 @@ void TestHoughTransform( )
     double loThreshold = 30.0;
     double hiThreshold = 80.0;
     ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
-    ImageIO::WritePGM( pEdgeGrid, string("CannyHough.pgm") );
+    ImageIO::WritePGM( pEdgeGrid, string("CannyHoughLine.pgm") );
 
     int threshold = 150;
     HoughTransform* pHT = new HoughTransform();
     std::vector< LineSegment<int> > lines = pHT->GetLines( pEdgeGrid, threshold );
-    pHT->VisualizeAcculumulator("Accumulator.pgm");
+    pHT->VisualizeAcculumulator("AccumulatorLine.pgm");
 
     int nrLines = lines.size();
     for (int i = 0; i < nrLines; i++)
@@ -175,6 +175,37 @@ void TestHoughTransform( )
         DrawImageTools::DrawLine(pImage, lines[i].GetPoint1(), lines[i].GetPoint2(), ColorValue(255,0,0,TYPE_RGB));
     }
     ImageIO::Write( pImage, string("HoughLinesOut.ppm") );
+    delete pEdgeGrid;
+    delete pHT;
+}
+
+//-----------------------------------------------------------------------------------
+
+void TestHoughTransformCircles( )
+{
+    string inputname = "../../../../stira/stira/testdata/eij4O.jpg";
+
+    Image* pImage = ImageIO::Read(inputname);
+    double sigmaSmooth =  2.0;
+    double loThreshold = 30.0;
+    double hiThreshold = 80.0;
+    ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
+    ImageIO::WritePGM( pEdgeGrid, string("CannyHoughCircle.pgm") );
+
+    HoughTransform* pHT = new HoughTransform();
+    int threshold = 200;
+    for (int radius = 80; radius < 100; radius++)
+    {
+        std::vector< Point<int> > circleCenters = pHT->GetCirclesRadius( pEdgeGrid, radius, threshold );
+        pHT->VisualizeAcculumulator("AccumulatorCircle.pgm");
+
+        int nrCircles = circleCenters.size();
+        for (int i = 0; i < nrCircles; i++)
+        {
+            DrawImageTools::DrawCircle(pImage, circleCenters[i], radius, ColorValue(255,0,0,TYPE_RGB));
+        }
+    }
+    ImageIO::Write( pImage, string("HoughCirclesOut.ppm") );
     delete pEdgeGrid;
     delete pHT;
 }
@@ -452,11 +483,12 @@ int main(int argc, char *argv[])
 
    /////////////////////////////////////////////////////
    // STEREO MATCHING
-   TestStereoMatch( );
+   //TestStereoMatch( );
 
    /////////////////////////////////////////////////////
    // HOUGH TRANSFORM
-   TestHoughTransform( );
+   TestHoughTransformLines( );
+   TestHoughTransformCircles( );
 
    /////////////////////////////////////////////////////
    // SLIC: superpixels segmentation

@@ -36,13 +36,13 @@ public:
     std::vector< common::LineSegment<int> >                GetLines(   image::ArrayGrid<bool>* pEdges,      int threshold );
 
     //https://github.com/marcbowes/Hough-Circle-Detector/blob/master/src/hcd.cpp
-    std::vector< std::pair< common::Point<int>, double > > GetCirclesRadius( image::OrientationGrid* pOrientGrid, int radius, int threshold );
+    std::vector< common::Point<int> > GetCirclesRadius( image::ArrayGrid<bool>* pEdges, int radius, int threshold );
 
     void VisualizeAcculumulator( std::string fileName );
 
 private:
     int BuildAccumulatorLines( image::ArrayGrid<bool>* pEdges );
-    int BuildAccumulatorCircles( image::OrientationGrid* pOrientGrid );
+    int BuildAccumulatorCircles( image::ArrayGrid<bool>* pEdgeGrid, int radius );
 
     image::ArrayGrid<int>* mpAccu;
     int mImageWidth;

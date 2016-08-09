@@ -71,35 +71,56 @@ int HoughTransform::BuildAccumulatorLines( ArrayGrid<bool>* pEdgeGrid )
 
 //--------------------------------------------------------------------------------
 
-int HoughTransform::BuildAccumulatorCircles( OrientationGrid* pOrientGrid )
+int HoughTransform::BuildAccumulatorCircles( ArrayGrid<bool>* pEdgeGrid, int radius )
 {
-   mImageWidth  = pOrientGrid->GetWidth();
-   mImageHeight = pOrientGrid->GetHeight();
+   mImageWidth  = pEdgeGrid->GetWidth();
+   mImageHeight = pEdgeGrid->GetHeight();
    //Create the accu
-   /*double hough_h = ((sqrt(2.0) * (double)( mImageHeight > mImageWidth ? mImageHeight : mImageWidth ) ) / 2.0);
-   mAccuHeight = hough_h * 2.0; // -r -> +r
-   mAccuWidth  = 180;
+   if (mpAccu != 0) { delete mpAccu; }
+   mpAccu = new ArrayGrid<int>( mImageWidth, mImageHeight );
+   mAccuWidth  = pEdgeGrid->GetWidth();
+   mAccuHeight = pEdgeGrid->GetHeight();
 
-   mpAccu = new ArrayGrid<int>( mAccuWidth, mAccuHeight );
-
-   double center_x = mImageWidth  / 2.0;
-   double center_y = mImageHeight / 2.0;
-
-   for( int y = 0; y < mImageHeight; y++ )
+   for (int y0 = radius; y0 < mImageHeight - radius; y0++)
    {
-      for( int x = 0; x < mImageWidth; x++ )
-      {
-         if( pEdgeGrid->GetValue( x, y) )
-         {
-            for( int t = 0; t < 180; t++ )
-            {
-               double r =   ((double)x - center_x) * cos( MathUtils::ToRadians( (double)t ) )
-                          + ((double)y - center_y) * sin( MathUtils::ToRadians( (double)t ) );
-               mpAccu->AddOne( t, round(r + hough_h) );
-            }
-         }
-      }
-   }*/
+       for (int x0 = radius; x0 < mImageWidth - radius; x0++)
+       {
+           int f = 1 - radius;
+           int ddF_x = 1;
+           int ddF_y = -2 * radius;
+           int xx = 0;
+           int yy = radius;
+
+           if (pEdgeGrid->GetValue( x0, y0 + radius) ) { mpAccu->AddOne( x0, y0); }
+           if (pEdgeGrid->GetValue( x0, y0 - radius) ) { mpAccu->AddOne( x0, y0); }
+           if (pEdgeGrid->GetValue( x0 + radius, y0) ) { mpAccu->AddOne( x0, y0); }
+           if (pEdgeGrid->GetValue( x0 - radius, y0) ) { mpAccu->AddOne( x0, y0); }
+
+           while(xx < yy)
+           {
+              // ddF_x == 2 * x + 1;
+              // ddF_y == -2 * y;
+              // f == x*x + y*y - radius*radius + 2*x - y + 1;
+              if(f >= 0)
+              {
+                 yy--;
+                 ddF_y += 2;
+                 f += ddF_y;
+              }
+              xx++;
+              ddF_x += 2;
+              f += ddF_x;
+              if (pEdgeGrid->GetValue( x0 + xx, y0 + yy) ) { mpAccu->AddOne( x0, y0); }
+              if (pEdgeGrid->GetValue( x0 - xx, y0 + yy) ) { mpAccu->AddOne( x0, y0); }
+              if (pEdgeGrid->GetValue( x0 + xx, y0 - yy) ) { mpAccu->AddOne( x0, y0); }
+              if (pEdgeGrid->GetValue( x0 - xx, y0 - yy) ) { mpAccu->AddOne( x0, y0); }
+              if (pEdgeGrid->GetValue( x0 + yy, y0 + xx) ) { mpAccu->AddOne( x0, y0); }
+              if (pEdgeGrid->GetValue( x0 - yy, y0 + xx) ) { mpAccu->AddOne( x0, y0); }
+              if (pEdgeGrid->GetValue( x0 + yy, y0 - xx) ) { mpAccu->AddOne( x0, y0); }
+           }
+       }
+   }
+
    return 0;
 }
 
@@ -177,11 +198,46 @@ std::vector< common::LineSegment<int> > HoughTransform::GetLines(  ArrayGrid<boo
 
 //--------------------------------------------------------------------------------
 
-std::vector< std::pair< common::Point<int>, double > > HoughTransform::GetCirclesRadius( image::OrientationGrid* pOrientGrid, int radius, int threshold )
+std::vector< Point<int> > HoughTransform::GetCirclesRadius( image::ArrayGrid<bool>* pEdgeGrid, int radius, int threshold )
 {
-    BuildAccumulatorCircles( pOrientGrid );
-    std::vector< std::pair< common::Point<int>, double > > circles;
-    return circles;
+    BuildAccumulatorCircles( pEdgeGrid, radius );
+
+    std::vector< Point<int> > circleCenters;
+
+    if( mpAccu == 0)
+       return circleCenters;
+
+    for( int y0 = 0; y0 < mpAccu->GetHeight(); y0 ++ )
+    {
+       for( int x0 = 0; x0 < mpAccu->GetWidth(); x0++ )
+       {
+          if( mpAccu->GetValue(x0, y0) >= threshold )
+          {
+             //Is this point a local maxima (9x9)
+             int max = mpAccu->GetValue( x0, y0 );
+             for( int ly = -4; ly <= 4; ly++ )
+             {
+                for( int lx = -4; lx <= 4; lx++ )
+                {
+                   if( ( ly + y0 >= 0 && ly + y0 < mAccuHeight ) && ( lx + x0 >= 0 && lx + x0 < mAccuWidth ) )
+                   {
+                      if( mpAccu->GetValue( x0 + lx, y0 + ly ) > max )
+                      {
+                         max = mpAccu->GetValue( x0 + lx, y0 + ly );
+                         ly = lx = 5;
+                      }
+                   }
+                }
+             }
+             if(max > mpAccu->GetValue( x0, y0 ) )
+                continue;
+
+             circleCenters.push_back( Point<int>( x0,y0 ) );
+          }
+       }
+    }
+
+    return circleCenters;
 }
 
 //--------------------------------------------------------------------------------
