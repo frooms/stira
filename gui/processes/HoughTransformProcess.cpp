@@ -31,18 +31,34 @@ HoughTransformProcess::~HoughTransformProcess()
 {
 }
 
-//------------------------------------------------------------------
-
-int HoughTransformProcess::GetMaximalMinimumLevel()
+int HoughTransformProcess::GetMaximalRadius()
 {
-   return mMaximalMinimumLevel;
+    return mMaximalRadius;
 }
 
-//------------------------------------------------------------------
-
-void HoughTransformProcess::SetMaximalMinimumLevel( int maxLevel )
+void HoughTransformProcess::SetMaximalRadius( int maxRadius )
 {
-   mMaximalMinimumLevel = maxLevel;
+    mMaximalRadius = maxRadius;
+}
+
+int HoughTransformProcess::GetMinimalRadius()
+{
+    return mMinimalRadius;
+}
+
+void HoughTransformProcess::SetMinimalRadius( int minRadius )
+{
+    mMinimalRadius = minRadius;
+}
+
+bool HoughTransformProcess::GetChooseCircles()
+{
+    return mChooseCircles;
+}
+
+void HoughTransformProcess::SetChooseCircles( bool chooseCircles )
+{
+    mChooseCircles = chooseCircles;
 }
 
 //------------------------------------------------------------------
@@ -81,7 +97,7 @@ Image* HoughTransformProcess::RunCircles()
 
     int threshold = 200;
     HoughTransform* pHT = new HoughTransform();
-    for (int radius = 80; radius < 100; radius++)
+    for (int radius = mMinimalRadius; radius < mMaximalRadius; radius++)
     {
         std::vector< stira::common::Point<int> > circleCenters = pHT->GetCirclesRadius( pEdgeGrid, radius, threshold );
 
@@ -101,11 +117,20 @@ Image* HoughTransformProcess::RunCircles()
 
 void HoughTransformProcess::run()
 {
-   //Image* pOutImage = RunLines();
-   //std::string outName = mpImage->GetImageName() + std::string("-HoughLines");
+   Image* pOutImage = 0;
+   std::string outName;
 
-   Image* pOutImage = RunCircles();
-   std::string outName = mpImage->GetImageName() + std::string("-HoughCircles");
+   if( mChooseCircles )
+   {
+       pOutImage = RunCircles();
+       outName = mpImage->GetImageName() + std::string("-HoughCircles");
+   }
+   else
+   {
+       pOutImage = RunLines();
+       outName = mpImage->GetImageName() + std::string("-HoughLines");
+   }
+
    pOutImage->SetImageName(outName);
    AddResult( pOutImage );
    // ownership of this image is transfered through GetImage() to ImageDataList

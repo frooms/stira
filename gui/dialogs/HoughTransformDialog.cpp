@@ -22,18 +22,31 @@ HoughTransformDialog::HoughTransformDialog( Image* pImage ) : DialogMaster( pIma
     mpProcess = 0;
     mpTitelLabel->setText( QString("<b>Hough Transform Parameters</b>") );
 
-    mpUseGradientCheckBox = new QCheckBox( tr( "&Start from Gradient Image?" ) );
-    mpUseGradientCheckBox->setChecked ( true );
+    mpChooseHoughTransformTypeBox = new QGroupBox( tr( "&Choose Hough type" ) );
+    mpChooseCircleHoughTransformRadioButton = new QRadioButton( "Circles" );
+    mpChooseLineHoughTransformRadioButton = new QRadioButton( "Lines" );
 
-    mpMaximalMinimumLevelLabel = new QLabel( QString("Maximal level for starting seed: "), this );
-    mpMaximalMinimumLevelLineEdit = new QLineEdit( QString("45"), this );
-    mpMaximalMinimumLevelLayout = new QHBoxLayout;
-    mpMaximalMinimumLevelLayout->addWidget( mpMaximalMinimumLevelLabel );
-    mpMaximalMinimumLevelLayout->addWidget( mpMaximalMinimumLevelLineEdit );
+    mpChooseHoughTransformLayout = new QVBoxLayout;
+    mpChooseHoughTransformLayout->addWidget(mpChooseCircleHoughTransformRadioButton);
+    mpChooseHoughTransformLayout->addWidget(mpChooseLineHoughTransformRadioButton);
+    mpChooseHoughTransformTypeBox->setLayout(mpChooseHoughTransformLayout);
+
+    mpMaximalRadiusLabel = new QLabel("Max circle radius");
+    mpMaximalRadiusLayout = new QHBoxLayout;
+    mpMaximalRadiusLineEdit = new QLineEdit("100");
+    mpMaximalRadiusLayout->addWidget(mpMaximalRadiusLabel);
+    mpMaximalRadiusLayout->addWidget(mpMaximalRadiusLineEdit);
+
+    mpMinimalRadiusLabel = new QLabel("Min circle radius");
+    mpMinimalRadiusLayout = new QHBoxLayout;
+    mpMinimalRadiusLineEdit = new QLineEdit("80");
+    mpMinimalRadiusLayout->addWidget(mpMinimalRadiusLabel);
+    mpMinimalRadiusLayout->addWidget(mpMinimalRadiusLineEdit);
 
     mpDialogLayout->addWidget( mpTitelLabel );
-    mpDialogLayout->addWidget( mpUseGradientCheckBox );
-    mpDialogLayout->addLayout( mpMaximalMinimumLevelLayout );
+    mpDialogLayout->addWidget( mpChooseHoughTransformTypeBox );
+    mpDialogLayout->addLayout( mpMaximalRadiusLayout );
+    mpDialogLayout->addLayout( mpMinimalRadiusLayout );
     mpDialogLayout->addWidget( mpMessageLabel );
     mpDialogLayout->addLayout( mpButtonLayout );
     this->show();
@@ -51,9 +64,21 @@ HoughTransformDialog::~HoughTransformDialog()
 
 //------------------------------------------------------------------
 
-int HoughTransformDialog::GetMaximalMinimumLevel()
+int HoughTransformDialog::GetMaximalRadius()
 {
-   return mpMaximalMinimumLevelLineEdit->text().toInt();
+   return mpMaximalRadiusLineEdit->text().toInt();
+}
+
+//------------------------------------------------------------------
+
+int HoughTransformDialog::GetMinimalRadius()
+{
+   return mpMinimalRadiusLineEdit->text().toInt();
+}
+
+bool HoughTransformDialog::DidChooseCircles()
+{
+    return mpChooseCircleHoughTransformRadioButton->isChecked();
 }
 
 //------------------------------------------------------------------
@@ -62,8 +87,9 @@ void HoughTransformDialog::SlotRun()
 {
    mpProcess = new HoughTransformProcess( mpInputImage );
    connect( mpProcess, SIGNAL( finished() ), this, SLOT( SlotProcessResult() ) );
-   mpProcess->SetMaximalMinimumLevel( this->GetMaximalMinimumLevel() );
-   //mpProcess->SetUseGradientImage( this->GetUseGradientImage() );
+   mpProcess->SetMaximalRadius( this->GetMaximalRadius() );
+   mpProcess->SetMinimalRadius( this->GetMinimalRadius() );
+   mpProcess->SetChooseCircles( this->DidChooseCircles() );
    mpProcess->start();
 }
 

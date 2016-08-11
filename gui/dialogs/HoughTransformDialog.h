@@ -22,7 +22,8 @@
 #include <QHBoxLayout>
 #include <QGridLayout>
 #include <QPushButton>
-#include <QCheckBox>
+#include <QRadioButton>
+#include <QGroupBox>
 
 #include "DialogMaster.h"
 
@@ -40,7 +41,12 @@ public:
    /** \brief destructor*/
    virtual ~HoughTransformDialog();
 
-   int GetMaximalMinimumLevel();
+   int GetMaximalRadius();
+
+   int GetMinimalRadius();
+
+   bool DidChooseCircles();
+
 public slots:
    /** \brief Creates the actual process that is started in a separate thread*/
    void SlotRun();
@@ -51,10 +57,18 @@ protected:
 
 private:
    HoughTransformProcess* mpProcess;  ///<  actual process
-   QCheckBox*   mpUseGradientCheckBox;
-   QLabel*      mpMaximalMinimumLevelLabel;
-   QHBoxLayout* mpMaximalMinimumLevelLayout;
-   QLineEdit*   mpMaximalMinimumLevelLineEdit;
+   QRadioButton*   mpChooseCircleHoughTransformRadioButton;
+   QRadioButton*   mpChooseLineHoughTransformRadioButton;
+   QGroupBox*      mpChooseHoughTransformTypeBox;
+   QVBoxLayout*    mpChooseHoughTransformLayout;
+
+   QLabel*      mpMaximalRadiusLabel;
+   QHBoxLayout* mpMaximalRadiusLayout;
+   QLineEdit*   mpMaximalRadiusLineEdit;
+
+   QLabel*      mpMinimalRadiusLabel;
+   QHBoxLayout* mpMinimalRadiusLayout;
+   QLineEdit*   mpMinimalRadiusLineEdit;
 };
 
 

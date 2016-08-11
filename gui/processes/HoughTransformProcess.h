@@ -26,15 +26,23 @@ public:
 
    virtual ~HoughTransformProcess();
 
-   int GetMaximalMinimumLevel();
-   void SetMaximalMinimumLevel( int maxLevel );
+   int GetMaximalRadius();
+   void SetMaximalRadius( int maxRadius );
+
+   int GetMinimalRadius();
+   void SetMinimalRadius( int maxRadius );
+
+   bool GetChooseCircles();
+   void SetChooseCircles( bool chooseCircles );
 
    void run();
 
 private:
    stira::image::Image* RunLines();
    stira::image::Image* RunCircles();
-   int mMaximalMinimumLevel;
+   int mMaximalRadius;
+   int mMinimalRadius;
+   bool mChooseCircles;
 };
 
 #endif // HOUGHTRANSFORMPROCESS_H
