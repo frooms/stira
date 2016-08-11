@@ -22,6 +22,7 @@ class SimulateNoiseDialog;
 class SimpleImageFilterDialog;
 class LogGaborFilterDialog;
 class AnisotropicDiffusionDialog;
+class HoughTransformDialog;
 class WatershedDialog;
 class WienerDeconvolveDialog;
 class RichardsonLucyDeconvolveDialog;
@@ -213,6 +214,14 @@ private:
          WatershedDialog* mpWatershedDialog;
       public slots:
          void SlotSelectWatershedMeyer();
+
+      // Watershed segmentation
+      private:
+         QAction* mpHoughTransformAction;
+      public:
+         HoughTransformDialog* mpHoughTransformDialog;
+      public slots:
+         void SlotSelectHoughTransform();
    
       // Canny edge detection
       private:

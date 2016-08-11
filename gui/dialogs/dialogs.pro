@@ -17,7 +17,8 @@ WienerDeconvolveDialog.cpp \
  LogGaborFilterDialog.cpp \
  SplitColorChannelsDialog.cpp \
  GeneratePerlinNoiseDialog.cpp \
- SplitBregmanDenoiseDialog.cpp
+ SplitBregmanDenoiseDialog.cpp \
+    HoughTransformDialog.cpp
 
 HEADERS += AnisotropicDiffusionDialog.h \
 CannyDialog.h \
@@ -34,4 +35,5 @@ WienerDeconvolveDialog.h \
  LogGaborFilterDialog.h \
  SplitColorChannelsDialog.h \
  GeneratePerlinNoiseDialog.h \
- SplitBregmanDenoiseDialog.h
+ SplitBregmanDenoiseDialog.h \
+    HoughTransformDialog.h

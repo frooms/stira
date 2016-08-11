@@ -33,7 +33,7 @@ public:
     ~HoughTransform();
 
     //http://www.keymolen.com/2013/05/hough-transformation-c-implementation.html
-    std::vector< common::LineSegment<int> >                GetLines(   image::ArrayGrid<bool>* pEdges,      int threshold );
+    std::vector< common::LineSegment<int> > GetLines( image::ArrayGrid<bool>* pEdges, int threshold );
 
     //https://github.com/marcbowes/Hough-Circle-Detector/blob/master/src/hcd.cpp
     std::vector< common::Point<int> > GetCirclesRadius( image::ArrayGrid<bool>* pEdges, int radius, int threshold );

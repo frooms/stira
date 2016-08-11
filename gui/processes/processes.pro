@@ -18,7 +18,8 @@ SOURCES += AnisotropicDiffusionProcess.cpp \
  RegisterImagesProcess.cpp \
  SplitColorChannelsProcess.cpp \
  GeneratePerlinNoiseProcess.cpp \
- SplitBregmanDenoiseProcess.cpp
+ SplitBregmanDenoiseProcess.cpp \
+    HoughTransformProcess.cpp
 
 HEADERS += AnisotropicDiffusionProcess.h \
  CannyProcess.h \
@@ -36,4 +37,5 @@ HEADERS += AnisotropicDiffusionProcess.h \
  RegisterImagesProcess.h \
  SplitColorChannelsProcess.h \
  GeneratePerlinNoiseProcess.h \
- SplitBregmanDenoiseProcess.h
+ SplitBregmanDenoiseProcess.h \
+    HoughTransformProcess.h

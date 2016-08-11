@@ -26,6 +26,7 @@ using namespace image;
 
 HoughTransform::HoughTransform()
 {
+    mpAccu = 0;
 }
 
 //--------------------------------------------------------------------------------
@@ -46,6 +47,7 @@ int HoughTransform::BuildAccumulatorLines( ArrayGrid<bool>* pEdgeGrid )
    mAccuHeight = hough_h * 2.0; // -r -> +r
    mAccuWidth  = 180;
 
+   if (mpAccu != 0) { delete mpAccu; }
    mpAccu = new ArrayGrid<int>( mAccuWidth, mAccuHeight );
 
    double center_x = mImageWidth  / 2.0;

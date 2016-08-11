@@ -20,6 +20,7 @@
 #include "../dialogs/LogGaborFilterDialog.h"
 #include "../dialogs/AnisotropicDiffusionDialog.h"
 #include "../dialogs/WatershedDialog.h"
+#include "../dialogs/HoughTransformDialog.h"
 #include "../dialogs/WienerDeconvolveDialog.h"
 #include "../dialogs/RichardsonLucyDeconvolveDialog.h"
 #include "../dialogs/GNCDeconvolveDialog.h"
@@ -116,6 +117,7 @@ void ProcessManager::CreateMenus( )
    mpSubMenuProperties->addAction ( mpRadiallyAveragedFourierSpectrumAction );
    mpSubMenuProperties->addAction ( mpShowImagePropertiesAction );
    mpSubMenuProperties->addAction ( mpWatershedAction );
+   mpSubMenuProperties->addAction ( mpHoughTransformAction );
    mpSubMenuProperties->addAction ( mpCannyAction );
    mpSubMenuProperties->addAction ( mpOrientationAnalysisAction );
    mpSubMenuProperties->addAction ( mpHistogramOrientedGradientsAction );
@@ -233,6 +235,11 @@ void ProcessManager::CreateActions()
    mpWatershedAction->setEnabled ( true );
    connect ( mpWatershedAction, SIGNAL ( triggered() ), this, SLOT ( SlotSelectWatershedMeyer() ) );
 
+   mpHoughTransformAction = new QAction ( tr ( "&HoughTransform" ), this );
+   mpHoughTransformAction->setShortcut ( tr ( "Ctrl+H" ) );
+   mpHoughTransformAction->setEnabled ( true );
+   connect ( mpHoughTransformAction, SIGNAL ( triggered() ), this, SLOT ( SlotSelectHoughTransform() ) );
+
    mpCannyAction = new QAction ( tr ( "&Canny Edge Detect" ), this );
    mpCannyAction->setShortcut ( tr ( "Ctrl+C" ) );
    mpCannyAction->setEnabled ( true );
@@ -267,6 +274,14 @@ void ProcessManager::SlotSelectWatershedMeyer()
 {
    mpWatershedDialog = new WatershedDialog ( mpImage );
    mpWatershedDialog->show();
+}
+
+//------------------------------------------------------------------
+
+void ProcessManager::SlotSelectHoughTransform()
+{
+   mpHoughTransformDialog = new HoughTransformDialog ( mpImage );
+   mpHoughTransformDialog->show();
 }
 
 //------------------------------------------------------------------

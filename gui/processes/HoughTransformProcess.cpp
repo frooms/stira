@@ -1,7 +1,114 @@
+
+/***********************************************************************************
+ *   Copyright (C) 2016 by Filip Rooms                                             *
+ *                                                                                 *
+ *  Terms and conditions for using this software in any form are provided in the   *
+ *  file COPYING, which can be found in the root directory of this project.        *
+ *                                                                                 *
+ *   Contact data: filip.rooms@gmail.com                                           *
+ *                 http://www.filiprooms.be/                                       *
+ *                                                                                 *
+ ***********************************************************************************/
+
 #include "HoughTransformProcess.h"
+#include "../../stira/common/common/LineSegment.h"
+#include "../../stira/imagetools/tools/DrawImageTools.h"
+#include "../../stira/imageanalysis/imageanalysis/CannyEdgeDetector.h"
+#include "../../stira/imageanalysis/imageanalysis/HoughTransform.h"
 
-HoughTransformProcess::HoughTransformProcess()
+using namespace std;
+using namespace stira::image;
+using namespace stira::imageanalysis;
+
+HoughTransformProcess::HoughTransformProcess( Image* pImage ) : Process( pImage )
 {
-
+   mProcessName = QString("Hough Transform Result");
 }
 
+//------------------------------------------------------------------
+
+HoughTransformProcess::~HoughTransformProcess()
+{
+}
+
+//------------------------------------------------------------------
+
+int HoughTransformProcess::GetMaximalMinimumLevel()
+{
+   return mMaximalMinimumLevel;
+}
+
+//------------------------------------------------------------------
+
+void HoughTransformProcess::SetMaximalMinimumLevel( int maxLevel )
+{
+   mMaximalMinimumLevel = maxLevel;
+}
+
+//------------------------------------------------------------------
+
+Image* HoughTransformProcess::RunLines()
+{
+    Image* pOutImage = mpImage->Clone();
+    double sigmaSmooth =  2.0;
+    double loThreshold = 30.0;
+    double hiThreshold = 80.0;
+    ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pOutImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
+
+    int threshold = 150;
+    HoughTransform* pHT = new HoughTransform();
+    std::vector< stira::common::LineSegment<int> > lines = pHT->GetLines( pEdgeGrid, threshold );
+
+    int nrLines = lines.size();
+    for (int i = 0; i < nrLines; i++)
+    {
+        DrawImageTools::DrawLine( pOutImage, lines[i].GetPoint1(), lines[i].GetPoint2(), ColorValue(255,0,0,TYPE_RGB));
+    }
+    delete pEdgeGrid;
+    delete pHT;
+    return pOutImage;
+}
+
+//------------------------------------------------------------------
+
+Image* HoughTransformProcess::RunCircles()
+{
+    Image* pOutImage = mpImage->Clone();
+    double sigmaSmooth =  2.0;
+    double loThreshold = 30.0;
+    double hiThreshold = 80.0;
+    ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pOutImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
+
+    int threshold = 200;
+    HoughTransform* pHT = new HoughTransform();
+    for (int radius = 80; radius < 100; radius++)
+    {
+        std::vector< stira::common::Point<int> > circleCenters = pHT->GetCirclesRadius( pEdgeGrid, radius, threshold );
+
+        int nrCircles = circleCenters.size();
+        for (int i = 0; i < nrCircles; i++)
+        {
+            DrawImageTools::DrawCircle(pOutImage, circleCenters[i], radius, ColorValue(255,0,0,TYPE_RGB));
+        }
+    }
+
+    delete pEdgeGrid;
+    delete pHT;
+    return pOutImage;
+}
+
+//------------------------------------------------------------------
+
+void HoughTransformProcess::run()
+{
+   //Image* pOutImage = RunLines();
+   //std::string outName = mpImage->GetImageName() + std::string("-HoughLines");
+
+   Image* pOutImage = RunCircles();
+   std::string outName = mpImage->GetImageName() + std::string("-HoughCircles");
+   pOutImage->SetImageName(outName);
+   AddResult( pOutImage );
+   // ownership of this image is transfered through GetImage() to ImageDataList
+}
+
+//--------------------------------------------------------
