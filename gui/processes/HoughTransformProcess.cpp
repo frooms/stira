@@ -90,21 +90,24 @@ Image* HoughTransformProcess::RunLines()
 Image* HoughTransformProcess::RunCircles()
 {
     Image* pOutImage = mpImage->Clone();
-    double sigmaSmooth =  2.0;
-    double loThreshold = 30.0;
-    double hiThreshold = 80.0;
+    double sigmaSmooth =  1.5;
+    double loThreshold = 10.0;
+    double hiThreshold = 55.0;
     ArrayGrid<bool>* pEdgeGrid = CannyEdgeDetector::Run( pOutImage->GetBands()[0], sigmaSmooth, loThreshold, hiThreshold );
 
-    int threshold = 200;
     HoughTransform* pHT = new HoughTransform();
     for (int radius = mMinimalRadius; radius < mMaximalRadius; radius++)
     {
+        int threshold = 0.6 * M_PI * radius;
+        std::cout << "Inspecting radius " << radius << ", threshold = " << threshold << std::endl;
         std::vector< stira::common::Point<int> > circleCenters = pHT->GetCirclesRadius( pEdgeGrid, radius, threshold );
 
         int nrCircles = circleCenters.size();
         for (int i = 0; i < nrCircles; i++)
         {
             DrawImageTools::DrawCircle(pOutImage, circleCenters[i], radius, ColorValue(255,0,0,TYPE_RGB));
+
+            std::cout << "\t -> " << nrCircles << " circles found" << std::endl;
         }
     }
 

@@ -30,6 +30,7 @@ HoughTransformDialog::HoughTransformDialog( Image* pImage ) : DialogMaster( pIma
     mpChooseHoughTransformLayout->addWidget(mpChooseCircleHoughTransformRadioButton);
     mpChooseHoughTransformLayout->addWidget(mpChooseLineHoughTransformRadioButton);
     mpChooseHoughTransformTypeBox->setLayout(mpChooseHoughTransformLayout);
+    mpChooseCircleHoughTransformRadioButton->setChecked(true);
 
     mpMaximalRadiusLabel = new QLabel("Max circle radius");
     mpMaximalRadiusLayout = new QHBoxLayout;
