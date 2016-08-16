@@ -29,6 +29,8 @@ protected:
 
     int mClickX;
     int mClickY;
+    int mClickStartX;
+    int mClickStartY;
 };
 
 #endif // CLICKABLELABEL_H

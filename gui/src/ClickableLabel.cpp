@@ -26,6 +26,19 @@ void ClickableLabel::mousePressEvent ( QMouseEvent * event )
     {
         emit leftButtonClicked();
         std::cout << "Left mouse button click at ( " << mClickX << ", " << mClickY << ")" << std::endl << std:: flush;
+        mClickStartX = mClickX;
+        mClickStartY = mClickY;
+    }
+
+
+    if (myButton == Qt::MiddleButton)
+    {
+        emit leftButtonClicked();
+        std::cout << "Middle mouse button click at ( " << mClickX << ", " << mClickY << ")" << std::endl << std:: flush;
+        double dx = mClickX - mClickStartX;
+        double dy = mClickY - mClickStartY;
+        double distanceClicks = sqrt(dx*dx+dy*dy);
+        std::cout << "   -> distance = " << distanceClicks << std::endl << std:: flush;
     }
 
     if (myButton == Qt::RightButton)
