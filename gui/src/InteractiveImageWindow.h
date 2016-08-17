@@ -74,6 +74,8 @@ public slots:
    void SlotSetSizeCondition();
    void SlotNormalSize();
    void SlotCleanData();
+   void SlotAddToImageList();
+
 private:
 
    /** \brief sets all member pointers initially to "0" */

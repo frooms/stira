@@ -60,9 +60,7 @@ InteractiveImageWindow::InteractiveImageWindow (  double centerX, double centerY
 {
    InitializePointers( );
    mpFractalGenerator = new FractalGenerator();
-   Image* pImageIn = mpFractalGenerator->CreateMandelbrot( centerX, centerY, width );
-   mpImage = GaussConvolve::DerivativeConvolveSeparable( pImageIn, 0.65, GaussConvolve::DERIVATIVE_NONE, GridExtender<double>::EXTEND_MIRROR );
-   delete pImageIn;
+   mpImage = mpFractalGenerator->CreateMandelbrot( centerX, centerY, width );
 
    if ( mpImage != 0)
    {
@@ -125,10 +123,7 @@ void InteractiveImageWindow::CreateZoomFractal( double factor )
     // full size
     double width = mpFractalGenerator->GetMathWidth() / factor;
 
-    Image* pImageIn = mpFractalGenerator->CreateMandelbrot( mathClickX, mathClickY, width );
-    Image* pFractal = GaussConvolve::DerivativeConvolveSeparable( pImageIn, 0.65, GaussConvolve::DERIVATIVE_NONE, GridExtender<double>::EXTEND_MIRROR );
-    delete pImageIn;
-
+    Image* pFractal = mpFractalGenerator->CreateMandelbrot( mathClickX, mathClickY, width );
     this->ReplaceImage(  pFractal );
 }
 
@@ -189,6 +184,7 @@ void InteractiveImageWindow::SetupWindow()
 
    connect( mpImageLabel, SIGNAL( leftButtonClicked() ), this, SLOT( SlotZoomIn() ));
    connect( mpImageLabel, SIGNAL( rightButtonClicked() ), this, SLOT( SlotZoomOut() ));
+   connect( mpImageLabel, SIGNAL( middleButtonClicked() ), this, SLOT( SlotAddToImageList() ) );
 
    mpSlider = new QSlider( Qt::Horizontal, this );
    mpSlider->hide();
@@ -265,6 +261,15 @@ void InteractiveImageWindow::SlotZoomIn()
 void InteractiveImageWindow::SlotZoomOut()
 {
     CreateZoomFractal( 2.0 / 3.0 );
+}
+
+//------------------------------------------------------------------
+
+void InteractiveImageWindow::SlotAddToImageList()
+{
+    Image* pImageSnapshot = mpImage->Clone();
+    pImageSnapshot->SetImageName("MandelbrotSnapshot");
+    ImageDataList::GetInstance()->AddImage( pImageSnapshot );
 }
 
 //------------------------------------------------------------------
