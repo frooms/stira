@@ -33,7 +33,7 @@ void ClickableLabel::mousePressEvent ( QMouseEvent * event )
 
     if (myButton == Qt::MiddleButton)
     {
-        emit leftButtonClicked();
+        emit middleButtonClicked();
         std::cout << "Middle mouse button click at ( " << mClickX << ", " << mClickY << ")" << std::endl << std:: flush;
         double dx = mClickX - mClickStartX;
         double dy = mClickY - mClickStartY;

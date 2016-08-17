@@ -17,6 +17,7 @@ public:
 
 signals:
     void leftButtonClicked();
+    void middleButtonClicked();
     void rightButtonClicked();
     void wheelUpEvent();
     void wheelDownEvent();
