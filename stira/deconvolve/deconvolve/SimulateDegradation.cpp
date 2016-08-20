@@ -20,7 +20,8 @@
 namespace stira{
 namespace deconvolve{
 
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::fouriertools;
 using namespace stira::common;
 
@@ -36,7 +37,7 @@ SimulateDegradation::~SimulateDegradation()
 
 //----------------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* SimulateDegradation::GeneratePSF( int width, int height, BlurType myBlurType, std::vector<double> vBlurParameters )
+ArrayGrid<double>* SimulateDegradation::GeneratePSF( int width, int height, BlurType myBlurType, std::vector<double> vBlurParameters )
 {
    ArrayGrid<double>* pBlurKernel = 0;
    switch( myBlurType )
@@ -84,7 +85,7 @@ image::ArrayGrid<double>* SimulateDegradation::GeneratePSF( int width, int heigh
 
 //----------------------------------------------------------------------------------------------
 
-bool SimulateDegradation::SimulateNoise( image::ArrayGrid<double>* pGridIn, NoiseType myNoiseType, double noiseLevel )
+bool SimulateDegradation::SimulateNoise( ArrayGrid<double>* pGridIn, NoiseType myNoiseType, double noiseLevel )
 {
    int width  = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
@@ -147,11 +148,11 @@ bool SimulateDegradation::SimulateNoise( image::ArrayGrid<double>* pGridIn, Nois
 
 //----------------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* SimulateDegradation::Run( image::ArrayGrid<double>* pGridIn, NoiseType myNoiseType, double noiseLevel, BlurType myBlurType, std::vector<double> vBlurParameters )
+ArrayGrid<double>* SimulateDegradation::Run( ArrayGrid<double>* pGridIn, NoiseType myNoiseType, double noiseLevel, BlurType myBlurType, std::vector<double> vBlurParameters )
 {
-   image::ArrayGrid<double>* pBlurKernel = GeneratePSF( pGridIn->GetWidth(), pGridIn->GetHeight(), myBlurType, vBlurParameters );
+   ArrayGrid<double>* pBlurKernel = GeneratePSF( pGridIn->GetWidth(), pGridIn->GetHeight(), myBlurType, vBlurParameters );
 
-   image::ArrayGrid<double>* pGridOut = FFT::Convolve( pGridIn, pBlurKernel );
+   ArrayGrid<double>* pGridOut = FFT::Convolve( pGridIn, pBlurKernel );
    delete pBlurKernel;
    SimulateNoise(  pGridOut, myNoiseType, noiseLevel );
    return pGridOut;
@@ -159,11 +160,11 @@ image::ArrayGrid<double>* SimulateDegradation::Run( image::ArrayGrid<double>* pG
 
 //----------------------------------------------------------------------------------------------
 
-image::Image* SimulateDegradation::Run( image::Image* pImageIn, NoiseType myNoiseType, double noiseLevel, BlurType myBlurType, std::vector<double> vBlurParameters )
+Image* SimulateDegradation::Run( Image* pImageIn, NoiseType myNoiseType, double noiseLevel, BlurType myBlurType, std::vector<double> vBlurParameters )
 {
-   image::ArrayGrid<double>* pBlurKernel = GeneratePSF( pImageIn->GetWidth(), pImageIn->GetHeight(), myBlurType, vBlurParameters );
+   ArrayGrid<double>* pBlurKernel = GeneratePSF( pImageIn->GetWidth(), pImageIn->GetHeight(), myBlurType, vBlurParameters );
 
-   image::Image* pImageOut = FFT::Convolve( pImageIn, pBlurKernel );
+   Image* pImageOut = FFT::Convolve( pImageIn, pBlurKernel );
    delete pBlurKernel;
 
    for (int bandID = 0; bandID < pImageIn->GetNumberOfBands(); bandID++)

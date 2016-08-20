@@ -20,6 +20,8 @@
 namespace stira {
 namespace histogram {
 
+using namespace stira::imagedata;
+
 /** \brief simple histogram class
   * WARNING: currently only works for default case when bin size is 1*/
 class IntHistogram : public HistogramMaster<int>
@@ -35,7 +37,7 @@ public:
      * \param upperFraction (1 -upperFraction) is percentage of pixels with highest intensities to be ignored
      * \param binsize size for a histogram bin
      * \param pMaskGrid grid which pixels are taken into account (true) and which need to be ignored (false)*/
-   IntHistogram( image::Image* pImage, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, image::ArrayGrid<bool>* pMaskGrid=0);
+   IntHistogram( Image* pImage, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, ArrayGrid<bool>* pMaskGrid=0);
 
    /** \brief constructor
      *
@@ -48,7 +50,7 @@ public:
      * \param upperFraction (1 -upperFraction) is percentage of pixels with highest intensities to be ignored
      * \param binsize size for a histogram bin
      * \param pMaskGrid grid which pixels are taken into account (true) and which need to be ignored (false)*/
-   IntHistogram( image::Image* pImage, bool useDataMinMax, common::RectangularROI<int> rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1 );
+   IntHistogram( Image* pImage, bool useDataMinMax, common::RectangularROI<int> rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1 );
 
    /** \brief constructor
      *
@@ -60,7 +62,7 @@ public:
      * \param upperFraction upper fraction of pixel to set
      * \param binsize size of bin
      * \param pMaskGrid boolean grid which pixels to count (at position with true) and which to ignore  (at position with false) */
-   IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, image::ArrayGrid<bool>* pMaskGrid=0);
+   IntHistogram( ArrayGrid<double>* pGrid, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, ArrayGrid<bool>* pMaskGrid=0);
 
    /** \brief constructor
      *
@@ -73,7 +75,7 @@ public:
      * \param upperFraction upper percentile divided by 100 (value between 0 and 1) of pixels; pixels with higher intensities will be ignored
      * \param binsize size for a histogram bin
      * \param pMaskGrid grid which pixels are taken into account (true) and which need to be ignored (false)*/
-   IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax, common::RectangularROI<int> rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1 );
+   IntHistogram( ArrayGrid<double>* pGrid, bool useDataMinMax, common::RectangularROI<int> rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1 );
 
    /** \brief constructor
      *
@@ -151,12 +153,12 @@ private:
    /** \brief computes the histogram for the input image
      * \param pImage image for which to build histogram
      * \param pMaskGrid boolean grid which pixels to count (at position with true) and which to ignore  (at position with false)*/
-   bool BuildHistogram( image::Image* pImage, image::ArrayGrid<bool>* pMaskGrid=0);
+   bool BuildHistogram( Image* pImage, ArrayGrid<bool>* pMaskGrid=0);
 
    /** \brief computes the histogram for the input grid
      * \param pGrid grid for which to build histogram
      * \param pMaskGrid boolean grid which pixels to count (at position with true) and which to ignore  (at position with false)*/
-   bool BuildHistogram( image::ArrayGrid<double>* pGrid, int bandNr=0, image::ArrayGrid<bool>* pMaskGrid=0);
+   bool BuildHistogram( ArrayGrid<double>* pGrid, int bandNr=0, ArrayGrid<bool>* pMaskGrid=0);
 
    bool mInitializedFromGrid;
 

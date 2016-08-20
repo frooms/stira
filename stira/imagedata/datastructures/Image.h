@@ -23,7 +23,7 @@
 #include "ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief A class to hold image data.
   * It consists of three things: the actual image data, the corresponding metadata and some operations that can be
@@ -298,6 +298,7 @@ private:
    std::string mImageName; ///< Image identifier
    std::vector< ArrayGrid<double>* > vpBands; ///< Vector containing the bands in this image.
 };
+
 }
 }
 

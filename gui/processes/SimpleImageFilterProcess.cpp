@@ -24,7 +24,8 @@
 #include "../../stira/filter/filter/LaplacianOfGaussianFilter.h"
 #include "../../stira/filter/filter/NonLocalMeansFilter.h"
 using namespace stira::filter;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::fouriertools;
 using namespace std;
 
@@ -97,14 +98,14 @@ double SimpleImageFilterProcess::GetAngle()
 
 //--------------------------------------------------------
 
-void SimpleImageFilterProcess::SetExtensionType( stira::image::GridExtender<double>::ExtensionType myType )
+void SimpleImageFilterProcess::SetExtensionType( stira::imagedata::GridExtender<double>::ExtensionType myType )
 {
    mExtensionType = myType;
 }
 
 //--------------------------------------------------------
 
-stira::image::GridExtender<double>::ExtensionType SimpleImageFilterProcess::GetExtensionType()
+stira::imagedata::GridExtender<double>::ExtensionType SimpleImageFilterProcess::GetExtensionType()
 {
    return mExtensionType;
 }

@@ -29,7 +29,9 @@
 //#define CHECK_INF_OR_NAN_VALUES
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /**  \brief Child class of ArrayGrid in specific case that the template represents numerical values
   * In this case, certain extra operations are possible, like finding min and max, add, multiply, subtract

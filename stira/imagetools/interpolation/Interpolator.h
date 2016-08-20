@@ -16,7 +16,9 @@
 #include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief identifier of interpolation type*/
 enum InterpolatorType { INTERPOLATE_NEAREST_NEIGHBOR, INTERPOLATE_BILINEAR, INTERPOLATE_BICUBIC };

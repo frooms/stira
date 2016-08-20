@@ -23,7 +23,6 @@ namespace stira {
 namespace contrastenhance {
 
 using namespace std;
-using namespace image;
 using namespace common;
 using namespace filter;
 using namespace histogram;
@@ -79,7 +78,7 @@ double HistogramTools::MatchHistogramValue( double inValue,
 
 //----------------------------------------------------------------------------------------
 
-void HistogramTools::RemapHistogramInROI( image::ArrayGrid<double>* pInGrid,
+void HistogramTools::RemapHistogramInROI( ArrayGrid<double>* pInGrid,
                                           RectangularROI<int> rroi,
                                           IntHistogram* fhCumulativeInput,
                                           FloatHistogram* fhCumulativeReference )
@@ -106,7 +105,7 @@ void HistogramTools::RemapHistogramInROI( image::ArrayGrid<double>* pInGrid,
 //                                    //
 ////////////////////////////////////////
 
-Image* HistogramTools::RobustLinearRescale( image::Image* pSourceImage, double lowerFraction, double upperFraction )
+Image* HistogramTools::RobustLinearRescale( Image* pSourceImage, double lowerFraction, double upperFraction )
 {
    Image* pOutImage = pSourceImage->Clone();
 
@@ -122,7 +121,7 @@ Image* HistogramTools::RobustLinearRescale( image::Image* pSourceImage, double l
 
 //----------------------------------------------------------------------------------------
 
-bool HistogramTools::RobustLinearRescaleNoNew( image::Image* pSourceImage, double lowerFraction, double upperFraction )
+bool HistogramTools::RobustLinearRescaleNoNew( Image* pSourceImage, double lowerFraction, double upperFraction )
 {
    double imageMin, imageMax;
    int bandMin, bandMax;
@@ -184,7 +183,7 @@ bool HistogramTools::RobustLinearRescaleNoNew( image::Image* pSourceImage, doubl
 
 //----------------------------------------------------------------------------------------
 
-void HistogramTools::HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInGrid )
+void HistogramTools::HistogramEqualizeSingleBand( ArrayGrid<double>* pInGrid )
 {
    int desiredMax, desiredMin;
    double dataMin, dataMax;
@@ -227,13 +226,13 @@ void HistogramTools::HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInG
 
 //----------------------------------------------------------------------------------------
 
-Image* HistogramTools::HistogramEqualizePerBand( image::Image* pSourceImage )
+Image* HistogramTools::HistogramEqualizePerBand( Image* pSourceImage )
 {
    if ( pSourceImage != 0 )
    {
       int nrBands = pSourceImage->GetNumberOfBands();
 
-      image::Image* pResultImage = pSourceImage->Clone();
+      Image* pResultImage = pSourceImage->Clone();
 
       for (int bandNr = 0; bandNr < nrBands; bandNr++)
       {
@@ -252,14 +251,14 @@ Image* HistogramTools::HistogramEqualizePerBand( image::Image* pSourceImage )
 
 //----------------------------------------------------------------------------------------
 
-Image* HistogramTools::HistogramEqualizeHSI( image::Image* pSourceImage )
+Image* HistogramTools::HistogramEqualizeHSI( Image* pSourceImage )
 {
    if ( ( pSourceImage != 0 ) && (pSourceImage->GetNumberOfBands() == 3) )
    {
       double dataMin = 0.0;
       double dataMax = 255.0;
 
-      image::Image* pResultImage = pSourceImage->Clone();
+      Image* pResultImage = pSourceImage->Clone();
       pResultImage->RGBToHSI();
 
       ArrayGrid<double>* pValueGrid = pResultImage->GetBands()[2];  // pValueGrid refers directly to the I values
@@ -294,14 +293,14 @@ Image* HistogramTools::HistogramEqualizeHSI( image::Image* pSourceImage )
 
 //----------------------------------------------------------------------------------------
 
-Image* HistogramTools::ColorHistogramEqualize( image::Image* pSourceImage )
+Image* HistogramTools::ColorHistogramEqualize( Image* pSourceImage )
 {
    if ( ( pSourceImage != 0 ) && (pSourceImage->GetNumberOfBands() == 3) )
    {
       double dataMin = 0.0;
       double dataMax = 255.0;
 
-      image::Image* pResultImage = pSourceImage->Clone();
+      Image* pResultImage = pSourceImage->Clone();
       pResultImage->sRGBToLab();
 
       ArrayGrid<double>* pValueGrid = pResultImage->GetBands()[0];  // pValueGrid refers directly to the L values

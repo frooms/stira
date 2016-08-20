@@ -49,7 +49,7 @@ protected:
    /** \brief Prepares data to be plotted in a form ready for QwtPlot
      * To be implemented in the child classes, depending on what is to be plotted
      * \param pImage image for which to compute the histogram*/
-   virtual void GetData( stira::image::Image* pImage )=0;
+   virtual void GetData( stira::imagedata::Image* pImage )=0;
    
    QString mPlotName;  ///< Title for plot window
    

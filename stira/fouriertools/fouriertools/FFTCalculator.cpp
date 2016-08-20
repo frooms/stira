@@ -17,7 +17,6 @@ using namespace std;
 namespace stira {
 namespace fouriertools {
 
-using namespace image;
 //============================================================================================
 
 FFTCalculator::FFTCalculator()

@@ -17,7 +17,8 @@
 namespace stira{
 namespace filter{
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
 KuwaharaFilter::KuwaharaFilter()
 {
@@ -48,7 +49,7 @@ int KuwaharaFilter::GetSmallestIndex(double* pArray, int size )
 
 //--------------------------------------------------------------------------
 
-image::Image* KuwaharaFilter::Run( image::Image* pImageIn, int windowSize )
+Image* KuwaharaFilter::Run( Image* pImageIn, int windowSize )
 {
    if (windowSize % 4 != 1) {windowSize = 5;}
    assert (windowSize % 4 == 1);

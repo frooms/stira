@@ -16,7 +16,7 @@
 #include "Interpolator.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief child class for bilinear interpolation
   * Source: http://en.wikipedia.org/wiki/Bilinear_interpolation

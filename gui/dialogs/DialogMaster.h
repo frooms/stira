@@ -38,9 +38,9 @@ public:
    
    /** \brief constructor
      * \param pImage the input image for processing */
-   DialogMaster( stira::image::Image* pImage=0 );
+   DialogMaster( stira::imagedata::Image* pImage=0 );
    
-   void AddResult( stira::image::Image* pResultImage );
+   void AddResult( stira::imagedata::Image* pResultImage );
    
 public slots:
    /** \brief runs the operation; children should implement this slot*/
@@ -58,9 +58,9 @@ protected:
    /** \brief gets a pointer to the underlying process
      * Needed for retrieving the result after running*/
    virtual Process* GetProcess()=0;
-   std::vector< stira::image::Image* > vpResults;
+   std::vector< stira::imagedata::Image* > vpResults;
    ImageWindow* mpImWindow;  ///< image window with the input data for processing
-   stira::image::Image* mpInputImage;
+   stira::imagedata::Image* mpInputImage;
 
    QLabel* mpTitelLabel;        ///< Title widget
    QVBoxLayout* mpDialogLayout; ///< General layout for the dialog

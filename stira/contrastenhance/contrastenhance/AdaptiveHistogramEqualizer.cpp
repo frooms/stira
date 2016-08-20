@@ -8,14 +8,16 @@
 #include "../../imagetools/tools/NumberGridTools.h"
 #include "../../imagetools/interpolation/BilinearInterpolator.h"
 
-using namespace stira::common;
-using namespace stira::image;
-using namespace stira::histogram;
 
 namespace stira {
 namespace contrastenhance {
 
-AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( image::Image* pSourceImage, int blockWidth, int blockHeight )
+using namespace common;
+using namespace imagedata;
+using namespace imagetools;
+using namespace histogram;
+
+AdaptiveHistogramEqualizer::AdaptiveHistogramEqualizer( Image* pSourceImage, int blockWidth, int blockHeight )
 {
     mpSourceImage = pSourceImage;
 
@@ -51,9 +53,9 @@ AdaptiveHistogramEqualizer::~AdaptiveHistogramEqualizer( )
 
 //----------------------------------------------------------------------------------------------
 
-image::Image* AdaptiveHistogramEqualizer::Run()
+Image* AdaptiveHistogramEqualizer::Run()
 {
-    image::Image* pImageOut = mpSourceImage->Clone();
+    Image* pImageOut = mpSourceImage->Clone();
 
     for (int yi = 0; yi < mNrBlocksY; yi++)
     {
@@ -65,7 +67,7 @@ image::Image* AdaptiveHistogramEqualizer::Run()
 
     for (int bandNr = 0; bandNr < mpSourceImage->GetNumberOfBands(); bandNr++)
     {
-        image::ArrayGrid<double>* pInGrid = pImageOut->GetBands()[bandNr];
+        ArrayGrid<double>* pInGrid = pImageOut->GetBands()[bandNr];
         for (int y = 0; y < mHeight; y++)
         {
            for (int x = 0; x < mWidth; x++)
@@ -79,7 +81,7 @@ image::Image* AdaptiveHistogramEqualizer::Run()
 
 //----------------------------------------------------------------------------------------------
 
-double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y, int xi, int yi )
+double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( ArrayGrid<double>* pInGrid, int bandNr, int x, int y, int xi, int yi )
 {
     FloatHistogram* pNormCumulHistogram = mpHistogramPerBlock->GetValue( xi, yi );
     int binNr = pInGrid->GetValue(x, y);
@@ -94,7 +96,7 @@ double AdaptiveHistogramEqualizer::GetEqualizedValueSingleBlock( image::ArrayGri
 
 //----------------------------------------------------------------------------------------------
 
-double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y )
+double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( ArrayGrid<double>* pInGrid, int bandNr, int x, int y )
 {
     double xi = (double)(x) / (double)(mBlockWidth);
     double yi = (double)(y) / (double)(mBlockHeight);
@@ -113,14 +115,14 @@ double AdaptiveHistogramEqualizer::InterpolateEqualizedValue( image::ArrayGrid<d
     int y1 = idy1 * mBlockHeight;
     int x2 = idx2 * mBlockWidth;
     int y2 = idy2 * mBlockHeight;
-    double interpolatedValue = image::BilinearInterpolator::Run( x1, x2, y1, y2, equalizeValue_11, equalizeValue_12 , equalizeValue_21, equalizeValue_22, x, y );
+    double interpolatedValue = BilinearInterpolator::Run( x1, x2, y1, y2, equalizeValue_11, equalizeValue_12 , equalizeValue_21, equalizeValue_22, x, y );
 
     return interpolatedValue;
 }
 
 //----------------------------------------------------------------------------------------------
 
-void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( image::Image* pImageIn, int xi, int yi )
+void AdaptiveHistogramEqualizer::BuildNormHistogramSingleBlock( Image* pImageIn, int xi, int yi )
 {
     common::RectangularROI<int> rroi( xi * mBlockWidth, yi * mBlockHeight, (xi+1) * mBlockWidth, (yi+1) * mBlockHeight );
 

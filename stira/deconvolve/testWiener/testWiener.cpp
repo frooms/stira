@@ -20,7 +20,8 @@
 #include "../../deconvolve/deconvolve/VanCittertLandweberDeconvolve.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::deconvolve;
 using namespace stira::filter;
 

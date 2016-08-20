@@ -22,10 +22,10 @@ namespace stira {
 namespace histogram {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
 using namespace common;
 
-IntHistogram::IntHistogram( image::Image* pImage, bool useDataMinMax, double lowerFraction, double upperFraction, int binsize, image::ArrayGrid<bool>* pMaskGrid)
+IntHistogram::IntHistogram( Image* pImage, bool useDataMinMax, double lowerFraction, double upperFraction, int binsize, ArrayGrid<bool>* pMaskGrid)
 {
    mIscumulativeHistogram = false;
    mLowerFraction = lowerFraction;
@@ -56,7 +56,7 @@ IntHistogram::IntHistogram( image::Image* pImage, bool useDataMinMax, double low
 
 //----------------------------------------------------------------
 
-IntHistogram::IntHistogram( image::Image* pImage, bool useDataMinMax, common::RectangularROI<int> rroi, double lowerFraction, double upperFraction, int binsize )
+IntHistogram::IntHistogram( Image* pImage, bool useDataMinMax, RectangularROI<int> rroi, double lowerFraction, double upperFraction, int binsize )
 {
    mIscumulativeHistogram = false;
    mLowerFraction = lowerFraction;
@@ -88,7 +88,7 @@ IntHistogram::IntHistogram( image::Image* pImage, bool useDataMinMax, common::Re
 
 //----------------------------------------------------------------
 
-IntHistogram::IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax, double lowerFraction, double upperFraction, int binsize, image::ArrayGrid<bool>* pMaskGrid)
+IntHistogram::IntHistogram( ArrayGrid<double>* pGrid, bool useDataMinMax, double lowerFraction, double upperFraction, int binsize, ArrayGrid<bool>* pMaskGrid)
 {
    mIscumulativeHistogram = false;
    mLowerFraction = lowerFraction;
@@ -120,7 +120,7 @@ IntHistogram::IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax,
 
 //----------------------------------------------------------------
 
-IntHistogram::IntHistogram( image::ArrayGrid<double>* pGrid, bool useDataMinMax, common::RectangularROI<int> rroi, double lowerFraction, double upperFraction, int binsize )
+IntHistogram::IntHistogram( ArrayGrid<double>* pGrid, bool useDataMinMax, RectangularROI<int> rroi, double lowerFraction, double upperFraction, int binsize )
 {
    mIscumulativeHistogram = false;
    mLowerFraction = lowerFraction;
@@ -366,7 +366,7 @@ bool IntHistogram::Write( std::string fileName)
 
 //-----------------------------------------------------------------
 
-bool IntHistogram::BuildHistogram(image::Image* pImage, image::ArrayGrid<bool>* pMaskGrid)
+bool IntHistogram::BuildHistogram( Image* pImage, ArrayGrid<bool>* pMaskGrid )
 {
    int nrBands = pImage->GetNumberOfBands();
 
@@ -379,7 +379,7 @@ bool IntHistogram::BuildHistogram(image::Image* pImage, image::ArrayGrid<bool>* 
 
 //-----------------------------------------------------------------
 
-bool IntHistogram::BuildHistogram(image::ArrayGrid<double>* pGrid, int bandNr, image::ArrayGrid<bool>* pMaskGrid)
+bool IntHistogram::BuildHistogram( ArrayGrid<double>* pGrid, int bandNr, ArrayGrid<bool>* pMaskGrid )
 {
    int width  = pGrid->GetWidth();
    int height = pGrid->GetHeight();

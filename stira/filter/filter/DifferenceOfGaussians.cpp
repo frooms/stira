@@ -24,7 +24,8 @@ namespace filter{
 
 using namespace common;
 using namespace fouriertools;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
 //--------------------------------------------------------------------------
 
@@ -76,14 +77,14 @@ ArrayGrid<double>* DifferenceOfGaussians::Run( ArrayGrid<double>* pGridIn, doubl
 
 //--------------------------------------------------------------------------
 
-image::ArrayGrid<double>* DifferenceOfGaussians::Run( image::ArrayGrid<double>* pGridIn, double sigmaX1, double sigmaX2, double sigmaY )
+ArrayGrid<double>* DifferenceOfGaussians::Run( ArrayGrid<double>* pGridIn, double sigmaX1, double sigmaX2, double sigmaY )
 {
    return Run( pGridIn, sigmaX1, sigmaY, sigmaX2, sigmaY );
 }
 
 //--------------------------------------------------------------------------
 
-image::Image* DifferenceOfGaussians::Run( image::Image* pImageIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2 )
+Image* DifferenceOfGaussians::Run( Image* pImageIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2 )
 {
    Image* pImageOut = new Image( pImageIn->GetWidth(), pImageIn->GetHeight() );
 
@@ -99,7 +100,7 @@ image::Image* DifferenceOfGaussians::Run( image::Image* pImageIn, double sigmaX1
 
 //--------------------------------------------------------------------------
 
-image::Image* DifferenceOfGaussians::Run( image::Image* pImageIn, double sigmaX1, double sigmaX2, double sigmaY )
+Image* DifferenceOfGaussians::Run( Image* pImageIn, double sigmaX1, double sigmaX2, double sigmaY )
 {
    return Run( pImageIn, sigmaX1, sigmaY, sigmaX2, sigmaY );
 }

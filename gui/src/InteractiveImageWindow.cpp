@@ -50,7 +50,8 @@
 #include "../../stira/filter/filter/GaussConvolve.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::common;
 using namespace stira::filter;
 

@@ -22,7 +22,7 @@
 #define PRINT_DIAGNOSTICS
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace std;
 using namespace common;

@@ -36,7 +36,7 @@ class SplitBregmanDenoiseDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   SplitBregmanDenoiseDialog( stira::image::Image* pImage );
+   SplitBregmanDenoiseDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~SplitBregmanDenoiseDialog();

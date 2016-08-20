@@ -26,7 +26,8 @@
 namespace stira{
 namespace deconvolve{
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace fouriertools;
 using namespace steerable;
 using namespace std;
@@ -45,7 +46,7 @@ common::Point<int> nPlus2Min2( 2, -2), nPlus2Min1( 2, -1), nPlus2Null( 2, 0), nP
 
 //--------------------------------------------------------------------------
 
-GNCDeconvolve::GNCDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations )
+GNCDeconvolve::GNCDeconvolve( Image* pDegradedImage, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, maxNrOfIterations )
 {
    InitializeParameters();
@@ -53,7 +54,7 @@ GNCDeconvolve::GNCDeconvolve( image::Image* pDegradedImage, int maxNrOfIteration
 
 //--------------------------------------------------------------------------
 
-GNCDeconvolve::GNCDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations )
+GNCDeconvolve::GNCDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, pPSF, maxNrOfIterations )
 {
    InitializeParameters();

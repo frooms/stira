@@ -16,7 +16,6 @@
 namespace stira {
 namespace fouriertools {
 
-using namespace image;
 using namespace std;
 
 TransferFunctionGenerator::TransferFunctionGenerator()
@@ -432,7 +431,7 @@ ArrayGrid<double>* TransferFunctionGenerator::GenerateLogGaborBandTransferFuncti
 ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( FFTBand* pTransferFunction, common::NumberMode mode )
 {
    pTransferFunction->ApplyInverseTransform();
-   image::ArrayGrid<double>* pGridKernel = 0;
+   ArrayGrid<double>* pGridKernel = 0;
    if (mode == common::MODE_REAL)
    {
       pGridKernel = pTransferFunction->ConvertToRealGrid();
@@ -446,7 +445,7 @@ ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( FFTBand* pTransferFunc
 
 //======================================================================================================
 
-ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( image::ArrayGrid<double>* pTransferFunction, common::NumberMode mode = common::MODE_REAL )
+ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( ArrayGrid<double>* pTransferFunction, common::NumberMode mode = common::MODE_REAL )
 {
    FFTBand* pTransferFunctionFFT = new FFTBand( pTransferFunction );
    ArrayGrid<double>* pGridKernel = ConvertTransferFunctionToFilterKernel( pTransferFunctionFFT, mode );

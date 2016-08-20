@@ -22,7 +22,8 @@ namespace imageanalysis {
 
 using namespace std;
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
 HoughTransform::HoughTransform()
 {
@@ -200,7 +201,7 @@ std::vector< common::LineSegment<int> > HoughTransform::GetLines(  ArrayGrid<boo
 
 //--------------------------------------------------------------------------------
 
-std::vector< Point<int> > HoughTransform::GetCirclesRadius( image::ArrayGrid<bool>* pEdgeGrid, int radius, int threshold )
+std::vector< Point<int> > HoughTransform::GetCirclesRadius( ArrayGrid<bool>* pEdgeGrid, int radius, int threshold )
 {
     BuildAccumulatorCircles( pEdgeGrid, radius );
 

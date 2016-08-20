@@ -19,6 +19,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 /** \brief class to simulate image degradation, by blurring and applying noise */
 class SimulateDegradation
 {
@@ -29,12 +31,12 @@ public:
    /** \brief destructor */
    ~SimulateDegradation();
 
-   static image::ArrayGrid<double>* GeneratePSF( int width, int height, common::BlurType myBlurType, std::vector<double> vBlurParameters );
-   static bool SimulateNoise( image::ArrayGrid<double>* pGridIn, common::NoiseType myNoiseType, double noiseLevel );
+   static ArrayGrid<double>* GeneratePSF( int width, int height, common::BlurType myBlurType, std::vector<double> vBlurParameters );
+   static bool SimulateNoise( ArrayGrid<double>* pGridIn, common::NoiseType myNoiseType, double noiseLevel );
 
 
-   static image::ArrayGrid<double>* Run( image::ArrayGrid<double>* pGridIn, common::NoiseType myNoiseType, double noiseLevel, common::BlurType myBlurType, std::vector<double> vBlurParameters );
-   static image::Image*             Run( image::Image* pImageIn,            common::NoiseType myNoiseType, double noiseLevel, common::BlurType myBlurType, std::vector<double> vBlurParameters );
+   static ArrayGrid<double>* Run( ArrayGrid<double>* pGridIn, common::NoiseType myNoiseType, double noiseLevel, common::BlurType myBlurType, std::vector<double> vBlurParameters );
+   static Image*             Run( Image* pImageIn,            common::NoiseType myNoiseType, double noiseLevel, common::BlurType myBlurType, std::vector<double> vBlurParameters );
 };
 
 }

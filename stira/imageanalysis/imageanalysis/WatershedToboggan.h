@@ -22,8 +22,11 @@
 #include "../../common/common/Point.h"
 #include "../../imagedata/datastructures/Image.h"
 #include "Watershed.h"
+
 namespace stira {
 namespace imageanalysis {
+
+using namespace imagedata;
 
 #define LABEL_INITIAL -1
 #define LABEL_MASK -2
@@ -54,7 +57,7 @@ public:
    
    /** \brief runs the watershed
      * \param pGridIn the input grid*/
-   image::ArrayGrid<int>* Run( image::ArrayGrid<double>* pGridIn );
+   ArrayGrid<int>* Run( ArrayGrid<double>* pGridIn );
 
 private:
    /** \brief clears all elements that still were present in the queue*/
@@ -139,14 +142,14 @@ private:
    
    std::queue< PixelElement<int> > mpFifoQueue;     ///< queue for processing pixels
    std::vector< PixelElement<int> > mvSortedPixelElementVector; ///< all pixels sorted from smallest to largest intensity
-   image::ArrayGrid<int>* mpLabelGrid;   ///< grid with the assigned labels
-   image::ArrayGrid<int>* mpDistanceGrid;///< grid with the assigned distances
-   image::ArrayGrid<bool>* mpWatershedGrid;///< grid with the watersheds
+   ArrayGrid<int>* mpLabelGrid;   ///< grid with the assigned labels
+   ArrayGrid<int>* mpDistanceGrid;///< grid with the assigned distances
+   ArrayGrid<bool>* mpWatershedGrid;///< grid with the watersheds
    int mCurrentDistance;  ///< current distance
    int mCurrentLabel;  ///< last label assigned
    int mCurrentLevel;  ///< current water level
 
-   image::ArrayGrid<double>* mpSourceGrid;  ///< original ource grid (single banded image)
+   ArrayGrid<double>* mpSourceGrid;  ///< original ource grid (single banded image)
 };
 
 }

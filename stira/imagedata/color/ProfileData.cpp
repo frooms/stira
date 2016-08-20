@@ -12,9 +12,8 @@
 
 #include "ProfileData.h"
 
-
 namespace stira {
-namespace image {
+namespace imagedata {
 
 ProfileData::ProfileData()
 {

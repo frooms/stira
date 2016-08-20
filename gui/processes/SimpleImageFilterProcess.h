@@ -25,7 +25,7 @@ public:
 
    /** \brief constructor
      * \param pImWindow image window to extract input from*/
-   SimpleImageFilterProcess( stira::image::Image* pImage );
+   SimpleImageFilterProcess( stira::imagedata::Image* pImage );
    ~SimpleImageFilterProcess();
    
    void SetFilterType( StiraDefinitions::SimpleFilterType myType );
@@ -41,8 +41,8 @@ public:
    void SetAngle( double angle );
    double GetAngle();
    
-   void SetExtensionType( stira::image::GridExtender<double>::ExtensionType myType );
-   stira::image::GridExtender<double>::ExtensionType GetExtensionType();
+   void SetExtensionType( stira::imagedata::GridExtender<double>::ExtensionType myType );
+   stira::imagedata::GridExtender<double>::ExtensionType GetExtensionType();
    
    void run();
    
@@ -52,6 +52,6 @@ private:
    double mSigma;  ///< width of the filter function (like sigma of a gaussian)
    double mAngle;
 
-   stira::image::GridExtender<double>::ExtensionType mExtensionType;
+   stira::imagedata::GridExtender<double>::ExtensionType mExtensionType;
 };
 #endif

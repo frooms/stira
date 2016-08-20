@@ -68,7 +68,7 @@ public:
      * \param height height of the test pattern
      * \param barWidth width of a bar in the image
      * \param sigmaBlurMax the maximal blur applied to the bars (at the right of the image)*/
-   static image::ArrayGrid<double>* CreateBlurredBars( int width, int height, int barWidth, double sigmaBlurMax );
+   static ArrayGrid<double>* CreateBlurredBars( int width, int height, int barWidth, double sigmaBlurMax );
 
 //////////////////////////////////////
 //                                  //
@@ -82,14 +82,14 @@ public:
      * \param pImage input grid
      * \param sigma sigma for the gaussian filter
      * \param myType how to compute the filtering: recursively or in Fourier domain*/
-   static image::ArrayGrid<double>* Convolve(image::ArrayGrid<double>* pImage, double sigma, FilterType myType=FFT_BASED);
+   static ArrayGrid<double>* Convolve( ArrayGrid<double>* pImage, double sigma, FilterType myType=FFT_BASED);
 
    /** \brief Applies Gaussian filter to image
      * Generates new image, which the caller is responsible for
      * \param pImage input image
      * \param sigma sigma for the gaussian filter
      * \param myType how to compute the filtering: recursively or in Fourier domain*/
-   static image::Image* Convolve(image::Image* pImage, double sigma, FilterType myType=FFT_BASED);
+   static Image* Convolve( Image* pImage, double sigma, FilterType myType=FFT_BASED);
 
 ////////////////////////////////////////////////////////////
 //                                                        //
@@ -103,7 +103,7 @@ public:
      * \param pGridIn input grid
      * \param sigma sigma for the gaussian filter
      * \param myType which derivative kernel to use for the filtering */
-   static image::ArrayGrid<double>* DerivativeConvolveFFT( image::ArrayGrid< double >* pGridIn, double sigmaX, double sigmaY, DerivativeType myType );
+   static ArrayGrid<double>* DerivativeConvolveFFT( ArrayGrid< double >* pGridIn, double sigmaX, double sigmaY, DerivativeType myType );
 
    /** \brief Applies Gaussian filter or its derivatives (applied in spatial domain by a separable filter in x and y) to grid
      * Generates new grid with filter response, which the caller is responsible for
@@ -111,13 +111,13 @@ public:
      * \param sigma sigma for the gaussian filter
      * \param myType which derivative kernel to use for the filtering
      * \param myExtensionType identifies how borders should be extended (mirror, tiled periodically, zero's) */
-   static image::ArrayGrid<double>* DerivativeConvolveSeparable( image::ArrayGrid<double>* pGridIn, double sigma, DerivativeType myType, image::GridExtender<double>::ExtensionType myExtensionType = image::GridExtender<double>::EXTEND_MIRROR );
+   static ArrayGrid<double>* DerivativeConvolveSeparable( ArrayGrid<double>* pGridIn, double sigma, DerivativeType myType, GridExtender<double>::ExtensionType myExtensionType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Simple interface to straightforward Gaussian filter (applied in spatial domain by a separable filter in x and y) to grid
      * Generates new grid with filter response, which the caller is responsible for
      * \param pGridIn input grid
      * \param sigma sigma for the gaussian filter*/
-   static image::ArrayGrid<double>* ConvolveSeparable( image::ArrayGrid< double >* pGridIn, double sigma );
+   static ArrayGrid<double>* ConvolveSeparable( ArrayGrid< double >* pGridIn, double sigma );
 
    /** \brief Applies Gaussian filter or its derivatives (applied in Fourier domain) to image
      * Generates new image with filter response, which the caller is responsible for
@@ -125,7 +125,7 @@ public:
      * \param sigma sigma for the gaussian filter
      * \param myType which derivative kernel to use for the filtering
      * \param myExtensionType identifies how borders should be extended (mirror, tiled periodically, zero's) */
-   static image::Image* DerivativeConvolveFFT( image::Image* pImageIn, double sigma, DerivativeType myType, image::GridExtender<double>::ExtensionType myExtensionType = image::GridExtender<double>::EXTEND_MIRROR );
+   static Image* DerivativeConvolveFFT( Image* pImageIn, double sigma, DerivativeType myType, GridExtender<double>::ExtensionType myExtensionType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Applies Gaussian filter or its derivatives (applied in spatial domain by a separable filter in x and y) to image
      * Generates new image with filter response, which the caller is responsible for
@@ -133,13 +133,13 @@ public:
      * \param sigma sigma for the gaussian filter
      * \param myType which derivative kernel to use for the filtering
      * \param myExtensionType identifies how borders should be extended (mirror, tile, black)*/
-   static image::Image* DerivativeConvolveSeparable( image::Image* pImageIn, double sigma, DerivativeType myType, image::GridExtender<double>::ExtensionType myExtensionType = image::GridExtender<double>::EXTEND_MIRROR );
+   static Image* DerivativeConvolveSeparable( Image* pImageIn, double sigma, DerivativeType myType, GridExtender<double>::ExtensionType myExtensionType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Simple interface to straightforward Gaussian filter (applied in spatial domain by a separable filter in x and y) to grid
      * Generates new image with filter response, which the caller is responsible for
      * \param pImageIn input image
      * \param sigma sigma for the gaussian filter*/
-   static image::Image* ConvolveSeparable( image::Image* pImageIn, double sigma );
+   static Image* ConvolveSeparable( Image* pImageIn, double sigma );
 
 ///////////////////////////////////////
 //                                   //
@@ -154,7 +154,7 @@ public:
      * \param height height of image to generate
      * \param sigmaX sigma in X direction for the gaussian filter
      * \param sigmaY sigma in Y direction for the gaussian filter*/
-   static image::ArrayGrid<double>* GenerateGaussianPSF ( int width, int height, double sigmaX, double sigmaY );
+   static ArrayGrid<double>* GenerateGaussianPSF ( int width, int height, double sigmaX, double sigmaY );
 
    /** \brief Generates a Gaussian filter kernel
      * Generates new image, which the caller is responsible for
@@ -163,7 +163,7 @@ public:
      * \param sigma1 sigma of x for the gaussian filter
      * \param sigma2 sigma of y for the gaussian filter
      * \param rho    correlation coefficient, must be between -1 and 1*/
-   static image::ArrayGrid<double>* GenerateGaussianPSF ( int width, int height, double sigma1, double sigma2, double rho );
+   static ArrayGrid<double>* GenerateGaussianPSF ( int width, int height, double sigma1, double sigma2, double rho );
 
 ///////////////////////////////////////////////////////////
 //                                                       //
@@ -176,7 +176,7 @@ public:
      * Generates new grid with filter response, which the caller is responsible for
      * \param pGridIn input grid
      * \param upscalefactor factor with which grid needs to be upscaled*/
-   static image::ArrayGrid<double>* UpsampleGaussianInterpolated( image::ArrayGrid<double>* pGridIn, int upscalefactor );
+   static ArrayGrid<double>* UpsampleGaussianInterpolated( ArrayGrid<double>* pGridIn, int upscalefactor );
 
 //////////////////////////////
 //                          //
@@ -200,22 +200,22 @@ private:
    /** \brief convolve grid using recursive filtering
      * \param pGridIn input grid to be filtered
      * \param sigma sigma for the gaussian filter*/
-   static image::ArrayGrid<double>* RecursiveConvolve(image::ArrayGrid<double>* pGridIn, double sigma);
+   static ArrayGrid<double>* RecursiveConvolve( ArrayGrid<double>* pGridIn, double sigma);
 
    /** \brief convolve image using Fourier domain filtering
      * \param pImage input image to be filtered
      * \param sigma sigma for the gaussian filter*/
-   static image::Image* FFTConvolve(image::Image* pImage, double sigma);
+   static Image* FFTConvolve( Image* pImage, double sigma);
 
    /** \brief convolve grid using Fourier domain filtering
      * \param pGrid input grid to be filtered
      * \param sigma sigma for the gaussian filter*/
-   static image::ArrayGrid<double>* FFTConvolve(image::ArrayGrid<double>* pGrid, double sigma);
+   static ArrayGrid<double>* FFTConvolve( ArrayGrid<double>* pGrid, double sigma);
 
    /** \brief convolve image using recursive gaussian filtering
      * \param pImage input image to be filtered
      * \param sigma sigma for the gaussian filter*/
-   static image::Image* RecursiveConvolve(image::Image* pImage, double sigma);
+   static Image* RecursiveConvolve( Image* pImage, double sigma);
 
 };
 

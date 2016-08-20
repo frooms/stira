@@ -14,9 +14,8 @@
 #include "../src/MainWindow.h"
 #include "../processes/AnisotropicDiffusionProcess.h"
 using namespace std;
-using namespace stira::image;
 
-AnisotropicDiffusionDialog::AnisotropicDiffusionDialog( stira::image::Image* pImage ) : DialogMaster( pImage )
+AnisotropicDiffusionDialog::AnisotropicDiffusionDialog( stira::imagedata::Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
    mpTitelLabel->setText( QString("<b>Anisotropic Diffusion Parameters</b>" ) );

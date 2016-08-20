@@ -38,13 +38,13 @@ public:
    /** \brief constructor without setting PSF, so is still to be determined before run
      * \param pDegradedImage the input image to be restored
      * \param maxNrOfIterations maximum number of iterations */
-   GNCDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations=20 );
+   GNCDeconvolve( Image* pDegradedImage, int maxNrOfIterations=20 );
    
    /** \brief constructor with PSF
      * \param pDegradedImage the input image to be restored
      * \param pPSF the input PSF (needs same width and height as pDegradedImage)
      * \param maxNrOfIterations maximum number of iterations */
-   GNCDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations=20 );
+   GNCDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations=20 );
    
    /** \brief destructor*/
    ~GNCDeconvolve();
@@ -169,7 +169,7 @@ private:
    
    double GetUpdatedCoefficient( int x, int y, double activityIndex, double totalPotential );
    
-   image::ArrayGrid<double>* mpNewSolutionGrid;  ///< current oriented band of the degraded source data
+   ArrayGrid<double>* mpNewSolutionGrid;  ///< current oriented band of the degraded source data
    
    double mMu;
    double mLambda;
@@ -186,18 +186,18 @@ private:
    int mCurrentScaleNr; ///< number of the scale currently being processed
    int mCurrentOrientationNr;  ///< number of the orientation currently being processed
    
-   image::ArrayGrid<double>* mpBlurredLastEstimateGrid;  ///< blurred version of
+   ArrayGrid<double>* mpBlurredLastEstimateGrid;  ///< blurred version of
    
    steerable::PyramidReal* mpDegradedPyramid;  ///< pyramid of the original degraded source data
    steerable::PyramidReal* mpLastEstimatePyramid;  ///< pyramid of the restored result from last iteration
    steerable::PyramidReal* mpBlurredLastEstimatePyramid; ///< pyramid of the blurred restored result from last iteration
    steerable::PyramidReal* mpNewEstimatePyramid;   ///< pyramid of the restored result from the current iteration
    
-   image::ArrayGrid<double>* mpDegradedCurrentBand;  ///< current oriented band of the degraded source data
-   image::ArrayGrid<double>* mpLastEstimateCurrentBand;  ///< current oriented band of the restored result from last iteration
-   image::ArrayGrid<double>* mpLastEstimateCurrentParentBand; ///< parent band of current oriented band of the restored result from last iteration
-   image::ArrayGrid<double>* mpBlurredLastEstimateCurrentBand; ///< current oriented band of the blurred restored result from last iteration
-   image::ArrayGrid<double>* mpNewEstimateCurrentBand; ///<  current oriented band of the restored result from the current iteration
+   ArrayGrid<double>* mpDegradedCurrentBand;  ///< current oriented band of the degraded source data
+   ArrayGrid<double>* mpLastEstimateCurrentBand;  ///< current oriented band of the restored result from last iteration
+   ArrayGrid<double>* mpLastEstimateCurrentParentBand; ///< parent band of current oriented band of the restored result from last iteration
+   ArrayGrid<double>* mpBlurredLastEstimateCurrentBand; ///< current oriented band of the blurred restored result from last iteration
+   ArrayGrid<double>* mpNewEstimateCurrentBand; ///<  current oriented band of the restored result from the current iteration
    
 };
 

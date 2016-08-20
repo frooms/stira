@@ -18,11 +18,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1AdaptiveBilateralFilter.html</anchorfile>
-      <anchor>a14876f0767d070a55559a0d8513f2c76</anchor>
-      <arglist>(image::Image *pImage)</arglist>
+      <anchor>a53c24938ab8c6ce131bb3250b278414b</anchor>
+      <arglist>(Image *pImage)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -43,11 +43,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1contrastenhance_1_1AdaptiveEnhanceLuong.html</anchorfile>
-      <anchor>a24b1c1a0cdff0d24c94056bc4117d421</anchor>
-      <arglist>(image::Image *pSourceImage)</arglist>
+      <anchor>ac86b1e47b724e45b1b23d07ef7cb140b</anchor>
+      <arglist>(Image *pSourceImage)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -71,8 +71,8 @@
       <type></type>
       <name>AdaptiveHistogramEqualizer</name>
       <anchorfile>classstira_1_1contrastenhance_1_1AdaptiveHistogramEqualizer.html</anchorfile>
-      <anchor>a1cfd5058491209edcf757377931156ec</anchor>
-      <arglist>(image::Image *pSourceImage, int blockWidth, int blockHeight)</arglist>
+      <anchor>a05fc8841c35c4273e864bc9a2ed7250f</anchor>
+      <arglist>(Image *pSourceImage, int blockWidth, int blockHeight)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -89,10 +89,10 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1contrastenhance_1_1AdaptiveHistogramEqualizer.html</anchorfile>
-      <anchor>aa9864e10b96a49adb986f6dc98a78ea3</anchor>
+      <anchor>af1a035c114ebf9e64ca2d790170125b2</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -227,8 +227,8 @@
       <type></type>
       <name>AnisotropicDiffusion</name>
       <anchorfile>classstira_1_1diffusion_1_1AnisotropicDiffusion.html</anchorfile>
-      <anchor>afeadc660db3c76917cc8f2d9af102f22</anchor>
-      <arglist>(image::Image *pSourceImage)</arglist>
+      <anchor>aef5a404d0e9cc2787212ff1a38080ef3</anchor>
+      <arglist>(Image *pSourceImage)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -266,7 +266,7 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1diffusion_1_1AnisotropicDiffusion.html</anchorfile>
       <anchor>af25d98f468e4d7ee497591111dec0486</anchor>
@@ -299,2108 +299,2108 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::ArrayGrid</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <name>stira::imagedata::datastructures::ArrayGrid</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <templarg>T</templarg>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
       <arglist>(int width, int height, bool needsInitialization, T intensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
       <arglist>(int width, int height, T *pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
       <arglist>(const ArrayGrid&lt; T &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; T &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>T &amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const </arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
       <arglist>(T value)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
       <arglist>(const ArrayGrid&lt; T &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
       <arglist>(int y, T *pRowBuffer)</arglist>
     </member>
     <member kind="function">
       <type>T *</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
       <arglist>(int x, T *columnBuffer)</arglist>
     </member>
     <member kind="function">
       <type>T *</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const </arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
       <arglist>(int x, int y, T myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
       <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, T myValue)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const </arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
       <arglist>(common::Point&lt; int &gt; pt, T myValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const </arglist>
     </member>
     <member kind="function">
       <type>T *</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>T *</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
       <arglist>(int x, int y, T myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
       <arglist>(int x, int y, T myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
       <arglist>(int x, int y, T myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
       <arglist>(const ArrayGrid&lt; T &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>T *</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>ArrayGrid&lt; bool &gt;</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
       <arglist>(int width, int height, bool needsInitialization, boolintensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
       <arglist>(int width, int height, bool *pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
       <arglist>(const ArrayGrid&lt; bool &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; bool &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool &amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
       <arglist>(boolvalue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
       <arglist>(const ArrayGrid&lt; bool &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
       <arglist>(int y, bool *pRowBuffer)</arglist>
     </member>
     <member kind="function">
       <type>bool *</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
       <arglist>(int x, bool *columnBuffer)</arglist>
     </member>
     <member kind="function">
       <type>bool *</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
       <arglist>(int x, int y, boolmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
       <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, boolmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
       <arglist>(common::Point&lt; int &gt; pt, boolmyValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>bool *</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool *</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
       <arglist>(int x, int y, boolmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
       <arglist>(int x, int y, boolmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
       <arglist>(int x, int y, boolmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
       <arglist>(const ArrayGrid&lt; bool &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>bool *</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>ArrayGrid&lt; double &gt;</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
       <arglist>(int width, int height, bool needsInitialization, doubleintensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
       <arglist>(int width, int height, double *pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
       <arglist>(const ArrayGrid&lt; double &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double &amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
       <arglist>(doublevalue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
       <arglist>(const ArrayGrid&lt; double &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
       <arglist>(int y, double *pRowBuffer)</arglist>
     </member>
     <member kind="function">
       <type>double *</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
       <arglist>(int x, double *columnBuffer)</arglist>
     </member>
     <member kind="function">
       <type>double *</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
       <arglist>(int x, int y, doublemyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
       <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, doublemyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
       <arglist>(common::Point&lt; int &gt; pt, doublemyValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>double *</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double *</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
       <arglist>(int x, int y, doublemyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
       <arglist>(int x, int y, doublemyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
       <arglist>(int x, int y, doublemyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
       <arglist>(const ArrayGrid&lt; double &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double *</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt;</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
       <arglist>(int width, int height, bool needsInitialization, histogram::stira::histogram::FloatHistogram *intensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
       <arglist>(int width, int height, histogram::stira::histogram::FloatHistogram **pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
       <arglist>(const ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram *&amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram *</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
       <arglist>(histogram::stira::histogram::FloatHistogram *value)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
       <arglist>(const ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
       <arglist>(int y, histogram::stira::histogram::FloatHistogram **pRowBuffer)</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram **</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
       <arglist>(int x, histogram::stira::histogram::FloatHistogram **columnBuffer)</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram **</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram *</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram *</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
       <arglist>(int x, int y, histogram::stira::histogram::FloatHistogram *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
       <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, histogram::stira::histogram::FloatHistogram *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
       <arglist>(common::Point&lt; int &gt; pt, histogram::stira::histogram::FloatHistogram *myValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram **</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>histogram::stira::histogram::FloatHistogram **</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
       <arglist>(int x, int y, histogram::stira::histogram::FloatHistogram *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
       <arglist>(int x, int y, histogram::stira::histogram::FloatHistogram *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
       <arglist>(int x, int y, histogram::stira::histogram::FloatHistogram *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
       <arglist>(ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
       <arglist>(ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
       <arglist>(ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
       <arglist>(ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
       <arglist>(const ArrayGrid&lt; histogram::stira::histogram::FloatHistogram * &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>histogram::stira::histogram::FloatHistogram **</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>ArrayGrid&lt; int &gt;</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
       <arglist>(int width, int height, bool needsInitialization, intintensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
       <arglist>(int width, int height, int *pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
       <arglist>(const ArrayGrid&lt; int &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; int &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int &amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
       <arglist>(intvalue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
       <arglist>(const ArrayGrid&lt; int &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
       <arglist>(int y, int *pRowBuffer)</arglist>
     </member>
     <member kind="function">
       <type>int *</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
       <arglist>(int x, int *columnBuffer)</arglist>
     </member>
     <member kind="function">
       <type>int *</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
       <arglist>(int x, int y, intmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
       <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, intmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
       <arglist>(common::Point&lt; int &gt; pt, intmyValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int *</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int *</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
       <arglist>(int x, int y, intmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
       <arglist>(int x, int y, intmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
       <arglist>(int x, int y, intmyValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
       <arglist>(ArrayGrid&lt; int &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
       <arglist>(ArrayGrid&lt; int &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
       <arglist>(ArrayGrid&lt; int &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
       <arglist>(ArrayGrid&lt; int &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
       <arglist>(const ArrayGrid&lt; int &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int *</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>ArrayGrid&lt; std::complex&lt; double &gt; &gt;</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
       <arglist>(int width, int height, bool needsInitialization, std::complex&lt; double &gt;intensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
       <arglist>(int width, int height, std::complex&lt; double &gt; *pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
       <arglist>(const ArrayGrid&lt; std::complex&lt; double &gt; &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt; &amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
       <arglist>(std::complex&lt; double &gt;value)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
       <arglist>(const ArrayGrid&lt; std::complex&lt; double &gt; &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
       <arglist>(int y, std::complex&lt; double &gt; *pRowBuffer)</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt; *</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
       <arglist>(int x, std::complex&lt; double &gt; *columnBuffer)</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt; *</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt;</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt;</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
       <arglist>(int x, int y, std::complex&lt; double &gt;myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
       <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, std::complex&lt; double &gt;myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
       <arglist>(common::Point&lt; int &gt; pt, std::complex&lt; double &gt;myValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt; *</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt; *</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
       <arglist>(int x, int y, std::complex&lt; double &gt;myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
       <arglist>(int x, int y, std::complex&lt; double &gt;myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
       <arglist>(int x, int y, std::complex&lt; double &gt;myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
       <arglist>(const ArrayGrid&lt; std::complex&lt; double &gt; &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::complex&lt; double &gt; *</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>ArrayGrid&lt; stira::image::LocalOrientation * &gt;</name>
-    <filename>classstira_1_1image_1_1ArrayGrid.html</filename>
+    <name>ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt;</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</filename>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a27b54788136f4faf9d929c7d55559412</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a374e9f73515dc01649477af9f0d53b51</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a20ed7fa4fa892a5283aec9f5b4ebbcf3</anchor>
-      <arglist>(int width, int height, bool needsInitialization, stira::image::LocalOrientation *intensity)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c85969c8d158be92657db701403ee1a</anchor>
+      <arglist>(int width, int height, bool needsInitialization, stira::imagedata::datastructures::LocalOrientation *intensity)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeedc4a57052d4ae2818614125ef6ac94</anchor>
-      <arglist>(int width, int height, stira::image::LocalOrientation **pArray)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a075852507e9216e9b549c814c6fbcf91</anchor>
+      <arglist>(int width, int height, stira::imagedata::datastructures::LocalOrientation **pArray)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a97847114753dc1fd06b05bbbacbb6213</anchor>
-      <arglist>(const ArrayGrid&lt; stira::image::LocalOrientation * &gt; &amp;pArrayGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a21e166f6fd4b85e2c996b5177f9df7d1</anchor>
+      <arglist>(const ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; &amp;pArrayGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a01da3da4ee183f24a3066b11a84f8f42</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a2ae0abb322fde476796d0de5c74d0645</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>ArrayGrid&lt; stira::image::LocalOrientation * &gt; *</type>
+      <type>ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a402409dfa0fc1247072e122c73b7280f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a8e4bb8b45c58116ee8e2b8c6c7c0c8f2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation *&amp;</type>
+      <type>stira::imagedata::datastructures::LocalOrientation *&amp;</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abb2021dd7f719bc482a5ead08a27a910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afb9dbd1492f9f7c1e14c87b6eb0a4ea1</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation *</type>
+      <type>stira::imagedata::datastructures::LocalOrientation *</type>
       <name>operator()</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74618c82784e7e8a50b4d8cc8669cfa4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a32a551373596c15b25c0068f50cbb2d7</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ad30e0b23d40213b1a2e2acddf879de93</anchor>
-      <arglist>(stira::image::LocalOrientation *value)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a9e2acfdfc163fac6db40b986ba3f67ac</anchor>
+      <arglist>(stira::imagedata::datastructures::LocalOrientation *value)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetGridValues</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3e86434bd9ce6315657b5438f1b2235b</anchor>
-      <arglist>(const ArrayGrid&lt; stira::image::LocalOrientation * &gt; &amp;otherGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4631680e4e479585784cd3e2da687afd</anchor>
+      <arglist>(const ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; &amp;otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>acdf67326d4b08bcbf014d9c4fcd477b1</anchor>
-      <arglist>(int y, stira::image::LocalOrientation **pRowBuffer)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a64d555a918473a0081c7dce2a62b13e8</anchor>
+      <arglist>(int y, stira::imagedata::datastructures::LocalOrientation **pRowBuffer)</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation **</type>
+      <type>stira::imagedata::datastructures::LocalOrientation **</type>
       <name>GetRowCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a2d2bfeb33d1b490f944ef760a3ec8aa3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3aec58abbab9aab897f6f29925c0cf06</anchor>
       <arglist>(int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aabe91b8a1ce8cc1858253c6a6a0ac3ca</anchor>
-      <arglist>(int x, stira::image::LocalOrientation **columnBuffer)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a49e12e5d95c1548489dfc1386cba49fa</anchor>
+      <arglist>(int x, stira::imagedata::datastructures::LocalOrientation **columnBuffer)</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation **</type>
+      <type>stira::imagedata::datastructures::LocalOrientation **</type>
       <name>GetColumnCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>adf808967057178f2e8d7353641bde835</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a65161af97d9838475af2d84a57f2033c</anchor>
       <arglist>(int x)</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation *</type>
+      <type>stira::imagedata::datastructures::LocalOrientation *</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9a00bd0c2097977901c43f13a1b67526</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7f1b0ed437c3406c15399928a7dcdf01</anchor>
       <arglist>(int x, int y) const</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation *</type>
+      <type>stira::imagedata::datastructures::LocalOrientation *</type>
       <name>GetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a31d9d4ce808668fc03b6e76539b15301</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aee8291bfc62d0fe99279ea59da3c31ea</anchor>
       <arglist>(common::Point&lt; int &gt; pt) const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>aeb53fd2ea54837892f1b2b2d262f8291</anchor>
-      <arglist>(int x, int y, stira::image::LocalOrientation *myValue)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a63b19cef4917131facadcbc7c3c9a2b7</anchor>
+      <arglist>(int x, int y, stira::imagedata::datastructures::LocalOrientation *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a51d7b8f1f8f5dcf9021aa20bdf5fe46e</anchor>
-      <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, stira::image::LocalOrientation *myValue)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4e8f8899b158d8cff2b8067d90020208</anchor>
+      <arglist>(std::vector&lt; common::Point&lt; int &gt; &gt; ptVector, stira::imagedata::datastructures::LocalOrientation *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7101731ea7901e8f3c526d5635a94304</anchor>
-      <arglist>(common::Point&lt; int &gt; pt, stira::image::LocalOrientation *myValue)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0cbe8fd49c491092f9ec376c65e426f7</anchor>
+      <arglist>(common::Point&lt; int &gt; pt, stira::imagedata::datastructures::LocalOrientation *myValue)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af19dcd76d242789d06ba06dca6519b2b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a169f0115857a01956dfd7ec6d770264f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab2f121b7c7d4691c5ef487a692603bdc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>af812090b40ca884123e2c4b4e3d5b23f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation **</type>
+      <type>stira::imagedata::datastructures::LocalOrientation **</type>
       <name>GetDataCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad3385bf09efef3a3802115787b718f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a25b3dd65400d4ffc1ba788eacc14fee5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>stira::image::LocalOrientation **</type>
+      <type>stira::imagedata::datastructures::LocalOrientation **</type>
       <name>GetDataPointer</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a4d5be9f49b54e37b96080f93bfc2d99c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aba40894c0dc1a8f4d4e647327a9e0a5d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>PointMirrorGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ad7f3c00f9b6c520bf6907bf87f550c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa9d72abf94bcc6b43370468a21ebc149</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SwitchQuadrants</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a83c4074e178e5fa8519c040dd93c7327</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a5cf5c3e40273d8db8766b42cdd96dfc2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a74e9ca834a3b223d944c0af6f739e598</anchor>
-      <arglist>(int x, int y, stira::image::LocalOrientation *myValue)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a0aa27b05bbb8cbfb191c7059fdf308ac</anchor>
+      <arglist>(int x, int y, stira::imagedata::datastructures::LocalOrientation *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOne</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab0e0c38270db1281e9a5f3a295e8ed8a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a57af1f5ca7bf62ce700e91ab76d95f83</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>afb0de2e17824ec956ac18966d183cfa9</anchor>
-      <arglist>(int x, int y, stira::image::LocalOrientation *myValue)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a7aff4c9b75d60d93f2ba380dfcb9c183</anchor>
+      <arglist>(int x, int y, stira::imagedata::datastructures::LocalOrientation *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideValue</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a612d695396e4071ca76e17b0f6692cee</anchor>
-      <arglist>(int x, int y, stira::image::LocalOrientation *myValue)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aaf6a367d339d73a35dc439e23ab24e79</anchor>
+      <arglist>(int x, int y, stira::imagedata::datastructures::LocalOrientation *myValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a3ce2df80bb88ce0d2375d13362f4da75</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a45fb2ad073af6f6f48f877f58f12cc56</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a001c64b944e989638e19aaacc528a3f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a66f2b2c891be647b9ede11c382d03dfc</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>af2f2a3cb968f6ddf183e9786968f3094</anchor>
-      <arglist>(ArrayGrid&lt; stira::image::LocalOrientation * &gt; *otherGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a78e3882937fd3b9d40047454cbb354bf</anchor>
+      <arglist>(ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>abd7166f532d31ed5f16efa61354621d0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a709b0ba88c2732cbfc0fbe67faa49701</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a541f57ff95a2fe058c41973fd811b371</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a3bef69cd520c2988d45d9288ca2a0979</anchor>
       <arglist>(std::complex&lt; double &gt; factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>DivideBy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8f772c45adf1a0f12f8e67fad67f14b7</anchor>
-      <arglist>(ArrayGrid&lt; stira::image::LocalOrientation * &gt; *otherGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>ae4fd3bc5059df7dabb37565b5d25067d</anchor>
+      <arglist>(ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8a6164cba598a6cb1dcd49f03f7241f1</anchor>
-      <arglist>(ArrayGrid&lt; stira::image::LocalOrientation * &gt; *otherGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aa5b800cea35701f10ede460131c2c168</anchor>
+      <arglist>(ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SubtractGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a8bbfee814069ec4456e0dc8ab7500897</anchor>
-      <arglist>(ArrayGrid&lt; stira::image::LocalOrientation * &gt; *otherGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a4c11407155dd93653e4e72887b755825</anchor>
+      <arglist>(ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; *otherGrid)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>bool</type>
       <name>CreateGridCopy</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a40506e03c69062b2fd420d98dd25627e</anchor>
-      <arglist>(const ArrayGrid&lt; stira::image::LocalOrientation * &gt; &amp;otherArrayGrid)</arglist>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>afd0def82750f8e101a350f279622accd</anchor>
+      <arglist>(const ArrayGrid&lt; stira::imagedata::datastructures::LocalOrientation * &gt; &amp;otherArrayGrid)</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>stira::image::LocalOrientation **</type>
+      <type>stira::imagedata::datastructures::LocalOrientation **</type>
       <name>mpArrayGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a7fb8b59fe809e9b4b45f97f76e675706</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>aeee338e24f72d70b8e57091dce376ca0</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mWidth</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>a9f18e7889a8b67359dc4ccbfa7398ec6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a6217e90c8369d25ac2c80a0ac1c770c1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mHeight</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGrid.html</anchorfile>
-      <anchor>ab87dbdd40267557a680ee54cc51dfb2d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1ArrayGrid.html</anchorfile>
+      <anchor>a94d323ec6df654e8760a792f8056a86e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::ArrayGridTools</name>
-    <filename>classstira_1_1image_1_1ArrayGridTools.html</filename>
+    <name>stira::imagedata::simpletools::ArrayGridTools</name>
+    <filename>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</filename>
     <templarg>T</templarg>
     <member kind="function">
       <type></type>
       <name>ArrayGridTools</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>af1651d3bfd61d0e40bd1d618ac2400cc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>a228bd1a17b0ab8592c0429548825aa80</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ArrayGridTools</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>ae19115cd0bdd79932910905f47768ccc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>ab985a9a46d93f7f09a88682464ee4809</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>DownSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>a9bf97a511f1f44d0b60f5ef9a2d99b37</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>a3bba99f649f2f983efe175ffc0813a5a</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>UpSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>ad4bad52293ba6b4290ab5559aff05449</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>a7d200c67d7288767c8d92913d045fa1f</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGridIn, int upSampledWidth, int upSampledHeight, double myFactor=4.0)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>CreateGridFromArray</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>adfbc1c430af70c36239698b0220f2529</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>aed82dc07a03e43c969154646d62e206c</anchor>
       <arglist>(T *pArray, int width, int height)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static T *</type>
       <name>CreateArrayFromGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>a1eea62b3848ee0e45f33cf4a63d92801</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>a9694263522cc85d8729d3d5659d79fd1</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>ExtractSubGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>a70f375a3c9cb48d316c3b6d395c3c4c7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>a236ddff18d32233c89f2e446a30edd11</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGridIn, int xTop, int yTop, int xBottom, int yBottom)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static void</type>
       <name>InsertSubGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>a0522598cfde3c873ff39da96fc96014c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>af4272d015757cb2dce33fd3f4d502a36</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pMasterGrid, ArrayGrid&lt; T &gt; *pSubGrid, int xTop, int yTop, int xBottom, int yBottom)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>CircularShiftGrid</name>
-      <anchorfile>classstira_1_1image_1_1ArrayGridTools.html</anchorfile>
-      <anchor>a837a02057d6c9601df26d0e7a7ac8cba</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1ArrayGridTools.html</anchorfile>
+      <anchor>a7dd363ea0e054fbc643ad98e770a7059</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGridIn, int deltaX, int deltaY)</arglist>
     </member>
   </compound>
@@ -2583,8 +2583,8 @@
       <type>double</type>
       <name>Run</name>
       <anchorfile>classstira_1_1degradationestimation_1_1BlurEstimator.html</anchorfile>
-      <anchor>a896f53a0d1fd1d8fbfdb5e50d20a9c08</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid)</arglist>
+      <anchor>a6bf91a20ab5e83aabd8847d7b07aea66</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
@@ -2692,8 +2692,8 @@
       <type>double</type>
       <name>Run</name>
       <anchorfile>classstira_1_1degradationestimation_1_1BlurEstimatorHu.html</anchorfile>
-      <anchor>aa9124e09d539acf3a9204067769a66e9</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid)</arglist>
+      <anchor>aa0b6077fd14e2d23071b1de6c0ee1420</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -2714,11 +2714,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; bool &gt; *</type>
+      <type>static ArrayGrid&lt; bool &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1imageanalysis_1_1CannyEdgeDetector.html</anchorfile>
-      <anchor>ad8755cbd7ac6a9d56d710e83fc3f4321</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigmaSmooth, double lowerThreshold, double upperThreshold)</arglist>
+      <anchor>af83de755bbae0d84b2198209d0c90d69</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigmaSmooth, double lowerThreshold, double upperThreshold)</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -2728,6 +2728,41 @@
   <compound kind="class">
     <name>stira::image::ChromaticAdaptation</name>
     <filename>classstira_1_1image_1_1ChromaticAdaptation.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>ChromaticAdaptation</name>
+      <anchorfile>classstira_1_1image_1_1ChromaticAdaptation.html</anchorfile>
+      <anchor>afe7200fe8a1d8031f003ac68c00d9502</anchor>
+      <arglist>(const ColorValue sourceReferenceWhite, const ColorValue destinationReferenceWhite, ChromaticAdaptationType myType=CHROMATICADAPTATION_BRADFORD)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~ChromaticAdaptation</name>
+      <anchorfile>classstira_1_1image_1_1ChromaticAdaptation.html</anchorfile>
+      <anchor>a56372abe4c06cb7ee3fdc9938b4127e3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>ColorValue</type>
+      <name>AdaptXYZColor</name>
+      <anchorfile>classstira_1_1image_1_1ChromaticAdaptation.html</anchorfile>
+      <anchor>af52179a6ac982e205aeaf9595721b485</anchor>
+      <arglist>(ColorValue inValue)</arglist>
+    </member>
+    <member kind="function">
+      <type>ColorValue</type>
+      <name>AdaptsRGBColor</name>
+      <anchorfile>classstira_1_1image_1_1ChromaticAdaptation.html</anchorfile>
+      <anchor>ad378bffd0f90165221fe1723f31ee169</anchor>
+      <arglist>(ColorValue inValue)</arglist>
+    </member>
+    <member kind="function">
+      <type>ColorValue</type>
+      <name>AdaptLabColor</name>
+      <anchorfile>classstira_1_1image_1_1ChromaticAdaptation.html</anchorfile>
+      <anchor>a48c000b148e60a8c3e01a028d33b6fd0</anchor>
+      <arglist>(ColorValue inValue)</arglist>
+    </member>
     <member kind="function">
       <type></type>
       <name>ChromaticAdaptation</name>
@@ -2794,34 +2829,34 @@
     </member>
   </compound>
   <compound kind="struct">
-    <name>stira::image::cmyk_t</name>
-    <filename>structstira_1_1image_1_1cmyk__t.html</filename>
+    <name>stira::imagedata::color::cmyk_t</name>
+    <filename>structstira_1_1imagedata_1_1color_1_1cmyk__t.html</filename>
     <member kind="variable">
       <type>double</type>
       <name>c</name>
-      <anchorfile>structstira_1_1image_1_1cmyk__t.html</anchorfile>
-      <anchor>a0c2d5126eb2b4ea9ed5771ae8ac7893e</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1cmyk__t.html</anchorfile>
+      <anchor>afd2059370046d6233ca5cfa60d49897a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>m</name>
-      <anchorfile>structstira_1_1image_1_1cmyk__t.html</anchorfile>
-      <anchor>acc66b0d1955520a16b349cd009486b15</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1cmyk__t.html</anchorfile>
+      <anchor>abf69753ea0298e4b21a5280da67f13ad</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>y</name>
-      <anchorfile>structstira_1_1image_1_1cmyk__t.html</anchorfile>
-      <anchor>ab413b2a6f6f10bc37fd105eaacc5c892</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1cmyk__t.html</anchorfile>
+      <anchor>a1458e7a51457b9691b89671ec84dd785</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>k</name>
-      <anchorfile>structstira_1_1image_1_1cmyk__t.html</anchorfile>
-      <anchor>ab49ab96c82f0a90120ceadfd7d3241ac</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1cmyk__t.html</anchorfile>
+      <anchor>a197a98e7167554fdc30caa416e5e3271</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -2849,211 +2884,232 @@
       <anchor>a97548dedc5aade5c142e1708669d003d</anchor>
       <arglist>(image::Image *pImageIn)</arglist>
     </member>
+    <member kind="function" static="yes">
+      <type>static Image *</type>
+      <name>RunBalance</name>
+      <anchorfile>classstira_1_1image_1_1ColorBalancer.html</anchorfile>
+      <anchor>a7aae7c231157b9ae6b17bc3468944d56</anchor>
+      <arglist>(Image *pImageIn, double weightGM=0.5)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Image *</type>
+      <name>RunGrayWorld</name>
+      <anchorfile>classstira_1_1image_1_1ColorBalancer.html</anchorfile>
+      <anchor>a7c83d1ecfcec50937e6072b33b026ff2</anchor>
+      <arglist>(Image *pImageIn)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static Image *</type>
+      <name>RunPerfectReflector</name>
+      <anchorfile>classstira_1_1image_1_1ColorBalancer.html</anchorfile>
+      <anchor>af1dc031804692e357b1ea58edeced76f</anchor>
+      <arglist>(Image *pImageIn)</arglist>
+    </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::ColorConstants</name>
-    <filename>classstira_1_1image_1_1ColorConstants.html</filename>
+    <name>stira::imagedata::color::ColorConstants</name>
+    <filename>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</filename>
     <member kind="variable">
       <type>ColorValue</type>
       <name>mReferenceWhite</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>ab03f6cee1d493fe395920686ce96dade</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a9e41da8a14015644d177c9ab6d4765ec</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>mMaxColorValue</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>acdd9eb4789cd323ab51a0a7b5cffa1e4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a666b4aa330a9d045e4937439668d7b4c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sA_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a1a598451bccd2ffb3827838615d88ef0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a147a1bda564cfb93c068ce6af1eac01b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sB_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>abdd48708d88a4d1f8c0f10ca994054c8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a3deda4cf3d8d9180dda0e0eb3da96ba4</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sC_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>ac0969391e0c784e33075e0c6c6f2efa8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>ad507541f0b8f70126544ed30e51df4fb</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sD50_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a8c5a5b18d06f819ebfb2656330093952</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>ab8f0539a24d52330fc84adb799b607e6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sD55_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>abc6c65019f76ee433cd1664f70ad2522</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a1ce4f0fdfe8e9a31ad00e44ece3cdeff</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sD65_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a2bcfeec9f241c769d66a9b20812d1e4c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a053b42a771e2d7c7e2f0caaf0c37f68e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sD75_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a3e1c754c174c2ab8b96f5778fc8cf66e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a1ff71a340ebddc37b60898e3a6e07692</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sD93_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>af82abbe0a385fb88d90d9fa65fd36873</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a6199bad5681b834e4b3d578cdef59030</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sE_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a176c862b3dbf5bec159bc9237412ccdf</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a747519c360af3152848f82a6590ec6e6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sF2_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a701c267fc5c890fde9bc863d1b99b2f4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>ab281d22a0aea880114c334f75673deac</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sF7_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a02e41d9c1c81217578a3c2a8f79a6c4e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a54bef166482d4ac32217e3f4143e8175</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sF11_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>aef3b99a26a556e5ac0da31508a32f499</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a358a69bb27006336fcd96d5184e4671d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const ColorValue</type>
       <name>sPrintWhite_XYZ</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>af0e263071b637c35f7305a091be9272b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a4259b2e9e28b6e6417d7974d15a7228e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sDifferenceThreshold</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a10d80cdd6013bdf3d16dd42c6bdffd66</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a11b5dcd1401bc91bfd2e6935ea1c0cfa</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sKappa</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a3589079568f9cfca3cf82f1685f34060</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>aaf9e0b257a2f72f20598a316b0860d6d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sEpsilon</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a29d5f50f6a1f707a9efa77aa8692186e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a74a138838906e6b9dd8f1c54538104e7</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sMatchingFunctionCIEx</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>ae4c9cc222682e265589d876604a7a232</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a478303562c697233c50712e6bacb6480</anchor>
       <arglist>[]</arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sMatchingFunctionCIEy</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a052f2d77e736acb32301519803aca613</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>ad8dd7006e59f0c1e98c0f1a0847666ec</anchor>
       <arglist>[]</arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sMatchingFunctionCIEz</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>acb66b5222738d09da71668b23e18dbb6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a3988982daaf10752734a1b725b7deb0c</anchor>
       <arglist>[]</arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sD50IlluminantSpectrum</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>ad447c451952c80a545b2be7b24f515ad</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a9a338ffb7319e635ff022dcde28f6d4f</anchor>
       <arglist>[]</arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sD65IlluminantSpectrum</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a7549626c6f6c546ba77e7ede571f3cc4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>ab4793a1b0289215d730cc06148c66834</anchor>
       <arglist>[]</arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sAIlluminantSpectrum</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>afe5a59ff6502f96b6621882a4b598bf9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a87d9c243bcb13ea1225da9537733cc48</anchor>
       <arglist>[]</arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sSpectralNormalizationConstantD50</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a75416ffc56c7d7bb03b90c215aa8acd6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>afc4c4ca217108a35701ff6b0f22db510</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const double</type>
       <name>sSpectralNormalizationConstantD65</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>abef46e3a9857dd219baf6d8c53d256a6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a3bf8f99649fff4fa8469d93d71820588</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const int</type>
       <name>sMinimumWavelength</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a002e5cd3f426d7872f8e0af60566febe</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>aec9fcec086e6c81c6d9a8e4c7f961696</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const int</type>
       <name>sMaximumWavelength</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a10d269a7faa0200d2a78ae0824799b68</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>af6c41e7d0882a1523fea53355ae242bb</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static const int</type>
       <name>sWavelengthStepSize</name>
-      <anchorfile>classstira_1_1image_1_1ColorConstants.html</anchorfile>
-      <anchor>a5d81a4a40cebb9d9c28818e215d12485</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorConstants.html</anchorfile>
+      <anchor>a71c97bf68136768120bc8e1e35d29997</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -3062,87 +3118,87 @@
     <filename>classstira_1_1filter_1_1ColorLookupTable.html</filename>
   </compound>
   <compound kind="class">
-    <name>stira::image::ColorValue</name>
-    <filename>classstira_1_1image_1_1ColorValue.html</filename>
+    <name>stira::imagedata::color::ColorValue</name>
+    <filename>classstira_1_1imagedata_1_1color_1_1ColorValue.html</filename>
     <member kind="function">
       <type></type>
       <name>ColorValue</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a95c93e5e99ee64ffe96a526cd576379d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>af9b7e189e3266a10c950de0e7d6c0831</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>ColorValue</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a965433756eea809f0501b0d25b4dcf43</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>ad2415320b716bfe87d21d84474a13aaf</anchor>
       <arglist>(double r, double g, double b, ColorType myType=TYPE_RGB)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetColorValue</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a18f09df3e6ff62f323ca8b5376499360</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>adebdc557e6c83adb6eda325085375f0f</anchor>
       <arglist>(double r, double g, double b, ColorType myType)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue &amp;</type>
       <name>operator=</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a48150d642b72fa4800c0b321393866d9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>a9a20861de6bd6d9576f805cd5cb97c9b</anchor>
       <arglist>(const ColorValue &amp;r)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetMax</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a77106ff08b81cec2791c125775d0336b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>a142152e794f4d0c3017c737bf435849d</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetAverage</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a4b8da21a71bd05406a1f4aede9b7dc27</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>a3ab03700550bdca7e58adfff7ee4a1f9</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetMin</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>ac3c1912e9f17db4e1f10067a09025242</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>a9649e250af5c266098eacc0762e46ce8</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>c</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>a9ad94154baceaee189e1458a2268bc92</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>a88bababede52b270d3ec60ea02f09a2c</anchor>
       <arglist>[3]</arglist>
     </member>
     <member kind="variable">
       <type>ColorType</type>
       <name>type</name>
-      <anchorfile>classstira_1_1image_1_1ColorValue.html</anchorfile>
-      <anchor>ac79d83368e27c4bcd3bde3b9f4e5ad3c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ColorValue.html</anchorfile>
+      <anchor>a9702e772badc149b82968f7b0738be99</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="struct">
-    <name>stira::image::compare_neighbor_entry_t</name>
-    <filename>structstira_1_1image_1_1compare__neighbor__entry__t.html</filename>
+    <name>stira::imagedata::color::compare_neighbor_entry_t</name>
+    <filename>structstira_1_1imagedata_1_1color_1_1compare__neighbor__entry__t.html</filename>
     <member kind="variable">
       <type>lut_entry_t</type>
       <name>entry</name>
-      <anchorfile>structstira_1_1image_1_1compare__neighbor__entry__t.html</anchorfile>
-      <anchor>a58a28123253e8667632f923bfceb0f45</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1compare__neighbor__entry__t.html</anchorfile>
+      <anchor>a7284672fd59ac165a901f14e22ad116f</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>dE</name>
-      <anchorfile>structstira_1_1image_1_1compare__neighbor__entry__t.html</anchorfile>
-      <anchor>ab593abfdd7d1785c369efbe405deea8c</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1compare__neighbor__entry__t.html</anchorfile>
+      <anchor>abe7a2609754a01ab22b6dd00057b300b</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -3157,8 +3213,8 @@
       <type></type>
       <name>CompareSmoothSharpDijk</name>
       <anchorfile>classstira_1_1degradationestimation_1_1CompareSmoothSharpDijk.html</anchorfile>
-      <anchor>a62d43013444a0d1e6f64fcd0f399541d</anchor>
-      <arglist>(image::Image *pImage1, image::Image *pImage2, std::string name)</arglist>
+      <anchor>a85dd578d49321702c75d289ec23d1b5b</anchor>
+      <arglist>(Image *pImage1, Image *pImage2, std::string name)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3193,32 +3249,32 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ColorValue</type>
+      <type>static ColorValue</type>
       <name>ConvertAngleToHSVMap</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeOrientation.html</anchorfile>
-      <anchor>a852677801d0806f5d3c523b4742167d4</anchor>
+      <anchor>a465119421cfcbda982bfb2f15cd7ea64</anchor>
       <arglist>(double angle)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ColorValue</type>
+      <type>static ColorValue</type>
       <name>ConvertAngleToRGBMap</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeOrientation.html</anchorfile>
-      <anchor>a1df4b049d3bec05c1a0471cb63d757b0</anchor>
+      <anchor>a9130d6ccec112eddcbbdeb816fb9f6d7</anchor>
       <arglist>(double angle)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::OrientationGrid *</type>
+      <type>static OrientationGrid *</type>
       <name>ComputeDominantOrientationInputFreemanAdelson</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeOrientation.html</anchorfile>
-      <anchor>a306a51636c99cc260e81d34ab11950af</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pResponseH2a, image::ArrayGrid&lt; double &gt; *pResponseH2b, image::ArrayGrid&lt; double &gt; *pResponseH2c, image::ArrayGrid&lt; double &gt; *pResponseH2d, image::ArrayGrid&lt; double &gt; *pResponseG2a, image::ArrayGrid&lt; double &gt; *pResponseG2b, image::ArrayGrid&lt; double &gt; *pResponseG2c)</arglist>
+      <anchor>a332320c48ac7dc5847db91ed83946751</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pResponseH2a, ArrayGrid&lt; double &gt; *pResponseH2b, ArrayGrid&lt; double &gt; *pResponseH2c, ArrayGrid&lt; double &gt; *pResponseH2d, ArrayGrid&lt; double &gt; *pResponseG2a, ArrayGrid&lt; double &gt; *pResponseG2b, ArrayGrid&lt; double &gt; *pResponseG2c)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::OrientationGrid *</type>
+      <type>static OrientationGrid *</type>
       <name>ComputeDominantOrientationInputComplexPyramidLevel</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeOrientation.html</anchorfile>
-      <anchor>ace1690104ed38140f552fae45c37342e</anchor>
-      <arglist>(image::PyramidLevel&lt; std::complex&lt; double &gt; &gt; *pPyrLevel)</arglist>
+      <anchor>a1932f153484bcb0efaa8cca261848cd6</anchor>
+      <arglist>(PyramidLevel&lt; std::complex&lt; double &gt; &gt; *pPyrLevel)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -3228,8 +3284,8 @@
       <type></type>
       <name>ComputeSteerableFilteredImages</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a80991a674b3582332b46326b196b7bed</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *mpSourceGrid)</arglist>
+      <anchor>ac2d1a8d67fc576ffdb16e4c9afc0b53d</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *mpSourceGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -3246,87 +3302,87 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::OrientationGrid *</type>
+      <type>OrientationGrid *</type>
       <name>GetOrientationGrid</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
       <anchor>a9c03789648c3d3e9ba5dff69fd16ce7a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>InterpolateG</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>abb6cc75b385d74a32ee740c39b6020a7</anchor>
+      <anchor>a24631c710cbf818fdb86a74a923e0f59</anchor>
       <arglist>(double theta)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>InterpolateH</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a20fb34f07a704155effaccd2aa66f09d</anchor>
+      <anchor>a78c73ea040de145ee151ff43fb6b27ab</anchor>
       <arglist>(double theta)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>FilterAlongDominantOrientationG</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>ac66d113318d04a11d2c43de5b448cc8c</anchor>
+      <anchor>adcb0865bdff30d432aad4f6aa6dc0354</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>FilterAlongDominantOrientationH</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a3cd8aa0ae12a3b039eae52d2ca6f8f1b</anchor>
+      <anchor>a27509fc99989c661b78515af931f0117</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetH2a</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a0e19591328c305e7801a25153641fa21</anchor>
+      <anchor>afdf9ba7e4e0e96fc7102f2e0a43f7df2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetH2b</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>ab375afd5fedd190f4dfb4bc5339de08d</anchor>
+      <anchor>a46182b3deaaf0b21c0620e6bde8ae4d1</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetH2c</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a1dd6e92d00294e143393f81ccfc0a63d</anchor>
+      <anchor>a4c959d3d544b4e04953f356889f53877</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetH2d</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>acb22bffc4b83cee94ce372f63f8b5c14</anchor>
+      <anchor>acb465bb964a31d254441590e6089922a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetG2a</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a2e062dd80b8542a0d9f7258c70ac3442</anchor>
+      <anchor>ab5146127d39597be4a7ab999a2769a7a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetG2b</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a763e0c7fe14645fbc86cfd90a09f6c7e</anchor>
+      <anchor>a8526bb182d1d5b4d250cdb085c4a8e25</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetG2c</name>
       <anchorfile>classstira_1_1steerable_1_1ComputeSteerableFilteredImages.html</anchorfile>
-      <anchor>a6d700bf21ec3e57bd4e90d1d2ceab744</anchor>
+      <anchor>a950cfc8631b5ba81c857928135dbc44b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -3391,8 +3447,8 @@
       <type>virtual bool</type>
       <name>Decompose</name>
       <anchorfile>classstira_1_1wavelet_1_1CriticallySubsampledTransform.html</anchorfile>
-      <anchor>ae903626fe17b66b6bd6e9873c38c379b</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)</arglist>
+      <anchor>a91a471358697f4456c0430a78e70bf21</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual bool</type>
@@ -3646,49 +3702,49 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::CWTPyramid</name>
-    <filename>classstira_1_1image_1_1CWTPyramid.html</filename>
+    <name>stira::imagedata::datastructures::CWTPyramid</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</filename>
     <base>Pyramid&lt; std::complex&lt; double &gt; &gt;</base>
     <member kind="function">
       <type></type>
       <name>CWTPyramid</name>
-      <anchorfile>classstira_1_1image_1_1CWTPyramid.html</anchorfile>
-      <anchor>a921496e165cfb87193e09fb8e8521882</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</anchorfile>
+      <anchor>ac6e2919a093a2ebe3780068e399ec5be</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pSourceBand, int myNrScales)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual</type>
       <name>~CWTPyramid</name>
-      <anchorfile>classstira_1_1image_1_1CWTPyramid.html</anchorfile>
-      <anchor>aa2432f6c254de00c6699551df7797a0c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</anchorfile>
+      <anchor>ac21306f5b26dc4f7de6fdc5935b88a59</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>GetLowPassResidual1</name>
-      <anchorfile>classstira_1_1image_1_1CWTPyramid.html</anchorfile>
-      <anchor>ad827b999d52fa23baae421c0e9ab9b0c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</anchorfile>
+      <anchor>a38f870f2cb44566b336aedd3b4f806f3</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetLowPassResidual1</name>
-      <anchorfile>classstira_1_1image_1_1CWTPyramid.html</anchorfile>
-      <anchor>a1a02e1a339d1312806979a84beed5f4c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</anchorfile>
+      <anchor>a6a286ec7b7ef4061741431dbc7e327c7</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>GetLowPassResidual2</name>
-      <anchorfile>classstira_1_1image_1_1CWTPyramid.html</anchorfile>
-      <anchor>ad12126d59bd09e07b09926da0a0e5110</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</anchorfile>
+      <anchor>a68009866b3837dc2ba762aa55f98d433</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetLowPassResidual2</name>
-      <anchorfile>classstira_1_1image_1_1CWTPyramid.html</anchorfile>
-      <anchor>a820bdb1d84c397c8776c392ff51606d9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1CWTPyramid.html</anchorfile>
+      <anchor>a89962dc9b128d645333c4a265ba997d6</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBand)</arglist>
     </member>
   </compound>
@@ -3735,7 +3791,7 @@
       <arglist>()=0</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetDegradedImage</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
       <anchor>a405308467a3a1ad59353aa7f21c00897</anchor>
@@ -3745,11 +3801,11 @@
       <type>void</type>
       <name>SetDegradedImage</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a05661b061b08489db79108650e5fc94b</anchor>
-      <arglist>(image::Image *pDegradedImage)</arglist>
+      <anchor>a08c166ee3e969ba27abc47e6697ef7d5</anchor>
+      <arglist>(Image *pDegradedImage)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetPSF</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
       <anchor>ae7640b8eed5d3e4cfa9c6d5d7d472306</anchor>
@@ -3759,11 +3815,11 @@
       <type>void</type>
       <name>SetPSF</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a279bcbe7008bfde76dfd8ec80d78190d</anchor>
-      <arglist>(image::Image *pPSF)</arglist>
+      <anchor>aec6bcc1e26db3b83f8fd819548ba3557</anchor>
+      <arglist>(Image *pPSF)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetRestoredImage</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
       <anchor>a8d679c85d8e8abb963456b874c0ae8ab</anchor>
@@ -3794,15 +3850,15 @@
       <type></type>
       <name>DeconvolveMaster</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a523a3260eb838d081f77723e21e25bbb</anchor>
-      <arglist>(image::Image *pDegradedImage)</arglist>
+      <anchor>ae9dd02f846e494c9a983c62924d5ba60</anchor>
+      <arglist>(Image *pDegradedImage)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type></type>
       <name>DeconvolveMaster</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a21ba4b9626235885f7d96e999b6590e7</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF)</arglist>
+      <anchor>ade80bad643f5b6e1ab25bdddeef0b928</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF)</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="virtual">
       <type>virtual</type>
@@ -3819,24 +3875,24 @@
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>mpDegradedImage</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a82684cb9e835c26a793c142f5842ca7f</anchor>
+      <anchor>aca2d5d7a5177435516e015ce9d810d2b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>mpRestoredImage</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a94e86bc8a1c0656aa6575724c16bb1b5</anchor>
+      <anchor>af1d710fd0a129f5af987db0de266bf3c</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>mpPSF</name>
       <anchorfile>classstira_1_1deconvolve_1_1DeconvolveMaster.html</anchorfile>
-      <anchor>a4a3793831bc9bf4e9691903924979c4b</anchor>
+      <anchor>ac024edcd4c6bd370c8a48f53c1f240fc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -3865,32 +3921,32 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1DifferenceOfGaussians.html</anchorfile>
-      <anchor>af9beaab04ccb817ac690d1452fbf2488</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2)</arglist>
+      <anchor>a6ced3dc01d43897f7f3bfdcb87b0ae83</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1DifferenceOfGaussians.html</anchorfile>
-      <anchor>adc2722dcd93b0551ea8295bffcfbe47a</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigmaX1, double sigmaX2, double sigmaY)</arglist>
+      <anchor>a78a79817e1e7714cea6c1f74b163eba6</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigmaX1, double sigmaX2, double sigmaY)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1DifferenceOfGaussians.html</anchorfile>
-      <anchor>a9e06c7cda321381829b2ed6e46264d6a</anchor>
-      <arglist>(image::Image *pImageIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2)</arglist>
+      <anchor>a47194cc9525ed4bdf808cc453a720249</anchor>
+      <arglist>(Image *pImageIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1DifferenceOfGaussians.html</anchorfile>
-      <anchor>aa2b6df183a4ad0e111538da22eb04bc5</anchor>
-      <arglist>(image::Image *pImageIn, double sigmaX1, double sigmaX2, double sigmaY)</arglist>
+      <anchor>ab1a31875d556546b3dac8b339a253bc7</anchor>
+      <arglist>(Image *pImageIn, double sigmaX1, double sigmaX2, double sigmaY)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -3911,35 +3967,35 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1imageanalysis_1_1DistanceTransform.html</anchorfile>
-      <anchor>a5bb5ac1c55d1aafa1a58210b40737422</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>aa0ef484dfac900978490a884f16c7192</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::DistinctColorGenerator</name>
-    <filename>classstira_1_1image_1_1DistinctColorGenerator.html</filename>
+    <name>stira::imagedata::color::DistinctColorGenerator</name>
+    <filename>classstira_1_1imagedata_1_1color_1_1DistinctColorGenerator.html</filename>
     <member kind="function">
       <type></type>
       <name>DistinctColorGenerator</name>
-      <anchorfile>classstira_1_1image_1_1DistinctColorGenerator.html</anchorfile>
-      <anchor>a73ad1e845de6401dd0d15ff115e0d5a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1DistinctColorGenerator.html</anchorfile>
+      <anchor>ab64d547a0c25fd9c8677b4b195178609</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~DistinctColorGenerator</name>
-      <anchorfile>classstira_1_1image_1_1DistinctColorGenerator.html</anchorfile>
-      <anchor>a41757ab60167eee0494393284e07b9a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1DistinctColorGenerator.html</anchorfile>
+      <anchor>a543408cfe623298eab94b248175b32ac</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>GenerateNewColor</name>
-      <anchorfile>classstira_1_1image_1_1DistinctColorGenerator.html</anchorfile>
-      <anchor>a8ce2f5bce7243aff01d7639d26fb16fc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1DistinctColorGenerator.html</anchorfile>
+      <anchor>a19dfff00976b62570af1200d4209ae23</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -4282,74 +4338,74 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
+      <type>static ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>CreateComplexGridFromRealGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a0fdbb81959b73fdc06b3f0f02ad2657c</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>a6cfc1dfeab5da5630f257f8ff9701135</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>CreateRealGridFromComplexGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>ae5781bedba68d4d432b8a1e0087fe287</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn)</arglist>
+      <anchor>a1d724a2df172572936b55c8d00baf0c1</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ComputePowerSpectrum</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>acad3118f3cb6ed3dd45b96d35ebcbb19</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid)</arglist>
+      <anchor>afb62fc7eeca49450dbaa2848d783c7f6</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ComputeLogPowerSpectrum</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a9801aa82f39ea7680bbe1b8f1d9a0fe7</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid)</arglist>
+      <anchor>a2fc538d9937faf426276437513ab50d7</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::vector&lt; double &gt;</type>
       <name>ComputeRadiallyAveragedSpectrum</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a44e753a487a27be6429e313c1ef97088</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputImage, int thetaSteps=500)</arglist>
+      <anchor>a71d730fc389ac07c51ca8c1f8fb8e49d</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputImage, int thetaSteps=500)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>Convolve</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a4f280b898ce9296d86c5ad0a2038fed4</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid, image::ArrayGrid&lt; double &gt; *pFilterKernel)</arglist>
+      <anchor>ab5f019245ef69301ccd5ae045d7368b6</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid, ArrayGrid&lt; double &gt; *pFilterKernel)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Convolve</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a5dd1e4b19147fa938f0c6bc7178de3fe</anchor>
-      <arglist>(image::Image *pInputImage, image::ArrayGrid&lt; double &gt; *pFilterKernel)</arglist>
+      <anchor>ab2df056f510bdc6558a983e0b92d040a</anchor>
+      <arglist>(Image *pInputImage, ArrayGrid&lt; double &gt; *pFilterKernel)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>GaussConvolve</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a7e0525a3b95b2579b7e35e94f32bde82</anchor>
-      <arglist>(image::Image *pInputImage, double sigma)</arglist>
+      <anchor>a56b910fb0e4c0ff0a406675b9d50da14</anchor>
+      <arglist>(Image *pInputImage, double sigma)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GaussConvolve</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a5b8b0ea03eaaa2457d3d3769b6a2b22a</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid, double sigma)</arglist>
+      <anchor>adb1d7fb300f69e38b72b1eabe82debc3</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid, double sigma)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static FFTBand *</type>
       <name>ApplyTransferFunction</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>ad8aeef546a3bee259ed545087ddad8bb</anchor>
-      <arglist>(FFTBand *pFFTImageData, image::ArrayGrid&lt; double &gt; *transferFunction)</arglist>
+      <anchor>a81ab0a4eecc3d7c484c4584b1c561701</anchor>
+      <arglist>(FFTBand *pFFTImageData, ArrayGrid&lt; double &gt; *transferFunction)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static FFTBand *</type>
@@ -4362,50 +4418,50 @@
       <type>static FFTBand *</type>
       <name>ApplyTransferFunctionFFT</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a4d1b0f1e78d88ece279a66dc689871b4</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid, image::ArrayGrid&lt; double &gt; *transferFunction)</arglist>
+      <anchor>acfec36aa2830824472c93a1c1b408ef1</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid, ArrayGrid&lt; double &gt; *transferFunction)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static FFTBand *</type>
       <name>ApplyTransferFunctionFFT</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a18abb8cd17c9009f09cf95fcf1c73edb</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid, FFTBand *transferFunction)</arglist>
+      <anchor>a0f0b12aa687e0207bd0c73c9b4a63b1d</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid, FFTBand *transferFunction)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static FFTBand *</type>
       <name>ApplyTransferFunctionFFT</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>aea4504ede201c3a59d079c1531d877eb</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pInputGrid, FFTBand *transferFunction)</arglist>
+      <anchor>a386d27353013827a2fd2ef6635a4b9ff</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pInputGrid, FFTBand *transferFunction)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ApplyTransferFunctionSpatial</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a5bbe9d359f8802b01815327429b1e831</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid, image::ArrayGrid&lt; double &gt; *transferFunction, FFTDataType myDataType=RE)</arglist>
+      <anchor>a5a41e21628c2b0f853dbc8b424ca3f76</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid, ArrayGrid&lt; double &gt; *transferFunction, FFTDataType myDataType=RE)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static std::pair&lt; image::ArrayGrid&lt; double &gt; *, image::ArrayGrid&lt; double &gt; * &gt;</type>
+      <type>static std::pair&lt; ArrayGrid&lt; double &gt; *, ArrayGrid&lt; double &gt; * &gt;</type>
       <name>ApplyTransferFunctionSpatialComplex</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>acbdb879605a722cbc1f2fdeb8940bc1c</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid, image::ArrayGrid&lt; double &gt; *transferFunction)</arglist>
+      <anchor>a15c2ef76e5b20e997f83f88d75328ea2</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid, ArrayGrid&lt; double &gt; *transferFunction)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>SuppressOuterFrequencies</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>aff556bd469f55f118a387f3d6d8dcc9d</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputGrid)</arglist>
+      <anchor>a2b40a38b65a551806cd65026464f06ab</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputGrid)</arglist>
     </member>
     <member kind="function" protection="protected" static="yes">
       <type>static void</type>
       <name>RescaleGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFT.html</anchorfile>
-      <anchor>a64fefc00aefd90ebc5bc451a8e9c54ce</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid, double newMin, double newMax)</arglist>
+      <anchor>aed37359d82034f1df98e9127abd464e4</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, double newMin, double newMax)</arglist>
     </member>
     <member kind="function" protection="protected" static="yes">
       <type>static void</type>
@@ -4422,15 +4478,15 @@
       <type></type>
       <name>FFTBand</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTBand.html</anchorfile>
-      <anchor>a788b346306eee0b04461562fe2e6260b</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid, bool isreal=true)</arglist>
+      <anchor>a735733fa895e39f6832371fc6443e1f2</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, bool isreal=true)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>FFTBand</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTBand.html</anchorfile>
-      <anchor>a99fea602fd4ec67135b328c12fc0878e</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGrid)</arglist>
+      <anchor>a0f048d49b91146806d2aa9cc440258ff</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -4517,21 +4573,21 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ConvertToRealGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTBand.html</anchorfile>
       <anchor>ab01a0bac58ed2a9ce8ffcdf19ce36aab</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ConvertToImaginaryGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTBand.html</anchorfile>
       <anchor>a56d2bcccd28a7aff39e1c85f006e5143</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
+      <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>ConvertToComplexGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTBand.html</anchorfile>
       <anchor>a4fc79d5c7e79a92d0961cc6d9c0d4b54</anchor>
@@ -4583,8 +4639,8 @@
       <type>void</type>
       <name>Multiply</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTBand.html</anchorfile>
-      <anchor>aefac6d2d3fdd8ae27bef23d39e385ab9</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *grid)</arglist>
+      <anchor>a728e2cfd85d9bb905ae08072add25b84</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *grid)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -4608,8 +4664,8 @@
       <type></type>
       <name>FFTCalculator</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTCalculator.html</anchorfile>
-      <anchor>ad8fa5cb0c986a565ab2eea905df5ad79</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pComplexGrid)</arglist>
+      <anchor>a6ec6f077099e6d05e5de25442c04df32</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pComplexGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -4650,15 +4706,15 @@
       <type>void</type>
       <name>SwitchQuadrants</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTCalculator.html</anchorfile>
-      <anchor>a74d8d541f4842d13bf63693905279bcf</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn)</arglist>
+      <anchor>abcd64c4144100da835d91df13586d260</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="pure">
       <type>virtual bool</type>
       <name>CreateLibData</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTCalculator.html</anchorfile>
-      <anchor>ab4fdad6b10c40499d156f3f6230a0f9d</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridin)=0</arglist>
+      <anchor>abee7dbc3f97de6fc66576fc24d3b227a</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridin)=0</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="pure">
       <type>virtual bool</type>
@@ -4675,10 +4731,10 @@
       <arglist>()=0</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
+      <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>mpComplexGrid</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTCalculator.html</anchorfile>
-      <anchor>ac907243d87b1d9ef07bb1a994690ff1b</anchor>
+      <anchor>a6f3437d2442e8deb48fd2d2fffac36d2</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -4704,8 +4760,8 @@
       <type></type>
       <name>FFTWCalculator</name>
       <anchorfile>classstira_1_1fouriertools_1_1FFTWCalculator.html</anchorfile>
-      <anchor>ab6a61ec24d28aabdda014efc95938442</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pComplexGrid)</arglist>
+      <anchor>a6d5fcc0f9547365b2bae560e754373c7</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pComplexGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -4810,8 +4866,8 @@
       <type>static std::vector&lt; common::RectangularROI&lt; int &gt; &gt;</type>
       <name>Run</name>
       <anchorfile>classstira_1_1imageanalysis_1_1FindMaximalIncludedRectangles.html</anchorfile>
-      <anchor>a70572e26580046aa7418573694c99197</anchor>
-      <arglist>(image::ArrayGrid&lt; bool &gt; *pObjectGrid)</arglist>
+      <anchor>ab84be1404b1318bdb72b6f82687cef00</anchor>
+      <arglist>(ArrayGrid&lt; bool &gt; *pObjectGrid)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -5162,8 +5218,8 @@
       <type>int</type>
       <name>Run</name>
       <anchorfile>classstira_1_1imageanalysis_1_1FloodFill.html</anchorfile>
-      <anchor>aea524c2a75e41a5dc80481f4ac06d757</anchor>
-      <arglist>(image::ArrayGrid&lt; int &gt; *pGrid, int nodeX, int nodeY, int targetValue, int replacementValue, bool fill8Connected=true)</arglist>
+      <anchor>ac5ade24fbfeb218d79f8c02af8533513</anchor>
+      <arglist>(ArrayGrid&lt; int &gt; *pGrid, int nodeX, int nodeY, int targetValue, int replacementValue, bool fill8Connected=true)</arglist>
     </member>
     <member kind="function">
       <type>std::vector&lt; common::Point&lt; int &gt; &gt;</type>
@@ -5187,11 +5243,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; int &gt; *</type>
+      <type>static ArrayGrid&lt; int &gt; *</type>
       <name>PrepareValues</name>
       <anchorfile>classstira_1_1imageanalysis_1_1FloodFill.html</anchorfile>
-      <anchor>a8bed390b56c522df1b081d46984e8291</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid, int lowerBound, int upperBound, int targetValue)</arglist>
+      <anchor>a82569ee133765818d70593b01dc15231</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int lowerBound, int upperBound, int targetValue)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -5325,88 +5381,88 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>CreateBlurredBars</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
       <anchor>a550e1805ca00f5bdc2d10a5da68b251f</anchor>
       <arglist>(int width, int height, int barWidth, double sigmaBlurMax)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>Convolve</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a7226f3bad34dfb4e06299d33b67b5379</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pImage, double sigma, FilterType myType=FFT_BASED)</arglist>
+      <anchor>a8f1ce86577edb9e48e76cff469fac906</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pImage, double sigma, FilterType myType=FFT_BASED)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Convolve</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>ae4708ac5efc43e869a8b03fc4002c12a</anchor>
-      <arglist>(image::Image *pImage, double sigma, FilterType myType=FFT_BASED)</arglist>
+      <anchor>a653bd29c83a85123e8b8fc2c44f5eb39</anchor>
+      <arglist>(Image *pImage, double sigma, FilterType myType=FFT_BASED)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>DerivativeConvolveFFT</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a2b148cb3d95b0b9a68d8472b53c785b3</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigmaX, double sigmaY, DerivativeType myType)</arglist>
+      <anchor>a8d3eb3fb3cc53b82583b5d5da01523d0</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigmaX, double sigmaY, DerivativeType myType)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>DerivativeConvolveSeparable</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>aef4e244911dd0e4427d033e7c8206209</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigma, DerivativeType myType, image::GridExtender&lt; double &gt;::ExtensionType myExtensionType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>ab95eb8e41897777902b21da57e64918b</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigma, DerivativeType myType, GridExtender&lt; double &gt;::ExtensionType myExtensionType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ConvolveSeparable</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a6943c2d4db4e92cba3b75c2fa8404afd</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigma)</arglist>
+      <anchor>a49a3424342c178c3f1e74dce0184ac3d</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigma)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>DerivativeConvolveFFT</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a1f4def97dbdac7051904abb37643d06c</anchor>
-      <arglist>(image::Image *pImageIn, double sigma, DerivativeType myType, image::GridExtender&lt; double &gt;::ExtensionType myExtensionType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>aa076a14db57b2f1c64763f3d414c4aaf</anchor>
+      <arglist>(Image *pImageIn, double sigma, DerivativeType myType, GridExtender&lt; double &gt;::ExtensionType myExtensionType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>DerivativeConvolveSeparable</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a338c283aba70d903860f99dc476407a9</anchor>
-      <arglist>(image::Image *pImageIn, double sigma, DerivativeType myType, image::GridExtender&lt; double &gt;::ExtensionType myExtensionType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>a54592c449309f705d998c38539f948cb</anchor>
+      <arglist>(Image *pImageIn, double sigma, DerivativeType myType, GridExtender&lt; double &gt;::ExtensionType myExtensionType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>ConvolveSeparable</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a189f04c9533d2e6ea08c5e688924b326</anchor>
-      <arglist>(image::Image *pImageIn, double sigma)</arglist>
+      <anchor>a59d3a4fd2f194031983e999a0274abc0</anchor>
+      <arglist>(Image *pImageIn, double sigma)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateGaussianPSF</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a31921381456aa215d169d6af92e5586c</anchor>
+      <anchor>a3a46268ab974cdc2895742f8fe0d52a3</anchor>
       <arglist>(int width, int height, double sigmaX, double sigmaY)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateGaussianPSF</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a7bdb3627e0ceeab1a356966494251c27</anchor>
+      <anchor>a97298935d564a17996ab83fdf557eb50</anchor>
       <arglist>(int width, int height, double sigma1, double sigma2, double rho)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>UpsampleGaussianInterpolated</name>
       <anchorfile>classstira_1_1filter_1_1GaussConvolve.html</anchorfile>
-      <anchor>a8711be7cfa86f8a6de2f1bd161a6e1fc</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int upscalefactor)</arglist>
+      <anchor>a9665e53f0a357e9644edd58f7946fe63</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int upscalefactor)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -5484,15 +5540,15 @@
       <type></type>
       <name>GNCDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1GNCDeconvolve.html</anchorfile>
-      <anchor>a5a89512cad853079827544961dfff44a</anchor>
-      <arglist>(image::Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
+      <anchor>aa775e9bef77c5cfa5a49116fedfc3b41</anchor>
+      <arglist>(Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>GNCDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1GNCDeconvolve.html</anchorfile>
-      <anchor>a66299d87c311108f656e0f6386072d63</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF, int maxNrOfIterations=20)</arglist>
+      <anchor>a4dbea028c9c55176d18b60673626ab52</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -5668,88 +5724,88 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::GridConverter</name>
-    <filename>classstira_1_1image_1_1GridConverter.html</filename>
+    <name>stira::imagedata::simpletools::GridConverter</name>
+    <filename>classstira_1_1imagedata_1_1simpletools_1_1GridConverter.html</filename>
     <member kind="function">
       <type></type>
       <name>GridConverter</name>
-      <anchorfile>classstira_1_1image_1_1GridConverter.html</anchorfile>
-      <anchor>a902e2462d57e0edd02f64c2f05d9230b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridConverter.html</anchorfile>
+      <anchor>a4f11163c75c5ea91b295a23cd287c22c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; int &gt; *</type>
       <name>ConvertToInt</name>
-      <anchorfile>classstira_1_1image_1_1GridConverter.html</anchorfile>
-      <anchor>a1a236871d94ece7fc95506204291e14b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridConverter.html</anchorfile>
+      <anchor>a573ccc69ddeb486c514f04ca238258cc</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *pGrid)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; int &gt; *</type>
       <name>ConvertToInt</name>
-      <anchorfile>classstira_1_1image_1_1GridConverter.html</anchorfile>
-      <anchor>a14d1b55eaf9313b485fe46d13759fc83</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridConverter.html</anchorfile>
+      <anchor>a08cd85a2ef0fe75f05cfebab7a81e775</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ConvertToDouble</name>
-      <anchorfile>classstira_1_1image_1_1GridConverter.html</anchorfile>
-      <anchor>a3798dc579560e39784e53859983cc09d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridConverter.html</anchorfile>
+      <anchor>a66f564c103f7b531e7f3b6267716a357</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *pGrid, double factor=1.0)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ConvertToDouble</name>
-      <anchorfile>classstira_1_1image_1_1GridConverter.html</anchorfile>
-      <anchor>a6598eb137c2af65655ab5e5a4f9394ec</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridConverter.html</anchorfile>
+      <anchor>ab82582f9d8b7eb34f73c71dd9eb9e4eb</anchor>
       <arglist>(ArrayGrid&lt; int &gt; *pGrid)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::GridExtender</name>
-    <filename>classstira_1_1image_1_1GridExtender.html</filename>
+    <name>stira::imagedata::simpletools::GridExtender</name>
+    <filename>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</filename>
     <templarg>T</templarg>
     <member kind="function">
       <type></type>
       <name>GridExtender</name>
-      <anchorfile>classstira_1_1image_1_1GridExtender.html</anchorfile>
-      <anchor>a0400061c5bd92c67f6c97be2969d42cd</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</anchorfile>
+      <anchor>a9f3abea306415554ac8f7a13a2384988</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~GridExtender</name>
-      <anchorfile>classstira_1_1image_1_1GridExtender.html</anchorfile>
-      <anchor>a91a39b363f8ea84be3d1258f18a77802</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</anchorfile>
+      <anchor>a8d57549a4ddcb7f891f5ab707fc3c89b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>MirrorBorder</name>
-      <anchorfile>classstira_1_1image_1_1GridExtender.html</anchorfile>
-      <anchor>a9f11ab3a652e6f8779514309b64598d5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</anchorfile>
+      <anchor>a7bd8f4494fcc64aae77f3a15b777a3f4</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGrid, int borderWidth, int borderHeight)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>PaddBorder</name>
-      <anchorfile>classstira_1_1image_1_1GridExtender.html</anchorfile>
-      <anchor>a9f4da484b3c350312c338ee52e8ccf51</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</anchorfile>
+      <anchor>a3c4d92efed80affda5638b729ded6a8c</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGrid, int borderWidth, int borderHeight, T myValue=0)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>PaddBorder</name>
-      <anchorfile>classstira_1_1image_1_1GridExtender.html</anchorfile>
-      <anchor>a8d7389781208e1e96d45307cacce59bc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</anchorfile>
+      <anchor>a66b3549430358e5c0b8f3757b0b5199c</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGrid, int borderWidthLeft, int borderWidthRight, int borderHeightTop, int borderHeightBottom, T myValue=0)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; T &gt; *</type>
       <name>CropBorder</name>
-      <anchorfile>classstira_1_1image_1_1GridExtender.html</anchorfile>
-      <anchor>a9e78735334b6e1ea3ffb83a4592b3524</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridExtender.html</anchorfile>
+      <anchor>ab076168840ec572e61bfd178c5a3508c</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGrid, int borderWidth, int borderHeight)</arglist>
     </member>
   </compound>
@@ -5940,6 +5996,193 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>stira::imagedata::simpletools::GridStatistics</name>
+    <filename>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</filename>
+    <templarg>T</templarg>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>GetMinMax</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>aa8186adb6d09115087830f16f047c132</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmin, double &amp;mmax)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>GetMinMax</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>ab7b4b1ec90a79a12f666c274326ee854</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmin, double &amp;mmax, int &amp;xMin, int &amp;yMin, int &amp;xMax, int &amp;yMax)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>GetMin</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a000290aa55d5ecc3fedf3155d034578c</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmin, int &amp;xMin, int &amp;yMin)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>GetMax</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>ad6e5c722648ba87b08e77774f5362823</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmax, int &amp;xMax, int &amp;yMax)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>GetAbsMax</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a69eeaa6ec8537ac41999601e86a92782</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetGridIntegral</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>afc7db9567a7a74142e4abcabd58dbfee</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>GetSquaredNorm</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a54eaf8cc7f33cd433058260e58871071</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>GetSquaredNorm</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>aba32dd8f1b114df74b3f591ac0ac5bc9</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGrid)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetGridMean</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a1d5bca7e7c1df6e336953d116d4f5d23</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetGridVariance</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>ac3f8395e95f687e115ed38b386a90967</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, T mean)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetGridKurtosis</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a8078467e235959ec78d8eb4b03daf999</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetGridKurtosis</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a469605b3ad7a3eb8920656d2adc1c365</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, T gridMean, T gridvariance)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetLocalMinimum</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>aed60edf5e9e51ee8db4676d794fa71af</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetLocalMaximum</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a470f2fa127fd28308a79963fbce6cf11</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetLocalAbsMaximum</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a98b20fe9499e9348a25cfac7325d9407</anchor>
+      <arglist>(ArrayGrid&lt; int &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetLocalAbsMaximum</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a6c54f62d1e0523482a8fef65614abd80</anchor>
+      <arglist>(ArrayGrid&lt; float &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>GetLocalAbsMaximum</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a8ca7f71f5d4f4a59c5d3dc3fbbb90c80</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>ComputeLocalMean</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>ad6f5e6cea075f39840c065a830ba6bbc</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalMean</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a92e4f13bebe364737d53139d5a415fc8</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, common::RectangularROI&lt; int &gt; rroi)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalVariance</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a24c2490bd6a4571d559aa3b8c1bb61cc</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, common::RectangularROI&lt; int &gt; rroi, double thisMean)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static T</type>
+      <name>ComputeLocalAbsoluteMean</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>aa6eb37905edd321a8577f0ba7d5c6fa7</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalVariance</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a6c6213339d21df3793a9e69191561597</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight, double thisMean)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalVariance</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>ade714c5baca2466182875a6a2149b7ac</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalCovariance</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a9976fe4e6f19675e43859cb7dd13f134</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid1, ArrayGrid&lt; double &gt; *pGrid2, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight, double mean1, double mean2)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalKurtosis</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a99c0e971633ccc64a7b5721434af4e97</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight, double localMean, double localVariance)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static double</type>
+      <name>ComputeLocalKurtosis</name>
+      <anchorfile>classstira_1_1imagedata_1_1simpletools_1_1GridStatistics.html</anchorfile>
+      <anchor>a0f177764b09eb7d645c9a5aa482f1c04</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
     <name>stira::contrastenhance::HazeRemover</name>
     <filename>classstira_1_1contrastenhance_1_1HazeRemover.html</filename>
     <member kind="function">
@@ -5957,11 +6200,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HazeRemover.html</anchorfile>
-      <anchor>a95bce35e7a7d9ad1ed1c08160647f616</anchor>
-      <arglist>(image::Image *pImage)</arglist>
+      <anchor>a3fcd3688b4f30325e805ebfa1251f0f3</anchor>
+      <arglist>(Image *pImage)</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -6611,8 +6854,8 @@
       <type>static void</type>
       <name>RemapHistogramInROI</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>abe251b60a66fc1a19b83543348e4964c</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInGrid, common::RectangularROI&lt; int &gt; rroi, histogram::IntHistogram *fhCumulativeInput, histogram::FloatHistogram *fhCumulativeReference)</arglist>
+      <anchor>aa5eb0d0d722c2a6cf7f72030cac34c45</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInGrid, common::RectangularROI&lt; int &gt; rroi, histogram::IntHistogram *fhCumulativeInput, histogram::FloatHistogram *fhCumulativeReference)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static double</type>
@@ -6622,46 +6865,46 @@
       <arglist>(double inValue, histogram::IntHistogram *fhIncomingCumulativeHistogram, histogram::FloatHistogram *fhCumulativeReferenceHistogram)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RobustLinearRescale</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>ae8e74eb99ecf1dcf6edccc224b59cacd</anchor>
-      <arglist>(image::Image *pSourceImage, double lowerFraction=0.01, double upperFraction=0.99)</arglist>
+      <anchor>abeb969472aca7f26aaf56954551c2d25</anchor>
+      <arglist>(Image *pSourceImage, double lowerFraction=0.01, double upperFraction=0.99)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static bool</type>
       <name>RobustLinearRescaleNoNew</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>a34154655b1a07beb6fd257337b132305</anchor>
-      <arglist>(image::Image *pSourceImage, double lowerFraction=0.01, double upperFraction=0.99)</arglist>
+      <anchor>ace6b8371916b276ced4c2a2792aa6927</anchor>
+      <arglist>(Image *pSourceImage, double lowerFraction=0.01, double upperFraction=0.99)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static void</type>
       <name>HistogramEqualizeSingleBand</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>a5beaa93e041678aaa911432d1558edd1</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInOutGrid)</arglist>
+      <anchor>a0e33572a06c1da9b908907ca12a72fd1</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInOutGrid)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>HistogramEqualizePerBand</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>a29018a5149c1d568bab82c54609cd8fb</anchor>
-      <arglist>(image::Image *pInImage)</arglist>
+      <anchor>a7ba7b133fb495eebe54fc97e3732af55</anchor>
+      <arglist>(Image *pInImage)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>HistogramEqualizeHSI</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>a7ad37884cbf699634337edeea6676254</anchor>
-      <arglist>(image::Image *pInImage)</arglist>
+      <anchor>ab90a86d3f9df1fa21055af194a5bc93c</anchor>
+      <arglist>(Image *pInImage)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>ColorHistogramEqualize</name>
       <anchorfile>classstira_1_1contrastenhance_1_1HistogramTools.html</anchorfile>
-      <anchor>afa1525aa2999e1837c15a3ed81ebb098</anchor>
-      <arglist>(image::Image *pInImage)</arglist>
+      <anchor>a0c2f7e5f25255fad909ed4adb57eb5dc</anchor>
+      <arglist>(Image *pInImage)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -6671,8 +6914,8 @@
       <type></type>
       <name>HOG</name>
       <anchorfile>classstira_1_1imageanalysis_1_1HOG.html</anchorfile>
-      <anchor>ab912d3c87467593f271f06bfd24ac117</anchor>
-      <arglist>(image::Image *pImage, common::RectangularROI&lt; int &gt; myRoi, int cellWidth, int cellHeight, int nrBins)</arglist>
+      <anchor>a587f87f3659fc1376c15efa4422b6dd1</anchor>
+      <arglist>(Image *pImage, common::RectangularROI&lt; int &gt; myRoi, int cellWidth, int cellHeight, int nrBins)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -6682,10 +6925,10 @@
       <arglist>(std::vector&lt; double &gt; &amp;descriptorValues)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>VisualizeHogDescriptor</name>
       <anchorfile>classstira_1_1imageanalysis_1_1HOG.html</anchorfile>
-      <anchor>ac8b43d35adf875f340874cccfa2890e1</anchor>
+      <anchor>a5346a7d6c2914eb37a3b871e36c6e8e1</anchor>
       <arglist>(std::vector&lt; double &gt; &amp;descriptorValues, int winWidth, int winHeight, double scaleFactor, double viz_factor)</arglist>
     </member>
   </compound>
@@ -6694,377 +6937,363 @@
     <filename>classstira_1_1imageanalysis_1_1HoughTransform.html</filename>
   </compound>
   <compound kind="class">
-    <name>stira::image::Image</name>
-    <filename>classstira_1_1image_1_1Image.html</filename>
+    <name>stira::imagedata::datastructures::Image</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1Image.html</filename>
     <member kind="function">
       <type></type>
       <name>Image</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a4ada33c68d3093558ee76ff7a70c634c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a457bfa3d78b9732ea957580fe4503128</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>Image</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a9cb052131be88323668baca55dd14218</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a907472ec782381707c17f7335a417d02</anchor>
       <arglist>(int width, int height, int nrBands)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>Image</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>abea6bcaaedfe3835b23719b209f3ae96</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>adfae258473eeb640236a4af755152be4</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pDataGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>Image</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ae6397f03068c4bab3ad7bd525b2e375d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a4e7f1cb0ed65c3374467b2fd2fb7e519</anchor>
       <arglist>(ArrayGrid&lt; bool &gt; *pBoolGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~Image</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a909bb99cdbffeddf8a62cc41f74e9d6c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ac0e8426c33db2958637907ac00b8c4cd</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::string</type>
       <name>GetImageName</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a9fd30cfdb35a97d9827039c45d870a70</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a4ffde3e637a2cced7a053a5f69dadaab</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetImageName</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a85bacb4ec82b8922cdeac313d44fee98</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a087285f4b765dfb3b7d3d99665bd6bbc</anchor>
       <arglist>(std::string imagename)</arglist>
     </member>
     <member kind="function">
       <type>Image *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a9eb1cfae5e163f99394e983f4cc6d8dc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a4bf9883ef88d5213c2a907c72502df97</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>Image</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ac8e451cf2b8fe66b0957b3804fc09094</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>af73f32c2b91b0d0b5494aa58a1e94286</anchor>
       <arglist>(Image &amp;otherImage)</arglist>
     </member>
     <member kind="function">
       <type>Image *</type>
       <name>ExtractROIAsNewImage</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ac073786fcd4e3659ae21f8838997d8d2</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ade67c779a1d752acd0adc18118334d6c</anchor>
       <arglist>(common::RectangularROI&lt; int &gt; rroi)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>InsertSubImage</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>aa99bbd6fa0b952db5c5311afa7c11807</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a2c01511a3e739ddfbfbb99a6b063852b</anchor>
       <arglist>(Image *pSubImage, int xTop, int yTop)</arglist>
-    </member>
-    <member kind="function">
-      <type>bool</type>
-      <name>InsertSubGrid</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a02c29abbd7c5ba73adce51b6d67ff1eb</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pSubGrid, int xTop, int yTop)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddBand</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ae2b420ee2b924ee5e185858e1ee13611</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>abead3c7c0ecae505ef84cfe6f1205af3</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>RemoveBand</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ada20cabbbca63403696c7d08b5588f15</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a4663870d8042837b710805334f31197a</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>RemoveBand</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a5b75a4df95cf44f6fe163e09994e3fb7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aa055ad4a2b201dad5a9c297c60b70e04</anchor>
       <arglist>(int i)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ReplaceBand</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>aa19748216b4bc2e6bdeba67c6c117151</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a4c5ec20653807cb39a5e5d58bdb82746</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBandOld, ArrayGrid&lt; double &gt; *pBandNew)</arglist>
     </member>
     <member kind="function">
       <type>std::vector&lt; ArrayGrid&lt; double &gt; * &gt; &amp;</type>
       <name>GetBands</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a4429f0cf1db3592e821d69dbdd496cf3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a866841caa90b75af31725dd3173e76f0</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a5dae7ac69c8997bb2529f44b89b4c3a3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ad2878f8d65ef3f198fb2fcb46ff7c168</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a2ae76ee72f7ef6e6aa3ea423a060b044</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>adfcd8d72eee3de12bf7b60f8bee13223</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfBands</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a4283f0456ce83abdc27c8748986f8f66</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ad7fb0657193b587d0d90599847da919c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetMinMax</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a67576768f322c10088eb4366540b7af6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ae6541fa7a36deb34800d8c96245f6ae0</anchor>
       <arglist>(double &amp;outMin, double &amp;outMax, int &amp;minBandNr, int &amp;maxBandNr)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>GetMinMax</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a4070865e51f4132443d453c9104286b5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a515bc2411dfcdf6d12ad1516792f5ad5</anchor>
       <arglist>(double &amp;outMin, double &amp;outMax)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetAbsMax</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a9204fdae8da809952363627a2934c05f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a440504a5809526ac46f914e5654bc022</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
-      <name>Diagnose</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>aa4162c33c7fa67d5c48ee94156f16127</anchor>
-      <arglist>(std::string ID=std::string(&quot;&quot;))</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
       <name>Rescale</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ad559a3befa5c2df86022552bf8c5c32a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a9fffd0d99bf3d8c21725cb0d2cb2ac65</anchor>
       <arglist>(double mmin=0.0, double mmax=255.0)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>CopyImageValues</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a2ed3f02228b57ab0a5972777184ca9f9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a6ab02af99686c7d721277280f5bca981</anchor>
       <arglist>(Image *pOtherImage)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>MultiplyWith</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ab70dc35dcd2f39257d7e4d3c5670c3ab</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>acab27fc9e562e538018d16f2e35fd522</anchor>
       <arglist>(Image *pImg)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>Scale</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a83392f4d6e2bce709e92ee3899f26910</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>acb3b76f7dbb94d749240cb75626fb5ea</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddGaussianNoise</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>af4ea627888fa823ba4bd4efa8128b735</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a8505b1982d4688b3eee919024630a5bc</anchor>
       <arglist>(double sigma, bool isColored=true)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ApplyPoissonNoise</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ae82f0dc707944ae996df74f95558b75a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a2fb5a9bb9203de7bb9b714397d772943</anchor>
       <arglist>(double factor, bool isColored=true)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ApplySaltAnPepperNoise</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a55f80b9de1a1f9cdf30606c84329c276</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aeb55588fe71ed909f40aed28636a6fa9</anchor>
       <arglist>(double fraction, bool isColored=true)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>GetColor</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a30bd8b38b279d3090ed4c736b11175da</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a5ccf73a7fd2fe0c20e14a788f3c2192c</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>GetColor</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>abbc3266b318510eaccdb8a3a804930af</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a0b972217bb5ff11260866a9b27dc232b</anchor>
       <arglist>(common::Point&lt; int &gt; pt)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetColor</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>aa698a14a46ea1344e8b5b5e8f55f28c0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>af9488b5040ff6017d4f308aaeeea0313</anchor>
       <arglist>(int x, int y, ColorValue cv)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetColor</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a886f08fb42f14d917a9a91bfcd36dc3b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a597b184cbc0675d2c743e10b770cfe8b</anchor>
       <arglist>(common::Point&lt; int &gt; pt, ColorValue cv)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>HSVToRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a0c34f57fc10eb8eaf81b45a3586581ee</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a8f2e5641da548a7c9b9883ac24a03ca0</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>RGBToHSV</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>abf076ec856c89b7f057fe13800b64aa8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ab36bd19796e029d10f2d73c40913670a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>HSIToRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ad028e2b273da6dd0aaf457be0cf754bf</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aa33714d789c412476b49c1bd285bb8e5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>RGBToHSI</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ac6cccca4d7282627bac293d1205d15bc</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a0348a221eaf889b5e1397236092023c2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>HSLToRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a522bb4ccf6be2078f550f558e9e0f8b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a34ed07bcd0ddaa8d18c4bc1b489b6591</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>RGBToHSL</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a976e3aa62fcd6e3892cfefa54473178a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a3fe099d0173d5807dc49387af10b99d0</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>sRGBToXYZ</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a83e2e5c4430eb588abc4cb31a3b50ba7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ab1fe0b28dcf2656015da94039d3450a2</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>XYZTosRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a82d97ea4bb853cdd6917ce0a74971e5c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ab5fd8fba3b17ea70450d02fddff94702</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>AdobeRGBToXYZ</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a1b36c5ff867788fefd3276477fd3a076</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a9840cdc5dffe6d47d6c5d3963bafc340</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>XYZToAdobeRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>aff349f36813bde1653ccb0db1415ee2f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a4be5190740be77e323d3ea04bfbab088</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>sRGBToLuv</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>ae7c8a6b33dc7f196dd4d36e8337a6c24</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a67a7fbfe1d60f4ce8c2f550ef8ad487a</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>LuvTosRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a87fe1516ace1f75c874cafba7ea0674f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aca463c625da59e623de9e0728aa3ff11</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>sRGBToLab</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a953ca8be0ccb20fe6b01e5de26c321db</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aa485b41d94d8be2bcf30235a973a2117</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>LabTosRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>abc8d75951373d925b6f239707ad3284e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aa83684cc56ed0d6113b54fda254b3a4c</anchor>
       <arglist>(ColorValue referenceIlluminant=ColorConstants::sD65_XYZ)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>RGBToYUV</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a6a009bdb76e125458ed4c43a0e56e5ae</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a145f2eb137ef3919fb5ce2c86fb21a0f</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>YUVToRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a7e3a063dce4200a38c5c7e82edf77b1e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>a29eb6c70df15a5715deaee5c99262893</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>RGBToCMY</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a9b97712fe5ea971e10f97ad0f1ec0148</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>aa6cc5b71735edc90fc8bbffaa2b52278</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>CMYToRGB</name>
-      <anchorfile>classstira_1_1image_1_1Image.html</anchorfile>
-      <anchor>a95d8b05eba0acec304ff7676fa8a6699</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Image.html</anchorfile>
+      <anchor>ac0243a4f624eda878ddfea3d818baa2b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -7339,6 +7568,10 @@
     </member>
   </compound>
   <compound kind="class">
+    <name>stira::imagedata::simpletools::ImageStatistics</name>
+    <filename>classstira_1_1imagedata_1_1simpletools_1_1ImageStatistics.html</filename>
+  </compound>
+  <compound kind="class">
     <name>stira::image::ImageTools</name>
     <filename>classstira_1_1image_1_1ImageTools.html</filename>
     <member kind="function">
@@ -7382,6 +7615,20 @@
       <anchorfile>classstira_1_1image_1_1ImageTools.html</anchorfile>
       <anchor>ae6b10e366bd733f8e4c8e8180b9515fa</anchor>
       <arglist>(Image *pInImage, common::Point&lt; int &gt; topLeft, common::Point&lt; int &gt; bottomRight)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static bool</type>
+      <name>InsertSubGrid</name>
+      <anchorfile>classstira_1_1image_1_1ImageTools.html</anchorfile>
+      <anchor>a1e7fc6a1306436170c24bc96b20fcb04</anchor>
+      <arglist>(Image *pImage, ArrayGrid&lt; double &gt; *pSubGrid, int xTop, int yTop)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>static void</type>
+      <name>Diagnose</name>
+      <anchorfile>classstira_1_1image_1_1ImageTools.html</anchorfile>
+      <anchor>ad05c416141951fac0aa6fc7b84adac0f</anchor>
+      <arglist>(Image *pImage, std::string ID=std::string(&quot;&quot;))</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Image *</type>
@@ -7554,29 +7801,29 @@
       <type></type>
       <name>IntHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1IntHistogram.html</anchorfile>
-      <anchor>a547caa662979e431640640125a455cdb</anchor>
-      <arglist>(image::Image *pImage, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, image::ArrayGrid&lt; bool &gt; *pMaskGrid=0)</arglist>
+      <anchor>a33e4913756e86fd8b905b2b7c2cc443d</anchor>
+      <arglist>(Image *pImage, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, ArrayGrid&lt; bool &gt; *pMaskGrid=0)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>IntHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1IntHistogram.html</anchorfile>
-      <anchor>a2b29906fad9fbe239493b5ca7d70173a</anchor>
-      <arglist>(image::Image *pImage, bool useDataMinMax, common::RectangularROI&lt; int &gt; rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1)</arglist>
+      <anchor>a3020f32bdb8e241c77da6af64f85d07c</anchor>
+      <arglist>(Image *pImage, bool useDataMinMax, common::RectangularROI&lt; int &gt; rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>IntHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1IntHistogram.html</anchorfile>
-      <anchor>a5be95d8b4359c4f86c10edb7f2441f75</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, image::ArrayGrid&lt; bool &gt; *pMaskGrid=0)</arglist>
+      <anchor>a40e39dfe48e1224d7bc310e27f5cf57f</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, bool useDataMinMax, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1, ArrayGrid&lt; bool &gt; *pMaskGrid=0)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>IntHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1IntHistogram.html</anchorfile>
-      <anchor>ae5960433a20dce401364ddead1f27336</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid, bool useDataMinMax, common::RectangularROI&lt; int &gt; rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1)</arglist>
+      <anchor>a11d45ec8084c10dce66992bcc198f419</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, bool useDataMinMax, common::RectangularROI&lt; int &gt; rroi, double lowerFraction=0.01, double upperFraction=0.99, int binsize=1)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -7727,15 +7974,15 @@
       <type></type>
       <name>IterativeDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>a0719b5091f078555b0d7f02c3099b66b</anchor>
-      <arglist>(image::Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
+      <anchor>a6fb8203b7610a87c707b5fdac9e6e352</anchor>
+      <arglist>(Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type></type>
       <name>IterativeDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>a3dba088cdc7ac49fdca7e262dfb2931b</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF, int maxNrOfIterations=20)</arglist>
+      <anchor>a76da3dc69eaedf007d8c854f669f1b7c</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type></type>
@@ -7766,17 +8013,17 @@
       <arglist>()=0</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>mpLastEstimate</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>ae237f8385f5d98522f199493f41181f2</anchor>
+      <anchor>a74553d55ffa79ff0fe14c24a32a64e74</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>mpNewEstimate</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>ac9c614bb3e7ec7b95fdc9bbcc54fb0b2</anchor>
+      <anchor>a1295819abe30d0d84d44021578562744</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -7815,31 +8062,31 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpDegradedGrid</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>af4091b5ce067e994269e40559d1547c9</anchor>
+      <anchor>a35afed3ee15e6833ad0026a067511c0d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpLastGrid</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>ab97cce3f6d594e20774f4abc3c9a4710</anchor>
+      <anchor>aba76e769d1f65fe749cb031c04e27e65</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpNewGrid</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>a6bccf244d251cd9049c34731864111ab</anchor>
+      <anchor>afdf2eb65612e03b1f0a457f0c93126e6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpPSFGrid</name>
       <anchorfile>classstira_1_1deconvolve_1_1IterativeDeconvolve.html</anchorfile>
-      <anchor>ad0a2d97d9425e0e3f8799908675a49ac</anchor>
+      <anchor>aeab86178dee57af23701e7870e8feb32</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -7857,22 +8104,22 @@
       <type></type>
       <name>JointHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1JointHistogram.html</anchorfile>
-      <anchor>a53f344b5a9e1ad76f040b8e22a589c71</anchor>
-      <arglist>(image::Image *pImage1, image::Image *pImage2, bool useAbsoluteValues=false)</arglist>
+      <anchor>aee99e2ec3a8d4c92f18381b5e9870709</anchor>
+      <arglist>(Image *pImage1, Image *pImage2, bool useAbsoluteValues=false)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>JointHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1JointHistogram.html</anchorfile>
-      <anchor>a6bb3c711747be3f88be6cfab428c5497</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1, image::ArrayGrid&lt; double &gt; *pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2, bool useAbsoluteValues=false)</arglist>
+      <anchor>a06d789d540b355fba04bbb9f20f70f0b</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1, ArrayGrid&lt; double &gt; *pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2, bool useAbsoluteValues=false)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>JointHistogram</name>
       <anchorfile>classstira_1_1histogram_1_1JointHistogram.html</anchorfile>
-      <anchor>a8182feb3363b24affe11c60f87e55790</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid1, image::ArrayGrid&lt; double &gt; *pGrid2, bool useAbsoluteValues=false)</arglist>
+      <anchor>a76efd3a4a14bc9420dfcac8491eb20c8</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid1, ArrayGrid&lt; double &gt; *pGrid2, bool useAbsoluteValues=false)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -7930,8 +8177,8 @@
       <type></type>
       <name>KISSFFTCalculator</name>
       <anchorfile>classstira_1_1fouriertools_1_1KISSFFTCalculator.html</anchorfile>
-      <anchor>a347a6c26d1cc1338cf6d36bdcf1acffc</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pComplexGrid)</arglist>
+      <anchor>adca3986e2d72ca5772a8f0b68f9104bc</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pComplexGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -7955,11 +8202,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
+      <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>ApplyInverseTransform</name>
       <anchorfile>classstira_1_1fouriertools_1_1KISSFFTCalculator.html</anchorfile>
-      <anchor>ab264a8ec2ac1ea2af9041a35248da215</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn)</arglist>
+      <anchor>a307984e4a8874ab6870106503260f18f</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -7980,11 +8227,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1KuwaharaFilter.html</anchorfile>
-      <anchor>a248b9e3ed336d29566150161e1f26d51</anchor>
-      <arglist>(image::Image *pImageIn, int windowSize=5)</arglist>
+      <anchor>a676ca865114794ff3e0319214178446c</anchor>
+      <arglist>(Image *pImageIn, int windowSize=5)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static int</type>
@@ -7995,27 +8242,27 @@
     </member>
   </compound>
   <compound kind="struct">
-    <name>stira::image::lab_t</name>
-    <filename>structstira_1_1image_1_1lab__t.html</filename>
+    <name>stira::imagedata::color::lab_t</name>
+    <filename>structstira_1_1imagedata_1_1color_1_1lab__t.html</filename>
     <member kind="variable">
       <type>double</type>
       <name>l</name>
-      <anchorfile>structstira_1_1image_1_1lab__t.html</anchorfile>
-      <anchor>a00258350a701a615f488679a26b768c4</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1lab__t.html</anchorfile>
+      <anchor>a1113dd6c2f43c9ed23e6e9c57851f8ad</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>a</name>
-      <anchorfile>structstira_1_1image_1_1lab__t.html</anchorfile>
-      <anchor>a75e329631f4f5e0974c063e870a3386e</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1lab__t.html</anchorfile>
+      <anchor>a5f476bc8bdd080ff72e23215fca646b6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>double</type>
       <name>b</name>
-      <anchorfile>structstira_1_1image_1_1lab__t.html</anchorfile>
-      <anchor>a446ad14a2a71e991fb5d49aeb6f2cbe6</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1lab__t.html</anchorfile>
+      <anchor>acdf743068308e5956e451024300ea4d0</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -8037,11 +8284,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1LaplacianOfGaussianFilter.html</anchorfile>
-      <anchor>af985e933ff31b3435a1248ac190f82e8</anchor>
-      <arglist>(image::Image *pImage, double scaleFactor=1.0)</arglist>
+      <anchor>a90cd231dd9ea47d9dd77e2e121f19fa6</anchor>
+      <arglist>(Image *pImage, double scaleFactor=1.0)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -8161,88 +8408,88 @@
       <type>int</type>
       <name>ComputePointGLTP</name>
       <anchorfile>classstira_1_1filter_1_1LocalBinaryPattern.html</anchorfile>
-      <anchor>a4117fd7797a330ff746669ffbcb09369</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int x, int y, double threshold, bool myType)</arglist>
+      <anchor>a52fe2c87953a20ec69d72c717511a852</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int x, int y, double threshold, bool myType)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>ComputeJensenShannonDivergenceBetweenImagePatches</name>
       <anchorfile>classstira_1_1filter_1_1LocalBinaryPattern.html</anchorfile>
-      <anchor>a36346bb9c3c1becfdd2ccb3eb3ae7636</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int frameNr, int xTop1, int yTop1, int xBottom1, int yBottom1, int xTop2, int yTop2, int xBottom2, int yBottom2)</arglist>
+      <anchor>a7b783df5e1cfd19221ccf31606752198</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int frameNr, int xTop1, int yTop1, int xBottom1, int yBottom1, int xTop2, int yTop2, int xBottom2, int yBottom2)</arglist>
     </member>
     <member kind="function">
       <type>histogram::FloatHistogram</type>
       <name>ComputePointLBPSymHistogram</name>
       <anchorfile>classstira_1_1filter_1_1LocalBinaryPattern.html</anchorfile>
-      <anchor>ad14f613eab8f7d199f6612e90957c228</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int frameNr, int topX, int topY, int bottomX, int bottomY, double threshold, bool myType)</arglist>
+      <anchor>a8bf2cc6bf5027650037daeaa6beb501e</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int frameNr, int topX, int topY, int bottomX, int bottomY, double threshold, bool myType)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; int &gt; *</type>
+      <type>ArrayGrid&lt; int &gt; *</type>
       <name>ComputeLBPSymImage</name>
       <anchorfile>classstira_1_1filter_1_1LocalBinaryPattern.html</anchorfile>
-      <anchor>a821db14de7deb842f7e9806242c2f0d3</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double threshold, bool myType)</arglist>
+      <anchor>a730455226c58b4644c8023f9b3c04a6d</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double threshold, bool myType)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>ComputePointLBPSym</name>
       <anchorfile>classstira_1_1filter_1_1LocalBinaryPattern.html</anchorfile>
-      <anchor>ae80dd93ae5b8d5eec4392be8ea550d09</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int x, int y, double threshold, bool myType)</arglist>
+      <anchor>a9f6f4be2a32f8054efc66dd730550745</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int x, int y, double threshold, bool myType)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunClassic</name>
       <anchorfile>classstira_1_1filter_1_1LocalBinaryPattern.html</anchorfile>
-      <anchor>a30f56ea5c0b574b9d96662341e8a5565</anchor>
-      <arglist>(image::Image *pImageIn)</arglist>
+      <anchor>af855a437b51d4ed82234770ec74f4f5c</anchor>
+      <arglist>(Image *pImageIn)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::LocalOrientation</name>
-    <filename>classstira_1_1image_1_1LocalOrientation.html</filename>
+    <name>stira::imagedata::datastructures::LocalOrientation</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</filename>
     <member kind="function">
       <type></type>
       <name>LocalOrientation</name>
-      <anchorfile>classstira_1_1image_1_1LocalOrientation.html</anchorfile>
-      <anchor>a9730266775a96ed6b01b5ec26ad9895d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</anchorfile>
+      <anchor>a34c0f84936a4181ee8f04b7d935a01d8</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~LocalOrientation</name>
-      <anchorfile>classstira_1_1image_1_1LocalOrientation.html</anchorfile>
-      <anchor>a773ac444a6ea01b9c5b826ce33543c53</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</anchorfile>
+      <anchor>a1fe5b2a7e914e955d1fc8d171a87ede5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetMagnitude</name>
-      <anchorfile>classstira_1_1image_1_1LocalOrientation.html</anchorfile>
-      <anchor>a272f8140bb1cff16efaa5a034cf0d809</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</anchorfile>
+      <anchor>af6aed39ceac78ae04aecd0bbe9afcc39</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetMagnitude</name>
-      <anchorfile>classstira_1_1image_1_1LocalOrientation.html</anchorfile>
-      <anchor>a65bc4a3e5a399b754662440f291c6f9b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</anchorfile>
+      <anchor>a171d6389ec61895e7e0175a000f3d80c</anchor>
       <arglist>(double myMagnitude)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetAngle</name>
-      <anchorfile>classstira_1_1image_1_1LocalOrientation.html</anchorfile>
-      <anchor>a1b8575fbb0932b181ae7ff74f8703439</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</anchorfile>
+      <anchor>a3c72003573ad60c8f46b5951e1b6233f</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetAngle</name>
-      <anchorfile>classstira_1_1image_1_1LocalOrientation.html</anchorfile>
-      <anchor>a375c6395895c959db239df9d2c96324b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1LocalOrientation.html</anchorfile>
+      <anchor>ae29d8cb3e4c45f8eee404384ab4a3338</anchor>
       <arglist>(double myAngle)</arglist>
     </member>
   </compound>
@@ -8253,8 +8500,8 @@
       <type></type>
       <name>LogGabor</name>
       <anchorfile>classstira_1_1filter_1_1LogGabor.html</anchorfile>
-      <anchor>aceeaa840e26657d0857cfb25f2cc85b7</anchor>
-      <arglist>(image::Image *pImage)</arglist>
+      <anchor>a13e4784d8a207e50ea6162e0a2717bfa</anchor>
+      <arglist>(Image *pImage)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -8320,28 +8567,28 @@
       <arglist>(double angleSpread)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetRealResponse</name>
       <anchorfile>classstira_1_1filter_1_1LogGabor.html</anchorfile>
       <anchor>ae562ee81d126199c3379da9089f5bb83</anchor>
       <arglist>(bool rescaleVisualize=true)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetImagResponse</name>
       <anchorfile>classstira_1_1filter_1_1LogGabor.html</anchorfile>
       <anchor>a51767237753a2e01af6a34f5e0aa888b</anchor>
       <arglist>(bool rescaleVisualize=true)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetTransferFunction</name>
       <anchorfile>classstira_1_1filter_1_1LogGabor.html</anchorfile>
       <anchor>a3f0072bf1951dd1025bc0c730559dfdf</anchor>
       <arglist>(bool rescaleVisualize=true)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>GetMagnitude</name>
       <anchorfile>classstira_1_1filter_1_1LogGabor.html</anchorfile>
       <anchor>a07735ba2228397b98877d1e8bd4ff03a</anchor>
@@ -8363,27 +8610,27 @@
     </member>
   </compound>
   <compound kind="struct">
-    <name>stira::image::lut_entry_t</name>
-    <filename>structstira_1_1image_1_1lut__entry__t.html</filename>
+    <name>stira::imagedata::color::lut_entry_t</name>
+    <filename>structstira_1_1imagedata_1_1color_1_1lut__entry__t.html</filename>
     <member kind="variable">
       <type>lab_t</type>
       <name>lab</name>
-      <anchorfile>structstira_1_1image_1_1lut__entry__t.html</anchorfile>
-      <anchor>aa355bdef24c19bcce1b4c3dc0731e2f0</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1lut__entry__t.html</anchorfile>
+      <anchor>a311bb09a6efccea75db9a41292d32a5d</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>cmyk_t</type>
       <name>cmyk</name>
-      <anchorfile>structstira_1_1image_1_1lut__entry__t.html</anchorfile>
-      <anchor>ae7f47846d81e564ac31604012559821c</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1lut__entry__t.html</anchorfile>
+      <anchor>afe7961dc4bf2352c6bd9fb40d29e3373</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>bool</type>
       <name>isValid</name>
-      <anchorfile>structstira_1_1image_1_1lut__entry__t.html</anchorfile>
-      <anchor>a40a635c27446f4fa6fa6e4d0595328ec</anchor>
+      <anchorfile>structstira_1_1imagedata_1_1color_1_1lut__entry__t.html</anchorfile>
+      <anchor>a6d7874311d43474b83a119c48aac5e8d</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -8710,39 +8957,39 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunMedian</name>
       <anchorfile>classstira_1_1filter_1_1MedianFilter.html</anchorfile>
-      <anchor>a7af78eb49aebc62707783757cb30e212</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int size)</arglist>
+      <anchor>aac92906003a4e74268744346009352fa</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int size)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; int &gt; *</type>
+      <type>static ArrayGrid&lt; int &gt; *</type>
       <name>RunMedian</name>
       <anchorfile>classstira_1_1filter_1_1MedianFilter.html</anchorfile>
-      <anchor>a31698bd01e73967c95ecc18e1f5def12</anchor>
-      <arglist>(image::ArrayGrid&lt; int &gt; *pGridIn, int size)</arglist>
+      <anchor>a20d4f726c91a67b3fc0e8409489eb609</anchor>
+      <arglist>(ArrayGrid&lt; int &gt; *pGridIn, int size)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunHybridMedian</name>
       <anchorfile>classstira_1_1filter_1_1MedianFilter.html</anchorfile>
-      <anchor>a9c5094c893c67193fafdc934ecd9bd74</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int size)</arglist>
+      <anchor>a4b521447860df05199f81f3a6d2b472c</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int size)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunMedian</name>
       <anchorfile>classstira_1_1filter_1_1MedianFilter.html</anchorfile>
-      <anchor>a405d2e64ab79f43eb294950d73f916c5</anchor>
-      <arglist>(image::Image *pImageIn, int size)</arglist>
+      <anchor>aa6130b6f7743b904901b15060d5657f7</anchor>
+      <arglist>(Image *pImageIn, int size)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunHybridMedian</name>
       <anchorfile>classstira_1_1filter_1_1MedianFilter.html</anchorfile>
-      <anchor>a04c8256d6de0fe5612b372644dfdcc46</anchor>
-      <arglist>(image::Image *pImageIn, int size)</arglist>
+      <anchor>a387ab899c19d8d40cd8b72426441b1de</anchor>
+      <arglist>(Image *pImageIn, int size)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -8837,8 +9084,8 @@
       <type>static double</type>
       <name>Run</name>
       <anchorfile>classstira_1_1wavelet_1_1NoiseEstimator.html</anchorfile>
-      <anchor>a31e5111f7958cba23dfb2cc490e52db9</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid)</arglist>
+      <anchor>a1a97a2fb08c4397b18e84d2930ead4ca</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -8887,11 +9134,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1NonLocalMeansFilter.html</anchorfile>
-      <anchor>a9e768799560b8b24f0dc4db4fbb002bd</anchor>
-      <arglist>(image::Image *pImageIn)</arglist>
+      <anchor>ab5513eab6c2302abff7ce22edcaeab35</anchor>
+      <arglist>(Image *pImageIn)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -8912,46 +9159,46 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1filter_1_1NonSeparableFilter.html</anchorfile>
-      <anchor>ae6601a7e32b896108de56d0f415ded10</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInput, double *filterKernel, int filterWidth, int filterHeight)</arglist>
+      <anchor>a67965640e55bcff454ffaef7e324cbf7</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInput, double *filterKernel, int filterWidth, int filterHeight)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunSobelX</name>
       <anchorfile>classstira_1_1filter_1_1NonSeparableFilter.html</anchorfile>
-      <anchor>aaa42ff3e8bdb4b97dc201770dbb0173e</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInput)</arglist>
+      <anchor>a3cbbb49aa2cc8d9e21c854805427bc4d</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInput)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunSobelY</name>
       <anchorfile>classstira_1_1filter_1_1NonSeparableFilter.html</anchorfile>
-      <anchor>a57c61775d0afd4f37838121b0b349ee1</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInput)</arglist>
+      <anchor>af55fd681312bb1dd57273da98d334567</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInput)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunSobelX</name>
       <anchorfile>classstira_1_1filter_1_1NonSeparableFilter.html</anchorfile>
-      <anchor>a73c0c8e343bdb68d5a077b3a1bb836f5</anchor>
-      <arglist>(image::Image *pInput)</arglist>
+      <anchor>a0ceec5b48e33746ebf7c516ddec4144f</anchor>
+      <arglist>(Image *pInput)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunSobelY</name>
       <anchorfile>classstira_1_1filter_1_1NonSeparableFilter.html</anchorfile>
-      <anchor>ad06ce10ca29e523590d0ed774bd3319a</anchor>
-      <arglist>(image::Image *pInput)</arglist>
+      <anchor>a0dbd29b89d6545dd782b3dbce4237ba0</anchor>
+      <arglist>(Image *pInput)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::OrientationGrid *</type>
+      <type>static OrientationGrid *</type>
       <name>DetermineLocalMagnitudeAndOrientation</name>
       <anchorfile>classstira_1_1filter_1_1NonSeparableFilter.html</anchorfile>
-      <anchor>af688ba4c586f1008930bea5c5f009f02</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>a4676048e6f25b3c2238d2cbe054c061f</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static double *</type>
@@ -8990,8 +9237,8 @@
       <type>virtual bool</type>
       <name>Decompose</name>
       <anchorfile>classstira_1_1wavelet_1_1NonSubsampledTransform.html</anchorfile>
-      <anchor>a4a9bf362c6ada2dbb076b59ee1d3d844</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)</arglist>
+      <anchor>aa560456aa224df3db2cc4705db45f6be</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual bool</type>
@@ -9005,7 +9252,6 @@
     <name>stira::image::NumberGridTools</name>
     <filename>classstira_1_1image_1_1NumberGridTools.html</filename>
     <templarg>T</templarg>
-    <base>stira::image::ArrayGridTools</base>
     <member kind="function">
       <type></type>
       <name>NumberGridTools</name>
@@ -9022,129 +9268,10 @@
     </member>
     <member kind="function" static="yes">
       <type>static void</type>
-      <name>DiagnoseReal</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a2fe39f6302296e60bff95a196236be3c</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, std::string fileName=std::string(&quot;&quot;))</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
       <name>CopyValues</name>
       <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
       <anchor>a7642278e6cd1564caaae5ed31c7fead9</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pSourceGrid, ArrayGrid&lt; T &gt; *pDestinationGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static bool</type>
-      <name>CountNANandINF</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>abbd747fe77f346a688874620b9a4b7cb</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int &amp;nrNAN, int &amp;nrINF, std::string ID)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static bool</type>
-      <name>CleanNANandINF</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>aba0abd03620d84894b31174e74d3371c</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static int</type>
-      <name>CountZero</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a60e69b2e83237612784146b1b3256cd3</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
-      <name>GetMinMax</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a7ad765f4af90417b841b3081ebea7753</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmin, double &amp;mmax)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
-      <name>GetMinMax</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a0d32eb68ad661f6085cfd1b902453969</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmin, double &amp;mmax, int &amp;xMin, int &amp;yMin, int &amp;xMax, int &amp;yMax)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
-      <name>GetMin</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>aae97c3a53feff10a1a0012175ad6c007</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmin, int &amp;xMin, int &amp;yMin)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
-      <name>GetMax</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a2bc83dc73fb3e9f637c1a163d42402c4</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, double &amp;mmax, int &amp;xMax, int &amp;yMax)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>GetAbsMax</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a3f35776d3ceabedbfaa4d7cb40cd7ff6</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetGridIntegral</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>ac3b3a7899978ceb974824ce0de90f71e</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>GetSquaredNorm</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a3cc5a5e2dd66df3c66e7e17a88453e14</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>GetSquaredNorm</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a4e34e4fed22e11e2a0a522e133dc19c7</anchor>
-      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetGridMean</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>ad1ff1b19dc02cc0a364fbb92a27f6598</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetGridVariance</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a01e6d544838b8960d1078c664d202938</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, T mean)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetGridKurtosis</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a70f1d674f83f984269936d3806a67385</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetGridKurtosis</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>aecf3cfa4e840cec12b3e292051fc71dd</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, T gridMean, T gridvariance)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static void</type>
-      <name>RescaleGrid</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>aaeadac8b92e866f7988902a7b108fa38</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, T desiredMin, T desiredMax)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::vector&lt; common::IntensityPoint &gt;</type>
@@ -9173,104 +9300,6 @@
       <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
       <anchor>a3549739670a70ffcf92743ef1c7904ff</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pGrid, int xTopLeft, int yTopLeft, int xBottomRight, int yBottomRight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetLocalMinimum</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a432f6b0d232f88633b69e86756efc64a</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetLocalMaximum</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>afcf72ede1b258c16f1797ff267d899c6</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetLocalAbsMaximum</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a906af9270a0c5b7e97add22ef43ea28d</anchor>
-      <arglist>(ArrayGrid&lt; int &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetLocalAbsMaximum</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>ac760ed53999b5ebd08e2e9af3ca76a26</anchor>
-      <arglist>(ArrayGrid&lt; float &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>GetLocalAbsMaximum</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a926a6b2b1fd2c627b89cc689f660957d</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int x, int y, int localWindowWidth, int localWindowHeight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>ComputeLocalMean</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a9124e4e8128c0303764fae8413bfd9c0</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalMean</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>af4e5c526249710e2bb096c01624597fa</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, common::RectangularROI&lt; int &gt; rroi)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalVariance</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>aa15addbe5fabde8d91a0e42ac470d590</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, common::RectangularROI&lt; int &gt; rroi, double thisMean)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static T</type>
-      <name>ComputeLocalAbsoluteMean</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a3a6d856d4f8bf5735bdd8e8d22d72b76</anchor>
-      <arglist>(ArrayGrid&lt; T &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalVariance</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a24bcbc39c6ef09f610497120529efd53</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight, double thisMean)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalVariance</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a52fbe2f74fc4fe52da47663e06cbd8a2</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalCovariance</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a0f10e6426014931c245b4a9912acebb0</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid1, ArrayGrid&lt; double &gt; *pGrid2, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight, double mean1, double mean2)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalKurtosis</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>abe0d36327040b62149cf1cab9c1e8e33</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight, double localMean, double localVariance)</arglist>
-    </member>
-    <member kind="function" static="yes">
-      <type>static double</type>
-      <name>ComputeLocalKurtosis</name>
-      <anchorfile>classstira_1_1image_1_1NumberGridTools.html</anchorfile>
-      <anchor>a2d707d8d58b35febd294045dbbe9b5d4</anchor>
-      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int &amp;xTopLeft, int &amp;yTopLeft, int &amp;xBottomRight, int &amp;yBottomRight)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ArrayGrid&lt; double &gt; *</type>
@@ -9498,164 +9527,150 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::OrientationGrid</name>
-    <filename>classstira_1_1image_1_1OrientationGrid.html</filename>
+    <name>stira::imagedata::datastructures::OrientationGrid</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</filename>
     <member kind="enumeration">
       <type></type>
       <name>ColorExportMode</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a114e2a98cd3f7794a7bf48366b79b1c8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a21c3d85c1dee56c4fb1d581c677eee84</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>EXPORT_RGB_MODE</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a114e2a98cd3f7794a7bf48366b79b1c8a315761df0f7cdb5cecc5c4d02979c9c0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a21c3d85c1dee56c4fb1d581c677eee84a432a0161af1ec5ddedd6533063483ed4</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>EXPORT_HSV_MODE</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a114e2a98cd3f7794a7bf48366b79b1c8abf30ac77bb5b9ceb2a7339702c7d64a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a21c3d85c1dee56c4fb1d581c677eee84ad545bea51d3e467afe5730581c794338</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>EXPORT_RGB_MODE</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a114e2a98cd3f7794a7bf48366b79b1c8a315761df0f7cdb5cecc5c4d02979c9c0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a21c3d85c1dee56c4fb1d581c677eee84a432a0161af1ec5ddedd6533063483ed4</anchor>
       <arglist></arglist>
     </member>
     <member kind="enumvalue">
       <name>EXPORT_HSV_MODE</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a114e2a98cd3f7794a7bf48366b79b1c8abf30ac77bb5b9ceb2a7339702c7d64a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a21c3d85c1dee56c4fb1d581c677eee84ad545bea51d3e467afe5730581c794338</anchor>
       <arglist></arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>OrientationGrid</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a5c064693343ea7515b399e4f861aeb72</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>af81eba88dbe1003215e299f8de13888c</anchor>
       <arglist>(int width, int height)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~OrientationGrid</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>ae3a389520c5ba5f31743050e4513875b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a20b7e95025bcbfbca2bf43c0e5cb0d7c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a8d5319ede1dbc3799d232ab66085c3ff</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>add3f67ce71342ec44e837a3e4c0039c6</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>af9996f4567eba9e012bbd64995d85fab</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a58b12a73cd17b3f3fa2a66e1d691221c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetAngle</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>af9d83dd065505c8caf883b7bdaa16ad7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a7a66974a27c25bbb60a3474d9f0e5142</anchor>
       <arglist>(int x, int y, double myAngle)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetAngle</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>add1c13b2fd0f9f1e10e4689f8c63461f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>ad6d1b4d4ced29d61713e49421ad45798</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetOrientation</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>acf380d6f28b6902c4b3fa5e4f425392e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a38e0249a6f417510aaf8a8f0a661a686</anchor>
       <arglist>(int x, int y, LocalOrientation *pLocalOrientation)</arglist>
     </member>
     <member kind="function">
       <type>LocalOrientation *</type>
       <name>GetOrientation</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a9663df90783f3b6434aa9c2c6e0f76a5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a688150f093e74508a15ad368352f3a66</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetMagnitude</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>acdc5fefbd3548d8cc0fc117122e06be2</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a26cd04e4f51a6f19910a6dbd4df40012</anchor>
       <arglist>(int x, int y, double myMagnitude)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetMagnitude</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>ae1b51085872717b1206a34614b65549e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>ab87e379c37065b8be79a237cef5983f7</anchor>
       <arglist>(int x, int y)</arglist>
     </member>
     <member kind="function">
-      <type>std::vector&lt; image::LocalOrientation &gt;</type>
+      <type>std::vector&lt; LocalOrientation &gt;</type>
       <name>GetOrientationVector</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a6f7289ccfef8d23cba2dfbfaf5855122</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>aa4796eadb30b304bf1ab30066e065a5b</anchor>
       <arglist>(int xMin, int yMin, int xMax, int yMax)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>GetMinMaxMagnitude</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>ac8711d4691e0773945311dd51ff287da</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>ab32559c65e3246d801e30af73893ad5b</anchor>
       <arglist>(double &amp;mmin, double &amp;mmax)</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractMagnitudeGrid</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a4dc4394939801258092f57d0d285033a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a7579bc5ac3d4b7b72d9d2538f12891dc</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>Image *</type>
       <name>VisualizeMagnitudeImage</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>a91e4987d76db98a41e94e654c2027ede</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>ac2467cd200fc7e5d3937be7507657892</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportMagnitudeImage</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>affe40a51bee7ef7fd7dd4dcb2f78572b</anchor>
-      <arglist>(std::string fileNameMagnitude)</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractOrientationGrid</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>ad47738edb7b4fa919b54059f396e21ae</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>a1078b851c0dfe6cdfdf83d9a2811fa2b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>Image *</type>
       <name>VisualizeOrientationImage</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>ad57ba5a84efa87a144d05cc1b0777ed4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1OrientationGrid.html</anchorfile>
+      <anchor>ad8f29e59e23571f87d052a030b642521</anchor>
       <arglist>(double threshold, ColorExportMode myMode=EXPORT_HSV_MODE)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportOrientationImage</name>
-      <anchorfile>classstira_1_1image_1_1OrientationGrid.html</anchorfile>
-      <anchor>af22861ee375cd8487eda86da97899cbb</anchor>
-      <arglist>(std::string fileNameDirection, double threshold=3, ColorExportMode myMode=EXPORT_HSV_MODE)</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -10316,947 +10331,926 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::ProfileCorrect</name>
-    <filename>classstira_1_1image_1_1ProfileCorrect.html</filename>
+    <name>stira::imagedata::color::ProfileCorrect</name>
+    <filename>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</filename>
     <member kind="function">
       <type></type>
       <name>ProfileCorrect</name>
-      <anchorfile>classstira_1_1image_1_1ProfileCorrect.html</anchorfile>
-      <anchor>a5a1e508bdc64a4ad8d7ac74de06a3fef</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</anchorfile>
+      <anchor>addeff7ba326615e09a7f8248e2465b65</anchor>
       <arglist>(ProfileData *pInputProfile, int nrGridPoints)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ProfileCorrect</name>
-      <anchorfile>classstira_1_1image_1_1ProfileCorrect.html</anchorfile>
-      <anchor>a1034af9a164f328e6b4d5ed90e2c5495</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</anchorfile>
+      <anchor>a4afa898202650f6cb69ce3ba1acb78c8</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ProfileData *</type>
       <name>InterpolateSamplesToGrid</name>
-      <anchorfile>classstira_1_1image_1_1ProfileCorrect.html</anchorfile>
-      <anchor>add23e46ea6ba5ce5eb5b4f9d61e072c4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</anchorfile>
+      <anchor>a5ed7460ab727298c5153a42abc590c44</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>FindInList</name>
-      <anchorfile>classstira_1_1image_1_1ProfileCorrect.html</anchorfile>
-      <anchor>ac915105eb44ff08536df777641c867c3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</anchorfile>
+      <anchor>a463dc50c292aa97b7c47df5241cc68a2</anchor>
       <arglist>(vector&lt; lut_entry_t &gt; myTable, cmyk_t cmykEntry, lut_entry_t &amp;foundEntry)</arglist>
     </member>
     <member kind="function">
       <type>compare_neighbor_entry_t</type>
       <name>FindClosestGridPoint</name>
-      <anchorfile>classstira_1_1image_1_1ProfileCorrect.html</anchorfile>
-      <anchor>aebd9aca59adccf2a8055e69f182e4dd4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</anchorfile>
+      <anchor>a3f0f5fed4a04be12c49ec8005e74340d</anchor>
       <arglist>(vector&lt; lut_entry_t &gt; myTable, lab_t gridLabValue)</arglist>
     </member>
     <member kind="function">
       <type>vector&lt; compare_neighbor_entry_t &gt;</type>
       <name>FindNearestNeighbors</name>
-      <anchorfile>classstira_1_1image_1_1ProfileCorrect.html</anchorfile>
-      <anchor>a936098f9034c697718b54b15c1f21fe3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileCorrect.html</anchorfile>
+      <anchor>aa7ed144bca637d35bbb20cba44ef7493</anchor>
       <arglist>(vector&lt; lut_entry_t &gt; dataTable, lut_entry_t myEntry)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::ProfileData</name>
-    <filename>classstira_1_1image_1_1ProfileData.html</filename>
+    <name>stira::imagedata::color::ProfileData</name>
+    <filename>classstira_1_1imagedata_1_1color_1_1ProfileData.html</filename>
     <member kind="function">
       <type></type>
       <name>ProfileData</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a96af69a67570e04d12d5719a63041c29</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>adf30613b073d948cd29d7671ad5ad4c8</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~ProfileData</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>acf21d734ac779dab53d860dc723863f0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>abf3b1b4b32b38583bd9b5b7035743517</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSizeA2B</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a79360148914ef348e55e1fa126d4f6ba</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>af2cb653542e2f0901a584372d6971c5e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>lut_entry_t</type>
       <name>GetA2BEntry</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>aae47c9781fb1ded6c9ec2bd022b4851c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>ae68d2256c75152f22aa09402144da628</anchor>
       <arglist>(int k)</arglist>
     </member>
     <member kind="function">
       <type>cmyk_t</type>
       <name>GetA2BEntryCmyk</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a74fb14ac26c2c4ba77fcabb56f2e05f8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a1b62076ae0befa1aedbdfdeef0171ddd</anchor>
       <arglist>(int k)</arglist>
     </member>
     <member kind="function">
       <type>lab_t</type>
       <name>GetA2BEntryLab</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>adabfdf690a58ed1b0bcf92d0b82e6cfe</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a2e30ac12b4b2e89dda4863c8fa57c94c</anchor>
       <arglist>(int k)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddA2BEntry</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>af865b3026735ee3164d2eaf12f838eb4</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a2759a358454cf20344b8580e31e239ab</anchor>
       <arglist>(lut_entry_t entry)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetA2BEntryCmyk</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a80b9c40188c360c10855828fb9bf63a1</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>aaebe0c3722da4ec2ed381f980b12ec35</anchor>
       <arglist>(int k, cmyk_t cmyk)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetA2BEntryLab</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>ae379669983c53b31a0482efadf2d409c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>abad31cd8eb8f1bb282f91fd8c121b397</anchor>
       <arglist>(int k, lab_t lab)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSizeB2A</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a62c72534939e49e7fb9cc6a0d03f21ae</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a1945239012b83ccfd347b7709dde98f3</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>lut_entry_t</type>
       <name>GetB2AEntry</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a4929bf307fe2fc5a950f116ecc2037f9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>ad2dd7abbbb695711ffb37b989ca8b3fb</anchor>
       <arglist>(int k)</arglist>
     </member>
     <member kind="function">
       <type>cmyk_t</type>
       <name>GetB2AEntryCmyk</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a97d3b85c35bb09d2518af138bb0be2ab</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>ae2e80ff7b45d913b6daaf18e35f298a0</anchor>
       <arglist>(int k)</arglist>
     </member>
     <member kind="function">
       <type>lab_t</type>
       <name>GetB2AEntryLab</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a4cd051fb907947544358e1f74085d7ea</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a95a26ec02213e14a75f2379b6c54d1d6</anchor>
       <arglist>(int k)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddB2AEntry</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>ae8b11650627742fd8d3534db70043940</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>aa1d8e2abd62be892466e243b3539be37</anchor>
       <arglist>(lut_entry_t entry)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetB2AEntryCmyk</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>abd6f30e9442b652180f2a605c2eaf39c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>ad447152566a6d75541c987b59ff317e2</anchor>
       <arglist>(int k, cmyk_t cmyk)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetB2AEntryLab</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>ad4aa87d0033d18ea263ffa3c8a9abd46</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a91cd3c70de825430b78c33c28870f422</anchor>
       <arglist>(int k, lab_t lab)</arglist>
     </member>
     <member kind="variable">
       <type>std::vector&lt; lut_entry_t &gt;</type>
       <name>A2B</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>a7f3e2aa1f43d2471ac5df99209592418</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>a56c5410b74de9b5785d5e2bc596102e6</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">
       <type>std::vector&lt; lut_entry_t &gt;</type>
       <name>B2A</name>
-      <anchorfile>classstira_1_1image_1_1ProfileData.html</anchorfile>
-      <anchor>aa404fb5c823ee0e50cd6b4cc3584ee8b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1ProfileData.html</anchorfile>
+      <anchor>aedb2573e52d6b5dabaf3e6282ef14b07</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::Pyramid</name>
-    <filename>classstira_1_1image_1_1Pyramid.html</filename>
+    <name>stira::imagedata::datastructures::Pyramid</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</filename>
     <templarg>T</templarg>
     <member kind="function">
       <type></type>
       <name>Pyramid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aca1bba3e119949c5dac76b4fe7c84bb0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a04feacdb26abd423e31220df2afa42e1</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pSourceBand, int myNrScales, int myNrOrientations, bool isSubsampled, bool needsResidualLevels, bool isFinestScaleSubsampled=false)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>CreateBands</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae63533aa39d7e901a4fb2a1c8f6817fe</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2134ec9a41eab642ac759df5f7e7a950</anchor>
       <arglist>(int sourceWidth, int sourceHeight, bool isSubsampled=false, bool isFinestScaleSubsampled=false)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~Pyramid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>abb67c96ba4cd05a509ef798347dd43a3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a1b89d89b3c5788f34bc57b15cd1bcea4</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfScales</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a801a036c109af994b7134392eea325a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af62f13e5e624afc0b57058cf21d209a6</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfOrientations</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ab3605de71be1cc95d0e64c379c5b5f8b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ac921c16bb6d014b67c2730fb58d4fe72</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSourceDataWidth</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a1ee95967bcbc2a896b1266d2efaf473a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2b5c160205f5fcc15792fa8077994473</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSourceDataHeight</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a44376c2ab5ca5cfa652ae6b1033b656e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a4cecdc157828f385540cb756ae111521</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a055db0136edb3691b039c245e00c58e6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a93180c64176b12f2d2f53ca502967396</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a5080ed43909c84318ee9d53034200ab5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a1cd9c6d89221ebe42c8f755a72e83a89</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>af8f611187446fb18283b2d33bc2eae41</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a58f3370dfd770770f502d6aa8c470ef9</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aea62523d2fec2f2f2aa9933d2d156570</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>afa2c9d9f37344fec9af418e3dbca471c</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a149a38590026aaf790cdc311fd86bbf0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a120d1d9edae2c213da8b8fda7ee5832a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aa91266e8e3832c81fb5b634e19295105</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a4334063904d5df048b8911dd3fbc1889</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; T &gt; *</type>
       <name>GetRecursiveScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac757904abb89fcf1ac83c92fd4743b38</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a88d0dcb3ae6e02e1f2a50a53e344ba9e</anchor>
       <arglist>(int scale)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>HasResidualScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac4d79cf62cc0c2a67f27fc3cb869865b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2792437e94a8e0b4194a0ce05b898cf5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetFinestScaleNumber</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>add7250322fb20f35877e9af023101403</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af1e64c9bec4011be47c6fa51d864422c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; T &gt; *</type>
       <name>GetResidualScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a07b5bae72c00af2dccd8b2f6e0e805ef</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af52bdece9c348277fb4ff7441a9347a5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetLowpassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae8a298377f5183da2ab9f1882f528ad0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a22f0145965025f75c14d509b4e96656b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetLowpassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a2ccdba4b1080eb4c7a00d04964404b65</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a39803b961692429d14f3ddab517b5fd8</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportBandsToPGM</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a104f64b1fbe757292d8802e202e1a837</anchor>
-      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>Pyramid&lt; T &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aeb23a1360e3a2750ecb1bf592cabb943</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a92ce7b5f464cda43d8738d138eb6befa</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>CopyValuesFrom</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae3afa6b7063185239237b3a148a961b3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ac65ff9ffe6df8096ec7c2a1416b48b62</anchor>
       <arglist>(Pyramid&lt; T &gt; *pOtherPyramid)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
       <name>GetAverageConeRatioSubSampled</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a1e286e06f169e485daeb9ed75e80d491</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a767a19b9fb95a89564a17eae8767a675</anchor>
       <arglist>(int x, int y, int orientationNr, int coarsestScale, int finestScale)</arglist>
     </member>
     <member kind="function">
       <type>T</type>
       <name>GetAverageConeRatioRedundant</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a075f978e0cc73eddcb9f3bdd978348f9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a021e4618919fba44ddf50a0959b64748</anchor>
       <arglist>(int x, int y, int orientationNr, int coarsestScale, int finestScale)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>IsSubsampled</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a9d070b8b525cccbc39fbd386185ffb2c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>afc0d2d41f9cb1783c0cd3a0d782b481c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>ArrayGrid&lt; T &gt; *</type>
       <name>DownSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac2bce1a21f6872dd8a2ff508205d53ff</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a8b31a28111e0f3ed0154c057d7b4a99b</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pBandIn)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>ArrayGrid&lt; T &gt; *</type>
       <name>UpSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aa775a08d70435ac69b4b4b64852e34a7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>aa5cee209960ac127dd8f3456bb20f8b1</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pBandIn, int upSampledWidth, int upSampledHeight)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::vector&lt; PyramidLevel&lt; T &gt; * &gt;</type>
       <name>mvpRecursivePyramidLevels</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a408df9110221a95c0f87fb2963f41678</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a53ee3d5fbce89e91f56ab530ec51a499</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>PyramidLevel&lt; T &gt; *</type>
       <name>mpResidualPyramidLevels</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a0bf44a740397bdee6d8adbe2b36f44f7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a65d29e32c43daef27614aa475816ccb1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpLowPassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a53bc28e3aac260defde67840ec4dd3ba</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a217c785e650854efb1ea1e6bf717468e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceDataGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>add190dddd7ff80db1f45c55151a044b8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a3469c21644208ca7add4e269f8bfc3bc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mNrScales</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a811f0f1a9732773fb6965ab0f607a36f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a5fc58007cd5e3cf08a08feea910ce468</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mNrOrientations</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a028ac278ae46e84c7842479e2373deae</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a5debae576127028eb55e11620439646b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ad504d4057cf4662c74e8bc9fdcac69e8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ae384c0d8f55ed41eddfc02ae0c0f4377</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a4d7064194d31bd1eb1a3d2aa479fc926</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a9b1bd642af0f23bfec905c22522826cd</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a77a1a6b90ca716018f051ead96859999</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a7bafc847c6e19d114b0b68351f50b58e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>Pyramid&lt; double &gt;</name>
-    <filename>classstira_1_1image_1_1Pyramid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</filename>
     <member kind="function">
       <type></type>
       <name>Pyramid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aca1bba3e119949c5dac76b4fe7c84bb0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a04feacdb26abd423e31220df2afa42e1</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pSourceBand, int myNrScales, int myNrOrientations, bool isSubsampled, bool needsResidualLevels, bool isFinestScaleSubsampled=false)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>CreateBands</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae63533aa39d7e901a4fb2a1c8f6817fe</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2134ec9a41eab642ac759df5f7e7a950</anchor>
       <arglist>(int sourceWidth, int sourceHeight, bool isSubsampled=false, bool isFinestScaleSubsampled=false)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~Pyramid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>abb67c96ba4cd05a509ef798347dd43a3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a1b89d89b3c5788f34bc57b15cd1bcea4</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfScales</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a801a036c109af994b7134392eea325a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af62f13e5e624afc0b57058cf21d209a6</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfOrientations</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ab3605de71be1cc95d0e64c379c5b5f8b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ac921c16bb6d014b67c2730fb58d4fe72</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSourceDataWidth</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a1ee95967bcbc2a896b1266d2efaf473a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2b5c160205f5fcc15792fa8077994473</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSourceDataHeight</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a44376c2ab5ca5cfa652ae6b1033b656e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a4cecdc157828f385540cb756ae111521</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a055db0136edb3691b039c245e00c58e6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a93180c64176b12f2d2f53ca502967396</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a5080ed43909c84318ee9d53034200ab5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a1cd9c6d89221ebe42c8f755a72e83a89</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>af8f611187446fb18283b2d33bc2eae41</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a58f3370dfd770770f502d6aa8c470ef9</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aea62523d2fec2f2f2aa9933d2d156570</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>afa2c9d9f37344fec9af418e3dbca471c</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a149a38590026aaf790cdc311fd86bbf0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a120d1d9edae2c213da8b8fda7ee5832a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aa91266e8e3832c81fb5b634e19295105</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a4334063904d5df048b8911dd3fbc1889</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; double &gt; *</type>
       <name>GetRecursiveScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac757904abb89fcf1ac83c92fd4743b38</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a88d0dcb3ae6e02e1f2a50a53e344ba9e</anchor>
       <arglist>(int scale)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>HasResidualScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac4d79cf62cc0c2a67f27fc3cb869865b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2792437e94a8e0b4194a0ce05b898cf5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetFinestScaleNumber</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>add7250322fb20f35877e9af023101403</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af1e64c9bec4011be47c6fa51d864422c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; double &gt; *</type>
       <name>GetResidualScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a07b5bae72c00af2dccd8b2f6e0e805ef</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af52bdece9c348277fb4ff7441a9347a5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetLowpassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae8a298377f5183da2ab9f1882f528ad0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a22f0145965025f75c14d509b4e96656b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetLowpassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a2ccdba4b1080eb4c7a00d04964404b65</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a39803b961692429d14f3ddab517b5fd8</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportBandsToPGM</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a104f64b1fbe757292d8802e202e1a837</anchor>
-      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>Pyramid&lt; double &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aeb23a1360e3a2750ecb1bf592cabb943</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a92ce7b5f464cda43d8738d138eb6befa</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>CopyValuesFrom</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae3afa6b7063185239237b3a148a961b3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ac65ff9ffe6df8096ec7c2a1416b48b62</anchor>
       <arglist>(Pyramid&lt; double &gt; *pOtherPyramid)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetAverageConeRatioSubSampled</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a1e286e06f169e485daeb9ed75e80d491</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a767a19b9fb95a89564a17eae8767a675</anchor>
       <arglist>(int x, int y, int orientationNr, int coarsestScale, int finestScale)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetAverageConeRatioRedundant</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a075f978e0cc73eddcb9f3bdd978348f9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a021e4618919fba44ddf50a0959b64748</anchor>
       <arglist>(int x, int y, int orientationNr, int coarsestScale, int finestScale)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>IsSubsampled</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a9d070b8b525cccbc39fbd386185ffb2c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>afc0d2d41f9cb1783c0cd3a0d782b481c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>DownSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac2bce1a21f6872dd8a2ff508205d53ff</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a8b31a28111e0f3ed0154c057d7b4a99b</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBandIn)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>UpSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aa775a08d70435ac69b4b4b64852e34a7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>aa5cee209960ac127dd8f3456bb20f8b1</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBandIn, int upSampledWidth, int upSampledHeight)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::vector&lt; PyramidLevel&lt; double &gt; * &gt;</type>
       <name>mvpRecursivePyramidLevels</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a408df9110221a95c0f87fb2963f41678</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a53ee3d5fbce89e91f56ab530ec51a499</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>PyramidLevel&lt; double &gt; *</type>
       <name>mpResidualPyramidLevels</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a0bf44a740397bdee6d8adbe2b36f44f7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a65d29e32c43daef27614aa475816ccb1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpLowPassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a53bc28e3aac260defde67840ec4dd3ba</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a217c785e650854efb1ea1e6bf717468e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceDataGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>add190dddd7ff80db1f45c55151a044b8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a3469c21644208ca7add4e269f8bfc3bc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mNrScales</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a811f0f1a9732773fb6965ab0f607a36f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a5fc58007cd5e3cf08a08feea910ce468</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mNrOrientations</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a028ac278ae46e84c7842479e2373deae</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a5debae576127028eb55e11620439646b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ad504d4057cf4662c74e8bc9fdcac69e8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ae384c0d8f55ed41eddfc02ae0c0f4377</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a4d7064194d31bd1eb1a3d2aa479fc926</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a9b1bd642af0f23bfec905c22522826cd</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a77a1a6b90ca716018f051ead96859999</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a7bafc847c6e19d114b0b68351f50b58e</anchor>
       <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>Pyramid&lt; std::complex&lt; double &gt; &gt;</name>
-    <filename>classstira_1_1image_1_1Pyramid.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</filename>
     <member kind="function">
       <type></type>
       <name>Pyramid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aca1bba3e119949c5dac76b4fe7c84bb0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a04feacdb26abd423e31220df2afa42e1</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pSourceBand, int myNrScales, int myNrOrientations, bool isSubsampled, bool needsResidualLevels, bool isFinestScaleSubsampled=false)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>CreateBands</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae63533aa39d7e901a4fb2a1c8f6817fe</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2134ec9a41eab642ac759df5f7e7a950</anchor>
       <arglist>(int sourceWidth, int sourceHeight, bool isSubsampled=false, bool isFinestScaleSubsampled=false)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~Pyramid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>abb67c96ba4cd05a509ef798347dd43a3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a1b89d89b3c5788f34bc57b15cd1bcea4</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfScales</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a801a036c109af994b7134392eea325a8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af62f13e5e624afc0b57058cf21d209a6</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfOrientations</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ab3605de71be1cc95d0e64c379c5b5f8b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ac921c16bb6d014b67c2730fb58d4fe72</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSourceDataWidth</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a1ee95967bcbc2a896b1266d2efaf473a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2b5c160205f5fcc15792fa8077994473</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetSourceDataHeight</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a44376c2ab5ca5cfa652ae6b1033b656e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a4cecdc157828f385540cb756ae111521</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a055db0136edb3691b039c245e00c58e6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a93180c64176b12f2d2f53ca502967396</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a5080ed43909c84318ee9d53034200ab5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a1cd9c6d89221ebe42c8f755a72e83a89</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>af8f611187446fb18283b2d33bc2eae41</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a58f3370dfd770770f502d6aa8c470ef9</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aea62523d2fec2f2f2aa9933d2d156570</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>afa2c9d9f37344fec9af418e3dbca471c</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>GetScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a149a38590026aaf790cdc311fd86bbf0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a120d1d9edae2c213da8b8fda7ee5832a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aa91266e8e3832c81fb5b634e19295105</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a4334063904d5df048b8911dd3fbc1889</anchor>
       <arglist>(double factor)</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>GetRecursiveScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac757904abb89fcf1ac83c92fd4743b38</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a88d0dcb3ae6e02e1f2a50a53e344ba9e</anchor>
       <arglist>(int scale)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>HasResidualScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac4d79cf62cc0c2a67f27fc3cb869865b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a2792437e94a8e0b4194a0ce05b898cf5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetFinestScaleNumber</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>add7250322fb20f35877e9af023101403</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af1e64c9bec4011be47c6fa51d864422c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>GetResidualScale</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a07b5bae72c00af2dccd8b2f6e0e805ef</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>af52bdece9c348277fb4ff7441a9347a5</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetLowpassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae8a298377f5183da2ab9f1882f528ad0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a22f0145965025f75c14d509b4e96656b</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetLowpassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a2ccdba4b1080eb4c7a00d04964404b65</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a39803b961692429d14f3ddab517b5fd8</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pGrid)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportBandsToPGM</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a104f64b1fbe757292d8802e202e1a837</anchor>
-      <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>Pyramid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aeb23a1360e3a2750ecb1bf592cabb943</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a92ce7b5f464cda43d8738d138eb6befa</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>CopyValuesFrom</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ae3afa6b7063185239237b3a148a961b3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ac65ff9ffe6df8096ec7c2a1416b48b62</anchor>
       <arglist>(Pyramid&lt; std::complex&lt; double &gt; &gt; *pOtherPyramid)</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt;</type>
       <name>GetAverageConeRatioSubSampled</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a1e286e06f169e485daeb9ed75e80d491</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a767a19b9fb95a89564a17eae8767a675</anchor>
       <arglist>(int x, int y, int orientationNr, int coarsestScale, int finestScale)</arglist>
     </member>
     <member kind="function">
       <type>std::complex&lt; double &gt;</type>
       <name>GetAverageConeRatioRedundant</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a075f978e0cc73eddcb9f3bdd978348f9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a021e4618919fba44ddf50a0959b64748</anchor>
       <arglist>(int x, int y, int orientationNr, int coarsestScale, int finestScale)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>IsSubsampled</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a9d070b8b525cccbc39fbd386185ffb2c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>afc0d2d41f9cb1783c0cd3a0d782b481c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>DownSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ac2bce1a21f6872dd8a2ff508205d53ff</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a8b31a28111e0f3ed0154c057d7b4a99b</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBandIn)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>UpSampleGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>aa775a08d70435ac69b4b4b64852e34a7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>aa5cee209960ac127dd8f3456bb20f8b1</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBandIn, int upSampledWidth, int upSampledHeight)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>std::vector&lt; PyramidLevel&lt; std::complex&lt; double &gt; &gt; * &gt;</type>
       <name>mvpRecursivePyramidLevels</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a408df9110221a95c0f87fb2963f41678</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a53ee3d5fbce89e91f56ab530ec51a499</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>PyramidLevel&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>mpResidualPyramidLevels</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a0bf44a740397bdee6d8adbe2b36f44f7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a65d29e32c43daef27614aa475816ccb1</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpLowPassResidual</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a53bc28e3aac260defde67840ec4dd3ba</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a217c785e650854efb1ea1e6bf717468e</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceDataGrid</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>add190dddd7ff80db1f45c55151a044b8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a3469c21644208ca7add4e269f8bfc3bc</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mNrScales</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a811f0f1a9732773fb6965ab0f607a36f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a5fc58007cd5e3cf08a08feea910ce468</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
       <name>mNrOrientations</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a028ac278ae46e84c7842479e2373deae</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a5debae576127028eb55e11620439646b</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorResidualLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>ad504d4057cf4662c74e8bc9fdcac69e8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>ae384c0d8f55ed41eddfc02ae0c0f4377</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorResidualToRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a4d7064194d31bd1eb1a3d2aa479fc926</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a9b1bd642af0f23bfec905c22522826cd</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>double</type>
       <name>mScaleFactorRecursiveLevel</name>
-      <anchorfile>classstira_1_1image_1_1Pyramid.html</anchorfile>
-      <anchor>a77a1a6b90ca716018f051ead96859999</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1Pyramid.html</anchorfile>
+      <anchor>a7bafc847c6e19d114b0b68351f50b58e</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -11281,21 +11275,21 @@
       <type>bool</type>
       <name>Decompose</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidBurtAdelson.html</anchorfile>
-      <anchor>a4c8a1ebee49f3f94bef19351f7536676</anchor>
-      <arglist>(image::Image *pImage, int nrScales)</arglist>
+      <anchor>a38310f96589aed3a3d0c455760b9ca4a</anchor>
+      <arglist>(Image *pImage, int nrScales)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>Reconstruct</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidBurtAdelson.html</anchorfile>
-      <anchor>add660b99e870e006af95d82aedadf2c1</anchor>
+      <anchor>a88123025ac07d2a383cd873c7de35b83</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Pyramid&lt; double &gt; *</type>
+      <type>Pyramid&lt; double &gt; *</type>
       <name>GetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidBurtAdelson.html</anchorfile>
-      <anchor>a2501b2bb0ac2e4f49c3511f2032d824a</anchor>
+      <anchor>a29adb717db2afa42a8da5280f6979cf6</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -11307,8 +11301,8 @@
       <type></type>
       <name>PyramidComplex</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidComplex.html</anchorfile>
-      <anchor>a01a66396599a5ef5d8b06db1b7f2ee97</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
+      <anchor>ac5d95ec1e2ecb52f631202e4821c99ae</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -11342,8 +11336,8 @@
       <type>bool</type>
       <name>VisualizeComplexBandpass</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidComplex.html</anchorfile>
-      <anchor>a771b19850a6404648a81daf98e20a529</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGrid, std::string bandType, int scaleNr, int orientationNr)</arglist>
+      <anchor>a7b5b58a5fa5bc0885b23cf45cc97817b</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGrid, std::string bandType, int scaleNr, int orientationNr)</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -11371,25 +11365,25 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1pyramidapplications_1_1PyramidContrastEnhancer.html</anchorfile>
-      <anchor>a686455b3bc5247fc93bf3fa93839d8c5</anchor>
-      <arglist>(image::Image *pImage, int nrScales, int nrOrientations, bool applyWavelet=false)</arglist>
+      <anchor>ae4792f1c75de79784f827aa5fc2e9d66</anchor>
+      <arglist>(Image *pImage, int nrScales, int nrOrientations, bool applyWavelet=false)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>RunPyramid</name>
       <anchorfile>classstira_1_1pyramidapplications_1_1PyramidContrastEnhancer.html</anchorfile>
-      <anchor>a91829681b3f5d54b696b534a8b0c1b3d</anchor>
-      <arglist>(image::Pyramid&lt; double &gt; *pPyramid, bool applyWavelet=false)</arglist>
+      <anchor>a561b3557ada29d27242c82a6f97e2bf5</anchor>
+      <arglist>(Pyramid&lt; double &gt; *pPyramid, bool applyWavelet=false)</arglist>
     </member>
     <member kind="function">
-      <type>image::Image *</type>
+      <type>Image *</type>
       <name>Run3Colors</name>
       <anchorfile>classstira_1_1pyramidapplications_1_1PyramidContrastEnhancer.html</anchorfile>
-      <anchor>a99879aa750f691dfb0fb6c277ecab23a</anchor>
-      <arglist>(image::Image *pImage, int nrScales, int nrOrientations, bool applyWavelet=false)</arglist>
+      <anchor>a75da91ca3ba3426bc0638824f93accb5</anchor>
+      <arglist>(Image *pImage, int nrScales, int nrOrientations, bool applyWavelet=false)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
@@ -11511,8 +11505,8 @@
       <type></type>
       <name>PyramidDenoiser</name>
       <anchorfile>classstira_1_1pyramidapplications_1_1PyramidDenoiser.html</anchorfile>
-      <anchor>afdedfbd62d1504e23758497d7e740729</anchor>
-      <arglist>(image::Pyramid&lt; double &gt; *pPyramid, ShrinkageRule myRule, double sigma)</arglist>
+      <anchor>ae0988ccef4b66c88eda78052d138cc80</anchor>
+      <arglist>(Pyramid&lt; double &gt; *pPyramid, ShrinkageRule myRule, double sigma)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -11609,8 +11603,8 @@
       <type>static double</type>
       <name>EstimateSigmaSignal</name>
       <anchorfile>classstira_1_1pyramidapplications_1_1PyramidDenoiser.html</anchorfile>
-      <anchor>afa976d0399d164a8d837f17c53a2b973</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pBand, int xCenter, int yCenter, double sigmaNoise, int windowSize)</arglist>
+      <anchor>ab65e08693b6cddeb80fe2d4e9b2aab72</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pBand, int xCenter, int yCenter, double sigmaNoise, int windowSize)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -11620,8 +11614,8 @@
       <type></type>
       <name>PyramidKeyPointDetector</name>
       <anchorfile>classstira_1_1pyramidapplications_1_1PyramidKeyPointDetector.html</anchorfile>
-      <anchor>a9e896d475e74133f33b75b7d768fcf3a</anchor>
-      <arglist>(image::Pyramid&lt; std::complex&lt; double &gt; &gt; *pPyramid)</arglist>
+      <anchor>aed1af8b22518bba514688785d10bc2ca</anchor>
+      <arglist>(Pyramid&lt; std::complex&lt; double &gt; &gt; *pPyramid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -11639,289 +11633,268 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::PyramidLevel</name>
-    <filename>classstira_1_1image_1_1PyramidLevel.html</filename>
+    <name>stira::imagedata::datastructures::PyramidLevel</name>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</filename>
     <templarg>T</templarg>
     <member kind="function">
       <type></type>
       <name>PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aaacfd0c91c1107e6432f1daa8c24d12c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>acf217864190d52fd8f09439db83ed554</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a7efc90f3a698b6da12749ddedcd681ad</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>aa4d10d18f83d70a0cd16c3d3456eeab6</anchor>
       <arglist>(const PyramidLevel&lt; T &gt; &amp;otherLevel)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>ae0ab14b39ce05441128ab1b1073c3f0f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a2b6349dad9d57b0aa1a62ec8d4ac6516</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; T &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a68c3fa4455e758da6ac35bd80de1177d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>adcd28f4b269b202e1136165994b4597e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfOrientations</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aef1ad87e721ed1bea2665fe94f170679</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a6e2e48f0deeeafe40440a198fc4ddf0e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; T &gt; *</type>
       <name>GetOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a9f83eb1ef37f3b180fbdc2f344eb8937</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a12f5bcb0ee0ca2344fa021c3f4d3ae82</anchor>
       <arglist>(int orientation)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a17918276a0effa75b942c6869845363a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a299af59b4e57806825bf2e6970efa196</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>RemoveOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a783d8bae626ceac5d70339e9eccd6356</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a37c6b7bedaeaa24dd52bcded111b5566</anchor>
       <arglist>(ArrayGrid&lt; T &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ReplaceOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a699d5075ab7328d14e709a68c4a0065e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a06e4ead71782676247a9b96fcdbc7008</anchor>
       <arglist>(int orientationIndex, ArrayGrid&lt; T &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ClearThisLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>ac1f39f3f4a63c59df551ba15eb336a37</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a186faa02f3465243e08d098eac791809</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a7fd4477ef065111f664d70eda5f47b9e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>acbfec133af01fcd2ae7f2d57b43d5790</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>addff7d8b9828c61d05b895bce47f59f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a1b5928e35b4f149eecde04eef75ca471</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportBandsToPGM</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aa73baf025f29957d2ac2893590a3f6da</anchor>
-      <arglist>(std::string token, int level)</arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>PyramidLevel&lt; double &gt;</name>
-    <filename>classstira_1_1image_1_1PyramidLevel.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</filename>
     <member kind="function">
       <type></type>
       <name>PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aaacfd0c91c1107e6432f1daa8c24d12c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>acf217864190d52fd8f09439db83ed554</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a7efc90f3a698b6da12749ddedcd681ad</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>aa4d10d18f83d70a0cd16c3d3456eeab6</anchor>
       <arglist>(const PyramidLevel&lt; double &gt; &amp;otherLevel)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>ae0ab14b39ce05441128ab1b1073c3f0f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a2b6349dad9d57b0aa1a62ec8d4ac6516</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; double &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a68c3fa4455e758da6ac35bd80de1177d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>adcd28f4b269b202e1136165994b4597e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfOrientations</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aef1ad87e721ed1bea2665fe94f170679</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a6e2e48f0deeeafe40440a198fc4ddf0e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a9f83eb1ef37f3b180fbdc2f344eb8937</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a12f5bcb0ee0ca2344fa021c3f4d3ae82</anchor>
       <arglist>(int orientation)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a17918276a0effa75b942c6869845363a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a299af59b4e57806825bf2e6970efa196</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>RemoveOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a783d8bae626ceac5d70339e9eccd6356</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a37c6b7bedaeaa24dd52bcded111b5566</anchor>
       <arglist>(ArrayGrid&lt; double &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ReplaceOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a699d5075ab7328d14e709a68c4a0065e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a06e4ead71782676247a9b96fcdbc7008</anchor>
       <arglist>(int orientationIndex, ArrayGrid&lt; double &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ClearThisLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>ac1f39f3f4a63c59df551ba15eb336a37</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a186faa02f3465243e08d098eac791809</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a7fd4477ef065111f664d70eda5f47b9e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>acbfec133af01fcd2ae7f2d57b43d5790</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>addff7d8b9828c61d05b895bce47f59f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a1b5928e35b4f149eecde04eef75ca471</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportBandsToPGM</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aa73baf025f29957d2ac2893590a3f6da</anchor>
-      <arglist>(std::string token, int level)</arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>PyramidLevel&lt; std::complex&lt; double &gt; &gt;</name>
-    <filename>classstira_1_1image_1_1PyramidLevel.html</filename>
+    <filename>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</filename>
     <member kind="function">
       <type></type>
       <name>PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aaacfd0c91c1107e6432f1daa8c24d12c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>acf217864190d52fd8f09439db83ed554</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a7efc90f3a698b6da12749ddedcd681ad</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>aa4d10d18f83d70a0cd16c3d3456eeab6</anchor>
       <arglist>(const PyramidLevel&lt; std::complex&lt; double &gt; &gt; &amp;otherLevel)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~PyramidLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>ae0ab14b39ce05441128ab1b1073c3f0f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a2b6349dad9d57b0aa1a62ec8d4ac6516</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>PyramidLevel&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>Clone</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a68c3fa4455e758da6ac35bd80de1177d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>adcd28f4b269b202e1136165994b4597e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetNumberOfOrientations</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aef1ad87e721ed1bea2665fe94f170679</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a6e2e48f0deeeafe40440a198fc4ddf0e</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ArrayGrid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>GetOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a9f83eb1ef37f3b180fbdc2f344eb8937</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a12f5bcb0ee0ca2344fa021c3f4d3ae82</anchor>
       <arglist>(int orientation)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>AddOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a17918276a0effa75b942c6869845363a</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a299af59b4e57806825bf2e6970efa196</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>RemoveOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a783d8bae626ceac5d70339e9eccd6356</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a37c6b7bedaeaa24dd52bcded111b5566</anchor>
       <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ReplaceOrientedBand</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a699d5075ab7328d14e709a68c4a0065e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a06e4ead71782676247a9b96fcdbc7008</anchor>
       <arglist>(int orientationIndex, ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pBand)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>ClearThisLevel</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>ac1f39f3f4a63c59df551ba15eb336a37</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a186faa02f3465243e08d098eac791809</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetWidth</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>a7fd4477ef065111f664d70eda5f47b9e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>acbfec133af01fcd2ae7f2d57b43d5790</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>GetHeight</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>addff7d8b9828c61d05b895bce47f59f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1datastructures_1_1PyramidLevel.html</anchorfile>
+      <anchor>a1b5928e35b4f149eecde04eef75ca471</anchor>
       <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>ExportBandsToPGM</name>
-      <anchorfile>classstira_1_1image_1_1PyramidLevel.html</anchorfile>
-      <anchor>aa73baf025f29957d2ac2893590a3f6da</anchor>
-      <arglist>(std::string token, int level)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -11932,8 +11905,8 @@
       <type></type>
       <name>PyramidMaster</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>ae6d6810b738ea638b945efa6173b2112</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
+      <anchor>a6e711924652dfea56447cc119aa738d9</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual</type>
@@ -11971,31 +11944,31 @@
       <arglist>(std::vector&lt; fouriertools::FFTBand * &gt; fftSubbandSet)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetCopyOfReconstructedGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a27e43cec4b96205ad17f31fdf56098ac</anchor>
+      <anchor>aa7356fd2831f49b15aa49e8d8e8183ad</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Pyramid&lt; T &gt; *</type>
+      <type>Pyramid&lt; T &gt; *</type>
       <name>GetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>af8ede842a56181eb8dfb0e627bdeb9d7</anchor>
+      <anchor>a93adf815c72796ce7db3b44f973f6655</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a5d19b440823f5d27ac8f58ad042575a9</anchor>
-      <arglist>(image::Pyramid&lt; T &gt; *pPyramid)</arglist>
+      <anchor>a4b948992313c43b4932715a8f2a46d2c</anchor>
+      <arglist>(Pyramid&lt; T &gt; *pPyramid)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractL0</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a1ad7c3b93141d5355626265488e516b7</anchor>
+      <anchor>a094550f4d78533952639caa547b01037</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12006,10 +11979,10 @@
       <arglist>(common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractL</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>afa27ae512e54cef932b14c280e6774e2</anchor>
+      <anchor>a5312e981dcfa8c683f5b42a15af71f5c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12030,28 +12003,28 @@
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructB0</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a81c1f46269186f0f3c0b8fad7f50aa6f</anchor>
-      <arglist>(image::ArrayGrid&lt; T &gt; *pGridIn, common::NumberMode myMode)</arglist>
+      <anchor>a7b17ef15d26b0756b4772b8a72919cec</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGridIn, common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructL</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a90ad1055fe4db8f1d4acbc485f7fd59f</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>a5659515f58538e61b6469a597e3df510</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructB</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>af695bfe6ca428790c64135bdee26866d</anchor>
-      <arglist>(image::ArrayGrid&lt; T &gt; *pGridIn, common::NumberMode myMode)</arglist>
+      <anchor>a787d4cced6ba6feaf0a5cfd5cfc78067</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGridIn, common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>MergeAndReconstructFFTBands</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a344390a7d585f1f419f6fdb7ed573247</anchor>
+      <anchor>af0ce3e89cbd77da986504b0c27540374</anchor>
       <arglist>(std::vector&lt; fouriertools::FFTBand * &gt; fftSubbandSet)</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12090,24 +12063,24 @@
       <arglist>(fouriertools::FFTBand *pTransferFunction, std::string token, int scale, int orientation, int maxNrOfOrientations, bool isForward)</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Pyramid&lt; T &gt; *</type>
+      <type>Pyramid&lt; T &gt; *</type>
       <name>mpPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a8ad82d06fb660cc8c4ccc5b2b4eee8c4</anchor>
+      <anchor>a87c0313bdf7f17b28cb79e8b39426b43</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a5900905e5f0cc33576923bf09c278077</anchor>
+      <anchor>a6084cfaab8d42621202330bade649f2a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpReconstructedGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a298a0968589e4e4e3e6cf265030c5ef4</anchor>
+      <anchor>a3f430498531dc91fbe47852ee3a54268</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -12146,10 +12119,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpTmpHighpassGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a481760d54d89c67f151756cd371e3ac6</anchor>
+      <anchor>ac6299d3c729a8f0692c25be99a589754</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -12195,8 +12168,8 @@
       <type></type>
       <name>PyramidMaster</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>ae6d6810b738ea638b945efa6173b2112</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
+      <anchor>a6e711924652dfea56447cc119aa738d9</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual</type>
@@ -12234,31 +12207,31 @@
       <arglist>(std::vector&lt; fouriertools::FFTBand * &gt; fftSubbandSet)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetCopyOfReconstructedGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a27e43cec4b96205ad17f31fdf56098ac</anchor>
+      <anchor>aa7356fd2831f49b15aa49e8d8e8183ad</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Pyramid&lt; double &gt; *</type>
+      <type>Pyramid&lt; double &gt; *</type>
       <name>GetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>af8ede842a56181eb8dfb0e627bdeb9d7</anchor>
+      <anchor>a93adf815c72796ce7db3b44f973f6655</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a5d19b440823f5d27ac8f58ad042575a9</anchor>
-      <arglist>(image::Pyramid&lt; double &gt; *pPyramid)</arglist>
+      <anchor>a4b948992313c43b4932715a8f2a46d2c</anchor>
+      <arglist>(Pyramid&lt; double &gt; *pPyramid)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractL0</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a1ad7c3b93141d5355626265488e516b7</anchor>
+      <anchor>a094550f4d78533952639caa547b01037</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12269,10 +12242,10 @@
       <arglist>(common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractL</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>afa27ae512e54cef932b14c280e6774e2</anchor>
+      <anchor>a5312e981dcfa8c683f5b42a15af71f5c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12293,28 +12266,28 @@
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructB0</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a81c1f46269186f0f3c0b8fad7f50aa6f</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, common::NumberMode myMode)</arglist>
+      <anchor>a7b17ef15d26b0756b4772b8a72919cec</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructL</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a90ad1055fe4db8f1d4acbc485f7fd59f</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>a5659515f58538e61b6469a597e3df510</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructB</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>af695bfe6ca428790c64135bdee26866d</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, common::NumberMode myMode)</arglist>
+      <anchor>a787d4cced6ba6feaf0a5cfd5cfc78067</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>MergeAndReconstructFFTBands</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a344390a7d585f1f419f6fdb7ed573247</anchor>
+      <anchor>af0ce3e89cbd77da986504b0c27540374</anchor>
       <arglist>(std::vector&lt; fouriertools::FFTBand * &gt; fftSubbandSet)</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12353,24 +12326,24 @@
       <arglist>(fouriertools::FFTBand *pTransferFunction, std::string token, int scale, int orientation, int maxNrOfOrientations, bool isForward)</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Pyramid&lt; double &gt; *</type>
+      <type>Pyramid&lt; double &gt; *</type>
       <name>mpPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a8ad82d06fb660cc8c4ccc5b2b4eee8c4</anchor>
+      <anchor>a87c0313bdf7f17b28cb79e8b39426b43</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a5900905e5f0cc33576923bf09c278077</anchor>
+      <anchor>a6084cfaab8d42621202330bade649f2a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpReconstructedGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a298a0968589e4e4e3e6cf265030c5ef4</anchor>
+      <anchor>a3f430498531dc91fbe47852ee3a54268</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -12409,10 +12382,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpTmpHighpassGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a481760d54d89c67f151756cd371e3ac6</anchor>
+      <anchor>ac6299d3c729a8f0692c25be99a589754</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -12458,8 +12431,8 @@
       <type></type>
       <name>PyramidMaster</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>ae6d6810b738ea638b945efa6173b2112</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
+      <anchor>a6e711924652dfea56447cc119aa738d9</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual</type>
@@ -12497,31 +12470,31 @@
       <arglist>(std::vector&lt; fouriertools::FFTBand * &gt; fftSubbandSet)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetCopyOfReconstructedGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a27e43cec4b96205ad17f31fdf56098ac</anchor>
+      <anchor>aa7356fd2831f49b15aa49e8d8e8183ad</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::Pyramid&lt; std::complex&lt; double &gt; &gt; *</type>
+      <type>Pyramid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>GetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>af8ede842a56181eb8dfb0e627bdeb9d7</anchor>
+      <anchor>a93adf815c72796ce7db3b44f973f6655</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a5d19b440823f5d27ac8f58ad042575a9</anchor>
-      <arglist>(image::Pyramid&lt; std::complex&lt; double &gt; &gt; *pPyramid)</arglist>
+      <anchor>a4b948992313c43b4932715a8f2a46d2c</anchor>
+      <arglist>(Pyramid&lt; std::complex&lt; double &gt; &gt; *pPyramid)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractL0</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a1ad7c3b93141d5355626265488e516b7</anchor>
+      <anchor>a094550f4d78533952639caa547b01037</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12532,10 +12505,10 @@
       <arglist>(common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>ExtractL</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>afa27ae512e54cef932b14c280e6774e2</anchor>
+      <anchor>a5312e981dcfa8c683f5b42a15af71f5c</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12556,28 +12529,28 @@
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructB0</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a81c1f46269186f0f3c0b8fad7f50aa6f</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn, common::NumberMode myMode)</arglist>
+      <anchor>a7b17ef15d26b0756b4772b8a72919cec</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn, common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructL</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a90ad1055fe4db8f1d4acbc485f7fd59f</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>a5659515f58538e61b6469a597e3df510</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
     <member kind="function" protection="protected">
       <type>fouriertools::FFTBand *</type>
       <name>ReconstructB</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>af695bfe6ca428790c64135bdee26866d</anchor>
-      <arglist>(image::ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn, common::NumberMode myMode)</arglist>
+      <anchor>a787d4cced6ba6feaf0a5cfd5cfc78067</anchor>
+      <arglist>(ArrayGrid&lt; std::complex&lt; double &gt; &gt; *pGridIn, common::NumberMode myMode)</arglist>
     </member>
     <member kind="function" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>MergeAndReconstructFFTBands</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a344390a7d585f1f419f6fdb7ed573247</anchor>
+      <anchor>af0ce3e89cbd77da986504b0c27540374</anchor>
       <arglist>(std::vector&lt; fouriertools::FFTBand * &gt; fftSubbandSet)</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -12616,24 +12589,24 @@
       <arglist>(fouriertools::FFTBand *pTransferFunction, std::string token, int scale, int orientation, int maxNrOfOrientations, bool isForward)</arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Pyramid&lt; std::complex&lt; double &gt; &gt; *</type>
+      <type>Pyramid&lt; std::complex&lt; double &gt; &gt; *</type>
       <name>mpPyramid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a8ad82d06fb660cc8c4ccc5b2b4eee8c4</anchor>
+      <anchor>a87c0313bdf7f17b28cb79e8b39426b43</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a5900905e5f0cc33576923bf09c278077</anchor>
+      <anchor>a6084cfaab8d42621202330bade649f2a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpReconstructedGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a298a0968589e4e4e3e6cf265030c5ef4</anchor>
+      <anchor>a3f430498531dc91fbe47852ee3a54268</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -12672,10 +12645,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpTmpHighpassGrid</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidMaster.html</anchorfile>
-      <anchor>a481760d54d89c67f151756cd371e3ac6</anchor>
+      <anchor>ac6299d3c729a8f0692c25be99a589754</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -12722,8 +12695,8 @@
       <type></type>
       <name>PyramidReal</name>
       <anchorfile>classstira_1_1steerable_1_1PyramidReal.html</anchorfile>
-      <anchor>a91f13c3ff69d1f8762a8c54a680e7289</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
+      <anchor>a1da82ca06c4b29aecdfd4e3f6c7e53c8</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, int myNrScales, int myNrOrientations)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -12980,8 +12953,8 @@
       <type></type>
       <name>RegistrationWrapper</name>
       <anchorfile>classstira_1_1registration_1_1RegistrationWrapper.html</anchorfile>
-      <anchor>a7a98bbc71588e3f4bc3d15e1783d2694</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pMasterGrid, image::ArrayGrid&lt; double &gt; *pSlaveGrid)</arglist>
+      <anchor>a6302fa2e97f6943b9131322cfdfdee5f</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pMasterGrid, ArrayGrid&lt; double &gt; *pSlaveGrid)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -12998,10 +12971,10 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetRegisteredGrid</name>
       <anchorfile>classstira_1_1registration_1_1RegistrationWrapper.html</anchorfile>
-      <anchor>a6130285e92ced096a6f3994a4fc76015</anchor>
+      <anchor>a9915241daabd5a6bb739dc78815b90b4</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -13037,18 +13010,18 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunMSRCR</name>
       <anchorfile>classstira_1_1contrastenhance_1_1Retinex.html</anchorfile>
-      <anchor>a71c0f7611ac39ecaa1329604415e3647</anchor>
-      <arglist>(image::Image *pSourceImage, double lowerFraction, double upperFraction, bool applyColorCorrection=true)</arglist>
+      <anchor>af3c076f321afbe8f6109515c32ef9496</anchor>
+      <arglist>(Image *pSourceImage, double lowerFraction, double upperFraction, bool applyColorCorrection=true)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunMSR</name>
       <anchorfile>classstira_1_1contrastenhance_1_1Retinex.html</anchorfile>
-      <anchor>a38c06a7ee054f155928d961612168377</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInGrid, double lowerFraction, double upperFraction)</arglist>
+      <anchor>ad3cb7f66cd94d8b4bedf0da6ede78d21</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInGrid, double lowerFraction, double upperFraction)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -13059,15 +13032,15 @@
       <type></type>
       <name>RichardsonLucyDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1RichardsonLucyDeconvolve.html</anchorfile>
-      <anchor>a33606e259578bba314fee33da5e3a5fc</anchor>
-      <arglist>(image::Image *pDegradedImage, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20)</arglist>
+      <anchor>a73ff7048b683d0032b4116c93d2781dc</anchor>
+      <arglist>(Image *pDegradedImage, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>RichardsonLucyDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1RichardsonLucyDeconvolve.html</anchorfile>
-      <anchor>a0556b56bf3515f887c058b9d8b67d3ef</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20)</arglist>
+      <anchor>ab62cd1a411733d201a7b44b5f45a4d33</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -13283,50 +13256,50 @@
       <type>static bool</type>
       <name>RunRow</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>a07a3df7c82505ba89b912dadaa1964fb</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInput, image::ArrayGrid&lt; double &gt; *pOutput, double *filtx, int filterLengthX, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>a4dd84d18e8a2c0ff495daf0923909eb6</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInput, ArrayGrid&lt; double &gt; *pOutput, double *filtx, int filterLengthX, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static bool</type>
       <name>RunColumn</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>abed1e4595ed4776088be3317347c3435</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInputBand, image::ArrayGrid&lt; double &gt; *pOutputBand, double *filty, int filterLengthY, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>ade6eda6394bd2c1b3ea1719a9e99d484</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInputBand, ArrayGrid&lt; double &gt; *pOutputBand, double *filty, int filterLengthY, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunRowColumn</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>aa16f8ff049f3d255a32f956f529ac8e5</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>a2f0b8b0d1000c38dd60c00e68132db94</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunColumnRow</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>a7cc708d1e38d53537bb53f69c9402d12</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>a4b56165f3167d906fcd92af95317a11f</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunRowColumn</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>a0a53600a48703ccb3fc53ee07848f0a1</anchor>
-      <arglist>(image::Image *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>a0a8a25a1870ce35980da27fb9595c6e0</anchor>
+      <arglist>(Image *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::Image *</type>
+      <type>static Image *</type>
       <name>RunColumnRow</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>a7718a9cf8f405dbf97445997245db06b</anchor>
-      <arglist>(image::Image *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>ad08cc124abe255e1a1f0c90269fb9bbf</anchor>
+      <arglist>(Image *pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static void</type>
       <name>BasicFilter1D</name>
       <anchorfile>classstira_1_1filter_1_1SeparableFilter.html</anchorfile>
-      <anchor>ab77c7860b47964c43015ef158ca1345e</anchor>
-      <arglist>(double *pInputArray1D, double *pFilterKernel, double *pOutputArray1D, int inputLength, int filterLength, image::GridExtender&lt; double &gt;::ExtensionType myType=image::GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
+      <anchor>a8b84db40822d65e912b751577a39cc7f</anchor>
+      <arglist>(double *pInputArray1D, double *pFilterKernel, double *pOutputArray1D, int inputLength, int filterLength, GridExtender&lt; double &gt;::ExtensionType myType=GridExtender&lt; double &gt;::EXTEND_MIRROR)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -13400,8 +13373,8 @@
       <type></type>
       <name>Spatiogram</name>
       <anchorfile>classstira_1_1histogram_1_1Spatiogram.html</anchorfile>
-      <anchor>a08d9ee4c681dbef257b23c04339935eb</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGrid, int binsize, image::ArrayGrid&lt; bool &gt; *pMaskGrid=0)</arglist>
+      <anchor>ab643a2e7853629b8f09fa2eb9af834a8</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGrid, int binsize, ArrayGrid&lt; bool &gt; *pMaskGrid=0)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -13425,10 +13398,10 @@
       <arglist>(int binNr)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetCovarianceMatrix</name>
       <anchorfile>classstira_1_1histogram_1_1Spatiogram.html</anchorfile>
-      <anchor>ac1bcf31b079c77a3cb18bdaf145f3bf9</anchor>
+      <anchor>a71b8207d232d1cc9148a693f36ba0643</anchor>
       <arglist>(int binNr)</arglist>
     </member>
     <member kind="function">
@@ -13522,11 +13495,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; bool &gt; *</type>
+      <type>ArrayGrid&lt; bool &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1imageanalysis_1_1StegerLineDetector.html</anchorfile>
-      <anchor>a740f0ae588e57a980bc139c6eeeca2dc</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn, double sigmaSmooth, double lowerThreshold, double higherThreshold, bool isModeLight)</arglist>
+      <anchor>afb6499cfdb23cb2f068334851cd76fcd</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn, double sigmaSmooth, double lowerThreshold, double higherThreshold, bool isModeLight)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -13720,8 +13693,8 @@
       <type>virtual bool</type>
       <name>Decompose</name>
       <anchorfile>classstira_1_1wavelet_1_1SubsampledTransform.html</anchorfile>
-      <anchor>a7c5de23d7608c8e34e5dac8dc4e0690d</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)</arglist>
+      <anchor>a1417f552ceeb079b1dd75d2c58b21551</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)</arglist>
     </member>
     <member kind="function" virtualness="virtual">
       <type>virtual bool</type>
@@ -13846,18 +13819,18 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; T &gt; *</type>
+      <type>ArrayGrid&lt; T &gt; *</type>
       <name>RunThinning</name>
       <anchorfile>classstira_1_1imageanalysis_1_1Thinning.html</anchorfile>
-      <anchor>ae0620d2b8ac227d3b4c7d41dbc4d5b40</anchor>
-      <arglist>(image::ArrayGrid&lt; T &gt; *pGridIn, common::RectangularROI&lt; int &gt; rroi, T value)</arglist>
+      <anchor>a8c8467501e53e44746e1ae864067a156</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGridIn, common::RectangularROI&lt; int &gt; rroi, T value)</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; T &gt; *</type>
+      <type>ArrayGrid&lt; T &gt; *</type>
       <name>RunPruning</name>
       <anchorfile>classstira_1_1imageanalysis_1_1Thinning.html</anchorfile>
-      <anchor>a5b93625d2d0c3ebb7578278b5ce53d72</anchor>
-      <arglist>(image::ArrayGrid&lt; T &gt; *pGridIn, common::RectangularROI&lt; int &gt; rroi, T value)</arglist>
+      <anchor>ae8734c56e5b02c0ff773fa88d8d4adb8</anchor>
+      <arglist>(ArrayGrid&lt; T &gt; *pGridIn, common::RectangularROI&lt; int &gt; rroi, T value)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -13868,15 +13841,15 @@
       <type></type>
       <name>TikhonovMillerDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1TikhonovMillerDeconvolve.html</anchorfile>
-      <anchor>a8329dcedbf775f809ffa0b7f9a5bda17</anchor>
-      <arglist>(image::Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
+      <anchor>a451e6c904bed8b80de449a0e758145fc</anchor>
+      <arglist>(Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>TikhonovMillerDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1TikhonovMillerDeconvolve.html</anchorfile>
-      <anchor>a650b3905aec32add9fbf6ec531d12e3f</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF, int maxNrOfIterations=20)</arglist>
+      <anchor>a303deb1c7192c1eb9ff6fbc0af6f3220</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -13939,14 +13912,14 @@
       <arglist>(int width, int height, double &amp;xFactor, double &amp;yFactor)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateHighPassTransferFunction</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
       <anchor>a3b1cf202002448ea21bae9c1a30cc640</anchor>
       <arglist>(int width, int height, double x1, double x2)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateLowPassTransferFunction</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
       <anchor>a88935685171efeca527b6724c5c35243</anchor>
@@ -13967,336 +13940,336 @@
       <arglist>(FFTBand *inoutGrid, int nrBands)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateLogRadiusBand</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
       <anchor>ab8242b4a58385999af592d4d313b9431</anchor>
       <arglist>(int width, int height, double centerFrequency, double bandWidth)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateGaussianAngularBand</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
       <anchor>a065c2679d663f0dc5b07123a03118181</anchor>
       <arglist>(int width, int height, double centerAngle, double angleSpread)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateLogGaborBandTransferFunction</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
       <anchor>aed54ab657229b20fd6bf65476c4872d3</anchor>
       <arglist>(int width, int height, double centerFrequency, double radialWidth, double centerAngle, double angleSpread)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>GenerateAxisSuppressTransferFunction</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
       <anchor>ab27461c7280dca12079965308bc06448</anchor>
       <arglist>(int width, int height, int axisWidth, double x1, double x2)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ConvertTransferFunctionToFilterKernel</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
-      <anchor>a36d83384f01ecd066f447103a3d2bb7a</anchor>
+      <anchor>a0d07e9e4b0ef63a8100d24ca2d05c834</anchor>
       <arglist>(FFTBand *pTransferFunction, common::NumberMode mode=common::MODE_REAL)</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>ConvertTransferFunctionToFilterKernel</name>
       <anchorfile>classstira_1_1fouriertools_1_1TransferFunctionGenerator.html</anchorfile>
-      <anchor>ab6fbd023ccd83b46b5bf8682c915384b</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pTransferFunction, common::NumberMode mode=common::MODE_REAL)</arglist>
+      <anchor>a26078ddf7d2b3be25f43ba9288faf3e3</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pTransferFunction, common::NumberMode mode=common::MODE_REAL)</arglist>
     </member>
   </compound>
   <compound kind="class">
-    <name>stira::image::TransformColorSpace</name>
-    <filename>classstira_1_1image_1_1TransformColorSpace.html</filename>
+    <name>stira::imagedata::color::TransformColorSpace</name>
+    <filename>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</filename>
     <member kind="function">
       <type></type>
       <name>TransformColorSpace</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>adc321a183b630566d57630d1f01d29a0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a70e140a7a415be6f7e3d04fe71c45ea6</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>~TransformColorSpace</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>adc655d6c70b869ecc15924e7104f2b29</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a110a396d969504f5ed8a59be1bf34396</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetMaxColorValue</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a8fe1a0fdf4a8fb847ae53113573f84f2</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>aed81fae15987a4b4ef5da23fc4c39e54</anchor>
       <arglist>(double maxColorValue)</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>SetReferenceWhite</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a5c69ad13cadc2e75352c6838072ce4b7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ac0680b5f4a73ec195a12197fd6411894</anchor>
       <arglist>(ColorValue referenceWhite)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>GetReferenceWhite</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a45d3aa91ca3bf7b1c47931f617c1cd90</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a94e3c41853dcde65abedc89d1b649289</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>sRGBtoXYZ</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>afb16d9b62d37f9150343137e6f7363bd</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a64afa6cc3b7d70d0119d104230f73163</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>XYZtosRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ac17bdbf613267546317b78f2116b2b4e</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a9d296169a20b89f98962a32739daa63f</anchor>
       <arglist>(ColorValue xyzValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>AdobeRGBtoXYZ</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a5d756d79e83eec2dcc84726596f89fea</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a77650884066931a5ff4da426de8fcc0d</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>XYZtoAdobeRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ab9dfe96bd5f59c236844269936aeb943</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a412c4f31510847b90466c75cbec79830</anchor>
       <arglist>(ColorValue xyzValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>sRGBtoLuv</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>aa215b7832b8478b89c41d1518f59ef97</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a984bfc2305ee4e22bb01ca01802106ef</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LuvtosRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>afcd8a4668a5222ae40d3fc367155ebc8</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a6e49d6f1db9e064ff1bc799fd5a5d44a</anchor>
       <arglist>(ColorValue luvValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>XYZtoLuv</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a8c4e769a4c5cd3a7a2bec3d2a951bd1b</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a61a7a1c383f47d1a7cf91bebabce3341</anchor>
       <arglist>(ColorValue xyzValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LuvtoXYZ</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a7ab2dcb175740952efe4fb2edc32ecbe</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>acfb9379d1f7ce8cd43df4568c1d870ec</anchor>
       <arglist>(ColorValue luvValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>sRGBtoLab</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a05da57200a29ee82b159ad01ec0f22a0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a74a59b2abf3847aae25e7c56ac6f18cb</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LabtosRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a5570d30c857ecc82c28c9ffa6d4b01cd</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a42c8c0f744acd3898cc8e853714116d9</anchor>
       <arglist>(ColorValue luvValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>AdobeRGBtoLab</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ac4c4a1d1aafa93f3e1e58dfefa70da73</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a08696101472380a5ae17530e04c8e42d</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LabtoAdobeRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a9ad6581da0f2f6c0545cb0fd52117cad</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a56d5ed3b31dad07ead11837d21785687</anchor>
       <arglist>(ColorValue luvValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>XYZtoLab</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a918276586418dd731083301066a5a423</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ac54aa3533795e4ad030d4c3722182e87</anchor>
       <arglist>(ColorValue xyzValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LabtoXYZ</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>abd7bd51a55160ed763eab54bf40e5cc0</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a5a62d0cdf3c53549c34bce987e6d2c4c</anchor>
       <arglist>(ColorValue labValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>RGBtoCMY</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a2b3be0e965c7c1fd3da1ac3dfb6fde7f</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a3bda9309d0c379709a4e944d5b3b92c8</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>CMYtoRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a6a5481a311382831e7c731f948fd3ae7</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ad357196eb70dc59c50ca53409a628651</anchor>
       <arglist>(ColorValue cmyValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>RGBtoHSV</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a1db1146c8f80248328b5b51da3e2f980</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ac906fe996c782d9e33c8450d6befd96f</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>HSVtoRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ab776da923580fb52be743fe9e48941f6</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a5234740d4d4eca2cc9801ee2a2cb50db</anchor>
       <arglist>(ColorValue hsvValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>RGBtoHSI</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a9c54133cb38982b0afec4dad2fbfd7ff</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a9eae9051d452dd215134857b78cdf057</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>HSItoRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a1625163b89319982a44a21956604f16c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>aca8d4da87f6204fb3e84601ac8e99787</anchor>
       <arglist>(ColorValue hsiValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>RGBtoHSL</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ad63754191646809a5aaf0ee999b2a295</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a55656406287c6d43c405f959e632dac5</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>HSLtoRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>aeab5dbb3e677d6d2321fcbf2a5f2eca3</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a4647081a749a73fd0a86f3f32be28381</anchor>
       <arglist>(ColorValue hslValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LabtoLCH</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>aa4764fa7eb3d5caa4b50e5066a126e19</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a8306b373c20a9aecbcfbf18d761bdf64</anchor>
       <arglist>(ColorValue labValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>LCHtoLab</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a05f91827089ab817ecb7c275c418cb14</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a42b0550eb73bb162b03d59234ab4ae62</anchor>
       <arglist>(ColorValue lchValue)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>SpectralValuesToXYZ</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a97402fda2b7f91ed65b63ec1b7ab52a5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>aaf75d51b645d198053ac64cfacb3aec5</anchor>
       <arglist>(double *pSpectralValuesArray, int wavelengthMin, int wavelengthMax)</arglist>
     </member>
     <member kind="function">
       <type>ColorValue</type>
       <name>SpectralValuesToLab</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ae63dc9e6750f3c963a2ec126ba21a9d5</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>af432c5d71322ec8b243fc23c482ceaba</anchor>
       <arglist>(double *pSpectralValuesArray, int wavelengthMin, int wavelengthMax)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>DeltaE1976</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>adb02ad05b197de50d88be4a6a395df20</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>afd3bef37536f0a908b025e493ba252f7</anchor>
       <arglist>(ColorValue lab1, ColorValue lab2)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>DeltaE1994</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>aeaa039551a81434f31571fc25aa99f88</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a33694c488b63eb98db474aa0a7f189f0</anchor>
       <arglist>(ColorValue lab1, ColorValue lab2)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>DeltaE2000</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>aaec1419b886d1e8dcb4681f3fa85c208</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a64537eae48dc8c18111a72882c4f7f54</anchor>
       <arglist>(ColorValue lab1, ColorValue lab2)</arglist>
     </member>
     <member kind="function">
       <type>double</type>
       <name>DeltaE2000</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ab67e9eff53fbe805ad8332a5c18e3800</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ac19183d59349a3404be3d6053d87e221</anchor>
       <arglist>(double *pSpectralValues1, double *pSpectralValues2, int wavelengthMin, int wavelengthMax)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ColorValue</type>
       <name>RGBtoYUV</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a2c705f2a9a6763a1439792bef29c78bb</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ad16ee3bf1d2f9a6e4cd1cc1b0d93a117</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ColorValue</type>
       <name>YUVtoRGB</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>aa903e245c181d6fe93e01d5be9006476</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>ac3f8195e23e2c172b0cb2d5f9b3f189e</anchor>
       <arglist>(ColorValue yuvValue)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static double</type>
       <name>RGBToGray</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ac444f12f279d485ce73c5fd7de9cb1a9</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a242b8a2b0ad538ea0eb0366489998bd8</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ColorValue</type>
       <name>RGBToSepia</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>abf585cffdc136a48655b4df80c45d33c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a4ba8675296f56872335f9c1903ed38e7</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ColorValue</type>
       <name>RGBToSepia2</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>a0403b0aa24cabc0dd9af0db1f6b7fc0d</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>aed15ca79a5a7696d3e828064b23962ef</anchor>
       <arglist>(ColorValue rgbValue)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static ColorValue</type>
       <name>RGBToSepia2</name>
-      <anchorfile>classstira_1_1image_1_1TransformColorSpace.html</anchorfile>
-      <anchor>ad09cba7bd3369dfd92a167147ad76f9c</anchor>
+      <anchorfile>classstira_1_1imagedata_1_1color_1_1TransformColorSpace.html</anchorfile>
+      <anchor>a23dfee915d179957c0a4ee68aee30a7d</anchor>
       <arglist>(double grayValue)</arglist>
     </member>
   </compound>
@@ -14359,15 +14332,15 @@
       <type></type>
       <name>VanCittertLandweberDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1VanCittertLandweberDeconvolve.html</anchorfile>
-      <anchor>ab84db4cecb34d88ff2a8c1e4bf36943c</anchor>
-      <arglist>(image::Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
+      <anchor>a16e9bec09d42115ed2a827c166e60de6</anchor>
+      <arglist>(Image *pDegradedImage, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>VanCittertLandweberDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1VanCittertLandweberDeconvolve.html</anchorfile>
-      <anchor>ae143efbb2dd9a88d3c0edbaddc111740</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF, int maxNrOfIterations=20)</arglist>
+      <anchor>adf539d6b1b05b71f079c901577286656</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF, int maxNrOfIterations=20)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -14568,11 +14541,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; int &gt; *</type>
+      <type>ArrayGrid&lt; int &gt; *</type>
       <name>Run</name>
       <anchorfile>classstira_1_1imageanalysis_1_1WatershedToboggan.html</anchorfile>
-      <anchor>aa2a6e3100751b4da7287b64ca018290c</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pGridIn)</arglist>
+      <anchor>ac15a9b9fe2531d56733a2bee62435fd1</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pGridIn)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -14596,14 +14569,14 @@
       <type>virtual bool</type>
       <name>Decompose</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>a98b61644be6ca437c047fa52100f0d78</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)=0</arglist>
+      <anchor>ade4334fad44c2701d11e9630fdbf019a</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales)=0</arglist>
     </member>
     <member kind="function">
-      <type>image::Pyramid&lt; double &gt; *</type>
+      <type>Pyramid&lt; double &gt; *</type>
       <name>GetPyramid</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>aafe2b86a900cc4d4f9002e0a041849e2</anchor>
+      <anchor>ab75382cafef32eb2a64bea04a3e3aaf2</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" virtualness="pure">
@@ -14614,10 +14587,10 @@
       <arglist>(double threshold=0.0)=0</arglist>
     </member>
     <member kind="function">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>GetCopyOfReconstructedGrid</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>a79aef612514c4593f63d313f61c2821a</anchor>
+      <anchor>a874075d49e873d0ae2f3d803e5705b32</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -14638,8 +14611,8 @@
       <type>void</type>
       <name>Initialize</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>a2e563c5a9592a17ac600cebf2d1004df</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales, int nrOrientations=3, bool createBands=false, bool isSubsampled=true, bool isLowestScaleSubsampled=true)</arglist>
+      <anchor>a89078b790a7d7b744e894799209b8aca</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pSourceGrid, int nrScales, int nrOrientations=3, bool createBands=false, bool isSubsampled=true, bool isLowestScaleSubsampled=true)</arglist>
     </member>
     <member kind="variable" protection="protected">
       <type>int</type>
@@ -14656,17 +14629,17 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::Pyramid&lt; double &gt; *</type>
+      <type>Pyramid&lt; double &gt; *</type>
       <name>mpPyramid</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>a39c00d10bb745188c7e926efd955139c</anchor>
+      <anchor>acb5ef67a8a967e8989efd2ccc27286cf</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpDecomposeReconstructGrid</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>afb96b198a08dc2b01fd2b43fd0a1f479</anchor>
+      <anchor>ad4beb93cf15038e103ece7b64ced5250</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -14684,10 +14657,10 @@
       <arglist></arglist>
     </member>
     <member kind="variable" protection="protected">
-      <type>image::ArrayGrid&lt; double &gt; *</type>
+      <type>ArrayGrid&lt; double &gt; *</type>
       <name>mpSourceGrid</name>
       <anchorfile>classstira_1_1wavelet_1_1Wavelet.html</anchorfile>
-      <anchor>a45aac054c5d8df58f8166374629b0b90</anchor>
+      <anchor>ae470b732e1f81b828e8a557e04b71998</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -14770,15 +14743,15 @@
       <type></type>
       <name>WienerDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1WienerDeconvolve.html</anchorfile>
-      <anchor>ae46b33068efb242cd55c0ac195a51ba3</anchor>
-      <arglist>(image::Image *pDegradedImage)</arglist>
+      <anchor>a216972ed6a6dbd7dedd0280d663b5d79</anchor>
+      <arglist>(Image *pDegradedImage)</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>WienerDeconvolve</name>
       <anchorfile>classstira_1_1deconvolve_1_1WienerDeconvolve.html</anchorfile>
-      <anchor>a94b1307b644d195fe24fb912d3c5d6ca</anchor>
-      <arglist>(image::Image *pDegradedImage, image::Image *pPSF)</arglist>
+      <anchor>a57769dac922a7d4dc329bce56cae740f</anchor>
+      <arglist>(Image *pDegradedImage, Image *pPSF)</arglist>
     </member>
     <member kind="function">
       <type></type>
@@ -14795,11 +14768,11 @@
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
-      <type>static image::ArrayGrid&lt; double &gt; *</type>
+      <type>static ArrayGrid&lt; double &gt; *</type>
       <name>RunSingleband</name>
       <anchorfile>classstira_1_1deconvolve_1_1WienerDeconvolve.html</anchorfile>
-      <anchor>a1a446af4a58c849665319c3ca12283df</anchor>
-      <arglist>(image::ArrayGrid&lt; double &gt; *pInGrid, image::ArrayGrid&lt; double &gt; *pInPSF, double noiseLevel)</arglist>
+      <anchor>aa7d9ff8d8d46d7198c8425b282bdff61</anchor>
+      <arglist>(ArrayGrid&lt; double &gt; *pInGrid, ArrayGrid&lt; double &gt; *pInPSF, double noiseLevel)</arglist>
     </member>
   </compound>
   <compound kind="namespace">

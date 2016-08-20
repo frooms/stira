@@ -7,7 +7,8 @@
 
 using namespace std;
 using namespace stira;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 int main(int argc, char** argv)
 {

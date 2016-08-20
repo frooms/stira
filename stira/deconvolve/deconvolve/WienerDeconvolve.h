@@ -20,6 +20,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 /** \brief child class for computing wiener deconvolution
   */
 class WienerDeconvolve: public DeconvolveMaster
@@ -28,12 +30,12 @@ public:
    
    /** \brief constructor 
      * \param pDegradedImage the degraded input image for restoration*/
-   WienerDeconvolve( image::Image* pDegradedImage );
+   WienerDeconvolve( Image* pDegradedImage );
    
    /** \brief constructor  
      * \param pDegradedImage the degraded input image for restoration
      * \param pPSF the Point Spread Function*/
-   WienerDeconvolve(image::Image* pDegradedImage, image::Image* pPSF );
+   WienerDeconvolve( Image* pDegradedImage, Image* pPSF );
    
    /** \brief destructor */
    ~WienerDeconvolve( );
@@ -47,7 +49,7 @@ public:
      * \param pInGrid band to be retsored
      * \param pInPSF Point Spread Function for this band
      * \param noiseLevel the noise level */
-   static image::ArrayGrid<double>* RunSingleband( image::ArrayGrid<double>* pInGrid, image::ArrayGrid<double>* pInPSF, double noiseLevel );
+   static ArrayGrid<double>* RunSingleband( ArrayGrid<double>* pInGrid, ArrayGrid<double>* pInPSF, double noiseLevel );
 
 private:
    /** \brief checks if all inputs are available*/
@@ -57,7 +59,7 @@ private:
      * \param pFFTInputGrid Fourier transformed degraded data
      * \param pFFTPSFGrid Fourier transformed PSF
      * \param noiseLevel the noise level */
-   static image::ArrayGrid<double>* EstimateIdealSpectrum( fouriertools::FFTBand* pFFTInputGrid, fouriertools::FFTBand* pFFTPSFGrid, double noiseLevel );
+   static ArrayGrid<double>* EstimateIdealSpectrum( fouriertools::FFTBand* pFFTInputGrid, fouriertools::FFTBand* pFFTPSFGrid, double noiseLevel );
 };
 
 }

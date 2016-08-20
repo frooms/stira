@@ -19,6 +19,8 @@
 
 namespace stira {
 namespace imageanalysis {
+
+using namespace imagedata;
    
 /** \brief Steger line detector  
   * article{ steger98line,
@@ -55,7 +57,7 @@ public:
      * \param isModeLight true for bright lines on dark background; false for dark lines on a bright background
      * \return grid where lines have value true and background has value false
      */
-   image::ArrayGrid<bool>* Run( image::ArrayGrid<double>* pGridIn, double sigmaSmooth, double lowerThreshold, double higherThreshold, bool isModeLight );
+   ArrayGrid<bool>* Run( ArrayGrid<double>* pGridIn, double sigmaSmooth, double lowerThreshold, double higherThreshold, bool isModeLight );
 
 private:
    /** \brief solves eigenvalues of symmetrical matrix

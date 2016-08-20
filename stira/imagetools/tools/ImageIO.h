@@ -23,7 +23,9 @@
 #include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /**
  * \brief A class to hold spectral bands of an image

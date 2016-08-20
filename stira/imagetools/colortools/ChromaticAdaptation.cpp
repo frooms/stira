@@ -14,7 +14,7 @@
 #include "ChromaticAdaptation.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 ChromaticAdaptation::ChromaticAdaptation( ColorValue sourceReferenceWhite, ColorValue destinationReferenceWhite, ChromaticAdaptationType myType )
 {

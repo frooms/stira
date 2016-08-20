@@ -16,7 +16,7 @@
 #include "GeometricTransform.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief class to translate an image */
 class Translation : public GeometricTransform

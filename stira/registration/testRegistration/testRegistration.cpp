@@ -15,7 +15,8 @@
 #include <string>
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::registration;
 
 int main(int argc, char *argv[])

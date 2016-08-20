@@ -9,6 +9,8 @@
 namespace stira {
 namespace imageanalysis {
 
+using namespace imagedata;
+
 /** \brief Class to compute Image descriptor based on Histogram of Orientated Gradients (HOG) for gray-level images
   * References: - https://software.intel.com/en-us/node/529070
   *             - http://stackoverflow.com/questions/32417531/hog-what-is-done-in-the-contrast-normalization-step
@@ -24,7 +26,7 @@ public:
       * \param cellWidth width of single cell in HOG
       * \param cellHeight height of single cell in HOG
       * \param nrBins number of bins for orientation histogram in single cell ;*/
-    HOG( image::Image* pImage, common::RectangularROI<int> myRoi, int cellWidth, int cellHeight, int nrBins );
+    HOG( Image* pImage, common::RectangularROI<int> myRoi, int cellWidth, int cellHeight, int nrBins );
 
     /** \brief computes the HOG descriptor for the given ROI image
       *
@@ -40,9 +42,9 @@ public:
       * \param scaleFactor factor to scale whole visualization grid
       * \param viz_factor factor to stretch the line of the HOG per cell with for easier visualization
       */
-    image::Image* VisualizeHogDescriptor(        std::vector<double>& descriptorValues,
-                                                 int winWidth, int winHeight,
-                                                 double scaleFactor, double viz_factor);
+    Image* VisualizeHogDescriptor( std::vector<double>& descriptorValues,
+                                   int winWidth, int winHeight,
+                                   double scaleFactor, double viz_factor);
 private:
 
     /** \brief computes the HOG descriptor for a single cell
@@ -51,17 +53,17 @@ private:
       * \param idCellX counter of current cell in x direction
       * \param idCellY counter of current cell in y direction
       */
-    std::vector<double> ComputeHogDescriptorSingleCell( image::OrientationGrid* pOrientations, int idCellX, int idCellY );
+    std::vector<double> ComputeHogDescriptorSingleCell( OrientationGrid* pOrientations, int idCellX, int idCellY );
 
     /** \brief computes angles and magnitudes of image gradients
       * \return grid with gradient magnitude and angle for all image locations
       */
-    image::OrientationGrid* ComputeOrientations( );
+    OrientationGrid* ComputeOrientations( );
 
-    image::Image* mpImage;   ///< input image
+    Image* mpImage;   ///< input image
     common::RectangularROI<int> mRoi;   ///< rectangular ROI (currently unused; HOG descriptor is computed for whole image)
     int mCellWidth;   ///< width of a singkle cell
-    int mCellHeight;   ///< height of a single cell
+    int mCellHeight;  ///< height of a single cell
     int mNrBins;   ///< number of bins to quantize the orientation histogram in
 };
 }

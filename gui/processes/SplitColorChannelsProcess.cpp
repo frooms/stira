@@ -16,8 +16,9 @@
 #include "../../stira/imagetools/tools/ImageTools.h"
 #include "../../stira/imagedata/simpletools/GridStatistics.h"
 
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
-using namespace stira::image;
 
 SplitColorChannelsProcess::SplitColorChannelsProcess( Image* pImage ) : Process( pImage )
 {
@@ -33,28 +34,28 @@ SplitColorChannelsProcess::~SplitColorChannelsProcess()
 
 //--------------------------------------------------------
 
-void SplitColorChannelsProcess::SetColorSpace( stira::image::ColorType colorSpace )
+void SplitColorChannelsProcess::SetColorSpace( ColorType colorSpace )
 {
    mColorSpace = colorSpace;
 }
 
 //--------------------------------------------------------
 
-stira::image::ColorType SplitColorChannelsProcess::GetColorSpace( )
+ColorType SplitColorChannelsProcess::GetColorSpace( )
 {
    return mColorSpace;
 }
 
 //--------------------------------------------------------
 
-stira::image::ColorValue SplitColorChannelsProcess::GetReferenceIlluminant()
+ColorValue SplitColorChannelsProcess::GetReferenceIlluminant()
 {
    return mReferenceIlluminant;
 }
 
 //--------------------------------------------------------
 
-void SplitColorChannelsProcess::SetReferenceIlluminant( stira::image::ColorValue referenceIlluminant )
+void SplitColorChannelsProcess::SetReferenceIlluminant( ColorValue referenceIlluminant )
 {
    mReferenceIlluminant = referenceIlluminant;
 }
@@ -63,13 +64,13 @@ void SplitColorChannelsProcess::SetReferenceIlluminant( stira::image::ColorValue
 
 void SplitColorChannelsProcess::run()
 {
-   stira::image::Image* pOutImage = mpImage->Clone(); // ownership of pOutImage is transfered to separate band images
+   Image* pOutImage = mpImage->Clone(); // ownership of pOutImage is transfered to separate band images
    int nrbands = pOutImage->GetNumberOfBands();
    std::string bandID[3];
    
    switch ( mColorSpace )
    {
-      case stira::image::TYPE_CMY:
+      case TYPE_CMY:
       {
          pOutImage->RGBToCMY( );
          bandID[0] = std::string("C");
@@ -77,7 +78,7 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("Y");
          break;
       }
-      case stira::image::TYPE_YUV:
+      case TYPE_YUV:
       {
          pOutImage->RGBToYUV( );
          bandID[0] = std::string("Y");
@@ -85,7 +86,7 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("V");
          break;
       }
-      case stira::image::TYPE_HSV:
+      case TYPE_HSV:
       {
          pOutImage->RGBToHSV( );
          bandID[0] = std::string("H");
@@ -93,7 +94,7 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("V");
          break;
       }
-      case stira::image::TYPE_HSI:
+      case TYPE_HSI:
       {
          pOutImage->RGBToHSI( );
          bandID[0] = std::string("H");
@@ -101,7 +102,7 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("I");
          break;
       }
-      case stira::image::TYPE_XYZ:
+      case TYPE_XYZ:
       {
          pOutImage->sRGBToXYZ( mReferenceIlluminant );
          bandID[0] = std::string("X");
@@ -109,7 +110,7 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("Z");
          break;
       }
-      case stira::image::TYPE_LAB:
+      case TYPE_LAB:
       {
          pOutImage->sRGBToLab( mReferenceIlluminant );
          bandID[0] = std::string("L");
@@ -117,7 +118,7 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("B");
          break;
       }
-      case stira::image::TYPE_LUV:
+      case TYPE_LUV:
       {
          pOutImage->sRGBToLuv( mReferenceIlluminant );
          bandID[0] = std::string("L");
@@ -125,8 +126,8 @@ void SplitColorChannelsProcess::run()
          bandID[2] = std::string("V");
          break;
       }
-      case stira::image::TYPE_UNKNOWN:
-      case stira::image::TYPE_RGB:
+      case TYPE_UNKNOWN:
+      case TYPE_RGB:
       default: // equalize all bands independantly
       {
          bandID[0] = std::string("R");

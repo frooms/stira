@@ -16,7 +16,8 @@
 namespace stira{
 namespace filter{
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
 LaplacianOfGaussianFilter::LaplacianOfGaussianFilter()
 {
@@ -78,7 +79,7 @@ double* LaplacianOfGaussianFilter::GenerateLoGKernel(int halfSize, double sigma)
 
 //--------------------------------------------------------------------------
 
-image::Image* LaplacianOfGaussianFilter::Run(image::Image* pImage, double scaleFactor)
+Image* LaplacianOfGaussianFilter::Run( Image* pImage, double scaleFactor)
 {
    int halfSize = 4;
    double sigma = 1.5;

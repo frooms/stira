@@ -16,7 +16,7 @@
 #include "GeometricTransform.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief class to apply rigid transform to an image
   * x' = cos(t) * x - sin(t) * y + dx

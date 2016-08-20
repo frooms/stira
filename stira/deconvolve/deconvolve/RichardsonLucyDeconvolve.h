@@ -20,6 +20,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 /** \brief child class for computing Richardson-Lucy deconvolution
 
   * INRIA Techical Report N° 5272, July 2004
@@ -39,14 +41,14 @@ public:
      * \param pDegradedImage the input image to be restored
      * \param myRegularizationType type of regularization to be applied
      * \param maxNrOfIterations maximum number of iterations */
-   RichardsonLucyDeconvolve( image::Image* pDegradedImage, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20 );
+   RichardsonLucyDeconvolve( Image* pDegradedImage, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20 );
    
    /** \brief constructor with PSF
      * \param pDegradedImage the input image to be restored
      * \param pPSF the input PSF (needs same width and height as pDegradedImage)
      * \param myRegularizationType type of regularization to be applied
      * \param maxNrOfIterations maximum number of iterations */
-   RichardsonLucyDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20  );
+   RichardsonLucyDeconvolve( Image* pDegradedImage, Image* pPSF, regularizationType myRegularizationType=REGULARIZE_NONE, int maxNrOfIterations=20  );
    
    /** \brief destructor*/
    ~RichardsonLucyDeconvolve( );
@@ -92,13 +94,13 @@ private:
      * \param pLastSolutionGrid input grid, result of last iteration
      * \param x x coordinate for pixel of which to compute x contribution
      * \param y y coordinate for pixel of which to compute x contribution*/
-   double GetXContribution( image::ArrayGrid<double>* pLastSolutionGrid, int x, int y);
+   double GetXContribution( ArrayGrid<double>* pLastSolutionGrid, int x, int y);
 
    /** \brief help function for RegularizeTotalVariation; computes y contribution (see reference Dey et. al.) 
      * \param pLastSolutionGrid
      * \param x x coordinate for pixel of which to compute y contribution
      * \param y y coordinate for pixel of which to compute y contribution*/
-   double GetYContribution( image::ArrayGrid<double>* pLastSolutionGrid, int x, int y);
+   double GetYContribution( ArrayGrid<double>* pLastSolutionGrid, int x, int y);
    
    /** \brief Regularizes current solution by Tikhonov-Miller*/
    void RegularizeTikhonovMiller( );

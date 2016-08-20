@@ -16,7 +16,6 @@
 #include "../../stira/diffusion/bregman/FlashROF.h"
 
 using namespace stira;
-using namespace stira::image;
 using namespace std;
 
 SplitBregmanDenoiseProcess::SplitBregmanDenoiseProcess( Image* pImage ) : Process( pImage )

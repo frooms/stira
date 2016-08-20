@@ -27,7 +27,8 @@
 
 using namespace stira;
 using namespace stira::common;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::wavelet;
 using namespace std;
 
@@ -67,7 +68,7 @@ bool CriticallySubsampledWaveletTest( Image* pImage, double hardThreshold, int n
 {
    CriticallySubsampledTransform wdr;
 
-   image::ArrayGrid<double>* pGridIn = pImage->GetBands()[0]; // just take the red band for a test
+   ArrayGrid<double>* pGridIn = pImage->GetBands()[0]; // just take the red band for a test
 
    wdr.Decompose( pGridIn, nrScales );
 
@@ -83,7 +84,7 @@ bool CriticallySubsampledWaveletTest( Image* pImage, double hardThreshold, int n
 
    // apply hard threshold to all bands and reconstruct
    wdr.Reconstruct( hardThreshold );
-   image::ArrayGrid<double>* pOutGrid = wdr.GetCopyOfReconstructedGrid();
+   ArrayGrid<double>* pOutGrid = wdr.GetCopyOfReconstructedGrid();
    double psnr = NumberGridTools<double>::ComputePSNR( pGridIn, pOutGrid );
 
    #ifdef VISUALIZE_WAVELETS
@@ -118,7 +119,7 @@ bool SubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
 
    assert ( width == height );
 
-   image::ArrayGrid<double>* pSourceGrid = pImage->GetBands()[0]->Clone();
+   ArrayGrid<double>* pSourceGrid = pImage->GetBands()[0]->Clone();
 
    #ifdef TIME_PERFORMANCE
       ExecutionTimer et;
@@ -128,7 +129,7 @@ bool SubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
    st.Decompose( pSourceGrid, nrScales );
 
    #ifdef VISUALIZE_WAVELETS
-      image::ArrayGrid<double>* pDecomposedGrid = st.GetCopyOfReconstructedGrid();
+      ArrayGrid<double>* pDecomposedGrid = st.GetCopyOfReconstructedGrid();
       ImageIO::WritePGM( pDecomposedGrid, std::string("SubsampledDecomposeBands-ClassicalView.pgm"), ImageIO::GRADIENT_OUT );
 
       Image* pRedundant = PyramidTools::VisualizeRealPyramid( st.GetPyramid() );
@@ -142,7 +143,7 @@ bool SubsampledWaveletTest( Image* pImage, double hardThreshold, int nrScales )
 
    st.Reconstruct( hardThreshold );
 
-   image::ArrayGrid<double>* pReconstructedGrid = st.GetCopyOfReconstructedGrid();
+   ArrayGrid<double>* pReconstructedGrid = st.GetCopyOfReconstructedGrid();
 
    #ifdef TIME_PERFORMANCE
       et.StopTimer();
@@ -182,7 +183,7 @@ bool RedundantWaveletTest( Image* pImage, double hardThreshold, int nrScales )
    WaveletType myWaveletTapType = SYMLET_8;
    NonSubsampledTransform wdr( myWaveletTapType );
 
-   image::ArrayGrid<double>* pGridIn = pImage->GetBands()[0]; // just take the red band for a test
+   ArrayGrid<double>* pGridIn = pImage->GetBands()[0]; // just take the red band for a test
 
    #ifdef TIME_PERFORMANCE
       ExecutionTimer et;

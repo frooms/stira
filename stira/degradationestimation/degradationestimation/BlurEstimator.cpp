@@ -26,7 +26,8 @@ namespace stira {
 namespace degradationestimation {
 
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace deconvolve;
 
 //----------------------------------------------------------------
@@ -104,14 +105,14 @@ void BlurEstimator::SetNoiseLevel( double noiseLevel )
 
 //----------------------------------------------------------------
 
-double BlurEstimator::Run( image::ArrayGrid<double>* pGrid )
+double BlurEstimator::Run( ArrayGrid<double>* pGrid )
 {
    double tmpKurtosis = 10000.0;
    for (double tmpBlurLevel = mBlurUnderLimit; tmpBlurLevel <= mBlurUpperLimit; tmpBlurLevel += mStepSize)
    {
       ArrayGrid<double>* pPSF = GridGenerator::GenerateGaussian( pGrid->GetWidth(), pGrid->GetHeight(), tmpBlurLevel, tmpBlurLevel);
       
-      image::ArrayGrid<double>* pTmpResult = WienerDeconvolve::RunSingleband( pGrid, pPSF, mNoiseLevel );
+      ArrayGrid<double>* pTmpResult = WienerDeconvolve::RunSingleband( pGrid, pPSF, mNoiseLevel );
       
       stringstream ss;
       ss << "CandidateDeblur-" << (int)(tmpBlurLevel*10) << ".pgm";

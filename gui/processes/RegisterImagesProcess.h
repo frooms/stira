@@ -22,12 +22,12 @@ class RegisterImagesProcess : public Process
     Q_OBJECT
 
 public:
-   RegisterImagesProcess( stira::image::Image* pImageMaster, stira::image::Image* pImageSlave );
+   RegisterImagesProcess( stira::imagedata::Image* pImageMaster, stira::imagedata::Image* pImageSlave );
    ~RegisterImagesProcess();
    virtual void run();
 private:
-   stira::image::Image* mpImageMaster;
-   stira::image::Image* mpImageSlave;
+   stira::imagedata::Image* mpImageMaster;
+   stira::imagedata::Image* mpImageSlave;
 };
 
 #endif

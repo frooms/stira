@@ -17,7 +17,9 @@
 
 #include "../../imagedata/datastructures/Image.h"
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief class to generate different kinds of textures
   *  code slightly adapted from  http://lodev.org/cgtutor/randomnoise.html

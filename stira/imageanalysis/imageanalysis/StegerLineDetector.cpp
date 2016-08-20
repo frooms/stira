@@ -23,7 +23,8 @@ namespace stira {
 namespace imageanalysis {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace filter;
 using namespace common;
 
@@ -111,7 +112,7 @@ bool StegerLineDetector::EigenValueComputation( double App, double Aqq, double A
 
 //----------------------------------------------------------------
 
-image::ArrayGrid<bool>* StegerLineDetector::Run( image::ArrayGrid<double>* pGridIn, double sigmaSmooth, double lowerThreshold, double higherThreshold, bool isModeLight )
+ArrayGrid<bool>* StegerLineDetector::Run( ArrayGrid<double>* pGridIn, double sigmaSmooth, double lowerThreshold, double higherThreshold, bool isModeLight )
 {
    int width = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();

@@ -19,7 +19,9 @@
 #include "../../common/common/MonotonicCubicSplineInterpolator.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief class to generate fractals
   * It can generate the Mandelbrot set and associated Julia sets */

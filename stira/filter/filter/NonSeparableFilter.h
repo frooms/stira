@@ -23,6 +23,8 @@
 namespace stira {
 namespace filter {
 
+using namespace imagedata;
+
 /** \brief Filters an image using a non-separable filter kernel */
 class NonSeparableFilter
 {
@@ -40,32 +42,32 @@ public:
      * \param filterWidth  width of kernel
      * \param filterHeight  height of kernel
      * \return filtered grid */
-   static image::ArrayGrid<double>* Run(image::ArrayGrid<double>* pInput, double *filterKernel, int filterWidth, int filterHeight);
+   static ArrayGrid<double>* Run( ArrayGrid<double>* pInput, double *filterKernel, int filterWidth, int filterHeight);
      
    /** \brief filters single band in image with Sobel X filter kernel
      * \param pInput input data
      * \return filtered grid */
-   static image::ArrayGrid<double>* RunSobelX(image::ArrayGrid<double>* pInput);
+   static ArrayGrid<double>* RunSobelX( ArrayGrid<double>* pInput);
      
    /** \brief filters single band in image with Sobel Y filter kernel
      * \param pInput input data
      * \return filtered grid */
-   static image::ArrayGrid<double>* RunSobelY(image::ArrayGrid<double>* pInput);
+   static ArrayGrid<double>* RunSobelY( ArrayGrid<double>* pInput);
      
    /** \brief filters single band in image with Sobel X filter kernel
      * \param pInput input data
      * \return filtered grid */
-   static image::Image* RunSobelX( image::Image* pInput);
+   static Image* RunSobelX( Image* pInput);
      
    /** \brief filters single band in image with Sobel Y filter kernel
      * \param pInput input data
      * \return filtered grid */
-   static image::Image* RunSobelY( image::Image* pInput);
+   static Image* RunSobelY( Image* pInput);
    
    /** \brief Computes a grid with the local orientation and edge strength based on the Sobel (X and Y direction) filters
      * \param pGridIn input image
      * \return grid containing local edge strengths and edge magnitudes */
-   static image::OrientationGrid* DetermineLocalMagnitudeAndOrientation( image::ArrayGrid<double>* pGridIn );
+   static OrientationGrid* DetermineLocalMagnitudeAndOrientation( ArrayGrid<double>* pGridIn );
 
    /** \brief Creates and returns a sobel filter kernel for x direction
      * \warning caller becomes responsible; clean up after usage!!*/

@@ -20,7 +20,8 @@ namespace stira {
 namespace contrastenhance {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace histogram;
 using namespace filter;
 

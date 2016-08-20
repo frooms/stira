@@ -35,7 +35,7 @@ class ImageDataList  : public QListWidget
 public:
    struct DataListItem { 
                          ImageWindow* pViewer; 
-                         stira::image::Image* pData;
+                         stira::imagedata::Image* pData;
                        };
    
    /** \brief gets singleton instance*/
@@ -43,26 +43,26 @@ public:
    
    /** \brief adds a new image to the data list
      * \param pImage image to add */
-   void AddImage( stira::image::Image* pImage );
+   void AddImage( stira::imagedata::Image* pImage );
    
    /** \brief adds a new image to the data list
      * \param pImage image to add */
-   void ReplaceImage( stira::image::Image* pImageOld, stira::image::Image* pImageNew );
+   void ReplaceImage( stira::imagedata::Image* pImageOld, stira::imagedata::Image* pImageNew );
 
    /** \brief reads an image from file
      * \param fileName name of the file*/
    void ReadImageFromFile( QString fileName );
    
-   ImageWindow* GetWindowFromImage( stira::image::Image* pData );
+   ImageWindow* GetWindowFromImage( stira::imagedata::Image* pData );
    
   // BASIC CONVERSIONS BETWEEN FRIEP AND QT/FRIEPGUI
   //////////////////////////////////////////////////
    /** \brief converts our image format to QImage for display
      * \param pImage image in our internal format representation.*/
-   static QImage* ImageToQImage( stira::image::Image* pImage );
+   static QImage* ImageToQImage( stira::imagedata::Image* pImage );
 
    /** \brief converts QImage to our image format*/
-   static stira::image::Image* QImageToImage( QImage* pQImg );
+   static stira::imagedata::Image* QImageToImage( QImage* pQImg );
    
    /** \brief clips value to be in the range 0-255, as required for QColor*/
    static int ClipQColorValue(int value);
@@ -101,9 +101,9 @@ private:
   // OTHER STUFF
   ////////////////
 
-   std::vector< stira::image::Image* > GetImages( );
+   std::vector< stira::imagedata::Image* > GetImages( );
 
-   void RegisterEntryInList( stira::image::Image* pImage, ImageWindow* pImgWindow, QString entryName );
+   void RegisterEntryInList( stira::imagedata::Image* pImage, ImageWindow* pImgWindow, QString entryName );
    QAction* mpReadNewImageAction;  ///< Read new image from file
    QAction* mpCloneImageAction;  ///< deep-copy existing image
    QAction* mpCompareImagesSSIMAction; ///< Compare images using the Structural SIMilarity measure

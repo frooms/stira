@@ -23,7 +23,7 @@ public:
 
    /** \brief constructor
      * \param pImage input image */
-   SteerableDenoisingProcess( stira::image::Image* pImage );
+   SteerableDenoisingProcess( stira::imagedata::Image* pImage );
    virtual ~SteerableDenoisingProcess();
    
    int GetNrScales(); 

@@ -19,11 +19,11 @@
 #include "../../common/common/Point.h"
 
 
-using namespace stira;
-using namespace stira::image;
-
 namespace stira {
 namespace histogram {
+
+using namespace imagedata;
+
 
 struct CurveSegment
 {

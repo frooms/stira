@@ -15,7 +15,8 @@
 #include "DialogMaster.h"
 #include "../src/ImageDataList.h"
 
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace std;
 
 DialogMaster::DialogMaster( Image* pImage ) : QDialog(0, Qt::WindowStaysOnTopHint)
@@ -53,7 +54,7 @@ void DialogMaster::EnableButtons()
 
 //--------------------------------------------------------
    
-void DialogMaster::AddResult( stira::image::Image* pResultImage )
+void DialogMaster::AddResult( stira::imagedata::Image* pResultImage )
 {
    vpResults.push_back( pResultImage );
 }
@@ -73,8 +74,8 @@ void DialogMaster::SlotProcessResult()
    }
    else
    {
-      std::vector< stira::image::Image* > vResultVector = GetProcess()->GetResultImages();
-      std::vector< stira::image::Image* >::iterator it;
+      std::vector< stira::imagedata::Image* > vResultVector = GetProcess()->GetResultImages();
+      std::vector< stira::imagedata::Image* >::iterator it;
       for(it = vResultVector.begin(); it != vResultVector.end(); it++)
       {
          ImageDataList::GetInstance()->AddImage( (*it) );

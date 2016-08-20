@@ -13,7 +13,7 @@
 #include "GretagMacbethColorChecker.h"
 #include "../../imagedata/color/TransformColorSpace.h"
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace std;
 

@@ -23,7 +23,8 @@
 
 using namespace stira::contrastenhance;
 using namespace stira::pyramidapplications;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 
 
 ContrastEnhanceProcess::ContrastEnhanceProcess( Image* pImage ) : Process( pImage )
@@ -125,7 +126,7 @@ StiraDefinitions::ContrastEnhanceType ContrastEnhanceProcess::GetContrastEnhance
 
 void ContrastEnhanceProcess::run()
 {
-   stira::image::Image* pOutImage = 0;
+   stira::imagedata::Image* pOutImage = 0;
    
    switch ( mType )
    {

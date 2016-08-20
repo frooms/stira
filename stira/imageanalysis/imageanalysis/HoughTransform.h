@@ -24,6 +24,8 @@
 namespace stira {
 namespace imageanalysis {
 
+using namespace imagedata;
+
 /** \brief Canny edge detector
   */
 class HoughTransform
@@ -33,24 +35,26 @@ public:
     ~HoughTransform();
 
     //http://www.keymolen.com/2013/05/hough-transformation-c-implementation.html
-    std::vector< common::LineSegment<int> > GetLines( image::ArrayGrid<bool>* pEdges, int threshold );
+    std::vector< common::LineSegment<int> > GetLines( ArrayGrid<bool>* pEdges, int threshold );
 
     //https://github.com/marcbowes/Hough-Circle-Detector/blob/master/src/hcd.cpp
-    std::vector< common::Point<int> > GetCirclesRadius( image::ArrayGrid<bool>* pEdges, int radius, int threshold );
+    std::vector< common::Point<int> > GetCirclesRadius( ArrayGrid<bool>* pEdges, int radius, int threshold );
 
     void VisualizeAcculumulator( std::string fileName );
 
 private:
-    int BuildAccumulatorLines( image::ArrayGrid<bool>* pEdges );
-    int BuildAccumulatorCircles( image::ArrayGrid<bool>* pEdgeGrid, int radius );
+    int BuildAccumulatorLines( ArrayGrid<bool>* pEdges );
+    int BuildAccumulatorCircles( ArrayGrid<bool>* pEdgeGrid, int radius );
 
-    image::ArrayGrid<int>* mpAccu;
+    ArrayGrid<int>* mpAccu;
     int mImageWidth;
     int mImageHeight;
 
     int mAccuWidth;
     int mAccuHeight;
 };
+
 }
 }
+
 #endif // HOUGHTRANSFORM_H

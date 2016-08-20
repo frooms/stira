@@ -24,25 +24,25 @@ public:
 
    /** \brief constructor
      * \param pImage input image */
-   SplitColorChannelsProcess( stira::image::Image* pImage );
+   SplitColorChannelsProcess( stira::imagedata::Image* pImage );
 
    /** \brief destructor */
    virtual ~SplitColorChannelsProcess();
 
    /** \brief sets the color space in which to separate the different bands
      * \param colorSpace enum to identify the color space */
-   void SetColorSpace( stira::image::ColorType colorSpace );
+   void SetColorSpace( stira::imagedata::ColorType colorSpace );
    
    /** \brief gets the color space in which to separate the different bands */
-   stira::image::ColorType GetColorSpace( );
+   stira::imagedata::ColorType GetColorSpace( );
 
-   stira::image::ColorValue GetReferenceIlluminant();
-   void SetReferenceIlluminant( stira::image::ColorValue referenceIlluminant );
+   stira::imagedata::ColorValue GetReferenceIlluminant();
+   void SetReferenceIlluminant( stira::imagedata::ColorValue referenceIlluminant );
    
    void run();
    
 private:
-   stira::image::ColorType mColorSpace; ///< the color space in which to separate the different bands
-   stira::image::ColorValue mReferenceIlluminant;
+   stira::imagedata::ColorType mColorSpace; ///< the color space in which to separate the different bands
+   stira::imagedata::ColorValue mReferenceIlluminant;
 };
 #endif

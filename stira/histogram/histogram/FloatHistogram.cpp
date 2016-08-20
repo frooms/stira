@@ -21,7 +21,7 @@ namespace stira {
 namespace histogram {
 
 using namespace common;
-using namespace image;
+using namespace imagedata;
 
 FloatHistogram::FloatHistogram( int nrOfBins, int nrBands )
 {

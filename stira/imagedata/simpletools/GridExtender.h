@@ -16,7 +16,7 @@
 #include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /**  \brief Extends input grid in a user-selected way
   */
@@ -237,4 +237,5 @@ ArrayGrid<T>* GridExtender<T>::CropBorder( ArrayGrid<T>* pGrid, int borderWidth,
 
 }
 }
+
 #endif

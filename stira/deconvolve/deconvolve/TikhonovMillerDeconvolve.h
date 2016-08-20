@@ -19,6 +19,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 /** \brief child class for computing Tikhonov-Miller deconvolution
   * Based on implementation of my thesis student Tim Stevens
   * \warning NOT OPERATIONAL YET*/
@@ -28,13 +30,13 @@ public:
    /** \brief constructor without setting PSF, so is still to be determined or estimated before run
      * \param pDegradedImage the input image to be restored
      * \param maxNrOfIterations maximum number of iterations */
-   TikhonovMillerDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations=20 );
+   TikhonovMillerDeconvolve( Image* pDegradedImage, int maxNrOfIterations=20 );
 
    /** \brief constructor with setting the PSF
      * \param pDegradedImage the input image to be restored
      * \param pPSF the input PSF (needs same width and height as pDegradedImage)
      * \param maxNrOfIterations maximum number of iterations */
-   TikhonovMillerDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations=20 );
+   TikhonovMillerDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations=20 );
 
    /** \brief destructor*/
    ~TikhonovMillerDeconvolve();
@@ -53,7 +55,7 @@ public:
    /** \brief prints for diagnostic purposes parameters to standard output*/
    void PrintParameters();
 
-   void ICTM_filter( int nrIterations, image::ArrayGrid<double> *pData, image::ArrayGrid<double> *pPsf );
+   void ICTM_filter( int nrIterations, ArrayGrid<double> *pData, ArrayGrid<double> *pPsf );
 
 private:
 
@@ -68,7 +70,7 @@ private:
 
    /** \brief applies enforcing the positivity constraint
      * \param pGrid single band of image on which to apply the constraint*/
-   bool ApplyPositivityConstraint( image::ArrayGrid<double>* pGrid );
+   bool ApplyPositivityConstraint( ArrayGrid<double>* pGrid );
 
    bool mFlagEnforcePositivity;  ///< flag if positivity should be enforced after every iteration
 };

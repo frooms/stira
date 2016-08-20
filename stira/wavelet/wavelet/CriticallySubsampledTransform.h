@@ -18,6 +18,8 @@
 namespace stira {
 namespace wavelet {
 
+using namespace stira::imagedata;
+
 /** \brief parent class to compute redundant, non-subsampled wavelet decomposition / reconstruction */
 class CriticallySubsampledTransform : public Wavelet
 {
@@ -33,7 +35,7 @@ public:
      * \param pSourceGrid grid to be deomposed
      * \param nrScales nr of scales in the decomposition
      * \return true if all went well*/
-   virtual bool Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales );
+   virtual bool Decompose( ArrayGrid<double>* pSourceGrid, int nrScales );
    
    /** \brief reconstructs the decomposed image
      * \param threshold hard threshold for bandpass images, just for demo purposes*/

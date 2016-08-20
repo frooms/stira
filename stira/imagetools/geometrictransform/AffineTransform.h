@@ -16,7 +16,7 @@
 #include "GeometricTransform.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief class to apply affine transform to an image 
   * x' = a11 * x + a12 * y + dx 

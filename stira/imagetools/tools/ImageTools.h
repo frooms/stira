@@ -18,7 +18,7 @@
 #include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 struct myMinMax{ double min;
                  double max;

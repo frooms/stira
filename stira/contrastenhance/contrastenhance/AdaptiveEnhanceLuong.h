@@ -18,6 +18,8 @@
 namespace stira {
 namespace contrastenhance {
 
+using namespace imagedata;
+
 /** \brief Adaptive contrast enhancement accoring to method of Hiep Luong
   * The implementation is based on the text of his PhD thesis 
   * "Advanced Image and Video Resolution Enhancement Techniques", 2008,
@@ -36,7 +38,7 @@ public:
    /** \brief overloaded Run method per image
      * \param pSourceImage the input image
      * \return a newly created image as result of contrast enhancement, becomes responsability of the caller*/
-   image::Image* Run( image::Image* pSourceImage );
+   Image* Run( Image* pSourceImage );
    
    /** \brief sets the factor with which parameter is to be multiplied factor
      * \param factor multiplication factor
@@ -64,12 +66,12 @@ private:
    double mFinalAlphaFactor; ///< the factor with which parameter is to be multiplied 
    double mTmpAlphaFactor;
    int mWindowSize; ///< size of a local window in the image  
-   image::ArrayGrid<double>* mpSourceGrid; 
-   image::ArrayGrid<double>* mpLastStepGrid;
-   image::ArrayGrid<double>* mpNextStepGrid;
-   image::ArrayGrid<double>* mpMeanGrid;
-   image::ArrayGrid<double>* mpVarianceGrid;
-   image::ArrayGrid<double>* mpAlphaGrid;
+   ArrayGrid<double>* mpSourceGrid;
+   ArrayGrid<double>* mpLastStepGrid;
+   ArrayGrid<double>* mpNextStepGrid;
+   ArrayGrid<double>* mpMeanGrid;
+   ArrayGrid<double>* mpVarianceGrid;
+   ArrayGrid<double>* mpAlphaGrid;
    
    double mLowerBound;
    double mUpperBound;

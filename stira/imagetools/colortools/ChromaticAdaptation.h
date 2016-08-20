@@ -18,7 +18,9 @@
 #include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief For generalization, unity matrix used for XYZ scaling */
 const double sUnityMatrix[3][3] = 

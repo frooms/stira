@@ -34,7 +34,7 @@
 #define USE_BOUNDARY_CHECKS
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /**  \brief A class to contain a regular grid of integer or float numbers, structs and even more complex objects */
 template <class T>
@@ -935,4 +935,5 @@ void ArrayGrid<T>::DivideBy( ArrayGrid<T>* otherGrid)
 
 }
 }
+
 #endif

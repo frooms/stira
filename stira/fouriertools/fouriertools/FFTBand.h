@@ -20,6 +20,8 @@
 namespace stira {
 namespace fouriertools {
 
+using namespace imagedata;
+
 enum FFTTransformDirection {FORWARD, BACKWARD};
 
 enum FFTDataType {RE, IM};
@@ -32,11 +34,11 @@ public:
      * \param pGrid grid to initialize this complex band with 
      * \param isreal flag if real-valued grid values should be used as the real components of the complex numbers (if false: use as imag components)
      */
-   FFTBand( image::ArrayGrid<double>* pGrid, bool isreal = true);
+   FFTBand( ArrayGrid<double>* pGrid, bool isreal = true);
    
    /** \brief Constructor: build a complex band initialized by a complex-valued grid
      * \param pGrid grid to initialize this complex band with */
-   FFTBand( image::ArrayGrid<std::complex <double> >* pGrid );
+   FFTBand( ArrayGrid<std::complex <double> >* pGrid );
 
    /** \brief Constructor: build a complex band initialized by zeros
      * \param width width of the band to construct
@@ -88,13 +90,13 @@ public:
    void PointMirrorBand();
    
    /** \brief creates a real-valued ArrayGrid with the real component of the complex values in this FFTBand*/
-   image::ArrayGrid<double>* ConvertToRealGrid( );
+   ArrayGrid<double>* ConvertToRealGrid( );
    
    /** \brief creates a real-valued ArrayGrid with the imaginary component of the complex values in this FFTBand*/
-   image::ArrayGrid<double>* ConvertToImaginaryGrid( );
+   ArrayGrid<double>* ConvertToImaginaryGrid( );
    
    /** \brief creates a complex-valued ArrayGrid with the complex values in this FFTBand*/
-   image::ArrayGrid<std::complex<double> >* ConvertToComplexGrid( );
+   ArrayGrid<std::complex<double> >* ConvertToComplexGrid( );
    
    /** \brief export abs of current FFTBand to a PGM file 
      * \param fileName name of PGM to export to */
@@ -124,7 +126,7 @@ public:
    /** \brief multiplies this FFTBand point by point with an ArrayGrid
      * \param grid the ArrayGrid
      * \warning works directly on the band data; original data is lost*/
-   void Multiply(image::ArrayGrid<double>* grid);
+   void Multiply(ArrayGrid<double>* grid);
    
    /** \brief multiplies this FFTBand point by point with a real-valued factor
      * \param myFactor factor to multiply every value in the grid with
@@ -138,7 +140,7 @@ public:
 
 private:
 
-   void InitializeFFTBandValuesFromGrid( image::ArrayGrid<double>* pGrid, bool isreal);
+   void InitializeFFTBandValuesFromGrid( ArrayGrid<double>* pGrid, bool isreal);
 
    /** \brief Initializes this FFTBand with a constant value 
      * \param initValue optional value to initialize this band with*/
@@ -147,18 +149,18 @@ private:
    /** \brief Initializes this FFTBand with real-valued values of the band of an image
      * The real components get the values from the grid, the imaginary components are set to zero
      * \param pGrid image band to initialize this FFTBand from */
-   bool InitializeBandWithRealValues( image::ArrayGrid<double>* pGrid );
+   bool InitializeBandWithRealValues( ArrayGrid<double>* pGrid );
    
    /** \brief Initializes this FFTBand with imaginary values of the band of an image 
      * The real components are set to zero, the imaginary components get the values from the grid
      * \param pGrid image band to initialize this FFTBand from */
-   bool InitializeBandWithImagValues( image::ArrayGrid<double>* pGrid );
+   bool InitializeBandWithImagValues( ArrayGrid<double>* pGrid );
    
    /** \brief Initializes this FFTBand with complex values of the band of an image 
      * \param pGrid image band to initialize this FFTBand from */
-    bool InitializeBandWithComplexValues( image::ArrayGrid< std::complex<double> >* pGrid );
+    bool InitializeBandWithComplexValues( ArrayGrid< std::complex<double> >* pGrid );
    
-   image::ArrayGrid< std::complex<double> >* mpFFTGrid;///< Data grid containing the complex fourier data
+   ArrayGrid< std::complex<double> >* mpFFTGrid;///< Data grid containing the complex fourier data
 };
 }
 }

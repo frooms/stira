@@ -21,6 +21,8 @@
 namespace stira {
 namespace fouriertools {
 
+using namespace imagedata;
+
 /** \brief A class to compute the Fourier transforms based on the KISS FFT library by Mark Borgerding
   * Mark Borgerding wrote all the *kiss_fft* files
   * Source: http://sourceforge.net/projects/kissfft/  */
@@ -30,7 +32,7 @@ class KISSFFTCalculator : public FFTCalculator
 public:
    /** \brief construct an FFT calculator initialized with and FFTBand 
      * \param pComplexGrid pointer to an ArrayGrid of complex values*/
-   KISSFFTCalculator( image::ArrayGrid< std::complex<double> >* pComplexGrid);
+   KISSFFTCalculator( ArrayGrid< std::complex<double> >* pComplexGrid);
    
    KISSFFTCalculator();
 
@@ -46,11 +48,11 @@ public:
    /** \brief Computes the inverse FFT 
      * \param pGridIn the input grid for the forward transform
      * \return a complex-valued grid containing the transformed data; the caller becomes responsible to delete it.*/
-   image::ArrayGrid< std::complex<double> >* ApplyInverseTransform( image::ArrayGrid< std::complex<double> >* pGridIn);
+   ArrayGrid< std::complex<double> >* ApplyInverseTransform( ArrayGrid< std::complex<double> >* pGridIn);
 
 private:
    /** \brief help method to create the intermediate data structures for the KISS FFT library */
-   bool CreateLibData( image::ArrayGrid< std::complex<double> >* pGridin );
+   bool CreateLibData( ArrayGrid< std::complex<double> >* pGridin );
 
    /** \brief help method to clean the intermediate input data structures for the KISS FFT library */
    bool CleanLibData();

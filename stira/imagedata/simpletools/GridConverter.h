@@ -16,7 +16,7 @@
 #include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief class to convert a grid of one data type to another*/
 class GridConverter
@@ -42,6 +42,7 @@ public:
      * \param pGrid input grid of integers */
    static ArrayGrid<double>* ConvertToDouble( ArrayGrid<int>* pGrid );
 };
+
 }
 }
 

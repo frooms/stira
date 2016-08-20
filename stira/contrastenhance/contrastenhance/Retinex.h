@@ -19,6 +19,8 @@
 namespace stira {
 namespace contrastenhance {
 
+using namespace imagedata;
+
 /** \brief retinex contrast enhancement/color restoration
   *
   * http://dragon.larc.nasa.gov/background/retpubs.html
@@ -61,55 +63,55 @@ public:
      * \param lowerFraction lower fraction of pixels to be discarded
      * \param upperFraction upper fraction of pixels to be discarded
      * \param applyColorCorrection flag if color correction needs to be applied*/
-   static image::Image* RunMSRCR( image::Image* pSourceImage, double lowerFraction, double upperFraction, bool applyColorCorrection=true);
+   static Image* RunMSRCR( Image* pSourceImage, double lowerFraction, double upperFraction, bool applyColorCorrection=true);
 
    /** \brief run method of MultiScale Retinexaccording to Jobson et al for single band
      * \param pInGrid input grid
      * \param lowerFraction lower fraction of pixels to be discarded
      * \param upperFraction upper fraction of pixels to be discarded */
-   static image::ArrayGrid<double>* RunMSR( image::ArrayGrid<double>* pInGrid, double lowerFraction, double upperFraction );
+   static ArrayGrid<double>* RunMSR( ArrayGrid<double>* pInGrid, double lowerFraction, double upperFraction );
 
 private:
    /** \brief runs a single scale retinex on an image
      * \param pInImage input image
      * \param sigma sigma value specifying scale of this single scale retinex
      * \return contrast enhanced image on this scale*/
-   static image::Image* SingleScaleRetinex(image::Image* pInImage, double sigma);
+   static Image* SingleScaleRetinex( Image* pInImage, double sigma);
 
    /** \brief runs a single scale retinex on a single grid
      * \param pInGrid input grid
      * \param sigma sigma value specifying scale of this single scale retinex
      * \return contrast enhanced grid on this scale*/
-   static image::ArrayGrid<double>* SingleScaleRetinex( image::ArrayGrid<double>* pInGrid, double sigma );
+   static ArrayGrid<double>* SingleScaleRetinex( ArrayGrid<double>* pInGrid, double sigma );
 
    /** \brief runs a multiscale retinex on an image
      * \param pInImage input image
      * \return multiscale contrast enhanced image*/
-   static image::Image* MultiScaleRetinex( image::Image* pInImage );
+   static Image* MultiScaleRetinex( Image* pInImage );
 
    /** \brief runs a multiscale retinex on a single grid
      * \param pInGrid input grid
      * \return multiscale contrast enhanced image*/
-   static image::ArrayGrid<double>* MultiScaleRetinex( image::ArrayGrid<double>* pInGrid );
+   static ArrayGrid<double>* MultiScaleRetinex( ArrayGrid<double>* pInGrid );
 
    /** \brief Color correction of image
      * \param pInImage input image
      * \return color corrected image*/
-   static image::Image* ColorCorrectImage( image::Image* pInImage );
+   static Image* ColorCorrectImage( Image* pInImage );
 
    /** \brief Clips the dynamic range of an image by applying two thresholds; subsequently scales the clipped image values
      * Works directly on the image values; old values are lost
      * \param pInOutImage input image
      * \param lowerFraction lower fraction of pixels to be clipped (e.g., if 0.03, the 3% darkest pixels are clipped)
      * \param upperFraction lower fraction of pixels to be clipped (e.g., if 0.98, the 2% brightest pixels are clipped) */
-   static void ClipAndScaleImage(image::Image* pInOutImage, double lowerFraction, double upperFraction);
+   static void ClipAndScaleImage( Image* pInOutImage, double lowerFraction, double upperFraction);
 
    /** \brief Clips the dynamic range of a single grid by applying two thresholds; subsequently scales the clipped image values
      * Works directly on the image values; old values are lost
      * \param pInOutGrid input grid
      * \param lowerFraction lower fraction of pixels to be clipped (e.g., if 0.03, the 3% darkest pixels are clipped)
      * \param upperFraction lower fraction of pixels to be clipped (e.g., if 0.98, the 2% brightest pixels are clipped) */
-   static void ClipAndScaleGrid(image::ArrayGrid<double>* pInOutGrid, double lowerFraction, double upperFraction);
+   static void ClipAndScaleGrid( ArrayGrid<double>* pInOutGrid, double lowerFraction, double upperFraction);
 
 private:
 };

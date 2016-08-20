@@ -15,7 +15,6 @@
 #include "ShowRadiallyAveragedFourierSpectrumDialog.h"
 
 using namespace std;
-using namespace stira::image;
 using namespace stira::fouriertools;
 
 ShowRadiallyAveragedFourierSpectrumDialog::ShowRadiallyAveragedFourierSpectrumDialog( Image* pImage ) : CurvePlotDialog( QString("Radially Averaged Log-power spectrum") )

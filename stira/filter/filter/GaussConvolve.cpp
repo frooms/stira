@@ -27,7 +27,8 @@ namespace filter{
 
 using namespace common;
 using namespace fouriertools;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
 GaussConvolve::GaussConvolve()
 {
@@ -71,7 +72,7 @@ ArrayGrid<double>* GaussConvolve::CreateBlurredBars( int width, int height, int 
          {
             pColumnIn[y] = pBars->GetValue(x, y);
          }
-         SeparableFilter::BasicFilter1D (&(*pColumnIn), &(*pKernel), &(*pColumnOut), height, kernelSize, image::GridExtender<double>::EXTEND_MIRROR );
+         SeparableFilter::BasicFilter1D (&(*pColumnIn), &(*pKernel), &(*pColumnOut), height, kernelSize, GridExtender<double>::EXTEND_MIRROR );
 
          for (int y = 0; y < height; y++)
          {
@@ -209,7 +210,7 @@ Image* GaussConvolve::Convolve(Image* pImage, double sigma, FilterType myType)
 
 //--------------------------------------------------------------------------
 
-image::ArrayGrid<double>* GaussConvolve::Convolve(image::ArrayGrid<double>* pGrid, double sigma, FilterType myType )
+ArrayGrid<double>* GaussConvolve::Convolve( ArrayGrid<double>* pGrid, double sigma, FilterType myType )
 {
    switch (myType)
    {
@@ -231,7 +232,7 @@ image::ArrayGrid<double>* GaussConvolve::Convolve(image::ArrayGrid<double>* pGri
 
 //--------------------------------------------------------------------------
 
-ArrayGrid<double>* GaussConvolve::DerivativeConvolveFFT(image::ArrayGrid<double>* pGridIn, double sigmaX, double sigmaY, DerivativeType myType)
+ArrayGrid<double>* GaussConvolve::DerivativeConvolveFFT( ArrayGrid<double>* pGridIn, double sigmaX, double sigmaY, DerivativeType myType)
 {
    ArrayGrid<double>* pFilterKernel = 0;
 
@@ -310,7 +311,7 @@ ArrayGrid<double>* GaussConvolve::DerivativeConvolveFFT(image::ArrayGrid<double>
 
 //--------------------------------------------------------------------------
 
-ArrayGrid<double>* GaussConvolve::DerivativeConvolveSeparable(image::ArrayGrid<double>* pGridIn, double sigma, DerivativeType myType, image::GridExtender<double>::ExtensionType myExtensionType)
+ArrayGrid<double>* GaussConvolve::DerivativeConvolveSeparable( ArrayGrid<double>* pGridIn, double sigma, DerivativeType myType, GridExtender<double>::ExtensionType myExtensionType)
 {
    double* pFilter1DX = 0;
    double* pFilter1DY = 0;
@@ -367,32 +368,32 @@ ArrayGrid<double>* GaussConvolve::DerivativeConvolveSeparable(image::ArrayGrid<d
 
 //--------------------------------------------------------------------------
 
-ArrayGrid<double>* GaussConvolve::ConvolveSeparable(image::ArrayGrid<double>* pGridIn, double sigma)
+ArrayGrid<double>* GaussConvolve::ConvolveSeparable( ArrayGrid<double>* pGridIn, double sigma)
 {
-   return DerivativeConvolveSeparable( pGridIn, sigma, DERIVATIVE_NONE, image::GridExtender<double>::EXTEND_TILED);
+   return DerivativeConvolveSeparable( pGridIn, sigma, DERIVATIVE_NONE, GridExtender<double>::EXTEND_TILED);
 }
 
 //--------------------------------------------------------------------------
 
-image::Image* GaussConvolve::DerivativeConvolveFFT(image::Image* pImage, double sigma, DerivativeType myType, image::GridExtender<double>::ExtensionType myExtensionType)
+Image* GaussConvolve::DerivativeConvolveFFT(Image* pImage, double sigma, DerivativeType myType, GridExtender<double>::ExtensionType myExtensionType)
 {
    int borderWidth = 50;
    int borderHeight = 50;
-   image::Image* pImageIn = 0;
+   Image* pImageIn = 0;
 
    switch (myExtensionType)
    {
-      case image::GridExtender<double>::EXTEND_MIRROR:
+      case GridExtender<double>::EXTEND_MIRROR:
       {
          pImageIn = ImageTools::MirrorBorder( pImage, borderWidth, borderHeight);
          break;
       }
-      case image::GridExtender<double>::EXTEND_ZERO:
+      case GridExtender<double>::EXTEND_ZERO:
       {
          pImageIn = ImageTools::PaddBorder( pImage, borderWidth, borderHeight, 0.0 );
          break;
       }
-      case image::GridExtender<double>::EXTEND_TILED:
+      case GridExtender<double>::EXTEND_TILED:
       default:
       {
          pImageIn = pImage;
@@ -416,15 +417,15 @@ image::Image* GaussConvolve::DerivativeConvolveFFT(image::Image* pImage, double 
    Image* pImageFinal = 0;
    switch (myExtensionType)
    {
-      case image::GridExtender<double>::EXTEND_MIRROR:
-      case image::GridExtender<double>::EXTEND_ZERO:
+      case GridExtender<double>::EXTEND_MIRROR:
+      case GridExtender<double>::EXTEND_ZERO:
       {
          pImageFinal = ImageTools::CropBorder( pImageOut, borderWidth, borderHeight);
          delete pImageOut;
          delete pImageIn;
          break;
       }
-      case image::GridExtender<double>::EXTEND_TILED:
+      case GridExtender<double>::EXTEND_TILED:
       default:
       {
          pImageFinal = pImageOut;
@@ -437,7 +438,7 @@ image::Image* GaussConvolve::DerivativeConvolveFFT(image::Image* pImage, double 
 
 //--------------------------------------------------------------------------
 
-image::Image* GaussConvolve::DerivativeConvolveSeparable(image::Image* pImageIn, double sigma, DerivativeType myType, image::GridExtender<double>::ExtensionType myExtensionType)
+Image* GaussConvolve::DerivativeConvolveSeparable( Image* pImageIn, double sigma, DerivativeType myType, GridExtender<double>::ExtensionType myExtensionType)
 {
    int nrBands = pImageIn->GetNumberOfBands();
    int width = pImageIn->GetWidth();
@@ -457,14 +458,14 @@ image::Image* GaussConvolve::DerivativeConvolveSeparable(image::Image* pImageIn,
 
 //--------------------------------------------------------------------------
 
-image::Image* GaussConvolve::ConvolveSeparable(image::Image* pImageIn, double sigma )
+Image* GaussConvolve::ConvolveSeparable(Image* pImageIn, double sigma )
 {
-   return DerivativeConvolveSeparable( pImageIn, sigma, DERIVATIVE_NONE, image::GridExtender<double>::EXTEND_TILED);
+   return DerivativeConvolveSeparable( pImageIn, sigma, DERIVATIVE_NONE, GridExtender<double>::EXTEND_TILED);
 }
 
 //--------------------------------------------------------------------------
 
-image::ArrayGrid<double>* GaussConvolve::UpsampleGaussianInterpolated( image::ArrayGrid<double>* pGridIn, int upscalefactor )
+ArrayGrid<double>* GaussConvolve::UpsampleGaussianInterpolated( ArrayGrid<double>* pGridIn, int upscalefactor )
 {
    double alpha = 1.4;
    double sigmaGauss = alpha * (double)(upscalefactor * upscalefactor);
@@ -479,7 +480,7 @@ image::ArrayGrid<double>* GaussConvolve::UpsampleGaussianInterpolated( image::Ar
 
    int halfWidth = upscalefactor / 2;
 
-   image::ArrayGrid<double>* pUpscaledGrid = new ArrayGrid<double>( upscaledWidth, upscaledHeight, needInitialisation, initialRealValue );
+   ArrayGrid<double>* pUpscaledGrid = new ArrayGrid<double>( upscaledWidth, upscaledHeight, needInitialisation, initialRealValue );
 
    for (int y = 0; y < sourceHeight; y++)
    {

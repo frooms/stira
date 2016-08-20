@@ -18,6 +18,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 /** \brief parent class for computing deconvolutions
   */
 class DeconvolveMaster
@@ -29,23 +31,23 @@ public:
    virtual bool Run()=0;
    
    /** \brief Gets the degraded input image*/
-   image::Image* GetDegradedImage();
+   Image* GetDegradedImage();
    
    /** \brief sets the degraded image to restore
      * \param pDegradedImage the image to restore*/
-   void SetDegradedImage(image::Image* pDegradedImage);
+   void SetDegradedImage( Image* pDegradedImage);
    
    /** \brief gets the Point Spread Function (PSF)
      * The PSF is a model of the blur; it is how every single point is imaged in the degraded image.
      * For an ideal image, it would be a delta function; in reality, it is mostly a certain spot. */
-   image::Image* GetPSF();
+   Image* GetPSF();
    
    /** \brief sets the Point Spread Function (PSF)
      * \param pPSF The PSF. */
-   void SetPSF(image::Image* pPSF);
+   void SetPSF( Image* pPSF);
    
    /** \brief gets the result after running the deconvolution */
-   image::Image* GetRestoredImage();
+   Image* GetRestoredImage();
    
    /** \brief sets the noise level 
      * \param sigma the sigma of the noise*/
@@ -62,13 +64,13 @@ protected:
    /** \brief constructor
      * Sets degraded input image; PSF is estimated or entered in later stage
      * \param pDegradedImage degraded input image*/
-   DeconvolveMaster(image::Image* pDegradedImage );
+   DeconvolveMaster(Image* pDegradedImage );
    
    /** \brief constructor
      * Sets degraded input image and PSF
      * \param pDegradedImage degraded input image
      * \param pPSF Point Spread Function (models the blur in the image)*/
-   DeconvolveMaster(image::Image* pDegradedImage, image::Image* pPSF );
+   DeconvolveMaster(Image* pDegradedImage, Image* pPSF );
    
    /** \brief constructor*/
    virtual ~DeconvolveMaster();
@@ -76,9 +78,9 @@ protected:
    /** \brief checks basic conditions are fulfilled for all deconvolution methods*/
    bool AreParentConditionsOK();
    
-   image::Image* mpDegradedImage;   ///< degraded input image
-   image::Image* mpRestoredImage;   ///< restored image for output
-   image::Image* mpPSF;  ///< image containing the Point Spread Function
+   Image* mpDegradedImage;   ///< degraded input image
+   Image* mpRestoredImage;   ///< restored image for output
+   Image* mpPSF;  ///< image containing the Point Spread Function
    
    double mSigmaNoise;   ///< sigma of the noise
 };

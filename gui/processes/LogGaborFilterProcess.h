@@ -26,7 +26,7 @@ class LogGaborFilterProcess : public Process
 public:
    /** \brief constructor
      * \param pImage input image */
-   LogGaborFilterProcess( stira::image::Image* pImage );
+   LogGaborFilterProcess( stira::imagedata::Image* pImage );
    virtual ~LogGaborFilterProcess();
    
    double GetCenterFrequency();

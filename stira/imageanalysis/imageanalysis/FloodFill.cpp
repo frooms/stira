@@ -1,12 +1,12 @@
 #include "FloodFill.h"
 #include <iostream>
 
-using namespace stira::common;
 using namespace std;
-using namespace stira::image;
 
 namespace stira {
 namespace imageanalysis {
+
+using namespace stira::common;
 
 //------------------------------------------------------------------------------------------
 

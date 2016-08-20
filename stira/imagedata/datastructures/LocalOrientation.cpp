@@ -13,7 +13,7 @@
 #include "LocalOrientation.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 LocalOrientation::LocalOrientation()
 {

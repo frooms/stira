@@ -15,8 +15,7 @@
 #include "../../common/common/MathUtils.h"
 
 namespace stira {
-namespace image {
-
+namespace imagedata {
 using namespace std;
 using namespace common;
 
@@ -130,9 +129,9 @@ bool OrientationGrid::GetMinMaxMagnitude( double& mmin, double& mmax )
 
 //--------------------------------------------------------------------------------------------------------------------------
 
-std::vector<image::LocalOrientation> OrientationGrid::GetOrientationVector( int xMin, int yMin, int xMax, int yMax )
+std::vector<LocalOrientation> OrientationGrid::GetOrientationVector( int xMin, int yMin, int xMax, int yMax )
 {
-    std::vector<image::LocalOrientation> vValues;
+    std::vector<LocalOrientation> vValues;
     for ( int y = yMin; y <= yMax; y++ )
     {
         for (int x = xMin; x <= xMax; x++)

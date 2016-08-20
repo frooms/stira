@@ -4,7 +4,6 @@ namespace stira {
 namespace imageanalysis {
 
 using namespace stira::common;
-using namespace stira::image;
 
 FindMaximalIncludedRectangles::FindMaximalIncludedRectangles()
 {

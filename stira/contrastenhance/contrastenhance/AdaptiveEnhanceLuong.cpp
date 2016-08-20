@@ -24,7 +24,8 @@ namespace stira {
 namespace contrastenhance {
 
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace std;
 using namespace histogram;
 
@@ -156,9 +157,9 @@ void AdaptiveEnhanceLuong::Initialize( )
    mHalfBlockSize = mWindowSize / 2;
    mpLastStepGrid = mpSourceGrid->Clone();
    mpNextStepGrid = mpSourceGrid->Clone();
-   mpMeanGrid     = new image::ArrayGrid<double>( mWidth, mHeight );
-   mpVarianceGrid = new image::ArrayGrid<double>( mWidth, mHeight );
-   mpAlphaGrid    = new image::ArrayGrid<double>( mWidth, mHeight );
+   mpMeanGrid     = new ArrayGrid<double>( mWidth, mHeight );
+   mpVarianceGrid = new ArrayGrid<double>( mWidth, mHeight );
+   mpAlphaGrid    = new ArrayGrid<double>( mWidth, mHeight );
 }
 
 void AdaptiveEnhanceLuong::Cleanup()

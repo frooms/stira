@@ -44,7 +44,7 @@ class SimpleImageFilterDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   SimpleImageFilterDialog( stira::image::Image* pImage );
+   SimpleImageFilterDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    ~SimpleImageFilterDialog();
@@ -53,7 +53,7 @@ public:
    StiraDefinitions::SimpleFilterType GetFilterType();
    
    /** \brief gets how the image should be treated at the image borders */
-   stira::image::GridExtender<double>::ExtensionType GetExtensionType();
+   stira::imagedata::GridExtender<double>::ExtensionType GetExtensionType();
    
    /** \brief gets the filter width (or length) */
    int GetFilterWidth();

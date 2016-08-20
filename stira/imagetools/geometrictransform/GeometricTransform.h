@@ -18,7 +18,7 @@
 #include "../../common/common/Point.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief Geometric parametric transformation of an image */
 class GeometricTransform{

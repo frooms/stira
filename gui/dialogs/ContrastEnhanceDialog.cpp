@@ -14,7 +14,8 @@
 #include "../processes/ContrastEnhanceProcess.h"
 #include "../src/MainWindow.h"
 
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 ContrastEnhanceDialog::ContrastEnhanceDialog( Image* pImage ) : DialogMaster( pImage )
 {

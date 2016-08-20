@@ -15,7 +15,6 @@
 
 using namespace std;
 using namespace stira::histogram;
-using namespace stira::image;
 
 ShowHistogramDialog::ShowHistogramDialog( Image* pImage ) : CurvePlotDialog( QString("Histogram") )
 {

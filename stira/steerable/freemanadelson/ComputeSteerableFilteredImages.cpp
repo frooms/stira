@@ -21,7 +21,6 @@
 namespace stira {
 namespace steerable {
 
-using namespace image;
 using namespace filter;
 
 //----------------------------------------------------------------------
@@ -58,7 +57,7 @@ ComputeSteerableFilteredImages::~ComputeSteerableFilteredImages()
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::InterpolateG( double theta )
+ArrayGrid<double>* ComputeSteerableFilteredImages::InterpolateG( double theta )
 {
    if (!mHasBasicResponses)
    {
@@ -90,7 +89,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::InterpolateG( double t
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::InterpolateH( double theta )
+ArrayGrid<double>* ComputeSteerableFilteredImages::InterpolateH( double theta )
 {
    if (!mHasBasicResponses)
    {
@@ -123,7 +122,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::InterpolateH( double t
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOrientationG( )
+ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOrientationG( )
 {
    if (!mHasBasicResponses)
    {
@@ -159,7 +158,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOri
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOrientationH( )
+ArrayGrid<double>* ComputeSteerableFilteredImages::FilterAlongDominantOrientationH( )
 {
    if (!mHasBasicResponses)
    {
@@ -217,7 +216,7 @@ OrientationGrid* ComputeSteerableFilteredImages::GetOrientationGrid( )
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2a()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2a()
 {
    if (!mHasBasicResponses)
    {
@@ -228,7 +227,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2a()
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2b()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2b()
 {
    if (!mHasBasicResponses)
    {
@@ -239,7 +238,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2b()
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2c()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2c()
 {
    if (!mHasBasicResponses)
    {
@@ -250,14 +249,14 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2c()
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2d()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetH2d()
 {
    return mpResponseH2d;
 }
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2a()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2a()
 {
    if (!mHasBasicResponses)
    {
@@ -268,7 +267,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2a()
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2b()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2b()
 {
    if (!mHasBasicResponses)
    {
@@ -279,7 +278,7 @@ image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2b()
 
 //----------------------------------------------------------------------
 
-image::ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2c()
+ArrayGrid<double>* ComputeSteerableFilteredImages::GetG2c()
 {
    if (!mHasBasicResponses)
    {
@@ -319,8 +318,6 @@ int ComputeSteerableFilteredImages::Run()
 
    return 1;
 }
-
-//----------------------------------------------------------------------
 
 //----------------------------------------------------------------------
 

@@ -13,10 +13,9 @@
 #include "Process.h"
 #include "../../stira/imagedata/datastructures/Image.h"
 
-using namespace stira::image;
 using namespace std;
 
-Process::Process( Image* pImage ) : QThread()
+Process::Process( stira::imagedata::Image* pImage ) : QThread()
 {
    cout << "Applying master Process directly with Image*" << endl << flush;
    mpImage = pImage;
@@ -37,14 +36,14 @@ QString Process::GetProcessName()
 
 //--------------------------------------------------------
 
-void Process::AddResult( stira::image::Image* pResultImage )
+void Process::AddResult( stira::imagedata::Image* pResultImage )
 {
    vpOutImageVector.push_back( pResultImage );
 }
 
 //--------------------------------------------------------
 
-std::vector< stira::image::Image* > Process::GetResultImages()
+std::vector< stira::imagedata::Image* > Process::GetResultImages()
 {
    return vpOutImageVector;
 }

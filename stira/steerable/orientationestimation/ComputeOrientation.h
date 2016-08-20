@@ -24,6 +24,8 @@
 namespace stira {
 namespace steerable {
 
+using namespace imagedata;
+
 /** \brief A class to compute local orientation in an image */
 class ComputeOrientation{
 public:
@@ -38,11 +40,11 @@ public:
      * This mapping happens based on the HSV coilor space, where mapping an angle 
      * theta to color is implicit (when letting H vary and keeping S and V fixed to 1). 
      * This HSV color is then converted to an RGB triplet*/
-   static image::ColorValue ConvertAngleToHSVMap(double angle);
+   static ColorValue ConvertAngleToHSVMap(double angle);
    
    /** \brief assigns for visualization a color triplet to an angle
      * This mapping is a simple interpolation between the RGB primaries between 0 and pi*/
-   static image::ColorValue ConvertAngleToRGBMap(double angle);
+   static ColorValue ConvertAngleToRGBMap(double angle);
 
    /** \brief computes dominant orientation with separable steerable filters as described by from Freeman and Adelson:
      *
@@ -62,14 +64,14 @@ public:
      * \param pResponseG2b second even separable steerable basis filter
      * \param pResponseG2c third even separable steerable basis filter
      * \return Grid containing local orientations and edge strengths */
-   static image::OrientationGrid* ComputeDominantOrientationInputFreemanAdelson(
-                      image::ArrayGrid<double>* pResponseH2a,
-                      image::ArrayGrid<double>* pResponseH2b,
-                      image::ArrayGrid<double>* pResponseH2c,
-                      image::ArrayGrid<double>* pResponseH2d,
-                      image::ArrayGrid<double>* pResponseG2a,
-                      image::ArrayGrid<double>* pResponseG2b,
-                      image::ArrayGrid<double>* pResponseG2c);
+   static OrientationGrid* ComputeDominantOrientationInputFreemanAdelson(
+                      ArrayGrid<double>* pResponseH2a,
+                      ArrayGrid<double>* pResponseH2b,
+                      ArrayGrid<double>* pResponseH2c,
+                      ArrayGrid<double>* pResponseH2d,
+                      ArrayGrid<double>* pResponseG2a,
+                      ArrayGrid<double>* pResponseG2b,
+                      ArrayGrid<double>* pResponseG2c);
 
    /** \brief computes dominant orientation with resonse bands from a single level of the conmplex steerable pyramid
      * 
@@ -78,7 +80,7 @@ public:
      * 
      * \param pPyrLevel one level of the complex steerable pyramid
      * \return Grid containing local orientations and edge strengths */
-   static image::OrientationGrid* ComputeDominantOrientationInputComplexPyramidLevel( image::PyramidLevel< std::complex<double> >* pPyrLevel);
+   static OrientationGrid* ComputeDominantOrientationInputComplexPyramidLevel( PyramidLevel< std::complex<double> >* pPyrLevel);
 };
 
 }

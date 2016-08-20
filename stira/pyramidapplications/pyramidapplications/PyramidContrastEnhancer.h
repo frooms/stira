@@ -16,9 +16,12 @@
 #include <vector>
 
 #include "../../imagedata/datastructures/Pyramid.h"
+#include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
 namespace pyramidapplications {
+
+using namespace imagedata;
    
 /** \brief A class to demonstrate simple contrast enhancement
   * The original reference used curvelets, we replaced these by a steerable pyramid
@@ -45,13 +48,13 @@ public:
      * \param nrScales number of scales to use in the decomposition
      * \param nrOrientations number of orientations to use per scale in the decomposition
      * \param applyWavelet true: apply old wavelet-based enhancement; false: use new approach of Murtagh et al*/
-   image::Image* Run( image::Image* pImage, int nrScales, int nrOrientations, bool applyWavelet=false );
+   Image* Run( Image* pImage, int nrScales, int nrOrientations, bool applyWavelet=false );
    
    /** \brief runs contrast enhancement on a already decomposed pyramid 
      * Corresponds to single color band
      * \param pPyramid input pyramid
      * \param applyWavelet true: apply old wavelet-based enhancement; false: use new approach of Murtagh et al*/
-   void RunPyramid( image::Pyramid<double>* pPyramid, bool applyWavelet=false );
+   void RunPyramid( Pyramid<double>* pPyramid, bool applyWavelet=false );
    
    /** \brief color version of contrast enhancement
      * Color version has the following steps
@@ -66,7 +69,7 @@ public:
      * \param nrScales number of scales to use in the decomposition
      * \param nrOrientations number of orientations to use per scale in the decomposition
      * \param applyWavelet true: apply old wavelet-based enhancement; false: use new approach of Murtagh et al*/
-   image::Image* Run3Colors( image::Image* pImage, int nrScales, int nrOrientations, bool applyWavelet=false );
+   Image* Run3Colors( Image* pImage, int nrScales, int nrOrientations, bool applyWavelet=false );
    
    /** \brief gets the sigma of the noise*/
    double GetSigmaNoise();
@@ -140,16 +143,16 @@ private:
    /** \brief enhances contrast in a single band
      * \param pBand band in which to enhance contrast
      * \param applyWavelet true: apply old wavelet-based enhancement; false: use new approach of Murtagh et al*/
-   bool ContrastEnhanceSingleBand( image::ArrayGrid<double>* pBand, bool applyWavelet );
+   bool ContrastEnhanceSingleBand( ArrayGrid<double>* pBand, bool applyWavelet );
    
    /** \brief enhances contrast in a single band that is part of 3 color bands
      * \param pBand1 color band 1 in which to enhance contrast
      * \param pBand2 color band 2 in which to enhance contrast
      * \param pBand3 color band 3 in which to enhance contrast
      * \param applyWavelet true: apply old wavelet-based enhancement; false: use new approach of Murtagh et al*/
-   bool ContrastEnhanceSingleBand3Colors( image::ArrayGrid<double>* pBandColor1,
-                                          image::ArrayGrid<double>* pBandColor2, 
-                                          image::ArrayGrid<double>* pBandColor3, bool applyWavelet  );
+   bool ContrastEnhanceSingleBand3Colors( ArrayGrid<double>* pBandColor1,
+                                          ArrayGrid<double>* pBandColor2,
+                                          ArrayGrid<double>* pBandColor3, bool applyWavelet  );
    
    /** \brief computes for a given coefficient the contrast enhancement multiplier 
      * Here, the multiplier is determined according to the Curvelet-based method 

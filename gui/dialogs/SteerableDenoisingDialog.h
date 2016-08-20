@@ -36,7 +36,7 @@ class SteerableDenoisingDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage the input image for processing */
-   SteerableDenoisingDialog( stira::image::Image* pImage );
+   SteerableDenoisingDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    ~SteerableDenoisingDialog();

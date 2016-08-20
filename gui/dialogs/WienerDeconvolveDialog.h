@@ -31,7 +31,7 @@ class WienerDeconvolveDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   WienerDeconvolveDialog( stira::image::Image* pImage );
+   WienerDeconvolveDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~WienerDeconvolveDialog();

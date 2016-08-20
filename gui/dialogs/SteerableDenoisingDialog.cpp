@@ -16,7 +16,8 @@
 #include "../processes/SteerableDenoisingProcess.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 SteerableDenoisingDialog::SteerableDenoisingDialog( Image* pImage ) : DialogMaster( pImage )
 {

@@ -17,7 +17,9 @@
 #include "../../imagedata/datastructures/Pyramid.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief Class with operations on Pyramid objects */
 class PyramidTools

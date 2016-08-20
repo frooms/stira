@@ -17,7 +17,8 @@
 
 using namespace stira::pyramidapplications;
 using namespace stira::steerable;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 
 
 SteerableDenoisingProcess::SteerableDenoisingProcess( Image* pImage ) : Process( pImage )

@@ -59,12 +59,12 @@ public:
    
    /** \brief constructor
      * Creates an image viewer with an externally created image */
-   ImageWindow( stira::image::Image* pImage );
+   ImageWindow( stira::imagedata::Image* pImage );
    
    /** \brief destructor */
    ~ImageWindow( );
    
-   stira::image::Image* GetImage( );
+   stira::imagedata::Image* GetImage( );
    
    enum ComparisonMode{COMPARE_TRANSPARANT, COMPARE_CHECKERED, COMPARE_NONE};
    
@@ -85,7 +85,7 @@ public slots:
 
    void contextMenuEvent( QContextMenuEvent *event );
    void SlotRemoveComparisonImage( );
-   void SlotCompareImages( stira::image::Image* pImage, ComparisonMode mode );
+   void SlotCompareImages( stira::imagedata::Image* pImage, ComparisonMode mode );
 
    void SlotReRenderTransparantImage( int sliderPosition );
 
@@ -179,8 +179,8 @@ private:
    bool mIsFirstRendering;  ///< keeps track if this is the first time that the image is rendered in the window
 
    ComparisonMode mComparisonMode;  ///< hwn comparing two images, choose mode transparant or checkered
-   stira::image::Image* mpImage1;  ///< the underlying image data of image window
-   stira::image::Image* mpImage2;  ///< the underlying image data of the comparison image when viewed checkered or transparant
+   stira::imagedata::Image* mpImage1;  ///< the underlying image data of image window
+   stira::imagedata::Image* mpImage2;  ///< the underlying image data of the comparison image when viewed checkered or transparant
 };
 
 #endif

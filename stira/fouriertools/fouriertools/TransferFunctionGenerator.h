@@ -47,7 +47,7 @@ public:
      * \param x1 lowpass frequency (from here to DC, all frequencies are 0)
      * \param x2 highpass frequency (from here to the edges, all frequencies are 1)
      * \return grid with transfer function */
-   static image::ArrayGrid<double>* GenerateHighPassTransferFunction(int width, int height, double x1, double x2);
+   static ArrayGrid<double>* GenerateHighPassTransferFunction(int width, int height, double x1, double x2);
 
    /** \brief Generates a lowpass transfer function as an ArrayGrid object
      *
@@ -56,7 +56,7 @@ public:
      * \param x1 lowpass frequency (from here to DC, all frequencies are 1)
      * \param x2 highpass frequency (from here to the edges, all frequencies are 0)
      * \return grid with transfer function */
-   static image::ArrayGrid<double>* GenerateLowPassTransferFunction(int width, int height, double x1, double x2);
+   static ArrayGrid<double>* GenerateLowPassTransferFunction(int width, int height, double x1, double x2);
 
    /** \brief Generates a oriented transfer function as an ArrayGrid object
      *
@@ -83,7 +83,7 @@ public:
      * \param centerFrequency distance from DC at which the maximum transfer occurs
      * \param bandWidth width of the transfer band
      * \return grid with transfer function */
-   static image::ArrayGrid<double>* GenerateLogRadiusBand(int width, int height, double centerFrequency, double bandWidth);
+   static ArrayGrid<double>* GenerateLogRadiusBand(int width, int height, double centerFrequency, double bandWidth);
 
    /** \brief Generates a angular Gaussian transfer function
      * Help function for GenerateLogGaborBandTransferFunction
@@ -93,7 +93,7 @@ public:
      * \param centerAngle angle on which the maximum transfer occurs
      * \param angleSpread angular width of the transfer band
      * \return grid with transfer function */
-   static image::ArrayGrid<double>* GenerateGaussianAngularBand(int width, int height, double centerAngle, double angleSpread);
+   static ArrayGrid<double>* GenerateGaussianAngularBand(int width, int height, double centerAngle, double angleSpread);
 
    /** \brief Generates a LogGabor transfer function
      * Source: Peter Kovesi:
@@ -105,7 +105,7 @@ public:
      * \param centerAngle angle on which the maximum transfer occurs
      * \param angleSpread angular width of the transfer band
      * \return grid with transfer function */
-   static image::ArrayGrid<double>* GenerateLogGaborBandTransferFunction(int width, int height, double centerFrequency, double radialWidth, double centerAngle, double angleSpread);
+   static ArrayGrid<double>* GenerateLogGaborBandTransferFunction(int width, int height, double centerFrequency, double radialWidth, double centerAngle, double angleSpread);
 
    /** \brief Generates a transfer function to suppress frequencies on the axes
      *
@@ -115,21 +115,21 @@ public:
      * \param x1 distance from DC up to which the axis frequencies are not suppressed
      * \param x2 distance from DC beyond which all frequencies are suppressed
      * \return grid with transfer function */
-   static image::ArrayGrid<double>* GenerateAxisSuppressTransferFunction(int width, int height, int axisWidth, double x1, double x2);
+   static ArrayGrid<double>* GenerateAxisSuppressTransferFunction(int width, int height, int axisWidth, double x1, double x2);
 
-   static image::ArrayGrid<double>* GenerateAxisExtractTransferFunction(int width, int height, int axisWidth );
+   static ArrayGrid<double>* GenerateAxisExtractTransferFunction(int width, int height, int axisWidth );
 
    /** \brief Converts a Fourier domain transfer function to a filter kernel
      * \warning  the inverse Fourier Transform is applied to pTransferFunction, so take that into account when using this data after
      *           applying this function
      * \param pTransferFunction the transfer function to be converted
      * \param mode tells if the real or the imaginary values are taken after the Inverse Fourier Transform is applied to the transfer function*/
-   static image::ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( FFTBand* pTransferFunction, common::NumberMode mode = common::MODE_REAL );
+   static ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( FFTBand* pTransferFunction, common::NumberMode mode = common::MODE_REAL );
 
    /** \brief Converts a Fourier domain transfer function to a filter kernel
      * \param pTransferFunction the transfer function to be converted
      * \param mode tells if the real or the imaginary values are taken after the Inverse Fourier Transform is applied to the transfer function*/
-   static image::ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( image::ArrayGrid<double>* pTransferFunction, common::NumberMode mode = common::MODE_REAL );
+   static ArrayGrid<double>* ConvertTransferFunctionToFilterKernel( ArrayGrid<double>* pTransferFunction, common::NumberMode mode = common::MODE_REAL );
 
 private:
    /** \brief Help function to deal with non-square images

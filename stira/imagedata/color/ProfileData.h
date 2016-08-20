@@ -21,7 +21,7 @@
 using namespace std;
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief Elementary color profile representations
   * In this file, we have a few data structures and a class to represent some elementary color profiles 
@@ -136,6 +136,7 @@ public:
    std::vector< lut_entry_t > A2B; ///< the A2B conversion LUT
    std::vector< lut_entry_t > B2A; ///< the B2A conversion LUT
 };
+
 }
 }
 

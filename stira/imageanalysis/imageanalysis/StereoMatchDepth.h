@@ -21,6 +21,8 @@
 namespace stira {
 namespace imageanalysis {
 
+using namespace imagedata;
+
 // http://www.cse.psu.edu/~rtc12/CSE486/lecture09_6pp.pdf
 // http://campar.in.tum.de/twiki/pub/Chair/TeachingWs09Cv2/3D_CV2_WS_2009_Stereo.pdf
 class StereoMatchDepth
@@ -28,19 +30,19 @@ class StereoMatchDepth
 public:
     StereoMatchDepth();
 
-    static image::ArrayGrid<double>* MatchStereo( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2,
-                                                  int windowHalfWidth, common::MatchCriterion myMatchCriterion, int maxDisparity );
+    static ArrayGrid<double>* MatchStereo( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2,
+                                           int windowHalfWidth, common::MatchCriterion myMatchCriterion, int maxDisparity );
 
 private:
 
-    static image::ArrayGrid<double>* MatchStereoSSD( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2,
-                                                     int windowHalfWidth, int maxDisparity );
+    static ArrayGrid<double>* MatchStereoSSD( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2,
+                                              int windowHalfWidth, int maxDisparity );
 
-    static image::ArrayGrid<double>* MatchStereoNCC( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2,
-                                                     int windowHalfWidth, int maxDisparity );
+    static ArrayGrid<double>* MatchStereoNCC( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2,
+                                              int windowHalfWidth, int maxDisparity );
 
-    static image::ArrayGrid<double>* MatchStereoMI( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2,
-                                                    int windowHalfWidth, int maxDisparity );
+    static ArrayGrid<double>* MatchStereoMI( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2,
+                                             int windowHalfWidth, int maxDisparity );
 };
 
 }

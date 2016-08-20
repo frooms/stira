@@ -18,7 +18,9 @@
 #include "../../imagedata/datastructures/Image.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief class to generate clouds of Perlin noise
   *  code slightly adapted from code of Isaac McGarvey: 

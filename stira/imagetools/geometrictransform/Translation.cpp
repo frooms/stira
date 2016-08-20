@@ -13,7 +13,7 @@
 #include "Translation.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace common;
 

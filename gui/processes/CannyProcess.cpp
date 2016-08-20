@@ -13,7 +13,6 @@
 #include "CannyProcess.h"
 #include "../../stira/imageanalysis/imageanalysis/CannyEdgeDetector.h"
 
-using namespace stira::image;
 using namespace stira::imageanalysis;
 
 CannyProcess::CannyProcess( Image* pImage ) : Process( pImage )

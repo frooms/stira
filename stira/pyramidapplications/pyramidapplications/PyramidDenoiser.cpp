@@ -19,7 +19,6 @@
 namespace stira {
 namespace pyramidapplications {
 
-using namespace image;
 using namespace std;
 
 //===================================================================================================

@@ -25,7 +25,8 @@ namespace imageanalysis {
 
 using namespace std;
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace histogram;
 using namespace filter;
 using namespace fouriertools;

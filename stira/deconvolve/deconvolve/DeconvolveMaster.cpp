@@ -16,7 +16,6 @@ namespace stira{
 namespace deconvolve{
 
 using namespace std;
-using namespace image;
 
 //--------------------------------------------------------------------------
 

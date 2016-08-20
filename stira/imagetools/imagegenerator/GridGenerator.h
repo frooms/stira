@@ -17,7 +17,9 @@
 #include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /**  \brief Generates different predefined grids
   */

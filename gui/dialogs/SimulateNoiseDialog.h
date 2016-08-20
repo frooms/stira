@@ -36,7 +36,7 @@ public:
 
    /** \brief constructor
      * \param pImage input image for processing */
-   SimulateNoiseDialog( stira::image::Image* pImage );
+   SimulateNoiseDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~SimulateNoiseDialog();

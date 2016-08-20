@@ -16,7 +16,7 @@
 #include <cassert>
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 using namespace std;
 using namespace common;

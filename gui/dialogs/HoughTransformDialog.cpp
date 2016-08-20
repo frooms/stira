@@ -14,8 +14,8 @@
 #include "../processes/HoughTransformProcess.h"
 
 using namespace std;
-using namespace stira::image;
-
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 HoughTransformDialog::HoughTransformDialog( Image* pImage ) : DialogMaster( pImage )
 {

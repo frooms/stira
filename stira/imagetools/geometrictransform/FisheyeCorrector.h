@@ -19,7 +19,7 @@
 #include "../interpolation/BicubicInterpolator.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief simple class to correct Fisheye distortion
   *  Reference: http://www.tannerhelland.com/4743/simple-algorithm-correcting-lens-distortion/ */

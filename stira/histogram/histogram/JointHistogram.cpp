@@ -21,7 +21,7 @@ using namespace std;
 namespace stira {
 namespace histogram {
 
-using namespace image;
+using namespace imagedata;
 
 JointHistogram::JointHistogram( double horizontalBinSize, double verticalBinSize, double horizontalMin, double horizontalMax, double verticalMin, double verticalMax, int nrBands )
 {
@@ -84,8 +84,8 @@ JointHistogram::JointHistogram( Image* pImage1, Image* pImage2, bool useAbsolute
 
 //----------------------------------------------------------------
 
-JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
-                                image::ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2,
+JointHistogram::JointHistogram( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                                ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2,
                                 bool useAbsoluteValues )
 {
     mRoiTopX1 = xTop1;
@@ -115,12 +115,12 @@ JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, int xTop1, int
 
     BuildJointHistogram( pGrid1, pGrid2, useAbsoluteValues );
 
-    VisualizeAsImage(std::string("MyConditionalHistogram.pgm"));
+    //VisualizeAsImage(std::string("MyConditionalHistogram.pgm"));
 }
 
 //----------------------------------------------------------------
 
-JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool useAbsoluteValues )
+JointHistogram::JointHistogram( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, bool useAbsoluteValues )
 {
    assert( pGrid1->GetWidth()  == pGrid2->GetWidth() );
    assert( pGrid1->GetHeight() == pGrid2->GetHeight() );
@@ -149,7 +149,7 @@ JointHistogram::JointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGr
 
    BuildJointHistogram( pGrid1, pGrid2, useAbsoluteValues );
 
-   VisualizeAsImage(std::string("MyConditionalHistogram.pgm"));
+   //VisualizeAsImage(std::string("MyConditionalHistogram.pgm"));
 }
 
 //----------------------------------------------------------------
@@ -199,7 +199,7 @@ bool JointHistogram::Write( std::string fileName )
 
 //----------------------------------------------------------------
 
-void JointHistogram::BuildJointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool absoluteValue )
+void JointHistogram::BuildJointHistogram( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, bool absoluteValue )
 {
    int roiWidth  = mRoiBottomX1 - mRoiTopX1;      assert( ( mRoiBottomX2 - mRoiTopX2 ) == roiWidth );
    int roiHeight = mRoiBottomY1 - mRoiTopY1;      assert( ( mRoiBottomY2 - mRoiTopY2 ) == roiHeight );
@@ -356,28 +356,18 @@ FloatHistogram* JointHistogram::GetMarginalPDF2()
 
 //----------------------------------------------------------------
 
-void JointHistogram::VisualizeAsImage(std::string imageName)
+Image* JointHistogram::VisualizeAsImage()
 {
-   if (mvpData.size() == 1)
-   {
-      ArrayGrid<int>* pOutGrid = mvpData[0]->Clone();
-      GridStatistics<int>::RescaleGrid(pOutGrid, 0, 255 );
-      ImageIO::WritePGM( pOutGrid, imageName );
-      delete pOutGrid;
-   }
+   Image* pImageOut = new Image( mvpData[0]->GetWidth(), mvpData[0]->GetHeight() );
+   assert ((mvpData.size() == 1) || (mvpData.size() == 3));
 
-   if (mvpData.size() == 3)
+   for (int i = 0; i < mvpData.size(); i++)
    {
-      Image* pImageOut = new Image( mvpData[0]->GetWidth(), mvpData[0]->GetHeight() );
-      for (int i = 0; i < 3; i++)
-      {
-         ArrayGrid<double>* pOutGrid = GridConverter::ConvertToDouble( mvpData[i] );
-         GridStatistics<double>::RescaleGrid( pOutGrid, 0.0, 255.0 );
-         pImageOut->AddBand( pOutGrid );
-      }
-      ImageIO::Write( pImageOut, imageName );
-      delete pImageOut;
+      ArrayGrid<double>* pOutGrid = GridConverter::ConvertToDouble( mvpData[i] );
+      GridStatistics<double>::RescaleGrid( pOutGrid, 0.0, 255.0 );
+      pImageOut->AddBand( pOutGrid );
    }
+   return pImageOut;
 }
 
 //----------------------------------------------------------------

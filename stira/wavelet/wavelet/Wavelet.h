@@ -27,6 +27,8 @@
 namespace stira {
 namespace wavelet {
 
+using namespace stira::imagedata;
+
 /** \brief parent class to compute wavelet decomposition / reconstruction 
   * For the moment just a fast Haar wavelet is available. Fast in the sense that the downsampling 
   * and upsampling are directly integrated in the computations and that no unnecessary coefficients 
@@ -45,10 +47,10 @@ public:
      * \param pSourceGrid grid to be deomposed
      * \param nrScales nr of scales in the decomposition
      * \return true if all went well*/
-   virtual bool Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales ) = 0;
+   virtual bool Decompose( ArrayGrid<double>* pSourceGrid, int nrScales ) = 0;
    
    /** \brief Gets the pyramid with all the subbands*/
-   image::Pyramid<double>* GetPyramid();
+   Pyramid<double>* GetPyramid();
    
    /** \brief reconstructs the decomposed image
      * \param threshold hard threshold for bandpass images, just for demo purposes*/
@@ -56,7 +58,7 @@ public:
    
    /** \brief gets a copy of the grid after wavelket reconstruction
      * Caller gets responsability to delete it after usage*/
-   image::ArrayGrid<double>* GetCopyOfReconstructedGrid();
+   ArrayGrid<double>* GetCopyOfReconstructedGrid();
    
    /** \brief gets the number of orientations*/
    int GetNumberOfOrientations();
@@ -75,16 +77,16 @@ protected:
      * \param isSubsampled flag whether the deomposition is subsampled
      * \param isLowestScaleSubsampled flag whether the finest deomposed scale is subsampled (only used if isSubsampled is true)
      */
-   void Initialize( image::ArrayGrid<double>* pSourceGrid, int nrScales, int nrOrientations=3, bool createBands=false, bool isSubsampled=true, bool isLowestScaleSubsampled=true );
+   void Initialize( ArrayGrid<double>* pSourceGrid, int nrScales, int nrOrientations=3, bool createBands=false, bool isSubsampled=true, bool isLowestScaleSubsampled=true );
 
    int mNrOrientations; ///< Number of orientations; default 3 with classical wavelets (LH, HL and HH)
    int mNrScales; ///< Number of scales
-   image::Pyramid<double>* mpPyramid;  ///< data structure for decomposed bands with wavelet coefficients
-   image::ArrayGrid<double>* mpDecomposeReconstructGrid;  ///< grid after deompose/reconstruct
+   Pyramid<double>* mpPyramid;  ///< data structure for decomposed bands with wavelet coefficients
+   ArrayGrid<double>* mpDecomposeReconstructGrid;  ///< grid after deompose/reconstruct
    int mCurrentScale;   ///< number of the scale being computed
    WaveletFilterSet mSet;  ///< the wavelet filter taps
 
-   image::ArrayGrid<double>* mpSourceGrid;  ///< pointer to source data before decomposition
+   ArrayGrid<double>* mpSourceGrid;  ///< pointer to source data before decomposition
 };
 }
 }

@@ -15,7 +15,8 @@
 #include "../../stira/fouriertools/fouriertools/FFT.h"
 #include "../../stira/imagetools/imagegenerator/GridGenerator.h"
 
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::fouriertools;
 using namespace stira::deconvolve;
 
@@ -114,20 +115,20 @@ ArrayGrid<double>* RichardsonLucyDeconvolveProcess::GeneratePSF()
    {
       case StiraDefinitions::PSF_DISK:
       {
-         return stira::image::GridGenerator::GenerateDisk( width, height, blurLevel );
+         return GridGenerator::GenerateDisk( width, height, blurLevel );
       }
       case StiraDefinitions::PSF_SQUARE:
       {
-         return stira::image::GridGenerator::GenerateSquare( width, height, blurLevel );
+         return GridGenerator::GenerateSquare( width, height, blurLevel );
       }
       case StiraDefinitions::PSF_AIRY:
       {
-         return stira::image::GridGenerator::GenerateAiry( width, height, blurLevel );
+         return GridGenerator::GenerateAiry( width, height, blurLevel );
       }
       case StiraDefinitions::PSF_GAUSS: 
       default:
       {
-         return stira::image::GridGenerator::GenerateGaussian ( width, height, blurLevel );
+         return GridGenerator::GenerateGaussian ( width, height, blurLevel );
       }
    }
 }

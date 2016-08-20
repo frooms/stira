@@ -13,7 +13,6 @@
 #include "CurvePlotDialog.h"
 
 using namespace std;
-using namespace stira::image;
 
 CurvePlotDialog::CurvePlotDialog( QString plotTitle ) : QDialog(0, Qt::WindowStaysOnTopHint)
 {

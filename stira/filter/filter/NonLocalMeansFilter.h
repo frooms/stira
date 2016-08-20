@@ -23,6 +23,8 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+
 /** \brief structure to compare image blocks
   * We use the coordinates of the center of the candidate block and its Euclidean intensity 
   * distance with a given reference block. This distance is the summed squared intensity 
@@ -77,7 +79,7 @@ public:
    
    /** \brief runs non-local means filter 
      * \param pImageIn Image to filter*/
-   image::Image* Run( image::Image* pImageIn );
+   Image* Run( Image* pImageIn );
    
 private:
    /** \brief computes Euclidean distance of intensities of two image blocks, weighted with Gaussian weights
@@ -112,8 +114,8 @@ private:
    int mExtendedWidth;;  ///< width of image currently being processed
    int mExtendedHeight;;  ///< height of image Grid currently being processed
    int mNrBands;;  ///< nr of bands of image currently being processed
-   image::ArrayGrid<double>* mpGridIn;  ///< Grid currently being processed
-   image::ArrayGrid<double>* mpGridOut;  ///< Grid currently being processed
+   ArrayGrid<double>* mpGridIn;  ///< Grid currently being processed
+   ArrayGrid<double>* mpGridOut;  ///< Grid currently being processed
 };
 
 }

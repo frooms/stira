@@ -17,7 +17,7 @@
 using namespace std;
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 using namespace common;
 

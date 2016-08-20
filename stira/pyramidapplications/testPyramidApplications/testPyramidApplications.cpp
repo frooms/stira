@@ -28,7 +28,8 @@
 #include "../pyramidapplications/PyramidKeyPointDetector.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::fouriertools;
 using namespace stira::steerable;
 using namespace stira::pyramidapplications;

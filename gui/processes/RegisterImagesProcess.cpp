@@ -13,7 +13,8 @@
 #include "RegisterImagesProcess.h"
 #include "../../stira/registration/registration/RegistrationWrapper.h"
 
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::registration;
 
 RegisterImagesProcess::RegisterImagesProcess( Image* pImageMaster, Image* pImageSlave )

@@ -15,7 +15,8 @@
 #include "../processes/GNCDeconvolveProcess.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 GNCDeconvolveDialog::GNCDeconvolveDialog( Image* pImage ) : DialogMaster( pImage )
 {

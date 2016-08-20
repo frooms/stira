@@ -24,7 +24,7 @@ class GNCDeconvolveProcess : public Process
 public:
    /** \brief constructor
      * \param pImage input image */
-   GNCDeconvolveProcess( stira::image::Image* pImage );
+   GNCDeconvolveProcess( stira::imagedata::Image* pImage );
    virtual ~GNCDeconvolveProcess();
 
    double GetBlurLevel();

@@ -17,7 +17,8 @@
 #include "../../stira/imageanalysis/imageanalysis/HoughTransform.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::imageanalysis;
 
 HoughTransformProcess::HoughTransformProcess( Image* pImage ) : Process( pImage )

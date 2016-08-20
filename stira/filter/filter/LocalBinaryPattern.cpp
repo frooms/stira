@@ -24,8 +24,9 @@ namespace stira{
 namespace filter{
 
 using namespace common;
-using namespace image;
 using namespace histogram;
+using namespace imagedata;
+using namespace imagetools;
 
 // binomial weights:
 //   1   2   4
@@ -36,7 +37,7 @@ double weightMask[9] = {1, 2, 4, 8, 0, 16, 32, 64, 128};
 
 LocalBinaryPattern::LocalBinaryPattern()
 {
-   image::ArrayGrid<double>* pGrid = 0;
+   ArrayGrid<double>* pGrid = 0;
    double initAngle = 0;
    double radius = 1;
    int nrPoints = 8;
@@ -45,7 +46,7 @@ LocalBinaryPattern::LocalBinaryPattern()
 
 //----------------------------------------------------------------
 
-LocalBinaryPattern::LocalBinaryPattern( image::ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints )
+LocalBinaryPattern::LocalBinaryPattern( ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints )
 {
    Initialize( pGrid, initAngle, radius, nrPoints );
    mHasPointsOfInterest = false;
@@ -53,7 +54,7 @@ LocalBinaryPattern::LocalBinaryPattern( image::ArrayGrid<double>* pGrid, double 
 
 //----------------------------------------------------------------
 
-LocalBinaryPattern::LocalBinaryPattern( image::ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints, std::vector< Point<int> > vPointsOfInterest )
+LocalBinaryPattern::LocalBinaryPattern( ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints, std::vector< Point<int> > vPointsOfInterest )
 {
    Initialize( pGrid, initAngle, radius, nrPoints );
    mHasPointsOfInterest = true;
@@ -62,7 +63,7 @@ LocalBinaryPattern::LocalBinaryPattern( image::ArrayGrid<double>* pGrid, double 
 
 //----------------------------------------------------------------
 
-void LocalBinaryPattern::Initialize( image::ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints )
+void LocalBinaryPattern::Initialize( ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints )
 {
    mpGrid = pGrid;
    mRadius = radius;
@@ -211,7 +212,7 @@ histogram::FloatHistogram* LocalBinaryPattern::RunHistogram( int /*ID*/ )
    int width  = mpGrid->GetWidth();
 
 #ifdef WRITE_OUTPUTS
-   image::ArrayGrid<double>* pLbpGrid = new image::ArrayGrid<double>( width, height );
+   ArrayGrid<double>* pLbpGrid = new ArrayGrid<double>( width, height );
 #endif
 
    double binSize = 1;
@@ -301,7 +302,7 @@ int LocalBinaryPattern::SignComparison(double a, double b, double threshold, boo
 
 //--------------------------------------------------------------------------
 
-int LocalBinaryPattern::ComputePointGLDP( image::ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType )
+int LocalBinaryPattern::ComputePointGLDP( ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType )
 {
    double p[6][6];
    int k = 0;
@@ -459,7 +460,7 @@ int LocalBinaryPattern::ComputePointGLDP( image::ArrayGrid<double>* pGridIn, int
 
 //--------------------------------------------------------------------------
 
-int LocalBinaryPattern::ComputePointGLTP( image::ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType )
+int LocalBinaryPattern::ComputePointGLTP( ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType )
 {
    double p[6][6];
    int k = 0;
@@ -564,11 +565,11 @@ int LocalBinaryPattern::ComputePointGLTP( image::ArrayGrid<double>* pGridIn, int
           );
 }
 
-image::ArrayGrid<int>* LocalBinaryPattern::ComputeLBPSymImage( image::ArrayGrid<double>* pGridIn, double threshold, bool myType )
+ArrayGrid<int>* LocalBinaryPattern::ComputeLBPSymImage( ArrayGrid<double>* pGridIn, double threshold, bool myType )
 {
    int width  = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
-   image::ArrayGrid<int>* pLBPGrid = new image::ArrayGrid<int>(width, height);
+   ArrayGrid<int>* pLBPGrid = new ArrayGrid<int>(width, height);
    for (int y = 3; y < height-3; y++)
    {
       for (int x = 3; x < width-3; x++)
@@ -581,7 +582,7 @@ image::ArrayGrid<int>* LocalBinaryPattern::ComputeLBPSymImage( image::ArrayGrid<
 
 //--------------------------------------------------------------------------
 
-int LocalBinaryPattern::ComputePointLBPSym( image::ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType )
+int LocalBinaryPattern::ComputePointLBPSym( ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType )
 {
    int Res = 1;
 
@@ -603,7 +604,7 @@ int LocalBinaryPattern::ComputePointLBPSym( image::ArrayGrid<double>* pGridIn, i
 
 //--------------------------------------------------------------------------
 
-FloatHistogram LocalBinaryPattern::ComputePointLBPSymHistogram( image::ArrayGrid<double>* pGridIn, int frameNr, int topX, int topY, int bottomX, int bottomY, double threshold, bool myType )
+FloatHistogram LocalBinaryPattern::ComputePointLBPSymHistogram( ArrayGrid<double>* pGridIn, int frameNr, int topX, int topY, int bottomX, int bottomY, double threshold, bool myType )
 {
    int nrBins = 4096;
    int nrBands = 1;
@@ -650,7 +651,7 @@ double LocalBinaryPattern::ComputeJensenShannonDivergenceBetweenImagePatches( Ar
 
 #ifdef GENERATE_INTERMEDIATE_IMAGES
    ColorLookupTable cLUT;
-   image::Image* pImage = new Image( pGridIn->GetWidth(), pGridIn->GetHeight(), 3 );
+   Image* pImage = new Image( pGridIn->GetWidth(), pGridIn->GetHeight(), 3 );
 #endif
    for (int y = 3; y < imHeight-3; y++)
    {
@@ -693,7 +694,7 @@ double LocalBinaryPattern::ComputeJensenShannonDivergenceBetweenImagePatches( Ar
 
 //--------------------------------------------------------------------------
 
-image::Image* LocalBinaryPattern::RunClassic( image::Image* pImageIn )
+Image* LocalBinaryPattern::RunClassic( Image* pImageIn )
 {
    int borderSize = 1;
    Image* pExpandedImage = ImageTools::MirrorBorder( pImageIn, borderSize, borderSize );

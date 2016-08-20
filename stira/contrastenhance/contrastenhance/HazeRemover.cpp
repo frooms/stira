@@ -21,7 +21,8 @@
 namespace stira {
 namespace contrastenhance {
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace histogram;
 using namespace common;
 
@@ -67,16 +68,16 @@ double HazeRemover::EstimateAtmosphericLight()
 
 //----------------------------------------------------------------------------
 
-image::Image* HazeRemover::Run( image::Image* pInImage )
+Image* HazeRemover::Run( Image* pInImage )
 {
-   image::Image* pOutImage = pInImage->Clone();
+   Image* pOutImage = pInImage->Clone();
    mpSourceImage = pInImage;
    mWidth =  mpSourceImage->GetWidth();
    mHeight = mpSourceImage->GetHeight();
    mNrOfBands = pInImage->GetNumberOfBands();
 
    #ifdef DIAGNOSE_DEBUG
-      image::Image* pTransmissionImage = new Image( mWidth, mHeight, 1 );
+      Image* pTransmissionImage = new Image( mWidth, mHeight, 1 );
    #endif
 
    double atmosphericLight = EstimateAtmosphericLight();

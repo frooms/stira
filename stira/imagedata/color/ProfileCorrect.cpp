@@ -15,7 +15,7 @@
 #include "TransformColorSpace.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 using namespace common;
 
@@ -202,4 +202,3 @@ ProfileData* ProfileCorrect::InterpolateSamplesToGrid( )
 
 }
 }
-

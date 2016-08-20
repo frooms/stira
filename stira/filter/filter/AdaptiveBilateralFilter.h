@@ -18,6 +18,8 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+
 /** \brief computes adaptive bilateral filter as described in reference
   * Bibtex reference:
   *     article{ zhang08adaptive,
@@ -40,7 +42,7 @@ public:
    ~AdaptiveBilateralFilter();
    
    /** \brief run method*/
-   static image::Image* Run(image::Image* pImage);
+   static Image* Run( Image* pImage);
 private:
    /** \brief Converts LoG to adaptive parameter zeta
      *
@@ -49,7 +51,7 @@ private:
      * model instead of a LUT from a training set.
      *
      * \param logClass clipped intensity of the LoG output*/
-   static double LoGClassToZeta(double logClass);
+   static double LoGClassToZeta( double logClass );
 
    /** \brief Converts LoG to adaptive parameter sigma_R
      *
@@ -58,7 +60,7 @@ private:
      * model instead of a LUT from a training set.
      *
      * \param logClass clipped intensity of the LoG output*/
-   static double LoGClassToSigmaR(double logClass);
+   static double LoGClassToSigmaR( double logClass );
 
    static const int mWindowSize;  ///< size of window to consider per pixel being filtered
 };

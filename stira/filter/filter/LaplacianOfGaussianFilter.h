@@ -18,6 +18,8 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+
 /** \brief Creates a Laplacian of Gaussian filtered image
   *
   * In fact second derivative (Laplacian: of a smoothened version of the image,
@@ -40,7 +42,7 @@ public:
      * Creates a new image, which becomes the responsability of the caller
      * \param pImage input image
      * \param scaleFactor factor with which to scale the output intensities*/
-   static image::Image* Run(image::Image* pImage, double scaleFactor=1.0);
+   static Image* Run( Image* pImage, double scaleFactor = 1.0 );
 
 private:
    /** \brief Computes intermediate parameter C

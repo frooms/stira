@@ -20,7 +20,7 @@
 #include "ColorValue.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief generate distinct colors for visualization
   * Based on  http://stackoverflow.com/questions/309149/generate-distinctly-different-rgb-colors-in-graphs

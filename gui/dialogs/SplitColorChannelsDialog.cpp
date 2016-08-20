@@ -14,7 +14,7 @@
 #include "SplitColorChannelsDialog.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
 
 SplitColorChannelsDialog::SplitColorChannelsDialog( Image* pImage ) : DialogMaster( pImage )
 {
@@ -72,45 +72,45 @@ SplitColorChannelsDialog::~SplitColorChannelsDialog()
 
 //------------------------------------------------------------------
 
-enum stira::image::ColorType SplitColorChannelsDialog::GetColorSpace()
+enum stira::imagedata::ColorType SplitColorChannelsDialog::GetColorSpace()
 {
    switch( mpColorSpaceComboBox->currentIndex() )
    {
       case 0:
       {
-         return stira::image::TYPE_RGB;
+         return stira::imagedata::TYPE_RGB;
       }
       case 1:
       {
-         return stira::image::TYPE_HSV;
+         return stira::imagedata::TYPE_HSV;
       }
       case 2:
       {
-         return stira::image::TYPE_HSI;
+         return stira::imagedata::TYPE_HSI;
       }
       case 3:
       {
-         return stira::image::TYPE_CMY;
+         return stira::imagedata::TYPE_CMY;
       }
       case 4:
       {
-         return stira::image::TYPE_YUV;
+         return stira::imagedata::TYPE_YUV;
       }
       case 5:
       {
-         return stira::image::TYPE_XYZ;
+         return stira::imagedata::TYPE_XYZ;
       }
       case 6:
       {
-         return stira::image::TYPE_LAB;
+         return stira::imagedata::TYPE_LAB;
       }
       case 7:
       {
-         return stira::image::TYPE_LUV;
+         return stira::imagedata::TYPE_LUV;
       }
       default:
       {
-         return stira::image::TYPE_RGB;
+         return stira::imagedata::TYPE_RGB;
       }
    }
 }
@@ -132,7 +132,7 @@ void SplitColorChannelsDialog::SlotShowHideIlluminant( int index )
 
 //------------------------------------------------------------------
 
-stira::image::ColorValue SplitColorChannelsDialog::GetReferenceIlluminant()
+stira::imagedata::ColorValue SplitColorChannelsDialog::GetReferenceIlluminant()
 {
    switch( mpIlluminantComboBox->currentIndex() )
    {

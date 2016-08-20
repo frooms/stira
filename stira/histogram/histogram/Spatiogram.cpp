@@ -19,12 +19,12 @@ using namespace std;
 namespace stira {
 namespace histogram {
 
-using namespace image;
+using namespace imagedata;
 using namespace common;
 
 //--------------------------------------------------------------------------------------
 
-Spatiogram::Spatiogram( image::ArrayGrid<double>* pGrid, int binSize, image::ArrayGrid<bool>* pMaskGrid)
+Spatiogram::Spatiogram( ArrayGrid<double>* pGrid, int binSize, ArrayGrid<bool>* pMaskGrid )
 {
    double mMin, mMax;
    GridStatistics<double>::GetMinMax( pGrid, mMin, mMax );
@@ -166,7 +166,7 @@ common::Point<double> Spatiogram::GetAveragePoint( int binNr )
 
 //--------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* Spatiogram::GetCovarianceMatrix( int binNr )
+ArrayGrid<double>* Spatiogram::GetCovarianceMatrix( int binNr )
 {
    return mCovarianceMatrixVector[ binNr ];
 }

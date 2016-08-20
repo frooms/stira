@@ -18,9 +18,9 @@ namespace stira {
 namespace imageanalysis {
 
 using namespace stira::histogram;
-using namespace stira::image;
+using namespace stira::imagetools;
 
-CompareCurvesInImage::CompareCurvesInImage( image::Image* pImage1, image::Image* pImage2, image::ColorValue cv )
+CompareCurvesInImage::CompareCurvesInImage( Image* pImage1, Image* pImage2, ColorValue cv )
 {
    mpImage1 = pImage1;
    mpImage2 = pImage2;
@@ -33,9 +33,9 @@ CompareCurvesInImage::CompareCurvesInImage( image::Image* pImage1, image::Image*
 
 int CompareCurvesInImage::GetDifference()
 {
-   image::ColorValue cv1 = ColorValue(   0,   0, 255, TYPE_RGB );
-   image::ColorValue cv2 = ColorValue(   0, 255,   0, TYPE_RGB );
-   image::ColorValue cv3 = ColorValue(   0, 255, 255, TYPE_RGB );
+   ColorValue cv1 = ColorValue(   0,   0, 255, TYPE_RGB );
+   ColorValue cv2 = ColorValue(   0, 255,   0, TYPE_RGB );
+   ColorValue cv3 = ColorValue(   0, 255, 255, TYPE_RGB );
    Image* pDiffImage = new Image(  mpImage1->GetWidth(), mpImage1->GetHeight(), 3 );
    int differentPixels = 0;
    for (int x = 0; x < mpImage1->GetWidth(); x++)

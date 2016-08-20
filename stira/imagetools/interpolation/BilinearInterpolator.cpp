@@ -14,7 +14,7 @@
 #include "../../common/common/StiraMacros.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 BilinearInterpolator::BilinearInterpolator()
 {

@@ -12,10 +12,8 @@
 
 #include "ColorConstants.h"
 
-
 namespace stira {
-namespace image {
-
+namespace imagedata {
 
 //const double Color::sKappa = 903.3;  // actual CIE standard
 const double ColorConstants::sKappa = 24389.0 / 27.0;  // CIE intent; benefit of continuous L function

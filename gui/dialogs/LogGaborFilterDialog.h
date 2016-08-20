@@ -37,7 +37,7 @@ public:
 
    /** \brief constructor
      * \param pImage the input image for processing */
-   LogGaborFilterDialog( stira::image::Image* pImage );
+   LogGaborFilterDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~LogGaborFilterDialog();

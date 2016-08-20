@@ -22,7 +22,7 @@ class WatershedProcess : public Process
 public:
    /** \brief constructor
      * \param pImage input image */
-   WatershedProcess( stira::image::Image* pImage );
+   WatershedProcess( stira::imagedata::Image* pImage );
    
    virtual ~WatershedProcess();
    

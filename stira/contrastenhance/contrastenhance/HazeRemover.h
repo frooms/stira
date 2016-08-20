@@ -19,6 +19,8 @@
 namespace stira {
 namespace contrastenhance {
 
+using namespace imagedata;
+
 /** \brief Haze removal from single image
   * Ref: 1)  Single Image Haze Removal using Dark Channel Prior
   *          Kaiming He, Jian Sun, and Xiaoou Tang
@@ -31,6 +33,7 @@ namespace contrastenhance {
   *             Current website: http://www.wisdom.weizmann.ac.il/~levina/
   *             Older, with pdf          http://people.csail.mit.edu/alevin/papers/Matting-Levin-Lischinski-Weiss-CVPR06.pdf
   *                    and matlab code   http://people.csail.mit.edu/alevin/matting.tar.gz
+  * UNDER CONSTRUCTION!!
   */
 class HazeRemover
 {
@@ -50,7 +53,7 @@ public:
    
    /** \brief Run method
      * \param pImage input image */
-   image::Image* Run( image::Image* pImage );
+   Image* Run( Image* pImage );
 
 private:
    /** \brief estimates the environment light intensity */
@@ -62,7 +65,7 @@ private:
    int mLocalWindowHalfSize;   ///< half size of local patch
    int mNrOfBands;   ///< number of bands in the source data
    double mOmega; ///< constant from the reference paper
-   image::Image* mpSourceImage;   ///< the source data
+   Image* mpSourceImage;   ///< the source data
 };
 
 }

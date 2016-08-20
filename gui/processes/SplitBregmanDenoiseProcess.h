@@ -24,7 +24,7 @@ public:
 
    /** \brief constructor
      * \param pImage input image */
-   SplitBregmanDenoiseProcess( stira::image::Image* pImage );
+   SplitBregmanDenoiseProcess( stira::imagedata::Image* pImage );
    virtual ~SplitBregmanDenoiseProcess();
    
    double GetMu();

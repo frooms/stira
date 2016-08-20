@@ -9,7 +9,8 @@
 namespace stira{
 namespace filter{
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace fouriertools;
 
 //------------------------------------------------------------------

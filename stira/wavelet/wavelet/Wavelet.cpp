@@ -16,9 +16,10 @@
 namespace stira {
 namespace wavelet {
 
-using namespace filter;
-using namespace image;
 using namespace std;
+using namespace filter;
+using namespace imagedata;
+using namespace imagetools;
 
 Wavelet::Wavelet()
 {
@@ -38,7 +39,7 @@ Wavelet::~Wavelet()
 
 //------------------------------------------------------------------------------------------
 
-void Wavelet::Initialize( image::ArrayGrid<double>* pSourceGrid, int nrScales, int nrOrientations, bool createBands, bool isSubsampled, bool isFinestScaleSubsampled )
+void Wavelet::Initialize( ArrayGrid<double>* pSourceGrid, int nrScales, int nrOrientations, bool createBands, bool isSubsampled, bool isFinestScaleSubsampled )
 {
    mNrOrientations = nrOrientations;
    mNrScales = nrScales;
@@ -52,14 +53,14 @@ void Wavelet::Initialize( image::ArrayGrid<double>* pSourceGrid, int nrScales, i
 
 //------------------------------------------------------------------------------------------
 
-image::Pyramid<double>* Wavelet::GetPyramid()
+Pyramid<double>* Wavelet::GetPyramid()
 {
    return mpPyramid;
 }
 
 //------------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* Wavelet::GetCopyOfReconstructedGrid()
+ArrayGrid<double>* Wavelet::GetCopyOfReconstructedGrid()
 {
    return mpDecomposeReconstructGrid->Clone();
 }

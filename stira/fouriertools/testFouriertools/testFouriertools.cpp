@@ -21,7 +21,8 @@
 using namespace std;
 using namespace stira;
 using namespace stira::fouriertools;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 //======================================================================================
 
@@ -112,7 +113,7 @@ bool FFTAxialExtractTest( ArrayGrid<double>* pSourceGrid )
    int height = pSourceGrid->GetHeight();
    int axisWidth = 4;
 
-   image::ArrayGrid<double>* pLPTransferFunction = TransferFunctionGenerator::GenerateAxisExtractTransferFunction( width, height, axisWidth );
+   ArrayGrid<double>* pLPTransferFunction = TransferFunctionGenerator::GenerateAxisExtractTransferFunction( width, height, axisWidth );
    ImageIO::WritePGM( pLPTransferFunction, string("AxialTransferFunctionY.pgm"));
    FFTBand* pFFTFilteredBand = FFT::ApplyTransferFunction( pFFTDataBand, pLPTransferFunction );
    delete pFFTDataBand;
@@ -271,10 +272,10 @@ bool LogGaborTest( ArrayGrid<double>* pSourceGrid)
 
 bool SuppressOuterFrequenciesTest( ArrayGrid<double>* pSourceGrid)
 {
-   image::ArrayGrid<double>* pFilteredGrid = FFT::SuppressOuterFrequencies( pSourceGrid );
+   ArrayGrid<double>* pFilteredGrid = FFT::SuppressOuterFrequencies( pSourceGrid );
 
    ImageIO::WritePGM( pFilteredGrid, "SuppressOuterFrequencies.pgm", ImageIO::NORMAL_OUT );
-   image::ArrayGrid<double>* pSpectrum =  FFT::ComputeLogPowerSpectrum( pFilteredGrid );
+   ArrayGrid<double>* pSpectrum =  FFT::ComputeLogPowerSpectrum( pFilteredGrid );
    ImageIO::WritePGM( pSpectrum, "SuppressOuterFrequenciesSpectrum.pgm", ImageIO::NORMAL_OUT );
 
    delete pFilteredGrid;

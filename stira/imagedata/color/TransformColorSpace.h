@@ -21,7 +21,7 @@
 #include "ColorConstants.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief transformations between color spaces
   *

@@ -23,7 +23,8 @@ namespace wavelet {
 
 using namespace std;
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
 NonSubsampledTransform::NonSubsampledTransform( WaveletType type ) : Wavelet()
 {
@@ -62,7 +63,7 @@ NonSubsampledTransform::~NonSubsampledTransform()
 
 //------------------------------------------------------------------------------
 
-bool NonSubsampledTransform::Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales )
+bool NonSubsampledTransform::Decompose( ArrayGrid<double>* pSourceGrid, int nrScales )
 {
    mNrScales = nrScales;
    bool createBands=true;
@@ -70,7 +71,7 @@ bool NonSubsampledTransform::Decompose( image::ArrayGrid<double>* pSourceGrid, i
    bool isLowestScaleSubsampled=false;
    this->Initialize( pSourceGrid, mNrScales, mNrOrientations, createBands, isSubsampled, isLowestScaleSubsampled );
    
-   image::ArrayGrid<double>* pReinputGrid = pSourceGrid;
+   ArrayGrid<double>* pReinputGrid = pSourceGrid;
    
    for (int scale = 0; scale < this->GetNumberOfScales(); scale++)
    {
@@ -87,7 +88,7 @@ bool NonSubsampledTransform::Reconstruct(double threshold )
 {
    for (int scale =  this->GetNumberOfScales()-1; scale >= 0; scale--)
    {
-      image::ArrayGrid<double>* pReinputGrid = mpPyramid->GetLowpassResidual( )->Clone();
+      ArrayGrid<double>* pReinputGrid = mpPyramid->GetLowpassResidual( )->Clone();
       ReconstructSingleScale( pReinputGrid, scale, threshold );
 
       mpPyramid->SetLowpassResidual( pReinputGrid );

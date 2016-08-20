@@ -16,7 +16,7 @@
 #include "Interpolator.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief child class for Nearest Neighbor interpolation
   */

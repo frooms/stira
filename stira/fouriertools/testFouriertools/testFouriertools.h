@@ -17,15 +17,17 @@
 #include "../fouriertools/FFT.h"
 namespace stira {
 
-bool HighPassTest( image::ArrayGrid<double>* pSourceGrid );
+using namespace imagedata;
 
-bool LowPassTest( image::ArrayGrid<double>* pSourceGrid );
+bool HighPassTest( ArrayGrid<double>* pSourceGrid );
 
-bool ApplySetOfTransferFunctionsTest( image::ArrayGrid<double>* pSourceGrid );
+bool LowPassTest( ArrayGrid<double>* pSourceGrid );
 
-bool ForwardInverseTest(image::ArrayGrid<double>* pSourceGrid);
+bool ApplySetOfTransferFunctionsTest( ArrayGrid<double>* pSourceGrid );
 
-void FFTtest(image::Image* pSourceImage);
+bool ForwardInverseTest( ArrayGrid<double>* pSourceGrid );
+
+void FFTtest( Image* pSourceImage );
 
 int main();
 

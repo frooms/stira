@@ -21,7 +21,8 @@
 #define CASE_SIMULATED_DEGRADATION
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::filter;
 using namespace stira::deconvolve;
 

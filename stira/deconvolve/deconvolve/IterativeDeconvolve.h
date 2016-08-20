@@ -20,6 +20,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 
 /** \brief enum value to specify regularization method*/
 enum regularizationType 
@@ -60,14 +62,14 @@ protected:
      * Protected constructor; should be called by a child class
      * \param pDegradedImage the degraded input image for restoration
      * \param maxNrOfIterations the maximum number of iterations*/
-   IterativeDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations=20 );
+   IterativeDeconvolve( Image* pDegradedImage, int maxNrOfIterations=20 );
    
    /** \brief constructor
      * Protected constructor; should be called by a child class
      * \param pDegradedImage the degraded input image for restoration
      * \param pPSF the Point Spread Function
      * \param maxNrOfIterations the maximum number of iterations*/
-   IterativeDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations=20 );
+   IterativeDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations=20 );
    
    /** \brief destructor*/
    ~IterativeDeconvolve();
@@ -84,8 +86,8 @@ protected:
      * Implemented in the child classes*/
    virtual bool RunSingleIterationSingleBand( )=0;
 
-   image::Image* mpLastEstimate; ///< pointer to the restored image from previous iteration
-   image::Image* mpNewEstimate; ///< pointer to the restored image from current iteration
+   Image* mpLastEstimate; ///< pointer to the restored image from previous iteration
+   Image* mpNewEstimate; ///< pointer to the restored image from current iteration
    
    double mLambda;  ///< Regularization parameter
    double mStepSize;  ///< Step size
@@ -94,10 +96,10 @@ protected:
    int mMaximumNrOfIterations;  ///< maximum number of iterations
 
    // intermediate pointers, not to be deleted
-   image::ArrayGrid<double>* mpDegradedGrid;   ///< pointer to a band of the degraded image
-   image::ArrayGrid<double>* mpLastGrid;   ///< pointer to a band of the restored image from previous iteration
-   image::ArrayGrid<double>* mpNewGrid;   ///< pointer to a band of the restored image from current iteration
-   image::ArrayGrid<double>* mpPSFGrid;   ///< pointer to a band of the Point Spread Function
+   ArrayGrid<double>* mpDegradedGrid;   ///< pointer to a band of the degraded image
+   ArrayGrid<double>* mpLastGrid;   ///< pointer to a band of the restored image from previous iteration
+   ArrayGrid<double>* mpNewGrid;   ///< pointer to a band of the restored image from current iteration
+   ArrayGrid<double>* mpPSFGrid;   ///< pointer to a band of the Point Spread Function
 };
 
 }

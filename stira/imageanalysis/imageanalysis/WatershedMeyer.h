@@ -44,7 +44,8 @@ namespace imageanalysis {
 
 using namespace std;
 using namespace stira::common;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 /** \brief Template class for watershed transformations
   * variant of Meyer algorithm, as used in Matlab

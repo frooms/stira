@@ -15,7 +15,8 @@
 #include <QMessageBox>
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 
 SimulateNoiseProcess::SimulateNoiseProcess( Image* pImage ) : Process( pImage )
 {
@@ -73,7 +74,7 @@ void SimulateNoiseProcess::SetUseColoredNoise( bool flag )
 
 void SimulateNoiseProcess::run()
 {
-   stira::image::Image* pOutImage = mpImage->Clone(); // Apply noise overwrites underlying image; create copy
+   Image* pOutImage = mpImage->Clone(); // Apply noise overwrites underlying image; create copy
    
    if (mUseColoredNoise && ( mpImage->GetNumberOfBands() != 3))
    {

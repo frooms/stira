@@ -20,9 +20,10 @@ using namespace std;
 namespace stira {
 namespace registration {
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 
-RegistrationWrapper::RegistrationWrapper( image::ArrayGrid<double>* pMasterGrid, image::ArrayGrid<double>* pSlaveGrid )
+RegistrationWrapper::RegistrationWrapper( ArrayGrid<double>* pMasterGrid, ArrayGrid<double>* pSlaveGrid )
 {
    if (    ( pMasterGrid->GetWidth() ==  pSlaveGrid->GetWidth() )
         && ( pMasterGrid->GetHeight() ==  pSlaveGrid->GetHeight() )
@@ -52,9 +53,9 @@ RegistrationWrapper::~RegistrationWrapper()
 
 //===================================================================================================
 
-image::ArrayGrid<double>* RegistrationWrapper::CreateGridFromArray( float* pArray, int width, int height )
+ArrayGrid<double>* RegistrationWrapper::CreateGridFromArray( float* pArray, int width, int height )
 {
-   image::ArrayGrid<double>* pGrid = new image::ArrayGrid<double>(width, height);
+   ArrayGrid<double>* pGrid = new ArrayGrid<double>(width, height);
    for (int y = 0; y < height; y++)
    {
       for (int x = 0; x < width; x++)
@@ -67,7 +68,7 @@ image::ArrayGrid<double>* RegistrationWrapper::CreateGridFromArray( float* pArra
 
 //===================================================================================================
 
-float* RegistrationWrapper::CreateArrayFromGrid( image::ArrayGrid<double>* pGridIn )
+float* RegistrationWrapper::CreateArrayFromGrid( ArrayGrid<double>* pGridIn )
 {
    int width  = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
@@ -193,7 +194,7 @@ void RegistrationWrapper::PrintTransform( )
 
 //===================================================================================================
 
-image::ArrayGrid<double>* RegistrationWrapper::GetRegisteredGrid()
+ArrayGrid<double>* RegistrationWrapper::GetRegisteredGrid()
 {
    return CreateGridFromArray( mRegistrationParameters.outPtr, 
                                mRegistrationParameters.nx, 
@@ -203,7 +204,7 @@ image::ArrayGrid<double>* RegistrationWrapper::GetRegisteredGrid()
 
 //===================================================================================================
 
-image::AffineTransform* RegistrationWrapper::GetResultingTransform( )
+AffineTransform* RegistrationWrapper::GetResultingTransform( )
 {
    return mpResultingTransform;
 }

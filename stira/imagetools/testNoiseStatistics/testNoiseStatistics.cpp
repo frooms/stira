@@ -20,7 +20,8 @@
 #include "../../common/common/Random.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::common;
 
 bool TestEmptyPlusGaussianNoise( int width, int height, double intensity, double sigma )

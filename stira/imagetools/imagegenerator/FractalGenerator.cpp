@@ -15,7 +15,7 @@
 #include <complex>
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 FractalGenerator::FractalGenerator()
 {

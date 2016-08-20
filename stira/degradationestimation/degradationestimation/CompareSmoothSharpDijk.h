@@ -20,6 +20,8 @@
 namespace stira {
 namespace degradationestimation {
 
+using namespace imagedata;
+
 /** \brief class to compare effects of sharpening and filtering using joint histograms of gradients
   *  Reference: "A new measure for the effect of sharpening and smoothing filters on images",
   *             J. Dijk, D. de Ridder, P.W. Verbeek, J. Walraven, I.T. Young, and L.J. van Vliet
@@ -34,7 +36,7 @@ public:
      * \param pImage1 first image to compare
      * \param pImage2 second image to compare
      * \param name identifier for identifier of comparison */
-   CompareSmoothSharpDijk( image::Image* pImage1, image::Image* pImage2, std::string name );
+   CompareSmoothSharpDijk( Image* pImage1, Image* pImage2, std::string name );
 
    /** \brief destructor */
    ~CompareSmoothSharpDijk();
@@ -43,8 +45,8 @@ public:
    bool Run();
 
 private:
-   image::Image* mpImage1;     ///< pointer to first image to compare
-   image::Image* mpImage2;     ///< pointer to second image to compare
+   Image* mpImage1;     ///< pointer to first image to compare
+   Image* mpImage2;     ///< pointer to second image to compare
    
    int mWidth;          ///< width of images to compare
    int mHeight;         ///< width of images to compare

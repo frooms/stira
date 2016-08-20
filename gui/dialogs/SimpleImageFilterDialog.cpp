@@ -16,7 +16,8 @@
 #include "../src/MainWindow.h"
 
 using namespace stira::filter;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace std;
 
 SimpleImageFilterDialog::SimpleImageFilterDialog( Image* pImage ) : DialogMaster( pImage )
@@ -318,19 +319,19 @@ StiraDefinitions::SimpleFilterType SimpleImageFilterDialog::GetFilterType()
 
 //--------------------------------------------------------
    
-stira::image::GridExtender<double>::ExtensionType SimpleImageFilterDialog::GetExtensionType()
+stira::imagedata::GridExtender<double>::ExtensionType SimpleImageFilterDialog::GetExtensionType()
 {
    if ( mpMirrorExtendRadioButton->isChecked ( ) ) 
    {
-      return  stira::image::GridExtender<double>::EXTEND_MIRROR;
+      return  stira::imagedata::GridExtender<double>::EXTEND_MIRROR;
    }
    else if ( mpRepeatExtendRadioButton->isChecked ( ) ) 
    {
-      return  stira::image::GridExtender<double>::EXTEND_TILED;
+      return  stira::imagedata::GridExtender<double>::EXTEND_TILED;
    }
    else //mpNullExtendRadioButton is checked
    {
-      return  stira::image::GridExtender<double>::EXTEND_ZERO;
+      return  stira::imagedata::GridExtender<double>::EXTEND_ZERO;
    }
 }
 

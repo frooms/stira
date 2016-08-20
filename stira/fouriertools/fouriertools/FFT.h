@@ -26,6 +26,8 @@
 namespace stira {
 namespace fouriertools {
 
+using namespace imagedata;
+
 /** \brief A class to hold spectral bands of an image  */
 // These class' methods are divided in the following categories 
 //    1) GENERAL METHODS
@@ -50,11 +52,11 @@ public:
    
    /** \brief creates a grid of complex values from a real-valued grid in which the imaginary components are 0
      * \param pGridIn real-valued input grid */
-   static image::ArrayGrid< std::complex <double> >* CreateComplexGridFromRealGrid( image::ArrayGrid<double>* pGridIn);
+   static ArrayGrid< std::complex <double> >* CreateComplexGridFromRealGrid( ArrayGrid<double>* pGridIn);
    
    /** \brief creates a grid of real values from a complex-valued grid; we just take the real component of each complex number
      * \param pGridIn complex-valued input grid */
-   static image::ArrayGrid<double>* CreateRealGridFromComplexGrid( image::ArrayGrid< std::complex <double> >* pGridIn);
+   static ArrayGrid<double>* CreateRealGridFromComplexGrid( ArrayGrid< std::complex <double> >* pGridIn);
 
 protected:
    
@@ -62,7 +64,7 @@ protected:
      * \param pGrid Grid to rescale intensites of
      * \param newMin minimum after rescaling
      * \param newMax maximum after rescaling*/
-   static void RescaleGrid( image::ArrayGrid<double>* pGrid, double newMin, double newMax);
+   static void RescaleGrid( ArrayGrid<double>* pGrid, double newMin, double newMax);
    
    /** \brief Writes for diagnostic purposes the real or imaginary part of FFTData to disk 
      * \param pFFTData data to write to disk
@@ -77,12 +79,12 @@ public:
 
    /** \brief Computes power spectrum, and returns it as a grid.
      * \param pInputGrid input grid to compute the power spectrum for*/
-   static image::ArrayGrid<double>* ComputePowerSpectrum( image::ArrayGrid<double>* pInputGrid );
+   static ArrayGrid<double>* ComputePowerSpectrum( ArrayGrid<double>* pInputGrid );
 
    /** \brief Computes logarithm of the power spectrum, and returns it as a grid.
      * Logarithm is used for compression of dynamic range of values, for visualization
      * \param pInputGrid input grid to compute the power spectrum for*/
-   static image::ArrayGrid<double>* ComputeLogPowerSpectrum( image::ArrayGrid<double>* pInputGrid );
+   static ArrayGrid<double>* ComputeLogPowerSpectrum( ArrayGrid<double>* pInputGrid );
 
    /** \brief Computes radially averaged power spectrum, and returns it rescaled logaritmically as a 1D vector of doubles.   
      *
@@ -90,31 +92,31 @@ public:
      *      http://www.hpl.hp.com/personal/Robert_Ulichney/publications.html
      * \param pInputImage input grid to compute the power spectrum for
      * \param thetaSteps number of steps to take along a circle with given radius to average the spectrum*/
-   static std::vector<double> ComputeRadiallyAveragedSpectrum( image::ArrayGrid<double>* pInputImage, int thetaSteps=500 );
+   static std::vector<double> ComputeRadiallyAveragedSpectrum( ArrayGrid<double>* pInputImage, int thetaSteps=500 );
 
    /** \brief Computes the convolution of a single grid with the filterKernel in the argument
      * \param pInputGrid grid to be convolved
      * \param pFilterKernel the PSF to convolve the band with
      * \return result of convolution as a new grid. */
-   static image::ArrayGrid<double>* Convolve( image::ArrayGrid<double>* pInputGrid, image::ArrayGrid<double>* pFilterKernel);
+   static ArrayGrid<double>* Convolve( ArrayGrid<double>* pInputGrid, ArrayGrid<double>* pFilterKernel);
    
    /** \brief Overloaded method to computes the convolution of an image with the filterKernel
      * \param pInputImage image to be convolved (band by band)
      * \param pFilterKernel the PSF to convolve the bands with
      * \return result of convolution as a new image. */
-   static image::Image* Convolve( image::Image* pInputImage, image::ArrayGrid<double>* pFilterKernel);
+   static Image* Convolve( Image* pInputImage, ArrayGrid<double>* pFilterKernel);
 
    /** \brief Computes the convolution of an image with a Gaussian PSF with given sigma
      * \param pInputImage image to be convolved
      * \param sigma the sigma for the Gaussian PSF 
      * \return result of convolution as an image. */
-   static image::Image* GaussConvolve(image::Image* pInputImage, double sigma);
+   static Image* GaussConvolve( Image* pInputImage, double sigma);
    
    /** \brief Computes the convolution of a single grid with a Gaussian PSF with given sigma
      * \param pInputGrid grid to be convolved
      * \param sigma the sigma for the Gaussian PSF 
      * \return result of convolution as a grid. */
-   static image::ArrayGrid<double>* GaussConvolve( image::ArrayGrid<double>* pInputGrid, double sigma );
+   static ArrayGrid<double>* GaussConvolve( ArrayGrid<double>* pInputGrid, double sigma );
 
 // 3) APPLY TRANSFER FUNCTION VARIANTS
 //       Different possible inputs; output is complex-valued but in the spatial domain!!
@@ -134,7 +136,7 @@ public:
      *
      * \param pFFTImageData input data already fourier-transformed
      * \param transferFunction transfer functions to be applied on this FFTBand */
-   static FFTBand* ApplyTransferFunction(FFTBand* pFFTImageData, image::ArrayGrid<double>* transferFunction);
+   static FFTBand* ApplyTransferFunction(FFTBand* pFFTImageData, ArrayGrid<double>* transferFunction);
 
    /** \brief Applies a transfer function to a FFTBand (= Fourier-transformed input data)
      * Overloaded ApplyTransferFunction to allow that the transfer function is also in complex format already
@@ -155,21 +157,21 @@ public:
      *
      * \param pInputGrid the input grid to be filtered
      * \param transferFunction the transfer function to be applied on this FFTBand*/
-   static FFTBand* ApplyTransferFunctionFFT( image::ArrayGrid<double>* pInputGrid, image::ArrayGrid<double>* transferFunction);
+   static FFTBand* ApplyTransferFunctionFFT( ArrayGrid<double>* pInputGrid, ArrayGrid<double>* transferFunction);
    
    /** \brief yet another method to apply a transfer function
      * Overloaded previous method to allow that the transfer function is also in complex format already
      *
      * \param pInputGrid the input grid to be filtered
      * \param transferFunction the transfer function to be applied on this FFTBand*/
-   static FFTBand* ApplyTransferFunctionFFT( image::ArrayGrid<double>* pInputGrid, FFTBand* transferFunction );
+   static FFTBand* ApplyTransferFunctionFFT( ArrayGrid<double>* pInputGrid, FFTBand* transferFunction );
    
    /** \brief yet another method to apply a transfer function
      * Overloaded previous method to allow that the transfer function is also in complex format already
      *
      * \param pInputGrid the input grid to be filtered
      * \param transferFunction the transfer function to be applied on this FFTBand*/
-   static FFTBand* ApplyTransferFunctionFFT( image::ArrayGrid< std::complex<double> >* pInputGrid, FFTBand* transferFunction );
+   static FFTBand* ApplyTransferFunctionFFT( ArrayGrid< std::complex<double> >* pInputGrid, FFTBand* transferFunction );
 
 // 5) APPLY TRANSFER FUNCTION FFT VARIANTS
 //       Real-valued spatial domain input -> real-valued spatial domain output
@@ -181,18 +183,18 @@ public:
      * \param pInputGrid the input grid to be filtered
      * \param transferFunction the transfer function to be applied on this real-valued grid
      * \param myDataType specifies if we want the real or imaginary component as output*/
-   static image::ArrayGrid<double>* ApplyTransferFunctionSpatial( image::ArrayGrid<double>* pInputGrid, image::ArrayGrid<double>* transferFunction, FFTDataType myDataType=RE);
+   static ArrayGrid<double>* ApplyTransferFunctionSpatial( ArrayGrid<double>* pInputGrid, ArrayGrid<double>* transferFunction, FFTDataType myDataType=RE);
    
    /** \brief yet another method to apply a transfer function
      *
      * \param pInputGrid the input grid to be filtered
      * \param transferFunction the transfer function to be applied on this real-valued grid
      * \return a pair with as first element the real components of the complex values and as second element the imaginary components*/
-   static std::pair< image::ArrayGrid<double>*, image::ArrayGrid<double>*> ApplyTransferFunctionSpatialComplex(  image::ArrayGrid<double>* pInputGrid,  image::ArrayGrid<double>* transferFunction);
+   static std::pair< ArrayGrid<double>*, ArrayGrid<double>*> ApplyTransferFunctionSpatialComplex( ArrayGrid<double>* pInputGrid, ArrayGrid<double>* transferFunction);
    
    /** \brief supresses the outer frequencies in an image; essentially makes an image band-limited
      * \param pInputGrid grid to be convolved */ 
-   static image::ArrayGrid<double>* SuppressOuterFrequencies( image::ArrayGrid<double>* pInputGrid );
+   static ArrayGrid<double>* SuppressOuterFrequencies( ArrayGrid<double>* pInputGrid );
    
 };
 }

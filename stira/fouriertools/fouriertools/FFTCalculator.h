@@ -21,6 +21,8 @@
 namespace stira {
 namespace fouriertools {
 
+using namespace imagedata;
+
 /** \brief Parent class to compute the Fourier transforms based on several libraries
   * Survey of FFT implementations: http://www.jjj.de/fft/fftpage.html
   * Child classes specifically offer interface to
@@ -32,7 +34,7 @@ class FFTCalculator
 public:
    /** \brief construct an FFT calculator initialized with and FFTBand 
      * \param pComplexGrid pointer to an ArrayGrid of complex values*/
-   FFTCalculator( image::ArrayGrid< std::complex<double> >* pComplexGrid);
+   FFTCalculator( ArrayGrid< std::complex<double> >* pComplexGrid);
    
    /** \brief construct an FFT calculator; not initialized*/
    FFTCalculator();
@@ -52,11 +54,11 @@ public:
 
    /** \brief Switches the four quadrants by mirroring them around the center of the image 
      * \param pGridIn the grid of which the quadrants are to be switched (object itself is altered; no new object created)*/
-   void SwitchQuadrants(image::ArrayGrid<std::complex<double> > *pGridIn);
+   void SwitchQuadrants( ArrayGrid<std::complex<double> > *pGridIn);
 
 protected:
    /** \brief help method to create the intermediate data structures for the underlying library */
-   virtual bool CreateLibData( image::ArrayGrid< std::complex<double> >* pGridin )=0;
+   virtual bool CreateLibData( ArrayGrid< std::complex<double> >* pGridin )=0;
 
    /** \brief help method to clean the intermediate input data structures for the underlying library */
    virtual bool CleanLibData()=0;
@@ -64,7 +66,7 @@ protected:
    /** \brief Converts the KISS data structure with the result back to an FFTBand */
    virtual void WriteResultInFFTBand()=0;
    
-   image::ArrayGrid< std::complex<double> >* mpComplexGrid;   ///< Grid with the complex data
+   ArrayGrid< std::complex<double> >* mpComplexGrid;   ///< Grid with the complex data
    
    int mWidth;  ///< width of the data
    int mHeight;  ///< height of the data

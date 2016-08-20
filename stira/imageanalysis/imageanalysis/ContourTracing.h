@@ -25,7 +25,7 @@
 namespace stira {
 namespace imageanalysis {
 
-using namespace image;
+using namespace imagedata;
 
 /** \brief Contour tracing class
   * Traces contours that go mainly horizontally*/

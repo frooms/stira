@@ -39,7 +39,7 @@ public:
      * \param pGridIn source input grid data
      * \param myNrScales nr of scales in which to decompose the image
      * \param myNrOrientations nr of orientations in which to decompose the image*/
-   PyramidComplex( image::ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations);
+   PyramidComplex( ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations);
    
    /** \brief destructor*/
    ~PyramidComplex();
@@ -58,7 +58,7 @@ public:
      * \param bandType type of subband (for generation of file name to write to)
      * \param scaleNr nr of scale of current subband
      * \param orientationNr nr of orientation of current subband*/
-   bool VisualizeComplexBandpass( image::ArrayGrid< std::complex<double> >* pGrid, std::string bandType, int scaleNr, int orientationNr );
+   bool VisualizeComplexBandpass( ArrayGrid< std::complex<double> >* pGrid, std::string bandType, int scaleNr, int orientationNr );
 
    /** \brief Diagnostic method to visualize a complex-valued reconstructed subband
      * \param pFftBandIn subband to visualize

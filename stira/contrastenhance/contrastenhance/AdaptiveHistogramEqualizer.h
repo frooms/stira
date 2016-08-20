@@ -20,6 +20,8 @@
 namespace stira {
 namespace contrastenhance {
 
+using namespace imagedata;
+
 /** \brief class for adaptive histogram equalization like in https://en.wikipedia.org/wiki/Adaptive_histogram_equalization */
 class AdaptiveHistogramEqualizer
 {
@@ -28,7 +30,7 @@ public:
       * \param pSourceImage the input image
       * \param blockWidth width of block to divide image in
       * \param blockHeight height of block to divide image in */
-    AdaptiveHistogramEqualizer( image::Image* pSourceImage, int blockWidth, int blockHeight );
+    AdaptiveHistogramEqualizer( Image* pSourceImage, int blockWidth, int blockHeight );
 
     /** \brief destructor */
     ~AdaptiveHistogramEqualizer( );
@@ -39,22 +41,22 @@ public:
 
     /** \brief Run method
       * \return a newly created image as result of contrast enhancement, becomes responsability of the caller*/
-    image::Image* Run();
+    Image* Run();
 
 private:
 
     /** \brief Builds normalized cumulative histogram for single block */
-    void BuildNormHistogramSingleBlock( image::Image* pImageIn, int xi, int yi );
+    void BuildNormHistogramSingleBlock( Image* pImageIn, int xi, int yi );
 
     /** \brief gets equalized image intensity according to single block */
-    double GetEqualizedValueSingleBlock( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y, int xi, int yi );
+    double GetEqualizedValueSingleBlock( ArrayGrid<double>* pInGrid, int bandNr, int x, int y, int xi, int yi );
 
     /** \brief gets equalized image intensity interpolated from four neighboring blocks */
-    double InterpolateEqualizedValue( image::ArrayGrid<double>* pInGrid, int bandNr, int x, int y );
+    double InterpolateEqualizedValue( ArrayGrid<double>* pInGrid, int bandNr, int x, int y );
 
-    image::ArrayGrid< histogram::FloatHistogram*>* mpHistogramPerBlock;   ///< grid of histograms per block
+    ArrayGrid< histogram::FloatHistogram*>* mpHistogramPerBlock;   ///< grid of histograms per block
 
-    image::Image* mpSourceImage;  ///< grid of histograms per block
+    Image* mpSourceImage;  ///< grid of histograms per block
 
     int mWidth;            ///< width of input image
     int mHeight;           ///< height of input image

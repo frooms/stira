@@ -15,6 +15,7 @@
 #include "../../filter/filter/NonSeparableFilter.h"
 #include "../../imagedata/datastructures/OrientationGrid.h"
 #include "../../imagetools/tools/NumberGridTools.h"
+#include "../../imagetools/tools/ImageIO.h"
 #include "../../imagedata/datastructures/Image.h"
 #include "../../histogram/histogram/JointHistogram.h"
 
@@ -22,11 +23,12 @@ namespace stira {
 namespace degradationestimation {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace histogram;
 using namespace filter;
 
-CompareSmoothSharpDijk::CompareSmoothSharpDijk(image::Image* pImage1, image::Image* pImage2, string name)
+CompareSmoothSharpDijk::CompareSmoothSharpDijk( Image* pImage1, Image* pImage2, string name)
 {
    assert (pImage1 != 0);
    assert (pImage2 != 0);
@@ -61,7 +63,9 @@ bool CompareSmoothSharpDijk::Run()
    Image* pMagnitudeImage2 = new Image( pMagnitudeGrid2 );
    JointHistogram ch( pMagnitudeImage1, pMagnitudeImage2, true );
    
-   ch.VisualizeAsImage(std::string("ConditionalHistogram_" + mName + ".pgm"));
+   Image* pHist = ch.VisualizeAsImage();
+   ImageIO::Write(pHist, std::string("ConditionalHistogram_" + mName + ".pgm"));
+   delete pHist;
    return true;
 }
 

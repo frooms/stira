@@ -33,7 +33,8 @@
 #define FULL_DIAGNOSE_TEST
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 bool ColorTest()
 {

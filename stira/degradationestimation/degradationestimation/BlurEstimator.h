@@ -20,6 +20,8 @@
 namespace stira {
 namespace degradationestimation {
 
+using namespace imagedata;
+
 /** \brief A class to estimate blur by searching a range of blur values and selecting the one with the best gradient kurtosis
   * References: - "Blur Identification based on Kurtosis Minimization". D. Li, R. Mersereau and S. Simsk in IEEE ICIP2005.
   *             - "Parametric PSF estimation via sparseness maximization in the wavelet domain", F. Rooms, W. Philips and J. Portilla, 
@@ -37,7 +39,7 @@ public:
 
    /** \brief gets the sigma of the blur for the given grid 
      * \param pGrid the grid for which to determine the blur */
-   double Run( image::ArrayGrid<double>* pGrid );
+   double Run( ArrayGrid<double>* pGrid );
 
    /** \brief Gets the underlimit of the search range in which to search the blur*/
    double GetBlurUnderLimit();

@@ -21,6 +21,8 @@
 namespace stira {
 namespace diffusion {
 
+using namespace imagedata;
+
 /** \brief A class to compute anisotropic diffusion 
   * for more info, see http://www.cs.sfu.ca/~stella/papers/blairthesis/main/node22.html*/
 class AnisotropicDiffusion{
@@ -31,7 +33,7 @@ public:
     *  The returned object becomes the responsability of the caller to delete
     *  \param pSourceImage source image on which to perform the diffusion
     */
-   AnisotropicDiffusion(image::Image* pSourceImage);
+   AnisotropicDiffusion(Image* pSourceImage);
 
    /** \brief Destructor. */
    ~AnisotropicDiffusion();
@@ -51,15 +53,15 @@ public:
    int GetMaxNumberOfIterations();
 
    /** \brief the run method of the object */
-   image::Image* Run();
+   Image* Run();
 
 private:
    
    /** \brief to control the strength of the diffusion, determine the mean gradient in the grid 
      * \param pGrid input grid for which to determine the mean gradient */
-   double DetermineMeanGradient( image::ArrayGrid<double>* pGrid);
+   double DetermineMeanGradient( ArrayGrid<double>* pGrid );
    
-   image::Image* mpSourceImage;   ///< source data grid
+   Image* mpSourceImage;   ///< source data grid
    double mFlowFactor;               ///< diffusion flow factor
    int mMaxNumberOfIterations;    ///< the maximum number of iterations
 

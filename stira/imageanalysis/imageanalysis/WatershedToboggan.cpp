@@ -28,7 +28,8 @@ using namespace std;
 namespace stira {
 namespace imageanalysis {
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace filter;
 
 //----------------------------------------------------------------
@@ -360,7 +361,7 @@ void WatershedToboggan::ResetQueue()
 
 //----------------------------------------------------------------
 
-ArrayGrid<int>* WatershedToboggan::Run( image::ArrayGrid<double>* pGridIn )
+ArrayGrid<int>* WatershedToboggan::Run( ArrayGrid<double>* pGridIn )
 {
    int width  = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();

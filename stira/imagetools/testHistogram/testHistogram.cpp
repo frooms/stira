@@ -21,7 +21,8 @@
 #include "../../histogram/histogram/Spatiogram.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::histogram;
 
 bool SpatiogramTest()
@@ -76,7 +77,9 @@ bool CondidtionalHistogramTest(Image* pInImage)
    Image* pGammaImage = ImageTools::ApplyGamma( pInImage, 0.5 );
    JointHistogram ch( pInImage, pGammaImage );
 
-   ch.VisualizeAsImage( std::string("ConditionalHistogramGamma.ppm") );
+   Image* pHist = ch.VisualizeAsImage(  );
+   ImageIO::Write(pHist, std::string("ConditionalHistogramGamma.ppm"));
+   delete pHist;
    delete pGammaImage;
    return true;
 }

@@ -2,7 +2,7 @@
 #include "../../common/common/MathUtils.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace common;
 using namespace std;

@@ -19,6 +19,8 @@
 namespace stira {
 namespace imageanalysis {
 
+using namespace imagedata;
+
 /** \brief class to compute distance transform based on method below
   * Distance Transforms of Sampled Functions
   * P. Felzenszwalb, D. Huttenlocher
@@ -36,7 +38,7 @@ public:
     /** \brief run that computes distance transform of binary image using squared distance
      *  \param pGridIn grid containing binary input image
      * \return grid with values of distance transform of input image */
-    image::ArrayGrid<double>* Run( image::ArrayGrid<double> *pGridIn );
+    ArrayGrid<double>* Run( ArrayGrid<double> *pGridIn );
 
 private:
     double ComputeParabolaIntersection( double *f, int* v, int q, int k );
@@ -47,7 +49,7 @@ private:
 
     /** \brief computes distance transform of 2D function
      * \param pGridIn input grid */
-    void DistanceTransform2D( image::ArrayGrid<double> *pGridIn );
+    void DistanceTransform2D( ArrayGrid<double> *pGridIn );
 
     /** \brief resets 1D memory buffers */
     void ResetBuffers();

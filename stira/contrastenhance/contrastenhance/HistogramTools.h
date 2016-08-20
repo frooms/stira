@@ -20,6 +20,8 @@
 namespace stira {
 namespace contrastenhance {
 
+using namespace imagedata;
+
 /** \brief class with tools for image intensity remapping using histograms, like histogram matching and histogram equalization
   */
 class HistogramTools
@@ -54,7 +56,7 @@ public:
      * \param pInGrid source image grid with intensity values to be remapped
      * \param rroi the rectangular region of interest within which values are to be remapped
      * \param ihCumulativeReferenceHistogram target cumulative histogram after remapping (not normalized) */
-   static void RemapHistogramInROI( image::ArrayGrid<double>* pInGrid,
+   static void RemapHistogramInROI( ArrayGrid<double>* pInGrid,
                                     common::RectangularROI<int> rroi,
                                     histogram::IntHistogram* fhCumulativeInput,
                                     histogram::FloatHistogram* fhCumulativeReference );
@@ -80,34 +82,34 @@ public:
      * \param pSourceImage input image
      * \param lowerFraction fraction of darkest pixels to ignore
      * \param upperFraction fraction of pixels to take into account (1-upperFraction is fraction to be discarded)*/
-   static image::Image* RobustLinearRescale( image::Image* pSourceImage, double lowerFraction=0.01, double upperFraction=0.99 );
+   static Image* RobustLinearRescale( Image* pSourceImage, double lowerFraction=0.01, double upperFraction=0.99 );
 
    /** \brief Performs robust linear intensity rescaling on the image itself, creating no new object
      * (No new image is created; old values are overwritten)
      * \param pSourceImage input image; contains result as well
      * \param lowerFraction fraction of darkest pixels to ignore
      * \param upperFraction fraction of pixels to take into account (1-upperFraction is fraction to be discarded)*/
-   static bool RobustLinearRescaleNoNew( image::Image* pSourceImage, double lowerFraction=0.01, double upperFraction=0.99 );
+   static bool RobustLinearRescaleNoNew( Image* pSourceImage, double lowerFraction=0.01, double upperFraction=0.99 );
 
    /** \brief performs histogram equalization on a single band
      * \param pInOutGrid the input grid; values are changed on source data*/
-   static void HistogramEqualizeSingleBand( image::ArrayGrid<double>* pInOutGrid );
+   static void HistogramEqualizeSingleBand( ArrayGrid<double>* pInOutGrid );
 
    /** \brief performs histogram equalization on an image, but for all bands independantly
      * \param pInImage the input image*/
-   static image::Image* HistogramEqualizePerBand( image::Image* pInImage );
+   static Image* HistogramEqualizePerBand( Image* pInImage );
 
    /** \brief performs histogram equalization on an RGB image using transformation to HSI color space
      * RGB colors are transformed to HSI, and only the I component is equalized; after that, the result is
      * transformed back to RGB
      * \param pInImage the input image*/
-   static image::Image* HistogramEqualizeHSI( image::Image* pInImage );
+   static Image* HistogramEqualizeHSI( Image* pInImage );
 
    /** \brief performs histogram equalization on an RGB image using transformation to CIE-Lab color space
      * RGB colors are transformed to  CIE-Lab, and only the L component is equalized; after that, the result is
      * transformed back to RGB (values are clipped to range 0-255)
      * \param pInImage the input image*/
-   static image::Image* ColorHistogramEqualize( image::Image* pInImage );
+   static Image* ColorHistogramEqualize( Image* pInImage );
 
 };
 

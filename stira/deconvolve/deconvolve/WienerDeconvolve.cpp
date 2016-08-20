@@ -24,7 +24,8 @@ namespace deconvolve{
 #define THRESHOLD 0.01
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace filter;
 using namespace fouriertools;
 

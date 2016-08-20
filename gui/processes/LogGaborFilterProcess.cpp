@@ -14,7 +14,6 @@
 
 #include "../../stira/filter/filter/LogGabor.h"
 
-using namespace stira::image;
 using namespace stira::filter;
 
 LogGaborFilterProcess::LogGaborFilterProcess( Image* pImage ) : Process( pImage )

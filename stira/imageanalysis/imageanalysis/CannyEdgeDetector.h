@@ -23,6 +23,8 @@
 namespace stira {
 namespace imageanalysis {
 
+using namespace imagedata;
+
 enum edgeLabel {IS_EDGE, IS_CANDIDATE_EDGE, IS_NO_EDGE};
    
 /** \brief Canny edge detector 
@@ -47,7 +49,7 @@ public:
      * \param lowerThreshold low threshold for edge strength in hysteresis test
      * \param upperThreshold high threshold for edge strength in hysteresis test
      * \return grid with the edges */
-   static image::ArrayGrid<bool>* Run( image::ArrayGrid<double>* pGridIn, double sigmaSmooth, double lowerThreshold, double upperThreshold);
+   static ArrayGrid<bool>* Run( ArrayGrid<double>* pGridIn, double sigmaSmooth, double lowerThreshold, double upperThreshold);
 
 private:
 
@@ -55,7 +57,7 @@ private:
      * This map will then be used as initial edge candidates, whch then have to pass the hysteresis test
      * \param pOrientationGrid grid with local edge strengths and orientations
      * \return map with candidate edges */
-   static image::ArrayGrid<bool>* CreateNonMaximaSuppressedMap( image::OrientationGrid* pOrientationGrid );
+   static ArrayGrid<bool>* CreateNonMaximaSuppressedMap( OrientationGrid* pOrientationGrid );
 
    /** \brief Checks a candidate pixel location if it is a local maximum under a certain angle
      * \param x x coordinate of candidate pixel
@@ -63,7 +65,7 @@ private:
      * \param quantized quantized angle as a multiple of 45 degrees (0, 1, 2 and 3)
      * \param pOrientationGrid grid with edge strengths and edge orientations
      * \return true if pixel is local maximum in the specified direction; false if not */
-   static bool IsCandidateLocalMaximum( int x, int y, int quantized, image::OrientationGrid* pOrientationGrid );
+   static bool IsCandidateLocalMaximum( int x, int y, int quantized, OrientationGrid* pOrientationGrid );
 
    /** \brief applies hysteresis based thresholding
      * Keep only edges that are connected to a pixel with edge strength above the high threshold, and 
@@ -74,10 +76,10 @@ private:
      * \param lowerThreshold pixel edge strength must anyway be above this threshold to be an edge
      * \param upperThreshold  pixel edge strength must be above this threshold to be an edge seed
      * \return boolean grid with final edges */
-   static image::ArrayGrid<bool>* ApplyHysteresis( image::OrientationGrid* pOrientationGrid,
-                                                   image::ArrayGrid<bool>* pCandidateGrid, 
-                                                   double lowerThreshold, 
-                                                   double upperThreshold);
+   static ArrayGrid<bool>* ApplyHysteresis( OrientationGrid* pOrientationGrid,
+                                            ArrayGrid<bool>* pCandidateGrid,
+                                            double lowerThreshold,
+                                            double upperThreshold );
 
    /** \brief Create candidate edge label image as input for hysteresis step
      * As output of the non-maxima suppression, we got a thinned edge image. These edges are labeled as candidate edge; other 
@@ -89,9 +91,9 @@ private:
      * \param pCandidateGrid boolean grid from non-maxima suppression
      * \param loThreshold lower edge strength threshold
      * \return grid with candidate edge labels */
-   static image::ArrayGrid<edgeLabel>* CreateCandidateLabelGrid( image::OrientationGrid* pOrientationGrid, 
-                                                                 image::ArrayGrid<bool>* pCandidateGrid, 
-                                                                 double loThreshold);
+   static ArrayGrid<edgeLabel>* CreateCandidateLabelGrid( OrientationGrid* pOrientationGrid,
+                                                          ArrayGrid<bool>* pCandidateGrid,
+                                                          double loThreshold);
 
    /** \brief checks for a next start seed for the edge tracking
      * This test checks if there are any pixels left labeled as candidate edge and:
@@ -104,8 +106,8 @@ private:
      * \param hiThreshold high threshold for edge strength in hysteresis test
      * \param loThreshold low threshold for edge strength in hysteresis test
      * \return  */
-   static common::Point<int> GetStartSeed( image::OrientationGrid* pOrientationGrid,
-                                           image::ArrayGrid<edgeLabel>* pLabelGrid,
+   static common::Point<int> GetStartSeed( OrientationGrid* pOrientationGrid,
+                                           ArrayGrid<edgeLabel>* pLabelGrid,
                                            common::Point<int> lastSeed,
                                            double hiThreshold,
                                            double loThreshold);
@@ -117,8 +119,8 @@ private:
      * \param lastNeighbor last neighbor pixel on current edge that was confirmed as edge
      * \param loThreshold low threshold for edge strength in hysteresis test 
      * \return coordinates of next neighbor confirmed as an edge, or (-1, -1) if no more pixels can be confirmed as edge */
-   static common::Point<int> GetNextNeighbor( image::OrientationGrid* pOrientationGrid, 
-                                              image::ArrayGrid<edgeLabel>* pLabelGrid, 
+   static common::Point<int> GetNextNeighbor( OrientationGrid* pOrientationGrid,
+                                              ArrayGrid<edgeLabel>* pLabelGrid,
                                               common::Point<int> lastNeighbor, 
                                               double loThreshold);
    
@@ -127,12 +129,12 @@ private:
      * \param pLabelGrid Intermediate grid previously containing candidate edges, now used to extract the confirmed edges
      * \param alsoTakeCandidates flag whether just confirmed edges or also candidate edge pixels are written to the output
      * \return boolean grid with the finally confirmed edges */
-   static image::ArrayGrid<bool>* CreateOutPut( image::ArrayGrid<edgeLabel>* pLabelGrid,
-                                                bool alsoTakeCandidates=false );
+   static ArrayGrid<bool>* CreateOutPut( ArrayGrid<edgeLabel>* pLabelGrid,
+                                         bool alsoTakeCandidates=false );
 
    /** \brief quantify the orientations to 0,45, 90 and 135 degrees
      * \param pOrientationGrid orientation grid to be quantified */
-   static void QuantifyOrientations( image::OrientationGrid* pOrientationGrid );
+   static void QuantifyOrientations( OrientationGrid* pOrientationGrid );
 };
 
 }

@@ -20,7 +20,7 @@
 //----------------------------------------------------------
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 ColorValue::ColorValue()
 {

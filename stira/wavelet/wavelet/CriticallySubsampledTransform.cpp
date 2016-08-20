@@ -17,7 +17,8 @@ namespace stira {
 namespace wavelet {
 
 using namespace filter;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace std;
 
 CriticallySubsampledTransform::CriticallySubsampledTransform() : Wavelet()
@@ -32,7 +33,7 @@ CriticallySubsampledTransform::~CriticallySubsampledTransform()
 
 //------------------------------------------------------------------------------------------
 
-bool CriticallySubsampledTransform::Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales )
+bool CriticallySubsampledTransform::Decompose( ArrayGrid<double>* pSourceGrid, int nrScales )
 {
    Initialize( pSourceGrid, nrScales );
    

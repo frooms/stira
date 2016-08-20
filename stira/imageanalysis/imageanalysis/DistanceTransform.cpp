@@ -67,7 +67,7 @@ void DistanceTransform::DistanceTransform1D( int n )
 //------------------------------------------------------------------------------------------
 
 // dt of 2d function using squared distance
-void DistanceTransform::DistanceTransform2D(image::ArrayGrid<double> *pGridInOut )
+void DistanceTransform::DistanceTransform2D( ArrayGrid<double> *pGridInOut )
 {
    int width = pGridInOut->GetWidth();
    int height = pGridInOut->GetHeight();
@@ -104,6 +104,8 @@ void DistanceTransform::DistanceTransform2D(image::ArrayGrid<double> *pGridInOut
    ResetBuffers();
 }
 
+//------------------------------------------------------------------------------
+
 void DistanceTransform::ResetBuffers()
 {
     if (mpValuesIn != 0)
@@ -133,12 +135,12 @@ void DistanceTransform::ResetBuffers()
 
 //------------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* DistanceTransform::Run(image::ArrayGrid<double> *pGridIn)
+ArrayGrid<double>* DistanceTransform::Run( ArrayGrid<double> *pGridIn)
 {
    int width = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
 
-   image::ArrayGrid<double> *pGridOut = new image::ArrayGrid<double>(width, height, false, 0.0);
+   ArrayGrid<double> *pGridOut = new ArrayGrid<double>(width, height, false, 0.0);
    for (int y = 0; y < height; y++)
    {
       for (int x = 0; x < width; x++)

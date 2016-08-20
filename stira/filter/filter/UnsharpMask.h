@@ -22,6 +22,8 @@
 namespace stira {
 namespace filter {
 
+using namespace imagedata;
+
 /** \brief Enhances image sharpness by unsharp masking */
 class UnsharpMask
 {
@@ -32,8 +34,7 @@ public:
    /** \brief destructor */
    ~UnsharpMask();
 
-   static image::Image* Run( image::Image* pImageIn, double sigma=1.0, double factor=0.5 );
-
+   static Image* Run( Image* pImageIn, double sigma=1.0, double factor=0.5 );
 };
 
 }

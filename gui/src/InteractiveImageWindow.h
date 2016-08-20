@@ -63,7 +63,7 @@ public:
    /** \brief destructor */
    ~InteractiveImageWindow( );
 
-   stira::image::Image* GetImage( );
+   stira::imagedata::Image* GetImage( );
 
    QMdiSubWindow* GetParent();
    void SetParent( QMdiSubWindow* pParentWindow );
@@ -83,7 +83,7 @@ private:
    void SetupWindow();
    void SetupImage( );
    void RenderImage ( QImage* pQImage );
-   void ReplaceImage( stira::image::Image* pNewImage );
+   void ReplaceImage( stira::imagedata::Image* pNewImage );
 
    void CreateZoomFractal(double factor );
 
@@ -107,8 +107,8 @@ private:
 
    bool mIsFirstRendering;  ///< keeps track if this is the first time that the image is rendered in the window
 
-   stira::image::Image* mpImage;  ///< the underlying image data of image window
-   stira::image::FractalGenerator* mpFractalGenerator;  ///< the underlying image data of image window
+   stira::imagedata::Image* mpImage;  ///< the underlying image data of image window
+   stira::imagetools::FractalGenerator* mpFractalGenerator;  ///< the underlying image data of image window
 };
 
 

@@ -19,7 +19,7 @@
 #include "../../imagedata/color/ColorValue.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace common;
 

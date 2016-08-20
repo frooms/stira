@@ -17,7 +17,8 @@
 #include "../src/MainWindow.h"
 #include "../processes/CannyProcess.h"
 
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::imageanalysis;
 
 CannyDialog::CannyDialog( Image* pImage ) : DialogMaster( pImage )

@@ -25,7 +25,7 @@ class ShowHistogramDialog : public CurvePlotDialog
 public:
    /** \brief constructor
      * \param pImage input image for processing */
-   ShowHistogramDialog( stira::image::Image* pImage );
+   ShowHistogramDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~ShowHistogramDialog();
@@ -33,7 +33,7 @@ private:
 
    /** \brief computes image histogram and puts it in a form ready for QwtPlot 
      * \param pImage image for which to compute the histogram*/
-   virtual void GetData( stira::image::Image* pImage );
+   virtual void GetData( stira::imagedata::Image* pImage );
 
 };
 

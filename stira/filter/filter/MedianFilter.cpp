@@ -19,26 +19,24 @@ namespace stira{
 namespace filter{
 
 using namespace common;
-using namespace image;
 using namespace std;
+using namespace imagedata;
+using namespace imagetools;
 
 // NOTE: according to http://theory.stanford.edu/~amitp/rants/c++-vs-c/
 //  sorting with sort() from STL is many times quicker than qsort; however, does
 //  the usage of an STL container not ruin this speedup??? Or can sort() also work
 //  on normal arrays?
 
-MedianFilter::MedianFilter()
-{
-}
+MedianFilter::MedianFilter() {}
 
 //-------------------------------------------------------------------
 
-MedianFilter::~MedianFilter()
-{}
+MedianFilter::~MedianFilter() {}
 
 //-------------------------------------------------------------------
 
-image::ArrayGrid<int>* MedianFilter::RunMedian( image::ArrayGrid<int>* pGridIn, int mySize)
+ArrayGrid<int>* MedianFilter::RunMedian( ArrayGrid<int>* pGridIn, int mySize)
 {
    int windowWidth = 2 * mySize + 1;
    int windowArea  = windowWidth * windowWidth;
@@ -75,7 +73,7 @@ image::ArrayGrid<int>* MedianFilter::RunMedian( image::ArrayGrid<int>* pGridIn, 
 
 //-------------------------------------------------------------------
 
-image::ArrayGrid<double>* MedianFilter::RunMedian( image::ArrayGrid<double>* pGridIn, int size)
+ArrayGrid<double>* MedianFilter::RunMedian( ArrayGrid<double>* pGridIn, int size)
 {
    int windowWidth = 2 * size + 1;
    int windowArea  = windowWidth * windowWidth;
@@ -114,7 +112,7 @@ image::ArrayGrid<double>* MedianFilter::RunMedian( image::ArrayGrid<double>* pGr
 
 //-------------------------------------------------------------------
 
-image::Image* MedianFilter::RunMedian( image::Image* pImageIn, int size)
+Image* MedianFilter::RunMedian( Image* pImageIn, int size)
 {
    Image* pImageInExtended = ImageTools::MirrorBorder( pImageIn, size, size );
 
@@ -147,7 +145,7 @@ image::Image* MedianFilter::RunMedian( image::Image* pImageIn, int size)
 // *    X    P    X    *
 // X    *    P    *    X
 
-image::ArrayGrid<double>* MedianFilter::RunHybridMedian( image::ArrayGrid<double>* pGridIn, int size)
+ArrayGrid<double>* MedianFilter::RunHybridMedian( ArrayGrid<double>* pGridIn, int size)
 {
    int kernelSize = 4 * size + 1;
    int medianPosition = (int)(kernelSize / 2);
@@ -232,7 +230,7 @@ image::ArrayGrid<double>* MedianFilter::RunHybridMedian( image::ArrayGrid<double
 // *    X    P    X    *
 // X    *    P    *    X
 
-image::Image* MedianFilter::RunHybridMedian( image::Image* pImageIn, int size)
+Image* MedianFilter::RunHybridMedian( Image* pImageIn, int size)
 {
    Image* pImageInExtended = ImageTools::MirrorBorder( pImageIn, size, size );
 

@@ -18,7 +18,8 @@ namespace stira{
 namespace filter{
 
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace std;
 
 NonLocalMeansFilter::NonLocalMeansFilter( int size )
@@ -143,7 +144,7 @@ void NonLocalMeansFilter::LoopOverImage( )
 
 //-------------------------------------------------------------------
 
-image::Image* NonLocalMeansFilter::Run( image::Image* pImageIn )
+Image* NonLocalMeansFilter::Run( Image* pImageIn )
 {
    int borderSize = (int)(1.5 * (double)(mSearchWindowSize));
    mSourceWidth = pImageIn->GetWidth();

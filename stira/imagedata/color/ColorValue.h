@@ -19,7 +19,7 @@
 #include <cmath>
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 // COLOR DATA STRUCTURE
 /////////////////////////

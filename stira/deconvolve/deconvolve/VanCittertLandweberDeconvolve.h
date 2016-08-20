@@ -19,6 +19,8 @@
 namespace stira{
 namespace deconvolve{
 
+using namespace imagedata;
+
 /** \brief enum value to specify deconvolution method*/
 enum deconvolutionType 
 {
@@ -39,13 +41,13 @@ public:
    /** \brief constructor without setting PSF, so is still to be determined or estimated before run
      * \param pDegradedImage the input image to be restored
      * \param maxNrOfIterations maximum number of iterations */
-   VanCittertLandweberDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations=20 );
+   VanCittertLandweberDeconvolve( Image* pDegradedImage, int maxNrOfIterations=20 );
    
    /** \brief constructor with setting the PSF
      * \param pDegradedImage the input image to be restored
      * \param pPSF the input PSF (needs same width and height as pDegradedImage)
      * \param maxNrOfIterations maximum number of iterations */
-   VanCittertLandweberDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations=20 );
+   VanCittertLandweberDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations=20 );
    
    /** \brief destructor*/
    ~VanCittertLandweberDeconvolve();
@@ -79,7 +81,7 @@ private:
    
    /** \brief applies enforcing the positivity constraint
      * \param pGrid single band of image on which to apply the constraint*/
-   bool ApplyPositivityConstraint( image::ArrayGrid<double>* pGrid );
+   bool ApplyPositivityConstraint( ArrayGrid<double>* pGrid );
 
    deconvolutionType mDeconvolutionType; ///< Regularization method 
    bool mFlagEnforcePositivity;  ///< flag if positivity should be enforced after every iteration

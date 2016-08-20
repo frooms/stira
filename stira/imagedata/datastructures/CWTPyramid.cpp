@@ -13,7 +13,7 @@
 #include "CWTPyramid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 CWTPyramid::CWTPyramid( ArrayGrid<double>* pSourceBand, int myNrScales) : Pyramid< std::complex< double > >( pSourceBand, myNrScales, 6, true, false)
 {

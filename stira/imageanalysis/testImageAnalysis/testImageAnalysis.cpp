@@ -42,7 +42,8 @@
 using namespace std;
 using namespace stira;
 using namespace stira::common;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::histogram;
 using namespace stira::imageanalysis;
 
@@ -257,7 +258,7 @@ void TestHistogramOrientedGradients( Image *pImage )
 
     std::cout << "After computation of descriptor, " << descriptorValues.size() << std::endl;
 
-    image::Image* pVisual = myHOG.VisualizeHogDescriptor( descriptorValues,
+    Image* pVisual = myHOG.VisualizeHogDescriptor( descriptorValues,
                                                           pImage->GetWidth(), pImage->GetHeight(),
                                                           scaleFactor, viz_factor);
 

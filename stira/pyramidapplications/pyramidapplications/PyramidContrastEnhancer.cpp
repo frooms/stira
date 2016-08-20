@@ -21,6 +21,8 @@ namespace pyramidapplications {
 
 using namespace std;
 using namespace steerable;
+using namespace imagedata;
+using namespace imagetools;
    
 PyramidContrastEnhancer::PyramidContrastEnhancer( double sigma )
 {
@@ -240,12 +242,12 @@ double PyramidContrastEnhancer::GetCoefficientMultiplierWavelet(double x )
 
 //------------------------------------------------------------------------------
 
-bool PyramidContrastEnhancer::ContrastEnhanceSingleBand( image::ArrayGrid<double>* pBand, bool applyWavelet )
+bool PyramidContrastEnhancer::ContrastEnhanceSingleBand( ArrayGrid<double>* pBand, bool applyWavelet )
 {
    int width  = pBand->GetWidth();
    int height = pBand->GetHeight();
    
-   double bandMax = image::GridStatistics<double>::GetAbsMax( pBand );
+   double bandMax = GridStatistics<double>::GetAbsMax( pBand );
    
    mUpperLimitAmplification = bandMax * mUpperLimitAmplificationFactor;
    
@@ -274,7 +276,7 @@ bool PyramidContrastEnhancer::ContrastEnhanceSingleBand( image::ArrayGrid<double
 
 //------------------------------------------------------------------------------
 
-void PyramidContrastEnhancer::RunPyramid( image::Pyramid<double>* pPyramid, bool applyWavelet )
+void PyramidContrastEnhancer::RunPyramid( Pyramid<double>* pPyramid, bool applyWavelet )
 {
    int nrScales = pPyramid->GetNumberOfScales();
    int nrOrientations = pPyramid->GetNumberOfOrientations();
@@ -297,13 +299,13 @@ void PyramidContrastEnhancer::RunPyramid( image::Pyramid<double>* pPyramid, bool
 
 //------------------------------------------------------------------------------
 
-image::Image* PyramidContrastEnhancer::Run( image::Image* pImage, int nrScales, int nrOrientations, bool applyWavelet )
+Image* PyramidContrastEnhancer::Run( Image* pImage, int nrScales, int nrOrientations, bool applyWavelet )
 {
    if ( (pImage != 0) && (pImage->GetNumberOfBands() > 0))
    {
       int nrbands = pImage->GetNumberOfBands();
          
-      image::Image* pFilteredImage = new image::Image( pImage->GetWidth(), pImage->GetHeight() );
+      Image* pFilteredImage = new Image( pImage->GetWidth(), pImage->GetHeight() );
       for (int bandNr = 0; bandNr < nrbands; bandNr++)
       {
          PyramidReal np( pImage->GetBands()[bandNr], nrScales, nrOrientations);  np.Decompose();
@@ -324,8 +326,8 @@ image::Image* PyramidContrastEnhancer::Run( image::Image* pImage, int nrScales, 
 
 //------------------------------------------------------------------------------
 
-bool PyramidContrastEnhancer::ContrastEnhanceSingleBand3Colors( image::ArrayGrid<double>* pBandColor1,                   
-                                                                image::ArrayGrid<double>* pBandColor2, image::ArrayGrid<double>* pBandColor3, bool applyWavelet )
+bool PyramidContrastEnhancer::ContrastEnhanceSingleBand3Colors( ArrayGrid<double>* pBandColor1,
+                                                                ArrayGrid<double>* pBandColor2, ArrayGrid<double>* pBandColor3, bool applyWavelet )
 {
    int width  = pBandColor1->GetWidth();
    int height = pBandColor1->GetHeight();
@@ -351,9 +353,9 @@ bool PyramidContrastEnhancer::ContrastEnhanceSingleBand3Colors( image::ArrayGrid
    }
    else
    {
-      double bandMax1 = image::GridStatistics<double>::GetAbsMax( pBandColor1 );
-      double bandMax2 = image::GridStatistics<double>::GetAbsMax( pBandColor2 );
-      double bandMax3 = image::GridStatistics<double>::GetAbsMax( pBandColor3 );
+      double bandMax1 = GridStatistics<double>::GetAbsMax( pBandColor1 );
+      double bandMax2 = GridStatistics<double>::GetAbsMax( pBandColor2 );
+      double bandMax3 = GridStatistics<double>::GetAbsMax( pBandColor3 );
    
       mUpperLimitAmplification = ( bandMax1 + bandMax2 + bandMax3) * mUpperLimitAmplificationFactor / 3.0;
       
@@ -379,30 +381,30 @@ bool PyramidContrastEnhancer::ContrastEnhanceSingleBand3Colors( image::ArrayGrid
 
 //------------------------------------------------------------------------------
 
-image::Image* PyramidContrastEnhancer::Run3Colors( image::Image* pImage, int nrScales, int nrOrientations, bool applyWavelet )
+Image* PyramidContrastEnhancer::Run3Colors( Image* pImage, int nrScales, int nrOrientations, bool applyWavelet )
 {
    if (pImage != 0) 
    {
       if (pImage->GetNumberOfBands() == 3)
       {
          PyramidReal np1( pImage->GetBands()[0], nrScales, nrOrientations);  np1.Decompose();
-         image::Pyramid<double>* pPyramidColor1 = np1.GetPyramid();
+         Pyramid<double>* pPyramidColor1 = np1.GetPyramid();
          
          PyramidReal np2( pImage->GetBands()[1], nrScales, nrOrientations);  np2.Decompose();
-         image::Pyramid<double>* pPyramidColor2 = np2.GetPyramid();
+         Pyramid<double>* pPyramidColor2 = np2.GetPyramid();
          
          PyramidReal np3( pImage->GetBands()[2], nrScales, nrOrientations);  np3.Decompose();
-         image::Pyramid<double>* pPyramidColor3 = np3.GetPyramid();
+         Pyramid<double>* pPyramidColor3 = np3.GetPyramid();
          
          for (int scaleNr = 0; scaleNr < nrScales; scaleNr++)
          {
             for (int orientationNr = 0; orientationNr < nrOrientations; orientationNr++)
             {
                ContrastEnhanceSingleBand3Colors( pPyramidColor1->GetRecursiveScale( scaleNr )->GetOrientedBand( orientationNr ),
-                                                pPyramidColor2->GetRecursiveScale( scaleNr )->GetOrientedBand( orientationNr ),
-                                                pPyramidColor3->GetRecursiveScale( scaleNr )->GetOrientedBand( orientationNr ), 
-                                                applyWavelet
-                                             );
+                                                 pPyramidColor2->GetRecursiveScale( scaleNr )->GetOrientedBand( orientationNr ),
+                                                 pPyramidColor3->GetRecursiveScale( scaleNr )->GetOrientedBand( orientationNr ),
+                                                 applyWavelet
+                                               );
             }
          }
          if ( pPyramidColor1->GetResidualScale() != 0 )
@@ -410,14 +412,14 @@ image::Image* PyramidContrastEnhancer::Run3Colors( image::Image* pImage, int nrS
             for (int orientationNr = 0; orientationNr < nrOrientations; orientationNr++)
             {
                ContrastEnhanceSingleBand3Colors( pPyramidColor1->GetResidualScale( )->GetOrientedBand( orientationNr ),
-                                                pPyramidColor2->GetResidualScale( )->GetOrientedBand( orientationNr ),
-                                                pPyramidColor3->GetResidualScale( )->GetOrientedBand( orientationNr ), 
-                                                applyWavelet 
-                                             );
+                                                 pPyramidColor2->GetResidualScale( )->GetOrientedBand( orientationNr ),
+                                                 pPyramidColor3->GetResidualScale( )->GetOrientedBand( orientationNr ),
+                                                 applyWavelet
+                                               );
             }
          }
          
-         image::Image* pFilteredImage = new image::Image( pImage->GetWidth(), pImage->GetHeight() );
+         Image* pFilteredImage = new Image( pImage->GetWidth(), pImage->GetHeight() );
          
          np1.Reconstruct(); 
          pFilteredImage->AddBand( np1.GetCopyOfReconstructedGrid() );

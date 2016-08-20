@@ -26,7 +26,8 @@
 namespace stira {
 namespace fouriertools {
 
-using namespace image;
+using namespace imagedata;
+using namespace stira::imagetools;
 
 // These class' methods are divided in the following categories 
 //    1) GENERAL METHODS
@@ -195,7 +196,7 @@ ArrayGrid<double>* FFT::ComputePowerSpectrum( ArrayGrid<double>* pSourceGrid )
 
 //---------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* FFT::ComputeLogPowerSpectrum( image::ArrayGrid<double>* pSourceGrid )
+ArrayGrid<double>* FFT::ComputeLogPowerSpectrum( ArrayGrid<double>* pSourceGrid )
 {
    ArrayGrid<double>* pSpectrumGrid = ComputePowerSpectrum( pSourceGrid );
    
@@ -315,7 +316,7 @@ Image* FFT::Convolve( Image* pInput, ArrayGrid<double>* pFilterKernel)
    Image* pOut = new Image( width, height );
    for (int i = 0; i < nrBands; i++)
    {
-      image::ArrayGrid<double>* pGridOut = FFT::Convolve( pInput->GetBands()[i], pFilterKernel );
+      ArrayGrid<double>* pGridOut = FFT::Convolve( pInput->GetBands()[i], pFilterKernel );
       pOut->AddBand( pGridOut );
    }
    return pOut;
@@ -428,7 +429,7 @@ ArrayGrid<double>* FFT::GaussConvolve( ArrayGrid<double>* pInputGrid, double sig
 
 //---------------------------------------------------------------------------------------
 
-image::ArrayGrid<double>* FFT::SuppressOuterFrequencies( image::ArrayGrid<double>* pInputGrid )
+ArrayGrid<double>* FFT::SuppressOuterFrequencies( ArrayGrid<double>* pInputGrid )
 {
    int width = pInputGrid->GetWidth();
    int height = pInputGrid->GetHeight();

@@ -16,24 +16,19 @@
 namespace stira {
 namespace filter {
 
-using namespace image;
 using namespace std;
 
 //------------------------------------------------------------------------------------------
 
-SeparableFilter::SeparableFilter()
-{
-}
+SeparableFilter::SeparableFilter() { }
 
 //------------------------------------------------------------------------------------------
 
-SeparableFilter::~SeparableFilter()
-{
-}
+SeparableFilter::~SeparableFilter() { }
 
 //------------------------------------------------------------------------------------------
 
-bool SeparableFilter::RunRow( image::ArrayGrid<double>* pInputBand, image::ArrayGrid<double>* pOutputBand, double *filtx, int filterLengthX, image::GridExtender<double>::ExtensionType myType )
+bool SeparableFilter::RunRow( ArrayGrid<double>* pInputBand, ArrayGrid<double>* pOutputBand, double *filtx, int filterLengthX, GridExtender<double>::ExtensionType myType )
 {
    int width = pInputBand->GetWidth();
    int height = pInputBand->GetHeight();
@@ -153,7 +148,7 @@ ArrayGrid<double>* SeparableFilter::RunColumnRow( ArrayGrid<double>* pInputBand,
 }
 //------------------------------------------------------------------------------------------
 
-image::Image* SeparableFilter::RunRowColumn( image::Image* pImageIn, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType )
+Image* SeparableFilter::RunRowColumn( Image* pImageIn, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType )
 {
    int nrBands = pImageIn->GetNumberOfBands();
    int width = pImageIn->GetWidth();
@@ -171,7 +166,7 @@ image::Image* SeparableFilter::RunRowColumn( image::Image* pImageIn, double *fil
 
 //------------------------------------------------------------------------------------------
 
-image::Image* SeparableFilter::RunColumnRow( image::Image* pImageIn, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType )
+Image* SeparableFilter::RunColumnRow( Image* pImageIn, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType )
 {
    int nrBands = pImageIn->GetNumberOfBands();
    int width = pImageIn->GetWidth();

@@ -17,11 +17,10 @@
 namespace stira{
 namespace deconvolve{
 
-using namespace image;
 using namespace fouriertools;
 using namespace std;
 
-VanCittertLandweberDeconvolve::VanCittertLandweberDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations )
+VanCittertLandweberDeconvolve::VanCittertLandweberDeconvolve( Image* pDegradedImage, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, maxNrOfIterations )
 {
    mDeconvolutionType = DECONVOLVE_LANDWEBER;
@@ -30,7 +29,7 @@ VanCittertLandweberDeconvolve::VanCittertLandweberDeconvolve( image::Image* pDeg
 
 //--------------------------------------------------------------------------
 
-VanCittertLandweberDeconvolve::VanCittertLandweberDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations )
+VanCittertLandweberDeconvolve::VanCittertLandweberDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, pPSF, maxNrOfIterations )
 {
    mDeconvolutionType = DECONVOLVE_LANDWEBER;
@@ -134,7 +133,7 @@ bool VanCittertLandweberDeconvolve::Run()
 
 //--------------------------------------------------------------------------
 
-bool VanCittertLandweberDeconvolve::ApplyPositivityConstraint( image::ArrayGrid<double>* pGrid )
+bool VanCittertLandweberDeconvolve::ApplyPositivityConstraint( ArrayGrid<double>* pGrid )
 {
    int width = pGrid->GetWidth();
    int height = pGrid->GetHeight();

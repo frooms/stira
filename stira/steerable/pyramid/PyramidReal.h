@@ -39,7 +39,7 @@ public:
      * \param pGridIn source input grid data
      * \param myNrScales nr of scales in which to decompose the image
      * \param myNrOrientations nr of orientations in which to decompose the image*/
-   PyramidReal( image::ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations);
+   PyramidReal( ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations);
    
    /** \brief destructor*/
    ~PyramidReal();

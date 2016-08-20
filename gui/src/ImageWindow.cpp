@@ -47,7 +47,8 @@
 #include "../../stira/imagetools/tools/ImageTools.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::common;
 
 //------------------------------------------------------------------
@@ -66,7 +67,7 @@ ImageWindow::ImageWindow ( QImage* pQImage )
 
 //------------------------------------------------------------------
 
-ImageWindow::ImageWindow ( stira::image::Image* pImage )
+ImageWindow::ImageWindow ( stira::imagedata::Image* pImage )
 {
    InitializePointers( );
    if ( pImage != 0)
@@ -246,7 +247,7 @@ void ImageWindow::RenderImage ( QImage* pQImage )
 
 //------------------------------------------------------------------
 
-void ImageWindow::SlotCompareImages( stira::image::Image* pImage, ComparisonMode mode )
+void ImageWindow::SlotCompareImages( stira::imagedata::Image* pImage, ComparisonMode mode )
 {
    if ( (pImage != 0) && ( ( mpImage1->GetNumberOfBands() == 3) || ( mpImage1->GetNumberOfBands() == 1) )
                       && ( (   pImage->GetNumberOfBands() == 3) || (   pImage->GetNumberOfBands() == 1) )

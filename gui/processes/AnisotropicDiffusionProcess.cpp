@@ -16,7 +16,6 @@
 #include "../../stira/diffusion/diffusion/AnisotropicDiffusion.h"
 
 using namespace stira::diffusion;
-using namespace stira::image;
 using namespace std;
 
 AnisotropicDiffusionProcess::AnisotropicDiffusionProcess( Image* pImage ) : Process( pImage )

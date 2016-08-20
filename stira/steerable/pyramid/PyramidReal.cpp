@@ -20,7 +20,8 @@ namespace stira {
 namespace steerable {
 
 using namespace fouriertools;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace std;
 
 PyramidReal::PyramidReal( ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations )

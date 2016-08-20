@@ -38,16 +38,16 @@ public:
 
    /** \brief constructor
      * \param pImage the input image for processing */
-   SplitColorChannelsDialog( stira::image::Image* pImage );
+   SplitColorChannelsDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~SplitColorChannelsDialog();
    
    /** \brief gets the color space in which to extract the channels */
-   enum stira::image::ColorType GetColorSpace();
+   enum stira::imagedata::ColorType GetColorSpace();
    
    /** \brief gets the reference illuminant */
-   stira::image::ColorValue GetReferenceIlluminant();
+   stira::imagedata::ColorValue GetReferenceIlluminant();
 
 public slots:
 

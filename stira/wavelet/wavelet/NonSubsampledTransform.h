@@ -20,6 +20,8 @@
 namespace stira {
 namespace wavelet {
 
+using namespace stira::imagedata;
+
 
 /** \brief Computes orthogonal redundant (i.e., non-subsampled) wavelet decomposition / reconstruction 
   * This class implements the a-trous algorithm of Mallat */
@@ -37,7 +39,7 @@ public:
      * \param pSourceGrid grid to be deomposed
      * \param nrScales nr of scales in the decomposition
      * \return true if all went well*/
-   virtual bool Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales );
+   virtual bool Decompose( ArrayGrid<double>* pSourceGrid, int nrScales );
    
    /** \brief reconstructs the decomposed image
      * \param threshold hard threshold for bandpass images, just for demo purposes*/
@@ -47,13 +49,13 @@ private:
    /** \brief performs single level of the decomposition
      * \param pInputGrid data as input to be decomposed to next level
      * \param myScale number of current decomposition scale (0 = first scale; 1 = second scale and so on)*/
-   void DecomposeSingleScale( image::ArrayGrid<double> * pInputGrid, int myScale );
+   void DecomposeSingleScale( ArrayGrid<double> * pInputGrid, int myScale );
       
    /** \brief performs single level of the reconstruction
      * \param pReconstructedGrid data as output from reconstructing this level
      * \param myScale number of current decomposition scale (0 = first scale; 1 = second scale and so on)
      * \param threshold threshold for detail coefficients as test for reconstruction*/
-   void ReconstructSingleScale( image::ArrayGrid<double> * pReconstructedGrid, int myScale, double threshold );
+   void ReconstructSingleScale( ArrayGrid<double> * pReconstructedGrid, int myScale, double threshold );
 
    /** \brief specialized version of Transform1D, where is known that filter is lowpass and data are row per row
      * \param pInputData data before filtering

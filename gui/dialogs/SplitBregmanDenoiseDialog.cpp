@@ -14,9 +14,10 @@
 #include "../src/MainWindow.h"
 #include "../processes/SplitBregmanDenoiseProcess.h"
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
-SplitBregmanDenoiseDialog::SplitBregmanDenoiseDialog( stira::image::Image* pImage ) : DialogMaster( pImage )
+SplitBregmanDenoiseDialog::SplitBregmanDenoiseDialog( stira::imagedata::Image* pImage ) : DialogMaster( pImage )
 {
    mpProcess = 0;
    mpTitelLabel->setText( QString("<b>Split-Bregman TV Denoising Parameters</b>") );

@@ -23,7 +23,7 @@ public:
 
    /** \brief constructor
      * \param pImage input image */
-   ContrastEnhanceProcess( stira::image::Image* pImage );
+   ContrastEnhanceProcess( stira::imagedata::Image* pImage );
    virtual ~ContrastEnhanceProcess();
    
    void SetLowerFraction( double fraction );
@@ -54,7 +54,7 @@ private:
    double mAlphaFactor;
    
    StiraDefinitions::ContrastEnhanceType mType;
-   stira::image::Image* RunRetinex( stira::image::Image* pImage, double lowerFraction, double upperFraction);
-   stira::image::Image* RunHistogramEqualize( stira::image::Image* pImage );
+   stira::imagedata::Image* RunRetinex( stira::imagedata::Image* pImage, double lowerFraction, double upperFraction);
+   stira::imagedata::Image* RunHistogramEqualize( stira::imagedata::Image* pImage );
 };
 #endif

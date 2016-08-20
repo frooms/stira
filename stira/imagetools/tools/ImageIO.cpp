@@ -26,7 +26,7 @@
 
 using namespace std;
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace common;
 
@@ -1458,7 +1458,7 @@ bool ImageIO::RescaleGrid( ArrayGrid<double>* pGrid, outputType outtype)
                if ( mmin < 0 && mmax > 0)
                GetInputMinMax( pGrid, mmin, mmax, outtype );
             }
-            image::NumberGridTools<double>::ClipValues( pGrid, 0, mmax );
+            NumberGridTools<double>::ClipValues( pGrid, 0, mmax );
 
             #ifdef DEBUG_OUT_AFTER
             cout << "rescaling absolute value" << endl << flush;

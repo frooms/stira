@@ -18,7 +18,7 @@
 #include "ColorValue.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief usefull constants related to color and color spaces  *
   * References: reference white points: http://www.digitalcolour.org/toolbox.htm

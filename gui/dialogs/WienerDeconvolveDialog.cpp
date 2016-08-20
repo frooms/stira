@@ -14,7 +14,8 @@
 #include "../src/MainWindow.h"
 #include "../processes/WienerDeconvolveProcess.h"
 
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 WienerDeconvolveDialog::WienerDeconvolveDialog( Image* pImage ) : DialogMaster( pImage )
 {

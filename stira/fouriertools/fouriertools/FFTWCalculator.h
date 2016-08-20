@@ -19,6 +19,8 @@
 namespace stira {
 namespace fouriertools {
 
+using namespace imagedata;
+
 /** \brief A class to compute the Fourier transforms based on the FFTW library  */
 class FFTWCalculator : public FFTCalculator
 {
@@ -26,7 +28,7 @@ class FFTWCalculator : public FFTCalculator
 public:
    /** \brief construct an FFT calculator initialized with data from an FFTBand 
      * \param pComplexGrid pointer to an ArrayGrid of complex values*/
-   FFTWCalculator( image::ArrayGrid< std::complex<double> >* pComplexGrid);
+   FFTWCalculator( ArrayGrid< std::complex<double> >* pComplexGrid);
    
    /** \brief construct an empty FFT calculator*/
    FFTWCalculator();
@@ -42,7 +44,7 @@ public:
 
 private:
    /** \brief help method to create the intermediate data structures for the FFTW library */
-   bool CreateLibData( image::ArrayGrid< std::complex<double> >* pGridin );
+   bool CreateLibData( ArrayGrid< std::complex<double> >* pGridin );
 
    /** \brief help method to clean the intermediate input data structures for the FFTW library */
    bool CleanLibData();

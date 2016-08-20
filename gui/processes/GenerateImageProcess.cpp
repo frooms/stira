@@ -18,7 +18,8 @@
 #include "../../stira/imagetools/imagegenerator/GretagMacbethColorChecker.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 GenerateImageProcess::GenerateImageProcess( ) : Process( )
 {
@@ -117,43 +118,43 @@ void GenerateImageProcess::run()
    {
       case StiraDefinitions::SYNTHETIC_EMPTY:
       {
-         pGrid = stira::image::GridGenerator::GenerateEmpty( width, height );
+         pGrid = stira::imagetools::GridGenerator::GenerateEmpty( width, height );
          imageName = std::string("EmptyImage");
          break;
       }
       case StiraDefinitions::SYNTHETIC_EMPTYPLUSNOISE:
       {
-         pGrid = stira::image::GridGenerator::GenerateEmptyPlusGaussianNoise( width, height );
+         pGrid = stira::imagetools::GridGenerator::GenerateEmptyPlusGaussianNoise( width, height );
          imageName = std::string("EmptyNoisyImage");
          break;
       }
       case StiraDefinitions::SYNTHETIC_HORIZONTALGRADIENT:
       {
-         pGrid = stira::image::GridGenerator::GenerateHorizontalGradient( width, height );
+         pGrid = stira::imagetools::GridGenerator::GenerateHorizontalGradient( width, height );
          imageName = std::string("HorizontalGradient");
          break;
       }
       case StiraDefinitions::SYNTHETIC_VERTICALGRADIENT:
       {
-         pGrid = stira::image::GridGenerator::GenerateVerticalGradient( width, height );
+         pGrid = stira::imagetools::GridGenerator::GenerateVerticalGradient( width, height );
          imageName = std::string("VerticalGradient");
          break;
       }
       case StiraDefinitions::SYNTHETIC_HORIZONTALSINE:
       {
-         pGrid = stira::image::GridGenerator::GenerateHorizontalSineWave( width, height, frequency );
+         pGrid = stira::imagetools::GridGenerator::GenerateHorizontalSineWave( width, height, frequency );
          imageName = std::string("HorizontalSine");
          break;
       }
       case StiraDefinitions::SYNTHETIC_VERTICALSINE:
       {
-         pGrid = stira::image::GridGenerator::GenerateVerticalSineWave( width, height, frequency );
+         pGrid = stira::imagetools::GridGenerator::GenerateVerticalSineWave( width, height, frequency );
          imageName = std::string("VerticalSine");
          break;
       }
       case StiraDefinitions::SYNTHETIC_EUCLIDEANSPOTS:
       {
-         pGrid = stira::image::GridGenerator::GenerateEuclideanSpots( width, height, frequency );
+         pGrid = stira::imagetools::GridGenerator::GenerateEuclideanSpots( width, height, frequency );
          imageName = std::string("EuclideanSpots");
          break;
       }
@@ -165,28 +166,28 @@ void GenerateImageProcess::run()
       }
       case StiraDefinitions::SYNTHETIC_STARCHART:
       {
-         pGrid = stira::image::GridGenerator::GenerateStarChart( width, (int)(frequency) );
+         pGrid = stira::imagetools::GridGenerator::GenerateStarChart( width, (int)(frequency) );
          imageName = std::string("StarChart");
          break;
       }
       case StiraDefinitions::SYNTHETIC_LOGFREQUENCYCONTRAST:
       {
-         pGrid = stira::image::GridGenerator::GenerateLogFrequencyContrastChart( );
+         pGrid = stira::imagetools::GridGenerator::GenerateLogFrequencyContrastChart( );
          imageName = std::string("LogFrequencyContrastChart");
          break;
       }
       case StiraDefinitions::SYNTHETIC_INVERSEZONEPLATE:
       {
-         pGrid = stira::image::GridGenerator::GenerateInverseZonePlate ( );
+         pGrid = stira::imagetools::GridGenerator::GenerateInverseZonePlate ( );
          imageName = std::string("InverseZonePlate");
          break;
       }
       case StiraDefinitions::SYNTHETIC_SHEPPLOGAN:
       {
          double mmin, mmax;
-         pGrid = stira::image::GridGenerator::GenerateSheppLogan( 15.0 );
+         pGrid = stira::imagetools::GridGenerator::GenerateSheppLogan( 15.0 );
          
-         stira::image::GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
+         stira::imagedata::GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
          double factor = 255.0 / mmax;
          pGrid->MultiplyWith( factor );
          imageName = std::string("SheppLogan");
@@ -194,16 +195,16 @@ void GenerateImageProcess::run()
       }
       case StiraDefinitions::SYNTHETIC_GRETAGMACBETH:
       {
-         pOutImage = stira::image::GretagMacbethColorChecker::Generate( 4, 60 );
+         pOutImage = stira::imagetools::GretagMacbethColorChecker::Generate( 4, 60 );
          imageName = std::string("GretagMacbeth");
          break;
       }
       case StiraDefinitions::SYNTHETIC_ISING:
       {
          double mmin, mmax;
-         ArrayGrid<int>* pGridTmp = stira::image::GridGenerator::GenerateIsingTexture( );
-         pGrid = stira::image::GridConverter::ConvertToDouble( pGridTmp );
-         stira::image::GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
+         ArrayGrid<int>* pGridTmp = stira::imagetools::GridGenerator::GenerateIsingTexture( );
+         pGrid = stira::imagedata::GridConverter::ConvertToDouble( pGridTmp );
+         stira::imagedata::GridStatistics<double>::GetMinMax( pGrid, mmin, mmax );
          double factor = 255.0 / mmax;
          pGrid->MultiplyWith( factor );
          imageName = std::string("IsingTexture");
@@ -213,7 +214,7 @@ void GenerateImageProcess::run()
       case StiraDefinitions::SYNTHETIC_ZONEPLATE:
       default:
       {
-         pGrid = stira::image::GridGenerator::GenerateZonePlate ( );
+         pGrid = stira::imagetools::GridGenerator::GenerateZonePlate ( );
          imageName = std::string("ZonePlate");
          break;
       }

@@ -22,7 +22,8 @@ namespace stira {
 namespace degradationestimation {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace filter;
 
 //----------------------------------------------------------------
@@ -69,15 +70,15 @@ void BlurEstimatorHu::SetSigmaB( double sigmaB )
 
 //----------------------------------------------------------------
 
-double BlurEstimatorHu::Run( image::ArrayGrid<double>* pGrid )
+double BlurEstimatorHu::Run( ArrayGrid<double>* pGrid )
 {
    int width  = pGrid->GetWidth();
    int height = pGrid->GetHeight();
 
-   image::ArrayGrid<double>* pGridClone = pGrid->Clone();
+   ArrayGrid<double>* pGridClone = pGrid->Clone();
 
-   ArrayGrid<double>* pRatioGrid = new image::ArrayGrid<double>( width, height );
-   ArrayGrid<double>* pBlurGrid = new image::ArrayGrid<double>( width, height );
+   ArrayGrid<double>* pRatioGrid = new ArrayGrid<double>( width, height );
+   ArrayGrid<double>* pBlurGrid = new ArrayGrid<double>( width, height );
 
    ArrayGrid<double>* pGridBlurredA = GaussConvolve::Convolve( pGridClone, mSigmaA );
 

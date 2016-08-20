@@ -22,7 +22,7 @@
 using namespace std;
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 //-------------------------------------------------------------
 

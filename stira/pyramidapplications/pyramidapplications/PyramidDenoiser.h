@@ -19,6 +19,8 @@
 
 namespace stira {
 namespace pyramidapplications {
+
+using namespace imagedata;
    
 enum ShrinkageRule{WIENER, LAPLACIAN, BIVARIATE};
    
@@ -42,7 +44,7 @@ class PyramidDenoiser
         * \param myRule shrinkage rule to apply to the coefficients
         * \param sigma sigma of the noise
         */
-      PyramidDenoiser( image::Pyramid<double>* pPyramid, ShrinkageRule myRule, double sigma);
+      PyramidDenoiser( Pyramid<double>* pPyramid, ShrinkageRule myRule, double sigma);
 
       /** \brief Destructor. */
       ~PyramidDenoiser();
@@ -102,7 +104,7 @@ class PyramidDenoiser
         * \param xCenter x coordinate of center pixel of the local window in which to estimate the local variance
         * \param yCenter y coordinate of center pixel of the local window in which to estimate the local variance
         * \param sigmaNoise sigma of the noise*/
-      static double EstimateSigmaSignal( image::ArrayGrid<double>* pBand, int xCenter, int yCenter, double sigmaNoise, int windowSize);
+      static double EstimateSigmaSignal( ArrayGrid<double>* pBand, int xCenter, int yCenter, double sigmaNoise, int windowSize);
       
    private:
       
@@ -141,7 +143,7 @@ class PyramidDenoiser
       double mScaleFactorResidualToRecursiveLevel;  ///< scale factor coefficients between residual and first recursive level
       double mScaleFactorRecursiveLevel;  ///< scale factor coefficients between two successive recursive levels
       
-      image::Pyramid<double>* mpPyramid;   ///< pointer to the pyramid to denoise
+      Pyramid<double>* mpPyramid;   ///< pointer to the pyramid to denoise
 };
 }
 }

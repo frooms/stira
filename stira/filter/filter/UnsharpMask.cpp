@@ -15,21 +15,15 @@
 namespace stira {
 namespace filter {
 
-using namespace image;
-
-UnsharpMask::UnsharpMask()
-{
-}
+UnsharpMask::UnsharpMask() { }
 
 //------------------------------------------------------------------------------------------
 
-UnsharpMask::~UnsharpMask()
-{
-}
+UnsharpMask::~UnsharpMask() { }
 
 //------------------------------------------------------------------------------------------
 
-image::Image* UnsharpMask::Run( image::Image* pImageIn, double sigma, double factor )
+Image* UnsharpMask::Run( Image* pImageIn, double sigma, double factor )
 {
    int nrBands = pImageIn->GetNumberOfBands();
    Image* pImageOut = pImageIn->Clone();

@@ -6,8 +6,6 @@
 
 namespace stira{
 
-using namespace image;
-
 FlashROF::FlashROF()
 {
    mMu = .1;
@@ -71,7 +69,7 @@ void FlashROF::SetIsIsotropic( bool flag )
    mIsIsotropic = flag;
 }
 
-image::Image* FlashROF::Run( image::Image* pImageIn )
+Image* FlashROF::Run( Image* pImageIn )
 {
    int height = pImageIn->GetHeight();
    int width  = pImageIn->GetWidth();

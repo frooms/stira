@@ -22,7 +22,9 @@
 #include "../../imagedata/color/ColorValue.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
+
+using namespace imagedata;
 
 /** \brief GretagMacbeth Color Checker Numeric Values 
   * http://www.brucelindbloom.com/ColorCheckerCalculator.html

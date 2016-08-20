@@ -43,7 +43,7 @@ NoiseEstimator::~NoiseEstimator()
 
 //----------------------------------------------------------------
 
-double NoiseEstimator::GetMedianValue( image::ArrayGrid<double>* pGrid )
+double NoiseEstimator::GetMedianValue( ArrayGrid<double>* pGrid )
 {
    double medianValue;
    int width  = pGrid->GetWidth();
@@ -68,7 +68,7 @@ double NoiseEstimator::GetMedianValue( image::ArrayGrid<double>* pGrid )
 
 //----------------------------------------------------------------
 
-double NoiseEstimator::Run( image::ArrayGrid<double>* pGrid )
+double NoiseEstimator::Run( ArrayGrid<double>* pGrid )
 {
    double noiseLevel;
    CriticallySubsampledTransform wdr;
@@ -76,7 +76,7 @@ double NoiseEstimator::Run( image::ArrayGrid<double>* pGrid )
    wdr.Decompose( pGrid, 1);
 
    // visualize all bands together in single image
-   /*image::Image* pCritical = image::PyramidTools::VisualizeRealPyramid( wdr.GetPyramid() );
+   /*Image* pCritical = image::PyramidTools::VisualizeRealPyramid( wdr.GetPyramid() );
    image::ImageIO::Write( pCritical, std::string("HaarDecomposeBands.pgm"), image::ImageIO::NULL_OUT );
    delete pCritical;
 

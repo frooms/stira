@@ -31,6 +31,8 @@ enum neighbortype{ROF_ISOTROPIC, ROF_ANISOTROPIC};
 
 namespace stira{
 
+using namespace imagedata;
+
 class FlashROF
 {
 public:
@@ -38,7 +40,7 @@ public:
    FlashROF();
    ~FlashROF();
    
-   image::Image* Run( image::Image* pImageIn );
+   Image* Run( Image* pImageIn );
    
    double GetMu();
    void SetMu( double mu );

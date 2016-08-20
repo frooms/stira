@@ -25,7 +25,8 @@ using namespace std;
 using namespace stira;
 using namespace stira::filter;
 using namespace stira::fouriertools;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 //======================================================================================================
 
@@ -54,7 +55,7 @@ int main(int argc, char *argv[])
    
    double sigma = 1.5;
    double factor = 1.5;
-   image::Image* pOutImage = UnsharpMask::Run( pImageBlurred, sigma, factor );
+   Image* pOutImage = UnsharpMask::Run( pImageBlurred, sigma, factor );
 
    ImageIO::Write( pOutImage, string("UnsharpMaskResult.ppm"), ImageIO::NULL_OUT);
 

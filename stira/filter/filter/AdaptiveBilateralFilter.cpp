@@ -18,7 +18,8 @@
 namespace stira{
 namespace filter{
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
    
 const int AdaptiveBilateralFilter::mWindowSize = 7;
 

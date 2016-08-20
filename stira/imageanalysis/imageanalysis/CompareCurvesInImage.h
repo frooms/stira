@@ -19,18 +19,20 @@
 namespace stira {
 namespace imageanalysis {
 
+using namespace imagedata;
+
 /** \brief compares two gray value images in which mono-colored curves are drawn */
 class CompareCurvesInImage
 {
 public:
-   CompareCurvesInImage( image::Image* pImage1, image::Image* pImage2, image::ColorValue cv );
+   CompareCurvesInImage( Image* pImage1, Image* pImage2, ColorValue cv );
 
    int GetDifference();
 
 private:
-   image::Image* mpImage1;
-   image::Image* mpImage2;
-   image::ColorValue mColorValue;
+   Image* mpImage1;
+   Image* mpImage2;
+   ColorValue mColorValue;
    std::vector<int> mvCurveY1;
    std::vector<int> mvCurveY2;
    std::vector<int> mvCurveDelta;

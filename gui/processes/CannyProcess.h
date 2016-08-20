@@ -24,7 +24,7 @@ class CannyProcess : public Process
 public:
    /** \brief constructor
      * \param pImage input image */
-   CannyProcess( stira::image::Image* pImage );
+   CannyProcess( stira::imagedata::Image* pImage );
    
    /** \brief destructor */
    virtual ~CannyProcess();

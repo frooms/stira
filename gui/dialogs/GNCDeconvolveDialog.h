@@ -36,7 +36,7 @@ public:
 
    /** \brief constructor
      * \param pImage the input image for processing */
-   GNCDeconvolveDialog( stira::image::Image* pImage );
+   GNCDeconvolveDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~GNCDeconvolveDialog();

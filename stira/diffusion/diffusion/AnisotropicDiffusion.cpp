@@ -16,7 +16,6 @@ namespace stira {
 namespace diffusion {
 
 using namespace std;
-using namespace image;
 
 //-----------------------------------------------------------
 

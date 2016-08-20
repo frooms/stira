@@ -5,6 +5,9 @@
 namespace stira {
 namespace wavelet {
 
+using namespace stira::imagedata;
+
+
 //  which is loosely based on Numerical Recipes in C
 class SubsampledTransform: public Wavelet
 {
@@ -20,7 +23,7 @@ public:
      * \param pSourceGrid grid to be deomposed
      * \param nrScales nr of scales in the decomposition
      * \return true if all went well*/
-   virtual bool Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales );
+   virtual bool Decompose( ArrayGrid<double>* pSourceGrid, int nrScales );
    
    /** \brief reconstruction
      * \param threshold hard threshold for diagnostic purposes
@@ -57,25 +60,25 @@ private:
      * \param pRow the array to copy the values from
      * \param pGrid the grid to copy the values to
      * \param rowNr the number of the row to write the values to */
-   void CopyArrayRowToGrid( double* pRow, image::ArrayGrid<double>* pGrid, int rowNr );
+   void CopyArrayRowToGrid( double* pRow, ArrayGrid<double>* pGrid, int rowNr );
 
    /** \brief copies values from an array to a column of an ArrayGrid
      * \param pRow the array to copy the values from
      * \param pGrid the grid to copy the values to
      * \param rowNr the number of the column to write the values to */
-   void CopyArrayColumnToGrid( double* pColumn, image::ArrayGrid<double>* pGrid, int columnNr );
+   void CopyArrayColumnToGrid( double* pColumn, ArrayGrid<double>* pGrid, int columnNr );
 
    /** \brief copies values from a row of an ArrayGrid to an array
      * \param pRow the array to copy the values from
      * \param pGrid the grid to copy the values to
      * \param rowNr the number of the column to write the values to */
-   void CopyGridRowToArray( image::ArrayGrid<double>* pGrid, double* pRow, int rowNr );
+   void CopyGridRowToArray( ArrayGrid<double>* pGrid, double* pRow, int rowNr );
 
    /** \brief copies values from a column of an ArrayGrid to an array
      * \param pRow the array to copy the values from
      * \param pGrid the grid to copy the values to
      * \param rowNr the number of the column to write the values to */
-   void CopyGridColumnToArray( image::ArrayGrid<double>* pGrid, double* pColumn, int columnNr );
+   void CopyGridColumnToArray( ArrayGrid<double>* pGrid, double* pColumn, int columnNr );
    
    /** \brief creates a pyramid datastructure from the grid
      * The transform was computed in-place; create pyramid for more convenient access*/

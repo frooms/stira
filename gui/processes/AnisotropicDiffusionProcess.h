@@ -24,7 +24,7 @@ public:
 
    /** \brief constructor
      * \param pImage input image */
-   AnisotropicDiffusionProcess( stira::image::Image* pImage );
+   AnisotropicDiffusionProcess( stira::imagedata::Image* pImage );
    virtual ~AnisotropicDiffusionProcess();
    
    double GetFlowParameter();

@@ -23,7 +23,7 @@
 using namespace std;
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace common;
 

@@ -18,6 +18,8 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+
 /** \brief computes Kuwahara filtered image
   *
   * The filtering window is divided in four subwindows. For each subwindow, mean and varince are computed.
@@ -35,7 +37,7 @@ public:
    ~KuwaharaFilter();
    
    /** \brief applies Kuwahara filter to image*/
-   static image::Image* Run(image::Image* pImageIn, int windowSize=5);
+   static Image* Run( Image* pImageIn, int windowSize=5);
    
    /** \brief gets the index at which position the smallest member of the given array is located
      * \param pArray the array with values

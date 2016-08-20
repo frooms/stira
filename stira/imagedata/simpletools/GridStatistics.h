@@ -4,9 +4,9 @@
 #include "../../common/common/RectangularROI.h"
 #include "../../common/common/MathUtils.h"
 #include "../datastructures/ArrayGrid.h"
-namespace stira {
-namespace image {
 
+namespace stira {
+namespace imagedata {
 
 template <class T>
 class GridStatistics

@@ -5,7 +5,7 @@
 
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 GeometricTransform::GeometricTransform( )
 {

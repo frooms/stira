@@ -23,7 +23,7 @@
 #include "ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief A class to contain a single level of a pyramid decomposition */
 template <class T>

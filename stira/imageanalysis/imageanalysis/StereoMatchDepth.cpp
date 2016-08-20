@@ -18,25 +18,22 @@ namespace stira {
 namespace imageanalysis {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace common;
 
 //----------------------------------------------------------------
 
-
-StereoMatchDepth::StereoMatchDepth()
-{
-
-}
+StereoMatchDepth::StereoMatchDepth() { }
 
 //----------------------------------------------------------------
 
-image::ArrayGrid<double>* StereoMatchDepth::MatchStereo( image::ArrayGrid<double>* pGrid1,
-                                                         image::ArrayGrid<double>* pGrid2,
-                                                         int windowHalfWidth,
-                                                         common::MatchCriterion myMatchCriterion,
-                                                         int maxDisparity
-                                                       )
+ArrayGrid<double>* StereoMatchDepth::MatchStereo( ArrayGrid<double>* pGrid1,
+                                                  ArrayGrid<double>* pGrid2,
+                                                  int windowHalfWidth,
+                                                  common::MatchCriterion myMatchCriterion,
+                                                  int maxDisparity
+                                                )
 {
     switch(myMatchCriterion)
     {
@@ -58,15 +55,15 @@ image::ArrayGrid<double>* StereoMatchDepth::MatchStereo( image::ArrayGrid<double
 
 //----------------------------------------------------------------
 
-image::ArrayGrid<double>* StereoMatchDepth::MatchStereoSSD( image::ArrayGrid<double>* pGrid1,
-                                                            image::ArrayGrid<double>* pGrid2,
-                                                            int windowHalfWidth,
-                                                            int maxDisparity
-                                                          )
+ArrayGrid<double>* StereoMatchDepth::MatchStereoSSD( ArrayGrid<double>* pGrid1,
+                                                     ArrayGrid<double>* pGrid2,
+                                                     int windowHalfWidth,
+                                                     int maxDisparity
+                                                   )
 {
     int width  = pGrid1->GetWidth();
     int height = pGrid1->GetHeight();
-    image::ArrayGrid<double>* pGridResult = new image::ArrayGrid<double>( width, height );
+    ArrayGrid<double>* pGridResult = new ArrayGrid<double>( width, height );
 
     for ( int y = windowHalfWidth; y < height - windowHalfWidth; y++ )
     {
@@ -133,15 +130,15 @@ image::ArrayGrid<double>* StereoMatchDepth::MatchStereoSSD( image::ArrayGrid<dou
 
 //----------------------------------------------------------------
 
-image::ArrayGrid<double>* StereoMatchDepth::MatchStereoNCC( image::ArrayGrid<double>* pGrid1,
-                                                            image::ArrayGrid<double>* pGrid2,
-                                                            int windowHalfWidth,
-                                                            int maxDisparity
-                                                          )
+ArrayGrid<double>* StereoMatchDepth::MatchStereoNCC( ArrayGrid<double>* pGrid1,
+                                                     ArrayGrid<double>* pGrid2,
+                                                     int windowHalfWidth,
+                                                     int maxDisparity
+                                                   )
 {
     int width  = pGrid1->GetWidth();
     int height = pGrid1->GetHeight();
-    image::ArrayGrid<double>* pGridResult = new image::ArrayGrid<double>( width, height );
+    ArrayGrid<double>* pGridResult = new ArrayGrid<double>( width, height );
 
     for ( int y = windowHalfWidth; y < height - windowHalfWidth; y++ )
     {
@@ -209,15 +206,15 @@ image::ArrayGrid<double>* StereoMatchDepth::MatchStereoNCC( image::ArrayGrid<dou
 
 //----------------------------------------------------------------
 
-image::ArrayGrid<double>* StereoMatchDepth::MatchStereoMI( image::ArrayGrid<double>* pGrid1,
-                                                           image::ArrayGrid<double>* pGrid2,
-                                                           int windowHalfWidth,
-                                                           int maxDisparity
-                                                         )
+ArrayGrid<double>* StereoMatchDepth::MatchStereoMI( ArrayGrid<double>* pGrid1,
+                                                    ArrayGrid<double>* pGrid2,
+                                                    int windowHalfWidth,
+                                                    int maxDisparity
+                                                  )
 {
     int width  = pGrid1->GetWidth();
     int height = pGrid1->GetHeight();
-    image::ArrayGrid<double>* pGridResult = new image::ArrayGrid<double>( width, height );
+    ArrayGrid<double>* pGridResult = new ArrayGrid<double>( width, height );
 
     for ( int y = windowHalfWidth; y < height - windowHalfWidth; y++ )
     {

@@ -22,7 +22,7 @@ class WienerDeconvolveProcess : public Process
 public:
    /** \brief constructor
      * \param pImWindow image window to extract input from*/
-   WienerDeconvolveProcess( stira::image::Image* pImage );
+   WienerDeconvolveProcess( stira::imagedata::Image* pImage );
    virtual ~WienerDeconvolveProcess();
    
    double GetNoiseLevel();

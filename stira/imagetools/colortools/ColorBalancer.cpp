@@ -19,7 +19,7 @@
 using namespace std;
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 ColorBalancer::ColorBalancer()
 {

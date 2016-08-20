@@ -15,7 +15,8 @@
 #include "../processes/LogGaborFilterProcess.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 LogGaborFilterDialog::LogGaborFilterDialog( Image* pImage ) : DialogMaster( pImage )
 {

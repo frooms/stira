@@ -23,7 +23,7 @@
 #include "Pyramid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief Special child data class to contain complex-valued lowpass levels for a subsampled complex wavelet transform
   * In essence a container for objects of the class PyramidLevel that contain the actual bands */

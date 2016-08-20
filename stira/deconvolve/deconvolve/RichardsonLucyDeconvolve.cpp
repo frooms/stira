@@ -23,12 +23,13 @@ using namespace std;
 namespace stira{
 namespace deconvolve{
 
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace fouriertools;
 using namespace common;
 
 
-RichardsonLucyDeconvolve::RichardsonLucyDeconvolve( image::Image* pDegradedImage, regularizationType myRegularizationType, int maxNrOfIterations )
+RichardsonLucyDeconvolve::RichardsonLucyDeconvolve( Image* pDegradedImage, regularizationType myRegularizationType, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, maxNrOfIterations )
 {
    mRegularizationType = myRegularizationType;
@@ -37,7 +38,7 @@ RichardsonLucyDeconvolve::RichardsonLucyDeconvolve( image::Image* pDegradedImage
 
 //--------------------------------------------------------------------------
 
-RichardsonLucyDeconvolve::RichardsonLucyDeconvolve(image::Image* pDegradedImage, image::Image* pPSF, regularizationType myRegularizationType, int maxNrOfIterations )
+RichardsonLucyDeconvolve::RichardsonLucyDeconvolve( Image* pDegradedImage, Image* pPSF, regularizationType myRegularizationType, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, pPSF, maxNrOfIterations )
 {
    mRegularizationType = myRegularizationType;

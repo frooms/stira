@@ -23,7 +23,7 @@ public:
 
    /** \brief constructor
      * \param pImWindow input image window for processing */
-   SimulateNoiseProcess( stira::image::Image* pImage );
+   SimulateNoiseProcess( stira::imagedata::Image* pImage );
    ~SimulateNoiseProcess();
    
    double GetNoiseLevel();

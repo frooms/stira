@@ -27,7 +27,7 @@ class RichardsonLucyDeconvolveProcess : public Process
 public:
    /** \brief constructor
      * \param pImage input image */
-   RichardsonLucyDeconvolveProcess( stira::image::Image* pImage );
+   RichardsonLucyDeconvolveProcess( stira::imagedata::Image* pImage );
    virtual ~RichardsonLucyDeconvolveProcess();
    
    double GetLambda();
@@ -50,7 +50,7 @@ public:
 private:
    stira::deconvolve::regularizationType ConvertRegularizationType( );
    
-   stira::image::ArrayGrid<double>* GeneratePSF();
+   stira::imagedata::ArrayGrid<double>* GeneratePSF();
    
    StiraDefinitions::RLRegularizationType mRegularizationType;
    

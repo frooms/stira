@@ -15,8 +15,9 @@
 #include "../../common/common/MathUtils.h"
 #include "../color/TransformColorSpace.h"
 #include <cassert>
+
 namespace stira {
-namespace image {
+namespace imagedata {
 
 using namespace common;
 

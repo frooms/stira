@@ -20,7 +20,8 @@ namespace stira {
 namespace steerable {
 
 using namespace std;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace common;
 
 //============================================================================

@@ -22,7 +22,8 @@
 
 using namespace stira;
 using namespace stira::common;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::histogram;
 using namespace stira::contrastenhance;
 using namespace std;

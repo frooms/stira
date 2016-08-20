@@ -27,6 +27,9 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+using namespace imagetools;
+
 /** \brief computes the Local Binary Pattern operation for each pixel in the image.
   *
   * The Local Binary Pattern is a pixel-wise value that encodes the local spatial
@@ -62,9 +65,9 @@ public:
    /** \brief destructor*/
    ~LocalBinaryPattern();
 
-   LocalBinaryPattern( image::ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints );
+   LocalBinaryPattern( ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints );
 
-   LocalBinaryPattern( image::ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints, std::vector< common::Point<int> > vPointsOfInterest );
+   LocalBinaryPattern( ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints, std::vector< common::Point<int> > vPointsOfInterest );
 
 public:
 
@@ -93,19 +96,19 @@ private:
      * \param pOutGrid the grid on which to visualize
      * \param x the x coordinate of the central point
      * \param y the y coordinate of the central point */
-   void DrawDeltaPoints( image::ArrayGrid<double>* pOutGrid, int x, int y );
+   void DrawDeltaPoints( ArrayGrid<double>* pOutGrid, int x, int y );
 
    /** \brief initializes the data structures and member variables
      * \param pGrid input grid
      * \param initAngle initial angle to start placing points in the circle to compute the LBP's
      * \param radius of the circle to compute the LBP's, double radius, int nrPoints
      * \param nrPoints number of points to put on the circle to compute the LBP's */
-   void Initialize( image::ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints );
+   void Initialize( ArrayGrid<double>* pGrid, double initAngle, double radius, int nrPoints );
 
    bool mHasPointsOfInterest;  ///< flag if true: only certain points of interest are to be taken from a grid; if false all points are taken
    std::vector< common::Point<int> > mvPointsOfInterest;   ///< if mHasPointsOfInterest is true, the LBP's will be only computed for these points of mpGrid
    double mInitialAngle;  ///< angle between x axis and line origin - first point
-   image::ArrayGrid<double>* mpGrid;  ///< input grid
+   ArrayGrid<double>* mpGrid;  ///< input grid
    double mRadius;  ///< radius of neighborhood circle to consider
    int mNumberOfPoints;  ///< number of points per neighborhood circle to consider
    std::vector< common::Point< double > > mvDeltaPoints;  ///< input grid
@@ -122,16 +125,16 @@ public:
    /** \brief computes classic Locally Binary Pattern filter for a whole image
      * assigns a code to each image pixel depending on the pixel's environment
      * \param pImageIn input image */
-   static image::Image* RunClassic(image::Image* pImageIn);
+   static Image* RunClassic( Image* pImageIn);
 
-   int ComputePointGLDP( image::ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType );
+   int ComputePointGLDP( ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType );
    /** \brief computes label for Geometric Textural Pattern with 36 neighborhood points in three rings around the central point
      * \param pGridIn input image
      * \param x x coordinate of central point for which to compute label
      * \param y y coordinate of central point for which to compute label
      * \param threshold comparison threshold
      * \param myType whether a binary or ternary comparison should be performed */
-   int ComputePointGLTP( image::ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType );
+   int ComputePointGLTP( ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType );
 
    /** \brief computes Jensen-Shannon divergence between histograms of labels between two image patches
      * The labels are computed using symmetric Locally Binary Pattern with 12 neighborhood points
@@ -145,7 +148,7 @@ public:
      * \param yTop2 y coordinate of the top left corner of image patch 2
      * \param xBottom2 x coordinate of the bottom right corner of image patch 2
      * \param yBottom2 y coordinate of the bottom right corner of image patch 2 */
-   double ComputeJensenShannonDivergenceBetweenImagePatches( image::ArrayGrid<double>* pGridIn, int frameNr,
+   double ComputeJensenShannonDivergenceBetweenImagePatches( ArrayGrid<double>* pGridIn, int frameNr,
                                                              int xTop1, int yTop1, int xBottom1, int yBottom1,
                                                              int xTop2, int yTop2, int xBottom2, int yBottom2 );
 
@@ -158,7 +161,7 @@ public:
      * \param bottomY y coordinate of the bottom right corner of image patch
      * \param threshold comparison threshold
      * \param myType whether a binary or ternary comparison should be performed  */
-   histogram::FloatHistogram ComputePointLBPSymHistogram( image::ArrayGrid<double>* pGridIn, int frameNr,
+   histogram::FloatHistogram ComputePointLBPSymHistogram( ArrayGrid<double>* pGridIn, int frameNr,
                                                           int topX, int topY, int bottomX, int bottomY,
                                                           double threshold, bool myType );
 
@@ -166,11 +169,11 @@ public:
      * \param pGridIn input image
      * \param threshold comparison threshold
      * \param myType whether a binary or ternary comparison should be performed  */
-   image::ArrayGrid<int>* ComputeLBPSymImage( image::ArrayGrid<double>* pGridIn, double threshold, bool myType );
+   ArrayGrid<int>* ComputeLBPSymImage( ArrayGrid<double>* pGridIn, double threshold, bool myType );
 
    /** \brief computes label for symmetric Locally Binary Pattern with 12 neighborhood points
      * assigns a label to each image pixel depending on the pixel's environment*/
-   int ComputePointLBPSym( image::ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType );
+   int ComputePointLBPSym( ArrayGrid<double>* pGridIn, int x, int y, double threshold, bool myType );
 
 private:
    double mPointsGLTP[36][2];  ///< the 36 neighborhood points to compute Geometric Textural Patterns
@@ -180,7 +183,7 @@ private:
 #ifdef USE_BILINEAR_INTERPOLATION
    // in case of binlinear interpolation to find values in between exact pixel positions
    // for now, we approximate by nearest neighborhood for efficiency and speed
-   image::BilinearInterpolator mBilinearInterpolator;  ///< bilinear interpolator to compute values in between integer pixel positions
+   BilinearInterpolator mBilinearInterpolator;  ///< bilinear interpolator to compute values in between integer pixel positions
 #endif
 };
 

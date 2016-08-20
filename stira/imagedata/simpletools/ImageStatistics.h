@@ -5,8 +5,7 @@
 #include "../datastructures/Image.h"
 
 namespace stira {
-namespace image {
-
+namespace imagedata {
 
 class ImageStatistics
 {

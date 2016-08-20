@@ -35,7 +35,7 @@ class ComputeSteerableFilteredImages
 public:
    /** \brief constructor
      * \param mpSourceGrid input grid */
-   ComputeSteerableFilteredImages( image::ArrayGrid<double>* mpSourceGrid );
+   ComputeSteerableFilteredImages( ArrayGrid<double>* mpSourceGrid );
 
    /** \brief destructor*/
    ~ComputeSteerableFilteredImages();
@@ -46,73 +46,73 @@ public:
    /** \brief Gets grid with dominant orientation and local energy
      * Based on expression in paper of Freeman and Adelson in Appendix 1 for G2 and H2
      * Creates a new grid for which the caller becomes responsible*/
-   image::OrientationGrid* GetOrientationGrid( );
+   OrientationGrid* GetOrientationGrid( );
 
    /** \brief Creates new interpolated image as if filtered with even G kernels steered under theta degrees
      * \param theta angle in radians under which to compute interpolated filter response
      * Creates a new grid for which the caller becomes responsible */
-   image::ArrayGrid<double>* InterpolateG( double theta );
+   ArrayGrid<double>* InterpolateG( double theta );
 
    /** \brief Creates new interpolated image as if filtered with odd H kernels steered under theta degrees
      * \param theta angle in radians under which to compute interpolated filter response
      * Creates a new grid for which the caller becomes responsible */
-   image::ArrayGrid<double>* InterpolateH( double theta );
+   ArrayGrid<double>* InterpolateH( double theta );
 
    /** \brief Creates new filtered image as if filtered under local dominant orientation
      * Creates a new grid for which the caller becomes responsible */
-   image::ArrayGrid<double>* FilterAlongDominantOrientationG( );
+   ArrayGrid<double>* FilterAlongDominantOrientationG( );
 
    /** \brief Creates new filtered image as if filtered under local dominant orientation
      * Creates a new grid for which the caller becomes responsible */
-   image::ArrayGrid<double>* FilterAlongDominantOrientationH( );
+   ArrayGrid<double>* FilterAlongDominantOrientationH( );
 
    /** \brief Gets pointer to image filtered with odd H2a kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetH2a();
+   ArrayGrid<double>* GetH2a();
 
    /** \brief Gets pointer to image filtered with odd H2b kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetH2b();
+   ArrayGrid<double>* GetH2b();
 
    /** \brief Gets pointer to image filtered with odd H2c kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetH2c();
+   ArrayGrid<double>* GetH2c();
 
    /** \brief Gets pointer to image filtered with odd H2d kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetH2d();
+   ArrayGrid<double>* GetH2d();
 
    /** \brief Gets pointer to image filtered with even G2a kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetG2a();
+   ArrayGrid<double>* GetG2a();
 
    /** \brief Gets pointer to image filtered with even G2b kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetG2b();
+   ArrayGrid<double>* GetG2b();
 
    /** \brief Gets pointer to image filtered with odd G2c kernel
      * gets pointer to local array that is deleted by destructor of this class;
      * make a copy when this grid is needed longer than the life span of this class */
-   image::ArrayGrid<double>* GetG2c();
+   ArrayGrid<double>* GetG2c();
 
 private:
 
    bool mHasBasicResponses; ///< flag if the basic responses have been computed yet
-   image::ArrayGrid<double>* mpSourceGrid;  ///< source image
+   ArrayGrid<double>* mpSourceGrid;  ///< source image
 
-   image::ArrayGrid<double>* mpResponseH2a;  ///< H2a response image (see paper)
-   image::ArrayGrid<double>* mpResponseH2b;  ///< H2b response image (see paper)
-   image::ArrayGrid<double>* mpResponseH2c;  ///< H2c response image (see paper)
-   image::ArrayGrid<double>* mpResponseH2d;  ///< H2d response image (see paper)
-   image::ArrayGrid<double>* mpResponseG2a;  ///< G2a response image (see paper)
-   image::ArrayGrid<double>* mpResponseG2b;  ///< G2b response image (see paper)
-   image::ArrayGrid<double>* mpResponseG2c;  ///< G2c response image (see paper)
+   ArrayGrid<double>* mpResponseH2a;  ///< H2a response image (see paper)
+   ArrayGrid<double>* mpResponseH2b;  ///< H2b response image (see paper)
+   ArrayGrid<double>* mpResponseH2c;  ///< H2c response image (see paper)
+   ArrayGrid<double>* mpResponseH2d;  ///< H2d response image (see paper)
+   ArrayGrid<double>* mpResponseG2a;  ///< G2a response image (see paper)
+   ArrayGrid<double>* mpResponseG2b;  ///< G2b response image (see paper)
+   ArrayGrid<double>* mpResponseG2c;  ///< G2c response image (see paper)
 
    BasicFilterKernels* mpTaps;  ///< object containing the filter taps
 };

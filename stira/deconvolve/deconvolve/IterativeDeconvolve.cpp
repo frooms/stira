@@ -18,11 +18,10 @@ namespace deconvolve{
 
 using namespace std;
 using namespace common;
-using namespace image;
 
 //--------------------------------------------------------------------------
 
-IterativeDeconvolve::IterativeDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations )
+IterativeDeconvolve::IterativeDeconvolve( Image* pDegradedImage, int maxNrOfIterations )
                            : DeconvolveMaster( pDegradedImage )
 {
    Initialize( maxNrOfIterations );
@@ -30,7 +29,7 @@ IterativeDeconvolve::IterativeDeconvolve( image::Image* pDegradedImage, int maxN
 
 //--------------------------------------------------------------------------
 
-IterativeDeconvolve::IterativeDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations )
+IterativeDeconvolve::IterativeDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations )
                            : DeconvolveMaster( pDegradedImage, pPSF )
 {
    Initialize( maxNrOfIterations );

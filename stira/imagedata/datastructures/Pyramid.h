@@ -23,8 +23,9 @@
 #include "PyramidLevel.h"
 #include "../../common/common/MathUtils.h"
 #include "../../imagedata/simpletools/GridStatistics.h"
+
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief A data class to contain all subbands of a pyramid decomposition
   * These bands are grouped per resolution level. All bands in one resolution level are grouped in a member class PyramidLevel.
@@ -682,6 +683,8 @@ inline int Pyramid<T>::GetFinestScaleNumber()
 //}
 
 //===========================================================================================
+
 }
 }
+
 #endif

@@ -36,7 +36,7 @@ public:
 
    /** \brief constructor
      * \param pImage the input image for processing */
-   RichardsonLucyDeconvolveDialog( stira::image::Image* pImage );
+   RichardsonLucyDeconvolveDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~RichardsonLucyDeconvolveDialog();

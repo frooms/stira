@@ -48,18 +48,18 @@ public:
 
    /** \brief constructor
      * \param pImage image object on which to apply the process */
-   ProcessManager( stira::image::Image* pImage );
+   ProcessManager( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    ~ProcessManager();
    
    std::vector<QMenu*> GetMenus();
    
-   void SetImage( stira::image::Image* pImage );
+   void SetImage( stira::imagedata::Image* pImage );
    
 private:
    
-   stira::image::Image* mpImage;
+   stira::imagedata::Image* mpImage;
    
    void CreateActions();
   

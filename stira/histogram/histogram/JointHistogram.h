@@ -40,15 +40,15 @@ public:
      * \param pImage1 first input image
      * \param pImage2 second  input image
      * \param useAbsoluteValues flag to use absolute values instead of normal values*/
-   JointHistogram( image::Image* pImage1, image::Image* pImage2, bool useAbsoluteValues=false );
+   JointHistogram( Image* pImage1, Image* pImage2, bool useAbsoluteValues=false );
 
    /** \brief constructor
      * Initializes and builds conditional histogram based on the two input grids
      * \param pGrid1 first input grid
      * \param pGrid2 second  input grid
      * \param useAbsoluteValues flag to use absolute values instead of normal values*/
-   JointHistogram( image::ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
-                   image::ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2,
+   JointHistogram( ArrayGrid<double>* pGrid1, int xTop1, int yTop1, int xBottom1, int yBottom1,
+                   ArrayGrid<double>* pGrid2, int xTop2, int yTop2, int xBottom2, int yBottom2,
                    bool useAbsoluteValues=false );
 
    /** \brief constructor
@@ -56,7 +56,7 @@ public:
      * \param pGrid1 first input grid
      * \param pGrid2 second  input grid
      * \param useAbsoluteValues flag to use absolute values instead of normal values*/
-   JointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool useAbsoluteValues=false );
+   JointHistogram( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, bool useAbsoluteValues=false );
    
    /** \brief destructor*/
    ~JointHistogram();
@@ -76,9 +76,8 @@ public:
    FloatHistogram* GetMarginalPDF1();
    FloatHistogram* GetMarginalPDF2();
    
-   /** \brief visualizes the current conditional histogram as an image
-     * \param imageName name for the exported image as disk file */
-   void VisualizeAsImage( std::string imageName );
+   /** \brief visualizes the current conditional histogram as an image*/
+   Image* VisualizeAsImage( );
    void ExportText(std::string fileName);
 
 private:
@@ -87,7 +86,7 @@ private:
      * \param pGrid grid to add one to at location (x, y)
      * \param x bin nr on the horizontal axis 
      * \param y bin nr on the vertical axis */
-   void AddOne( image::ArrayGrid<int>* pGrid, int x, int y);
+   void AddOne( ArrayGrid<int>* pGrid, int x, int y);
    
    /** \brief Gets the value in the given band for the given bin numbers 
      * \param band nr of the band
@@ -99,10 +98,10 @@ private:
      * \param pGrid1 first grid as input
      * \param pGrid2 second grid as input
      * \param absoluteValue flag whether to use the input values as they are or their absolute values*/
-   void BuildJointHistogram( image::ArrayGrid<double>* pGrid1, image::ArrayGrid<double>* pGrid2, bool absoluteValue=false );
+   void BuildJointHistogram( ArrayGrid<double>* pGrid1, ArrayGrid<double>* pGrid2, bool absoluteValue=false );
    
-   std::vector< image::ArrayGrid<int>* > mvpData;  ///< the actual histogram data
-   std::vector< image::ArrayGrid<double>* > mvpDataNormalized;  ///< the actual histogram data
+   std::vector< ArrayGrid<int>* > mvpData;  ///< the actual histogram data
+   std::vector< ArrayGrid<double>* > mvpDataNormalized;  ///< the actual histogram data
 
    int mRoiTopX1;
    int mRoiTopY1;

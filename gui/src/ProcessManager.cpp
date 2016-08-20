@@ -45,13 +45,14 @@
 
 using namespace std;
 using namespace stira::common;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::imageanalysis;
 using namespace stira::steerable;
 
 //==========================================================
 
-ProcessManager::ProcessManager( stira::image::Image* pImage )
+ProcessManager::ProcessManager( stira::imagedata::Image* pImage )
 {
    mpImage = pImage;
    CreateActions();
@@ -66,7 +67,7 @@ ProcessManager::~ProcessManager()
 
 //==========================================================
 
-void ProcessManager::SetImage( stira::image::Image* pImage )
+void ProcessManager::SetImage( stira::imagedata::Image* pImage )
 {
    mpImage = pImage;
 }

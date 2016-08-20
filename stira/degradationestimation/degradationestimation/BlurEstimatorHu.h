@@ -20,6 +20,8 @@
 namespace stira {
 namespace degradationestimation {
 
+using namespace imagedata;
+
 /** \brief A class to estimate blur using method of Hu and de Haan
   * References: - "Low Cost Robust Blur estimator". H. Hu and G. De Haan in IEEE ICIP 2006,
   *               Oct. 8-11, 2006, Atlanta (GA), pp. 617-620.
@@ -55,7 +57,7 @@ public:
 
    /** \brief gets the sigma of the blur for the given grid
      * \param pGrid the grid for which to determine the blur */
-   double Run( image::ArrayGrid<double>* pGrid );
+   double Run( ArrayGrid<double>* pGrid );
 
 private:
    double mSigmaA; ///< smallest reblur sigma value

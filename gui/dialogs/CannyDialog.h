@@ -35,7 +35,7 @@ class CannyDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   CannyDialog( stira::image::Image* pImage );
+   CannyDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~CannyDialog();

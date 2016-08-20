@@ -17,7 +17,7 @@
 #define EPSILON 0.000001
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 NearestNeighborInterpolator::NearestNeighborInterpolator()
 {

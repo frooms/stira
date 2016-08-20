@@ -33,6 +33,9 @@
 namespace stira {
 namespace steerable {
 
+using namespace imagedata;
+using namespace imagetools;
+
 template <class T>
 
 /** \brief parent class to compute FFT based real- and complex-valued steerable pyramids (decomposition/reconstruction)*/
@@ -43,7 +46,7 @@ public:
      * \param pGridIn source input grid data
      * \param myNrScales nr of scales in which to decompose the image
      * \param myNrOrientations nr of orientations in which to decompose the image*/
-   PyramidMaster( image::ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations);
+   PyramidMaster( ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations);
    
    /** \brief destructor
      * \warning: also deletes the mpPyramid data structure with all the subbands
@@ -70,17 +73,17 @@ public:
      *
      * In case no grid is available, 0 is returned.
      */
-   image::ArrayGrid<double>* GetCopyOfReconstructedGrid();
+   ArrayGrid<double>* GetCopyOfReconstructedGrid();
    
    /** \brief gets a pointer to the actual pyramid data*/
-   image::Pyramid<T>* GetPyramid();
+   Pyramid<T>* GetPyramid();
    
    /** \brief sets a pointer to new pyramid data
      * if old data exists already, they are deleted first
      * \warning: destructor of this class will also deletes the mpPyramid data structure with all the subbands
      * Make sure you do not use the data structure you are setting here after this destructor is called!!! 
      * \param pPyramid pointer to new pyramid data */
-   void SetPyramid( image::Pyramid<T>* pPyramid );
+   void SetPyramid( Pyramid<T>* pPyramid );
 
 protected:
    
@@ -88,14 +91,14 @@ protected:
    ////////////
    
    /** \brief extracts the first L0 band*/
-   image::ArrayGrid<double>* ExtractL0();
+   ArrayGrid<double>* ExtractL0();
    
    /** \brief extracts a B0 band with given orientation index
      * \param myMode indicates whether we deal with real-valued or complex-valued pyramid*/
    fouriertools::FFTBand* ExtractB0( common::NumberMode myMode );
    
    /** \brief extracts recursive L band */
-   image::ArrayGrid<double>* ExtractL( );
+   ArrayGrid<double>* ExtractL( );
    
    /** \brief extracts a B band with given orientation index
      * \param myMode indicates whether we deal with real-valued or complex-valued pyramid*/
@@ -113,22 +116,22 @@ protected:
      * Output is still in Fourier domain to save FFT's 
      * \param pGridIn input B0 band (spatial domain)
      * \param myMode indicates whether we deal with real-valued or complex-values pyramid*/
-   fouriertools::FFTBand* ReconstructB0( image::ArrayGrid<T>* pGridIn, common::NumberMode myMode);
+   fouriertools::FFTBand* ReconstructB0( ArrayGrid<T>* pGridIn, common::NumberMode myMode);
    
    /** \brief reconstructs L band 
      * Output is still in Fourier domain to save FFT's
      * \param pGridIn input L band (spatial domain)*/
-   fouriertools::FFTBand* ReconstructL( image::ArrayGrid<double>* pGridIn );
+   fouriertools::FFTBand* ReconstructL( ArrayGrid<double>* pGridIn );
 
    /** \brief reconstructs a B0 band with given orientation index
      * Output is still in Fourier domain to save FFT's 
      * \param pGridIn input B0 band (spatial domain)
      * \param myMode indicates whether we deal with real-valued or complex-values pyramid*/
-   fouriertools::FFTBand* ReconstructB( image::ArrayGrid<T>* pGridIn, common::NumberMode myMode );
+   fouriertools::FFTBand* ReconstructB( ArrayGrid<T>* pGridIn, common::NumberMode myMode );
    
    /** \brief computes sum, followed by inverse Fourier Transform
      * \param fftSubbandSet stl vector with FFTBands to merge*/
-   image::ArrayGrid<double>* MergeAndReconstructFFTBands( std::vector< fouriertools::FFTBand* > fftSubbandSet );
+   ArrayGrid<double>* MergeAndReconstructFFTBands( std::vector< fouriertools::FFTBand* > fftSubbandSet );
    
    // HELP METHODS
    /////////////////
@@ -166,17 +169,17 @@ protected:
    // DATA STRUCTURES
    ///////////////////
    
-   image::Pyramid<T>* mpPyramid; ///< the pyramid bands
+   Pyramid<T>* mpPyramid; ///< the pyramid bands
    
-   image::ArrayGrid<double>* mpSourceGrid; ///< the source data grid
-   image::ArrayGrid<double>* mpReconstructedGrid; ///< the data grid after reconstruction
+   ArrayGrid<double>* mpSourceGrid; ///< the source data grid
+   ArrayGrid<double>* mpReconstructedGrid; ///< the data grid after reconstruction
    int mNrScales; ///< nr of scales in the pyramid
    int mNrOrientations; ///< nr of orientations (in paper called K) per scale in the pyramid
    int mWidth; ///< width of the source image
    int mHeight; ///< height of the source image
    bool mIsForwardTransform; ///< flag if we are computing the forward transform
    
-   image::ArrayGrid<double>* mpTmpHighpassGrid; ///< tmp member in order to avoid recomputation of this transfer function for each oriented subband
+   ArrayGrid<double>* mpTmpHighpassGrid; ///< tmp member in order to avoid recomputation of this transfer function for each oriented subband
    
    std::complex<double> mDecompositionFactor; ///< modulation factor for oriented bands (-i)^(K-1) during decomposition
    
@@ -191,7 +194,7 @@ protected:
 //=========================================================================================
 
 template <class T>
-PyramidMaster<T>::PyramidMaster(image::ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations)
+PyramidMaster<T>::PyramidMaster( ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations)
 {
    mpSourceGrid = pGridIn;
    mpReconstructedGrid = 0;
@@ -229,7 +232,7 @@ PyramidMaster< T >::~PyramidMaster( )
 //------------------------------------------------------------------------------------------
 
 template <class T>
-void PyramidMaster< T >::SetPyramid( image::Pyramid<T>* pPyramid )
+void PyramidMaster< T >::SetPyramid( Pyramid<T>* pPyramid )
 {
    if (mpPyramid != 0)
    {
@@ -242,7 +245,7 @@ void PyramidMaster< T >::SetPyramid( image::Pyramid<T>* pPyramid )
 //------------------------------------------------------------------------------------------
 
 template <class T>
-image::Pyramid< T >* PyramidMaster< T >::GetPyramid( )
+Pyramid< T >* PyramidMaster< T >::GetPyramid( )
 {
    return mpPyramid;
 }
@@ -250,7 +253,7 @@ image::Pyramid< T >* PyramidMaster< T >::GetPyramid( )
 //------------------------------------------------------------------------------------------
 
 template <class T>
-image::ArrayGrid<double>* PyramidMaster< T >::GetCopyOfReconstructedGrid( )
+ArrayGrid<double>* PyramidMaster< T >::GetCopyOfReconstructedGrid( )
 {
    if (mpReconstructedGrid != 0)
    {
@@ -312,16 +315,16 @@ void PyramidMaster< T >::CleanFFTBand()
 ///////////////////
 
 template <class T>
-image::ArrayGrid<double>* PyramidMaster< T >::ExtractL0( )
+ArrayGrid<double>* PyramidMaster< T >::ExtractL0( )
 {
    fouriertools::FFTBand* pFFTInBand = GetFFTBand();
    int width  = pFFTInBand->GetWidth();
    int height = pFFTInBand->GetHeight();
 
-   image::ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 4, width / 2);
+   ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 4, width / 2);
 
    fouriertools::FFTBand* pFFTFilteredBand = fouriertools::FFT::ApplyTransferFunction( pFFTInBand, pfLPBand );
-   image::ArrayGrid<double>* pResultingGrid = pFFTFilteredBand->ConvertToRealGrid( );
+   ArrayGrid<double>* pResultingGrid = pFFTFilteredBand->ConvertToRealGrid( );
    delete pFFTFilteredBand;
    delete pfLPBand;
 
@@ -331,16 +334,16 @@ image::ArrayGrid<double>* PyramidMaster< T >::ExtractL0( )
 //------------------------------------------------------------------------------------------
 
 template <class T>
-image::ArrayGrid<double>* PyramidMaster< T >::ExtractL( )
+ArrayGrid<double>* PyramidMaster< T >::ExtractL( )
 {
    fouriertools::FFTBand* pFFTInBand = GetFFTBand();
    int width  = pFFTInBand->GetWidth();
    int height = pFFTInBand->GetHeight();
    
-   image::ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 8, width / 4);
+   ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 8, width / 4);
 
    fouriertools::FFTBand* pFFTFilteredBand = fouriertools::FFT::ApplyTransferFunction( pFFTInBand, pfLPBand );
-   image::ArrayGrid<double>* pResultingGrid = pFFTFilteredBand->ConvertToRealGrid();
+   ArrayGrid<double>* pResultingGrid = pFFTFilteredBand->ConvertToRealGrid();
    delete pFFTFilteredBand;
    delete pfLPBand;
 
@@ -365,8 +368,7 @@ bool PyramidMaster< T >::ViewTransferFunction( fouriertools::FFTBand* pTransferF
    int width = pTransferFunction->GetWidth();
    int height = pTransferFunction->GetHeight();
    
-
-   image::ArrayGrid<double>* pGrid = new image::ArrayGrid<double>( width, height );
+   ArrayGrid<double>* pGrid = new ArrayGrid<double>( width, height );
    
    for (int y = 0; y < height; y++)
    {
@@ -378,7 +380,7 @@ bool PyramidMaster< T >::ViewTransferFunction( fouriertools::FFTBand* pTransferF
    }
    std::stringstream ss;
    ss << token << "-" << scale << "-" << orientation << ".pgm";
-   image::ImageIO::WritePGM( pGrid, ss.str(), image::ImageIO::GRADIENT_OUT );
+   ImageIO::WritePGM( pGrid, ss.str(), ImageIO::GRADIENT_OUT );
    delete  pGrid;
    
    return true;
@@ -453,7 +455,7 @@ fouriertools::FFTBand* PyramidMaster< T >::ReconstructL0( std::vector< fourierto
    int width  = pSum->GetWidth();
    int height = pSum->GetHeight();
 
-   image::ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 4, width / 2);
+   ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 4, width / 2);
    pSum->Multiply( pfLPBand );
    delete pfLPBand;
    return pSum;
@@ -462,12 +464,12 @@ fouriertools::FFTBand* PyramidMaster< T >::ReconstructL0( std::vector< fourierto
 //------------------------------------------------------------------------------------------
 
 template <class T>
-fouriertools::FFTBand* PyramidMaster< T >::ReconstructL( image::ArrayGrid<double>* pGridIn )
+fouriertools::FFTBand* PyramidMaster< T >::ReconstructL( ArrayGrid<double>* pGridIn )
 {
    int width  = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
 
-   image::ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 8, width / 4);
+   ArrayGrid<double>* pfLPBand = fouriertools::TransferFunctionGenerator::GenerateLowPassTransferFunction(width, height, width / 8, width / 4);
    
    fouriertools::FFTBand* pFFTFilteredBand = fouriertools::FFT::ApplyTransferFunctionFFT(pGridIn, pfLPBand);
    delete pfLPBand;
@@ -477,7 +479,7 @@ fouriertools::FFTBand* PyramidMaster< T >::ReconstructL( image::ArrayGrid<double
 //------------------------------------------------------------------------------------------
 
 template <class T>
-fouriertools::FFTBand* PyramidMaster< T >::ReconstructB0( image::ArrayGrid<T>* pGridIn, common::NumberMode myMode)
+fouriertools::FFTBand* PyramidMaster< T >::ReconstructB0( ArrayGrid<T>* pGridIn, common::NumberMode myMode)
 {
    int width = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
@@ -499,7 +501,7 @@ fouriertools::FFTBand* PyramidMaster< T >::ReconstructB0( image::ArrayGrid<T>* p
 //------------------------------------------------------------------------------------------
 
 template <class T>
-fouriertools::FFTBand* PyramidMaster< T >::ReconstructB( image::ArrayGrid<T>* pGridIn, common::NumberMode myMode )
+fouriertools::FFTBand* PyramidMaster< T >::ReconstructB( ArrayGrid<T>* pGridIn, common::NumberMode myMode )
 {
    int width  = pGridIn->GetWidth();
    int height = pGridIn->GetHeight();
@@ -546,13 +548,13 @@ fouriertools::FFTBand* PyramidMaster< T >::SumFFTBands( std::vector< fouriertool
 //------------------------------------------------------------------------------------------
 
 template <class T>
-image::ArrayGrid<double>* PyramidMaster< T >::MergeAndReconstructFFTBands( std::vector< fouriertools::FFTBand* > fftSubbandSet )
+ArrayGrid<double>* PyramidMaster< T >::MergeAndReconstructFFTBands( std::vector< fouriertools::FFTBand* > fftSubbandSet )
 {
    fouriertools::FFTBand* pSum = SumFFTBands( fftSubbandSet );
    
    pSum->ApplyInverseTransform();
    pSum->SwitchQuadrants();
-   image::ArrayGrid<double>* pResultGrid = pSum->ConvertToRealGrid( );
+   ArrayGrid<double>* pResultGrid = pSum->ConvertToRealGrid( );
    delete pSum;
    return pResultGrid;
 }

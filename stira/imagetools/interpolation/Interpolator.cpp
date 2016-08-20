@@ -15,7 +15,7 @@
 #include "../../common/common/MathUtils.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 Interpolator::Interpolator()
 {

@@ -44,7 +44,8 @@ using namespace stira;
 using namespace stira::filter;
 using namespace stira::fouriertools;
 using namespace stira::histogram;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 //======================================================================================================
 
@@ -208,7 +209,7 @@ bool SeparableFilterTest(Image* pSourceImage)
    double pFilterY[ 3 ] = {coeff, coeff, coeff};
 
    stira::filter::SeparableFilter sf;
-   image::ArrayGrid<double>* pOutGrid = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterX, pFilterY, length, length );
+   ArrayGrid<double>* pOutGrid = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterX, pFilterY, length, length );
 
    Image* pSeparableFilteredImage = new Image(pOutGrid);
    assert( pSeparableFilteredImage != 0 );
@@ -230,11 +231,11 @@ bool SeparableFilterEvenTest(Image* pSourceImage)
    double pFilterY[ 3 ] = {coeff / 3.0, coeff / 3.0, coeff / 3.0};
 
    stira::filter::SeparableFilter sf;
-   image::ArrayGrid<double>* pOutGridX = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterX, pFilterY, lengthX, lengthY );
+   ArrayGrid<double>* pOutGridX = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterX, pFilterY, lengthX, lengthY );
    ImageIO::WritePGM( pOutGridX, string("SeparableFilterEvenResult1.ppm"), ImageIO::NORMAL_OUT );
    ImageIO::WriteTXT( pOutGridX, string("SeparableFilterEvenResult1.txt") );
 
-   image::ArrayGrid<double>* pOutGridY = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterY, pFilterX, lengthY, lengthX );
+   ArrayGrid<double>* pOutGridY = sf.SeparableFilter::RunRowColumn( pSourceImage->GetBands()[0], pFilterY, pFilterX, lengthY, lengthX );
    ImageIO::WritePGM( pOutGridY, string("SeparableFilterEvenResult2.ppm"), ImageIO::NORMAL_OUT );
    ImageIO::WritePGM( pOutGridY, string("SeparableFilterEvenResult2.txt") );
 
@@ -292,7 +293,7 @@ bool NonSeparableFilterTest( Image* pSourceImage )
    cout << "Sobel X kernel [ " << pSobelXKernel[3] << "\t " <<  pSobelXKernel[4] << "\t " << pSobelXKernel[5] << " ]" << endl << flush;
    cout << "               [ " << pSobelXKernel[6] << "\t " <<  pSobelXKernel[7] << "\t " << pSobelXKernel[8] << " ]" << endl << endl << flush;
 
-   image::ArrayGrid<double>* pOutGridX = stira::filter::NonSeparableFilter::Run( pSourceImage->GetBands()[0], pSobelXKernel, 3, 3 );
+   ArrayGrid<double>* pOutGridX = stira::filter::NonSeparableFilter::Run( pSourceImage->GetBands()[0], pSobelXKernel, 3, 3 );
    Image* pNonSeparableFilteredImageX = new Image( pOutGridX );
 
    assert( pNonSeparableFilteredImageX != 0 );
@@ -308,7 +309,7 @@ bool NonSeparableFilterTest( Image* pSourceImage )
    cout << "Sobel Y kernel [  " << pSobelYKernel[3] << "\t  " <<  pSobelYKernel[4] << "\t  " << pSobelYKernel[5] << " ]" << endl << flush;
    cout << "               [ "  << pSobelYKernel[6] << "\t " <<   pSobelYKernel[7] << "\t "  << pSobelYKernel[8] << " ]" << endl << flush;
 
-   image::ArrayGrid<double>* pOutGridY = stira::filter::NonSeparableFilter::Run( pSourceImage->GetBands()[0], pSobelYKernel, 3, 3 );
+   ArrayGrid<double>* pOutGridY = stira::filter::NonSeparableFilter::Run( pSourceImage->GetBands()[0], pSobelYKernel, 3, 3 );
    Image* pNonSeparableFilteredImageY = new Image(pOutGridY);
 
    assert( pNonSeparableFilteredImageY != 0 );
@@ -324,7 +325,7 @@ bool NonSeparableFilterTest( Image* pSourceImage )
 
 bool GaussianInterpolateTest( Image* pSourceImage )
 {
-   image::ArrayGrid<double>* pOutGrid = stira::filter::GaussConvolve::UpsampleGaussianInterpolated( pSourceImage->GetBands()[0], 4 );
+   ArrayGrid<double>* pOutGrid = stira::filter::GaussConvolve::UpsampleGaussianInterpolated( pSourceImage->GetBands()[0], 4 );
 
    assert( pOutGrid != 0 );
 
@@ -367,7 +368,7 @@ bool LogGaborFilterTest( Image* pSourceImage )
    LogGabor lg( pSourceImage );
    lg.Run();
 
-   image::Image* pImgMag = lg.GetMagnitude( );
+   Image* pImgMag = lg.GetMagnitude( );
    ImageIO::Write( pImgMag, string("LogGabor-")+pSourceImage->GetImageName( )+string("-Magnitude.pgm"), ImageIO::NORMAL_OUT);
    delete pImgMag;  // we got a clone of the image, that we need to clean now
 
@@ -376,10 +377,10 @@ bool LogGaborFilterTest( Image* pSourceImage )
    ImageIO::Write( pImgReal, string("LogGabor-")+pSourceImage->GetImageName( )+string("-Real.pgm"), ImageIO::NORMAL_OUT);
    delete pImgReal;  // we got a clone of the image, that we need to clean now
 
-   image::Image* pImgImag = lg.GetImagResponse( );
+   Image* pImgImag = lg.GetImagResponse( );
    ImageIO::Write( pImgImag, string("LogGabor-")+pSourceImage->GetImageName( )+string("-Imag.pgm"), ImageIO::NORMAL_OUT);
    delete pImgImag;  // we got a clone of the image, that we need to clean now
-   image::Image* pImgTransf = lg.GetTransferFunction();
+   Image* pImgTransf = lg.GetTransferFunction();
    ImageIO::Write( pImgTransf, string("LogGabor-")+pSourceImage->GetImageName( )+string("-OTF.pgm"), ImageIO::NORMAL_OUT);
    delete pImgTransf;  // we got a clone of the image, that we need to clean now
 

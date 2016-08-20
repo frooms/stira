@@ -18,7 +18,8 @@ namespace stira {
 namespace steerable {
 
 using namespace fouriertools;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace std;
 
 PyramidComplex::PyramidComplex( ArrayGrid<double>* pGridIn, int myNrScales, int myNrOrientations)

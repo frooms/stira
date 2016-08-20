@@ -17,6 +17,8 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+
 /** \brief Creates a Difference of Gaussians filtered image
   *  http://en.wikipedia.org/wiki/Difference_of_Gaussians
   */
@@ -36,7 +38,7 @@ public:
      * \param sigmaX2 sigma in X direction for the broadest gaussian
      * \param sigmaY2 sigma in Y direction for the broadest gaussian
      * \return the resulting filtered grid */
-   static image::ArrayGrid<double>* Run( image::ArrayGrid<double>* pGridIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2 );
+   static ArrayGrid<double>* Run( ArrayGrid<double>* pGridIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2 );
 
    /** \brief Filters a grid with a Difference of Gaussians filterkernel
      * \param pGridIn input grid to be filtered
@@ -44,7 +46,7 @@ public:
      * \param sigmaX2 sigma in X direction for the broadest gaussian
      * \param sigmaY sigma in Y direction
      * \return the resulting filtered grid */
-   static image::ArrayGrid<double>* Run( image::ArrayGrid<double>* pGridIn, double sigmaX1, double sigmaX2, double sigmaY );
+   static ArrayGrid<double>* Run( ArrayGrid<double>* pGridIn, double sigmaX1, double sigmaX2, double sigmaY );
 
    /** \brief Filters an image with a Difference of Gaussians filterkernel
      * \param pImageIn input image to be filtered
@@ -53,7 +55,7 @@ public:
      * \param sigmaX2 sigma in X direction for the broadest gaussian
      * \param sigmaY2 sigma in Y direction for the broadest gaussian
      * \return the resulting filtered image */
-   static image::Image* Run( image::Image* pImageIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2 );
+   static Image* Run( Image* pImageIn, double sigmaX1, double sigmaY1, double sigmaX2, double sigmaY2 );
 
    /** \brief Filters an image with a Difference of Gaussians filterkernel
      * \param pImageIn input image to be filtered
@@ -61,7 +63,7 @@ public:
      * \param sigmaX2 sigma in X direction for the broadest gaussian
      * \param sigmaY sigma in Y direction
      * \return the resulting filtered image */
-   static image::Image* Run( image::Image* pImageIn, double sigmaX1, double sigmaX2, double sigmaY );
+   static Image* Run( Image* pImageIn, double sigmaX1, double sigmaX2, double sigmaY );
 };
 
 }

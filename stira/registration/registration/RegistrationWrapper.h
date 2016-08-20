@@ -31,6 +31,9 @@
 namespace stira {
 namespace registration {
 
+using namespace imagedata;
+using namespace imagetools;
+
 /** \brief C++ Wrapper for Intramodal registration software from Philippe Thévenaz
   * http://bigwww.epfl.ch/thevenaz/registration/ */
 class RegistrationWrapper
@@ -39,7 +42,7 @@ public:
    /** \brief constructor
      * \param pMasterGrid the reference grid that stays fixed
      * \param pSlaveGrid the grid to be registered, is transformed */
-   RegistrationWrapper( image::ArrayGrid<double>* pMasterGrid, image::ArrayGrid<double>* pSlaveGrid );
+   RegistrationWrapper( ArrayGrid<double>* pMasterGrid, ArrayGrid<double>* pSlaveGrid );
 
    /** \brief destructor */
    ~RegistrationWrapper();
@@ -48,10 +51,10 @@ public:
    bool Run();
 
    /** \brief gets pointer to the registered slave grid */
-   image::ArrayGrid<double>* GetRegisteredGrid();
+   ArrayGrid<double>* GetRegisteredGrid();
 
    /** \brief gets the transform as computed by the registration process */
-   image::AffineTransform* GetResultingTransform( );
+   AffineTransform* GetResultingTransform( );
 
    /** \brief Prints the parameters of the found transform in a console on standard output*/
    void PrintTransform( );
@@ -59,17 +62,17 @@ public:
 private:
    bool mIsReadyToRun;  ///< flag if all parameters are set to be able to run
 
-   image::AffineTransform* mpResultingTransform;  ///< object to store the final transform
+   AffineTransform* mpResultingTransform;  ///< object to store the final transform
 
    /** \brief helper method to create an ArrayGrid from an array of floats
      * \param pArray array of floats to create grid from
      * \param width width of the grid to create
      * \param height height of the grid to create*/
-   image::ArrayGrid<double>* CreateGridFromArray( float* pArray, int width, int height );
+   ArrayGrid<double>* CreateGridFromArray( float* pArray, int width, int height );
 
    /** \brief helper method to create an array of floats from an ArrayGrid
      * \param pArray grid to create array of floats from*/
-   float* CreateArrayFromGrid( image::ArrayGrid<double>* pGridIn );
+   float* CreateArrayFromGrid( ArrayGrid<double>* pGridIn );
 
    /** \brief sets all initial parameters before registration
      * \param width width of the grid to create

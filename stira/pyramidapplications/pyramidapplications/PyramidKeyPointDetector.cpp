@@ -20,10 +20,11 @@ namespace pyramidapplications {
 
 using namespace std;
 using namespace common;
-using namespace image;
+using namespace imagedata;
+using namespace imagetools;
 using namespace filter;
 
-PyramidKeyPointDetector::PyramidKeyPointDetector(  image::Pyramid< std::complex<double> >* pPyramid )
+PyramidKeyPointDetector::PyramidKeyPointDetector( Pyramid< std::complex<double> >* pPyramid )
 {
    mpPyramid = pPyramid;
 }
@@ -178,7 +179,7 @@ void PyramidKeyPointDetector::AccumulateScales( )
 
 //---------------------------------------------------------------
 
-image::ArrayGrid<bool>* PyramidKeyPointDetector::FindLocalMaxima( ArrayGrid<double>* pGrid )
+ArrayGrid<bool>* PyramidKeyPointDetector::FindLocalMaxima( ArrayGrid<double>* pGrid )
 {
    int size = 5;
    int width   = pGrid->GetWidth();

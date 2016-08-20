@@ -16,7 +16,7 @@
 #include "../../imagedata/datastructures/ArrayGrid.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /**  \brief A class with operations to perform on a regular grid */
 template <class T> 

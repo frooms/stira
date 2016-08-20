@@ -21,7 +21,7 @@
 #include "../../imagedata/color/ColorValue.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 /** \brief Class with operations on image objects;
   * This class draws within an existing image without creating a new image object */

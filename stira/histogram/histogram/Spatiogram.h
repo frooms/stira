@@ -25,6 +25,8 @@ namespace histogram {
 
 // Spatiograms Versus Histograms for Region-Based Tracking, S. Birchfield, S. Rangarajan, IEEE Conference on Computer Vision and Pattern Recognition (CVPR), San Diego, California, June 2005
 
+using namespace imagedata;
+
 class Spatiogram
 {
 public:
@@ -33,7 +35,7 @@ public:
      * \param pGrid input grid
      * \param binsize size of bin
      * \param pMaskGrid boolean grid which pixels to count (at position with true) and which to ignore  (at position with false) */
-    Spatiogram( image::ArrayGrid<double>* pGrid, int binsize, image::ArrayGrid<bool>* pMaskGrid=0);
+    Spatiogram( ArrayGrid<double>* pGrid, int binsize, ArrayGrid<bool>* pMaskGrid=0);
 
     /** \brief destructor */
     ~Spatiogram();
@@ -47,7 +49,7 @@ public:
 
     /** \brief Gets covariance matrix of pixels of points that contributed to given bin
       * \param the number of the bin * */
-    image::ArrayGrid<double>* GetCovarianceMatrix( int binNr );
+    ArrayGrid<double>* GetCovarianceMatrix( int binNr );
 
     /** \brief Writes spatiogram to file
       * \param fileName name of file to write to
@@ -59,7 +61,7 @@ private:
 
     IntHistogram* mpHistogram;  ///< the histogram itself
     std::vector< std::vector< common::Point<int> > > mPointsPerBin;  ///< the coordinates of the points that contributed to each bin
-    std::vector< image::ArrayGrid<double>* > mCovarianceMatrixVector;  ///< one covariance matrix per bin
+    std::vector< ArrayGrid<double>* > mCovarianceMatrixVector;  ///< one covariance matrix per bin
     std::vector< common::Point<double> > mAveragPointVector;  ///< one average point per bin
 };
 

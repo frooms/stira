@@ -19,7 +19,8 @@
 #include "../../stira/common/common/StringUtils.h"
 #include "../../stira/imagetools/tools/ImageTools.h"
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::common;
 
 ImageDataList* ImageDataList::spImageDataList=0;
@@ -135,7 +136,7 @@ std::vector< Image* > ImageDataList::GetImages( )
 
 //==========================================================
 
-ImageWindow* ImageDataList::GetWindowFromImage( stira::image::Image* pData )
+ImageWindow* ImageDataList::GetWindowFromImage( Image* pData )
 {
    for( std::map< QListWidgetItem* , DataListItem >::iterator it = mMap.begin(); 
         it != mMap.end(); 
@@ -330,7 +331,7 @@ void ImageDataList::SlotTransparantImages(  )
 
 //==========================================================
 
-void ImageDataList::ReplaceImage( stira::image::Image* pImageOld, stira::image::Image* pImageNew )
+void ImageDataList::ReplaceImage( Image* pImageOld, Image* pImageNew )
 {
    for (std::map< QListWidgetItem* , DataListItem >::iterator it = mMap.begin(); it != mMap.end(); it++ )
    {
@@ -436,7 +437,7 @@ void ImageDataList::SlotCloseAllImages(  )
 
 //==========================================================
 
-void ImageDataList::AddImage( stira::image::Image* pImage )
+void ImageDataList::AddImage( Image* pImage )
 {
    if ( pImage != 0)
    {
@@ -532,7 +533,7 @@ int ImageDataList::ClipQColorValue ( int value )
 
 //==========================================================
 
-QImage* ImageDataList::ImageToQImage ( stira::image::Image* pImage )
+QImage* ImageDataList::ImageToQImage ( Image* pImage )
 {
    int width = pImage->GetWidth();
    int height = pImage->GetHeight();
@@ -571,11 +572,11 @@ QImage* ImageDataList::ImageToQImage ( stira::image::Image* pImage )
 
 //==========================================================
 
-stira::image::Image* ImageDataList::QImageToImage ( QImage* pQImage )
+Image* ImageDataList::QImageToImage ( QImage* pQImage )
 {
    int width = pQImage->width();
    int height = pQImage->height();
-   stira::image::Image* pImage = 0;
+   Image* pImage = 0;
    if ( pQImage->allGray() )
    {
       pImage = new Image( width, height, 1 );

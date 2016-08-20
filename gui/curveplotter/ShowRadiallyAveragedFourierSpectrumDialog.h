@@ -25,7 +25,7 @@ class ShowRadiallyAveragedFourierSpectrumDialog : public CurvePlotDialog
 public:
    /** \brief constructor
      * \param pImage input image for processing */
-   ShowRadiallyAveragedFourierSpectrumDialog( stira::image::Image* pImage );
+   ShowRadiallyAveragedFourierSpectrumDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~ShowRadiallyAveragedFourierSpectrumDialog();
@@ -33,7 +33,7 @@ private:
 
    /** \brief computes image histogram and puts it in a form ready for QwtPlot 
      * \param pImage image for which to compute the histogram*/
-    virtual void GetData( stira::image::Image* pImage );
+    virtual void GetData( stira::imagedata::Image* pImage );
 };
 
 #endif

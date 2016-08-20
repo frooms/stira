@@ -15,13 +15,13 @@
 #include "../../common/common/MathUtils.h"
 #include "RunLengthHistogram.h"
 
-using namespace image;
 
 using namespace std;
-using namespace stira::common;
-
 namespace stira {
 namespace histogram {
+
+using namespace common;
+using namespace imagedata;
 
 
 bool MySegmentSortPredicate(const CurveSegment& d1, const CurveSegment& d2)

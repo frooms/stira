@@ -36,7 +36,7 @@ class HoughTransformDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   HoughTransformDialog( stira::image::Image* pImage );
+   HoughTransformDialog( stira::imagedata::Image* pImage );
 
    /** \brief destructor*/
    virtual ~HoughTransformDialog();

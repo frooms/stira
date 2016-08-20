@@ -25,7 +25,7 @@
 #include "LocalOrientation.h"
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief A data class to hold a grid of local orientations: for each pixel, a local orientation and magnitude are kept
   * \TODO from this representation, it should be fairly easy to implement the Hough transform for different parametric
@@ -98,7 +98,7 @@ public:
      * \param yMin minimum y coordinate of the ROI
      * \param xMax maximum x coordinate of the ROI
      * \param yMax maximum y coordinate of the ROI */
-   std::vector<image::LocalOrientation> GetOrientationVector( int xMin, int yMin, int xMax, int yMax);
+   std::vector<LocalOrientation> GetOrientationVector( int xMin, int yMin, int xMax, int yMax);
 
    /** \brief Gets the minimum and maximum magnitude of the features in the grid
      * \param mmin (output) the minimum magnitude
@@ -140,6 +140,8 @@ private:
    ArrayGrid< LocalOrientation* >* mpOrientationGrid; ///< the arraygrid of local magnitudes and orientations
    TransformColorSpace* mpColorTransformer;
 };
+
 }
 }
+
 #endif

@@ -19,6 +19,8 @@
 
 namespace stira {
 namespace pyramidapplications {
+
+using namespace imagedata;
    
 /** \brief A class to demonstrate simple contrast enhancement using a steerable pyramid
   * reference:
@@ -38,7 +40,7 @@ public:
 
    /** \brief constructor
      * \param pPyramid pyramid with input data */
-   PyramidKeyPointDetector( image::Pyramid< std::complex<double> >* pPyramid );
+   PyramidKeyPointDetector( Pyramid< std::complex<double> >* pPyramid );
    
    /** \brief destructor*/
    ~PyramidKeyPointDetector();
@@ -58,15 +60,13 @@ private:
    
    void AccumulateScales( );
    
-   image::ArrayGrid<bool>* FindLocalMaxima(image::ArrayGrid<double>* pGrid );
+   ArrayGrid<bool>* FindLocalMaxima( ArrayGrid<double>* pGrid );
 
-   image::Pyramid< std::complex<double> >* mpPyramid;   ///< pyramid decomposition of input image
+   Pyramid< std::complex<double> >* mpPyramid;   ///< pyramid decomposition of input image
    
-   std::vector< image::ArrayGrid<double>* > mvAccumulatedMaps;
+   std::vector< ArrayGrid<double>* > mvAccumulatedMaps;
    
-   std::vector< image::ArrayGrid<double>* > mvEnergyMaps;
-   
-   //std::vector< image::ArrayGrid<double>* > mvKeyPointMaps;
+   std::vector< ArrayGrid<double>* > mvEnergyMaps;
 };
 
 }

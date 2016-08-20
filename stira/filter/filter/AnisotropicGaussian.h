@@ -22,7 +22,7 @@
 namespace stira{
 namespace filter{
 
-using namespace image;
+using namespace imagedata;
 
 class AnisotropicGaussian
 {

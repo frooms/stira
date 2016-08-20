@@ -22,7 +22,7 @@ class HoughTransformProcess : public Process
 public:
    /** \brief constructor
      * \param pImage input image */
-   HoughTransformProcess( stira::image::Image* pImage );
+   HoughTransformProcess( stira::imagedata::Image* pImage );
 
    virtual ~HoughTransformProcess();
 
@@ -38,8 +38,8 @@ public:
    void run();
 
 private:
-   stira::image::Image* RunLines();
-   stira::image::Image* RunCircles();
+   stira::imagedata::Image* RunLines();
+   stira::imagedata::Image* RunCircles();
    int mMaximalRadius;
    int mMinimalRadius;
    bool mChooseCircles;

@@ -15,7 +15,8 @@
 #include "../processes/WatershedProcess.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 
 WatershedDialog::WatershedDialog( Image* pImage ) : DialogMaster( pImage )
 {

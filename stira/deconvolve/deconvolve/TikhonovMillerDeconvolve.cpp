@@ -17,11 +17,10 @@
 namespace stira{
 namespace deconvolve{
 
-using namespace image;
 using namespace fouriertools;
 using namespace std;
 
-TikhonovMillerDeconvolve::TikhonovMillerDeconvolve( image::Image* pDegradedImage, int maxNrOfIterations )
+TikhonovMillerDeconvolve::TikhonovMillerDeconvolve( Image* pDegradedImage, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, maxNrOfIterations )
 {
    mFlagEnforcePositivity = true;
@@ -29,7 +28,7 @@ TikhonovMillerDeconvolve::TikhonovMillerDeconvolve( image::Image* pDegradedImage
 
 //--------------------------------------------------------------------------
 
-TikhonovMillerDeconvolve::TikhonovMillerDeconvolve( image::Image* pDegradedImage, image::Image* pPSF, int maxNrOfIterations )
+TikhonovMillerDeconvolve::TikhonovMillerDeconvolve( Image* pDegradedImage, Image* pPSF, int maxNrOfIterations )
                            : IterativeDeconvolve( pDegradedImage, pPSF, maxNrOfIterations )
 {
    mFlagEnforcePositivity = true;
@@ -99,7 +98,7 @@ bool TikhonovMillerDeconvolve::Run()
 
 //--------------------------------------------------------------------------
 
-bool TikhonovMillerDeconvolve::ApplyPositivityConstraint( image::ArrayGrid<double>* pGrid )
+bool TikhonovMillerDeconvolve::ApplyPositivityConstraint( ArrayGrid<double>* pGrid )
 {
    int width = pGrid->GetWidth();
    int height = pGrid->GetHeight();

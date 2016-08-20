@@ -14,7 +14,7 @@
 #include "../../imagetools/tools/ImageTools.h"
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace std;
 

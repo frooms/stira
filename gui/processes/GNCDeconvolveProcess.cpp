@@ -16,7 +16,8 @@
 #include "../../stira/fouriertools/fouriertools/FFT.h"
 #include "../../stira/imagetools/imagegenerator/GridGenerator.h"
 
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 using namespace stira::fouriertools;
 using namespace stira::deconvolve;
 
@@ -166,7 +167,7 @@ void GNCDeconvolveProcess::run()
    int height = mpImage->GetHeight();
    double sigmaBlur = this->GetBlurLevel();
    
-   ArrayGrid<double>* pPSF = stira::image::GridGenerator::GenerateGaussian ( width, height, sigmaBlur, sigmaBlur );
+   ArrayGrid<double>* pPSF = GridGenerator::GenerateGaussian ( width, height, sigmaBlur, sigmaBlur );
    Image* pPSFImage = new Image ( pPSF );
    
    stira::deconvolve::GNCDeconvolve gncd( mpImage, pPSFImage, mNrOfIterations );

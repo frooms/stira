@@ -26,7 +26,8 @@ using namespace std;
 namespace stira {
 namespace fouriertools {
 
-using namespace image;
+using namespace imagedata;
+using namespace stira::imagetools;
 
 //============================================================================================
 
@@ -266,7 +267,7 @@ bool FFTBand::InitializeBandWithConstantValue( std::complex<double> initValue)
 
 //============================================================================================
 
-bool FFTBand::InitializeBandWithRealValues( image::ArrayGrid<double>* pGrid )
+bool FFTBand::InitializeBandWithRealValues( ArrayGrid<double>* pGrid )
 {
    if ( pGrid == 0)
    {
@@ -288,7 +289,7 @@ bool FFTBand::InitializeBandWithRealValues( image::ArrayGrid<double>* pGrid )
 
 //============================================================================================
    
-bool FFTBand::InitializeBandWithImagValues( image::ArrayGrid<double>* pGrid )
+bool FFTBand::InitializeBandWithImagValues( ArrayGrid<double>* pGrid )
 {
    if ( pGrid == 0)
    {
@@ -309,7 +310,7 @@ bool FFTBand::InitializeBandWithImagValues( image::ArrayGrid<double>* pGrid )
 }
 
 //============================================================================================;
-bool FFTBand::InitializeBandWithComplexValues( image::ArrayGrid< std::complex<double> >* pGrid )
+bool FFTBand::InitializeBandWithComplexValues( ArrayGrid< std::complex<double> >* pGrid )
 {
    if ( pGrid == 0)
    {

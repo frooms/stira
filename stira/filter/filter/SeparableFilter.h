@@ -23,6 +23,8 @@
 namespace stira {
 namespace filter {
 
+using namespace imagedata;
+
 /** \brief Filters an image using a separable filter kernel */
 class SeparableFilter
 {
@@ -42,7 +44,7 @@ public:
      * \param myType identifies how borders should be extended (mirrored, tiled, padded with zeros)
      *
      * If the filter length is 1, the output grid is just a copy of the input grid*/
-   static bool RunRow( image::ArrayGrid<double>* pInput, image::ArrayGrid<double>* pOutput, double *filtx, int filterLengthX, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR );
+   static bool RunRow( ArrayGrid<double>* pInput, ArrayGrid<double>* pOutput, double *filtx, int filterLengthX, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Applies column by column filtering on a single grid with 1 1D filter kernel
      * \param pInput the input grid
@@ -52,7 +54,7 @@ public:
      * \param myType identifies how borders should be extended (mirrored, tiled, padded with zeros)
      *
      * If the filter length is 1, the output grid is just a copy of the input grid*/
-   static bool RunColumn( image::ArrayGrid<double>* pInputBand, image::ArrayGrid<double>* pOutputBand, double *filty, int filterLengthY, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR  );
+   static bool RunColumn( ArrayGrid<double>* pInputBand, ArrayGrid<double>* pOutputBand, double *filty, int filterLengthY, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR  );
 
    /** \brief Applies filtering on a single grid, first row by row and then column by column
      * \param pInput the input grid
@@ -63,7 +65,7 @@ public:
      * \param myType identifies how borders should be extended (mirror, tile, black)
      *
      * mallocs memory and returns response of input image filtered with filterTapX on the rows and filterTapY on the columns */
-   static image::ArrayGrid<double>* RunRowColumn( image::ArrayGrid<double>* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR );
+   static ArrayGrid<double>* RunRowColumn( ArrayGrid<double>* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Applies filtering on a single grid, first column by column and then row by row
      * \param pInput the input grid
@@ -74,7 +76,7 @@ public:
      * \param myType identifies how borders should be extended (mirror, tile, black)
      *
      * mallocs memory and returns response of input image filtered with filterTapX on the rows and filterTapY on the columns  */
-   static image::ArrayGrid<double>* RunColumnRow( image::ArrayGrid<double>* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR );
+   static ArrayGrid<double>* RunColumnRow( ArrayGrid<double>* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Applies filtering on a multiband image, first row by row and then column by column
      * \param pInput the input image
@@ -86,7 +88,7 @@ public:
      *
      * mallocs memory and returns response of input image filtered with filterTapX on the rows and filterTapY on the columns
      */
-   static image::Image* RunRowColumn( image::Image* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR );
+   static Image* RunRowColumn( Image* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Applies filtering on a multiband image, first column by column and then row by row
      * \param pInput the input image
@@ -98,7 +100,7 @@ public:
      *
      * mallocs memory and returns response of input image filtered with filterTapX on the rows and filterTapY on the columns
      */
-   static image::Image* RunColumnRow( image::Image* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR );
+   static Image* RunColumnRow( Image* pInput, double *filterTapX, double *filterTapY, int filterLengthX, int filterLengthY, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
    /** \brief Filters a one dimensional data set (a single row or column)
      * \param pInputArray1D   1D input array to filter (a row or a column of the image)
@@ -108,7 +110,7 @@ public:
      * \param filterLength   length of the filter
      * \param myType identifies how borders should be extended (mirror, tile, black)
      */
-   static void BasicFilter1D (double *pInputArray1D, double *pFilterKernel, double *pOutputArray1D, int inputLength, int filterLength, image::GridExtender<double>::ExtensionType myType=image::GridExtender<double>::EXTEND_MIRROR );
+   static void BasicFilter1D (double *pInputArray1D, double *pFilterKernel, double *pOutputArray1D, int inputLength, int filterLength, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
 private:
    /** \brief Generates an extended 1D input array
@@ -116,7 +118,7 @@ private:
      * \param inputLength    length of the original input array
      * \param myType         identifier how array should be extended at the borders (mirror, tile, black)
      */
-   static double* GenerateExtendedInput(double* pInputArray1D, int inputLength, image::GridExtender<double>::ExtensionType myType = image::GridExtender<double>::EXTEND_MIRROR );
+   static double* GenerateExtendedInput(double* pInputArray1D, int inputLength, GridExtender<double>::ExtensionType myType = GridExtender<double>::EXTEND_MIRROR );
 
 };
 }

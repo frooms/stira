@@ -35,7 +35,7 @@ class AnisotropicDiffusionDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   AnisotropicDiffusionDialog( stira::image::Image* pImage );
+   AnisotropicDiffusionDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~AnisotropicDiffusionDialog();

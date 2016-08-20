@@ -33,7 +33,7 @@ class WatershedDialog : public DialogMaster
 public:
    /** \brief constructor
      * \param pImage input image */
-   WatershedDialog( stira::image::Image* pImage );
+   WatershedDialog( stira::imagedata::Image* pImage );
    
    /** \brief destructor*/
    virtual ~WatershedDialog();

@@ -20,6 +20,8 @@
 namespace stira {
 namespace wavelet {
 
+using namespace imagedata;
+
 /** \brief A class to estimate sigma for white noise with the Mean Absolute Deviation method of Donoho 
   * References: - "Ideal spatial adaptation by wavelet shrinkage", D. Donoho and I. Johnstone, Biometrika,
   *                1994, vol. 81, pp. 425--455 (relevant section is on 17th page of the paper, just above section 4.3)
@@ -38,14 +40,14 @@ public:
 
    /** \brief gets the sigma of the noise for the given grid 
      * \param pGrid the grid for which to determine the noise */
-   static double Run( image::ArrayGrid<double>* pGrid );
+   static double Run( ArrayGrid<double>* pGrid );
 
 private:
    /** \brief gets the median value for the given grid 
      * In this noise estimation, this grid is the HH band of the finest scale of the (Haar) wavelet 
      * decomposition of the grid that was passed to the run method of this class
      * \param pGrid the grid for which to determine the noise */
-   static double GetMedianValue( image::ArrayGrid<double>* pGrid );
+   static double GetMedianValue( ArrayGrid<double>* pGrid );
 };
 }
 }

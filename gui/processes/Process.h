@@ -27,7 +27,7 @@ class Process : public QThread
 public:
    /** \brief constructor
      * \param pImWindow image window to extract input from*/
-   Process( stira::image::Image* pImage=0 );
+   Process( stira::imagedata::Image* pImage=0 );
    
    /** \brief destructor */
    virtual ~Process();
@@ -37,14 +37,14 @@ public:
    
    /** \brief gets the result for output
      * pointer to object mpOutImage is returned; The caller becomes responsible to delete this */
-   std::vector< stira::image::Image* > GetResultImages();
+   std::vector< stira::imagedata::Image* > GetResultImages();
    
-   void AddResult( stira::image::Image* pResultImage );
+   void AddResult( stira::imagedata::Image* pResultImage );
 
    QString GetProcessName();
 protected:
    QString mProcessName;
-   std::vector< stira::image::Image* > vpOutImageVector; ///< the result for output; is NOT deleted by destructor 
-   stira::image::Image* mpImage; ///< image window to extract input from
+   std::vector< stira::imagedata::Image* > vpOutImageVector; ///< the result for output; is NOT deleted by destructor
+   stira::imagedata::Image* mpImage; ///< image window to extract input from
 };
 #endif

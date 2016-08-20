@@ -19,7 +19,7 @@
 #include <cmath>
 
 namespace stira {
-namespace image {
+namespace imagedata {
 
 /** \brief A class to contain the local orientation for a certain grid position */
 class LocalOrientation{
@@ -52,6 +52,8 @@ private:
    double mMagnitude;   ///< magnitude of the response of the feature
    
 };
+
 }
 }
+
 #endif

@@ -21,6 +21,8 @@
 namespace stira{
 namespace filter{
 
+using namespace imagedata;
+
 enum MedianType{ CLASSIC_MEDIAN, HYBRID_MEDIAN };
 
 /** \brief class for classical and hybrid median filter*/
@@ -36,29 +38,29 @@ public:
    /** \brief runs classical median filter
      * \param pImageIn Image to filter
      * \param size half of (window size-1); e.g., for 5x5 window, size = (5-1)/2 = 2*/
-   static image::ArrayGrid<double>* RunMedian( image::ArrayGrid<double>* pGridIn, int size);
+   static ArrayGrid<double>* RunMedian( ArrayGrid<double>* pGridIn, int size);
 
    /** \brief runs classical median filter
      * \param pImageIn Image to filter
      * \param size half of (window size-1); e.g., for 5x5 window, size = (5-1)/2 = 2*/
-   static image::ArrayGrid<int>* RunMedian( image::ArrayGrid<int>* pGridIn, int size);
+   static ArrayGrid<int>* RunMedian( ArrayGrid<int>* pGridIn, int size);
 
    /** \brief runs hybrid median filter
      * Reference: http://www.biomecardio.com/matlab/hmf.html
      * \param pImageIn Image to filter
      * \param size half of (window size-1); e.g., for 3x3 window, size = (3-1)/2 = 1*/
-   static image::ArrayGrid<double>* RunHybridMedian( image::ArrayGrid<double>* pGridIn, int size);
+   static ArrayGrid<double>* RunHybridMedian( ArrayGrid<double>* pGridIn, int size);
 
    /** \brief runs classical median filter
      * \param pImageIn Image to filter
      * \param size half of (window size-1); e.g., for 5x5 window, size = (5-1)/2 = 2*/
-   static image::Image* RunMedian( image::Image* pImageIn, int size);
+   static Image* RunMedian( Image* pImageIn, int size);
 
    /** \brief runs hybrid median filter
      * Reference: http://www.biomecardio.com/matlab/hmf.html
      * \param pImageIn Image to filter
      * \param size half of (window size-1); e.g., for 3x3 window, size = (3-1)/2 = 1*/
-   static image::Image* RunHybridMedian( image::Image* pImageIn, int size);
+   static Image* RunHybridMedian( Image* pImageIn, int size);
 };
 
 }

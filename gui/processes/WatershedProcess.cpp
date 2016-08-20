@@ -14,7 +14,8 @@
 #include "../../stira/imageanalysis/imageanalysis/WatershedMeyer.h"
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagedata;
+using namespace stira::imagetools;
 using namespace stira::imageanalysis;
 
 WatershedProcess::WatershedProcess( Image* pImage ) : Process( pImage )

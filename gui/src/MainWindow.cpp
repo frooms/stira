@@ -33,7 +33,8 @@
 
 
 using namespace std;
-using namespace stira::image;
+using namespace stira::imagetools;
+using namespace stira::imagedata;
 
 
 MainWindow* MainWindow::spMainWindowInstance = 0;

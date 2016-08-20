@@ -18,8 +18,9 @@
 namespace stira {
 namespace filter {
 
+using namespace imagedata;
+
 using namespace std;
-using namespace image;
 
 //===========================================================================================
 
@@ -34,13 +35,13 @@ NonSeparableFilter::~NonSeparableFilter()
 
 //===========================================================================================
 
-image::ArrayGrid<double>* NonSeparableFilter::Run(image::ArrayGrid<double>* pInput, double *filterKernel, int filterWidth, int filterHeight)
+ArrayGrid<double>* NonSeparableFilter::Run( ArrayGrid<double>* pInput, double *filterKernel, int filterWidth, int filterHeight)
 {
    int filterHalfWidth = (int)(filterWidth / 2);
    int filterHalfHeight = (int)(filterHeight / 2);
    
-   image::ArrayGrid<double>* pExtendedInput = GridExtender<double>::MirrorBorder( pInput, filterHalfWidth, filterHalfHeight );
-   image::ArrayGrid<double>* pExtendedOutput = pExtendedInput->Clone();
+   ArrayGrid<double>* pExtendedInput = GridExtender<double>::MirrorBorder( pInput, filterHalfWidth, filterHalfHeight );
+   ArrayGrid<double>* pExtendedOutput = pExtendedInput->Clone();
 
    int dataWidth  = pExtendedInput->GetWidth();
    int dataHeight = pExtendedInput->GetHeight();
@@ -66,7 +67,7 @@ image::ArrayGrid<double>* NonSeparableFilter::Run(image::ArrayGrid<double>* pInp
       }
    }
    delete pExtendedInput;
-   image::ArrayGrid<double>* pOutput = GridExtender<double>::CropBorder( pExtendedOutput, filterHalfWidth, filterHalfHeight );
+   ArrayGrid<double>* pOutput = GridExtender<double>::CropBorder( pExtendedOutput, filterHalfWidth, filterHalfHeight );
    delete pExtendedOutput;
    return pOutput;
 }
@@ -95,7 +96,7 @@ double* NonSeparableFilter::GetSobelYKernel()
 
 //===========================================================================================
 
-image::ArrayGrid<double>* NonSeparableFilter::RunSobelX(image::ArrayGrid<double>* pInput)
+ArrayGrid<double>* NonSeparableFilter::RunSobelX( ArrayGrid<double>* pInput)
 {
    double* pSobelXKernel = NonSeparableFilter::GetSobelXKernel();
    return NonSeparableFilter::Run( pInput, pSobelXKernel, 3, 3 );
@@ -104,17 +105,16 @@ image::ArrayGrid<double>* NonSeparableFilter::RunSobelX(image::ArrayGrid<double>
 
 //===========================================================================================
 
-image::ArrayGrid<double>* NonSeparableFilter::RunSobelY(image::ArrayGrid<double>* pInput)
+ArrayGrid<double>* NonSeparableFilter::RunSobelY( ArrayGrid<double>* pInput)
 {
    double* pSobelYKernel = NonSeparableFilter::GetSobelYKernel();
    return NonSeparableFilter::Run( pInput, pSobelYKernel, 3, 3 );
    delete []pSobelYKernel;
 }
 
-
 //===========================================================================================
 
-image::Image* NonSeparableFilter::RunSobelX( image::Image* pInput )
+Image* NonSeparableFilter::RunSobelX( Image* pInput )
 {
    int nrBands = pInput->GetNumberOfBands();
    int width = pInput->GetWidth();
@@ -122,7 +122,7 @@ image::Image* NonSeparableFilter::RunSobelX( image::Image* pInput )
    Image* pOut = new Image( width, height );
    for (int i = 0; i < nrBands; i++)
    {
-      image::ArrayGrid<double>* pGridOut = NonSeparableFilter::RunSobelX( pInput->GetBands()[i] );
+      ArrayGrid<double>* pGridOut = NonSeparableFilter::RunSobelX( pInput->GetBands()[i] );
       pOut->AddBand( pGridOut );
    }
    return pOut;
@@ -130,7 +130,7 @@ image::Image* NonSeparableFilter::RunSobelX( image::Image* pInput )
 
 //===========================================================================================
 
-image::Image* NonSeparableFilter::RunSobelY( image::Image* pInput )
+Image* NonSeparableFilter::RunSobelY( Image* pInput )
 {
    int nrBands = pInput->GetNumberOfBands();
    int width = pInput->GetWidth();
@@ -138,7 +138,7 @@ image::Image* NonSeparableFilter::RunSobelY( image::Image* pInput )
    Image* pOut = new Image( width, height );
    for (int i = 0; i < nrBands; i++)
    {
-      image::ArrayGrid<double>* pGridOut = NonSeparableFilter::RunSobelY( pInput->GetBands()[i] );
+      ArrayGrid<double>* pGridOut = NonSeparableFilter::RunSobelY( pInput->GetBands()[i] );
       pOut->AddBand( pGridOut );
    }
    return pOut;
@@ -146,7 +146,7 @@ image::Image* NonSeparableFilter::RunSobelY( image::Image* pInput )
 
 //===========================================================================================
 
-image::OrientationGrid* NonSeparableFilter::DetermineLocalMagnitudeAndOrientation( image::ArrayGrid<double>* pGridIn )
+OrientationGrid* NonSeparableFilter::DetermineLocalMagnitudeAndOrientation( ArrayGrid<double>* pGridIn )
 {
    ArrayGrid<double>* pSobelXResponse = NonSeparableFilter::RunSobelX( pGridIn );
    ArrayGrid<double>* pSobelYResponse = NonSeparableFilter::RunSobelY( pGridIn );

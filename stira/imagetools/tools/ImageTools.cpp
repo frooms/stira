@@ -19,7 +19,7 @@
 #include <sstream>
 
 namespace stira {
-namespace image {
+namespace imagetools {
 
 using namespace common;
 using namespace std;

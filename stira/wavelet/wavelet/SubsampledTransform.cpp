@@ -11,9 +11,10 @@
 namespace stira {
 namespace wavelet {
 
-using namespace image;
 using namespace std;
 using namespace common;
+using namespace imagedata;
+using namespace imagetools;
 
 SubsampledTransform::SubsampledTransform( WaveletType type )
 {
@@ -280,7 +281,7 @@ void SubsampledTransform::MultiscaleReconstruct( )
 
 //-------------------------------------------------------------------------------
 
-bool SubsampledTransform::Decompose( image::ArrayGrid<double>* pSourceGrid, int nrScales )
+bool SubsampledTransform::Decompose( ArrayGrid<double>* pSourceGrid, int nrScales )
 {
    int width  = pSourceGrid->GetWidth();
    int height = pSourceGrid->GetHeight();

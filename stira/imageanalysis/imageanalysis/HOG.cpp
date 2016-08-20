@@ -7,7 +7,10 @@
 namespace stira {
 namespace imageanalysis {
 
-HOG::HOG( image::Image* pImage, common::RectangularROI<int> myRoi, int cellWidth, int cellHeight, int nrBins )
+using namespace imagedata;
+using namespace imagetools;
+
+HOG::HOG( Image* pImage, common::RectangularROI<int> myRoi, int cellWidth, int cellHeight, int nrBins )
 {
     mpImage = pImage;
     mRoi = myRoi;
@@ -18,21 +21,21 @@ HOG::HOG( image::Image* pImage, common::RectangularROI<int> myRoi, int cellWidth
 
 //--------------------------------------------------------------------------------------------------------------------------
 
-image::OrientationGrid* HOG::ComputeOrientations( )
+OrientationGrid* HOG::ComputeOrientations( )
 {
     stira::filter::SeparableFilter sf;
     int width  = mpImage->GetWidth();
     int height = mpImage->GetHeight();
 
-    image::ArrayGrid<double>* pGradientX = new image::ArrayGrid<double>( width, height );
-    image::ArrayGrid<double>* pGradientY = new image::ArrayGrid<double>( width, height );
+    ArrayGrid<double>* pGradientX = new ArrayGrid<double>( width, height );
+    ArrayGrid<double>* pGradientY = new ArrayGrid<double>( width, height );
 
     double pHX[ 3 ] = { -1.0, 0.0, 1.0 };
 
     sf.SeparableFilter::RunRow(    mpImage->GetBands()[0], pGradientX, pHX, 3 );
     sf.SeparableFilter::RunColumn( mpImage->GetBands()[0], pGradientY, pHX, 3 );
 
-    image::OrientationGrid* pOrientationGrid = new image::OrientationGrid(width, height);
+    OrientationGrid* pOrientationGrid = new OrientationGrid(width, height);
 
     for ( int y = 0; y < height; y++ )
     {
@@ -59,10 +62,10 @@ image::OrientationGrid* HOG::ComputeOrientations( )
 
 //--------------------------------------------------------------------------------------------------------------------------
 
-std::vector<double> HOG::ComputeHogDescriptorSingleCell( image::OrientationGrid* pOrientations, int idCellX, int idCellY )
+std::vector<double> HOG::ComputeHogDescriptorSingleCell( OrientationGrid* pOrientations, int idCellX, int idCellY )
 {
     std::vector<double> H2 = std::vector<double>( mNrBins, 0.0 );
-    std::vector<image::LocalOrientation> vOrientations = pOrientations->GetOrientationVector( idCellX * mCellWidth, idCellY * mCellHeight, (idCellX + 1) * mCellWidth - 1, (idCellY + 1) * mCellHeight - 1 );
+    std::vector<LocalOrientation> vOrientations = pOrientations->GetOrientationVector( idCellX * mCellWidth, idCellY * mCellHeight, (idCellX + 1) * mCellWidth - 1, (idCellY + 1) * mCellHeight - 1 );
     int K = vOrientations.size();
     double angleStep = M_PI / mNrBins;
 
@@ -91,7 +94,7 @@ void HOG::ComputeHogDescriptor( std::vector<double>& descriptorValues )
     int nrCellsX = mpImage->GetWidth()  / mCellWidth;   //set here the number of HOG windows per bound box
     int nrCellsY = mpImage->GetHeight() / mCellHeight;
 
-    image::OrientationGrid* pOrientations = ComputeOrientations( );
+    OrientationGrid* pOrientations = ComputeOrientations( );
 
     for (int idCellY = 0; idCellY < nrCellsY-1; idCellY++)
     {
@@ -119,11 +122,11 @@ void HOG::ComputeHogDescriptor( std::vector<double>& descriptorValues )
 
 //--------------------------------------------------------------------------------------------------------------------------
 \
-image::Image* HOG::VisualizeHogDescriptor( std::vector<double>& descriptorValues,
-                                           int winWidth, int winHeight,
-                                           double scaleFactor, double viz_factor )
+Image* HOG::VisualizeHogDescriptor( std::vector<double>& descriptorValues,
+                                    int winWidth, int winHeight,
+                                    double scaleFactor, double viz_factor )
 {
-     image::Image* pVisualImage = mpImage->Clone();
+     Image* pVisualImage = mpImage->Clone();
 
      // dividing 180° into 9 bins, how large (in rad) is one bin?
      double radRangeForOneBin = M_PI / (double)(mNrBins);
@@ -218,13 +221,13 @@ image::Image* HOG::VisualizeHogDescriptor( std::vector<double>& descriptorValues
              int mx = drawX + mCellWidth  / 2;
              int my = drawY + mCellHeight / 2;
 
-             image::DrawImageTools::DrawRectangle( pVisualImage,
-                                                   common::Point<int>( drawX * scaleFactor,
-                                                                       drawY * scaleFactor),
-                                                   common::Point<int>( (drawX + mCellWidth)  * scaleFactor,
-                                                                       (drawY + mCellHeight) * scaleFactor),
-                                                   image::ColorValue(100,100,100),
-                                                   false);
+             DrawImageTools::DrawRectangle( pVisualImage,
+                                            common::Point<int>( drawX * scaleFactor,
+                                                                drawY * scaleFactor),
+                                            common::Point<int>( (drawX + mCellWidth)  * scaleFactor,
+                                                                (drawY + mCellHeight) * scaleFactor),
+                                            ColorValue(100,100,100),
+                                            false);
 
              // draw in each cell all 9 gradient strengths
              for (int bin = 0; bin < mNrBins; bin++)
@@ -252,10 +255,10 @@ image::Image* HOG::VisualizeHogDescriptor( std::vector<double>& descriptorValues
                      double y2 = my + dirVecY * currentGradStrength * maxVecLen * scale;
 
                      // draw gradient visual_imagealization
-                     image::DrawImageTools::DrawLine( pVisualImage,
-                                                      common::Point<int>( x1 * scaleFactor, y1 * scaleFactor ),
-                                                      common::Point<int>( x2 * scaleFactor, y2 * scaleFactor ),
-                                                      image::ColorValue(0,  255, 0 ) );
+                     DrawImageTools::DrawLine( pVisualImage,
+                                               common::Point<int>( x1 * scaleFactor, y1 * scaleFactor ),
+                                               common::Point<int>( x2 * scaleFactor, y2 * scaleFactor ),
+                                               ColorValue(0,  255, 0 ) );
                  }
 
              } // for (all bins)
