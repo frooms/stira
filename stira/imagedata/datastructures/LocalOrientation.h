@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_DATASTRUCTURES_LOCALORIENTATION_H
-#define STIRA_IMAGE_DATASTRUCTURES_LOCALORIENTATION_H
+#ifndef STIRA_IMAGEDATA_DATASTRUCTURES_LOCALORIENTATION_H
+#define STIRA_IMAGEDATA_DATASTRUCTURES_LOCALORIENTATION_H
 
 #include <stdint.h>
 #include <iostream>

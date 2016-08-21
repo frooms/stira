@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_TOOLS_ARRAYGRIDTOOLS_H
-#define STIRA_IMAGE_TOOLS_ARRAYGRIDTOOLS_H
+#ifndef STIRA_IMAGEDATA_SIMPLETOOLS_ARRAYGRIDTOOLS_H
+#define STIRA_IMAGEDATA_SIMPLETOOLS_ARRAYGRIDTOOLS_H
 
 #include "../../imagedata/datastructures/ArrayGrid.h"
 

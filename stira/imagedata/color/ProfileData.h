@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_COLOR_PROFILEDATA_H
-#define STIRA_IMAGE_COLOR_PROFILEDATA_H
+#ifndef STIRA_IMAGEDATA_COLOR_PROFILEDATA_H
+#define STIRA_IMAGEDATA_COLOR_PROFILEDATA_H
 
 #include <iostream>
 #include <cstdlib>

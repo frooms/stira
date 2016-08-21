@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_DATASTRUCTURES_CWTPYRAMID_H
-#define STIRA_IMAGE_DATASTRUCTURES_CWTPYRAMID_H
+#ifndef STIRA_IMAGEDATA_DATASTRUCTURES_CWTPYRAMID_H
+#define STIRA_IMAGEDATA_DATASTRUCTURES_CWTPYRAMID_H
 
 #include <stdint.h>
 #include <iostream>

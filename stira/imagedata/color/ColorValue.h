@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_COLOR_COLORVALUE_H
-#define STIRA_IMAGE_COLOR_COLORVALUE_H
+#ifndef STIRA_IMAGEDATA_COLOR_COLORVALUE_H
+#define STIRA_IMAGEDATA_COLOR_COLORVALUE_H
 
 #include <stdint.h>
 #include <iostream>

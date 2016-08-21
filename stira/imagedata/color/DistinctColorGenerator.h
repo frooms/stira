@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_COLOR_DISTINCTCOLORGENERATOR_H
-#define STIRA_IMAGE_COLOR_DISTINCTCOLORGENERATOR_H
+#ifndef STIRA_IMAGEDATA_COLOR_DISTINCTCOLORGENERATOR_H
+#define STIRA_IMAGEDATA_COLOR_DISTINCTCOLORGENERATOR_H
 
 #include <stdint.h>
 #include <iostream>

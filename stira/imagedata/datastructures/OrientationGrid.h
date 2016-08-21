@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_DATASTRUCTURES_ORIENTATIONGRID_H
-#define STIRA_IMAGE_DATASTRUCTURES_ORIENTATIONGRID_H
+#ifndef STIRA_IMAGEDATA_DATASTRUCTURES_ORIENTATIONGRID_H
+#define STIRA_IMAGEDATA_DATASTRUCTURES_ORIENTATIONGRID_H
 
 #include <stdint.h>
 #include <iostream>

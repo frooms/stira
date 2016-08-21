@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_COLOR_TRANSFORMCOLORSPACE_H
-#define STIRA_IMAGE_COLOR_TRANSFORMCOLORSPACE_H
+#ifndef STIRA_IMAGEDATA_COLOR_TRANSFORMCOLORSPACE_H
+#define STIRA_IMAGEDATA_COLOR_TRANSFORMCOLORSPACE_H
 
 #include <stdint.h>
 #include <iostream>

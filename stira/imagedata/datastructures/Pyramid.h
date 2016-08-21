@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_DATASTRUCTURES_PYRAMID_H
-#define STIRA_IMAGE_DATASTRUCTURES_PYRAMID_H
+#ifndef STIRA_IMAGEDATA_DATASTRUCTURES_PYRAMID_H
+#define STIRA_IMAGEDATA_DATASTRUCTURES_PYRAMID_H
 
 #include <stdint.h>
 #include <iostream>

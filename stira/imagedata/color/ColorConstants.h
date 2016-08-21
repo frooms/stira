@@ -10,8 +10,8 @@
  *                                                                                 *
  ***********************************************************************************/
 
-#ifndef STIRA_IMAGE_COLOR_COLORCONSTANTS_H
-#define STIRA_IMAGE_COLOR_COLORCONSTANTS_H
+#ifndef STIRA_IMAGEDATA_COLOR_COLORCONSTANTS_H
+#define STIRA_IMAGEDATA_COLOR_COLORCONSTANTS_H
 
 #include <iostream>
 #include <vector>
