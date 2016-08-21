@@ -57,11 +57,22 @@ using namespace stira::filter;
 
 //------------------------------------------------------------------
 
-InteractiveImageWindow::InteractiveImageWindow (  double centerX, double centerY, double width )
+InteractiveImageWindow::InteractiveImageWindow ( double centerX, double centerY, double width, bool createMandelbrot )
 {
    InitializePointers( );
    mpFractalGenerator = new FractalGenerator();
-   mpImage = mpFractalGenerator->CreateMandelbrot( centerX, centerY, width );
+   if (createMandelbrot)
+   {
+      mpImage = mpFractalGenerator->CreateMandelbrot( centerX, centerY, width );
+      mIsMandelbrot = true;
+   }
+   else
+   {
+      mpImage = mpFractalGenerator->CreateJulia( -0.5, 0.0, 3.0, centerX, centerY );
+      mIsMandelbrot = false;
+      mCX = centerX;
+      mCY = centerY;
+   }
 
    if ( mpImage != 0)
    {
@@ -124,7 +135,17 @@ void InteractiveImageWindow::CreateZoomFractal( double factor )
     // full size
     double width = mpFractalGenerator->GetMathWidth() / factor;
 
-    Image* pFractal = mpFractalGenerator->CreateMandelbrot( mathClickX, mathClickY, width );
+
+    Image* pFractal = 0;
+    if (mIsMandelbrot)
+    {
+       pFractal = mpFractalGenerator->CreateMandelbrot( mathClickX, mathClickY, width );
+    }
+    else
+    {
+       pFractal = mpFractalGenerator->CreateJulia( mathClickX, mathClickY, width, mCX, mCY );
+    }
+
     this->ReplaceImage(  pFractal );
 }
 
@@ -183,9 +204,10 @@ void InteractiveImageWindow::SetupWindow()
 
    setWindowTitle ( tr ( "Image Viewer" ) );
 
-   connect( mpImageLabel, SIGNAL( leftButtonClicked() ), this, SLOT( SlotZoomIn() ));
-   connect( mpImageLabel, SIGNAL( rightButtonClicked() ), this, SLOT( SlotZoomOut() ));
-   connect( mpImageLabel, SIGNAL( middleButtonClicked() ), this, SLOT( SlotAddToImageList() ) );
+   connect( mpImageLabel, SIGNAL( wheelUpEvent() ), this, SLOT( SlotZoomIn() ));
+   connect( mpImageLabel, SIGNAL( wheelDownEvent() ), this, SLOT( SlotZoomOut() ));
+   connect( mpImageLabel, SIGNAL( leftButtonClicked() ), this, SLOT( SlotAddToImageList() ) );
+   connect( mpImageLabel, SIGNAL( rightButtonClicked() ), this, SLOT( SlotComputeJulia() ) );
 
    mpSlider = new QSlider( Qt::Horizontal, this );
    mpSlider->hide();
@@ -271,6 +293,24 @@ void InteractiveImageWindow::SlotAddToImageList()
     Image* pImageSnapshot = mpImage->Clone();
     pImageSnapshot->SetImageName("MandelbrotSnapshot");
     ImageDataList::GetInstance()->AddImage( pImageSnapshot );
+}
+
+void InteractiveImageWindow::SlotComputeJulia()
+{
+    Point<double> mathCenter = mpFractalGenerator->GetMathCenterPoint();
+    double resolutionX = mpFractalGenerator->GetResolutionX();
+    double resolutionY = mpFractalGenerator->GetResolutionY();
+    Point<int> clickPoint = mpImageLabel->GetPointClicked();
+
+    double centerX = (double)(clickPoint.x - mpFractalGenerator->GetPixelWidth()  / 2.0 ) / (double)(resolutionX) + mathCenter.x;
+    double centerY = (double)(clickPoint.y - mpFractalGenerator->GetPixelHeight() / 2.0 ) / (double)(resolutionY) + mathCenter.y;
+
+    double width = 3.0;
+
+    InteractiveImageWindow* pInteractiveImageWindow = new InteractiveImageWindow( centerX, centerY, width, false );
+    //pInteractiveImageWindow->SetParent( this );
+
+    MainWindow::GetInstance()->SlotAddSubWindow( pInteractiveImageWindow, QString("Julia") );
 }
 
 //------------------------------------------------------------------

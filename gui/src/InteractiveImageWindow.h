@@ -58,7 +58,7 @@ public:
 
    /** \brief constructor
      * Creates an image viewer with an externally created fractal image */
-   InteractiveImageWindow( double centerX, double centerY, double width );
+   InteractiveImageWindow( double centerX, double centerY, double width, bool createMandelbrot=true );
 
    /** \brief destructor */
    ~InteractiveImageWindow( );
@@ -75,6 +75,7 @@ public slots:
    void SlotNormalSize();
    void SlotCleanData();
    void SlotAddToImageList();
+   void SlotComputeJulia();
 
 private:
 
@@ -107,6 +108,9 @@ private:
 
    bool mIsFirstRendering;  ///< keeps track if this is the first time that the image is rendered in the window
 
+   bool mIsMandelbrot;
+   double mCX;
+   double mCY;
    stira::imagedata::Image* mpImage;  ///< the underlying image data of image window
    stira::imagetools::FractalGenerator* mpFractalGenerator;  ///< the underlying image data of image window
 };
