@@ -1,5 +1,17 @@
-#ifndef GRIDSTATISTICS_H
-#define GRIDSTATISTICS_H
+
+/***********************************************************************************
+ *   Copyright (C) 2016 by Filip Rooms                                             *
+ *                                                                                 *
+ *  Terms and conditions for using this software in any form are provided in the   *
+ *  file COPYING, which can be found in the root directory of this project.        *
+ *                                                                                 *
+ *   Contact data: filip.rooms@gmail.com                                           *
+ *                 http://www.filiprooms.be/                                       *
+ *                                                                                 *
+ ***********************************************************************************/
+
+#ifndef STIRA_IMAGEDATA_SIMPLETOOLS_GRIDSTATISTICS_H
+#define STIRA_IMAGEDATA_SIMPLETOOLS_GRIDSTATISTICS_H
 
 #include "../../common/common/RectangularROI.h"
 #include "../../common/common/MathUtils.h"
@@ -13,16 +25,33 @@ class GridStatistics
 {
 
 public:
+    /** \brief constructor */
     GridStatistics();
 
+    /** \brief rescales grid intensities
+      * \param pGrid input grid
+      * \param desiredMin new minimum intensity in grid after rescaling
+      * \param desiredMax new maximum intensity in grid after rescaling */
     static void RescaleGrid( ArrayGrid<T>* pGrid, T desiredMin, T desiredMax );
 
+    /** \brief diagnoses grid intensities by printing some statistics like mean, variance and kurtosis, nr NaN and Inf on command line
+      * \param pGrid input image
+      * \param fileName name of original file as identifier of this grid */
     static void DiagnoseReal( ArrayGrid<double>* pGrid, std::string fileName );
 
+    /** \brief counts number of NaN and Inf occurences in the grid
+      * \param pGrid  in: grid to investigate
+      * \param nrNAN out: number of NaN pixels
+      * \param nrINF out: number of Inf pixels
+      * \param ID     in: identifier of this test */
     static bool CountNANandINF( ArrayGrid<T>* pGrid, int& nrNAN, int& nrINF, std::string ID );
 
+    /** \brief cleans NaN and Inf occurences in the grid
+      * \param pGrid  in: grid to investigate */
     static bool CleanNANandINF( ArrayGrid<T>* pGrid );
 
+    /** \brief counts number of zeros in the grid
+      * \param pGrid in: grid to investigate*/
     static int CountZero( ArrayGrid<T>* pGrid );
 
     ///////////////////////////////////////////////
