@@ -12,6 +12,7 @@
 
 #ifndef STIRA_LIMA_MATRIX_H
 #define STIRA_LIMA_MATRIX_H
+#include <cassert>
 
 template<class T>
 inline T SQR(const T a) {return a*a;}
@@ -85,6 +86,12 @@ public:
 
     /** \brief print current matrix using tag "name" to standard output */
     void Print( std::string name );
+
+    T Trace( );
+
+    T ComputeDeterminant();
+
+    std::vector<double> ComputeEigenValues( );
 
     // LU Decomposition routines
     //////////////////////////////
@@ -501,6 +508,93 @@ void Matrix<T>::Print( std::string name )
 }
 
 //------------------------------------------------------------------
+
+template <class T>
+T Matrix<T>::Trace( )
+{
+    T  resultTrace = 0;
+    assert(mNrRows==mNrColumns);
+    for ( unsigned int j = 0; j < mNrRows; j++ )
+    {
+        for ( unsigned int i = 0; i < mNrColumns; i++ )
+        {
+            if (i == j) {resultTrace += this->mppMatrix[j][i];}
+        }
+    }
+    return resultTrace;
+}
+//------------------------------------------------------------------
+
+template <class T>
+T Matrix<T>::ComputeDeterminant()
+{
+    T  resultDeterminant = 0;
+
+    assert(mNrRows==mNrColumns);
+    Matrix<double> dCr = this->LU_Crout( mNrColumns );
+    resultDeterminant = Matrix<double>::Determinant( dCr );
+    return resultDeterminant;
+}
+
+//------------------------------------------------------------------
+// https://en.wikipedia.org/wiki/Eigenvalue_algorithm
+// Given a real symmetric 3x3 matrix A, compute the eigenvalues
+template <class T>
+std::vector<double> Matrix<T>::ComputeEigenValues( )
+{
+    double eig1, eig2, eig3;
+    std::vector<double> eigenValues;
+    double p1 = mppMatrix[0][1] * mppMatrix[0][1] + mppMatrix[0][2] * mppMatrix[0][2] + mppMatrix[1][2] * mppMatrix[1][2];
+    if (p1 == 0)
+    {
+        // A is diagonal.
+        eig1 = mppMatrix[0][0];
+        eig2 = mppMatrix[1][1];
+        eig3 = mppMatrix[2][2];
+    }
+    else
+    {
+        double q = this->Trace() / 3.0;
+        double aq0 = mppMatrix[0][0] - q;
+        double aq1 = mppMatrix[1][1] - q;
+        double aq2 = mppMatrix[2][2] - q;
+        double p2 = aq0*aq0 + aq1*aq1 + aq2*aq2 + 2.0 * p1;
+        double p = sqrt(p2 / 6.0);
+        Matrix<T> B(*this);
+
+        B[0][0] = mppMatrix[0][0] - q;
+        B[1][1] = mppMatrix[1][1] - q;
+        B[2][2] = mppMatrix[2][2] - q;
+        for ( unsigned int j = 0; j < mNrRows; j++ )
+        {
+            for ( unsigned int i = 0; i < mNrColumns; i++ )
+            {
+                B[j][i] /= p;
+            }
+        }
+
+        double r  = this->ComputeDeterminant() / 2.0;
+
+        // In exact arithmetic for a symmetric matrix  -1 <= r <= 1
+        // but computation error can leave it slightly outside this range.
+        double phi;
+        if (r <= -1.0)
+           phi = M_PI / 3.0;
+        else if (r >= 1.0)
+           phi = 0.0;
+        else
+           phi = acos(r) / 3.0;
+
+        // the eigenvalues satisfy eig3 <= eig2 <= eig1
+        eig1 = q + 2.0 * p * cos(phi);
+        eig3 = q + 2.0 * p * cos(phi + (2.0 * M_PI / 3.0 ) );
+        eig2 = 3.0 * q - eig1 - eig3;     // since trace(A) = eig1 + eig2 + eig3
+    }
+    eigenValues.push_back(eig1);
+    eigenValues.push_back(eig2);
+    eigenValues.push_back(eig3);
+    return eigenValues;
+}
 
 }
 }
