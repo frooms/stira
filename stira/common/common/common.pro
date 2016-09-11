@@ -21,7 +21,8 @@ HEADERS += Definitions.h \
     ClusteringLearning.h \
     Polygon.h \
     SVD.h \
-    MonotonicCubicSplineInterpolator.h
+    MonotonicCubicSplineInterpolator.h \
+    BinaryBuffer.h
 SOURCES += Definitions.cpp \
     DrawFigures.cpp \
     ExecutionTimer.cpp \
@@ -42,4 +43,5 @@ SOURCES += Definitions.cpp \
     ClusteringLearning.cpp \
     Polygon.cpp \
     SVD.cpp \
-    MonotonicCubicSplineInterpolator.cpp
+    MonotonicCubicSplineInterpolator.cpp \
+    BinaryBuffer.cpp
