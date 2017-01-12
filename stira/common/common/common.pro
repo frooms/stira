@@ -22,7 +22,9 @@ HEADERS += Definitions.h \
     Polygon.h \
     SVD.h \
     MonotonicCubicSplineInterpolator.h \
-    BinaryBuffer.h
+    BinaryBuffer.h \
+    Perceptron.h \
+    ClassSample.h
 SOURCES += Definitions.cpp \
     DrawFigures.cpp \
     ExecutionTimer.cpp \
@@ -44,4 +46,6 @@ SOURCES += Definitions.cpp \
     Polygon.cpp \
     SVD.cpp \
     MonotonicCubicSplineInterpolator.cpp \
-    BinaryBuffer.cpp
+    BinaryBuffer.cpp \
+    Perceptron.cpp \
+    ClassSample.cpp
