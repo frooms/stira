@@ -7,4 +7,5 @@ SUBDIRS += common \
     testStringUtils \
     testFileAccess \
     testFixedBuffer \
-    testTextFileUtils
+    testTextFileUtils \
+    testPerceptron
