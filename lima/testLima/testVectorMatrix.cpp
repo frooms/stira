@@ -110,6 +110,41 @@ bool TestMatrixMultiplication()
 
 //-------------------------------------------------------------------
 
+bool TestMatrixEigenValues()
+{
+   bool result = true;
+
+   // https://en.wikipedia.org/wiki/Eigenvalue_algorithm
+   unsigned int aRows = 3;
+   unsigned int aCols = 3;
+   Matrix<double> a( aRows, aCols );
+
+   a[0][0] = 3;
+   a[0][1] = 2;
+   a[0][2] = 6;
+
+   a[1][0] = 2;
+   a[1][1] = 2;
+   a[1][2] = 5;
+
+   a[2][0] = -2;
+   a[2][1] = -1;
+   a[2][2] = -4;
+
+   a.Print(std::string("a"));
+
+   std::vector<double> eigenValues = a.ComputeEigenValues();
+
+   for (int i = 0; i < eigenValues.size(); i++)
+   {
+       std::cout << eigenValues[i] << std:: endl;
+   }
+
+   return result;
+}
+
+//-------------------------------------------------------------------
+
 bool TestDecomposeLU()
 {
    bool result = true;
@@ -234,6 +269,8 @@ int main()
 {
    TestVector();
    TestMatrixMultiplication();
+
+   TestMatrixEigenValues();
 
    TestDecomposeLU();
    TestSolveSystem();

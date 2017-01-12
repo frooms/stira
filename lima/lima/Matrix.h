@@ -538,61 +538,74 @@ T Matrix<T>::ComputeDeterminant()
 
 //------------------------------------------------------------------
 // https://en.wikipedia.org/wiki/Eigenvalue_algorithm
-// Given a real symmetric 3x3 matrix A, compute the eigenvalues
+//
+// https://en.wikipedia.org/wiki/Jacobi_eigenvalue_algorithm
 template <class T>
 std::vector<double> Matrix<T>::ComputeEigenValues( )
 {
-    double eig1, eig2, eig3;
     std::vector<double> eigenValues;
-    double p1 = mppMatrix[0][1] * mppMatrix[0][1] + mppMatrix[0][2] * mppMatrix[0][2] + mppMatrix[1][2] * mppMatrix[1][2];
-    if (p1 == 0)
-    {
-        // A is diagonal.
-        eig1 = mppMatrix[0][0];
-        eig2 = mppMatrix[1][1];
-        eig3 = mppMatrix[2][2];
-    }
-    else
-    {
-        double q = this->Trace() / 3.0;
-        double aq0 = mppMatrix[0][0] - q;
-        double aq1 = mppMatrix[1][1] - q;
-        double aq2 = mppMatrix[2][2] - q;
-        double p2 = aq0*aq0 + aq1*aq1 + aq2*aq2 + 2.0 * p1;
-        double p = sqrt(p2 / 6.0);
-        Matrix<T> B(*this);
+    /*
+    procedure jacobi(S ∈ Rn×n; out e ∈ Rn; out E ∈ Rn×n)
+      var
+        i, k, l, m, state ∈ N
+        s, c, t, p, y, d, r ∈ R
+        ind ∈ Nn
+        changed ∈ Ln
 
-        B[0][0] = mppMatrix[0][0] - q;
-        B[1][1] = mppMatrix[1][1] - q;
-        B[2][2] = mppMatrix[2][2] - q;
-        for ( unsigned int j = 0; j < mNrRows; j++ )
-        {
-            for ( unsigned int i = 0; i < mNrColumns; i++ )
-            {
-                B[j][i] /= p;
-            }
-        }
+      function maxind(k ∈ N) ∈ N ! index of largest off-diagonal element in row k
+        m := k+1
+        for i := k+2 to n do
+          if │Ski│ > │Skm│ then m := i endif
+        endfor
+        return m
+      endfunc
 
-        double r  = this->ComputeDeterminant() / 2.0;
+      procedure update(k ∈ N; t ∈ R) ! update ek and its status
+        y := ek; ek := y+t
+        if changedk and (y=ek) then changedk := false; state := state−1
+        elsif (not changedk) and (y≠ek) then changedk := true; state := state+1
+        endif
+      endproc
 
-        // In exact arithmetic for a symmetric matrix  -1 <= r <= 1
-        // but computation error can leave it slightly outside this range.
-        double phi;
-        if (r <= -1.0)
-           phi = M_PI / 3.0;
-        else if (r >= 1.0)
-           phi = 0.0;
-        else
-           phi = acos(r) / 3.0;
+      procedure rotate(k,l,i,j ∈ N) ! perform rotation of Sij, Skl
+        ┌   ┐    ┌     ┐┌   ┐
+        │Skl│    │c  −s││Skl│
+        │   │ := │     ││   │
+        │Sij│    │s   c││Sij│
+        └   ┘    └     ┘└   ┘
+      endproc
 
-        // the eigenvalues satisfy eig3 <= eig2 <= eig1
-        eig1 = q + 2.0 * p * cos(phi);
-        eig3 = q + 2.0 * p * cos(phi + (2.0 * M_PI / 3.0 ) );
-        eig2 = 3.0 * q - eig1 - eig3;     // since trace(A) = eig1 + eig2 + eig3
-    }
-    eigenValues.push_back(eig1);
-    eigenValues.push_back(eig2);
-    eigenValues.push_back(eig3);
+      ! init e, E, and arrays ind, changed
+      E := I; state := n
+      for k := 1 to n do indk := maxind(k); ek := Skk; changedk := true endfor
+      while state≠0 do ! next rotation
+        m := 1 ! find index (k,l) of pivot p
+        for k := 2 to n−1 do
+          if │Sk indk│ > │Sm indm│ then m := k endif
+        endfor
+        k := m; l := indm; p := Skl
+        ! calculate c = cos φ, s = sin φ
+        y := (el−ek)/2; d := │y│+√(p2+y2)
+        r := √(p2+d2); c := d/r; s := p/r; t := p2/d
+        if y<0 then s := −s; t := −t endif
+        Skl := 0.0; update(k,−t); update(l,t)
+        ! rotate rows and columns k and l
+        for i := 1 to k−1 do rotate(i,k,i,l) endfor
+        for i := k+1 to l−1 do rotate(k,i,i,l) endfor
+        for i := l+1 to n do rotate(k,i,l,i) endfor
+        ! rotate eigenvectors
+        for i := 1 to n do
+          ┌   ┐    ┌     ┐┌   ┐
+          │Eik│    │c  −s││Eik│
+          │   │ := │     ││   │
+          │Eil│    │s   c││Eil│
+          └   ┘    └     ┘└   ┘
+        endfor
+        ! rows k, l have changed, update rows indk, indl
+        indk := maxind(k); indl := maxind(l)
+      loop
+    endproc*/
+
     return eigenValues;
 }
 
