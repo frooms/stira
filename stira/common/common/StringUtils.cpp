@@ -158,6 +158,18 @@ double StringUtils::ConvertStringToDouble( std::string inputString )
    return dd;
 }
 
+
+std::vector<std::string> StringUtils::TokenizeString( std::string inputString, char const field_delim )
+{
+    std::vector<std::string> stringTokens;
+    istringstream ss(inputString);
+    for (string field; getline(ss, field, field_delim); )
+    {
+       stringTokens.push_back( field );
+    }
+    return stringTokens;
+}
+
 //-------------------------------------------------------------
 
 std::string StringUtils::ExtractFileName( std::string inputString )

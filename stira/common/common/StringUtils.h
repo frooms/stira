@@ -62,6 +62,8 @@ public:
     *  \param inputString std::string to convert to double */
    static double ConvertStringToDouble( std::string inputString );
 
+   static std::vector<std::string> TokenizeString( std::string inputString, char const field_delim );
+
    /** \brief extracts file name from a path string, thus removing all until the last slash
     *  Inherently uses position of last slash, so works only for Unix path names
     *  \param inputString input string from which to extract file name */
