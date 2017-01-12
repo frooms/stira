@@ -5,3 +5,7 @@ CONFIG -= qt
 
 SOURCES += main.cpp
 
+LIBS += ../common/libcommon.a
+
+POST_TARGETDEPS += ../common/libcommon.a
+
