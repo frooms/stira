@@ -1,7 +1,3 @@
-#include "Feature.h"
+#include "ClassSample.h"
 
-Feature::Feature()
-{
-
-}
 
