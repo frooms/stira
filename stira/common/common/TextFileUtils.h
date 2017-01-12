@@ -16,6 +16,7 @@
 #include <string>
 #include <vector>
 #include "Point.h"
+#include "ClassSample.h"
 
 namespace stira {
 namespace common {
@@ -42,6 +43,8 @@ public:
      *
      * \return vector of strings per line */
    static std::vector< std::string > ReadLinesFromTextFile( std::string inFileName );
+
+   static std::vector< ClassSample > ReadDataSamplesFromTextFile( std::string inFileName, int startLine, int endLine );
 
    /** \brief Filters a text file with numbers, keeping only valid rows
      * The first columns contain values to be filtered;

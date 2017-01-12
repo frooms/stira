@@ -17,6 +17,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <fstream>
+#include "StringUtils.h"
 
 namespace stira {
 
@@ -91,6 +92,38 @@ Rows TextFileUtils::ReadTabSeparatedLineFromTextFile( std::string inFileName )
       }
    }
    return rows;
+}
+
+std::vector< ClassSample > TextFileUtils::ReadDataSamplesFromTextFile( std::string inFileName, int startLine, int endLine )
+{
+    string row;
+    std::vector< ClassSample > samples;
+    ifstream input( inFileName.c_str() );
+    if (!input)
+    {
+       cerr << "ERROR in TextFileUtils::ReadTabSeparatedLineFromTextFil: Can't read input series from file " << inFileName << "!!!" << endl;
+       return samples;
+    }
+    char const row_delim = '\n';
+    char const field_delim = '\t';
+    getline(input, row, row_delim);  // first row is just feature names
+
+    for (row; getline(input, row, row_delim); )
+    {
+       ClassSample newSample;
+       std::vector<double> featureValues;
+
+       std::vector<std::string> tokens = StringUtils::TokenizeString( row, field_delim );
+
+       for (int i = 0; i < tokens.size() - 1; i++ )
+       {
+          featureValues.push_back( atof(tokens[i].c_str()));
+       }
+       newSample.SetFeatureVector(featureValues);
+       newSample.SetLabel(atoi(tokens.back().c_str()));
+       samples.push_back(newSample);
+    }
+    return samples;
 }
 
 //------------------------------------------------------------------------
